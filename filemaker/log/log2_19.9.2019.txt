@@ -1,0 +1,48 @@
+User: 104.196.134.0 - September 19, 2019, 9:10 am
+First Name: greg curry
+Last Name: 
+Zip: 80239
+Email: created2controlyou@gmail.com
+Phone: 3035180619
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 19, 2019, 9:10 am
+First Name: greg curry
+Last Name: 
+Zip: 80239
+Email: created2controlyou@gmail.com
+Phone: 3035180619
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - September 19, 2019, 12:42 pm
+First Name: Test
+Last Name: 
+Zip: 92562
+Email: rolando.garcia@gmail.com
+Phone: 6199579779
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 19, 2019, 12:42 pm
+First Name: Test
+Last Name: 
+Zip: 92562
+Email: rolando.garcia@gmail.com
+Phone: 6199579779
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - September 19, 2019, 7:09 pm
+First Name: Laith Qumsieh
+Last Name: 
+Zip: 92128
+Email: Laith.qumsieh@yahoo.com
+Phone: 8582129438
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 19, 2019, 7:09 pm
+First Name: Laith Qumsieh
+Last Name: 
+Zip: 92128
+Email: Laith.qumsieh@yahoo.com
+Phone: 8582129438
+Step: After Perform Script
+-------------------------

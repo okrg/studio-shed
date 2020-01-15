@@ -1,0 +1,96 @@
+User: 104.196.134.0 - September 29, 2017, 2:37 am
+First Name: Jennifer Brankin
+Last Name: 
+Zip: 80002
+Email: studio@polixenni.com
+Phone: 7202738285
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 29, 2017, 2:37 am
+First Name: Jennifer Brankin
+Last Name: 
+Zip: 80002
+Email: studio@polixenni.com
+Phone: 7202738285
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - September 29, 2017, 6:01 am
+First Name: Heidi Fischer
+Last Name: 
+Zip: B0J 2C0
+Email: heidif1524@gmail.com
+Phone: 9025217127
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 29, 2017, 6:01 am
+First Name: Heidi Fischer
+Last Name: 
+Zip: B0J 2C0
+Email: heidif1524@gmail.com
+Phone: 9025217127
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - September 29, 2017, 10:19 am
+First Name: terri denard
+Last Name: 
+Zip: 35242
+Email: terridenard@bellsouth.net
+Phone: 205.960.7988
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 29, 2017, 10:19 am
+First Name: terri denard
+Last Name: 
+Zip: 35242
+Email: terridenard@bellsouth.net
+Phone: 205.960.7988
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - September 29, 2017, 2:15 pm
+First Name: Sarah Pugh
+Last Name: 
+Zip: 78704
+Email: Avintageheartspugh@gmail.com
+Phone: 8053405779
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 29, 2017, 2:15 pm
+First Name: Sarah Pugh
+Last Name: 
+Zip: 78704
+Email: Avintageheartspugh@gmail.com
+Phone: 8053405779
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - September 29, 2017, 2:23 pm
+First Name: Todd Kraft
+Last Name: 
+Zip: 10536
+Email: kraft@usta.co
+Phone: 7187606235
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 29, 2017, 2:23 pm
+First Name: Todd Kraft
+Last Name: 
+Zip: 10536
+Email: kraft@usta.co
+Phone: 7187606235
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - September 29, 2017, 3:27 pm
+First Name: Kate Higgins
+Last Name: 
+Zip: 48104
+Email: katehig@comcast.net
+Phone: 734-904-3261
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 29, 2017, 3:27 pm
+First Name: Kate Higgins
+Last Name: 
+Zip: 48104
+Email: katehig@comcast.net
+Phone: 734-904-3261
+Already exists?: YES
+-------------------------

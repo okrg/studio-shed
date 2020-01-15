@@ -1,0 +1,32 @@
+User: 104.196.134.0 - December 17, 2018, 1:46 am
+First Name: Maria Shull
+Last Name: 
+Zip: 85259
+Email: Mariashull@gmail.com
+Phone: 3125156088
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - December 17, 2018, 10:40 am
+First Name: Danielle
+Last Name: 
+Zip: 90505
+Email: Paceestates@gmail.com
+Phone: 4805210966
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - December 17, 2018, 11:49 am
+First Name: Neil
+Last Name: 
+Zip: 83716
+Email: neil@airpost.net
+Phone: 2085551212
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - December 17, 2018, 11:24 pm
+First Name: Larry Bass
+Last Name: 
+Zip: 80126
+Email: larry@eRealEstateTeam.com
+Phone: 3039442277
+Step: Before Processing
+-------------------------

@@ -1,0 +1,32 @@
+User: 104.196.134.0 - June 8, 2018, 2:41 pm
+First Name: Jon Valois
+Last Name: 
+Zip: 93105
+Email: jonvalois@me.com
+Phone: 8056370001
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - June 8, 2018, 2:41 pm
+First Name: Jon Valois
+Last Name: 
+Zip: 93105
+Email: jonvalois@me.com
+Phone: 8056370001
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - June 8, 2018, 5:08 pm
+First Name: Melissa Esbenshade
+Last Name: 
+Zip: 85260
+Email: Esbenshade@gmail.com
+Phone: 4804744045
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - June 8, 2018, 5:08 pm
+First Name: Melissa Esbenshade
+Last Name: 
+Zip: 85260
+Email: Esbenshade@gmail.com
+Phone: 4804744045
+Already exists?: YES
+-------------------------

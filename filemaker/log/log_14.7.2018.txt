@@ -1,0 +1,51 @@
+User: 50.116.19.82 - July 14, 2018, 8:56 am
+First Name: Phil
+Last Name: Goodwin
+City: Athens
+State: GA
+Zip: 30606
+Email: phil@fhlcreative.com
+Phone: 7063512225
+URL: https://www.studio-shed.com/configurator/?depth=10&length=12&trim=Lap&sidingColor=Web+Gray&doorColor=Red+Barn&eaveColor=None&metalColor=&floorOption=Midtown+Olive&options%5B%5D=Full-Lite+Glass+Door+Upgrade&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&front=F12-W1L-D36CL-BL&back=B12-BL&left=L10x-18C-BL&right=R10x-18C-BL&foundation=Concrete+Slab
+-------------------------
+User: 50.116.19.82 - July 14, 2018, 3:17 pm
+First Name: Kilian
+Last Name: Kilian
+City: Sierra Madre
+State: CA
+Zip: 91789
+Email: kilianwagner@hotmail.com
+Phone: 9092308440
+URL: https://www.studio-shed.com/configurator/?depth=10&length=20&trim=Block&sidingColor=Raindrop&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Whitewashed+Beech&options%5B%5D=Full-Lite+Glass+Door+Upgrade&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Professional+Installation+-+Shell+%2B+Lifestyle%E2%84%A2&services%5B%5D=Full+Permit+Plan+Set+and+Engineer+Stamped+Drawings&front=F20-W2L-W2R-D72C-BL&back=B20-BL&left=L10x-BL&right=R10x-BL&foundation=Concrete+Slab
+-------------------------
+User: 50.116.19.82 - July 14, 2018, 4:57 pm
+First Name: Marta
+Last Name: Kochanska
+City: San Francisco
+State: CA
+Zip: 94131
+Email: kochanska_marta@hotmail.com
+Phone: 415-819-6412
+URL: https://www.studio-shed.com/configurator/?depth=8&length=12&trim=Block&sidingColor=Studio+Shed+Bronze&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Vermont+Maple&options%5B%5D=Full-Lite+Glass+Door+Upgrade&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Professional+Installation+-+Shell+%2B+Lifestyle%E2%84%A2&front=F12-D72R-BL&back=B12-BL&left=L8x-18L-BL&right=R8x-W1L-36R-BL&foundation=Foundation+TBD
+-------------------------
+User: 50.116.19.82 - July 14, 2018, 9:33 pm
+First Name: riel
+Last Name: manriquez
+City: portland
+State: OR
+Zip: 97225
+Email: gmanriquez@yahoo.com
+Phone: 
+URL: https://www.studio-shed.com/configurator/?depth=8&length=12&trim=Lap&sidingColor=Cargo+Pants&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Vermont+Maple&options%5B%5D=Full-Lite+Glass+Door+Upgrade&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&options%5B%5D=Shortened+Eaves&services%5B%5D=Professional+Installation+-+Shell+%2B+Lifestyle%E2%84%A2&front=F12-60L-D36R-BL&back=B12-BL&left=L8x-BL&right=R8x-BL&foundation=Wood+Frame+Floor
+-------------------------
+User: 35.164.135.29 - July 14, 2018, 9:42 pm
+First Name: riel
+Last Name: manriquez
+City: portland
+State: OR
+Zip: 97225
+Email: gmanriquez@yahoo.com
+Phone: 
+URL: https://www.studio-shed.com/portland-configurator/#6790366fe53b0cefb2d52f711dbb4e0d
+RepEmail: Gregg@Studio-Shed.com
+-------------------------

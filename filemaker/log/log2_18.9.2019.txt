@@ -1,0 +1,48 @@
+User: 104.196.134.0 - September 18, 2019, 10:54 am
+First Name: Marty
+Last Name: 
+Zip: 92113
+Email: marty333@mac.com
+Phone: 6192619838
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 18, 2019, 10:54 am
+First Name: Marty
+Last Name: 
+Zip: 92113
+Email: marty333@mac.com
+Phone: 6192619838
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - September 18, 2019, 1:55 pm
+First Name: Michelle  Carrillo
+Last Name: 
+Zip: 95051
+Email: gmnck@aol.com
+Phone: 408-554-8794
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 18, 2019, 1:55 pm
+First Name: Michelle  Carrillo
+Last Name: 
+Zip: 95051
+Email: gmnck@aol.com
+Phone: 408-554-8794
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - September 18, 2019, 3:01 pm
+First Name: Tiara banks
+Last Name: 
+Zip: 75040
+Email: Tiarabanks11@gmail.com
+Phone: 2143958485
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 18, 2019, 3:01 pm
+First Name: Tiara banks
+Last Name: 
+Zip: 75040
+Email: Tiarabanks11@gmail.com
+Phone: 2143958485
+Step: After Perform Script
+-------------------------

@@ -1,0 +1,48 @@
+User: 104.196.134.0 - September 8, 2019, 11:25 am
+First Name: olavarrieta
+Last Name: 
+Zip: 97221
+Email: dansaprimavera@hotmail.com
+Phone: 5034902720
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 8, 2019, 11:26 am
+First Name: olavarrieta
+Last Name: 
+Zip: 97221
+Email: dansaprimavera@hotmail.com
+Phone: 5034902720
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - September 8, 2019, 11:36 am
+First Name: Ava Morgan
+Last Name: 
+Zip: 91009
+Email: agmorgan2010@gmail.com
+Phone: 6265060982
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 8, 2019, 11:36 am
+First Name: Ava Morgan
+Last Name: 
+Zip: 91009
+Email: agmorgan2010@gmail.com
+Phone: 6265060982
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - September 8, 2019, 5:36 pm
+First Name: Edith Reategui
+Last Name: 
+Zip: 95407
+Email: Hopes066@yahoo.com
+Phone: 707-971-0299
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 8, 2019, 5:36 pm
+First Name: Edith Reategui
+Last Name: 
+Zip: 95407
+Email: Hopes066@yahoo.com
+Phone: 707-971-0299
+Already exists?: YES
+-------------------------

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Form Submit</title>
+</head>
+<body>
+   <form method="post" action="process_RequestQuote.php">
+    <p style="margin-left:5px;margin-top:2px;font-size:18px"> Provide the information below to save your custom Studio Shed. You will receive an email with your details and a link to your Studio Shed. </p>
+        <!--<input style="width:235px" name="name" placeholder="NAME" required="">-->     
+        <input style="width:235px" name="fname" placeholder="FIRST NAME" required="">
+        <input style="width:235px" name="lname" placeholder="LAST NAME" required="">
+        <input style="width:235px" name="email" placeholder="EMAIL" required="">
+        <input style="width:235px" name="zipcode" placeholder="ZIPCODE" required="">
+        <input style="width:235px" name="phone" placeholder="PHONE" required="">
+
+        <br><br>Desired Size<br>
+        <input type="radio" name="desired" value="Under 120 Square Feet" required="">Under 120 Square Feet<br>
+        <input type="radio" name="desired" value="Up to 250 Square Feet" required="">Up to 250 Square Feet<br>
+        <input type="radio" name="desired" value="More than 250 Square Feet" required="">More than 250 Square Feet<br>
+       
+        <br><br>Intended Use<br>
+        <input type="radio" name="intended" value="General Storage" required="">General Storage<br>
+        <input type="radio" name="intended" value="Finished Studio(Home Office, Creative Studio, Etc.)" required="">Finished Studio(Home Office, Creative Studio, Etc.)<br>
+        <input type="radio" name="intended" value="Guest House or Dwelling" required="">Guest House or Dwelling<br>
+        <input type="radio" name="intended" value="Not Sure" required="">Not Sure<br>
+       
+<br><br>Budget
+<div class="input-range"><input name="budget" class="range" type="range" min="10" max="50" value="30"  />
+       
+       
+       <br><br>
+       <input style="width:151px" name="comments" placeholder="COMMENT">
+        <br>
+        <input type='submit' value='Submit'>
+    </form>
+</body>
+</html>

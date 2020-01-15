@@ -1,0 +1,48 @@
+User: 104.196.134.0 - December 13, 2018, 12:39 am
+First Name: Kim leigh
+Last Name: 
+Zip: 78215
+Email: cbs.dominic@gmail.com
+Phone: 210-279-3502
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - December 13, 2018, 10:44 am
+First Name: Jeniver oswitt
+Last Name: 
+Zip: 01541
+Email: Oswittj@gmail.com
+Phone: 5082441847
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - December 13, 2018, 10:45 am
+First Name: Isaac Paul
+Last Name: 
+Zip: 44131
+Email: isaacpaul94@gmail.com
+Phone: 2164706993
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - December 13, 2018, 5:51 pm
+First Name: Isaac Paul
+Last Name: 
+Zip: 44131
+Email: Isaacpaul94@gmail.com
+Phone: 2164706993
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - December 13, 2018, 5:51 pm
+First Name: Isaac Paul
+Last Name: 
+Zip: 44131
+Email: Isaacpaul94@gmail.com
+Phone: 2164706993
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - December 13, 2018, 7:35 pm
+First Name: Tila Smith
+Last Name: 
+Zip: 61065
+Email: tilasmith39@yahoo.com
+Phone: 2245234334
+Step: Before Processing
+-------------------------

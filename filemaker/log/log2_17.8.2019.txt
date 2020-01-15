@@ -1,0 +1,96 @@
+User: 104.196.134.0 - August 17, 2019, 6:55 am
+First Name: Rowe
+Last Name: 
+Zip: 53080
+Email: info@artistgroup.net
+Phone: 414-208-7744
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - August 17, 2019, 6:55 am
+First Name: Rowe
+Last Name: 
+Zip: 53080
+Email: info@artistgroup.net
+Phone: 414-208-7744
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - August 17, 2019, 8:30 am
+First Name: Thomas Valovic
+Last Name: 
+Zip: 01545
+Email: tvalovic@gmail.com
+Phone: 5088876396
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - August 17, 2019, 8:30 am
+First Name: Thomas Valovic
+Last Name: 
+Zip: 01545
+Email: tvalovic@gmail.com
+Phone: 5088876396
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - August 17, 2019, 2:36 pm
+First Name: Weare
+Last Name: 
+Zip: 95404
+Email: zephyrweare@gmail.com
+Phone: 707 888 8076
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - August 17, 2019, 2:36 pm
+First Name: Weare
+Last Name: 
+Zip: 95404
+Email: zephyrweare@gmail.com
+Phone: 707 888 8076
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - August 17, 2019, 2:42 pm
+First Name: Weare
+Last Name: 
+Zip: 95404
+Email: zephyrweare@gmail.com
+Phone: 707 888 8076
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - August 17, 2019, 2:42 pm
+First Name: Weare
+Last Name: 
+Zip: 95404
+Email: zephyrweare@gmail.com
+Phone: 707 888 8076
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - August 17, 2019, 4:22 pm
+First Name: DEEPTI HEMWANI
+Last Name: 
+Zip: 94539
+Email: deeptihemwani@gmail.com
+Phone: 3234043519
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - August 17, 2019, 4:22 pm
+First Name: DEEPTI HEMWANI
+Last Name: 
+Zip: 94539
+Email: deeptihemwani@gmail.com
+Phone: 3234043519
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - August 17, 2019, 8:49 pm
+First Name: Tamara M Pier
+Last Name: 
+Zip: 57701
+Email: Tamara.pier@gmail.com
+Phone: 6053905331
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - August 17, 2019, 8:49 pm
+First Name: Tamara M Pier
+Last Name: 
+Zip: 57701
+Email: Tamara.pier@gmail.com
+Phone: 6053905331
+Step: After Perform Script
+-------------------------

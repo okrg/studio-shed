@@ -1,0 +1,64 @@
+User: 104.196.134.0 - October 17, 2019, 2:26 pm
+First Name: Miles J. Miller
+Last Name: 
+Zip: 99328
+Email: milesmillerproperties@yahoo.com
+Phone: 503-887-6339
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - October 17, 2019, 2:27 pm
+First Name: Miles J. Miller
+Last Name: 
+Zip: 99328
+Email: milesmillerproperties@yahoo.com
+Phone: 503-887-6339
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - October 17, 2019, 4:23 pm
+First Name: Nicola Clare Freegard
+Last Name: 
+Zip: 85716
+Email: nicolafreegard@gmail.com
+Phone: 5203076983
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - October 17, 2019, 4:23 pm
+First Name: Nicola Clare Freegard
+Last Name: 
+Zip: 85716
+Email: nicolafreegard@gmail.com
+Phone: 5203076983
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - October 17, 2019, 4:49 pm
+First Name: Earl G Gearlds
+Last Name: 
+Zip: 94122
+Email: earlg.gearlds@gmail.com
+Phone: 4156686179
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - October 17, 2019, 4:49 pm
+First Name: Earl G Gearlds
+Last Name: 
+Zip: 94122
+Email: earlg.gearlds@gmail.com
+Phone: 4156686179
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - October 17, 2019, 7:16 pm
+First Name: Yoke Mun
+Last Name: 
+Zip: 94563
+Email: yoke_mun@att.net
+Phone: 9254132849
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - October 17, 2019, 7:17 pm
+First Name: Yoke Mun
+Last Name: 
+Zip: 94563
+Email: yoke_mun@att.net
+Phone: 9254132849
+Step: After Perform Script
+-------------------------

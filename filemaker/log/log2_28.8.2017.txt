@@ -1,0 +1,80 @@
+User: 104.196.134.0 - August 28, 2017, 9:23 am
+First Name: amy rogers
+Last Name: 
+Zip: 94062
+Email: amy.rogers1717@gmail.com
+Phone: 6505373161
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - August 28, 2017, 9:23 am
+First Name: amy rogers
+Last Name: 
+Zip: 94062
+Email: amy.rogers1717@gmail.com
+Phone: 6505373161
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - August 28, 2017, 9:27 am
+First Name: Mahesh K. Iyer
+Last Name: 
+Zip: 95054
+Email: maheshkiyer@yahoo.com
+Phone: 8324751985
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - August 28, 2017, 9:27 am
+First Name: Mahesh K. Iyer
+Last Name: 
+Zip: 95054
+Email: maheshkiyer@yahoo.com
+Phone: 8324751985
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - August 28, 2017, 9:58 am
+First Name: amanda wysocki
+Last Name: 
+Zip: 99336
+Email: amandawysocki@gmail.com
+Phone: 206-913-3839
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - August 28, 2017, 9:58 am
+First Name: amanda wysocki
+Last Name: 
+Zip: 99336
+Email: amandawysocki@gmail.com
+Phone: 206-913-3839
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - August 28, 2017, 5:39 pm
+First Name: Anna Li
+Last Name: 
+Zip: 91789
+Email: annlee8888@hotmail.com
+Phone: 6265817636
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - August 28, 2017, 5:39 pm
+First Name: Anna Li
+Last Name: 
+Zip: 91789
+Email: annlee8888@hotmail.com
+Phone: 6265817636
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - August 28, 2017, 8:42 pm
+First Name: Luai, kesto
+Last Name: 
+Zip: 48075
+Email: Lkesto@yahoo.com
+Phone: 2483317454
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - August 28, 2017, 8:42 pm
+First Name: Luai, kesto
+Last Name: 
+Zip: 48075
+Email: Lkesto@yahoo.com
+Phone: 2483317454
+Step: After Perform Script
+-------------------------

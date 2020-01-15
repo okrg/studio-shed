@@ -1,0 +1,80 @@
+User: 104.196.134.0 - July 16, 2017, 4:27 am
+First Name: Jennifer richard
+Last Name: 
+Zip: 35758
+Email: Jennifer.richard@knology.net
+Phone: 256-508-1359
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - July 16, 2017, 4:27 am
+First Name: Jennifer richard
+Last Name: 
+Zip: 35758
+Email: Jennifer.richard@knology.net
+Phone: 256-508-1359
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - July 16, 2017, 7:30 am
+First Name: David Jones
+Last Name: 
+Zip: 37135
+Email: david@itsabrandingwrap.com
+Phone: 6156891205
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - July 16, 2017, 7:30 am
+First Name: David Jones
+Last Name: 
+Zip: 37135
+Email: david@itsabrandingwrap.com
+Phone: 6156891205
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - July 16, 2017, 12:04 pm
+First Name: Kate Higgins
+Last Name: 
+Zip: 48104
+Email: katehig@comcast.net
+Phone: 7349043261
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - July 16, 2017, 12:04 pm
+First Name: Kate Higgins
+Last Name: 
+Zip: 48104
+Email: katehig@comcast.net
+Phone: 7349043261
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - July 16, 2017, 1:03 pm
+First Name: Page Powell
+Last Name: 
+Zip: 60618
+Email: page914@gmail.com
+Phone: 8472758611
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - July 16, 2017, 1:03 pm
+First Name: Page Powell
+Last Name: 
+Zip: 60618
+Email: page914@gmail.com
+Phone: 8472758611
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - July 16, 2017, 10:38 pm
+First Name: CHRISTOPHER MIANO
+Last Name: 
+Zip: 94611
+Email: chmiano@gmail.com
+Phone: 6469426457
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - July 16, 2017, 10:38 pm
+First Name: CHRISTOPHER MIANO
+Last Name: 
+Zip: 94611
+Email: chmiano@gmail.com
+Phone: 6469426457
+Step: After Perform Script
+-------------------------

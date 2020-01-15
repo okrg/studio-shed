@@ -1,0 +1,80 @@
+User: 104.196.134.0 - November 1, 2018, 8:00 am
+First Name: Thuong dinh
+Last Name: 
+Zip: 94706
+Email: Vinylbeing@yahoo.com
+Phone: 5102822872
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - November 1, 2018, 8:00 am
+First Name: Thuong dinh
+Last Name: 
+Zip: 94706
+Email: Vinylbeing@yahoo.com
+Phone: 5102822872
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - November 1, 2018, 10:31 am
+First Name: Ken D Osterweil
+Last Name: 
+Zip: 20853
+Email: ken.osterweil@verizon.net
+Phone: 3019496247
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - November 1, 2018, 10:31 am
+First Name: Ken D Osterweil
+Last Name: 
+Zip: 20853
+Email: ken.osterweil@verizon.net
+Phone: 3019496247
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - November 1, 2018, 11:32 am
+First Name: Russell Battiato
+Last Name: 
+Zip: 00820
+Email: Russbstx@gmail.com
+Phone: +13402273856
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - November 1, 2018, 11:32 am
+First Name: Russell Battiato
+Last Name: 
+Zip: 00820
+Email: Russbstx@gmail.com
+Phone: +13402273856
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - November 1, 2018, 11:43 am
+First Name: Jared Hurst
+Last Name: 
+Zip: 84014
+Email: Jarhurst@gmail.com
+Phone: 8016289878
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - November 1, 2018, 11:43 am
+First Name: Jared Hurst
+Last Name: 
+Zip: 84014
+Email: Jarhurst@gmail.com
+Phone: 8016289878
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - November 1, 2018, 2:38 pm
+First Name: Eileen Theofanous-Lasher
+Last Name: 
+Zip: 92118
+Email: etheolasher@gmail.com
+Phone: 6198478094
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - November 1, 2018, 2:38 pm
+First Name: Eileen Theofanous-Lasher
+Last Name: 
+Zip: 92118
+Email: etheolasher@gmail.com
+Phone: 6198478094
+Step: After Perform Script
+-------------------------

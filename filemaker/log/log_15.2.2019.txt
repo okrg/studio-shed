@@ -1,0 +1,212 @@
+User: 50.116.19.82 - February 15, 2019, 12:37 am
+First Name: Billy
+Last Name: Cunningham
+City: Auburn
+State: CA
+Zip: 95603
+Email: Bofabilly@gmail.com
+Phone: 4082031226
+URL: https://www.studio-shed.com/configurator/?depth=10&length=14&trim=Block&sidingColor=Raindrop&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Vermont+Maple&bathroomFloorOption=&cabinetColor=&countertopColor=&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&front=F14-D72C-BL&back=B14-BL&left=L10x-BL&right=R10x-BL&foundation=Foundation+TBD&doorStyleKey=full-lite-glass-door
+-------------------------
+User: 50.116.19.82 - February 15, 2019, 5:18 am
+First Name: Chrissy
+Last Name: Baucom
+City: Richmond
+State: VA
+Zip: 
+Email: chrissybaucom17@gmail.com
+Phone: 
+URL: https://www.studio-shed.com/configurator-summit/?depth=14&length=30&trim=Lap&sidingColor=Yam&doorColor=Factory+Finish&eaveColor=Factory+Finish&metalColor=&floorOption=Vermont+Maple&bathroomFloorOption=cottage-oak&cabinetColor=stone&countertopColor=basalt-slate&services%5B%5D=Permit+Plan+Set&front=FT30-D36R-BL&back=BT30-3-18-BL&left=LT14-18C-W1R-BL&right=RT14-36L-BL&foundation=Concrete+Slab&doorStyleKey=full-lite-glass-door&interiorLayoutOption=Kitchen14x30_Blank
+-------------------------
+User: 50.116.19.82 - February 15, 2019, 7:20 am
+First Name: Gayle
+Last Name: Midnight
+City: San Francisco
+State: CA
+Zip: 94121-2716
+Email: adventurechaser@gmail.com
+Phone: 
+URL: http://www.studio-shed.com/configure/?depth=10&length=20&trim=Block&sidingColor=Tricorn+Black&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Vermont+Maple&bathroomFloorOption=&cabinetColor=&countertopColor=&front=F20-W2L-W2R-D72C-BL&back=B20-BL&left=L10x-BL&right=R10x-BL&foundation=Foundation+TBD&doorStyleKey=full-lite-glass-door
+-------------------------
+User: 50.116.19.82 - February 15, 2019, 7:28 am
+First Name: Gayle
+Last Name: Gayle
+City: San Francisco
+State: CA
+Zip: 94121-2716
+Email: adventurechaser@gmail.com
+Phone: 
+URL: https://www.studio-shed.com/configurator-summit/?depth=14&length=22&trim=Block&sidingColor=Tricorn+Black&doorColor=Factory+Finish&eaveColor=Factory+Finish&metalColor=&floorOption=Vermont+Maple&bathroomFloorOption=cottage-oak&cabinetColor=stone&countertopColor=basalt-slate&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Permit+Plan+Set&front=FT22-36L-D72C-36R-BL&back=BT22-BL&left=LT14-BL&right=RT14-BL&foundation=Concrete+Slab&doorStyleKey=full-lite-glass-door&interiorLayoutOption=Kitchen14x22_L_MS
+RepEmail: Gregg@Studio-Shed.com
+-------------------------
+User: 50.116.19.82 - February 15, 2019, 8:32 am
+First Name: Jessica
+Last Name: Winegardner
+City: Charlotte
+State: NC
+Zip: 28226
+Email: Jessicawinegardner@gmail.com
+Phone: 512-507-8919
+URL: https://www.studio-shed.com/configurator/?depth=10&length=8&trim=Block&sidingColor=Alabaster&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Vermont+Maple&bathroomFloorOption=&cabinetColor=&countertopColor=&services%5B%5D=Permit+Plan+Set&front=F8-D72C-BL&back=B8-BL&left=L10x-BL&right=R10x-BL&foundation=Wood+Frame+Floor&doorStyleKey=full-lite-glass-door
+-------------------------
+User: 50.116.19.82 - February 15, 2019, 8:42 am
+First Name: Jessica
+Last Name: Winegardner
+City: Charlotte
+State: NC
+Zip: 28226
+Email: Jessicawinegardner@gmail.com
+Phone: 512-507-8919
+URL: https://www.studio-shed.com/configurator/?depth=8&length=10&trim=Block&sidingColor=Alabaster&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Vermont+Maple&bathroomFloorOption=&cabinetColor=&countertopColor=&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Permit+Plan+Set&front=F10-D36L-BL&back=B10-BL&left=L8x-BL&right=R8x-W1L-BL&foundation=Wood+Frame+Floor&doorStyleKey=full-lite-glass-door
+RepEmail: KRau@Studioshed.com
+-------------------------
+User: 50.116.19.82 - February 15, 2019, 8:55 am
+First Name: Casey
+Last Name: Vestal
+City: Alamosa
+State: CO
+Zip: 81101
+Email: caseyrenee00@yahoo.com
+Phone: 4328940909
+URL: https://www.studio-shed.com/configurator/?depth=10&length=12&trim=Lap&sidingColor=Web+Gray&doorColor=Factory+Finish&eaveColor=Studio+Shed+Bronze&metalColor=&floorOption=Heathered+Oak&bathroomFloorOption=&cabinetColor=&countertopColor=&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Studio+Shed+Certified+Installation+-+Shell+Only&front=F12-D72C-BL&back=B12-BL&left=L10x-BL&right=R10x-BL&foundation=Wood+Frame+Floor&doorStyleKey=full-lite-glass-door
+-------------------------
+User: 50.116.19.82 - February 15, 2019, 10:37 am
+First Name: Amy
+Last Name: Amy
+City: Mill Valley
+State: CA
+Zip: 94941
+Email: amyzech@gmail.com
+Phone: 3102835803
+URL: https://www.studio-shed.com/configurator/?depth=8&length=8&trim=Plank&sidingColor=Alabaster&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Vermont+Maple&bathroomFloorOption=&cabinetColor=&countertopColor=&options%5B%5D=Dark+Bronze+Aluminum&services%5B%5D=Studio+Shed+Certified+Installation+-+Shell+Only&front=F8-D72C-BL&back=B8-BL&left=L8x-BL&right=R8x-BL&foundation=Foundation+TBD&doorStyleKey=full-lite-glass-door
+RepEmail: susan@studio-shed.com
+-------------------------
+User: 50.116.19.82 - February 15, 2019, 11:06 am
+First Name: Michael
+Last Name: McCone
+City: Seattle
+State: WA
+Zip: 98106
+Email: ajm@mccone.net
+Phone: 2068011084
+URL: https://www.studio-shed.com/configurator-summit/?depth=16&length=22&trim=Block&sidingColor=Red+Barn&doorColor=Alabaster&eaveColor=Relentless+Olive&metalColor=&floorOption=Vermont+Maple&bathroomFloorOption=cottage-oak&cabinetColor=stone&countertopColor=basalt-slate&options%5B%5D=Dark+Bronze+Aluminum&services%5B%5D=Permit+Plan+Set&services%5B%5D=Studio+Shed+Certified+Installation+-+Shell+Only&front=FT22-D96R-BL&back=BT22-36C-D36R-BL&left=LT16-60L-60C-BL&right=RT16-BL&foundation=Concrete+Slab&doorStyleKey=full-lite-glass-door&interiorLayoutOption=Kitchen16x22_Blank
+RepEmail: susan@studio-shed.com
+-------------------------
+User: 50.116.19.82 - February 15, 2019, 11:18 am
+First Name: jessica
+Last Name: dang
+City: San Jose
+State: CA
+Zip: 95121
+Email: jessicadang3@yahoo.com
+Phone: 4083143383
+URL: https://www.studio-shed.com/configurator-summit/?depth=16&length=34&trim=Block&sidingColor=Monorail+Silver&doorColor=Factory+Finish&eaveColor=Factory+Finish&metalColor=&floorOption=Heathered+Oak&bathroomFloorOption=cottage-oak&cabinetColor=barnside&countertopColor=marno-bianco&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Permit+Plan+Set&services%5B%5D=Studio+Shed+Certified+Installation+-+Shell+Only&services%5B%5D=Studio+Shed+Certified+Installation+-+Shell+Only&front=FT34-D36CL-36CR-BL&back=BT34-BL&left=LT16-BL&right=RT16-BL&foundation=Concrete+Slab&doorStyleKey=full-lite-glass-door&interiorLayoutOption=Kitchen16x34_Blank
+RepEmail: susan@studio-shed.com
+-------------------------
+User: 50.116.19.82 - February 15, 2019, 1:43 pm
+First Name: corsini35@gmail.com
+Last Name: Orsini
+City: San Diego
+State: CA
+Zip: 92117
+Email: corsini35@gmail.com
+Phone: 8583616762
+URL: https://www.studio-shed.com/configurator/?depth=10&length=12&trim=Block&sidingColor=Red+Barn&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Country+Natural+Hickory&bathroomFloorOption=&cabinetColor=&countertopColor=&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Studio+Shed+Certified+Installation+-+Shell+%2B+Lifestyle%E2%84%A2+Interior&front=F12-36R-D36L-BL&back=B12-BL&left=L10x-36C-BL&right=R10x-BL&foundation=Concrete+Slab&doorStyleKey=full-lite-glass-door
+RepEmail: CPitts@studioshed.com
+-------------------------
+User: 50.116.19.82 - February 15, 2019, 1:48 pm
+First Name: Christine
+Last Name: Hoffman
+City: Zephyrhills
+State: FL
+Zip: 37076
+Email: kittyhoff69@gmail.com
+Phone: 8137130863
+URL: https://www.studio-shed.com/configurator-summit/?depth=14&length=26&trim=Lap&sidingColor=Red+Barn&doorColor=Black+Fox&eaveColor=Black+Fox&metalColor=&floorOption=Vermont+Maple&bathroomFloorOption=cottage-oak&cabinetColor=stone&countertopColor=basalt-slate&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Permit+Plan+Set&services%5B%5D=Studio+Shed+Certified+Installation+-+Shell+%2B+Lifestyle%E2%84%A2+Interior&front=FT26-D36L-36C-BL&back=BT26-2-18-BL&left=LT14-D96C-BL&right=RT14-BL&foundation=Concrete+Slab&doorStyleKey=full-lite-glass-door&interiorLayoutOption=Kitchen14x26_R_MS
+-------------------------
+User: 50.116.19.82 - February 15, 2019, 2:01 pm
+First Name: Christine
+Last Name: Hoffman
+City: Zephyrhills
+State: FL
+Zip: 37076
+Email: kittyhoff69@gmail.com
+Phone: 8137130863
+URL: https://www.studio-shed.com/configurator/?depth=10&length=20&trim=Lap&sidingColor=Red+Barn&doorColor=Black+Fox&eaveColor=None&metalColor=&floorOption=Heathered+Oak&bathroomFloorOption=&cabinetColor=&countertopColor=&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Permit+Plan+Set&services%5B%5D=Studio+Shed+Certified+Installation+-+Shell+%2B+Lifestyle%E2%84%A2+Interior&front=F20-36L-D36R-BL&back=B20-BL&left=L10x-BL&right=R10x-BL&foundation=Concrete+Slab&doorStyleKey=full-lite-glass-door
+RepEmail: Gregg@Studio-Shed.com
+-------------------------
+User: 50.116.19.82 - February 15, 2019, 2:06 pm
+First Name: Christine
+Last Name: Hoffman
+City: Zephyrhills
+State: FL
+Zip: 37076
+Email: kittyhoff69@gmail.com
+Phone: 8137130863
+URL: https://www.studio-shed.com/configurator-summit/?depth=14&length=22&trim=Block%2FMetal&sidingColor=Red+Barn&doorColor=Black+Fox&eaveColor=Factory+Finish&metalColor=&floorOption=Vermont+Maple&bathroomFloorOption=cottage-oak&cabinetColor=stone&countertopColor=basalt-slate&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Permit+Plan+Set&services%5B%5D=Studio+Shed+Certified+Installation+-+Shell+%2B+Lifestyle%E2%84%A2+Interior&front=FT22-36C-D36R-BL&back=BT22-2-18-BL&left=LT14-BL&right=RT14-18C-BL&foundation=Concrete+Slab&doorStyleKey=full-lite-glass-door&interiorLayoutOption=Kitchen14x22_L_MS
+RepEmail: Gregg@Studio-Shed.com
+-------------------------
+User: 50.116.19.82 - February 15, 2019, 3:04 pm
+First Name: Stacey Secrest
+Last Name: By gregg
+City: Encinetas
+State: CA
+Zip: 92024
+Email: staceysecrest@gmail.com
+Phone: .
+URL: https://www.studio-shed.com/configurator-summit/?depth=14&length=26&trim=Block&sidingColor=Green+Earth&doorColor=Factory+Finish&eaveColor=Factory+Finish&metalColor=&floorOption=Vermont+Maple&bathroomFloorOption=cottage-oak&cabinetColor=stone&countertopColor=basalt-slate&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Permit+Plan+Set&services%5B%5D=Studio+Shed+Certified+Installation+-+Shell+%2B+Lifestyle%E2%84%A2+Interior&front=FT26-D36L-D96R-BL&back=BT26-BL&left=LT14-18R-BL&right=RT14-60L-60C-BL&foundation=Concrete+Slab&doorStyleKey=full-lite-glass-door&interiorLayoutOption=Bath14x26_L_M
+RepEmail: susan@studio-shed.com
+-------------------------
+User: 35.164.135.29 - February 15, 2019, 4:15 pm
+First Name: Chuck and Marsha Goldmark
+Last Name: design by Gregg 949-584-3377
+City: Carmichael
+State: CA
+Zip: 95608
+Email: mlgoldmark@gmail.com
+Phone: 9167852-5207
+URL: https://www.studio-shed.com/portland-configurator/#032158a400214553d6aecb20b01a15d4
+RepEmail: Gregg@Studio-Shed.com
+-------------------------
+User: 50.116.19.82 - February 15, 2019, 10:59 pm
+First Name: Dominique
+Last Name: Navarro
+City: Malibu
+State: CA
+Zip: 
+Email: dominiquenavarro@yahoo.com
+Phone: 3107746722
+URL: https://www.studio-shed.com/configurator-summit/?depth=14&length=22&trim=Lap&sidingColor=Sable&doorColor=Factory+Finish&eaveColor=Factory+Finish&metalColor=&floorOption=Vermont+Maple&bathroomFloorOption=cottage-oak&cabinetColor=stone&countertopColor=basalt-slate&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Permit+Plan+Set&services%5B%5D=Studio+Shed+Certified+Installation+-+Shell+%2B+Lifestyle%E2%84%A2+Interior&front=FT22-36L-D96R-BL&back=BT22-36C-BL&left=LT14-36R-BL&right=RT14-D96C-BL&foundation=Concrete+Slab&doorStyleKey=full-lite-glass-door&interiorLayoutOption=Kitchen14x22_L_MS
+-------------------------
+User: 50.116.19.82 - February 15, 2019, 11:02 pm
+First Name: crgilbert22@hotmail.com
+Last Name: Gilbert
+City: Three Rivers
+State: CA
+Zip: 93271
+Email: crgilbert22@hotmail.com
+Phone: 5597406009
+URL: https://www.studio-shed.com/configurator-summit/?depth=14&length=30&trim=Block&sidingColor=Alabaster&doorColor=Factory+Finish&eaveColor=Factory+Finish&metalColor=&floorOption=Vermont+Maple&bathroomFloorOption=cottage-oak&cabinetColor=stone&countertopColor=basalt-slate&options%5B%5D=Dark+Bronze+Aluminum&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Permit+Plan+Set&front=FT30-2-D72-BL&back=BT30-3-36-BL&left=LT14-18C-D36R-BL&right=RT14-18L-18R-BL&foundation=Concrete+Slab&doorStyleKey=full-lite-glass-door&interiorLayoutOption=Kitchen14x30_Blank
+-------------------------
+User: 50.116.19.82 - February 15, 2019, 11:38 pm
+First Name: j
+Last Name: sokoloff
+City: boise
+State: ID
+Zip: 83709
+Email: red_baron_99@sbcglobal.net
+Phone: 8182194278
+URL: https://www.studio-shed.com/configurator-summit/?depth=14&length=22&trim=Cedar+Plank&sidingColor=Alabaster&doorColor=Red+Barn&eaveColor=Studio+Shed+Bronze&metalColor=&floorOption=Natural+Cork&bathroomFloorOption=cottage-oak&cabinetColor=barnside&countertopColor=pearl-soapstone&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&options%5B%5D=Dark+Bronze+Aluminum&services%5B%5D=Permit+Plan+Set&services%5B%5D=Studio+Shed+Certified+Installation+-+Shell+%2B+Lifestyle%E2%84%A2+Interior&front=FT22-D72L-36C-36R-BL&back=BT22-2-18-BL&left=LT14-18L-60R-BL&right=RT14-36L-BL&foundation=Concrete+Slab&doorStyleKey=full-lite-glass-door&interiorLayoutOption=Kitchen14x22_R_MS
+RepEmail: KRau@Studioshed.com
+-------------------------
+User: 50.116.19.82 - February 15, 2019, 11:38 pm
+First Name: j
+Last Name: sokoloff
+City: boise
+State: ID
+Zip: 83709
+Email: red_baron_99@sbcglobal.net
+Phone: 8182194278
+URL: https://www.studio-shed.com/configurator-summit/?depth=14&length=22&trim=Cedar+Plank&sidingColor=Alabaster&doorColor=Red+Barn&eaveColor=Studio+Shed+Bronze&metalColor=&floorOption=Natural+Cork&bathroomFloorOption=cottage-oak&cabinetColor=barnside&countertopColor=pearl-soapstone&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&options%5B%5D=Dark+Bronze+Aluminum&services%5B%5D=Permit+Plan+Set&services%5B%5D=Studio+Shed+Certified+Installation+-+Shell+%2B+Lifestyle%E2%84%A2+Interior&front=FT22-D72L-36C-36R-BL&back=BT22-2-18-BL&left=LT14-18L-60R-BL&right=RT14-36L-BL&foundation=Concrete+Slab&doorStyleKey=full-lite-glass-door&interiorLayoutOption=Kitchen14x22_R_MS
+RepEmail: KRau@Studioshed.com
+-------------------------

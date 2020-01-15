@@ -1,0 +1,48 @@
+User: 104.196.134.0 - June 1, 2019, 4:57 pm
+First Name: Jacklyn Stone
+Last Name: 
+Zip: 93301
+Email: Jcstone9712@gmail.com
+Phone: 6613785144
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - June 1, 2019, 4:57 pm
+First Name: Jacklyn Stone
+Last Name: 
+Zip: 93301
+Email: Jcstone9712@gmail.com
+Phone: 6613785144
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - June 1, 2019, 5:33 pm
+First Name: Rick Vertolli
+Last Name: 
+Zip: 95926
+Email: rvertolli@cca.edu
+Phone: 5305886700
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - June 1, 2019, 5:33 pm
+First Name: Rick Vertolli
+Last Name: 
+Zip: 95926
+Email: rvertolli@cca.edu
+Phone: 5305886700
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - June 1, 2019, 10:28 pm
+First Name: Kim Scott
+Last Name: 
+Zip: 94022
+Email: kim@belvy.net
+Phone: 4086239491
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - June 1, 2019, 10:28 pm
+First Name: Kim Scott
+Last Name: 
+Zip: 94022
+Email: kim@belvy.net
+Phone: 4086239491
+Step: After Perform Script
+-------------------------

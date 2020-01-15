@@ -61,18 +61,89 @@ function twentythirteen_setup() {
 	/*
 	 * Makes Twenty Thirteen available for translation.
 	 *
-	 * Translations can be added to the /languages/ directory.
+	 * Translations can be filed at WordPress.org. See: https://translate.wordpress.org/projects/wp-themes/twentythirteen
 	 * If you're building a theme based on Twenty Thirteen, use a find and
 	 * replace to change 'twentythirteen' to the name of your theme in all
 	 * template files.
 	 */
-	load_theme_textdomain( 'twentythirteen', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'twentythirteen' );
 
 	/*
 	 * This theme styles the visual editor to resemble the theme style,
 	 * specifically font, colors, icons, and column width.
 	 */
 	add_editor_style( array( 'css/editor-style.css', 'genericons/genericons.css', twentythirteen_fonts_url() ) );
+
+	// Load regular editor styles into the new block-based editor.
+	add_theme_support( 'editor-styles' );
+
+	// Load default block styles.
+	add_theme_support( 'wp-block-styles' );
+
+	// Add support for full and wide align images.
+	add_theme_support( 'align-wide' );
+
+	// Add support for responsive embeds.
+	add_theme_support( 'responsive-embeds' );
+
+	// Add support for custom color scheme.
+	add_theme_support( 'editor-color-palette', array(
+		array(
+			'name'  => __( 'Dark Gray', 'twentythirteen' ),
+			'slug'  => 'dark-gray',
+			'color' => '#141412',
+		),
+		array(
+			'name'  => __( 'Red', 'twentythirteen' ),
+			'slug'  => 'red',
+			'color' => '#bc360a',
+		),
+		array(
+			'name'  => __( 'Medium Orange', 'twentythirteen' ),
+			'slug'  => 'medium-orange',
+			'color' => '#db572f',
+		),
+		array(
+			'name'  => __( 'Light Orange', 'twentythirteen' ),
+			'slug'  => 'light-orange',
+			'color' => '#ea9629',
+		),
+		array(
+			'name'  => __( 'Yellow', 'twentythirteen' ),
+			'slug'  => 'yellow',
+			'color' => '#fbca3c',
+		),
+		array(
+			'name'  => __( 'White', 'twentythirteen' ),
+			'slug'  => 'white',
+			'color' => '#fff',
+		),
+		array(
+			'name'  => __( 'Dark Brown', 'twentythirteen' ),
+			'slug'  => 'dark-brown',
+			'color' => '#220e10',
+		),
+		array(
+			'name'  => __( 'Medium Brown', 'twentythirteen' ),
+			'slug'  => 'medium-brown',
+			'color' => '#722d19',
+		),
+		array(
+			'name'  => __( 'Light Brown', 'twentythirteen' ),
+			'slug'  => 'light-brown',
+			'color' => '#eadaa6',
+		),
+		array(
+			'name'  => __( 'Beige', 'twentythirteen' ),
+			'slug'  => 'beige',
+			'color' => '#e8e5ce',
+		),
+		array(
+			'name'  => __( 'Off-white', 'twentythirteen' ),
+			'slug'  => 'off-white',
+			'color' => '#f7f5e7',
+		),
+	) );
 
 	// Adds RSS feed links to <head> for posts and comments.
 	add_theme_support( 'automatic-feed-links' );
@@ -105,6 +176,9 @@ function twentythirteen_setup() {
 
 	// This theme uses its own gallery styles.
 	add_filter( 'use_default_gallery_style', '__return_false' );
+
+	// Indicate widget sidebars can use selective refresh in the Customizer.
+	add_theme_support( 'customize-selective-refresh-widgets' );
 }
 add_action( 'after_setup_theme', 'twentythirteen_setup' );
 
@@ -170,7 +244,7 @@ function twentythirteen_scripts_styles() {
 		wp_enqueue_script( 'jquery-masonry' );
 
 	// Loads JavaScript file with functionality specific to Twenty Thirteen.
-	wp_enqueue_script( 'twentythirteen-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '20150330', true );
+	wp_enqueue_script( 'twentythirteen-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '20160717', true );
 
 	// Add Source Sans Pro and Bitter fonts, used in the main stylesheet.
 	wp_enqueue_style( 'twentythirteen-fonts', twentythirteen_fonts_url(), array(), null );
@@ -181,11 +255,52 @@ function twentythirteen_scripts_styles() {
 	// Loads our main stylesheet.
 	wp_enqueue_style( 'twentythirteen-style', get_stylesheet_uri(), array(), '2013-07-18' );
 
+	// Theme block stylesheet.
+	wp_enqueue_style( 'twentythirteen-block-style', get_template_directory_uri() . '/css/blocks.css', array( 'twentythirteen-style' ), '2018-10-18' );
+
 	// Loads the Internet Explorer specific stylesheet.
 	wp_enqueue_style( 'twentythirteen-ie', get_template_directory_uri() . '/css/ie.css', array( 'twentythirteen-style' ), '2013-07-18' );
 	wp_style_add_data( 'twentythirteen-ie', 'conditional', 'lt IE 9' );
 }
 add_action( 'wp_enqueue_scripts', 'twentythirteen_scripts_styles' );
+
+/**
+ * Add preconnect for Google Fonts.
+ *
+ * @since Twenty Thirteen 2.1
+ *
+ * @param array   $urls          URLs to print for resource hints.
+ * @param string  $relation_type The relation type the URLs are printed.
+ * @return array URLs to print for resource hints.
+ */
+function twentythirteen_resource_hints( $urls, $relation_type ) {
+	if ( wp_style_is( 'twentythirteen-fonts', 'queue' ) && 'preconnect' === $relation_type ) {
+		if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '>=' ) ) {
+			$urls[] = array(
+				'href' => 'https://fonts.gstatic.com',
+				'crossorigin',
+			);
+		} else {
+			$urls[] = 'https://fonts.gstatic.com';
+		}
+	}
+
+	return $urls;
+}
+add_filter( 'wp_resource_hints', 'twentythirteen_resource_hints', 10, 2 );
+
+/**
+ * Enqueue editor styles for Gutenberg
+ *
+ * @since Twenty Thirteen 2.5
+ */
+function twentythirteen_block_editor_styles() {
+	// Block styles.
+	wp_enqueue_style( 'twentythirteen-block-editor-style', get_template_directory_uri() . '/css/editor-blocks.css' );
+	// Add custom fonts.
+	wp_enqueue_style( 'twentythirteen-fonts', twentythirteen_fonts_url(), array(), null );
+}
+add_action( 'enqueue_block_editor_assets', 'twentythirteen_block_editor_styles' );
 
 /**
  * Filter the page title.
@@ -283,9 +398,9 @@ endif;
 if ( ! function_exists( 'twentythirteen_post_nav' ) ) :
 /**
  * Display navigation to next/previous post when applicable.
-*
-* @since Twenty Thirteen 1.0
-*/
+ *
+ * @since Twenty Thirteen 1.0
+ */
 function twentythirteen_post_nav() {
 	global $post;
 
@@ -418,9 +533,9 @@ function twentythirteen_the_attached_image() {
 
 	// If there is more than 1 attachment in a gallery...
 	if ( count( $attachment_ids ) > 1 ) {
-		foreach ( $attachment_ids as $attachment_id ) {
+		foreach ( $attachment_ids as $idx => $attachment_id ) {
 			if ( $attachment_id == $post->ID ) {
-				$next_id = current( $attachment_ids );
+				$next_id = $attachment_ids[ ( $idx + 1 ) % count( $attachment_ids ) ];
 				break;
 			}
 		}
@@ -535,8 +650,45 @@ function twentythirteen_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
+
+	if ( isset( $wp_customize->selective_refresh ) ) {
+		$wp_customize->selective_refresh->add_partial( 'blogname', array(
+			'selector' => '.site-title',
+			'container_inclusive' => false,
+			'render_callback' => 'twentythirteen_customize_partial_blogname',
+		) );
+		$wp_customize->selective_refresh->add_partial( 'blogdescription', array(
+			'selector' => '.site-description',
+			'container_inclusive' => false,
+			'render_callback' => 'twentythirteen_customize_partial_blogdescription',
+		) );
+	}
 }
 add_action( 'customize_register', 'twentythirteen_customize_register' );
+
+/**
+ * Render the site title for the selective refresh partial.
+ *
+ * @since Twenty Thirteen 1.9
+ * @see twentythirteen_customize_register()
+ *
+ * @return void
+ */
+function twentythirteen_customize_partial_blogname() {
+	bloginfo( 'name' );
+}
+
+/**
+ * Render the site tagline for the selective refresh partial.
+ *
+ * @since Twenty Thirteen 1.9
+ * @see twentythirteen_customize_register()
+ *
+ * @return void
+ */
+function twentythirteen_customize_partial_blogdescription() {
+	bloginfo( 'description' );
+}
 
 /**
  * Enqueue Javascript postMessage handlers for the Customizer.
@@ -550,3 +702,22 @@ function twentythirteen_customize_preview_js() {
 	wp_enqueue_script( 'twentythirteen-customizer', get_template_directory_uri() . '/js/theme-customizer.js', array( 'customize-preview' ), '20141120', true );
 }
 add_action( 'customize_preview_init', 'twentythirteen_customize_preview_js' );
+
+/**
+ * Modifies tag cloud widget arguments to display all tags in the same font size
+ * and use list format for better accessibility.
+ *
+ * @since Twenty Thirteen 2.3
+ *
+ * @param array $args Arguments for tag cloud widget.
+ * @return array The filtered arguments for tag cloud widget.
+ */
+function twentythirteen_widget_tag_cloud_args( $args ) {
+	$args['largest']  = 22;
+	$args['smallest'] = 8;
+	$args['unit']     = 'pt';
+	$args['format']   = 'list';
+
+	return $args;
+}
+add_filter( 'widget_tag_cloud_args', 'twentythirteen_widget_tag_cloud_args' );

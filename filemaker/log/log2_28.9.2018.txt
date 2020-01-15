@@ -1,0 +1,128 @@
+User: 104.196.134.0 - September 28, 2018, 2:26 am
+First Name: John Haslam
+Last Name: 
+Zip: 98230
+Email: johnhaslam@comcast.net
+Phone: 3609224443
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 28, 2018, 2:26 am
+First Name: John Haslam
+Last Name: 
+Zip: 98230
+Email: johnhaslam@comcast.net
+Phone: 3609224443
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - September 28, 2018, 11:38 am
+First Name: Mike j Mendoza
+Last Name: 
+Zip: 86351
+Email: mahalo51@sbcglobal.net
+Phone: 8312349078
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 28, 2018, 11:38 am
+First Name: Mike j Mendoza
+Last Name: 
+Zip: 86351
+Email: mahalo51@sbcglobal.net
+Phone: 8312349078
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - September 28, 2018, 12:27 pm
+First Name: Ashley Hokanson
+Last Name: 
+Zip: 77506
+Email: mrshokanson@icloud.com
+Phone: 8326491848
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 28, 2018, 12:27 pm
+First Name: Ashley Hokanson
+Last Name: 
+Zip: 77506
+Email: mrshokanson@icloud.com
+Phone: 8326491848
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - September 28, 2018, 1:04 pm
+First Name: Sonia Heer
+Last Name: 
+Zip: 95820
+Email: soniaheer24@gmail.com
+Phone: 4086229321
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 28, 2018, 1:04 pm
+First Name: Sonia Heer
+Last Name: 
+Zip: 95820
+Email: soniaheer24@gmail.com
+Phone: 4086229321
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - September 28, 2018, 1:04 pm
+First Name: SHARON BROWN
+Last Name: 
+Zip: 98221
+Email: LILREDHEADEDGIRL@ICLOUD.COM
+Phone: 7752506835
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 28, 2018, 1:04 pm
+First Name: SHARON BROWN
+Last Name: 
+Zip: 98221
+Email: LILREDHEADEDGIRL@ICLOUD.COM
+Phone: 7752506835
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - September 28, 2018, 1:30 pm
+First Name: Laura Vagran
+Last Name: 
+Zip: 92276
+Email: Sandvisions1@aol.com
+Phone: 7603222239
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 28, 2018, 1:30 pm
+First Name: Laura Vagran
+Last Name: 
+Zip: 92276
+Email: Sandvisions1@aol.com
+Phone: 7603222239
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - September 28, 2018, 3:17 pm
+First Name: Jennifer Richard
+Last Name: 
+Zip: 35758
+Email: Jennifer.Richard@knology.net
+Phone: 256-508-1359
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 28, 2018, 3:17 pm
+First Name: Jennifer Richard
+Last Name: 
+Zip: 35758
+Email: Jennifer.Richard@knology.net
+Phone: 256-508-1359
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - September 28, 2018, 11:17 pm
+First Name: Pat Christiansen
+Last Name: 
+Zip: 97211
+Email: oregonworldtraveler@yahoo.com
+Phone: 503-475-7905
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 28, 2018, 11:17 pm
+First Name: Pat Christiansen
+Last Name: 
+Zip: 97211
+Email: oregonworldtraveler@yahoo.com
+Phone: 503-475-7905
+Already exists?: YES
+-------------------------

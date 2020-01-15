@@ -1,0 +1,40 @@
+User: 104.196.134.0 - November 28, 2018, 10:57 am
+First Name: Sam Pike
+Last Name: 
+Zip: 98663
+Email: sjdpike@gmail.com
+Phone: 503-367-3672
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - November 28, 2018, 10:57 am
+First Name: Sam Pike
+Last Name: 
+Zip: 98663
+Email: sjdpike@gmail.com
+Phone: 503-367-3672
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - November 28, 2018, 11:45 am
+First Name: Kitty Garrity
+Last Name: 
+Zip: 22663
+Email: equsa@aol.com
+Phone: 5409552179
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - November 28, 2018, 1:57 pm
+First Name: Matthew Hammer
+Last Name: 
+Zip: 80304
+Email: matthewhammer@hushmail.com
+Phone: 9702319213
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - November 28, 2018, 3:00 pm
+First Name: Benjamin Pruden
+Last Name: 
+Zip: 94901
+Email: ben.pruden@utexas.edu
+Phone: 4153186172
+Step: Before Processing
+-------------------------

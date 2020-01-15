@@ -1,0 +1,64 @@
+User: 104.196.134.0 - September 2, 2017, 7:28 am
+First Name: Vicki Edwards
+Last Name: 
+Zip: 47567
+Email: vicwards93@gmail.com
+Phone: 8127660816
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 2, 2017, 7:28 am
+First Name: Vicki Edwards
+Last Name: 
+Zip: 47567
+Email: vicwards93@gmail.com
+Phone: 8127660816
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - September 2, 2017, 8:09 am
+First Name: Niesha
+Last Name: 
+Zip: 30144
+Email: Niesha977@gmail.com
+Phone: 4044837545
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 2, 2017, 8:10 am
+First Name: Niesha
+Last Name: 
+Zip: 30144
+Email: Niesha977@gmail.com
+Phone: 4044837545
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - September 2, 2017, 10:50 am
+First Name: Arie Bakker
+Last Name: 
+Zip: 32962
+Email: bahamaflier@gmail.com
+Phone: 7727133620
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 2, 2017, 10:50 am
+First Name: Arie Bakker
+Last Name: 
+Zip: 32962
+Email: bahamaflier@gmail.com
+Phone: 7727133620
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - September 2, 2017, 9:37 pm
+First Name: Niesha Love
+Last Name: 
+Zip: 30144
+Email: Niesha977@gmail.com
+Phone: 4044837545
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 2, 2017, 9:37 pm
+First Name: Niesha Love
+Last Name: 
+Zip: 30144
+Email: Niesha977@gmail.com
+Phone: 4044837545
+Already exists?: YES
+-------------------------

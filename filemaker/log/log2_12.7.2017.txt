@@ -1,0 +1,48 @@
+User: 104.196.134.0 - July 12, 2017, 9:59 am
+First Name: randy jandrucko
+Last Name: 
+Zip: 75229
+Email: rjandrucko@cimgroup.com
+Phone: 2142985924
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - July 12, 2017, 9:59 am
+First Name: randy jandrucko
+Last Name: 
+Zip: 75229
+Email: rjandrucko@cimgroup.com
+Phone: 2142985924
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - July 12, 2017, 2:11 pm
+First Name: Khandelwal
+Last Name: 
+Zip: 95051
+Email: vivekkhandelwal@yahoo.com
+Phone: 4083680842
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - July 12, 2017, 2:11 pm
+First Name: Khandelwal
+Last Name: 
+Zip: 95051
+Email: vivekkhandelwal@yahoo.com
+Phone: 4083680842
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - July 12, 2017, 4:09 pm
+First Name: Cris Cole
+Last Name: 
+Zip: 92382
+Email: doublepen@hotmail.com
+Phone: 5626186868
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - July 12, 2017, 4:09 pm
+First Name: Cris Cole
+Last Name: 
+Zip: 92382
+Email: doublepen@hotmail.com
+Phone: 5626186868
+Step: After Perform Script
+-------------------------

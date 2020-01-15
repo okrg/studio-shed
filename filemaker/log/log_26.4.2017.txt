@@ -1,0 +1,364 @@
+User: 72.131.16.155 - April 26, 2017, 3:55 am
+First Name: 
+Last Name: 
+City: 
+State: 
+Zip: 53092
+Email: hharrison8888@yahoo.com
+Phone: 
+URL: https://www.studio-shed.com/configurator/?depth=10
+-------------------------
+User: 72.131.16.155 - April 26, 2017, 4:07 am
+First Name: Heidi
+Last Name: Harrison
+City: Mequon
+State: WI
+Zip: 53092
+Email: susan@studio-shed.com
+Phone: 414-559-6511
+URL: https://api.elasticemail.com/v2/email/send
+-------------------------
+User: 165.214.11.69 - April 26, 2017, 6:02 am
+First Name: 
+Last Name: 
+City: 
+State: 
+Zip: 25314
+Email: vkanuri@hotmail.com
+Phone: 
+URL: https://www.studio-shed.com/configurator/?depth=12
+-------------------------
+User: 98.252.76.169 - April 26, 2017, 6:38 am
+First Name: Lance
+Last Name: Zunich
+City: Chico
+State: CA
+Zip: 95926
+Email: Gregg@Studio-Shed.com
+Phone: 15307743548
+URL: https://api.elasticemail.com/v2/email/send
+-------------------------
+User: 47.203.76.149 - April 26, 2017, 7:16 am
+First Name: Lara
+Last Name: Clements
+City: St. Petersburg
+State: FL
+Zip: 33701
+Email: susan@studio-shed.com
+Phone: 4158451209
+URL: https://api.elasticemail.com/v2/email/send
+-------------------------
+User: 50.192.30.210 - April 26, 2017, 7:20 am
+First Name: marie
+Last Name: brzobohaty
+City: fort myers
+State: FL
+Zip: 
+Email: brzoboha9@aol.com
+Phone: 
+URL: https://www.studio-shed.com/configurator/?depth=10
+-------------------------
+User: 99.45.173.24 - April 26, 2017, 7:30 am
+First Name: pam
+Last Name: deane
+City: martinez
+State: CA
+Zip: 94553
+Email: eddie@studio-shed.com
+Phone: 9255885421
+URL: https://api.elasticemail.com/v2/email/send
+-------------------------
+User: 207.225.37.247 - April 26, 2017, 7:58 am
+First Name: IdeaRoom
+Last Name: Test
+City: Boise
+State: ID
+Zip: 83616
+Email: Gregg@Studio-Shed.com
+Phone: 208-555-5555
+URL: https://api.elasticemail.com/v2/email/send
+-------------------------
+User: 207.225.37.247 - April 26, 2017, 8:02 am
+First Name: IdeaRoom
+Last Name: Test
+City: Boise
+State: ID
+Zip: 
+Email: Gregg@Studio-Shed.com
+Phone: 208-352-3076
+URL: https://api.elasticemail.com/v2/email/send
+-------------------------
+User: 207.225.37.247 - April 26, 2017, 8:33 am
+First Name: IdeaRoom
+Last Name: Test
+City: Boise
+State: ID
+Zip: 
+Email: Gregg@Studio-Shed.com
+Phone: 208-555-5555
+URL: https://api.elasticemail.com/v2/email/send
+-------------------------
+User: 45.50.8.165 - April 26, 2017, 9:30 am
+First Name: ben
+Last Name: rosen
+City: La Habra Heights
+State: CA
+Zip: 90631
+Email: eddie@studio-shed.com
+Phone: 3109209143
+URL: https://api.elasticemail.com/v2/email/send
+-------------------------
+User: 128.208.213.65 - April 26, 2017, 9:32 am
+First Name: 
+Last Name: 
+City: 
+State: 
+Zip: 98117
+Email: bswann@gmail.com
+Phone: 
+URL: https://www.studio-shed.com/configurator/?depth=10
+-------------------------
+User: 12.13.186.162 - April 26, 2017, 9:45 am
+First Name: Thomas
+Last Name: Frye
+City: Houma
+State: LA
+Zip: 70360
+Email: thomasfrye@hotmail.com
+Phone: 985-876-0549
+URL: https://www.studio-shed.com/configurator-summit/?depth=16
+-------------------------
+User: 50.106.63.184 - April 26, 2017, 10:05 am
+First Name: Erin
+Last Name: O
+City: Shoreline
+State: WA
+Zip: 98133
+Email: eddie@studio-shed.com
+Phone: 
+URL: https://api.elasticemail.com/v2/email/send
+-------------------------
+User: 207.225.37.247 - April 26, 2017, 10:21 am
+First Name: IdeaRoom
+Last Name: Test
+City: Boise
+State: ID
+Zip: 83616
+Email: Gregg@Studio-Shed.com
+Phone: 208-555-5555
+URL: https://api.elasticemail.com/v2/email/send
+-------------------------
+User: 207.225.37.247 - April 26, 2017, 10:21 am
+First Name: IdeaRoom
+Last Name: Test
+City: Boise
+State: ID
+Zip: 83616
+Email: Gregg@Studio-Shed.com
+Phone: 208-555-5555
+URL: https://api.elasticemail.com/v2/email/send
+-------------------------
+User: 207.225.37.247 - April 26, 2017, 10:22 am
+First Name: IdeaRoom
+Last Name: Test
+City: Boise
+State: ID
+Zip: 83616
+Email: dvanorden+1@gmail.com
+Phone: 208-555-5555
+URL: http://localhost:8080/configurator.html?c=32d5143e84b192c8f39b3323cfc205ea
+-------------------------
+User: 207.225.37.247 - April 26, 2017, 10:23 am
+First Name: IdeaRoom
+Last Name: Test
+City: Boise
+State: ID
+Zip: 83616
+Email: eddie@studio-shed.com
+Phone: 208-555-5555
+URL: https://api.elasticemail.com/v2/email/send
+-------------------------
+User: 38.140.54.162 - April 26, 2017, 10:50 am
+First Name: Ronnie
+Last Name: B
+City: Palatine
+State: IL
+Zip: 60067
+Email: clipped@inorbit.com
+Phone: 
+URL: https://www.studio-shed.com/configurator/?depth=6
+-------------------------
+User: 173.76.156.40 - April 26, 2017, 10:59 am
+First Name: 
+Last Name: 
+City: 
+State: 
+Zip: 01720
+Email: esme2288@hotmail.com
+Phone: 
+URL: https://www.studio-shed.com/configurator/?depth=10
+-------------------------
+User: 50.116.19.82 - April 26, 2017, 11:03 am
+First Name: IdeaRoom
+Last Name: Test
+City: Boise
+State: ID
+Zip: 
+Email: Gregg@Studio-Shed.com
+Phone: 208-555-5555
+URL: https://api.elasticemail.com/v2/email/send
+-------------------------
+User: 50.116.19.82 - April 26, 2017, 11:06 am
+First Name: IdeaRoom
+Last Name: Test
+City: Boise
+State: ID
+Zip: 
+Email: dvanorden+2@gmail.com
+Phone: 208-555-5555
+URL: https://www.studio-shed.com/configurator-sprout/?0=medium
+-------------------------
+User: 50.116.19.82 - April 26, 2017, 11:25 am
+First Name: IdeaRoom
+Last Name: Test
+City: Boise
+State: ID
+Zip: 83616
+Email: Gregg@Studio-Shed.com
+Phone: 208-555-5555
+URL: https://api.elasticemail.com/v2/email/send
+-------------------------
+User: 50.116.19.82 - April 26, 2017, 11:29 am
+First Name: IdeaRoom
+Last Name: Test
+City: Boise
+State: ID
+Zip: 83616
+Email: Gregg@Studio-Shed.com
+Phone: 208-555-5555
+URL: https://api.elasticemail.com/v2/email/send
+-------------------------
+User: 50.116.19.82 - April 26, 2017, 11:33 am
+First Name: 
+Last Name: J. Ferguson
+City: 
+State: 
+Zip: 96145
+Email: jferguson@iaff.org
+Phone: 
+URL: https://www.studio-shed.com/configurator/?depth=10
+-------------------------
+User: 50.116.19.82 - April 26, 2017, 11:37 am
+First Name: IdeaRoom
+Last Name: Test
+City: Boise
+State: ID
+Zip: 83616
+Email: dvanorden+3@gmail.com
+Phone: 208-555-5555
+URL: https://www.studio-shed.com/portland-configurator/?c=f0dc49796da814fef6035402970abe03
+-------------------------
+User: 50.116.19.82 - April 26, 2017, 1:16 pm
+First Name: IdeaRoom
+Last Name: Test
+City: Boise
+State: ID
+Zip: 83616
+Email: dvanorden@gmail.com
+Phone: 208-555-5555
+URL: https://www.studio-shed.com/portland-configurator/?c=47b4f457e7b4487c88b69a9e02bf5a83
+-------------------------
+User: 50.116.19.82 - April 26, 2017, 1:22 pm
+First Name: IdeaRoom
+Last Name: Test
+City: Boise
+State: ID
+Zip: 83616
+Email: dvanorden@gmail.com
+Phone: 208-555-5555
+URL: https://www.studio-shed.com/configurator/?depth=10&length=12&trim=Colorado+Beetle-Kill+Pine&sidingColor=Raindrop&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Vermont+Maple&options%5B%5D=Full-Lite+Glass+Door+Upgrade&options%5B%5D=Dark+Bronze+Aluminum&front=F12-36L-D36R-BL&back=B12-BL&left=L10x-BL&right=R10x-BL&foundation=
+-------------------------
+User: 50.116.19.82 - April 26, 2017, 1:44 pm
+First Name: Laura
+Last Name: Presnell
+City: Oakland
+State: CA
+Zip: 94602
+Email: Lpresnell@gmail.com
+Phone: 415-517-0347
+URL: https://www.studio-shed.com/configurator/?depth=10&length=16&trim=Colorado+Beetle-Kill+Pine&sidingColor=Monorail+Silver&doorColor=Sundried+Tomato&eaveColor=None&metalColor=&floorOption=Sugarhouse+Maple&options%5B%5D=Full-Lite+Glass+Door+Upgrade&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Full+Permit+Plan+Set+and+Engineer+Stamped+Drawings&services%5B%5D=Professional+Installation+-+Shell+%2B+Lifestyle%E2%84%A2&front=F16-D72R-BL&back=B16-BL&left=L10x-36C-BL&right=R10x-BL&foundation=Foundation+TBD
+RepEmail: stuart@studio-shed.com
+-------------------------
+User: 50.116.19.82 - April 26, 2017, 2:16 pm
+First Name: IdeaRoom
+Last Name: VanOrden
+City: Boise
+State: ID
+Zip: 83616
+Email: dvanorden@gmail.com
+Phone: 208-555-5555
+URL: https://www.studio-shed.com/configurator-summit/?depth=14&length=18&trim=Block&sidingColor=Raindrop&doorColor=Factory+Finish&eaveColor=Factory+Finish&metalColor=&floorOption=Vermont+Maple&options%5B%5D=Full-Lite+Glass+Door+Upgrade&front=FT18-D36L-BL&back=BT18-BL&left=LT14-BL&right=RT14-BL&foundation=Concrete+Slab
+RepEmail: susan@studio-shed.com
+-------------------------
+User: 50.116.19.82 - April 26, 2017, 2:38 pm
+First Name: IdeaRoomt
+Last Name: Test
+City: Boise
+State: ID
+Zip: 
+Email: dvanorden@gmail.com
+Phone: 208-555-5555
+URL: https://www.studio-shed.com/configurator-sprout/?0=medium&1=left&2=Fireworks&4~_=F&4~_=F&5=Studio+Shed+Professional+Installation
+RepEmail: susan@studio-shed.com
+-------------------------
+User: 50.116.19.82 - April 26, 2017, 3:57 pm
+First Name: Alisa
+Last Name: Davis
+City: Portland
+State: OR
+Zip: 97202
+Email: alisamdavis@gmail.com
+Phone: 
+URL: https://www.studio-shed.com/configure/?depth=12&length=10&trim=Block&sidingColor=Tricorn+Black&doorColor=Monorail+Silver&eaveColor=Tricorn+Black&metalColor=&floorOption=Sugarhouse+Maple&options%5B%5D=Full-Lite+Glass+Door+Upgrade&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Professional+Installation+-+Shell+%2B+Lifestyle%E2%84%A2&front=F10-W2L-W2R-D72C&back=B10-BL&left=L12x-BL&right=R12x-BL&foundation=Concrete+Slab
+-------------------------
+User: 50.116.19.82 - April 26, 2017, 4:17 pm
+First Name: Denise
+Last Name: Fleming
+City: Austin
+State: TX
+Zip: 78754
+Email: nyceann@gmail.com
+Phone: 5125743306
+URL: https://www.studio-shed.com/configurator/?depth=12&length=18&trim=Plank&sidingColor=Monorail+Silver&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Midtown+Olive&options%5B%5D=Full-Lite+Glass+Door+Upgrade&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Professional+Installation+-+Shell+%2B+Lifestyle%E2%84%A2&front=F18-2-D72-BL&back=B18-BL&left=L12x-BL&right=R12x-BL&foundation=Concrete+Slab
+-------------------------
+User: 50.116.19.82 - April 26, 2017, 6:21 pm
+First Name: 
+Last Name: Grace Jimenez
+City: 
+State: 
+Zip: 94062
+Email: grace.jimenez@me.com
+Phone: 
+URL: https://www.studio-shed.com/configurator/?depth=10&length=12&trim=Block&sidingColor=Raindrop&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Vermont+Maple&options%5B%5D=Full-Lite+Glass+Door+Upgrade&front=F12-W2L-W2R-D72C&back=B12-BL&left=L10x-BL&right=R10x-BL&foundation=
+RepEmail: Gregg@Studio-Shed.com
+-------------------------
+User: 50.116.19.82 - April 26, 2017, 9:49 pm
+First Name: 
+Last Name: john
+City: 
+State: 
+Zip: 92649
+Email: baldanza01@yahoo.com
+Phone: 
+URL: https://www.studio-shed.com/configurator/?depth=10&length=12&trim=Block&sidingColor=Raindrop&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Vermont+Maple&options%5B%5D=Full-Lite+Glass+Door+Upgrade&front=F12-D36L-BL&back=B12-BL&left=L10x-BL&right=R10x-BL&foundation=
+-------------------------
+User: 50.116.19.82 - April 26, 2017, 10:06 pm
+First Name: Maureen
+Last Name: Benson
+City: Oakland
+State: CA
+Zip: 94605
+Email: yesmsbenson@gmail.com
+Phone: 5109388237
+URL: https://www.studio-shed.com/configurator/?depth=10&length=20&trim=Block&sidingColor=Black+Fox&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Hickory&options%5B%5D=Full-Lite+Glass+Door+Upgrade&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Full+Permit+Plan+Set+and+Engineer+Stamped+Drawings&front=F20-D72C-BL&back=B20-36C-BL&left=L10x-BL&right=R10x-BL&foundation=Foundation+TBD
+-------------------------

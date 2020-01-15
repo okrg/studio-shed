@@ -1,0 +1,112 @@
+User: 104.196.134.0 - February 19, 2018, 1:00 am
+First Name: Scott Rutledge
+Last Name: 
+Zip: 92595
+Email: scott.rutledge@email.com
+Phone: 4428880461
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - February 19, 2018, 1:00 am
+First Name: Scott Rutledge
+Last Name: 
+Zip: 92595
+Email: scott.rutledge@email.com
+Phone: 4428880461
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - February 19, 2018, 5:44 am
+First Name: Casey Randazzo
+Last Name: 
+Zip: 08876
+Email: cerandazzo@gmail.com
+Phone: 9086166957
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - February 19, 2018, 5:44 am
+First Name: Casey Randazzo
+Last Name: 
+Zip: 08876
+Email: cerandazzo@gmail.com
+Phone: 9086166957
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - February 19, 2018, 9:57 am
+First Name: Andrew Rasken
+Last Name: 
+Zip: 33133
+Email: andrewrasken@gmail.com
+Phone: 3057905059
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - February 19, 2018, 9:57 am
+First Name: Andrew Rasken
+Last Name: 
+Zip: 33133
+Email: andrewrasken@gmail.com
+Phone: 3057905059
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - February 19, 2018, 2:39 pm
+First Name: Paul Blaise
+Last Name: 
+Zip: 95864
+Email: paul@blaisemedia.com
+Phone: 9167198475
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - February 19, 2018, 2:39 pm
+First Name: Paul Blaise
+Last Name: 
+Zip: 95864
+Email: paul@blaisemedia.com
+Phone: 9167198475
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - February 19, 2018, 6:05 pm
+First Name: Tami Bock
+Last Name: 
+Zip: 80911
+Email: tbock@usaswimming.org
+Phone: 7192378995
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - February 19, 2018, 6:05 pm
+First Name: Tami Bock
+Last Name: 
+Zip: 80911
+Email: tbock@usaswimming.org
+Phone: 7192378995
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - February 19, 2018, 6:56 pm
+First Name: jackson oxner
+Last Name: 
+Zip: 94563
+Email: jacksonoxner@gmail.com
+Phone: 9253234657
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - February 19, 2018, 6:56 pm
+First Name: jackson oxner
+Last Name: 
+Zip: 94563
+Email: jacksonoxner@gmail.com
+Phone: 9253234657
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - February 19, 2018, 7:36 pm
+First Name: maria taliercio
+Last Name: 
+Zip: 84106
+Email: photosbycorona@gmail.com
+Phone: 8016232495
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - February 19, 2018, 7:36 pm
+First Name: maria taliercio
+Last Name: 
+Zip: 84106
+Email: photosbycorona@gmail.com
+Phone: 8016232495
+Step: After Perform Script
+-------------------------

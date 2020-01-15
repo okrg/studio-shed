@@ -1,0 +1,18 @@
+.main-content .block-three: before{
+	background-color:#fba447 !important; 
+}
+a .menuItem111{
+	color: #fff !important; 
+}
+a .menuItem111:hover{
+	color: #777 !important; 
+}
+
+.page-template-tpl-home-new h1, 
+.page-template-tpl-home-new h2, 
+.page-template-tpl-home-new h3, 
+.page-template-tpl-home-new h4, 
+.page-template-tpl-home-new h5, 
+.page-template-tpl-home-new h6 {
+	font-family: "Futura-PT-Book";
+}

@@ -1,0 +1,48 @@
+User: 104.196.134.0 - June 27, 2019, 10:21 am
+First Name: Tracey Oshinski
+Last Name: 
+Zip: 30030
+Email: Tracey.oshinski@cfins.com
+Phone: 404 5799837
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - June 27, 2019, 10:21 am
+First Name: Tracey Oshinski
+Last Name: 
+Zip: 30030
+Email: Tracey.oshinski@cfins.com
+Phone: 404 5799837
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - June 27, 2019, 4:15 pm
+First Name: marylou swirt
+Last Name: 
+Zip: 95476
+Email: mlswift45@gmail.com
+Phone: 4154196635
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - June 27, 2019, 4:15 pm
+First Name: marylou swirt
+Last Name: 
+Zip: 95476
+Email: mlswift45@gmail.com
+Phone: 4154196635
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - June 27, 2019, 6:44 pm
+First Name: Dean, White
+Last Name: 
+Zip: 28804
+Email: biancogroup@gmail.com
+Phone: 7046619014
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - June 27, 2019, 6:44 pm
+First Name: Dean, White
+Last Name: 
+Zip: 28804
+Email: biancogroup@gmail.com
+Phone: 7046619014
+Step: After Perform Script
+-------------------------

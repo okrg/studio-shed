@@ -1,0 +1,64 @@
+User: 104.196.134.0 - September 13, 2018, 2:31 am
+First Name: Kurt Christian
+Last Name: 
+Zip: 92120
+Email: Kurt@seedstosold.com
+Phone: 6193985139
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 13, 2018, 2:31 am
+First Name: Kurt Christian
+Last Name: 
+Zip: 92120
+Email: Kurt@seedstosold.com
+Phone: 6193985139
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - September 13, 2018, 7:29 am
+First Name: Josh Rosenthal
+Last Name: 
+Zip: 46781
+Email: Josh@thegreandbevy.com
+Phone: 8188183003
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 13, 2018, 7:29 am
+First Name: Josh Rosenthal
+Last Name: 
+Zip: 46781
+Email: Josh@thegreandbevy.com
+Phone: 8188183003
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - September 13, 2018, 8:00 am
+First Name: Emily Grunfeld
+Last Name: 
+Zip: 80206
+Email: egrunfeld@msn.com
+Phone: 7202616199
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 13, 2018, 8:00 am
+First Name: Emily Grunfeld
+Last Name: 
+Zip: 80206
+Email: egrunfeld@msn.com
+Phone: 7202616199
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - September 13, 2018, 7:50 pm
+First Name: Katie Palumbo
+Last Name: 
+Zip: 92117
+Email: palumbo.katie@gmail.com
+Phone: 6198083569
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 13, 2018, 7:51 pm
+First Name: Katie Palumbo
+Last Name: 
+Zip: 92117
+Email: palumbo.katie@gmail.com
+Phone: 6198083569
+Step: After Perform Script
+-------------------------

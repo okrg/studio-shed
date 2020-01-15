@@ -1,0 +1,96 @@
+User: 104.196.134.0 - July 6, 2017, 8:11 am
+First Name: Wendy Hammond
+Last Name: 
+Zip: 14850
+Email: wmhammond@hotmail.com
+Phone: 2678380283
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - July 6, 2017, 8:11 am
+First Name: Wendy Hammond
+Last Name: 
+Zip: 14850
+Email: wmhammond@hotmail.com
+Phone: 2678380283
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - July 6, 2017, 9:11 am
+First Name: sara
+Last Name: 
+Zip: 9628
+Email: sarapickeringpick@gmail.com
+Phone: 9164944202
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - July 6, 2017, 9:11 am
+First Name: sara
+Last Name: 
+Zip: 9628
+Email: sarapickeringpick@gmail.com
+Phone: 9164944202
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - July 6, 2017, 11:46 am
+First Name: Teresa LaFountain
+Last Name: 
+Zip: 49004
+Email: Slafountain@sbcglobal.net
+Phone: 2693668483
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - July 6, 2017, 11:46 am
+First Name: Teresa LaFountain
+Last Name: 
+Zip: 49004
+Email: Slafountain@sbcglobal.net
+Phone: 2693668483
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - July 6, 2017, 4:21 pm
+First Name: amy silver
+Last Name: 
+Zip: 94706
+Email: amisilv@gmail.com
+Phone: 5102206482
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - July 6, 2017, 4:21 pm
+First Name: amy silver
+Last Name: 
+Zip: 94706
+Email: amisilv@gmail.com
+Phone: 5102206482
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - July 6, 2017, 7:37 pm
+First Name: Eric Gray
+Last Name: 
+Zip: 30458
+Email: cireyarg95@gmail.com
+Phone: 9125410773
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - July 6, 2017, 7:37 pm
+First Name: Eric Gray
+Last Name: 
+Zip: 30458
+Email: cireyarg95@gmail.com
+Phone: 9125410773
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - July 6, 2017, 8:23 pm
+First Name: Stephanie Squires
+Last Name: 
+Zip: 21666
+Email: prochefsteph@icloud.com
+Phone: 2034145020
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - July 6, 2017, 8:23 pm
+First Name: Stephanie Squires
+Last Name: 
+Zip: 21666
+Email: prochefsteph@icloud.com
+Phone: 2034145020
+Step: After Perform Script
+-------------------------

@@ -1,0 +1,32 @@
+User: 104.196.134.0 - November 25, 2019, 11:41 am
+First Name: deborah kammer
+Last Name: 
+Zip: 12477
+Email: debmgb74@aol.com
+Phone: 6467345852
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - November 25, 2019, 11:41 am
+First Name: deborah kammer
+Last Name: 
+Zip: 12477
+Email: debmgb74@aol.com
+Phone: 6467345852
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - November 25, 2019, 9:07 pm
+First Name: Ginnie Carlier
+Last Name: 
+Zip: 95126
+Email: Ginniecarlier@yahoo.com
+Phone: 2162721735
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - November 25, 2019, 9:07 pm
+First Name: Ginnie Carlier
+Last Name: 
+Zip: 95126
+Email: Ginniecarlier@yahoo.com
+Phone: 2162721735
+Step: After Perform Script
+-------------------------

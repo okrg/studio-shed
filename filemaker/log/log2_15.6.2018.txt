@@ -1,0 +1,64 @@
+User: 104.196.134.0 - June 15, 2018, 4:46 am
+First Name: Megan Vande Burgt
+Last Name: 
+Zip: v8r 1m2
+Email: meganvandeburgt91@gmail.com
+Phone: 1250-888-9108
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - June 15, 2018, 4:46 am
+First Name: Megan Vande Burgt
+Last Name: 
+Zip: v8r 1m2
+Email: meganvandeburgt91@gmail.com
+Phone: 1250-888-9108
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - June 15, 2018, 11:13 am
+First Name: Stephanie
+Last Name: 
+Zip: 94577
+Email: slewshopping@gmail.com
+Phone: 510-709-4006
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - June 15, 2018, 11:13 am
+First Name: Stephanie
+Last Name: 
+Zip: 94577
+Email: slewshopping@gmail.com
+Phone: 510-709-4006
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - June 15, 2018, 11:39 am
+First Name: Sarah M Sausner
+Last Name: 
+Zip: 98108
+Email: sarah.sausner@gmail.com
+Phone: 2063074996
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - June 15, 2018, 11:39 am
+First Name: Sarah M Sausner
+Last Name: 
+Zip: 98108
+Email: sarah.sausner@gmail.com
+Phone: 2063074996
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - June 15, 2018, 3:29 pm
+First Name: Sharon Miranda
+Last Name: 
+Zip: 97520
+Email: withmiranda@gmail.com
+Phone: 5416218997
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - June 15, 2018, 3:29 pm
+First Name: Sharon Miranda
+Last Name: 
+Zip: 97520
+Email: withmiranda@gmail.com
+Phone: 5416218997
+Already exists?: YES
+-------------------------

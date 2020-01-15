@@ -1,0 +1,48 @@
+User: 104.196.134.0 - June 12, 2018, 4:39 am
+First Name: Dana
+Last Name: 
+Zip: 80232
+Email: Danayost@msn.com
+Phone: 303-111-1111
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - June 12, 2018, 4:39 am
+First Name: Dana
+Last Name: 
+Zip: 80232
+Email: Danayost@msn.com
+Phone: 303-111-1111
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - June 12, 2018, 6:47 am
+First Name: Dana Yost
+Last Name: 
+Zip: 80232
+Email: Danayost@msn.com
+Phone: 303-111-1111
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - June 12, 2018, 6:47 am
+First Name: Dana Yost
+Last Name: 
+Zip: 80232
+Email: Danayost@msn.com
+Phone: 303-111-1111
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - June 12, 2018, 11:36 pm
+First Name: Sophie Rubin
+Last Name: 
+Zip: 95125
+Email: yophiest@gmail.com
+Phone: 6504741584
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - June 12, 2018, 11:36 pm
+First Name: Sophie Rubin
+Last Name: 
+Zip: 95125
+Email: yophiest@gmail.com
+Phone: 6504741584
+Step: After Perform Script
+-------------------------

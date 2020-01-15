@@ -1,0 +1,32 @@
+User: 104.196.134.0 - September 6, 2017, 7:43 am
+First Name: Susan
+Last Name: 
+Zip: 11219
+Email: organizeacloset@aol.com
+Phone: 7188129916
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 6, 2017, 7:43 am
+First Name: Susan
+Last Name: 
+Zip: 11219
+Email: organizeacloset@aol.com
+Phone: 7188129916
+Step: After Perform Script
+-------------------------
+User: 104.196.134.0 - September 6, 2017, 7:45 am
+First Name: Susan
+Last Name: 
+Zip: 11219
+Email: organizeacloset@aol.com
+Phone: 718129916
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - September 6, 2017, 7:45 am
+First Name: Susan
+Last Name: 
+Zip: 11219
+Email: organizeacloset@aol.com
+Phone: 718129916
+Already exists?: YES
+-------------------------

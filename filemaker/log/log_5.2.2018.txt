@@ -1,0 +1,269 @@
+User: 50.116.19.82 - February 5, 2018, 12:08 am
+First Name: Jose
+Last Name: Jose
+City: Lake Elsinore
+State: CA
+Zip: 92530
+Email: Ccjromero@gmail.com
+Phone: 
+URL: https://www.studio-shed.com/configurator/?depth=10&length=12&trim=Block&sidingColor=Web+Gray&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Midtown+Olive&options%5B%5D=Full-Lite+Glass+Door+Upgrade&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Full+Permit+Plan+Set+and+Engineer+Stamped+Drawings&services%5B%5D=Professional+Installation+-+Shell+%2B+Lifestyle%E2%84%A2&front=F12-D36L-BL&back=B12-BL&left=L10x-BL&right=R10x-BL&foundation=Wood+Frame+Floor
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 5:50 am
+First Name: Rain
+Last Name: Rain
+City: Ojai
+State: CA
+Zip: 93023
+Email: mizzperry@gmail.com
+Phone: 8053408624
+URL: https://www.studio-shed.com/configurator/?depth=10&length=10&trim=Block&sidingColor=Studio+Shed+Bronze&doorColor=Electric+Lime&eaveColor=Alabaster&metalColor=&floorOption=Natural+Cork&options%5B%5D=Full-Lite+Glass+Door+Upgrade&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&front=F10-D36R-BL&back=B10-BL&left=L10x-36C-BL&right=R10x-BL&foundation=Foundation+TBD
+RepEmail: Gregg@Studio-Shed.com
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 7:45 am
+First Name: Sue
+Last Name: Immerman
+City: Takoma Park
+State: MD
+Zip: 20912
+Email: info@madfitness.us
+Phone: 3015008001
+URL: https://www.studio-shed.com/configurator/?depth=10&length=16&trim=Block&sidingColor=Sundried+Tomato&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Whitewashed+Beech&options%5B%5D=Full-Lite+Glass+Door+Upgrade&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Professional+Installation+-+Shell+%2B+Lifestyle%E2%84%A2&front=F16-D72C-BL&back=B16-BL&left=L10x-36C-BL&right=R10x-36C-BL&foundation=Concrete+Slab
+RepEmail: Gregg@Studio-Shed.com
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 8:23 am
+First Name: Anthony
+Last Name: Nardone
+City: Northborough
+State: MA
+Zip: 01532
+Email: anardone@student.framingham.edu
+Phone: 
+URL: https://www.studio-shed.com/configurator/?depth=10&length=20&trim=Block&sidingColor=Tony+Taupe&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Vermont+Maple&options%5B%5D=Full-Lite+Glass+Door+Upgrade&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Full+Permit+Plan+Set+and+Engineer+Stamped+Drawings&services%5B%5D=Professional+Installation+-+Shell+%2B+Lifestyle%E2%84%A2&front=F20-D36L-BL&back=B20-BL&left=L10x-BL&right=R10x-D36CL-BL&foundation=Concrete+Slab
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 8:34 am
+First Name: eduardo
+Last Name: rodriguez
+City: miami
+State: FL
+Zip: 33176
+Email: eddy@kbdcenters.com
+Phone: 
+URL: https://www.studio-shed.com/configurator/?depth=12&length=18&trim=Block&sidingColor=Tony+Taupe&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Vermont+Maple&options%5B%5D=Full-Lite+Glass+Door+Upgrade&options%5B%5D=Dark+Bronze+Aluminum&services%5B%5D=Professional+Installation+-+Shell+Only&front=F18-D72R-BL&back=B18-BL&left=L12x-BL&right=R12x-BL&foundation=Concrete+Slab
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 8:39 am
+First Name: Tony
+Last Name: Satan
+City: Northborough
+State: MA
+Zip: 01532
+Email: anardone@student.framingham.edu
+Phone: 
+URL: https://www.studio-shed.com/configurator-summit/?depth=14&length=30&trim=Block&sidingColor=Alabaster&doorColor=Factory+Finish&eaveColor=Factory+Finish&metalColor=&floorOption=Vermont+Maple&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Full+Permit+Plan+Set+and+Engineer+Stamped+Drawings&services%5B%5D=Professional+Installation+-+Shell+%2B+Lifestyle%E2%84%A2&front=FT30-2-D72-BL&back=BT30-3-18-BL&left=LT14-BL&right=RT14-D36L-BL&foundation=Concrete+Slab
+RepEmail: stuart@studio-shed.com
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 8:57 am
+First Name: Tony
+Last Name: Nardone
+City: Northborough
+State: MA
+Zip: 01538
+Email: anardone@student.framingham.edu
+Phone: 
+URL: https://www.studio-shed.com/configurator/?depth=8&length=14&trim=Plank&sidingColor=Alabaster&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Midtown+Olive&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Full+Permit+Plan+Set+and+Engineer+Stamped+Drawings&services%5B%5D=Professional+Installation+-+Shell+Only&front=F14-D36L-BL&back=B14-BL&left=L8x-BL&right=R8x-BL&foundation=Concrete+Slab
+RepEmail: stuart@studio-shed.com
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 12:13 pm
+First Name: Jennifer
+Last Name: Irons
+City: Phoenix
+State: AZ
+Zip: 85006
+Email: jennifer.irons@monster.com
+Phone: 6026808725
+URL: https://www.studio-shed.com/configurator/?depth=12&length=20&trim=Block&sidingColor=Monorail+Silver&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Vermont+Maple&options%5B%5D=Full-Lite+Glass+Door+Upgrade&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&front=F20-W2L-W2R-D72C-BL&back=B20-2-18-BL&left=L12x-W2R-60C-BL&right=R12x-W2L-60C-BL&foundation=Foundation+TBD
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 12:20 pm
+First Name: Jill
+Last Name: Kenney
+City: Oakland
+State: CA
+Zip: 94618
+Email: jill.kenney.august@gmail.com
+Phone: 8582327834
+URL: https://www.studio-shed.com/configurator/?depth=10&length=12&trim=Block&sidingColor=Web+Gray&doorColor=Alabaster&eaveColor=Alabaster&metalColor=&floorOption=Sugarhouse+Maple&options%5B%5D=Shortened+Eaves&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&options%5B%5D=Full-Lite+Glass+Door+Upgrade&services%5B%5D=Full+Permit+Plan+Set+and+Engineer+Stamped+Drawings&services%5B%5D=Professional+Installation+-+Shell+Only&front=F12-W2L-W2R-D72C-BL&back=B12-BL&left=L10x-BL&right=R10x-W2L-BL&foundation=Concrete+Slab
+RepEmail: susan@studio-shed.com
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 1:00 pm
+First Name: 
+Last Name: Melissa Diaz
+City: 
+State: 
+Zip: 33143
+Email: Melissadiaz35pr@gmail.com
+Phone: 
+URL: https://www.studio-shed.com/configurator/?depth=12&length=18&trim=Block&sidingColor=Alabaster&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Vermont+Maple&options%5B%5D=Full-Lite+Glass+Door+Upgrade&front=F18-D36L-BL&back=B18-BL&left=L12x-BL&right=R12x-BL&foundation=
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 1:04 pm
+First Name: Jen
+Last Name: Michaels
+City: Berkeley
+State: CA
+Zip: 94702
+Email: lingzhen47@gmail.com
+Phone: 4083554040
+URL: https://www.studio-shed.com/configurator/?depth=8&length=10&trim=Block&sidingColor=Raindrop&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Hickory&options%5B%5D=Full-Lite+Glass+Door+Upgrade&services%5B%5D=Professional+Installation+-+Shell+Only&front=F10-D36R-BL&back=B10-BL&left=L8x-36L-BL&right=R8x-W1L-36R-BL&foundation=Turnkey+Foundation+System
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 1:13 pm
+First Name: Melissa
+Last Name: Diaz
+City: Miami
+State: FL
+Zip: 33143
+Email: Melissadiaz35pr@gmail.com
+Phone: 3058982590
+URL: https://www.studio-shed.com/configurator/?depth=12&length=18&trim=Block&sidingColor=Alabaster&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Midtown+Olive&options%5B%5D=Full-Lite+Glass+Door+Upgrade&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Professional+Installation+-+Shell+%2B+Lifestyle%E2%84%A2&front=F18-D72L-BL&back=B18-BL&left=L12x-36C-BL&right=R12x-W2L-BL&foundation=Concrete+Slab
+RepEmail: stuart@studio-shed.com
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 1:41 pm
+First Name: mark
+Last Name: walters
+City: Atlanta
+State: GA
+Zip: 30309
+Email: hayzey@gmail.com
+Phone: 404-433-1111
+URL: https://www.studio-shed.com/configurator/?depth=10&length=12&trim=Block&sidingColor=Kids+Stuff&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Natural+Cork&options%5B%5D=Full-Lite+Glass+Door+Upgrade&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Professional+Installation+-+Shell+%2B+Lifestyle%E2%84%A2&front=F12-D72C-BL&back=B12-BL&left=L10x-60C-BL&right=R10x-60C-BL&foundation=Foundation+TBD
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 2:11 pm
+First Name: 
+Last Name: Jeff Janssen
+City: 
+State: 
+Zip: 95945
+Email: jjanssen59@icloud.com
+Phone: 
+URL: https://www.studio-shed.com/configurator/?depth=12&length=20&trim=Block&sidingColor=Alabaster&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Vermont+Maple&options%5B%5D=Full-Lite+Glass+Door+Upgrade&front=F20-D36L-BL&back=B20-BL&left=L12x-BL&right=R12x-BL&foundation=
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 2:21 pm
+First Name: 
+Last Name: Brett
+City: 
+State: 
+Zip: 90274
+Email: Brett.watterson@gmail.com
+Phone: 
+URL: https://www.studio-shed.com/configurator/?depth=10&length=12&trim=Block&sidingColor=Alabaster&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Vermont+Maple&options%5B%5D=Full-Lite+Glass+Door+Upgrade&front=F12-D72C-BL&back=B12-BL&left=L10x-BL&right=R10x-BL&foundation=
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 2:21 pm
+First Name: 
+Last Name: Brett
+City: 
+State: 
+Zip: 90274
+Email: Brett.watterson@gmail.com
+Phone: 
+URL: https://www.studio-shed.com/configurator/?depth=10&length=12&trim=Block&sidingColor=Alabaster&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Vermont+Maple&options%5B%5D=Full-Lite+Glass+Door+Upgrade&front=F12-D72C-BL&back=B12-BL&left=L10x-BL&right=R10x-BL&foundation=
+RepEmail: 
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 4:25 pm
+First Name: Anthony
+Last Name: Dods
+City: Fresno
+State: CA
+Zip: 93720
+Email: anthonyndods@hotmail.com
+Phone: 5599774309
+URL: https://www.studio-shed.com/configurator/?depth=8&length=10&trim=Block&sidingColor=Alabaster&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Sugarhouse+Maple&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&options%5B%5D=Shortened+Eaves&options%5B%5D=Full-Lite+Glass+Door+Upgrade&front=F10-D72C-BL&back=B10-18C-BL&left=L8x-W2R-36L-BL&right=R8x-BL&foundation=
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 5:25 pm
+First Name: Jill (10x12 Lifestyle Installed)
+Last Name: Kenney
+City: Oakland
+State: CA
+Zip: 94618
+Email: jill.kenney.august@gmail.com
+Phone: (858) 232-7834
+URL: https://www.studio-shed.com/configurator/?depth=10&length=12&trim=Block&sidingColor=Web+Gray&doorColor=Alabaster&eaveColor=Alabaster&metalColor=&floorOption=Sugarhouse+Maple&options%5B%5D=Shortened+Eaves&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&options%5B%5D=Full-Lite+Glass+Door+Upgrade&services%5B%5D=Full+Permit+Plan+Set+and+Engineer+Stamped+Drawings&services%5B%5D=Professional+Installation+-+Shell+%2B+Lifestyle%E2%84%A2&front=F12-W2L-W2R-D72C-BL&back=B12-BL&left=L10x-BL&right=R10x-W2L-BL&foundation=Concrete+Slab
+RepEmail: susan@studio-shed.com
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 6:05 pm
+First Name: Aieisha
+Last Name: Aieisha
+City: Blaine
+State: WA
+Zip: 98230
+Email: aieisha@shaw.ca
+Phone: 6048121855
+URL: https://www.studio-shed.com/configurator-summit/?depth=16&length=34&trim=Block%2FMetal&sidingColor=Web+Gray&doorColor=Tricorn+Black&eaveColor=Tricorn+Black&metalColor=&floorOption=Midtown+Olive&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&options%5B%5D=Full-Lite+Glass+Door+Upgrade&services%5B%5D=Full+Permit+Plan+Set+and+Engineer+Stamped+Drawings&front=FT34-2-D72-BL&back=BT34-BL&left=LT16-BL&right=RT16-BL&foundation=Concrete+Slab
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 6:26 pm
+First Name: Mark (14x30 Shell Installed-Home Theater)
+Last Name: Tranter
+City: Woodinville
+State: WA
+Zip: 98077
+Email: susan@studio-shed.com
+Phone: 206-354-1223
+URL: https://www.studio-shed.com/configurator-summit/?depth=14&length=30&trim=Block&sidingColor=Alabaster&doorColor=Factory+Finish&eaveColor=Factory+Finish&metalColor=&floorOption=Vermont+Maple&services%5B%5D=Full+Permit+Plan+Set+and+Engineer+Stamped+Drawings&services%5B%5D=Professional+Installation+-+Shell+Only&front=FT30-D72L-BL&back=BT30-BL&left=LT14-BL&right=RT14-BL&foundation=Concrete+Slab
+RepEmail: susan@studio-shed.com
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 6:51 pm
+First Name: marnie
+Last Name: marcin
+City: atherton
+State: CA
+Zip: 94027
+Email: marnie01@gmail.com
+Phone: 
+URL: https://www.studio-shed.com/configurator/?depth=10&length=12&trim=Plank&sidingColor=Warm+Stone&doorColor=Tony+Taupe&eaveColor=Tony+Taupe&metalColor=&floorOption=Vermont+Maple&options%5B%5D=Full-Lite+Glass+Door+Upgrade&options%5B%5D=Dark+Bronze+Aluminum&options%5B%5D=Shortened+Eaves&services%5B%5D=Professional+Installation+-+Shell+Only&front=F12-D36L-BL&back=B12-BL&left=L10x-W1R-60C-BL&right=R10x-BL&foundation=Concrete+Slab
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 7:18 pm
+First Name: Anne
+Last Name: Bray
+City: Los angeles
+State: CA
+Zip: 90026
+Email: Anne@freewaves.org
+Phone: 213-344-8910
+URL: https://www.studio-shed.com/configurator/?depth=12&length=20&trim=Plank%2FMetal&sidingColor=Sundried+Tomato&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Vermont+Maple&options%5B%5D=Full-Lite+Glass+Door+Upgrade&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Full+Permit+Plan+Set+and+Engineer+Stamped+Drawings&services%5B%5D=Professional+Installation+-+Shell+%2B+Lifestyle%E2%84%A2&front=F20-D72L-BL&back=B20-BL&left=L12x-BL&right=R12x-BL&foundation=Concrete+Slab
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 7:23 pm
+First Name: Morgan
+Last Name: Duncan
+City: Los Gatos
+State: CA
+Zip: 95032
+Email: morgan.duncan@gmail.com
+Phone: 
+URL: https://www.studio-shed.com/configurator/?depth=12&length=16&trim=Plank&sidingColor=Monorail+Silver&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Midtown+Olive&options%5B%5D=Full-Lite+Glass+Door+Upgrade&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Professional+Installation+-+Shell+%2B+Lifestyle%E2%84%A2&front=F16-D72C-BL&back=B16-2-18-BL&left=L12x-18C-BL&right=R12x-18C-BL&foundation=Wood+Frame+Floor
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 8:37 pm
+First Name: 
+Last Name: Rio Ingram
+City: 
+State: 
+Zip: 98290
+Email: rioingram@gmail.com
+Phone: 
+URL: https://www.studio-shed.com/configurator/?depth=10&length=18&trim=Block&sidingColor=Alabaster&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Vermont+Maple&options%5B%5D=Full-Lite+Glass+Door+Upgrade&front=F18-D72L-BL&back=B18-BL&left=L10x-BL&right=R10x-BL&foundation=
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 10:52 pm
+First Name: Brian
+Last Name: Bishop
+City: Seattle
+State: WA
+Zip: 98134
+Email: beb100@hotmail.com
+Phone: 
+URL: https://www.studio-shed.com/configurator-summit/?depth=14&length=22&trim=Block&sidingColor=Alabaster&doorColor=Web+Gray&eaveColor=Factory+Finish&metalColor=&floorOption=Vermont+Maple&options%5B%5D=Full-Lite+Glass+Door+Upgrade&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Full+Permit+Plan+Set+and+Engineer+Stamped+Drawings&front=FT22-D72C-BL&back=BT22-BL&left=LT14-D36C-BL&right=RT14-D96C-BL&foundation=Concrete+Slab
+-------------------------
+User: 50.116.19.82 - February 5, 2018, 11:50 pm
+First Name: April
+Last Name: Martinez
+City: Palmdale
+State: CA
+Zip: 93536
+Email: aprilgm@yahoo.com
+Phone: 
+URL: https://www.studio-shed.com/configurator/?depth=12&length=20&trim=Block&sidingColor=Tony+Taupe&doorColor=Factory+Finish&eaveColor=None&metalColor=&floorOption=Midtown+Olive&options%5B%5D=Full-Lite+Glass+Door+Upgrade&options%5B%5D=Lifestyle%E2%84%A2+Interior+Package&services%5B%5D=Professional+Installation+-+Shell+%2B+Lifestyle%E2%84%A2&front=F20-W2L-W2R-D72C-BL&back=B20-3-36-BL&left=L12x-W2R-60C-BL&right=R12x-W2L-60C-BL&foundation=Concrete+Slab
+-------------------------

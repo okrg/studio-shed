@@ -1,0 +1,32 @@
+User: 104.196.134.0 - October 12, 2019, 3:28 pm
+First Name: Micah Jones
+Last Name: 
+Zip: 95037
+Email: micahjones1988@gmail.com
+Phone: 6692535191
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - October 12, 2019, 3:28 pm
+First Name: Micah Jones
+Last Name: 
+Zip: 95037
+Email: micahjones1988@gmail.com
+Phone: 6692535191
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - October 12, 2019, 4:59 pm
+First Name: Rajesh Garre
+Last Name: 
+Zip: 98052
+Email: rajeshgarre@yahoo.com
+Phone: 4259430411
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - October 12, 2019, 4:59 pm
+First Name: Rajesh Garre
+Last Name: 
+Zip: 98052
+Email: rajeshgarre@yahoo.com
+Phone: 4259430411
+Already exists?: YES
+-------------------------

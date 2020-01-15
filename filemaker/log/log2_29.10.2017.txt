@@ -1,0 +1,32 @@
+User: 104.196.134.0 - October 29, 2017, 4:34 am
+First Name: MICHAEL C SCHREIBER
+Last Name: 
+Zip: 80126
+Email: michael.c.schreiber@gmail.com
+Phone: 3035139995
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - October 29, 2017, 4:34 am
+First Name: MICHAEL C SCHREIBER
+Last Name: 
+Zip: 80126
+Email: michael.c.schreiber@gmail.com
+Phone: 3035139995
+Already exists?: YES
+-------------------------
+User: 104.196.134.0 - October 29, 2017, 2:46 pm
+First Name: Brad, Smith
+Last Name: 
+Zip: 32607
+Email: brsmith@ufl.edu
+Phone: 352-336-9285
+Step: Before Processing
+-------------------------
+User: 104.196.134.0 - October 29, 2017, 2:46 pm
+First Name: Brad, Smith
+Last Name: 
+Zip: 32607
+Email: brsmith@ufl.edu
+Phone: 352-336-9285
+Already exists?: YES
+-------------------------

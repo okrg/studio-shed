@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Form Submit</title>
+</head>
+<body>
+   <form method="post" action="process_Configurator.php">
+    <p style="margin-left:5px;margin-top:2px;font-size:18px"> Provide the information below to save your custom Studio Shed. You will receive an email with your details and a link to your Studio Shed. </p>
+        <input style="width:235px" name="firstName" placeholder="FIRST NAME" required="">
+        <input style="width:235px" name="lastName" placeholder="LAST NAME" required="">
+        <input style="width:320px" name="city" placeholder="CITY" required="">
+        <select name="state" required="">
+            <option label="STATE" value="object:null" selected="selected">STATE</option>
+            <option label="Alabama" value="AL">Alabama</option>
+            <option label="Arizona" value="AZ">Arizona</option>
+            <option label="Arkansas" value="AR">Arkansas</option>
+            <option label="California" value="CA">California</option>
+            <option label="Colorado" value="CO">Colorado</option>
+            <option label="Connecticut" value="CT">Connecticut</option>
+            <option label="Delaware" value="DE">Delaware</option>
+            <option label="District Of Columbia" value="DC">District Of Columbia</option>
+            <option label="Florida" value="FL">Florida</option>
+        </select>
+        <input style="width:320px" name="email" placeholder="EMAIL ADDRESS" required="">
+        <input style="width:151px" name="phone" placeholder="PHONE NUMBER">
+        <br>
+        <input type='submit' value='Submit'>
+    </form>
+</body>
+</html>
