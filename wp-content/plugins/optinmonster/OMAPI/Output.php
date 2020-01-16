@@ -7,6 +7,17 @@
  * @package OMAPI
  * @author  Thomas Griffin
  */
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Output class.
+ *
+ * @since 1.0.0
+ */
 class OMAPI_Output {
 
 	/**
@@ -55,6 +66,15 @@ class OMAPI_Output {
 	public $localized = false;
 
 	/**
+	 * Flag for determining if localized JS variable is output.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var bool
+	 */
+	public $data_output = false;
+
+	/**
 	 * Holds JS slugs for maybe parsing shortcodes.
 	 *
 	 * @since 1.0.0
@@ -92,6 +112,7 @@ class OMAPI_Output {
 		// Load actions and filters.
 		add_action( 'wp_enqueue_scripts', array( $this, 'api_script' ) );
 		add_action( 'wp_footer', array( $this, 'localize' ), 9999 );
+		add_action( 'wp_footer', array( $this, 'display_rules_data' ), 9999 );
 		add_action( 'wp_footer', array( $this, 'maybe_parse_shortcodes' ), 11 );
 
 		// Maybe load OptinMonster.
@@ -122,8 +143,7 @@ class OMAPI_Output {
 	 * @since 1.0.0
 	 */
 	public function api_script() {
-
-		wp_enqueue_script( $this->base->plugin_slug . '-api-script', OPTINMONSTER_APIJS_URL, array( 'jquery' ), null );
+		wp_enqueue_script( $this->base->plugin_slug . '-api-script', $this->base->get_api_url(), array( 'jquery' ), null );
 
 		if ( version_compare( get_bloginfo( 'version' ), '4.1.0', '>=' ) ) {
 			add_filter( 'script_loader_tag', array( $this, 'filter_api_script' ), 10, 2 );
@@ -163,9 +183,8 @@ class OMAPI_Output {
 	 * @return string $url Amended URL with our ID attribute appended.
 	 */
 	public function filter_api_url( $url ) {
-
 		// If the handle is not ours, do nothing.
-		if ( false === strpos( $url, str_replace( 'https://', '', OPTINMONSTER_APIJS_URL ) ) ) {
+		if ( false === strpos( $url, str_replace( 'https://', '', $this->base->get_api_url() ) ) ) {
 			return $url;
 		}
 
@@ -216,6 +235,10 @@ class OMAPI_Output {
 		// Add the hook to allow OptinMonster to process.
 		add_action( 'pre_get_posts', array( $this, 'load_optinmonster_inline' ), 9999 );
 		add_action( 'wp_footer', array( $this, 'load_optinmonster' ) );
+
+		if ( ! empty( $_GET['om-live-preview'] ) || ! empty( $_GET['om-verify-site'] ) ) {
+			add_action( 'wp_footer', array( $this, 'load_global_optinmonster') );
+		}
 
 	}
 
@@ -270,12 +293,7 @@ class OMAPI_Output {
 		}
 
 		// Prepare variables.
-		$post_id = get_queried_object_id();
-		if ( ! $post_id ) {
-			if ( 'page' == get_option( 'show_on_front' ) ) {
-				$post_id = get_option( 'page_for_posts' );
-			}
-		}
+		$post_id = self::current_id();
 		$optins = $this->base->get_optins();
 
 		// If no optins are found, return early.
@@ -306,15 +324,9 @@ class OMAPI_Output {
 	public function load_optinmonster() {
 
 		// Prepare variables.
-		global $post;
-		$post_id = get_queried_object_id();
-		if ( ! $post_id ) {
-			if ( 'page' == get_option( 'show_on_front' ) ) {
-				$post_id = get_option( 'page_for_posts' );
-			}
-		}
-		$optins = $this->base->get_optins();
-		$init   = array();
+		$post_id = self::current_id();
+		$optins  = $this->base->get_optins();
+		$init    = array();
 
 		// If no optins are found, return early.
 		if ( ! $optins ) {
@@ -360,6 +372,28 @@ class OMAPI_Output {
 	}
 
 	/**
+	 * Loads the global OM code on this page.
+	 *
+	 * @since 1.8.0
+	 */
+	public function load_global_optinmonster() {
+		$option = $this->base->get_option();
+
+		// If we don't have the data we need, return early.
+		if ( empty( $option['userId'] ) || empty( $option['accountId'] ) ) {
+			return;
+		}
+
+		printf(
+			'<script type="text/javascript" src="%s" data-account="%s" data-user="%s" %s async></script>',
+			esc_url_raw( $this->base->get_api_url() ),
+			esc_attr( $option['accountId'] ),
+			esc_attr( $option['userId'] ),
+			defined( 'OPTINMONSTER_ENV' ) ? 'data-env="' . OPTINMONSTER_ENV . '"' : ''
+		);
+	}
+
+	/**
 	 * Sets the slug for possibly parsing shortcodes.
 	 *
 	 * @since 1.0.0
@@ -378,6 +412,10 @@ class OMAPI_Output {
 		// Maybe set shortcode.
 		if ( get_post_meta( $optin->ID, '_omapi_shortcode', true ) ) {
 			$this->shortcodes[] = get_post_meta( $optin->ID, '_omapi_shortcode_output', true );
+		}
+
+		if ( get_post_meta( $optin->ID, '_omapi_mailpoet', true ) ) {
+			$this->wp_mailpoet();
 		}
 
 		return $this;
@@ -414,7 +452,7 @@ class OMAPI_Output {
 
 				echo '<div style="position:absolute;overflow:hidden;clip:rect(0 0 0 0);height:1px;width:1px;margin:-1px;padding:0;border:0">';
 					echo '<div class="omapi-shortcode-helper">' . html_entity_decode( $shortcode, ENT_COMPAT ) . '</div>';
-					echo '<div class="omapi-shortcode-parsed">' . do_shortcode( html_entity_decode( $shortcode, ENT_COMPAT ) ) . '</div>';
+					echo '<div class="omapi-shortcode-parsed omapi-encoded">' . htmlentities( do_shortcode( html_entity_decode( $shortcode, ENT_COMPAT ) ) ) . '</div>';
 				echo '</div>';
 			}
 		}
@@ -450,25 +488,116 @@ class OMAPI_Output {
 		?>
 		<script type="text/javascript">var omapi_localized = { ajax: '<?php echo esc_url_raw( add_query_arg( 'optin-monster-ajax-route', true, admin_url( 'admin-ajax.php' ) ) ); ?>', nonce: '<?php echo wp_create_nonce( 'omapi' ); ?>', slugs: <?php echo json_encode( $this->slugs ); ?> };</script>
 		<?php
-
 	}
 
 	/**
-	 * Enqueues the WP helper script for storing local optins.
+	 * Enqueues the WP mailpoet script for storing local optins.
 	 *
-	 * @since 1.0.0
+	 * @since 1.8.2
 	 */
-	public function wp_helper() {
+	public function wp_mailpoet() {
 		// Only try to use the MailPoet integration if it is active.
 		if ( $this->base->is_mailpoet_active() ) {
 			wp_enqueue_script(
-				$this->base->plugin_slug . '-wp-helper',
-				plugins_url( 'assets/js/helper.js', OMAPI_FILE ),
+				$this->base->plugin_slug . '-wp-mailpoet',
+				plugins_url( 'assets/js/mailpoet.js', OMAPI_FILE ),
 				array( 'jquery'),
 				$this->base->version . ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? time() : '' ),
 				true
 			);
 		}
+	}
+
+	/**
+	 * Enqueues the WP helper script for the API.
+	 *
+	 * @since 1.0.0
+	 */
+	public function wp_helper() {
+		wp_enqueue_script(
+			$this->base->plugin_slug . '-wp-helper',
+			plugins_url( 'assets/js/helper.js', OMAPI_FILE ),
+			array(),
+			$this->base->version . ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? time() : '' ),
+			true
+		);
+	}
+
+	/**
+	 * Outputs a JS variable, in the footer of the site, with information about
+	 * the current page, and the terms in use for the display rules.
+	 *
+	 * @since 1.6.5
+	 *
+	 * @return void
+	 */
+	public function display_rules_data() {
+		global $wp_query;
+
+		// If already localized, do nothing.
+		if ( $this->data_output ) {
+			return;
+		}
+
+		// Set flag to true.
+		$this->data_output = true;
+
+		$tax_terms    = array();
+		$object       = get_queried_object();
+		$object_id    = self::current_id();
+		$object_class = is_object( $object ) ? get_class( $object ) : '';
+		$object_type  = '';
+		$object_key   = '';
+		$post         = null;
+		if ( 'WP_Post' === $object_class ) {
+			$post        = $object;
+			$object_type = 'post';
+			$object_key  = $object->post_type;
+		} elseif ( 'WP_Term' === $object_class ) {
+			$object_type = 'term';
+			$object_key  = $object->taxonomy;
+		}
+
+		// Get the current object's terms, if applicable. Defaults to public taxonomies only.
+		if ( ! empty( $post->ID ) && is_singular() || ( $wp_query->is_category() || $wp_query->is_tag() || $wp_query->is_tax() ) ) {
+
+			// Should we only check public taxonomies?
+			$only_public = apply_filters( 'optinmonster_only_check_public_taxonomies', true, $post );
+			$taxonomies  = get_object_taxonomies( $post, false );
+
+			if ( ! empty( $taxonomies ) && is_array( $taxonomies ) ) {
+				foreach ( $taxonomies as $taxonomy ) {
+
+					// Private ones should remain private and not output in the JSON blob.
+					if ( $only_public && ! $taxonomy->public ) {
+						continue;
+					}
+
+					$terms = get_the_terms( $post, $taxonomy->name );
+					if ( ! empty( $terms ) && is_array( $terms ) ) {
+						$tax_terms = array_merge( $tax_terms, wp_list_pluck( $terms, 'term_id' ) );
+					}
+				}
+
+				$tax_terms = wp_parse_id_list( $tax_terms );
+			}
+		}
+
+		$output = array(
+			'wc_cart'     => $this->woocommerce_cart(),
+			'object_id'   => $object_id,
+			'object_key'  => $object_key,
+			'object_type' => $object_type,
+			'term_ids'    => $tax_terms,
+		);
+		$output = function_exists( 'wp_json_encode' )
+			? wp_json_encode( $output )
+			: json_encode( $output );
+
+		// Output JS variable.
+		?>
+		<script type="text/javascript">var omapi_data = <?php echo $output; // XSS: okay. ?>;</script>
+		<?php
 	}
 
 	/**
@@ -499,11 +628,92 @@ class OMAPI_Output {
 	public function enqueue_helper_js_if_applicable( $should_output, $rules ) {
 
 		// Check to see if we need to load the WP API helper script.
-		if ( $should_output && ! $rules->field_empty( 'mailpoet' ) ) {
+		if ( $should_output ) {
+			if ( ! $rules->field_empty( 'mailpoet' ) ) {
+				$this->wp_mailpoet();
+			}
+
 			$this->wp_helper();
 		}
 
 		return $should_output;
 	}
 
+	/**
+	 * Get the current page/post's post id.
+	 *
+	 * @since  1.6.9
+	 *
+	 * @return int
+	 */
+	public static function current_id() {
+		$post_id = get_queried_object_id();
+		if ( ! $post_id ) {
+			if ( 'page' == get_option( 'show_on_front' ) ) {
+				$post_id = get_option( 'page_for_posts' );
+			}
+		}
+
+		return $post_id;
+	}
+
+	/**
+	 * AJAX callback for returning WooCommerce cart information.
+	 *
+	 * @since 1.7.0
+	 *
+	 * @return array An array of WooCommerce cart data.
+	 */
+	public function woocommerce_cart() {
+		// Bail if WooCommerce isn't currently active.
+		if ( ! OMAPI::is_woocommerce_active() ) {
+			return array();
+		}
+
+		// Check if WooCommerce is the minimum version.
+		if ( ! OMAPI_WooCommerce::is_minimum_version() ) {
+			return array();
+		}
+
+		// Bail if we don't have a cart object.
+		if ( ! isset( WC()->cart ) || '' === WC()->cart ) {
+			return array();
+		}
+
+		// Calculate the cart totals.
+		WC()->cart->calculate_totals();
+
+		// Get initial cart data.
+		$cart               = WC()->cart->get_totals();
+		$cart['cart_items'] = WC()->cart->get_cart();
+
+		// Set the currency data.
+		$currencies       = get_woocommerce_currencies();
+		$currency_code    = get_woocommerce_currency();
+		$cart['currency'] = array(
+			'code'   => $currency_code,
+			'symbol' => get_woocommerce_currency_symbol( $currency_code ),
+			'name'   => isset( $currencies[ $currency_code ] ) ? $currencies[ $currency_code ] : '',
+		);
+
+		// Add in some extra data to the cart item.
+		foreach ( $cart['cart_items'] as $key => $item ) {
+			$item_details = array(
+				'type'              => $item['data']->get_type(),
+				'sku'               => $item['data']->get_sku(),
+				'categories'        => $item['data']->get_category_ids(),
+				'tags'              => $item['data']->get_tag_ids(),
+				'regular_price'     => $item['data']->get_regular_price(),
+				'sale_price'        => $item['data']->get_sale_price() ? $item['data']->get_sale_price() : $item['data']->get_regular_price(),
+				'virtual'           => $item['data']->is_virtual(),
+				'downloadable'      => $item['data']->is_downloadable(),
+				'sold_individually' => $item['data']->is_sold_individually(),
+			);
+			unset( $item['data'] );
+			$cart['cart_items'][ $key ] = array_merge( $item, $item_details );
+		}
+
+		// Send back a response.
+		return $cart;
+	}
 }

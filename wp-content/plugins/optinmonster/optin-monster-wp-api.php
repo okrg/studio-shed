@@ -2,12 +2,14 @@
 /**
  * Plugin Name: OptinMonster API
  * Plugin URI:  https://optinmonster.com
- * Description: OptinMonster API plugin to connect your WordPress site to your OptinMonster account.
+ * Description: OptinMonster is the best WordPress popup plugin that helps you grow your email list and sales with email popups, exit intent popups, floating bars and more!
  * Author:      OptinMonster Team
  * Author URI:  https://optinmonster.com
- * Version:     1.5.3
+ * Version:     1.9.6
  * Text Domain: optin-monster-api
  * Domain Path: languages
+ * WC requires at least: 3.2.0
+ * WC tested up to:      3.8.1
  *
  * OptinMonster is is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -60,7 +62,7 @@ class OMAPI {
 	 *
 	 * @var string
 	 */
-	public $version = '1.5.3';
+	public $version = '1.9.6';
 
 	/**
 	 * The name of the plugin.
@@ -90,6 +92,13 @@ class OMAPI {
 	public $file = __FILE__;
 
 	/**
+	 * The assets base URL for this plugin.
+	 *
+	 * @var string
+	 */
+	public $url;
+
+	/**
 	 * OMAPI_Ajax object
 	 *
 	 * @var OMAPI_Ajax
@@ -116,6 +125,13 @@ class OMAPI {
 	 * @var OMAPI_Shortcode
 	 */
 	public $shortcode;
+
+	/**
+	 * OMAPI_WooCommerce object.
+	 *
+	 * @var OMAPI_WooCommerce
+	 */
+	public $woocommerce;
 
 	/**
 	 * OMAPI_Actions object (loaded only in the admin)
@@ -153,6 +169,13 @@ class OMAPI {
 	public $refresh;
 
 	/**
+	 * OMAPI_Sites object (loaded only in the REST API and admin)
+	 *
+	 * @var OMAPI_Sites
+	 */
+	public $sites;
+
+	/**
 	 * OMAPI_Validate object (loaded only in the admin)
 	 *
 	 * @var OMAPI_Validate
@@ -167,11 +190,25 @@ class OMAPI {
 	public $welcome;
 
 	/**
+	 * OMAPI_TrustPulse object (loaded only in the admin)
+	 *
+	 * @var OMAPI_TrustPulse
+	 */
+	public $trustpulse;
+
+	/**
 	 * OMAPI_Review object (loaded only in the admin)
 	 *
 	 * @var OMAPI_Review
 	 */
 	public $review;
+
+	/**
+	 * OMAPI_RestApi object (loaded only in the REST API)
+	 *
+	 * @var OMAPI_RestApi
+	 */
+	public $rest_api;
 
 	/**
 	 * AM_Notification object (loaded only in the admin)
@@ -196,6 +233,9 @@ class OMAPI {
 		// Load the plugin.
 		add_action( 'init', array( $this, 'init' ) );
 
+		// Filter the WooCommerce category/tag REST API responses.
+		add_filter( 'woocommerce_rest_prepare_product_cat', 'OMAPI_WooCommerce::add_category_base_to_api_response' );
+		add_filter( 'woocommerce_rest_prepare_product_tag', 'OMAPI_WooCommerce::add_tag_base_to_api_response' );
 	}
 
 	/**
@@ -234,15 +274,11 @@ class OMAPI {
 
 		// Define necessary plugin constants.
 		if ( ! defined( 'OPTINMONSTER_APIJS_URL' ) ) {
-			define( 'OPTINMONSTER_APIJS_URL', 'https://a.optmnstr.com/app/js/api.min.js' );
+			define( 'OPTINMONSTER_APIJS_URL', 'https://a.opmnstr.com/app/js/api.min.js' );
 		}
 
 		if ( ! defined( 'OPTINMONSTER_APP_URL' ) ) {
 			define( 'OPTINMONSTER_APP_URL', 'https://app.optinmonster.com' );
-		}
-
-		if ( ! defined( 'OPTINMONSTER_APP_API_URL' ) ) {
-			define( 'OPTINMONSTER_APP_API_URL', 'https://app.optinmonster.com/v1/' );
 		}
 
 		// Load our global option.
@@ -250,6 +286,8 @@ class OMAPI {
 
 		// Load global components.
 		$this->load_global();
+
+		add_action( 'rest_api_init', array( $this, 'load_rest' ) );
 
 		// Load admin only components.
 		if ( is_admin() ) {
@@ -284,14 +322,33 @@ class OMAPI {
 	public function load_global() {
 
 		// Register global components.
-		$this->ajax      = new OMAPI_Ajax();
-		$this->type      = new OMAPI_Type();
-		$this->output    = new OMAPI_Output();
-		$this->shortcode = new OMAPI_Shortcode();
+		$this->ajax        = new OMAPI_Ajax();
+		$this->type        = new OMAPI_Type();
+		$this->output      = new OMAPI_Output();
+		$this->shortcode   = new OMAPI_Shortcode();
+		$this->woocommerce = new OMAPI_WooCommerce();
+        $this->url         = plugin_dir_url( __FILE__ );
 
 		// Fire a hook to say that the global classes are loaded.
 		do_action( 'optin_monster_api_global_loaded' );
 
+	}
+
+	/**
+	 * Loads all REST API related classes into scope.
+	 *
+	 * @since 1.8.0
+	 */
+	public function load_rest() {
+
+		// Register global components.
+		$this->sites    = new OMAPI_Sites();
+		$this->rest_api = new OMAPI_RestApi();
+		$this->refresh  = new OMAPI_Refresh();
+		$this->save     = new OMAPI_Save();
+
+		// Fire a hook to say that the global classes are loaded.
+		do_action( 'optin_monster_api_rest_loaded' );
 	}
 
 	/**
@@ -312,8 +369,18 @@ class OMAPI {
 		$this->refresh       = new OMAPI_Refresh();
 		$this->validate      = new OMAPI_Validate();
 		$this->welcome       = new OMAPI_Welcome();
+		$this->trustpulse    = new OMAPI_TrustPulse();
 		$this->review        = new OMAPI_Review();
+		$this->pointer       = new OMAPI_Pointer();
+		$this->sites         = new OMAPI_Sites();
 		$this->notifications = new AM_Notification( 'om', $this->version );
+
+		if ( $this->menu->has_trial_link() ) {
+			$this->cc = new OMAPI_ConstantContact();
+		}
+
+		$this->save->maybe_save();
+		$this->refresh->maybe_refresh();
 
 		// Fire a hook to say that the admin classes are loaded.
 		do_action( 'optin_monster_api_admin_loaded' );
@@ -414,7 +481,6 @@ class OMAPI {
 		$user   = false;
 		$apikey = false;
 
-
 		// Attempt to grab the new API Key
 		if ( empty( $option['api']['apikey'] ) ) {
 			if ( defined( 'OPTINMONSTER_REST_API_LICENSE_KEY' ) ) {
@@ -449,7 +515,6 @@ class OMAPI {
 			}
 		}
 
-
 		// Return the API credentials.
 		return apply_filters( 'optin_monster_api_creds',
 			array(
@@ -459,6 +524,18 @@ class OMAPI {
 			)
 		);
 
+	}
+
+	/**
+	 * Returns the API credentials for OptinMonster.
+	 *
+	 * @since 1.9.2
+	 *
+	 * @return string The API url to use for embedding on the page.
+	 */
+	public function get_api_url() {
+		$customApiUrl = $this->get_option( 'customApiUrl' );
+		return ! empty( $customApiUrl ) ? $customApiUrl : OPTINMONSTER_APIJS_URL;
 	}
 
 	/**
@@ -505,7 +582,36 @@ class OMAPI {
 	 * @return bool
 	 */
 	public static function is_woocommerce_active() {
-		return class_exists( 'WooCommerce' );
+		return class_exists( 'WooCommerce', true );
+	}
+
+	/**
+	 * Return the WooCommerce versions string.
+	 *
+	 * @since 1.6.5
+	 *
+	 * @return string
+	 */
+	public static function woocommerce_version() {
+		return OMAPI_WooCommerce::version();
+	}
+
+	/**
+	 * Determines if the passed version string passes the operator compare
+	 * against the currently installed version of WooCommerce.
+	 *
+	 * Defaults to checking if the current WooCommerce version is greater than
+	 * the passed version.
+	 *
+	 * @since 1.7.0
+	 *
+	 * @param string $version  The version to check.
+	 * @param string $operator The operator to use for comparison.
+	 *
+	 * @return string
+	 */
+	public static function woocommerce_version_compare( $version = '', $operator = '>=' ) {
+		return OMAPI_WooCommerce::version_compare( $version, $operator );
 	}
 
 	/**
@@ -516,7 +622,7 @@ class OMAPI {
 	 * @return bool
 	 */
 	public static function is_mailpoet_active() {
-		return class_exists( 'WYSIJA_object' ) || class_exists( '\\MailPoet\\Config\\Initializer' );
+		return class_exists( 'WYSIJA_object' ) || class_exists( 'MailPoet\\API\\API' );
 	}
 
 	/**
@@ -544,6 +650,36 @@ class OMAPI {
 
 		return $this->get_api_credentials() ? 'optins' : 'api';
 
+	}
+
+	/**
+	 * Get and include a view file for output.
+	 *
+	 * @since  1.9.0
+	 *
+	 * @param  string  $file The view file.
+	 * @param  mixed   $data Arbitrary data to be made available to the view file.
+	 *
+	 * @return void
+	 */
+	public function output_view( $file, $data = array() ) {
+		require dirname( $this->file ) . '/views/' . $file;
+	}
+
+	/**
+	 * Get and include a view file with css and minify the output.
+	 *
+	 * @since  1.9.0
+	 *
+	 * @param  string  $file The view file.
+	 * @param  mixed   $data Arbitrary data to be made available to the view file.
+	 *
+	 * @return void
+	 */
+	public function output_min_css( $file, $data = array() ) {
+		ob_start();
+		$this->output_view( $file, $data );
+		echo str_replace( array( "\n", "\r", "\t" ), '', ob_get_clean() );
 	}
 
 	/**
@@ -652,9 +788,14 @@ function optin_monster_api_activation_hook( $network_wide ) {
 		if ( ! $option || empty( $option ) ) {
 			update_option( 'optin_monster_api', OMAPI::default_options() );
 		}
-
 	}
 
+	// If we don't have api credentials, set up the redirect on plugin activation.
+	if ( ! $instance->get_api_credentials() ) {
+		$options = $instance->get_option();
+		$options['welcome']['status'] = 'none';
+		update_option( 'optin_monster_api', $options );
+	}
 }
 
 register_uninstall_hook( __FILE__, 'optin_monster_api_uninstall_hook' );

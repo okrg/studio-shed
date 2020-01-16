@@ -408,6 +408,8 @@ body.omapi-welcome {
     background: #fff;
     padding: 15px 30px;
     display: inline-block;
+    /* Match the minimum height of our tabs */
+    min-height: 197px;
 }
 
 .omapi-content {
@@ -478,11 +480,13 @@ body.omapi-welcome {
     padding: 6px 8px;
 }
 
-.omapi-field-desc {
+.omapi-field-wrap .omapi-field-desc {
     font-size: 12px;
     font-style: italic;
+    font-weight: normal;
     color: #666;
     vertical-align: middle;
+    margin-bottom: 0;
 }
 
 .omapi-back {

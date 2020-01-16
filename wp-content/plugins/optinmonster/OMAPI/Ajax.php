@@ -7,6 +7,17 @@
  * @package OMAPI
  * @author  Thomas Griffin
  */
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Ajax class.
+ *
+ * @since 1.0.0
+ */
 class OMAPI_Ajax {
 
 	/**
@@ -52,13 +63,6 @@ class OMAPI_Ajax {
 				add_action( 'init', array( $this, 'ajax' ), 999 );
 			}
 		}
-
-		// Load actions and filters.
-		add_action( 'wp_ajax_omapi_query_posts', array( $this, 'query_posts' ) );
-		add_action( 'wp_ajax_omapi_query_taxonomies', array( $this, 'query_taxonomies' ) );
-		add_action( 'wp_ajax_omapi_query_selected_posts', array( $this, 'query_selected_posts' ) );
-		add_action( 'wp_ajax_omapi_query_selected_taxonomies', array( $this, 'query_selected_taxonomies' ) );
-
 	}
 
 	/**
@@ -71,7 +75,6 @@ class OMAPI_Ajax {
 		self::$instance = $this;
 		$this->base     = OMAPI::get_instance();
 		$this->view     = 'ajax';
-
 	}
 
 	/**
@@ -82,174 +85,12 @@ class OMAPI_Ajax {
 	public function ajax() {
 
 		switch ( $_REQUEST['action'] ) {
-			case 'mailpoet' :
+			case 'mailpoet':
 				$this->mailpoet();
-			break;
+				break;
+			default:
+				break;
 		}
-
-	}
-
-	/**
-	 * Queries the posts based on search parameters.
-	 *
-	 * @since 1.0.0
-	 */
-	public function query_posts() {
-
-		// Run a security check first.
-		check_ajax_referer( 'omapi-query-nonce', 'nonce' );
-
-		// Prepare variables.
-		$search     = stripslashes( $_POST['q'] );
-		$post_types = get_post_types( array( 'public' => true ) );
-		$ret        = array();
-		$args       = array(
-			'post_type'      => $post_types,
-			's'              => $search,
-			'posts_per_page' => -1,
-			'post_status'    => array( 'publish', 'future' ),
-		);
-
-		// Make the query.
-		$posts = get_posts( $args );
-		if ( empty( $posts ) ) {
-			// Maybe they entered a post ID to search. Let's try that.
-			$search = (int) $search;
-			if ( $search ) {
-				$id_args  = array(
-					'post_type'      => $post_types,
-					'post__in'       => (array) $search,
-					'posts_per_page' => -1
-				);
-				$id_posts = get_posts( $id_args );
-
-				if ( empty( $id_posts ) ) {
-					$ret['items'] = array();
-				} else {
-					foreach ( $id_posts as $post ) {
-						$ret['items'][] = array(
-							'id'    => $post->ID,
-							'title' => $post->post_title
-						);
-					}
-				}
-			} else {
-				$ret['items'] = array();
-			}
-		} else {
-			foreach ( $posts as $post ) {
-				$ret['items'][] = array(
-					'id'    => $post->ID,
-					'title' => $post->post_title
-				);
-			}
-		}
-
-		// Send back the response.
-		die( json_encode( $ret ) );
-
-	}
-
-	/**
-	 * Queries the taxonomies based on search parameters.
-	 *
-	 * @since 1.0.0
-	 */
-	public function query_taxonomies() {
-
-		// Run a security check first.
-		check_ajax_referer( 'omapi-query-nonce', 'nonce' );
-
-		// Prepare variables.
-		$search = stripslashes( $_POST['q'] );
-		$terms  = get_tags( array( 'name__like' => $search ) );
-		$ret    = array();
-
-		// Make the query.
-		if ( empty( $terms ) ) {
-			$ret['items'] = array();
-		} else {
-			foreach ( $terms as $term ) {
-				$ret['items'][] = array(
-					'id'    => $term->term_id,
-					'title' => $term->name
-				);
-			}
-		}
-
-		// Send back the response.
-		die( json_encode( $ret ) );
-
-	}
-
-	/**
-	 * Queries the selected items for "never" and "only" output settings
-	 * to show pre-selected values by the user.
-	 *
-	 * @since 1.0.0
-	 */
-	public function query_selected_posts() {
-
-		// Run a security check first.
-		check_ajax_referer( 'omapi-query-nonce', 'nonce' );
-
-		// Prepare variables.
-		$ids  = explode( ',', stripslashes( $_POST['ids'] ) );
-		$ret  = array();
-		$args = array(
-			'post__in'       => $ids,
-			'posts_per_page' => -1,
-			'post_type'      => get_post_types( array( 'public' => true ) ),
-			'post_status'    => array( 'publish', 'future' ),
-		);
-
-		// Make the query.
-		$posts = get_posts( $args );
-		if ( empty( $posts ) ) {
-			$ret['items'] = array();
-		} else {
-			foreach ( $posts as $post ) {
-				$ret['items'][] = array(
-					'id'    => $post->ID,
-					'title' => $post->post_title
-				);
-			}
-		}
-
-		// Send back the response.
-		die( json_encode( $ret ) );
-
-	}
-
-	/**
-	 * Queries the selected tags to show pre-selected values by the user.
-	 *
-	 * @since 1.0.0
-	 */
-	public function query_selected_taxonomies() {
-
-		// Run a security check first.
-		check_ajax_referer( 'omapi-query-nonce', 'nonce' );
-
-		// Prepare variables.
-		$ids          = explode( ',', stripslashes( $_POST['ids'] ) );
-		$ret          = array();
-		$ret['items'] = array();
-
-		// Make the query.
-		foreach ( $ids as $id ) {
-			$tag = get_tag( absint( $id ) );
-			if ( $tag ) {
-				$ret['items'][] = array(
-					'id'    => $tag->term_id,
-					'title' => $tag->name
-				);
-			}
-		}
-
-		// Send back the response.
-		die( json_encode( $ret ) );
-
 	}
 
 	/**
@@ -258,7 +99,6 @@ class OMAPI_Ajax {
 	 * @since 1.0.0
 	 */
 	public function mailpoet() {
-
 		// Run a security check first.
 		check_ajax_referer( 'omapi', 'nonce' );
 
@@ -292,7 +132,7 @@ class OMAPI_Ajax {
 		$data = apply_filters( 'optin_monster_pre_optin_mailpoet', $data, $_REQUEST, $list, null );
 
 		// Save the subscriber. Check for MailPoet 3 first. Default to legacy.
-		if ( class_exists( '\\MailPoet\\Config\\Initializer' ) ) {
+		if ( class_exists( 'MailPoet\\API\\API' ) ) {
 			// Customize the lead data for MailPoet 3.
 			if ( isset( $user['firstname'] ) ) {
 				$user['first_name'] = $user['firstname'];
@@ -304,14 +144,20 @@ class OMAPI_Ajax {
 				unset( $user['lastname'] );
 			}
 
-			if ( \MailPoet\Models\Subscriber::findOne( $user['email'] ) ) {
-				try {
-					\MailPoet\API\API::MP( 'v1' )->subscribeToList( $user['email'], $list );
-				} catch ( Exception $e ) {}
-			} else {
-				try {
+			try {
+				$subscriber = \MailPoet\API\API::MP( 'v1' )->getSubscriber( $user['email'] );
+			} catch ( Exception $e ) {
+				$subscriber = false;
+			}
+
+			try {
+				if ( $subscriber ) {
+					\MailPoet\API\API::MP( 'v1' )->subscribeToList( $subscriber['email'], array( $list ) );
+				} else {
 					\MailPoet\API\API::MP( 'v1' )->addSubscriber( $user, array( $list ) );
-				} catch ( Exception $e ) {}
+				}
+			} catch ( Exception $e ) {
+				return wp_send_json_error( $e->getMessage(), 400 );
 			}
 		} else {
 			$userHelper = WYSIJA::get( 'user', 'helper' );
@@ -319,8 +165,6 @@ class OMAPI_Ajax {
 		}
 
 		// Send back a response.
-		die( json_encode( true ) );
-
+		wp_send_json_success();
 	}
-
 }
