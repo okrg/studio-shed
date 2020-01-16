@@ -58,6 +58,15 @@ abstract class Red_FileIO {
 		header( 'Expires: Mon, 26 Jul 1997 05:00:00 GMT' );
 	}
 
+	protected function export_filename( $extension ) {
+		$name = wp_parse_url( home_url(), PHP_URL_HOST );
+		$name = str_replace( '.', '-', $name );
+		$date = strtolower( date_i18n( get_option( 'date_format' ) ) );
+		$date = str_replace( [ ',', ' ', '--' ], '-', $date );
+
+		return 'redirection-' . $name . '-' . $date . '.' . $extension;
+	}
+
 	public static function export( $module_name_or_id, $format ) {
 		$groups = false;
 		$items = false;
@@ -87,6 +96,6 @@ abstract class Red_FileIO {
 		return false;
 	}
 
-	abstract function get_data( array $items, array $groups );
-	abstract function load( $group, $filename, $data );
+	abstract public function get_data( array $items, array $groups );
+	abstract public function load( $group, $filename, $data );
 }
