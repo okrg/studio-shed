@@ -137,6 +137,11 @@ if (function_exists('register_nav_menus')) {
             array(
                 'header-menu' => __('Header Menu'),
                 'footer-menu' => __('Footer Menu'),
+				'footer1-menu' => __('Footer One'),
+				'footer2-menu' => __('Footer Two'),
+				'footer3-menu' => __('Footer Three'),
+				'footer4-menu' => __('Footer Four'),
+				'footer5-menu' => __('Footer Five'),
     ));
 }
 // Declare sidebar widget zone
