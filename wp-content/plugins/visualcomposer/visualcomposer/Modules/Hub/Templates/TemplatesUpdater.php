@@ -61,10 +61,9 @@ class TemplatesUpdater extends Container implements Module
         if (is_dir($tempTemplatePath)) {
             // We have local assets for template, so we need to copy them to real templates folder
             $createDirResult = $fileHelper->createDirectory($hubTemplatesHelper->getTemplatesPath($template['id']));
-            if (vcIsBadResponse($createDirResult)
-                && !$fileHelper->isDir(
-                    $hubTemplatesHelper->getTemplatesPath($template['id'])
-                )
+            if (
+                vcIsBadResponse($createDirResult)
+                && !$fileHelper->isDir($hubTemplatesHelper->getTemplatesPath($template['id']))
             ) {
                 return false;
             }
@@ -93,7 +92,7 @@ class TemplatesUpdater extends Container implements Module
             str_replace(
                 '[publicPath]',
                 $hubTemplatesHelper->getTemplatesUrl($template['id']),
-                json_encode($templateElements)
+                wp_json_encode($templateElements)
             ),
             true
         );
@@ -232,12 +231,7 @@ class TemplatesUpdater extends Container implements Module
                     return false;
                 }
 
-                if (rename(
-                    $imageFile,
-                    $hubTemplatesHelper->getTemplatesPath(
-                        $localImagePath
-                    )
-                )) {
+                if (rename($imageFile, $hubTemplatesHelper->getTemplatesPath($localImagePath))) {
                     return $assetsHelper->getAssetUrl(
                         'templates/' . $localImagePath
                     );
@@ -251,11 +245,13 @@ class TemplatesUpdater extends Container implements Module
                 $url = str_replace('[publicPath]', '', $url);
 
                 return $hubTemplatesHelper->getTemplatesUrl($template['id'] . '/' . ltrim($url, '\\/'));
-            } elseif (strpos($url, 'assets/elements/') !== false) {
-                return $hubTemplatesHelper->getTemplatesUrl($template['id'] . '/' . ltrim($url, '\\/'));
-            } else {
-                return $url; // it is local file url (default file)
             }
+
+            if (strpos($url, 'assets/elements/') !== false) {
+                return $hubTemplatesHelper->getTemplatesUrl($template['id'] . '/' . ltrim($url, '\\/'));
+            }
+
+            return $url; // it is local file url (default file)
         }
 
         return false;

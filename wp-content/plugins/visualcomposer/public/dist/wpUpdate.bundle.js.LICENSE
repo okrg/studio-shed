@@ -5,6 +5,8 @@
  * @license  MIT
  */
 
+/*! https://mths.be/cssesc v3.0.0 by @mathias */
+
 /*!mobile-detect v1.4.4 2019-09-21*/
 
 /*!@license Copyright 2013, Heinrich Goebl, License: MIT, see https://github.com/hgoebl/mobile-detect.js*/
@@ -33,8 +35,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-/*! https://mths.be/cssesc v1.0.1 by @mathias */
 
 /*!
  * is-number <https://github.com/jonschlinkert/is-number>

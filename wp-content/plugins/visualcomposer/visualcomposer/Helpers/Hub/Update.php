@@ -111,7 +111,7 @@ class Update implements Helper
         $utmHelper = vchelper('Utm');
         $currentUserAccessHelper = vchelper('AccessCurrentUser');
         $editorPostTypeHelper = vchelper('AccessEditorPostType');
-        $requiredHelper = vchelper('Request');
+        $requestHelper = vchelper('Request');
 
         if (vchelper('Options')->get('bundleUpdateRequired')) {
             $requiredActions = vchelper('HubUpdate')->getRequiredActions();
@@ -159,11 +159,6 @@ class Update implements Helper
             'type' => 'constant',
         ];
         $variables[] = [
-            'key' => 'VCV_STAGING_AVAILABLE',
-            'value' => $this->isUrlDev(VCV_PLUGIN_URL),
-            'type' => 'constant',
-        ];
-        $variables[] = [
             'key' => 'VCV_UPDATE_URL',
             'value' => admin_url('admin.php?page=vcv-update'),
             'type' => 'constant',
@@ -179,10 +174,9 @@ class Update implements Helper
                 'value' => __('Create new page', 'visualcomposer'),
                 'type' => 'constant',
             ];
-        } elseif ($currentUserAccessHelper->wpAll('edit_posts')->get()
-            && $editorPostTypeHelper->isEditorEnabled(
-                'post'
-            )
+        } elseif (
+            $currentUserAccessHelper->wpAll('edit_posts')->get()
+            && $editorPostTypeHelper->isEditorEnabled('post')
         ) {
             $variables[] = [
                 'key' => 'VCV_CREATE_NEW_URL',
@@ -197,7 +191,7 @@ class Update implements Helper
             ];
         }
 
-        $vcvRef = $requiredHelper->input('vcv-ref');
+        $vcvRef = $requestHelper->input('vcv-ref');
         if (!$vcvRef) {
             $vcvRef = 'getting-started';
         }
@@ -211,6 +205,12 @@ class Update implements Helper
         $variables[] = [
             'key' => 'VCV_GO_PREMIUM_URL',
             'value' => $utmHelper->get($vcvRef),
+            'type' => 'constant',
+        ];
+
+        $variables[] = [
+            'key' => 'VCV_GO_FREE_URL',
+            'value' => $utmHelper->get($vcvRef, 'free'),
             'type' => 'constant',
         ];
 
@@ -230,14 +230,20 @@ class Update implements Helper
     }
 
     /**
+     * @param array $payload
+     *
      * @return array|bool
      * @throws \ReflectionException
      */
-    public function checkVersion()
+    public function checkVersion($payload = [])
     {
         $hubBundleHelper = vchelper('HubBundle');
         $tokenHelper = vchelper('Token');
-        $token = $tokenHelper->getToken();
+        if (is_array($payload) && isset($payload['token'])) {
+            $token = $payload['token'];
+        } else {
+            $token = $tokenHelper->getToken();
+        }
         if ($token) {
             $url = $hubBundleHelper->getJsonDownloadUrl(['token' => $token]);
             $json = $hubBundleHelper->getRemoteBundleJson($url);
@@ -262,7 +268,7 @@ class Update implements Helper
             $optionsHelper = vchelper('Options');
             $hubUpdateHelper = vchelper('HubUpdate');
             if ($hubUpdateHelper->checkIsUpdateRequired($json)) {
-                $optionsHelper->set('bundleUpdateRequired', true);
+                $optionsHelper->set('bundleUpdateRequired', 1);
                 // Save in database cache for 30m
                 $optionsHelper->setTransient('bundleUpdateJson', $json, 1800);
             }
@@ -284,125 +290,5 @@ class Update implements Helper
         if (isset($actions['hubTemplates'])) {
             vcevent('vcv:hub:process:action:hubTemplates', ['teasers' => $actions['hubTemplates']]);
         }
-    }
-
-    //@codingStandardsIgnoreStart
-    protected function isUrlDev($url)
-    {
-        // Codestyle is disabled due to count of comparisons
-        $originalUrl = $url;
-        $url = strtolower($url);
-        $url = preg_replace('(\/wp-content\/.*)', '', $url);
-        $parsedUrl = parse_url($url);
-        if (empty($parsedUrl)) {
-            return true;
-        }
-        if (isset($parsedUrl['port']) && !empty($parsedUrl['port'])) {
-            return true;
-        }
-        $pathPattern = '/vc|wordpress|demo|test|staging|stage|dev|sandbox|local|localhost|beta|temp|slot|vcwb|visual\-composer|visualcomposer/';
-        if (isset($parsedUrl['path']) && preg_match($pathPattern, $parsedUrl['path'])) {
-            return true;
-        }
-
-        if (!isset($parsedUrl['host'])) {
-            return false;
-        }
-
-        $localhostPattern = '/^(((.*)\.localhost)|(localhost)|(((.*)\.)?localhost\.(.*)))$/';
-        if (preg_match($localhostPattern, $parsedUrl['host'])) {
-            return true;
-        }
-        $localPattern = '/^(((.*)\.local)|(local)|(((.*)\.)?local\.(.*)))$/';
-        if (preg_match($localPattern, $parsedUrl['host'])) {
-            return true;
-        }
-        $betaPattern = '/^(((.*)\.beta)|(beta)|(((.*)\.)?beta\.(.*)))$/';
-        if (preg_match($betaPattern, $parsedUrl['host'])) {
-            return true;
-        }
-        $tempPattern = '/^(((.*)\.temp)|(temp)|(((.*)\.)?temp\.(.*)))$/';
-        if (preg_match($tempPattern, $parsedUrl['host'])) {
-            return true;
-        }
-        $vcPattern = '/^(((.*)\.vc(\d?))|(vc)|(((.*)\.)?vc(\d?)\.(.*)))$/';
-        if (preg_match($vcPattern, $parsedUrl['host'])) {
-            return true;
-        }
-        $stagePattern = '/^(((.*)\.stage(\d?))|(stage)|(((.*)\.)?stage(\d?)\.(.*)))$/';
-        if (preg_match($stagePattern, $parsedUrl['host'])) {
-            return true;
-        }
-        $extraStagePattern = '/^(.*)stage(\d?)\.(.[^\.]*)\.(.[^\.]*)$/';
-        if (preg_match($extraStagePattern, $parsedUrl['host'])) {
-            return true;
-        }
-        $demoPattern = '/^(((.*)\.demo(\d?))|(demo)|(((.*)\.)?demo(\d?)\.(.*)))$/';
-        if (preg_match($demoPattern, $parsedUrl['host'])) {
-            return true;
-        }
-        $devPattern = '/^(((.*)\.dev(\d?))|(dev)|(((.*)\.)?dev(\d?)\.(.*)))$/';
-        if (preg_match($devPattern, $parsedUrl['host'])) {
-            return true;
-        }
-        $sandboxPattern = '/^(((.*)\.sandbox(\d?))|(sandbox)|(((.*)\.)?sandbox(\d?)\.(.*)))$/';
-        if (preg_match($sandboxPattern, $parsedUrl['host'])) {
-            return true;
-        }
-        $testPattern = '/^(((.*)\.test(\d?))|(test)|(((.*)\.)?test(\d?)\.(.*)))$/';
-        if (preg_match($testPattern, $parsedUrl['host'])) {
-            return true;
-        }
-        $stagingPattern = '/^(((.*)\.staging(\d?))|(staging)|(((.*)\.)?staging(\d?)\.(.*)))$/';
-        if (preg_match($stagingPattern, $parsedUrl['host'])) {
-            return true;
-        }
-        $extraStagingPattern = '/^(.*)staging(\d?)\.(.[^\.]*)\.(.[^\.]*)$/';
-        $subdomainStaging  = '/^(.*)staging(\d?)(.[^\.]*)\.(.[^\.]*)\.(.[^\.]*)$/';
-        if (preg_match($extraStagingPattern, $parsedUrl['host']) || preg_match($subdomainStaging, $parsedUrl['host'])) {
-            return true;
-        }
-        $extraTestPattern = '/^(.*)test(\d?)\.(.[^\.]*)\.(.[^\.]*)$/';
-        if (preg_match($extraTestPattern, $parsedUrl['host'])) {
-            return true;
-        }
-        $extraDemoPattern = '/^(.*)demo(\d?)\.(.[^\.]*)\.(.[^\.]*)$/';
-        if (preg_match($extraDemoPattern, $parsedUrl['host'])) {
-            return true;
-        }
-        $wpEnginePattern = '/^((.*)\.wpengine.com)$/';
-        if (preg_match($wpEnginePattern, $parsedUrl['host'])) {
-            return true;
-        }
-        $stackstagingPattern = '/^((.*)\.stackstaging\.com)$/';
-        if (preg_match($stackstagingPattern, $parsedUrl['host'])) {
-            return true;
-        }
-        $cloudwaysappsPattern = '/^((.*)\.cloudwaysapps\.com)$/';
-        if (preg_match($cloudwaysappsPattern, $parsedUrl['host'])) {
-            return true;
-        }
-        $azurewebsitesPattern = '/^((.*)\.azurewebsites\.net)$/';
-        if (preg_match($azurewebsitesPattern, $parsedUrl['host'])) {
-            return true;
-        }
-        $pantheonPattern = '/^((.*)\.pantheonsite\.io)$/';
-        if (preg_match($pantheonPattern, $parsedUrl['host'])) {
-            return true;
-        }
-        $ipMatch = '/(\d+(\.|$)){4}/';
-        if (preg_match($ipMatch, $parsedUrl['host'])) {
-            return true;
-        }
-        // In case if there is more that 3 subdomains nad pattern matches
-        if (substr_count($parsedUrl['host'], '.') > 3 && preg_match($pathPattern, $parsedUrl['host'])) {
-            return true;
-        }
-        // In case if there is no domains then it is local
-        if (substr_count($parsedUrl['host'], '.') === 0) {
-            return true;
-        }
-
-        return false;
     }
 }

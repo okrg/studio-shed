@@ -329,7 +329,10 @@ class Localizations extends Container implements Helper
             'editorSettings' => __('Editor Settings', 'visualcomposer'),
             'clickToEditColumnValue' => __('Click to edit column value', 'visualcomposer'),
             'addOn' => __('Add-on', 'visualcomposer'),
-            'doNotCloseWhileUpdateText' => __('Don\'t close this window while download is in the progress.', 'visualcomposer'),
+            'doNotCloseWhileUpdateText' => __(
+                'Don\'t close this window while download is in the progress.',
+                'visualcomposer'
+            ),
             'createYourWordpressWebsite' => __('Create Your WordPress Website.', 'visualcomposer'),
             'anyLayoutFastAndEasy' => __('Any Layout. Fast and Easy.', 'visualcomposer'),
             'skipThisPostText' => __('Skip this post', 'visualcomposer'),
@@ -372,10 +375,6 @@ class Localizations extends Container implements Helper
             ),
             'activatePremium' => __(
                 'Activate Premium',
-                'visualcomposer'
-            ),
-            'activateStaging' => __(
-                'Activate Staging',
                 'visualcomposer'
             ),
             'searchPhotosOnUnsplash' => __(
@@ -530,12 +529,16 @@ class Localizations extends Container implements Helper
                 'You can find your Visual Composer Premium subscription license key by accessing our Customer Portal at',
                 'visualcomposer'
             ),
+            'findFreeLicenseAt' => __(
+                'Get your free Visual Composer Hub access at',
+                'visualcomposer'
+            ),
             'edit404Template' => sprintf(
                 __(
                     '%sEdit%s this 404-page template.%s',
                     'visualcomposer'
                 ),
-                '<div class={class}"><a href="{link}" target="_blank">',
+                '<div class="{class}"><a href="{link}" target="_blank">',
                 '</a>',
                 '</div>'
             ),
@@ -544,9 +547,21 @@ class Localizations extends Container implements Helper
                     '%sEdit%s this archive page template.%s',
                     'visualcomposer'
                 ),
-                '<div class={class}"><a href="{link}" target="_blank">',
+                '<div class="{class}"><a href="{link}" target="_blank">',
                 '</a>',
                 '</div>'
+            ),
+            'getFreeAccessToTheVisualComposerHub' => __(
+                'Get Free Access to the Visual Composer Hub',
+                'visualcomposer'
+            ),
+            'whatYouWillGetForFree' => __(
+                'What You Will Get For Free?',
+                'visualcomposer'
+            ),
+            'getYourFreeLicense' => __(
+                'Get Your Free License',
+                'visualcomposer'
             ),
         ];
 

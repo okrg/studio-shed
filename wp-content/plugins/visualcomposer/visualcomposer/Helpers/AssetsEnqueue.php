@@ -16,11 +16,7 @@ class AssetsEnqueue extends Container implements Helper
     public function enqueueAssets($sourceId)
     {
         $assetsSharedHelper = vchelper('AssetsShared');
-        $assetsHelper = vchelper('Assets');
-        $optionsHelper = vchelper('Options');
         $strHelper = vchelper('Str');
-        $assetsVersion = $optionsHelper->get('hubAction:assets', '0');
-
         $assetsFiles = get_post_meta($sourceId, 'vcvSourceAssetsFiles', true);
 
         if (!is_array($assetsFiles)) {
@@ -31,20 +27,17 @@ class AssetsEnqueue extends Container implements Helper
             foreach ($assetsFiles['cssBundles'] as $asset) {
                 $asset = $assetsSharedHelper->findLocalAssetsPath($asset);
                 foreach ((array)$asset as $single) {
-                    if (strpos($single, 'assetsLibrary') !== false) {
-                        $url = $assetsSharedHelper->getPluginsAssetUrl($single);
-                        $version = VCV_VERSION;
-                    } else {
-                        $url = $assetsHelper->getAssetUrl($single);
-                        $version = $assetsVersion;
-                    }
+                    $assetData = $this->getAssetData($single);
+                    $styleName = 'vcv:assets:source:styles:' . $strHelper->slugify($assetData['asset']);
 
-                    wp_enqueue_style(
-                        'vcv:assets:source:styles:' . $strHelper->slugify($single),
-                        $url,
-                        [],
-                        $version
-                    );
+                    if (!wp_style_is($styleName, 'enqueued')) {
+                        wp_enqueue_style(
+                            $styleName,
+                            $assetData['url'],
+                            [],
+                            $assetData['version']
+                        );
+                    }
                 }
             }
             unset($asset);
@@ -54,24 +47,48 @@ class AssetsEnqueue extends Container implements Helper
             foreach ($assetsFiles['jsBundles'] as $asset) {
                 $asset = $assetsSharedHelper->findLocalAssetsPath($asset);
                 foreach ((array)$asset as $single) {
-                    if (strpos($single, 'assetsLibrary') !== false) {
-                        $url = $assetsSharedHelper->getPluginsAssetUrl($single);
-                        $version = VCV_VERSION;
-                    } else {
-                        $url = $assetsHelper->getAssetUrl($single);
-                        $version = $assetsVersion;
-                    }
+                    $assetData = $this->getAssetData($single);
+                    $scriptName = 'vcv:assets:source:scripts:' . $strHelper->slugify($assetData['asset']);
 
-                    wp_enqueue_script(
-                        'vcv:assets:source:scripts:' . $strHelper->slugify($single),
-                        $url,
-                        ['jquery'],
-                        $version,
-                        true
-                    );
+                    if (!wp_script_is($scriptName, 'enqueued')) {
+                        wp_enqueue_script(
+                            $scriptName,
+                            $assetData['url'],
+                            ['jquery'],
+                            $assetData['version'],
+                            true
+                        );
+                    }
                 }
             }
             unset($asset);
         }
+    }
+
+    protected function getAssetData($asset)
+    {
+        $assetsSharedHelper = vchelper('AssetsShared');
+        $assetsHelper = vchelper('Assets');
+        $optionsHelper = vchelper('Options');
+        $assetsVersion = $optionsHelper->get('hubAction:assets', '0');
+
+        if (strpos($asset, 'assetsLibrary') !== false) {
+            $url = $assetsSharedHelper->getPluginsAssetUrl($asset);
+            $version = VCV_VERSION;
+        } else {
+            $url = $assetsHelper->getAssetUrl($asset);
+            $version = $assetsVersion;
+        }
+        // Remove Version From URL
+        $url = preg_replace('/(\?)ver=[^&]*(?:&|$)|&ver=[^&]*|(\?)v=[^&]*(?:&|$)|&v=[^&]*/', '', $url);
+        $asset = preg_replace('/(\?)ver=[^&]*(?:&|$)|&ver=[^&]*|(\?)v=[^&]*(?:&|$)|&v=[^&]*/', '', $asset);
+
+        $response = [
+            'url' => $url,
+            'version' => $version,
+            'asset' => $asset,
+        ];
+
+        return $response;
     }
 }

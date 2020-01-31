@@ -31,13 +31,6 @@ return array (
       'make' => false,
       'singleton' => true,
     ),
-    'CoreHelper' => 
-    array (
-      'name' => 'CoreHelper',
-      'abstract' => 'VisualComposer\\Helpers\\Core',
-      'make' => false,
-      'singleton' => true,
-    ),
     'DataHelper' => 
     array (
       'name' => 'DataHelper',
@@ -475,6 +468,13 @@ return array (
       'make' => true,
       'singleton' => true,
     ),
+    'MigrationsLicenseMigration' => 
+    array (
+      'name' => 'MigrationsLicenseMigration',
+      'abstract' => 'VisualComposer\\Modules\\Migrations\\LicenseMigration',
+      'make' => true,
+      'singleton' => true,
+    ),
     'MigrationsPredefinedTemplateMigration' => 
     array (
       'name' => 'MigrationsPredefinedTemplateMigration',
@@ -657,6 +657,13 @@ return array (
       'make' => true,
       'singleton' => true,
     ),
+    'EditorsBackendEditorController' => 
+    array (
+      'name' => 'EditorsBackendEditorController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\Backend\\EditorController',
+      'make' => true,
+      'singleton' => true,
+    ),
     'EditorsBackendSaveSetEditorController' => 
     array (
       'name' => 'EditorsBackendSaveSetEditorController',
@@ -696,6 +703,13 @@ return array (
     array (
       'name' => 'EditorsFrontendMenuController',
       'abstract' => 'VisualComposer\\Modules\\Editors\\Frontend\\MenuController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'EditorsFrontendVariablesController' => 
+    array (
+      'name' => 'EditorsFrontendVariablesController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\Frontend\\VariablesController',
       'make' => true,
       'singleton' => true,
     ),
@@ -811,6 +825,13 @@ return array (
       'make' => true,
       'singleton' => true,
     ),
+    'LicenseEditorVariablesController' => 
+    array (
+      'name' => 'LicenseEditorVariablesController',
+      'abstract' => 'VisualComposer\\Modules\\License\\EditorVariablesController',
+      'make' => true,
+      'singleton' => true,
+    ),
     'LicenseErrorReportingController' => 
     array (
       'name' => 'LicenseErrorReportingController',
@@ -843,6 +864,13 @@ return array (
     array (
       'name' => 'LicensePagesGoPremium',
       'abstract' => 'VisualComposer\\Modules\\License\\Pages\\GoPremium',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'LicensePagesLicenseStatus' => 
+    array (
+      'name' => 'LicensePagesLicenseStatus',
+      'abstract' => 'VisualComposer\\Modules\\License\\Pages\\LicenseStatus',
       'make' => true,
       'singleton' => true,
     ),

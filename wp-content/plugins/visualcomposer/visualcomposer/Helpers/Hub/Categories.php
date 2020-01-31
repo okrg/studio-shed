@@ -36,6 +36,7 @@ class Categories implements Helper
             $hubCategories = $this->getHubCategories();
         }
 
+        $hubCategories = vcfilter('vcv:helpers:hub:getCategories', $hubCategories);
         $categoriesDiffer->set($hubCategories);
 
         $categoriesDiffer->onUpdate(
@@ -130,13 +131,26 @@ class Categories implements Helper
             ],
             'Tabs' => [
                 'title' => 'Tabs',
-                'elements' => ['tabsWithSlide', 'classicTabs', 'pageableContainer'],
+                'elements' => [
+                    'tabsWithSlide',
+                    'classicTabs',
+                    'pageableContainer',
+                    'contentSlider',
+                    'toggleContainer',
+                    'faqGroup'
+                ],
                 'icon' => $urlHelper->to('public/categories/icons/Container.svg'),
                 'iconDark' => $urlHelper->to('public/categories/iconsDark/Container.svg'),
             ],
             'Tab' => [
                 'title' => 'Tab',
-                'elements' => ['tab', 'classicTab', 'pageableTab'],
+                'elements' => [
+                    'tab',
+                    'classicTab',
+                    'pageableTab',
+                    'contentSlide',
+                    'toggleContainerTab'
+                ],
                 'icon' => $urlHelper->to('public/categories/icons/Container.svg'),
                 'iconDark' => $urlHelper->to('public/categories/iconsDark/Container.svg'),
             ],
@@ -176,7 +190,8 @@ class Categories implements Helper
                     'growShadowButton',
                     '3ColorButton',
                     'doubleTextButton',
-                    'callToActionButton'
+                    'callToActionButton',
+                    'iconButton'
                 ],
                 'icon' => $urlHelper->to('public/categories/icons/Button.svg'),
                 'iconDark' => $urlHelper->to('public/categories/iconsDark/Button.svg'),
@@ -191,6 +206,7 @@ class Categories implements Helper
                     'sidebarMenu',
                     'verticalSandwichMenu',
                     'sandwichSideMenu',
+                    'linkDropdown'
                 ],
                 'icon' => $urlHelper->to('public/categories/icons/Header-Footer.svg'),
                 'iconDark' => $urlHelper->to('public/categories/iconsDark/Header-Footer.svg'),
@@ -280,7 +296,11 @@ class Categories implements Helper
             ],
             'Pricing table' => [
                 'title' => 'Pricing Table',
-                'elements' => ['pricingTable', 'outlinePricingTable'],
+                'elements' => [
+                    'pricingTable',
+                    'outlinePricingTable',
+                    'shadowPricingTable'
+                ],
                 'icon' => $urlHelper->to('public/categories/icons/Pricing-Table.svg'),
                 'iconDark' => $urlHelper->to('public/categories/iconsDark/Pricing-Table.svg'),
             ],
@@ -312,7 +332,13 @@ class Categories implements Helper
             ],
             'Videos' => [
                 'title' => 'Videos',
-                'elements' => ['youtubePlayer', 'vimeoPlayer', 'videoPlayer', 'videoPopup'],
+                'elements' => [
+                    'youtubePlayer',
+                    'vimeoPlayer',
+                    'videoPlayer',
+                    'videoPopup',
+                    'videoButtonPopup',
+                ],
                 'icon' => $urlHelper->to('public/categories/icons/Video.svg'),
                 'iconDark' => $urlHelper->to('public/categories/iconsDark/Video.svg'),
             ],
@@ -380,6 +406,7 @@ class Categories implements Helper
             '_postsGridSources' => [
                 'title' => 'Post Grid Data Sources',
                 'elements' => [
+                    'postsGridDataSourceArchive',
                     'postsGridDataSourcePost',
                     'postsGridDataSourcePage',
                     'postsGridDataSourceCustomPostType',
@@ -473,7 +500,11 @@ class Categories implements Helper
             ],
             'Testimonial' => [
                 'title' => 'Testimonial',
-                'elements' => ['testimonial', 'basicTestimonial'],
+                'elements' => [
+                    'testimonial',
+                    'basicTestimonial',
+                    'starTestimonials',
+                ],
                 'icon' => $urlHelper->to('public/categories/icons/Testimonial.svg'),
                 'iconDark' => $urlHelper->to('public/categories/iconsDark/Testimonial.svg'),
             ],

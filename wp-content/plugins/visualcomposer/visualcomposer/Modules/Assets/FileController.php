@@ -94,12 +94,11 @@ class FileController extends Container implements Module
                 }
             }
         }
-        $globalCss = $optionsHelper->get('globalElementsCss', '');
 
         $globalElementsAttributesCssContent = join('', array_values($globalElementsAttributesCss));
         $globalElementsBaseCssContent = join('', array_values($globalElementsBaseCss));
         $globalElementsMixinsCssContent = join('', array_values($globalElementsMixinsCss));
-        $sourceCssContent = $globalElementsBaseCssContent . $globalElementsMixinsCssContent . $globalCss
+        $sourceCssContent = $globalElementsBaseCssContent . $globalElementsMixinsCssContent
             . $globalElementsAttributesCssContent . $sourceCss;
 
         $sourceChecksum = wp_hash($sourceCssContent);
@@ -135,12 +134,14 @@ class FileController extends Container implements Module
     {
         $sourcePost = $postTypeHelper->get();
         if ($sourcePost && $sourcePost->ID) {
-            if (!get_post_meta($sourcePost->ID, VCV_PREFIX . 'globalElementsCssDataMigration', true)
+            if (
+                !get_post_meta($sourcePost->ID, VCV_PREFIX . 'globalElementsCssDataMigration', true)
                 && get_post_meta(
                     $sourcePost->ID,
                     VCV_PREFIX . 'pageContent',
                     true
-                )) {
+                )
+            ) {
                 /** @see \VisualComposer\Modules\Assets\FileController::generateSourceCssFile */
                 $this->call(
                     'generateSourceCssFile',

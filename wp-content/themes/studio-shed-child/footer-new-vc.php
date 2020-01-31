@@ -1,6 +1,11 @@
 
 <style>
 /*footer */
+	footer h3 {
+	font-family: "Futura-PT-Heavy"!important;
+		font-size: 1.3em;
+
+	}
 	footer .container {
 		background: transparent;
 	}
@@ -9,9 +14,9 @@
 	background: #EBEBEB!important;
 	padding: 15px 0 30px;
 }
-.footer-subscribe h2 {
+.footer-subscribe h3 {
 	color: #525252;
-		margin-bottom: 15px;
+	margin-bottom: 15px;
 	text-transform: uppercase;
 	font-family: "Futura-PT-Book";
 	line-height: 1.2em;
@@ -50,9 +55,9 @@ background: #ffffff;
     width: 100%;
 }
 .footer-subscribe input[type=submit] {
-	color: #e35d00;
+	color: #e25d00;
     background: transparent;
-    border: 2px solid #e35d00;
+    border: 2px solid #e25d00;
     font-size: 16px!important;
     padding: 15px 43px;
     min-width: 220px;
@@ -114,17 +119,28 @@ background: #ffffff;
 	color: #ffffff;
 }
 .footer-escape h3 {
-    font-weight: 800;
     margin-bottom: 20px;
 	margin-top: 0;
     text-transform: uppercase;
-    font-family: Futura-PT-Book;
-    font-size: 1.4em;
 }
 .footer-escape  p {
 	line-height:1.4em;
 	font-size: 15px;
 }
+.footer-escape .delivery{
+	background: url(/wp-content/uploads/2020/01/service-area-bg.jpg) right no-repeat!important;
+    padding: 50px 0;
+    margin: 20px 0 0 0;
+	}
+.footer-escape .delivery h3{
+		text-align: center;
+	}
+.footer-escape .delivery hr{
+	background-color: #ffa544;
+	width: 50px;
+	height: 5px;;
+border-color: #ffa544;
+	}
 .inline-image {
     float: left;
     padding-right: 20px;
@@ -144,7 +160,7 @@ background: #ffffff;
 }
 	.footer-menus {
 		background: #000000;
-		padding: 20px 0;
+		padding: 40px 0 40px;
 	}
 .footer-menus li {
     display: block!important;
@@ -165,8 +181,7 @@ background: #ffffff;
 .footer-menus h3 {color:#ffffff;
 	text-transform: uppercase;
 	font-size: 17px;
-	font-weight: bold;
-	font-family: "Futura-PT-Book";
+	margin: 30px 0 10px;
 }
 .footer-menus ul .menu-item {
 	width: 100%;
@@ -209,7 +224,7 @@ background: #ffffff;
 
 		<div class="row">
 			<div class="col-sm-12 col-md-6">
-				<h2>Subscribe and get free studio shed resources delivered to you.</h2>
+				<h3>Subscribe and get free studio shed resources delivered to you.</h3>
 					<ul>
 					<li class="check-li">Get the latest shed stories, photos, and news from our community.</li>
 					<li class="check-li">Find local events and opportunities to see our products in person.</li>
@@ -243,6 +258,19 @@ background: #ffffff;
 			<button class="vce-button--style-basic">Build &amp; Price</button>
 			</div>
 			</iv>
+		</div>
+		<div class="row delivery">
+			<div class="col-sm-3 col-md-2">
+				<p>&nbsp;</p>			
+			</div>
+			<div class="col-sm-9 col-md-5">
+				<h3>Delivering Your Customized Shed Anywhere in the U.S.</h3>
+				<hr>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p></p>
+			</div>
+			<div class="col-sm-3 col-md-5">
+				<p>&nbsp;</p>			
+			</div>
 		</div>
 	
 	</div>
@@ -288,8 +316,7 @@ background: #ffffff;
 			</div>
 			<div class="col-sm-12 col-md-2">
 
-				<h3>We Ship<br/><span class="orange">Nationwide</span></h3>
-
+				<img src="https://dev2-studio-shed.pantheonsite.io/wp-content/uploads/2020/01/we-ship-footer-icon.png" />
 			</div>
 				 <div class="col-sm-12 copyfooter">                          
 					 <?php dynamic_sidebar('copyright'); ?>
