@@ -12852,7 +12852,8 @@ a.btn-video-trigger {
 .dc-permit {
   margin: 5rem 0; }
   .dc-permit .permit-disclaimer {
-    float: right;
+    display: none;
+    text-align: right;
     font-size: 14px;
     line-height: 25px;
     margin-right: 0.5rem; }

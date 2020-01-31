@@ -17,8 +17,8 @@
         <div class="col-sm-12 col-lg-4">
           
           <form id="zip-lookup">
-            <input type="text" id="zip-label" placeholder="Enter Your ZIP Code" value="92101"></input>
-            <input type="button" value="Submit" id="submit-zip-lookup"></input>
+            <input class="form-control" type="text" id="zip-label" placeholder="Enter Your ZIP Code" value="92101"></input>
+            <input class="btn btn-primary btn-sm" type="button" value="Submit" id="submit-zip-lookup"></input>
             <i id="submit-zip-spinner" class="fa fa-spin fa-sync"></i>
           </form>
           <span id="city-label"></span>
@@ -65,7 +65,7 @@
               </div>
               <div id="permits0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="pheading0">
               <div class="panel-body mb-4">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in sem aliquam, efficitur eros eu, vehicula elit. Donec metus sapien, sollicitudin vitae nibh eu, efficitur efficitur dui. In vitae dolor ex. Phasellus feugiat ligula ac orci ullamcorper, sit amet egestas dui auctor. Fusce sed laoreet purus. Curabitur aliquam sit amet nulla vel placerat. Donec id laoreet ligula, nec pharetra libero. Nunc imperdiet lorem ac rhoncus lacinia. Praesent cursus turpis eu metus ultrices laoreet. Nulla posuere ante ligula, eu elementum purus euismod sed. Ut ornare sit amet risus vitae cursus. Mauris posuere sed odio vitae viverra.</p>
+                <p>Text that describes permit times. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in sem aliquam, efficitur eros eu, vehicula elit. Donec metus sapien, sollicitudin vitae nibh eu, efficitur efficitur dui. In vitae dolor ex. Phasellus feugiat ligula ac orci ullamcorper, sit amet egestas dui auctor. Fusce sed laoreet purus.</p>
               </div>
               </div>
             </div>
@@ -75,20 +75,23 @@
               <h4 class="panel-title">
                 <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#permit-notes" href="#permits1" aria-expanded="true" aria-controls="permits1">
                 Estimated Permit Cost
-                <span id="permit-cost-label">&mdash;</span>
-                <span class="permit-disclaimer">(Paid to the local permit authority)</span>
+                <div id="permit-cost-label">&mdash;</div>
+                <!--<div class="permit-disclaimer">(Paid to the local permit authority)</div>-->
                 </a>
               </h4>
               </div>
               <div id="permits1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="pheading1">
               <div class="panel-body mb-4">
-                <p>Sed efficitur a massa eget rutrum. Ut sed mattis ante, a lacinia mi. In hac habitasse platea dictumst. Morbi a ligula eget lorem faucibus volutpat nec sed nibh. Ut non semper dui. Pellentesque sed tellus dictum, euismod urna et, convallis lorem. Nam vehicula leo eget dui lacinia gravida. Etiam eu augue vehicula, tempor augue ac, egestas mi. Quisque id nunc feugiat, mollis ipsum id, vulputate libero. Proin elit justo, pharetra ac vestibulum ac, euismod et tortor. Phasellus vehicula sem ac dapibus auctor. Nulla molestie malesuada sapien, pulvinar auctor erat tincidunt eu.</p>
+                <p>Text that describes permit costs. Sed efficitur a massa eget rutrum. Ut sed mattis ante, a lacinia mi. In hac habitasse platea dictumst. Morbi a ligula eget lorem faucibus volutpat nec sed nibh. Ut non semper dui. Pellentesque sed tellus dictum, euismod urna et, convallis lorem. Nam vehicula leo eget dui lacinia gravida. Etiam eu augue vehicula, tempor augue ac, egestas mi. Quisque id nunc feugiat, mollis ipsum id, vulputate libero. Proin elit justo, pharetra ac vestibulum ac, euismod et tortor. Phasellus vehicula sem ac dapibus auctor. Nulla molestie malesuada sapien, pulvinar auctor erat tincidunt eu.</p>
               </div>
               </div>
             </div>
 
-            <div class="dc-permit-notes">
-              <div id="permit-notes"></div>
+            <div class="dc-permit-notes card fade">
+              <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">Additional Notes about Permits</h6>
+                <div id="permit-notes-text"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -219,11 +222,9 @@
       </div>
     </section>
 
-
-    <?php include('includes/contact.php'); ?>
-
     <?php include('includes/paging.php'); ?>
 
+    <?php include('includes/contact.php'); ?>
 
   </div>
 </main>

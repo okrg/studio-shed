@@ -4,24 +4,30 @@ $(document).ready(function() {
   });
 
   function fetchShippingInfo(zip) {
-    return $.getJSON('/dc-api/get-shipping-costs.php?zip'+zip);
+    return $.getJSON('/dc-api/get-shipping-costs.php?zip='+zip);
   }
 
   function fetchPermitNotes(data, textStatus, jqXHR) {
     console.log(data);
     $('#shipping-time-label').text(data.shipping_time).fadeIn();
     $('#shipping-cost-label').text(data.shipping_cost).fadeIn();
-    return $.getJSON('/dc-api/get-permit-notes.php?city='+data.shipping_city);
+    $('#city-label').text(data.shipping_city_label).fadeIn();
+    return $.getJSON('/dc-api/get-permit-notes.php?city='+data.shipping_city_code);
   }
   function refreshDisplay(data, textStatus, jqXHR){
     console.log(data);
     $('#permit-time-label').text(data.permit_time).fadeIn();
     $('#permit-cost-label').text(data.permit_cost).fadeIn();
+    $('#permit-notes-text').text(data.permit_notes).parent().parent().removeClass('fade');
+    //$('.permit-disclaimer').fadeIn();
     console.log('All Done!');
+
+    $('#submit-zip-spinner').delay(500).fadeOut(function() {
+      $(this).prev().attr('disabled', false);      
+      $('#estimate-step-2').removeClass('unchecked').addClass('checked');
+    });
   }
-  (function() {
-    fetchShippingInfo().then(fetchPermitNotes).then(refreshDisplay);
-  }());
+
 
 
   $('#submit-zip-lookup').click(function (e) {
@@ -30,28 +36,8 @@ $(document).ready(function() {
     e.preventDefault();
     $('#submit-zip-lookup').attr('disabled', true);
     $('#submit-zip-spinner').css('display', 'inline-block');
-
-
-    $.getJSON('/dc-api/get-permit-notes.php?city=San+Diego&state=CA', function (data) {
-    
-    $('#permit-time-label, #permit-cost-label, #city-label, #time-label, #cost-label').fadeOut(function() {
-      $('#time-label').text('4 weeks').delay(1000).fadeIn();
-      $('#cost-label').text('$1,250').delay(2000).fadeIn();
-      
-      $('#submit-zip-spinner').delay(2000).fadeOut(function() {
-        $(this).prev().attr('disabled', false);
-        $('#city-label').text('San Diego, CA').fadeIn();
-        $('#estimate-step-2').removeClass('unchecked').addClass('checked');
-      })
-    });
-
-
-
-    });
-
-
-
-
+    var zip = $('#zip-label').val();
+    fetchShippingInfo(zip).then(fetchPermitNotes).then(refreshDisplay);
   });
 
 
