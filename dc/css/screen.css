@@ -12800,6 +12800,10 @@ a.muted-link {
   margin: 2.5rem 0;
   text-align: center; }
 
+.dc-logged-out {
+  margin: 10rem 0;
+  text-align: center; }
+
 .dc-menu {
   margin: 2.5rem 0; }
   .dc-menu h3, .dc-menu h4 {
@@ -12808,6 +12812,10 @@ a.muted-link {
     font-size: 24px; }
   .dc-menu h4 {
     font-size: 18px; }
+
+.form-signin {
+  margin: 0 auto;
+  max-width: 400px; }
 
 a.btn-video-trigger {
   display: -webkit-box;
