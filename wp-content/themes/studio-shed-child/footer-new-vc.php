@@ -162,10 +162,15 @@ border-color: #ffa544;
 		background: #000000;
 		padding: 40px 0 40px;
 	}
+	.footer-menus .col-sm-12.col-md-2 {
+    padding-right: 0;
+}
 .footer-menus li {
     display: block!important;
     vertical-align: top;
     font-size: 14px;
+	
+
 }
 .footer-menus li a{
 	COLOR: #FFF;
