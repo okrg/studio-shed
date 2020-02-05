@@ -196,18 +196,18 @@ abstract class GFLocking {
 
 	protected function get_strings() {
 		$strings = array(
-			'currently_locked'  => __( 'This page is currently locked. Click on the "Request Control" button to let %s know you\'d like to take over.', 'gravityforms' ),
-			'accept'            => __( 'Accept', 'gravityforms' ),
-			'cancel'            => __( 'Cancel', 'gravityforms' ),
-			'currently_editing' => __( '%s is currently editing', 'gravityforms' ),
-			'taken_over'        => __( '%s has taken over and is currently editing.', 'gravityforms' ),
-			'lock_requested'    => __( '%s has requested permission to take over control.', 'gravityforms' ),
-			'gained_control'    => __( 'You now have control', 'gravityforms' ),
-			'request_pending'   => __( 'Pending', 'gravityforms' ),
-			'no_response'       => __( 'No response', 'gravityforms' ),
-			'request_again'     => __( 'Request again', 'gravityforms' ),
-			'request_error'     => __( 'Error', 'gravityforms' ),
-			'request_rejected'  => __( 'Your request was rejected', 'gravityforms' ),
+			'currently_locked'  => wp_strip_all_tags( __( 'This page is currently locked. Click on the "Request Control" button to let %s know you\'d like to take over.', 'gravityforms' ) ),
+			'accept'            => wp_strip_all_tags( __( 'Accept', 'gravityforms' ) ),
+			'cancel'            => wp_strip_all_tags( __( 'Cancel', 'gravityforms' ) ),
+			'currently_editing' => wp_strip_all_tags( __( '%s is currently editing', 'gravityforms' ) ),
+			'taken_over'        => wp_strip_all_tags( __( '%s has taken over and is currently editing.', 'gravityforms' ) ),
+			'lock_requested'    => wp_strip_all_tags( __( '%s has requested permission to take over control.', 'gravityforms' ) ),
+			'gained_control'    => wp_strip_all_tags( __( 'You now have control', 'gravityforms' ) ),
+			'request_pending'   => wp_strip_all_tags( __( 'Pending', 'gravityforms' ) ),
+			'no_response'       => wp_strip_all_tags( __( 'No response', 'gravityforms' ) ),
+			'request_again'     => wp_strip_all_tags( __( 'Request again', 'gravityforms' ) ),
+			'request_error'     => wp_strip_all_tags( __( 'Error', 'gravityforms' ) ),
+			'request_rejected'  => wp_strip_all_tags( __( 'Your request was rejected', 'gravityforms' ) ),
 		);
 
 		return $strings;
@@ -484,7 +484,7 @@ abstract class GFLocking {
 
 			$message = '<div class="gform-locked-message">
                             <div class="gform-locked-avatar">' . get_avatar( $user->ID, 64 ) . '</div>
-                            <p class="currently-editing" tabindex="0">' . __( sprintf( $this->get_string( 'currently_locked' ), $user->display_name ) ) . '</p>
+                            <p class="currently-editing" tabindex="0">' . sprintf( $this->get_string( 'currently_locked' ), $user->display_name ) . '</p>
                             <p>
 
                                 <a id="gform-take-over-button" style="display:none" class="button button-primary wp-tab-first" href="' . esc_url( add_query_arg( 'get-edit-lock', '1', $edit_url ) ) . '">' . __( 'Take Over', 'gravityforms' ) . '</a>

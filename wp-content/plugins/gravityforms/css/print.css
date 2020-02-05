@@ -38,7 +38,7 @@ AND ANY CHANGES MADE HERE WILL BE OVERWRITTEN.
 	  	display: block !important
   	}
   	div#print_preview_hdr div:first-child {
-	  	background-image: url(../images/wp-logo.png);
+	  	/*background-image: url(../images/wp-logo.png);*/
 	  	background-position: 16px center;
 	  	background-repeat: no-repeat;
 	  	padding-left: 36px
@@ -134,9 +134,6 @@ AND ANY CHANGES MADE HERE WILL BE OVERWRITTEN.
 	}
 	table.entry-detail-view, table.entry-detail-notes {
 		margin: 0 0 16px 0
-	}
-	table.entry-detail-notes {
-		page-break-before: always
 	}
 	table.entry-detail-view th, table.entry-detail-notes th {
 		font-size: 14px;
