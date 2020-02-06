@@ -2,25 +2,25 @@
   $page =  $_SERVER["REQUEST_URI"];
 
   switch($page) {
-    case "/dc/step-1":
-      $prev = array('label' => 'Design Center Home', 'link' => '/dc/');
-      $next = array('label' => 'Location &amp; Permit Details', 'link' => '/dc/step-2');
+    case "/dc/step-1.php":
+      $prev = array('label' => 'Design Center Home', 'link' => '/dc/index.php');
+      $next = array('label' => 'Location &amp; Permit Details', 'link' => '/dc/step-2.php');
       break;
-    case "/dc/step-2":
-      $prev = array('label' => 'Configuration', 'link' => '/dc/step-1');
-      $next = array('label' => 'Installation Details', 'link' => '/dc/step-3');
+    case "/dc/step-2.php":
+      $prev = array('label' => 'Configuration', 'link' => '/dc/step-1.php');
+      $next = array('label' => 'Installation Details', 'link' => '/dc/step-3.php');
       break;
-    case "/dc/step-3":
-      $prev = array('label' => 'Location &amp; Permit Details', 'link' => '/dc/step-2');
-      $next = array('label' => 'Complete Order', 'link' => '/dc/step-4');
+    case "/dc/step-3.php":
+      $prev = array('label' => 'Location &amp; Permit Details', 'link' => '/dc/step-2.php');
+      $next = array('label' => 'Complete Order', 'link' => '/dc/step-4.php');
       break;
-    case "/dc/step-4":
-      $prev = array('label' => 'Installation Details', 'link' => '/dc/step-3');
-      $next = array('label' => 'Design Center Home', 'link' => '/dc/');
+    case "/dc/step-4.php":
+      $prev = array('label' => 'Installation Details', 'link' => '/dc/step-3.php');
+      $next = array('label' => 'Design Center Home', 'link' => '/dc/index.php');
       break;
-    case "/dc/checkout?":
-      $prev = array('label' => 'Complete Order', 'link' => '/dc/step-4');
-      $next = array('label' => 'Design Center Home', 'link' => '/dc/');
+    case "/dc/checkout.php?":
+      $prev = array('label' => 'Complete Order', 'link' => '/dc/step-4.php');
+      $next = array('label' => 'Design Center Home', 'link' => '/dc/index.php');
       break;
   }
 ?>

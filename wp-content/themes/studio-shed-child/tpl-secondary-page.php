@@ -16,8 +16,8 @@
 
 <div id="secondary">
 	<div class="container">
-<h1><?php wp_title(); ?></h1>
-	<?php the_content(); ?>
+
+		<h1><?php the_field('title_'); ?></h1>
 	</div>
 	
 </div>

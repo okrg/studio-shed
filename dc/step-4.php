@@ -14,7 +14,7 @@
         <h2 class="text-center ">Final Estimate: <span id="final-estimate">&mdash;</span></h2>
         <h2 class="text-center initial-payment">Initial Payment: <span id="initial-payment">&mdash;</span></h2>
         <p class="text-center">*You will be charged the initial payment of 50% of the final estimate. The remaining amount, including taxes, will be charged upon final shipment.</p>
-        <form class="" action="/dc/checkout" method="get">
+        <form class="" action="/dc/checkout.php" method="get">
           <div class="form-group mb-2 w-75 mx-auto">
             <input type="text" placeholder="Enter Referral Code" class="form-control" />
           </div>

@@ -12717,7 +12717,7 @@ body {
 a {
   color: #FFA347; }
   a:hover, a:active {
-    color: #ff962e; }
+    color: #ff8a14; }
 
 h2 {
   font-size: 24px;
@@ -12745,6 +12745,9 @@ a.muted-link {
 
 .btn-link {
   color: #FFA347; }
+  .btn-link:hover {
+    text-decoration: none;
+    color: #ff8a14; }
 
 .btn-primary {
   background: #FFA347;
@@ -12752,7 +12755,7 @@ a.muted-link {
   color: #fff; }
   .btn-primary:hover, .btn-primary:active, .btn-primary:focus {
     color: #fff;
-    background: #ff962e; }
+    background: #ff8a14; }
 
 .btn-outline-primary {
   border-color: #FFA347;
@@ -12800,22 +12803,14 @@ a.muted-link {
   margin: 2.5rem 0;
   text-align: center; }
 
-.dc-logged-out {
-  margin: 10rem 0;
-  text-align: center; }
-
 .dc-menu {
-  margin: 2.5rem 0; }
+  margin: 5rem 0; }
   .dc-menu h3, .dc-menu h4 {
     font-weight: 400; }
   .dc-menu h3 {
     font-size: 24px; }
   .dc-menu h4 {
     font-size: 18px; }
-
-.form-signin {
-  margin: 0 auto;
-  max-width: 400px; }
 
 a.btn-video-trigger {
   display: -webkit-box;
@@ -12837,7 +12832,18 @@ a.btn-video-trigger {
     -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.11);
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.11); }
     a.btn-video-trigger:hover i {
-      background: #ff962e; }
+      background: #ff8a14; }
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  background: #ff8a14; }
+
+.dc-logged-out {
+  margin: 10rem 0 15rem 0;
+  text-align: center; }
+  .dc-logged-out .form-signin {
+    margin: 0 auto;
+    max-width: 400px; }
 
 .dc-location {
   margin: 5rem 0;
@@ -12862,6 +12868,7 @@ a.btn-video-trigger {
   .dc-permit .permit-disclaimer {
     display: none;
     text-align: right;
+    float: right;
     font-size: 14px;
     line-height: 25px;
     margin-right: 0.5rem; }
@@ -13057,7 +13064,11 @@ a.btn-video-trigger {
     width: 100%;
     height: auto; }
 
+.dc-checkout-intro {
+  margin: 5rem 0; }
+
 .dc-checkout-form {
+  margin: 5rem 0;
   /* Payment Request */
   /* Form */
   /* Payment Methods */
@@ -13259,285 +13270,14 @@ a.btn-video-trigger {
     -webkit-transition: all 0.15s ease;
     transition: all 0.15s ease; }
   .dc-checkout-form button:focus {
-    background: #555abf; }
+    background: #ff8a14; }
   .dc-checkout-form button:hover {
     -webkit-transform: translateY(-1px);
             transform: translateY(-1px);
     -webkit-box-shadow: 0 7px 14px 0 rgba(50, 50, 93, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.08);
             box-shadow: 0 7px 14px 0 rgba(50, 50, 93, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.08); }
   .dc-checkout-form button:active {
-    background: #43458b; }
-  .dc-checkout-form #country {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center; }
-  .dc-checkout-form #country select {
-    margin: 0 -15px 0 -30px;
-    padding: 0 15px 0 30px; }
-  .dc-checkout-form #country::before {
-    display: -webkit-inline-box;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    content: '';
-    width: 21px;
-    height: 15px;
-    background: url(/images/flags.svg);
-    background-position: -1000px -1000px;
-    background-repeat: no-repeat;
-    margin-right: 10px; }
-  .dc-checkout-form #country.ad::before {
-    background-position: -10px -10px; }
-  .dc-checkout-form #country.ae::before {
-    background-position: -41px -10px; }
-  .dc-checkout-form #country.ag::before {
-    background-position: -72px -10px; }
-  .dc-checkout-form #country.am::before {
-    background-position: -103px -10px; }
-  .dc-checkout-form #country.ar::before {
-    background-position: -134px -10px; }
-  .dc-checkout-form #country.at::before {
-    background-position: -165px -10px; }
-  .dc-checkout-form #country.au::before {
-    background-position: -196px -10px; }
-  .dc-checkout-form #country.be::before {
-    background-position: -227px -10px; }
-  .dc-checkout-form #country.bf::before {
-    background-position: -258px -10px; }
-  .dc-checkout-form #country.bg::before {
-    background-position: -289px -10px; }
-  .dc-checkout-form #country.bo::before {
-    background-position: -320px -10px; }
-  .dc-checkout-form #country.br::before {
-    background-position: -351px -10px; }
-  .dc-checkout-form #country.ca::before {
-    background-position: -382px -10px; }
-  .dc-checkout-form #country.cd::before {
-    background-position: -413px -10px; }
-  .dc-checkout-form #country.cg::before {
-    background-position: -444px -10px; }
-  .dc-checkout-form #country.ch::before {
-    background-position: -475px -10px; }
-  .dc-checkout-form #country.cl::before {
-    background-position: -506px -10px; }
-  .dc-checkout-form #country.cm::before {
-    background-position: -10px -35px; }
-  .dc-checkout-form #country.cn::before {
-    background-position: -41px -35px; }
-  .dc-checkout-form #country.co::before {
-    background-position: -72px -35px; }
-  .dc-checkout-form #country.cr::before {
-    background-position: -103px -35px; }
-  .dc-checkout-form #country.cz::before {
-    background-position: -134px -35px; }
-  .dc-checkout-form #country.de::before {
-    background-position: -165px -35px; }
-  .dc-checkout-form #country.dj::before {
-    background-position: -196px -35px; }
-  .dc-checkout-form #country.dk::before {
-    background-position: -227px -35px; }
-  .dc-checkout-form #country.dz::before {
-    background-position: -258px -35px; }
-  .dc-checkout-form #country.ec::before {
-    background-position: -289px -35px; }
-  .dc-checkout-form #country.ee::before {
-    background-position: -320px -35px; }
-  .dc-checkout-form #country.eg::before {
-    background-position: -351px -35px; }
-  .dc-checkout-form #country.es::before {
-    background-position: -382px -35px; }
-  .dc-checkout-form #country.eu::before {
-    background-position: -413px -35px; }
-  .dc-checkout-form #country.fi::before {
-    background-position: -444px -35px; }
-  .dc-checkout-form #country.fo::before {
-    background-position: -475px -35px; }
-  .dc-checkout-form #country.fr::before {
-    background-position: -506px -35px; }
-  .dc-checkout-form #country.ga::before {
-    background-position: -10px -60px; }
-  .dc-checkout-form #country.gb::before {
-    background-position: -41px -60px; }
-  .dc-checkout-form #country.gl::before {
-    background-position: -72px -60px; }
-  .dc-checkout-form #country.gm::before {
-    background-position: -103px -60px; }
-  .dc-checkout-form #country.gr::before {
-    background-position: -134px -60px; }
-  .dc-checkout-form #country.gt::before {
-    background-position: -165px -60px; }
-  .dc-checkout-form #country.gu::before {
-    background-position: -196px -60px; }
-  .dc-checkout-form #country.hk::before {
-    background-position: -227px -60px; }
-  .dc-checkout-form #country.hn::before {
-    background-position: -258px -60px; }
-  .dc-checkout-form #country.ht::before {
-    background-position: -289px -60px; }
-  .dc-checkout-form #country.hu::before {
-    background-position: -320px -60px; }
-  .dc-checkout-form #country.id::before {
-    background-position: -351px -60px; }
-  .dc-checkout-form #country.ie::before {
-    background-position: -382px -60px; }
-  .dc-checkout-form #country.il::before {
-    background-position: -413px -60px; }
-  .dc-checkout-form #country.im::before {
-    background-position: -444px -60px; }
-  .dc-checkout-form #country.in::before {
-    background-position: -475px -60px; }
-  .dc-checkout-form #country.iq::before {
-    background-position: -506px -60px; }
-  .dc-checkout-form #country.ir::before {
-    background-position: -10px -85px; }
-  .dc-checkout-form #country.is::before {
-    background-position: -41px -85px; }
-  .dc-checkout-form #country.it::before {
-    background-position: -72px -85px; }
-  .dc-checkout-form #country.je::before {
-    background-position: -103px -85px; }
-  .dc-checkout-form #country.jm::before {
-    background-position: -134px -85px; }
-  .dc-checkout-form #country.jo::before {
-    background-position: -165px -85px; }
-  .dc-checkout-form #country.jp::before {
-    background-position: -196px -85px; }
-  .dc-checkout-form #country.kg::before {
-    background-position: -227px -85px; }
-  .dc-checkout-form #country.kn::before {
-    background-position: -258px -85px; }
-  .dc-checkout-form #country.kp::before {
-    background-position: -289px -85px; }
-  .dc-checkout-form #country.kr::before {
-    background-position: -320px -85px; }
-  .dc-checkout-form #country.kw::before {
-    background-position: -351px -85px; }
-  .dc-checkout-form #country.kz::before {
-    background-position: -382px -85px; }
-  .dc-checkout-form #country.la::before {
-    background-position: -413px -85px; }
-  .dc-checkout-form #country.lb::before {
-    background-position: -444px -85px; }
-  .dc-checkout-form #country.lc::before {
-    background-position: -475px -85px; }
-  .dc-checkout-form #country.ls::before {
-    background-position: -506px -85px; }
-  .dc-checkout-form #country.lt::before {
-    background-position: -10px -110px; }
-  .dc-checkout-form #country.lu::before {
-    background-position: -41px -110px; }
-  .dc-checkout-form #country.lv::before {
-    background-position: -72px -110px; }
-  .dc-checkout-form #country.ma::before {
-    background-position: -103px -110px; }
-  .dc-checkout-form #country.mg::before {
-    background-position: -134px -110px; }
-  .dc-checkout-form #country.mk::before {
-    background-position: -165px -110px; }
-  .dc-checkout-form #country.ml::before {
-    background-position: -196px -110px; }
-  .dc-checkout-form #country.mm::before {
-    background-position: -227px -110px; }
-  .dc-checkout-form #country.mt::before {
-    background-position: -258px -110px; }
-  .dc-checkout-form #country.mx::before {
-    background-position: -289px -110px; }
-  .dc-checkout-form #country.my::before {
-    background-position: -320px -110px; }
-  .dc-checkout-form #country.na::before {
-    background-position: -351px -110px; }
-  .dc-checkout-form #country.ne::before {
-    background-position: -382px -110px; }
-  .dc-checkout-form #country.ng::before {
-    background-position: -413px -110px; }
-  .dc-checkout-form #country.ni::before {
-    background-position: -444px -110px; }
-  .dc-checkout-form #country.nl::before {
-    background-position: -475px -110px; }
-  .dc-checkout-form #country.no::before {
-    background-position: -506px -110px; }
-  .dc-checkout-form #country.nz::before {
-    background-position: -10px -135px; }
-  .dc-checkout-form #country.om::before {
-    background-position: -41px -135px; }
-  .dc-checkout-form #country.pa::before {
-    background-position: -72px -135px; }
-  .dc-checkout-form #country.pe::before {
-    background-position: -103px -135px; }
-  .dc-checkout-form #country.pg::before {
-    background-position: -134px -135px; }
-  .dc-checkout-form #country.ph::before {
-    background-position: -165px -135px; }
-  .dc-checkout-form #country.pk::before {
-    background-position: -196px -135px; }
-  .dc-checkout-form #country.pl::before {
-    background-position: -227px -135px; }
-  .dc-checkout-form #country.pr::before {
-    background-position: -258px -135px; }
-  .dc-checkout-form #country.ps::before {
-    background-position: -289px -135px; }
-  .dc-checkout-form #country.pt::before {
-    background-position: -320px -135px; }
-  .dc-checkout-form #country.py::before {
-    background-position: -351px -135px; }
-  .dc-checkout-form #country.qa::before {
-    background-position: -382px -135px; }
-  .dc-checkout-form #country.ro::before {
-    background-position: -444px -135px; }
-  .dc-checkout-form #country.ru::before {
-    background-position: -475px -135px; }
-  .dc-checkout-form #country.rw::before {
-    background-position: -506px -135px; }
-  .dc-checkout-form #country.sa::before {
-    background-position: -10px -160px; }
-  .dc-checkout-form #country.se::before {
-    background-position: -41px -160px; }
-  .dc-checkout-form #country.sg::before {
-    background-position: -72px -160px; }
-  .dc-checkout-form #country.si::before {
-    background-position: -103px -160px; }
-  .dc-checkout-form #country.sk::before {
-    background-position: -134px -160px; }
-  .dc-checkout-form #country.sl::before {
-    background-position: -165px -160px; }
-  .dc-checkout-form #country.sn::before {
-    background-position: -196px -160px; }
-  .dc-checkout-form #country.so::before {
-    background-position: -227px -160px; }
-  .dc-checkout-form #country.sv::before {
-    background-position: -258px -160px; }
-  .dc-checkout-form #country.td::before {
-    background-position: -289px -160px; }
-  .dc-checkout-form #country.th::before {
-    background-position: -320px -160px; }
-  .dc-checkout-form #country.tj::before {
-    background-position: -351px -160px; }
-  .dc-checkout-form #country.tl::before {
-    background-position: -382px -160px; }
-  .dc-checkout-form #country.tr::before {
-    background-position: -413px -160px; }
-  .dc-checkout-form #country.tw::before {
-    background-position: -444px -160px; }
-  .dc-checkout-form #country.tz::before {
-    background-position: -475px -160px; }
-  .dc-checkout-form #country.ua::before {
-    background-position: -506px -160px; }
-  .dc-checkout-form #country.us::before {
-    background-position: -10px -185px; }
-  .dc-checkout-form #country.uy::before {
-    background-position: -41px -185px; }
-  .dc-checkout-form #country.ve::before {
-    background-position: -72px -185px; }
-  .dc-checkout-form #country.vn::before {
-    background-position: -103px -185px; }
-  .dc-checkout-form #country.xx::before {
-    background-position: -134px -185px; }
-  .dc-checkout-form #country.ye::before {
-    background-position: -165px -185px; }
-  .dc-checkout-form #country.za::before {
-    background-position: -196px -185px; }
+    background: #ff8a14; }
   .dc-checkout-form #payment-methods {
     margin: 0 0 20px;
     border-bottom: 2px solid #e8e8fb; }
@@ -13631,6 +13371,9 @@ a.btn-video-trigger {
             transform: none; }
   .dc-checkout-form #iban-errors {
     margin-top: -20px; }
+  .dc-checkout-form #consent {
+    text-align: center;
+    padding: 2rem 0 4rem 0; }
   .dc-checkout-form #summary {
     position: fixed;
     top: 0;
