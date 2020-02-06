@@ -2,7 +2,7 @@
 <main id="logout">
   <div class="container">
     <section class="dc-logged-out">
-      <form class="form-signin" action="/dc/index">
+      <form class="form-signin" action="/dc/index.php">
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <div class="my-3">
         <label for="inputEmail" class="sr-only">Email address</label>
