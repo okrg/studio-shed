@@ -575,6 +575,9 @@ a.but:hover {
 	    #main-content.container .row{
 	    	max-width: 70% !important;
 	    }
+	    #main-content.container .row .col-3{
+	    	width:  33.3%;
+	    }
 	</style>
 	
 	<script src="https://qikrg2ve4526wc3c3ntlhj1e-wpengine.netdna-ssl.com/wp-content/themes/studio-shed/assets/js/jquery-3.3.1.js"></script>
