@@ -243,18 +243,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			}
 			@keyframes load_down{
 			    from{opacity:0;top:-250px;}
-			    to{opacity:1;top:5%;}
+			    to{opacity:1;top:10%;}
 			    
 			}@-webkit-keyframes load_down{
 			    from{opacity:0;top:-250px;}
-			    to{opacity:1;top:5%;}
+			    to{opacity:1;top:10%;}
 			    
 			}
 			#below-top-btn {
 			    margin: 21px 0 40px 0!important;
 			}
 			#ship-fast.container .row2 .col-3:first-child{
-				margin-left: 0;
+				margin-left: 0 !important;
 			}
 		}
 
