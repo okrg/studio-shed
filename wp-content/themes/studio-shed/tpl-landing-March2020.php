@@ -109,11 +109,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 @keyframes load_down{
     from{opacity:0;top:-250px;}
-    to{opacity:1;top:65%;}
+    to{opacity:1;top:45%;}
     
 }@-webkit-keyframes load_down{
     from{opacity:0;top:-250px;}
-    to{opacity:1;top:65%;}
+    to{opacity:1;top:45%;}
     
 }
 @media screen and (max-width: 1024px)
