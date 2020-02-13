@@ -91,7 +91,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	.priceless-creative-top {
 
 	background-repeat: no-repeat;
-    background:  url(<?php echo get_the_post_thumbnail_url( $post_id, 'large' ); ?>) !important;
+    background:  url(<?php echo get_the_post_thumbnail_url( $post_id, 'full' ); ?>) !important;
     background-attachment: scroll;
     background-position: top center!important;
 	background-size: cover!important;
@@ -222,7 +222,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 .priceless-creative-top h1 {
     margin: 0px auto 0!important;
-    font-size: 1em!important;
+    font-size: 2.3em!important;
     padding-top: 100px!important;
 }
 .priceless-creative-top h2.subhead {
@@ -293,7 +293,7 @@ img.holidaty-ornament {
   border-top: #ffc284 1px solid;
 }
 section#client-logo img {
-        padding: 0 0 0 30px;
+        padding: 0 0 0 2%;
 		max-height: 55px;
 }
 		.zopim		{
@@ -366,6 +366,9 @@ section#client-logo img {
 			font-size: 15px!important;
 			margin: 0!important;
 			line-height: 1.5em;
+		}
+		.cool-features .col-4 p{
+			color: #ffffff;
 		}
 		#below-top-btn {
 			text-align: center;
@@ -586,7 +589,7 @@ a.but:hover {
 
 	<!-- End new header ref  -->
   </head>
-    }
+
 <body <?php body_class(); ?>>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFQVBLT"
@@ -625,7 +628,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	
 		<div class="row">
 			<div id="title_head">
-							<h1><?php the_title(); ?></h1>
+							<!-- <h1><?php the_title(); ?></h1> -->
+							<h1>Room.</h1>
             <h2 class="subhead"><?php echo $top_text_left; ?></h2>
 			<p><?php echo $top_text_left_copy; ?></p>
 <a href="<?php echo $button_news_url; ?>" class="but"><?php echo $button_top_text; ?></a>
