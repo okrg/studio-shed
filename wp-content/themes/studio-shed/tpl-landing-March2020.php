@@ -1,6 +1,6 @@
 <?php
 /*
- * Template Name: Holiday Landing 2019
+ * Template Name: Wellness Landing March 2020
  */
 ?>
 
