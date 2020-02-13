@@ -101,7 +101,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     width:125px;
     position:absolute;
     top:100%;
-	left:32%;
+	right:25%;
     opacity:0;
     animation:load_down 3s forwards;
     -webkit-animation:load_down 3s forwards;
@@ -113,7 +113,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
 }@-webkit-keyframes load_down{
     from{opacity:0;top:-250px;}
-    to{opacity:1;top:0%;}
+    to{opacity:1;top:65%;}
     
 }
 @media screen and (max-width: 1024px)
@@ -346,9 +346,9 @@ section#client-logo img {
 		text-align: center;
 		color: #fff;
 		font-size: 4.8em;
-		padding: 110px 0 0px;
+		padding: 25px 0 0px;
 		background: transparent;
-		text-transform: uppercase;
+		text-transform: capitalize;
 		margin-bottom: 3px;
 		letter-spacing:1px;
 }
