@@ -557,12 +557,16 @@ a.but:hover {
 		}
 		/* Wellness LP CSS */
 	    .room-image-preview{
+	    	margin-top: 7%;
 	    }
 	    .room-image-preview .row{
 	    	max-width: initial;
 	    }	    
 	    .room-image-preview .col-4{
 	    	padding: 0;
+	    }
+	    .room-image-preview .col-4 img{
+	    	width: 100%;
 	    }
 	    #ship-fast.container{
 	    	padding:  100px 0;
