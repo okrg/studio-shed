@@ -98,10 +98,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	max-height: 600px;
 }
 		img.holidaty-ornament{
-    width:125px;
+    width:170px;
     position:absolute;
     top:100%;
-	right:25%;
+	right:22%;
     opacity:0;
     animation:load_down 3s forwards;
     -webkit-animation:load_down 3s forwards;
@@ -109,11 +109,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 @keyframes load_down{
     from{opacity:0;top:-250px;}
-    to{opacity:1;top:35%;}
+    to{opacity:1;top:30%;}
     
 }@-webkit-keyframes load_down{
     from{opacity:0;top:-250px;}
-    to{opacity:1;top:35%;}
+    to{opacity:1;top:30%;}
     
 }
 @media screen and (max-width: 1024px)
