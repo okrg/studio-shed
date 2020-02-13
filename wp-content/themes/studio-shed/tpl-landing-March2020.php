@@ -792,15 +792,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script type="text/javascript" src="<?php echo bloginfo('template_directory'); ?>/js/jquery.responsiveTabs.min.js"></script>
 <script type="text/javascript" src="<?php echo bloginfo('template_directory'); ?>/js/common.js"></script>
 <script type="text/javascript">
-	var textIndex = -1;
-	jQuery(document).ready(function(){
-		var cycleText = jQuery('.textcycle');
-		textCycle(cycleText);
-	});
-	textCycle = function(s){
-		++textIndex;
-		s.eq(textIndex % s.length).fadeIn(2000).delay(2000).fadeOut(2000,textCycle(s));
-	};
+	(function() {
+
+	    var cycleText = jQuery(".textcycle");
+	    var textIndex = -1;
+	    
+	    function textCycle() {
+	        ++quoteIndex;
+	        cycleText.eq(textIndex % cycleText.length)
+	            .fadeIn(2000)
+	            .delay(2000)
+	            .fadeOut(2000, textCycle);
+	    }
+	    
+	    textCycle();
+	    
+	})();
 </script>
 <?php wp_footer(); ?>
 </body>
