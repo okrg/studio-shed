@@ -798,7 +798,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	    var textIndex = -1;
 	    
 	    function textCycle() {
-	        ++quoteIndex;
+	        ++textIndex;
 	        cycleText.eq(textIndex % cycleText.length)
 	            .fadeIn(2000)
 	            .delay(2000)
