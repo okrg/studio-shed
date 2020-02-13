@@ -641,7 +641,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <h2 class="subhead textcycle"><?php echo $top_text_left; ?></h2>
             <h2 class="subhead textcycle">For yoga.</h2>
             <h2 class="subhead textcycle">For reflection.</h2>
-            <h2 class="subhead textcycle">for change.</h2>
+            <h2 class="subhead textcycle">For change.</h2>
 			<p><?php echo $top_text_left_copy; ?></p>
 <a href="<?php echo $button_news_url; ?>" class="but"><?php echo $button_top_text; ?></a>
 			</div>
