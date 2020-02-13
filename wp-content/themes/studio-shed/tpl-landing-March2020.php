@@ -792,6 +792,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script type="text/javascript" src="<?php echo bloginfo('template_directory'); ?>/js/jquery.responsiveTabs.min.js"></script>
 <script type="text/javascript" src="<?php echo bloginfo('template_directory'); ?>/js/common.js"></script>
 <script type="text/javascript">
+	var textIndex = 0;
 	jQuery(document).ready(function(){
 		var cycleText = jQuery('.textcycle');
 		textCycle(cycleText);
