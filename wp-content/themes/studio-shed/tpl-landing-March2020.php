@@ -138,7 +138,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			margin-top: 5px!important;
 		}
 		
-		.priceless-creative-top .navbar, .priceless-creative-top .container .row, .priceless-creative-top .cool-features .row, #client-logo.container .row, #bottom-footer .container .row {
+		.priceless-creative-top .navbar, .priceless-creative-top .container .row, .cool-features .row, #client-logo.container .row, #bottom-footer .container .row {
 			width: 100%!important;
 		}
 			.priceless-creative-top {
@@ -147,7 +147,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 	background-size: auto!important;
 }
-		.priceless-creative-top .cool-features {
+		.cool-features {
 			background: rgba(14,28,44,1);
 			color: #fff;
 			padding: 20px 0px 20px;
@@ -266,7 +266,7 @@ img.holidaty-ornament {
 #header,.priceless-creative-top .container, #footer .container {
 	background-color: transparent!important;
 }
-.priceless-creative-top .container .row,.priceless-creative-top .cool-features .row,#main-content .row, #client-logo.container .row, #bottom-footer .container .row  {
+.priceless-creative-top .container .row, .cool-features .row,#main-content .row, #client-logo.container .row, #bottom-footer .container .row  {
 		max-width: 1140px!important;
 		margin: 0 auto!important;
 }
@@ -356,7 +356,7 @@ section#client-logo img {
     margin: 0 auto;
     text-align: center;
 }
-.priceless-creative-top .cool-features {
+.cool-features {
 		 background: rgba(17,17,17,.9);	
 		 color: #fff;
 		 text-align: center;
@@ -551,9 +551,30 @@ a.but:hover {
 		.col-3 p {
 			line-height:1.2em;
 			color: #252525;
-			]
-
-		
+		}
+		/* Wellness LP CSS */
+	    .room-image-preview{
+	    }
+	    .room-image-preview .row{
+	    	max-width: initial;
+	    }	    
+	    .room-image-preview .col-4{
+	    	padding: 0;
+	    }
+	    #ship-fast.container{
+	    	padding:  100px 0;
+	    }
+	    #ship-fast.container .row{
+	    }
+	    #ship-fast.container .row .col-3{
+	    	width:  33.3%;
+	    }
+	    #ship-fast.container .row2 .col-3:first-child{
+	    	margin-left: 17%;
+	    }
+	    #main-content.container .row{
+	    	max-width: 70% !important;
+	    }
 	</style>
 	
 	<script src="https://qikrg2ve4526wc3c3ntlhj1e-wpengine.netdna-ssl.com/wp-content/themes/studio-shed/assets/js/jquery-3.3.1.js"></script>
@@ -562,6 +583,7 @@ a.but:hover {
 
 	<!-- End new header ref  -->
   </head>
+    }
 <body <?php body_class(); ?>>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFQVBLT"
@@ -631,7 +653,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<h3>Ships in 2-3 weeks.</h3>
 			</div>
 			<div class="block-news1">
-				<div class="row">
+				<div class="row row1">
 					<div id="" class="clearfix">
 						<div id="column1" class="col-3">
 							<a href="/products/signature-series/shed-types/"><img src="/wp-content/uploads/2020/02/ship-fast-solitude.png" alt="Solitude, Your Turnkey Backyard Sanctuary, Starting at $11,800" ></a>
@@ -644,12 +666,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						</div>
 					</div>
 				</div>
-				<div class="row">
+				<div class="row row2">
 					<div id="" class="clearfix">
-						<div id="column1" class="col-2">
+						<div id="column1" class="col-3">
 							<a href="/products/signature-series/shed-types/"><img src="/wp-content/uploads/2020/02/ship-fast-telluride.png" alt="Telluride, Light-Filled Backyard Retreat or Studio, Starting at $12,495" ></a>							
 						</div>						
-						<div id="column1" class="col-2">
+						<div id="column1" class="col-3">
 							<a href="/products/signature-series/shed-types/"><img src="/wp-content/uploads/2020/02/ship-fast-medano.png" alt="Medano, The Ultimate Backyard Retreat, Starting at $13,700" ></a>							
 						</div>
 					</div>
