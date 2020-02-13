@@ -557,6 +557,10 @@ a.but:hover {
 			color: #252525;
 		}
 		/* Wellness LP CSS */
+		h2.textcycle ~ .textcycle{
+			display: none;
+		}
+		.textcycle
 	    .room-image-preview{
 	    }
 	    .room-image-preview .row{
@@ -634,7 +638,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<div id="title_head">
 							<!-- <h1><?php the_title(); ?></h1> -->
 							<h1>Room.</h1>
-            <h2 class="subhead"><?php echo $top_text_left; ?></h2>
+            <h2 class="subhead textcycle"><?php echo $top_text_left; ?></h2>
+            <h2 class="subhead textcycle">For yoga.</h2>
+            <h2 class="subhead textcycle">For reflection.</h2>
+            <h2 class="subhead textcycle">for change.</h2>
 			<p><?php echo $top_text_left_copy; ?></p>
 <a href="<?php echo $button_news_url; ?>" class="but"><?php echo $button_top_text; ?></a>
 			</div>
@@ -784,6 +791,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script type="text/javascript" src="<?php echo bloginfo('template_directory'); ?>/bootrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo bloginfo('template_directory'); ?>/js/jquery.responsiveTabs.min.js"></script>
 <script type="text/javascript" src="<?php echo bloginfo('template_directory'); ?>/js/common.js"></script>
+<script type="text/javascript">
+	$ss = jQuery.noConflict();
+	$ss(document).ready(function(){
+		var cycleText = $ss('.textcycle');
+		textCycle(cycleText);
+	});
+	textCycle = function(s){
+		++textIndex;
+		s.eq(textIndex % s.length).fadeIn(2000).delay(2000).fadeOut(2000,textCycle(s));
+	};
+</script>
 <?php wp_footer(); ?>
 </body>
 </html>
