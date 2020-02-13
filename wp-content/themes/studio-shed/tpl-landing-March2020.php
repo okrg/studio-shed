@@ -413,7 +413,7 @@ a.but {
     border: 1px solid transparent;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, .3);
     -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, .3);
-	font-weight: bold;
+	font-weight: normal;
 	letter-spacing: 2px;
 }
 a.but:hover {
