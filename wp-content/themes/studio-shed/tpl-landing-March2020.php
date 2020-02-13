@@ -238,8 +238,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			    max-width: 100%;
 			}
 			img.holidaty-ornament {
-			    width: 90px;
-			    left: 25px;
+			    width: 120px;
+			    right: 5%;
 			}
 			@keyframes load_down{
 			    from{opacity:0;top:-250px;}
