@@ -95,6 +95,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     background-attachment: scroll;
     background-position: top center!important;
 	background-size: cover!important;
+	max-height: 600px;
 }
 		img.holidaty-ornament{
     width:125px;
@@ -641,7 +642,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<div id="below-top-btn"><?php echo $lower_header; ?></div>
 		</div>
 		</section>
-		<section class="room-image-preview" >
+	</div>
+	</div>
+
+	<section class="room-image-preview" >
 		<div class="row " >
 
 			<div class="clearfix" id="">
@@ -654,8 +658,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		
 		</div>
 	</section>
-	</div>
-	</div>
 	
 	<section id="ship-fast" class="container one-column">
 		<div class="news shadow">
