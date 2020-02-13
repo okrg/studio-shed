@@ -345,7 +345,7 @@ section#client-logo img {
 		font-family: "Futura-PT-Book";
 		text-align: center;
 		color: #fff;
-		font-size: 1.6em;
+		font-size: 4.8em;
 		padding: 110px 0 0px;
 		background: transparent;
 		text-transform: uppercase;
@@ -558,7 +558,6 @@ a.but:hover {
 		}
 		/* Wellness LP CSS */
 	    .room-image-preview{
-	    	margin-top: 7%;
 	    }
 	    .room-image-preview .row{
 	    	max-width: initial;
@@ -629,7 +628,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </nav>
     </div>
   </header>
-	<section class="container"><img class='holidaty-ornament' src='https://www.studio-shed.com/wp-content/uploads/2019/11/ornament-offer.png' >
+	<section class="container"><img class='holidaty-ornament' src='/wp-content/uploads/2020/02/wellness-promo-badge.png' >
 	
 		<div class="row">
 			<div id="title_head">
