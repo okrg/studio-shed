@@ -109,7 +109,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 @keyframes load_down{
     from{opacity:0;top:-250px;}
-    to{opacity:1;top:0%;}
+    to{opacity:1;top:65%;}
     
 }@-webkit-keyframes load_down{
     from{opacity:0;top:-250px;}
