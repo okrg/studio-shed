@@ -10,7 +10,7 @@
     width:170px;
     position:absolute;
     top:100%;
-	right:22%;
+	right:8%;
     opacity:0;
     animation:load_down 3s forwards;
     -webkit-animation:load_down 3s forwards;
@@ -53,7 +53,9 @@
 				<?php echo get_the_post_thumbnail();  ?>
 				<?php if(get_field('promo_image')) : ?>
 					<div class="promotion banner-promo">
-						<img src="<?php echo get_field('promo_image'); ?>" alt="<?php echo get_field('promo_image_alt_text'); ?>">
+						<a href="<?php echo get_field('promo_link'); ?>">
+							<img src="<?php echo get_field('promo_image'); ?>" alt="<?php echo get_field('promo_image_alt_text'); ?>">
+						</a>
 					</div>
 				<?php endif; ?>
 				<div class="info textinfo  fall-promodiv">
