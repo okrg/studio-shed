@@ -12,14 +12,14 @@
     top:100%;
 	right:8%;
     opacity:0;
-    animation:load_down 3s forwards;
-    -webkit-animation:load_down 3s forwards;
+    animation:promo_load_down 3s forwards;
+    -webkit-animation:promo_load_down 3s forwards;
 }
-@keyframes load_down{
+@keyframes promo_load_down{
     from{opacity:0;top:-250px;}
     to{opacity:1;top:35%;}
     
-}@-webkit-keyframes load_down{
+}@-webkit-keyframes promo_load_down{
     from{opacity:0;top:-250px;}
     to{opacity:1;top:35%;}
     
@@ -35,11 +35,11 @@
     background-position: center center!important;
 	background-size: cover!important;
 }
-@keyframes load_down{
+@keyframes promo_load_down{
     from{opacity:0;top:-250px;}
     to{opacity:1;top:3%;}
     
-}@-webkit-keyframes load_down{
+}@-webkit-keyframes promo_load_down{
     from{opacity:0;top:-250px;}
     to{opacity:1;top:3%;}
     
