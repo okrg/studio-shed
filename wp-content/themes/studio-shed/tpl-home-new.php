@@ -4,6 +4,26 @@
  */
 ?>
 <style>
+.banner-home .banner-promo{
+}
+.banner-home .banner-promo img{
+    width:170px;
+    position:absolute;
+    top:100%;
+	right:22%;
+    opacity:0;
+    animation:load_down 3s forwards;
+    -webkit-animation:load_down 3s forwards;
+}
+@keyframes load_down{
+    from{opacity:0;top:-250px;}
+    to{opacity:1;top:35%;}
+    
+}@-webkit-keyframes load_down{
+    from{opacity:0;top:-250px;}
+    to{opacity:1;top:35%;}
+    
+}
 @media only screen and (max-width: 500px){
 	img.attachment-post-thumbnail.size-post-thumbnail.wp-post-image {
     display: none;
@@ -15,6 +35,15 @@
     background-position: center center!important;
 	background-size: cover!important;
 }
+@keyframes load_down{
+    from{opacity:0;top:-250px;}
+    to{opacity:1;top:3%;}
+    
+}@-webkit-keyframes load_down{
+    from{opacity:0;top:-250px;}
+    to{opacity:1;top:3%;}
+    
+}
 }
 </style>
 <?php get_header('new');?>
@@ -22,6 +51,11 @@
 	<div class="main-content">
 			<div class="block-main banner-home" style="background: url('') no-repeat center center;">
 				<?php echo get_the_post_thumbnail();  ?>
+				<?php if(get_field('promo_image')) : ?>
+					<div class="promotion banner-promo">
+						<img src="<?php echo get_field('promo_image'); ?>" alt="<?php echo get_field('promo_image_alt_text'); ?>">
+					</div>
+				<?php endif; ?>
 				<div class="info textinfo  fall-promodiv">
 					<h2><?php echo get_field( "image_title" ); ?></h2>
 					<p class="des">
