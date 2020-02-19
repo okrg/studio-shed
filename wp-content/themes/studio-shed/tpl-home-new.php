@@ -35,13 +35,18 @@
     background-position: center center!important;
 	background-size: cover!important;
 }
+.banner-home .banner-promo img{
+	right: 0;
+	left: 0;
+	margin: 0 auto;
+}
 @keyframes promo_load_down{
     from{opacity:0;top:-250px;}
-    to{opacity:1;top:3%;}
+    to{opacity:1;top:15%;}
     
 }@-webkit-keyframes promo_load_down{
     from{opacity:0;top:-250px;}
-    to{opacity:1;top:3%;}
+    to{opacity:1;top:15%;}
     
 }
 }
