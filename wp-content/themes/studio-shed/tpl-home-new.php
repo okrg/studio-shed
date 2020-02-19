@@ -42,11 +42,11 @@
 }
 @keyframes promo_load_down{
     from{opacity:0;top:-250px;}
-    to{opacity:1;top:15%;}
+    to{opacity:1;top:25%;}
     
 }@-webkit-keyframes promo_load_down{
     from{opacity:0;top:-250px;}
-    to{opacity:1;top:15%;}
+    to{opacity:1;top:25%;}
     
 }
 }
