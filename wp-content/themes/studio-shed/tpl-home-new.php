@@ -13,7 +13,7 @@
 	right:8%;
     opacity:0;
     animation:promo_load_down 3s forwards;
-    -webkit-animation:promo_load_down 3s forwards;
+    /* -webkit-animation:promo_load_down 3s forwards;*/
 }
 @keyframes promo_load_down{
     from{opacity:0;top:-250px;}
