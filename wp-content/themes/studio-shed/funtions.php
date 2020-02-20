@@ -15,6 +15,7 @@ function enqueue_parent_styles() {
 function register_my_menus() {
   register_nav_menus(
     array(
+	  'flyout-menu' => __( 'Flyout' ),
       'footer1-menu' => __( 'Footer One' ),
       'footer2-menu' => __( 'Footer Two' ),
       'footer3-menu' => __( 'Footer Three' ),

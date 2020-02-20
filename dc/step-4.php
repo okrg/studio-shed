@@ -26,7 +26,7 @@
       </div>
     </section>
 
-    <section class="dc-payment-contact">
+    <section class="dc-payment-contact" style="display: none;">
       <div class="row">
         <div class="col-md-8 offset-2">
           <h2 class="text-center initial-payment">Contact us to help you get started</h2>

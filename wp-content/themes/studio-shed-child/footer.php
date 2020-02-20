@@ -1,12 +1,202 @@
 
 <style>
+
+
+	
+	
+	/* header */
+	
+li.logo a {
+    padding-left: 0;
+    margin-left: 0;
+}
+	@media (min-width: 1200px){
+.main-menu-ul>li>a {
+    padding: 22px 30px;
+}
+	}
+@media (min-width: 992px){
+.main-menu-ul>li>a {
+	   color: #000;
+		}
+.main-menu-ul>li:hover>a:not(.navbar-brand) {
+    background-color: #f4f4f4;
+    color: #000!important;
+}
+.main-menu-ul>li:hover>a:hover {
+    color: #000!important;
+}
+.featured-text p {
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    padding: 55% 40px 0;
+}
+.featured-shed-btns p {
+	text-align: center;
+		}
+.featured-shed-btns a {
+    display: inline-block!important;
+	background-color: #ffa544;
+	margin: 10px 40px!important;
+	color: #fff!important;
+		}
+	}
+.featured-shed-btns a:hover{
+	border: solid #ffa544 2px;
+    color: #ffa544;
+    background-color: #ffffff;
+	}
+li.cell a   {
+	background: url(https://www.studio-shed.com/wp-content/uploads/2020/02/menu-phone.png) no-repeat 10px center;
+		}
+	
+#menuToggle
+{
+display: block;
+    position: relative;
+    z-index: 1;
+    -webkit-user-select: none;
+    user-select: none;
+    padding: 5px 1px 2px 1px;
+    border: #999 solid 1px;
+    margin: 13px 10px 0;
+}
+
+}
+
+#menuToggle a
+{
+  text-decoration: none;
+  color: #000000;
+  transition: color 0.3s ease;
+}
+
+#menuToggle a:hover
+{
+  color: #ccc;
+}
+
+
+#menuToggle input
+{
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  cursor: pointer;
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span
+{
+  display: block;
+  width: 20px;
+  height: 1px;
+  margin-bottom: 5px;
+  position: relative;
+  margin-top: 2px;
+  background: #999999;
+  border-radius: 3px;
+  margin-left: 4px;
+  margin-right: 4px;
+  z-index: 1;
+  
+  transform-origin: 4px 0px;
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#menuToggle span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked ~ span
+{
+    opacity: 1;
+    transform: rotate(45deg) translate(-0px, 1px);
+    background: #000;
+    width: 26px;
+    margin-left: 0px;
+    margin-right: 0px;
+    height: 3px;
+
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, -1px);
+}
+#menu-slide
+{
+  position: absolute;
+  width: 300px;
+  margin: -100px 0 0 -250px;
+  padding: 50px;
+  padding-top: 60px;
+  
+  background: #d9d9d9;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  border: 1px #9a9a9a solid;
+  transform-origin: 0% 0%;
+transform: translate(0, -500PX);  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu-slide li
+{
+  padding: 10px 0;
+  font-family: 'Tisa-Sans-Pro', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+#menuToggle input:checked ~ ul
+{
+  transform: none;
+}
 /*footer */
-	footer h3 {
+footer h3 {
 	font-family: "Futura-PT-Heavy"!important;
-		font-size: 1.3em;
+	font-size: 1.3em;
 
 	}
-	footer .container {
+footer .container {
 		background: transparent;
 	}
 .footer-subscribe {
@@ -24,7 +214,7 @@
 .footer-subscribe li{
 	list-style-position: outside;
 	/*list-style-image: url(/wp-content/uploads/2020/01/footer-subscribe-check.png);*/
-	padding-left: 20px;
+	padding-left: 20px!important;
 	font-size: 15px;
 	}
 	li.check-li {
@@ -80,6 +270,11 @@ background: #ffffff;
     clear: both;
 	float: right;
 }
+.footer-subscribe .name_first, 
+
+span#input_18_1_3_container.name_first {
+		margin-right: 1%!important;
+	}
 @media (max-width:600px){
 .footer-subscribe span#input_18_1_3_container, .footer-subscribe span#input_18_1_6_container {
     width: 100%;

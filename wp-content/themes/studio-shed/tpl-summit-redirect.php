@@ -4,7 +4,7 @@
  */
 ?>
 <?php get_header('new');?>
-<?php $page_id = 3265; ?>
+<?php //$page_id = 3265; ?>
 <div class="main-content">
 	<div class="block-main">
 		<div class="bg-gradient"></div>
