@@ -427,7 +427,7 @@ a .menuItem111:hover{
 }
 .gform_wrapper span.gform_description {
     font-weight: 400;
-    display: none;
+    display: none !important;
 }
 iframe {
     margin: -11px auto;
@@ -692,4 +692,15 @@ iframe {
 	.page-template-tpl-summit #horizontalTab .posttab .tab-left {
      	padding-right: 5px; 
 	}
+}
+
+.page-template-tpl-quote-v2-php.page-id-2099 .gform_wrapper.gf_browser_chrome .gfield_checkbox li input, 
+.page-template-tpl-quote-v2-php.page-id-2099 .gform_wrapper.gf_browser_chrome .gfield_checkbox li .page-template-tpl-quote-v2-php.page-id-2099 input[type=checkbox], 
+.page-template-tpl-quote-v2-php.page-id-2099 .gform_wrapper.gf_browser_chrome .gfield_radio li input[type=radio],
+.page-template-tpl-quote-v2-php.page-id-2099 .mid-form input[type=radio]{
+	margin-top: -5px !important;
+	margin-right: 6px !important;
+}
+.page-template-tpl-quote-v2-php.page-id-2099 .gform_wrapper .gfield_radio li label{
+	margin-top: 0;
 }

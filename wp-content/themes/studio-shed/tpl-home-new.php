@@ -4,6 +4,26 @@
  */
 ?>
 <style>
+.banner-home .banner-promo{
+}
+.banner-home .banner-promo img{
+    width:170px;
+    position:absolute;
+    top:100%;
+	right:8%;
+    opacity:0;
+    animation:promo_load_down 3s forwards;
+    -webkit-animation:promo_load_down 3s forwards;
+}
+@keyframes promo_load_down{
+    from{opacity:0;top:-250px;}
+    to{opacity:1;top:35%;}
+    
+}@-webkit-keyframes promo_load_down{
+    from{opacity:0;top:-250px;}
+    to{opacity:1;top:35%;}
+    
+}
 @media only screen and (max-width: 500px){
 	img.attachment-post-thumbnail.size-post-thumbnail.wp-post-image {
     display: none;
@@ -15,6 +35,20 @@
     background-position: center center!important;
 	background-size: cover!important;
 }
+.banner-home .banner-promo img{
+	right: 0;
+	left: 0;
+	margin: 0 auto;
+}
+@keyframes promo_load_down{
+    from{opacity:0;top:-250px;}
+    to{opacity:1;top:25%;}
+    
+}@-webkit-keyframes promo_load_down{
+    from{opacity:0;top:-250px;}
+    to{opacity:1;top:25%;}
+    
+}
 }
 </style>
 <?php get_header('new');?>
@@ -22,6 +56,13 @@
 	<div class="main-content">
 			<div class="block-main banner-home" style="background: url('') no-repeat center center;">
 				<?php echo get_the_post_thumbnail();  ?>
+				<?php if(get_field('promo_image')) : ?>
+					<div class="promotion banner-promo">
+						<a href="<?php echo get_field('promo_link'); ?>">
+							<img src="<?php echo get_field('promo_image'); ?>" alt="<?php echo get_field('promo_image_alt_text'); ?>">
+						</a>
+					</div>
+				<?php endif; ?>
 				<div class="info textinfo  fall-promodiv">
 					<h2><?php echo get_field( "image_title" ); ?></h2>
 					<p class="des">

@@ -8,11 +8,12 @@ class GF_Installation_Wizard {
 	private $_step_class_names = array();
 
 	function __construct(){
-		$path = GFCOmmon::get_base_path()  . '/includes/wizard/steps/';
+		$path = GFCommon::get_base_path() . '/includes/wizard/steps/';
 		require_once( $path . 'class-gf-installation-wizard-step.php' );
 		$classes = array();
-		foreach ( glob( $path . 'class-gf-installation-wizard-step-*.php' ) as $filename ) {
-			require_once( $filename );
+		$files   = GFCommon::glob_require_once( 'class-gf-installation-wizard-step-*.php', $path );
+
+		foreach ( $files as $filename ) {
 			$regex = '/class-gf-installation-wizard-step-(.*?).php/';
 			preg_match( $regex, $filename, $matches );
 			$class_name = 'GF_Installation_Wizard_Step_' . str_replace( '-', '_', $matches[1] );
@@ -37,6 +38,8 @@ class GF_Installation_Wizard {
 	}
 
 	public function display(){
+
+		update_option( 'gform_pending_installation', true );
 
 		$name = rgpost( '_step_name' );
 
@@ -82,13 +85,8 @@ class GF_Installation_Wizard {
 
 		}
 
-		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG || isset( $_GET['gform_debug'] ) ? '' : '.min';
-
-		// register admin styles
-		wp_register_style( 'gform_admin', GFCommon::get_base_url() . "/css/admin{$min}.css" );
+		// Print admin styles
 		wp_print_styles( array( 'jquery-ui-styles', 'gform_admin' ) );
-
-
 
 		?>
 
@@ -211,13 +209,13 @@ class GF_Installation_Wizard {
 		return $this->get_step( $next_step_name );
 	}
 
-	public function complete_installation(){
+	public function complete_installation() {
 		foreach ( array_keys( $this->_step_class_names ) as $step_name ) {
 			$step = $this->get_step( $step_name );
 			$step->install();
 			$step->flush_values();
 		}
-		delete_option( 'gform_pending_installation' );
+		update_option( 'gform_pending_installation', false );
 	}
 
 
