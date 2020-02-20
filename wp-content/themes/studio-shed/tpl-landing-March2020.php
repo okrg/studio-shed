@@ -647,8 +647,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </nav>
     </div>
   </header>
-	<section class="container"><img class='holidaty-ornament' src='/wp-content/uploads/2020/02/wellness-promo-badge.png' >
-	
+	<section class="container">
+
+		<!--
+		<img class='holidaty-ornament' src='/wp-content/uploads/2020/02/wellness-promo-badge.png' >
+		-->
+		
 		<div class="row">
 			<div id="title_head">
 							<!-- <h1><?php the_title(); ?></h1> -->
