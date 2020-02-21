@@ -17,14 +17,11 @@ if (!function_exists('getallheaders')) {
 }
 $headers = getallheaders();
 
-print_r($headers);
-print_r($_SERVER);
-print_r($_POST);
-exit();
 
 
-if (isset($headers['x-api-key'])) {
-  if ($headers['x-api-key'] !== 'e4XaFZRT1TyvLAy3KHdTnU20MluyYotL') {
+
+if (isset($headers['X-Api-Key'])) {
+  if ($headers['X-Api-Key'] !== 'e4XaFZRT1TyvLAy3KHdTnU20MluyYotL') {
     exit(json_encode(['error' => 'Wrong API key.']));
   }
 } else {
@@ -33,17 +30,15 @@ if (isset($headers['x-api-key'])) {
 include('../filebase.php');
 $json = json_encode($_POST);
 $data = json_decode($json);
-
-
+//print_r($headers);
+//print_r($_SERVER);
+//print_r($_POST);
+//exit();
 //exit(json_encode($json));
 
-
-//$filepath = 'data/'.$uid.'.json';
 if( empty($data->product->uniqueid) || !isset($data->product->uniqueid) ) {
   exit(json_encode(['error' => 'No uid??']));
 }
-
-
 //$json = json_decode($json, true);
 //if( !$json ) {
 //  exit(json_encode(['error' => 'Empty JSON']));
