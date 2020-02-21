@@ -16,6 +16,13 @@ if (!function_exists('getallheaders')) {
   }
 }
 $headers = getallheaders();
+
+print_r($headers);
+print_r($_SERVER);
+print_r($_POST);
+exit();
+
+
 if (isset($headers['x-api-key'])) {
   if ($headers['x-api-key'] !== 'e4XaFZRT1TyvLAy3KHdTnU20MluyYotL') {
     exit(json_encode(['error' => 'Wrong API key.']));
@@ -27,10 +34,7 @@ include('../filebase.php');
 $json = json_encode($_POST);
 $data = json_decode($json);
 
-print_r($headers);
-print_r($_SERVER);
-print_r($_POST);
-exit();
+
 //exit(json_encode($json));
 
 
