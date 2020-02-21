@@ -84,7 +84,7 @@ $hash = md5($salt.$uid);
 exit(json_encode([
   'code' => 'success',
   'response' => 'savedRecord',
-  'redirectURL' => 'https://dev2-studio-shed.pantheonsite.io/dc?h='.$hash.'&u='.$uid;
+  'redirectURL' => 'https://dev2-studio-shed.pantheonsite.io/dc?h='.$hash.'&u='.$uid
   ]));
 
 
