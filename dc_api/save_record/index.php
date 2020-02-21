@@ -1,4 +1,7 @@
 <?php
+$rest_json = file_get_contents("php://input");
+$_POST = json_decode($rest_json, true);
+
 header('Content-Type: application/json');
 header('Cache-Control: no-cache, must-revalidate, max-age=0');
 if (!function_exists('getallheaders')) {
@@ -14,7 +17,7 @@ if (!function_exists('getallheaders')) {
 }
 $headers = getallheaders();
 if (isset($headers['x-api-key'])) {
-  if ($headers['x-api-key'] !== '1234567890') {
+  if ($headers['x-api-key'] !== 'e4XaFZRT1TyvLAy3KHdTnU20MluyYotL') {
     exit(json_encode(['error' => 'Wrong API key.']));
   }
 } else {
@@ -23,8 +26,11 @@ if (isset($headers['x-api-key'])) {
 include('../filebase.php');
 $json = json_encode($_POST);
 $data = json_decode($json);
-//print_r($data->product->uniqueid);
-//exit();
+
+print_r($headers);
+print_r($_SERVER);
+print_r($_POST);
+exit();
 //exit(json_encode($json));
 
 
