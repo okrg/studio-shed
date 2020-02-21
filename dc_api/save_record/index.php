@@ -36,7 +36,9 @@ $data = json_decode($json);
 //exit();
 //exit(json_encode($json));
 
-if( empty($data->product->uniqueid) || !isset($data->product->uniqueid) ) {
+$uid = $data->product->uniqueid;
+
+if( empty($uid) || !isset($uid) ) {
   exit(json_encode(['error' => 'No uid??']));
 }
 //$json = json_decode($json, true);
@@ -44,8 +46,8 @@ if( empty($data->product->uniqueid) || !isset($data->product->uniqueid) ) {
 //  exit(json_encode(['error' => 'Empty JSON']));
 //}
 
-$record = $database->get($data->product->uniqueid);
-$record->uniqueid = $data->product->uniqueid;
+$record = $database->get($uid);
+$record->uniqueid = $uid;
 $record->utm_source = $data->params->utm_source;
 $record->utm_medium = $data->params->utm_medium;
 $record->utm_campaign = $data->params->utm_campaign;
@@ -61,7 +63,7 @@ $record->phone = $data->customer->phone;
 $record->zip = '';
 $record->city = '';
 
-$record->model = 'Unknown';
+$record->model = $data->product->model;
 $record->depth = $data->product->depth;
 $record->length = $data->product->length;
 $record->total = $data->product->cart->total;
@@ -74,9 +76,16 @@ foreach($data->product->cart->items as $item) {
   $record->$name = $item->description;
   $record->$price = $item->price;
 }
-
 $record->save();
-exit(json_encode(['success' => 'saveRecord']));
+
+$salt = 'xK-<cH];"a:Yd=40^zx)wCXyYiw#bH';
+$hash = md5($salt.$uid);
+
+exit(json_encode([
+  'code' => 'success',
+  'response' => 'savedRecord',
+  'redirectURL' => 'https://dev2-studio-shed.pantheonsite.io/dc?h='.$hash.'&u='.$uid;
+  ]));
 
 
 ?>
