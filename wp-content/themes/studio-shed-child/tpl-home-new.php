@@ -6,7 +6,7 @@
 <!--	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<link rel="stylesheet" href="<?php// echo get_template_directory_uri() ?>/assets/lib/owlcarousel/css/owl.carousel.min.css">
 	<link rel="stylesheet" href="<?php// echo get_template_directory_uri() ?>/assets/lib/owlcarousel/css/owl.theme.min.css"> -->
-	<link href="<?php echo get_template_directory_uri() ?>/wp-content/themes/studio-shed-child/css/style-home.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="/wp-content/themes/studio-shed-child/css/style-home.css" rel="stylesheet" type="text/css" media="all" />
 	/<!--<link href="<?php //echo get_template_directory_uri() ?>/assets/css/custom.css" rel="stylesheet" type="text/css" media="all" />-->
 <style>
 @media only screen and (max-width: 500px){

@@ -1,0 +1,150 @@
+{
+  "customer": {
+    "contact": true,
+    "newsletter": true,
+    "phone": "2085595350",
+    "firstName": "Craig",
+    "lastName": "Craig",
+    "email": "cboobar@idearoominc.com"
+  },
+  "product": {
+    "uniqueid": "craig-200218154413",
+    "depth": 10,
+    "length": 18,
+    "front": "F18-60L-D36R-BL",
+    "back": "B18-18L-BL",
+    "left": "L10x-18C-BL",
+    "right": "R10x-W1L-BL",
+    "sidingColor": "Volcano Gray",
+    "doorColor": "Fireworks",
+    "metalColor": "Bronze",
+    "doorStyleKey": "full-lite-glass-door",
+    "elevation": "iso",
+    "configUrl": "http://localhost:8081/configurator.html?depth=10&length=18&trim=Lap%2FMetal&sidingColor=Volcano+Gray&doorColor=Fireworks&eaveColor=Natural+Stain&metalColor=&floorOption=Vermont+Maple&bathroomFloorOption=&cabinetColor=&countertopColor=&options%5B%5D=Shortened+Eaves&options%5B%5D=Dark+Bronze+Aluminum&front=F18-60L-D36R-BL&back=B18-18L-BL&left=L10x-18C-BL&right=R10x-W1L-BL&foundation=Foundation&doorStyleKey=full-lite-glass-door",
+    "imageUrl": null,
+    "cart": {
+      "items": [
+        {
+          "name": "Size",
+          "sku": null,
+          "description": "10' x 18' Base Price",
+          "price": 13840,
+          "category": "building-size"
+        },
+        {
+          "name": "Siding",
+          "sku": null,
+          "description": "Lap/Metal",
+          "price": 0,
+          "category": "exterior-siding"
+        },
+        {
+          "name": "Left",
+          "sku": "L10x-18C-BL",
+          "description": "Centered 18\" x 36\" Operable Window",
+          "price": 525,
+          "category": "exterior-wall"
+        },
+        {
+          "name": "Back",
+          "sku": "B18-18L-BL",
+          "description": "Left Justified 18\" x 36\" Operable Window",
+          "price": 525,
+          "category": "exterior-wall"
+        },
+        {
+          "name": "Front",
+          "sku": "F18-60L-D36R-BL",
+          "description": "Left Justified 60\" x 30\" Fixed Over Operable Window, Right Justified 36\" Door",
+          "price": 1395,
+          "category": "exterior-wall"
+        },
+        {
+          "name": "Right",
+          "sku": "R10x-W1L-BL",
+          "description": "Left Justified Vistalite (Fixed Vertical Window)",
+          "price": 950,
+          "category": "exterior-wall"
+        },
+        {
+          "name": "Door Color",
+          "sku": null,
+          "description": "Fireworks",
+          "price": 300,
+          "category": "exterior-color"
+        },
+        {
+          "name": "Eaves Color",
+          "sku": null,
+          "description": "Natural Stain",
+          "price": 1260,
+          "category": "exterior-color"
+        },
+        {
+          "name": "Siding Color",
+          "sku": null,
+          "description": "Volcano Gray",
+          "price": 0,
+          "category": "exterior-color"
+        },
+        {
+          "name": "Accessory",
+          "sku": null,
+          "description": "Dark Bronze Aluminum",
+          "price": 1440,
+          "category": "exterior-accessory"
+        },
+        {
+          "name": "Accessory",
+          "description": "Full-Lite Glass Door",
+          "price": 390,
+          "category": "exterior-accessory"
+        },
+        {
+          "name": "Accessory",
+          "sku": null,
+          "description": "Back Eaves Shortened to 6\"",
+          "price": 180,
+          "category": "interior-accessory"
+        },
+        {
+          "name": "Foundation",
+          "sku": null,
+          "description": "",
+          "price": 0,
+          "priceListText": "TBD",
+          "category": "foundation"
+        },
+        {
+          "name": "Service",
+          "sku": null,
+          "description": "",
+          "price": 0,
+          "priceListText": "TBD",
+          "category": "service"
+        },
+        {
+          "name": "Shipping",
+          "sku": null,
+          "description": "",
+          "price": 0,
+          "priceListText": "TBD",
+          "category": "shipping"
+        }
+      ],
+      "total": 20805,
+      "baseTotal": 20805,
+      "payment": 10402.5,
+      "discount": 0,
+      "discountAmount": 0,
+      "discountPercent": 0
+    }
+  },
+  "params": {
+    "utm_source": "(direct)",
+    "utm_medium": "(none)",
+    "utm_campaign": "(not set)",
+    "gclid": "undefined",
+    "visitor_id": "c32b183e-bb73-40e6-8c27-2bbd241368c2"
+  }
+}

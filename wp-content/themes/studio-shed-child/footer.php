@@ -1,7 +1,30 @@
 
 <style>
 
-
+/*BUTTON */
+a.but{
+	display: block;
+	overflow: hidden;
+	margin: 0 auto;
+	padding: 0;
+	width: 200px;
+	line-height: 50px;
+	height: 50px;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: none;
+	background-color: #fba445;
+	color: #fff;
+	font-size: 16px;
+	border: 1px solid transparent;
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, .3);
+	-webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, .3);
+}
+a.but:hover{
+	color: #fba445;
+	background-color: #fff;
+	border: 1px solid #fba445;
+}
 	
 	
 	/* header */
@@ -50,7 +73,19 @@ li.logo a {
 li.cell a   {
 	background: url(https://www.studio-shed.com/wp-content/uploads/2020/02/menu-phone.png) no-repeat 10px center;
 		}
-	
+#menu-slide li.cell a {
+    background: url(https://www.studio-shed.com/wp-content/uploads/2020/02/menu-phone.png) no-repeat left center;
+    color: #000;
+    font-weight: initial;
+    padding-left: 20px;
+}
+#menu-header-flyout a {
+    color: #000;
+	font-weight: initial;
+}	
+#menu-header-flyout a:hover {
+    color: #333;
+}
 #menuToggle
 {
 display: block;
@@ -136,8 +171,8 @@ display: block;
     transform: rotate(45deg) translate(-0px, 1px);
     background: #000;
     width: 26px;
-    margin-left: 0px;
-    margin-right: 0px;
+    margin-left: 1px;
+    margin-right: 1px;
     height: 3px;
 
 }
@@ -163,10 +198,8 @@ display: block;
   position: absolute;
   width: 300px;
   margin: -100px 0 0 -250px;
-  padding: 50px;
-  padding-top: 60px;
-  
-  background: #d9d9d9;
+  padding: 62px 50px 50px 40px;
+	background: #d9d9d9;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
@@ -176,6 +209,9 @@ transform: translate(0, -500PX);
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
 
+#menu-header-flyout li {
+    padding-left: 20px!important;
+}
 #menu-slide li
 {
   padding: 10px 0;
@@ -199,6 +235,9 @@ footer h3 {
 footer .container {
 		background: transparent;
 	}
+footer .container .row {
+    max-width: 100%;
+}
 .footer-subscribe {
 	border-top: #999999 1px solid;
 	background: #EBEBEB!important;
@@ -270,11 +309,11 @@ background: #ffffff;
     clear: both;
 	float: right;
 }
-.footer-subscribe .name_first, 
+/*.footer-subscribe .name_first, 
 
 span#input_18_1_3_container.name_first {
 		margin-right: 1%!important;
-	}
+	} */
 @media (max-width:600px){
 .footer-subscribe span#input_18_1_3_container, .footer-subscribe span#input_18_1_6_container {
     width: 100%;
@@ -352,6 +391,11 @@ border-color: #ffa544;
     min-width: 220px;
     text-transform: uppercase;
 
+}
+.footer-escape button:hover {
+	color: #fba445;
+	background-color: #fff;
+	border: 2px solid #fba445;
 }
 	.footer-menus {
 		background: #000000;

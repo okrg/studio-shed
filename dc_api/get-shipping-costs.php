@@ -10,7 +10,7 @@ if( !empty($data) ) {
     case '92101':
     $shipping_costs = array(
       'shipping_time' => '3-4 weeks',
-      'shipping_cost' => '$2,500',
+      'shipping_cost' => '2500',
       'shipping_city_code' => 'CA-San Diego',
       'shipping_city_label' => 'San Diego, CA'
     );
@@ -18,7 +18,7 @@ if( !empty($data) ) {
     case '92008':
     $shipping_costs = array(
       'shipping_time' => '3-4 weeks',
-      'shipping_cost' => '$2,300',
+      'shipping_cost' => '2300',
       'shipping_city_code' => 'CA-Carlsbad',
       'shipping_city_label' => 'Carlsbad, CA'
     );

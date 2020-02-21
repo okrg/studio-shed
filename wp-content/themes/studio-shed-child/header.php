@@ -1230,7 +1230,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<span></span>
 				<span></span>
 				<ul id="menu-slide">
-					<li class="cell"><a href="tel:888-900-3933"><span class="icomoon icon-customer"></span>888.900.3933</a></li>
+					<li class="cell"><a href="tel:888-900-3933">888.900.3933</a></li>
 				  				<?php wp_nav_menu(array('theme_location' => 'flyout-menu', 'container' => '', 'menu_class' => '')); ?>
 
 				</ul>

@@ -25,9 +25,12 @@
     text-transform: uppercase;
 	box-shadow: 0 0 12px 0 #999;
 	margin: 10px 0 0 0;
-
-
 }	
+.footerss-choose button:hover {
+	color: #fba445;
+	background-color: #fff;
+	border: 2px solid #fba445;
+}
 	.footerss-choose .call-us {
     margin: 20px;
     text-transform: uppercase;

@@ -72,14 +72,23 @@
 	padding: 10px 0;
 
 }
-.model-product-list ul li.product-list-on {	
+/*.model-product-list ul li.product-list-on {	
 	background: #ffa11e;
 
-}
+}*/
 	.product-list-sec {
 		padding-top: 50px;
 		padding-bottom: 30px;
 	}
+.model-product-list ul li a.active {
+    color: #fff !important;
+    text-decoration: underline !important;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
 	#feature-top .container{
 		background: #f8f8f8;
 	}
@@ -110,7 +119,7 @@
     color: #ffa544;
     background-color: #ffffff;
 	}
-	/* models */
+	/* quick ship models */
 #childs-list {
     padding-top: 30px!important;
 	padding-bottom: 80px !important;
@@ -162,7 +171,7 @@
     letter-spacing: 2px;
     font-size: 18px;
 }	
-	.bottom-info .text .big, .products-page .head-bar p {
+.bottom-info .text .big, .products-page .head-bar p {
     font-family: 'Futura-PT-Book';
     text-transform: uppercase;
     font-size: 30px;
@@ -210,12 +219,15 @@
 	.tab-right p {
 		color: #333;
 	}
-#feature-1 .tab-left, #content .content-left,
-#feature-3 .tab-left, #content .content-left {
+#feature-1 .tab-left, 
+#content .content-left,
+#feature-2 .tab-left,
+#feature-3 .tab-left {
     padding-right: 50px;
 }
 
 #feature-1 .tab-left, #feature-1 .tab-right,
+#feature-2 .tab-left, #feature-2 .tab-right,
 #feature-3 .tab-left, #feature-3 .tab-right {
 	width: 50%;
     float: left;
@@ -223,7 +235,8 @@
 	#feature-1 .container,
 	#feature-2 .container,
 	#feature-3 .container,
-	#feature-4 .container
+	#feature-4 .container,
+	#feature-5 .container
 	{padding: 0 150px 100px 150px;
 	margin: 0 auto;
 	}
@@ -342,6 +355,7 @@ Tisa Sans Pro—Network resource(26 glyphs)
 while (have_posts()) : the_post();
     $images = get_field('list_images');
     $options = get_field('option');
+	$shedmodel = get_field('what_she');
     ?>
 
 
@@ -407,20 +421,25 @@ while (have_posts()) : the_post();
 					 <section id="childs-list" class="container" style="background-image: url(<?php the_field('lv2_bottom_background'); ?>);">
         <div class="inside">
             <?php
-            $lv3_product = new WP_Query(array(
+			$lv3_product = new WP_Query(array(
                 'post_type' => 'products',
                 'post_status' => 'publish',
                 'meta_key' => 'lv3_option_price',
                 'orderby' => 'meta_value_num',
                 'order' => 'ASC',
-                'posts_per_page' => -1,
-                'post_parent__in' => array( 1695 )
+                'posts_per_page' => -1
+               /* 'post_parent__in' => array( 1695 )*/
             ));
             if ($lv3_product->have_posts()) :
                 while ($lv3_product->have_posts()) :
                     $lv3_product->the_post();
+			$quickmodel = get_field('what_she');
+			$quickprice = get_field('lv3_option_price');
 
-                    if (get_field('lv3_option_price', $lv3_product->ID)) {
+			if (get_field('lv3_option_price', $lv3_product->ID) && $shedmodel == $quickmodel) {
+
+                   
+					
                         ?>
                         <div class="pr-box">
                             <div class="inside">
@@ -449,8 +468,13 @@ while (have_posts()) : the_post();
                         </div>
                         <?php
                     }
+			
+				
+		
                 endwhile;
                 wp_reset_postdata();
+			
+			
             endif;
             ?>
         </div>
