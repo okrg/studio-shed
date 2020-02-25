@@ -60,7 +60,8 @@ $record->email = $data->customer->email;
 $record->firstName = $data->customer->firstName;
 $record->lastName = $data->customer->lastName;
 $record->phone = $data->customer->phone;
-if($data->product->model) {
+
+if(isset($data->product->model)) {
   $record->model = $data->product->model;
 } else {
   $record->model = 'Signature';
