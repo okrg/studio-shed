@@ -11,14 +11,13 @@ if( !$data ) {
 }
 
 if( empty($uid) ) {
-  exit(json_encode(['error' => 'No uid??']));
+  exit(json_encode(['error' => 'Missing UID']));
 }
-
 
 $record = $database->get($uid);
 $record->foundation = $data['input']['foundation'];
 $record->foundationPrice = $data['input']['foundationPrice'];
 $record->save();
 
-$data['code'] = 'success';
+$data['code'] = 'updateRecordFoundationSuccess';
 exit(json_encode($data));

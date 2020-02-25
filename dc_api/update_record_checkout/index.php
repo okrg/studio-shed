@@ -11,9 +11,8 @@ if( !$data ) {
 }
 
 if( empty($uid) ) {
-  exit(json_encode(['error' => 'No uid??']));
+  exit(json_encode(['error' => 'Missing UID']));
 }
-
 
 $record = $database->get($uid);
 $record->paymentIntentAmount = ($data['input']['paymentIntentAmount']/100);

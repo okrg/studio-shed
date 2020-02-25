@@ -1,30 +1,18 @@
 <?php
-$rest_json = file_get_contents("php://input");
-$data = json_decode($rest_json, true);
-
 include('../headers.php');
 include('../filebase.php');
 
+$rest_json = file_get_contents("php://input");
+$data = json_decode($rest_json, true);
 $uid = $data['uid'];
-$city = $data['city'];
-$zip = $data['zip'];
-$shipping = $data['shipping'];
-$shippingPrice = $data['shippingPrice'];
 
-//print_r($data->product->uniqueid);
-//exit();
-//exit(json_encode($json));
-
-
-//$filepath = 'data/'.$uid.'.json';
-if( empty($uid) ) {
-  exit(json_encode(['error' => 'No uid??']));
+if( !$data ) {
+  exit(json_encode(['error' => 'Empty JSON']));
 }
 
-//$json = json_decode($json, true);
-//if( !$json ) {
-//  exit(json_encode(['error' => 'Empty JSON']));
-//}
+if( empty($uid) ) {
+  exit(json_encode(['error' => 'Missing UID']));
+}
 
 $record = $database->get($uid);
 $record->zip = $data['zip'];
@@ -36,5 +24,5 @@ $record->permitCost = $data['permit_cost'];
 $record->permitNotes = $data['permit_notes'];
 
 $record->save();
-$data['code'] = 'success';
+$data['code'] = 'updateRecordLocationSuccess';
 exit(json_encode($data));

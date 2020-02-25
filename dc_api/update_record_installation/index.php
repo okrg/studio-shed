@@ -11,14 +11,13 @@ if( !$data ) {
 }
 
 if( empty($uid) ) {
-  exit(json_encode(['error' => 'No uid??']));
+  exit(json_encode(['error' => 'Missing UID']));
 }
-
 
 $record = $database->get($uid);
 $record->installation = $data['input']['installation'];
 $record->installationPrice = $data['input']['installationPrice'];
 $record->save();
 
-$data['code'] = 'success';
+$data['code'] = 'updateRecordInstallationSuccess';
 exit(json_encode($data));

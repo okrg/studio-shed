@@ -11,7 +11,7 @@ if( !$data ) {
 }
 
 if( empty($uid) ) {
-  exit(json_encode(['error' => 'No uid??']));
+  exit(json_encode(['error' => 'Missing UID']));
 }
 
 $record = $database->get($uid);
@@ -19,5 +19,5 @@ $record->permitPlans = $data['input']['permitPlans'];
 $record->permitPlansPrice = $data['input']['permitPlansPrice'];
 $record->save();
 
-$data['code'] = 'updatedRecordPermitPlans';
+$data['code'] = 'updatedRecordPermitPlansSuccess';
 exit(json_encode($data));
