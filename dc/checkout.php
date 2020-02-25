@@ -1,23 +1,23 @@
+<?php include('includes/header.php'); ?>
+
 <?php
 require 'vendor/autoload.php';
 \Stripe\Stripe::setApiKey('sk_test_yvJN4lDIYjjUJmZnRkSQHfs4');
-$intent = \Stripe\PaymentIntent::create([
-  'amount' => 1099,
-  'currency' => 'usd',
-]);
 
-
-
-
+if(isset($_REQUEST['stripeFee'])) {
+  $amount = (int)$_REQUEST['stripeFee'];
+  $intent = \Stripe\PaymentIntent::create([
+    'amount' => $amount,
+    'currency' => 'usd',
+  ]);
+}
 ?>
-
-
-<?php include('includes/header.php'); ?>
 <script type="text/javascript">
   var stripe = Stripe('pk_test_dObY7AghoaRyd66ClG2wETRT');
   var clientSecret = '<?php echo $intent->client_secret; ?>';
   var elements = stripe.elements();
 </script>
+
 
 <main id="step-4">
   <div class="container">
@@ -44,27 +44,27 @@ $intent = \Stripe\PaymentIntent::create([
           <fieldset class="with-state">
             <label>
               <span>Name</span>
-              <input name="name" id="billing-name" class="field" placeholder="Jenny Rosen" required>
+              <input name="name" id="billing-name" class="field" required>
             </label>
             <label>
               <span>Email</span>
-              <input name="email" id="billing-email" type="email" class="field" placeholder="jenny@example.com" required>
+              <input name="email" id="billing-email" type="email" class="field" required>
             </label>
             <label>
               <span>Address</span>
-              <input name="address" id="billing-address" class="field" placeholder="185 Berry Street Suite 550">
+              <input name="address" id="billing-address" class="field">
             </label>
             <label>
               <span>City</span>
-              <input name="city" id="billing-city" class="field" placeholder="San Francisco">
+              <input name="city" id="billing-city" class="field">
             </label>
             <label class="state">
               <span>State</span>
-              <input name="state" id="billing-state" class="field" placeholder="CA">
+              <input name="state" id="billing-state" class="field">
             </label>
             <label class="zip">
               <span>ZIP</span>
-              <input name="postal_code" id="billing-zip" class="field" placeholder="94107">
+              <input name="postal_code" id="billing-zip" class="field">
             </label>
           </fieldset>
         </section>
@@ -102,7 +102,7 @@ $intent = \Stripe\PaymentIntent::create([
         </div>
 
 
-        <button class="payment-button" type="submit" id="submit">Pay</button>
+        <button disabled class="payment-button disabled" type="submit" id="submit">Pay</button>
       </form>
       <div id="card-errors" class="element-errors"></div>
       </div>
@@ -343,7 +343,8 @@ $(document).ready(function(){
       payment_method: {
         card: card,
         billing_details: {
-          name: 'Jenny Rosen'
+          name: window.cart.firstName + ' ' + window.cart.lastName,
+          email: window.cart.email
         }
       }
     }).then(function(result) {
@@ -352,9 +353,36 @@ $(document).ready(function(){
         console.log(result.error.message);
       } else {
         // The payment has been processed!
+        //console.log(result);
+
         if (result.paymentIntent.status === 'succeeded') {
-          console.log(result);
-          window.location='/dc/thank-you.php?r='+result.paymentIntent.id;
+          //console.log(result);
+          //post Results to Record
+          var json = {
+            uid: window.dc_uid,
+            record: 'checkout',
+            input: {
+              paymentIntentAmount: result.paymentIntent.amount,
+              paymentIntentCreated: result.paymentIntent.created,
+              paymentIntentId: result.paymentIntent.id
+            }
+          };
+          var request = $.ajax({
+            url: "/dc_api/update_record_checkout/",
+            method: "POST",
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify(json)
+          });
+          request.done(function(data){
+            //console.log(data);
+            window.location='/dc/thank-you.php?c='+result.paymentIntent.created+'&uid='+window.dc_uid;
+          });
+
+          request.fail(function(jqXHR, textStatus) {
+            console.log("Request failed: " + textStatus);
+          });
+
           // Show a success message to your customer
           // There's a risk of the customer closing the window before callback
           // execution. Set up a webhook or plugin to listen for the
@@ -374,6 +402,7 @@ $(document).ready(function(){
 
 });
 </script>
+
 
 
 

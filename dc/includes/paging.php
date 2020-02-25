@@ -18,7 +18,7 @@
       $prev = array('label' => 'Installation Details', 'link' => '/dc/step-3.php');
       $next = array('label' => 'Design Center Home', 'link' => '/dc/index.php');
       break;
-    case "/dc/checkout.php?":
+    case "/dc/checkout.php":
       $prev = array('label' => 'Complete Order', 'link' => '/dc/step-4.php');
       $next = array('label' => 'Design Center Home', 'link' => '/dc/index.php');
       break;

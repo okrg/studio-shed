@@ -744,6 +744,11 @@ ul {
 li.cell a   {
 			background: url(https://www.studio-shed.com/wp-content/uploads/2020/02/menu-phone.png) no-repeat left center;
 		}
+@media (max-width: 650px){
+li.cell a {
+    background: url(https://www.studio-shed.com/wp-content/uploads/2020/02/menu-phone.png) no-repeat 60px center;
+}
+		}
 		@media (min-width: 992px){
 .main-menu-ul>li {
     text-transform: uppercase;
@@ -924,7 +929,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           $menu_models_link = get_field('link_models', 'option');
           $models_childs = get_field('items', 'option');
           $logo= get_field('logo', 'option');
-
+		
       ?>
     <header id="header" class="module" data-module="header">
         <nav class="container navbar navbar-expand-lg" role="navigation">
@@ -949,6 +954,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="navbar-collapse" id="main-menu" data-module="menu">
           <div class="main-drop-models">
             <ul class="d-lg-none list-models">
+				<!-- Edit these at theme > menu -->
               <?php foreach ($models_childs as $key => $childs) {?>
                 <li>
                   <a href="<?php echo $childs["link"]?>"><?php echo $childs["title"]?></a>
@@ -985,9 +991,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 $sh_right = get_field('col_right', 'option');
                 $sh_bottom = get_field('bottom_option', 'option');
             ?>
-          <div class="contact-us design d-lg-none">
-            <a href="<?php echo $sh_bottom[0]["link"]["url"];?>"><span class="icomoon icon-drawing"></span><?php echo $sh_bottom[0]["title"];?><span class="icomoon icon-chevron-right"></span></a>
-          </div>
+          <!--<div class="contact-us design d-lg-none">
+            <a href="<?php//echo $sh_bottom[0]["link"]["url"];?>"><span class="icomoon icon-drawing"></span><?php //echo $sh_bottom[0]["title"];?><span class="icomoon icon-chevron-right"></span></a>
+          </div> -->
           <ul class="ml-auto main-menu-ul navbar-nav">
 			<li class="logo">
               <a id="header-logo" class="navbar-brand" title="index" href="<?php echo get_home_url(); ?>">
@@ -1071,7 +1077,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             ?>
 			  
             <li class="has-sub">
-              <a href="<?php echo $link_r_1?>"><span class="icomoon icon-script"></span><?php echo $title_r_1?></a>
+              <a href="<?php echo $link_r_1?>"><!--<span class="icomoon icon-script"></span>--><?php echo $title_r_1?></a>
               <div class="nav-item-arrows d-lg-none">
                 <i class="icomoon icon-plus2" aria-hidden="true"></i>
               </div>
@@ -1177,40 +1183,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </li> -->
          
-            <!-- <?php
+            <?php
             $title_r_2 = get_field('title_r_2', 'option');
             $link_r_2 = get_field('link_r_2', 'option');
             $childs_r_2 = get_field('childs_r_2', 'option');
             ?>
-            <li class="has-sub">
-              <a href="<?php //echo $link_r_2?>"><span class="icomoon icon-info"></span><?php echo $title_r_2?></a>
+            <li class="has-sub d-lg-none">
+              <a href="<?php echo $link_r_2?>"><!--<span class="icomoon icon-info"></span>--><?php echo $title_r_2?></a>
               <div class="nav-item-arrows d-lg-none">
                 <i class="icomoon icon-plus2" aria-hidden="true"></i>
               </div>
               <div class="dropdown-menu main-menu-dropdown">
                 <ul>
                   <?php
-                 // foreach ($childs_r_2 as $key => $value) {?>
+                  foreach ($childs_r_2 as $key => $value) {?>
                   <li>
-                    <a href="<?php //echo $value["link"]?>"><?php echo $value["title"]?></a>
-                    <?php //if($value["is_content_hover"] == true):?>
+                    <a href="<?php echo $value["link"]?>"><?php echo $value["title"]?></a>
+                    <?php if($value["is_content_hover"] == true):?>
                       <div class="menu-child-lv3">
                         <div class="main-explore" style="background-image: url('<?php echo $value["content_hover"]["image"]["url"]?>')">
                           <div class="box-explore">
                             <div class="explore-content">
-                              <?php //echo $value["content_hover"]["description"]?>
+                              <?php echo $value["content_hover"]["description"]?>
                             </div>
-                            <a href="<?php //echo $value["content_hover"]["link_button"]?>" class="btn btn-explore"><?php echo $value["content_hover"]["text_button"]?></a>
+                            <a href="<?php echo $value["content_hover"]["link_button"]?>" class="btn btn-explore"><?php echo $value["content_hover"]["text_button"]?></a>
                           </div>
                         </div>
                       </div>
-                    <?php// endif;?>
+                    <?php endif;?>
                   </li>
-                  <?php // }
+                  <?php  }
                   ?>
                 </ul>
               </div>
-            </li> -->
+            </li>
 			<li class="faqs"><a href="/faqs/">FAQs</a></li>
 			 <?php 
           $contact_title = get_field('contact_title', 'option');
@@ -1218,7 +1224,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           $number = get_field('number', 'option');
           $socials = get_field('socials', 'option');
           ?>
-			<li class="cell"><a href="tel:<?php echo str_replace(".", "-", $number)?>"><span class="icomoon icon-customer"></span><?php echo $number?></a></li>
+			<li class="cell"><a href="tel:<?php echo str_replace(".", "-", $number)?>"><!--<span class="icomoon icon-customer"></span>--><?php echo $number?></a></li>
 			<li class="burger-menu">
                <div id="menuToggle">
 				<!--
@@ -1240,7 +1246,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           </ul>
 			 
-			</div>
+			
           <!--<div class="top-head">
             <ul>
               <li><a href="<?php //echo $contact_link?>"><span class="icomoon icon-mail-envelope"></span><?php //echo $contact_title?></a></li>
@@ -1265,6 +1271,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </ul>
 
           </div>
+			</div>
         </div>
 
       </nav>

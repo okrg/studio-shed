@@ -99,41 +99,43 @@
     </section>
 
     <section class="dc-permit-set">
-      <div class="row">
+      <div class="row mb-5">
         <div class="col-sm-8 offset-2">
-          <div class="panel-group accordion" id="permit-plans" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default mb-5">
-              <div class="panel-heading" role="tab" id="plheading0">
-              <h4 class="panel-title">
-                <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#permit-plans" href="#plans0" aria-expanded="true" aria-controls="plans0">
-                Permit Plan Set
-                <span id="permit-plan-label">$1,300</span>
-                </a>
-              </h4>
-              </div>
-              <div id="plans0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="plheading0">
-              <div class="panel-body mb-4">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in sem aliquam, efficitur eros eu, vehicula elit. Donec metus sapien, sollicitudin vitae nibh eu, efficitur efficitur dui. In vitae dolor ex. Phasellus feugiat ligula ac orci ullamcorper, sit amet egestas dui auctor. Fusce sed laoreet purus. Curabitur aliquam sit amet nulla vel placerat. Donec id laoreet ligula, nec pharetra libero. Nunc imperdiet lorem ac rhoncus lacinia. Praesent cursus turpis eu metus ultrices laoreet. Nulla posuere ante ligula, eu elementum purus euismod sed. Ut ornare sit amet risus vitae cursus. Mauris posuere sed odio vitae viverra.</p>
-                <div class="row">
-                  <div class="col-sm-12 col-lg-6">
-                    <strong>Permit plan set includes:</strong>
-                    <ul>
-                      <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in sem aliquam, efficitur eros eu, vehicula elit.</li>
-                      <li>Donec metus sapien, sollicitudin vitae nibh eu, efficitur efficitur dui.</li>
-                      <li>In vitae dolor ex. Phasellus feugiat ligula ac orci ullamcorper, sit amet egestas dui auctor.</li>
-                      <li>Fusce sed laoreet purus. Curabitur aliquam sit amet nulla vel placerat.</li>
-                    </ul>
+
+              <div class="row mb-3">
+                <div class="col-sm-12 col-lg-6">
+                  <h4>Permit Plan Set by Studio Shed</h4>
+                </div>
+                <div class="col-sm-12 col-lg-6 text-center">
+
+                  <div class="form-check custom-control custom-checkbox mb-2">
+                    <input class="form-check-input custom-control-input" type="checkbox" name="permitPlanSelect" id="permitPlanSelect" value="permitPlanSelect">
+                    <label class="form-check-label custom-control-label" for="permitPlanSelect">
+                      Include the plans <strong>(+ $3,995)</strong>
+                    </label>
                   </div>
-                  <div class="col-sm-12 col-lg-6">
-                    <img src="img/permit-plans.png" class="img-fluid" />
-                  </div>
+
                 </div>
               </div>
+
+
+
+              <div class="row">
+                <div class="col-sm-12 col-lg-6">
+                <p>Engineer-stamped architectural plans with foundation detail specific to your site. Includes site, architectural, energy, structural, and electrical plans compliant with local codes for wind, snow, seismi, and soil. Excludes submittal and other site work.</p>
+                </div>
+                <div class="col-sm-12 col-lg-6">
+                  <img src="img/permit-plans.png" class="img-fluid" />
+                </div>
               </div>
-            </div>
-          </div>
+
+
         </div>
       </div>
+
+
+
+
       <div class="row mb-2">
         <div class="col-sm-8 offset-2">
           <a href="#" class="btn btn-video-trigger"><i class="fas fa-play"></i>Permit Process Overview</a>
@@ -222,9 +224,11 @@
       </div>
     </section>
 
-    <?php include('includes/paging.php'); ?>
+    
 
     <?php include('includes/contact.php'); ?>
+
+    <?php include('includes/paging.php'); ?>
 
   </div>
 </main>

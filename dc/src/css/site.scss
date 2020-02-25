@@ -1,22 +1,48 @@
 @import 'node_modules/bootstrap/scss/functions';
 @import 'node_modules/bootstrap/scss/variables';
-$primary: #FFA347;
-
+$primary: #fba445;
+$white: #fff;
+$black: #000;
+$darkText: #5d5e5d;
+$lightBorder: #ddd;
+$mediumBorder: #aaa;
+$containerBackground: #EFEFF4;
+$pageBackground: #fff;
+$mutedLink: #444;
+$footerBackground: #0f1c2c;
 @import 'node_modules/bootstrap/scss/bootstrap';
 @import 'node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import 'node_modules/@fortawesome/fontawesome-free/scss/brands.scss';
 @import 'node_modules/@fortawesome/fontawesome-free/scss/solid.scss';
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap');
 
+@font-face{font-family:"Futura-PT-Book";src:url("/dc/fonts/Futura-PT-Book.eot"), url("/dc/fonts/Futura-PT-Book.woff") format("woff"), url("/dc/fonts/Futura-PT-Book.ttf") format("truetype");}
+@font-face{font-family:"Futura-PT-Heavy";src:url("/dc/fonts/Futura-PT-Heavy.eot"), url("/dc/fonts/Futura-PT-Heavy.woff") format("woff"), url("/dc/fonts/Futura-PT-Heavy.ttf") format("truetype");}
+@font-face{font-family:"Tisa-Sans-Pro";src:url("/dc/fonts/Tisa-Sans-Pro.eot"), url("/dc/fonts/Tisa-Sans-Pro.woff") format("woff"), url("/dc/fonts/Tisa-Sans-Pro.ttf") format("truetype");}
+@font-face {
+    font-family: 'Tisa-Sans-Pro-Italic';
+    src: url('fonts/TisaSansPro-Italic.eot?#iefix') format('embedded-opentype'),  url('fonts/TisaSansPro-Italic.otf')  format('opentype'),
+        url('fonts/TisaSansPro-Italic.woff') format('woff'), url('fonts/TisaSansPro-Italic.ttf')  format('truetype'), url('fonts/TisaSansPro-Italic.svg#Tisa-Sans-Pro-Italic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face{font-family:"Futura-PT-Heavy-Oblique";src:url("/dc/fonts/Futura-PT-Heavy-Oblique.eot"), url("/dc/fonts/Futura-PT-Heavy-Oblique.woff") format("woff"), url("/dc/fonts/Futura-PT-Heavy-Oblique.ttf") format("truetype");}
 
-body {
-  font-family: 'Open Sans', sans-serif;
+
+
+body {  
+  font-family: "Tisa-Sans-Pro", sans-serif;
+  color: $darkText;
+  background: $pageBackground;
 }
 a {
   color: $primary;
   &:hover, &:active {
     color: darken($primary, 10%);
   }
+}
+body a.btn, body input.btn, body button, nav a {
+    transition: all 200ms linear;
 }
 h2 { 
   font-size: 24px; 
@@ -26,18 +52,24 @@ h5 a {
   text-decoration: underline;
 }
 p, ul, li {
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 300;
+  font-size: 14px;
+  line-height: 20px;
+  
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  color: #fff;
+  border-color: $primary;
+  background-color: $primary;
 }
 section {
-  margin: 10rem 0;
+  margin: 5rem 0;
 }
 i#submit-zip-spinner {
   display: none;
 }
 a.muted-link {
-  color: #444;
+  color: $mutedLink;
 }
 .initial-payment {
   color: $primary;
@@ -50,12 +82,25 @@ a.muted-link {
   }
 }
 .btn-primary {
-  background: $primary;
-  border: none;
-  color: #fff;
+  padding: 0 2rem;
+  line-height: 50px;
+  height: 50px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: $primary;
+  border: 1px solid $primary;
+  color: $white;
+  font-size: 16px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, .3);
   &:hover, &:active, &:focus {
-    color: #fff;
-    background: darken($primary, 10%);
+    background-color: $white;
+    color: $primary;
+    border: 1px solid $primary;
+    border-color: darken($primary, 10%) !important;
+  }
+  &:active,&:focus {
+    box-shadow: 0 0 0 0.2rem lighten($primary, 20%) !important;
   }
 }
 .btn-outline-primary {
@@ -64,17 +109,34 @@ a.muted-link {
   &.selected, &:hover, &:active  {
     background: $primary !important;
     border-color: $primary !important;
-    color: #fff;
-    span {color:#fff !important;}
+    color: $white;
+    span {color:$white !important;}
   }
   &:focus{
     box-shadow: none !important;
   }
 }
 
+
+.btn-primary.disabled, .btn-primary:disabled {
+    color: $white;
+    background-color: lighten($primary, 10%);
+    border-color: lighten($primary, 10%);
+}
+
+header, .estimate, h1, h2, h3, h4, a.btn, nav a {
+  font-family:"Futura-PT-Book";text-transform: uppercase;
+}
+
+.dc-checkout-summary, input, select, textarea {
+  font-family:"Futura-PT-Book";
+}
+
+
 .dc-contact { 
-  background: #EFEFF4;
-  border: 1px #ccc solid;
+  border-radius: 4px;
+  background: $containerBackground;
+  border: 1px $lightBorder solid;
   padding: 2rem;
   margin-left: -15px;
   margin-right: -15px;
@@ -87,13 +149,16 @@ a.muted-link {
 }
 
 
-.estimate {
+.estimate,
+.dc-cart {
   margin: 5rem 0;
-  background: #EFEFF4;
-  border: 1px #ccc solid;
+  border-radius: 4px;
+  background: $containerBackground;
+  border: 1px $lightBorder solid;
   padding: 1rem 0;
   .shed-screenshot {
-    border: 1px #ccc solid;
+    border: 1px $lightBorder solid;
+    border-radius: 4px;
   }
   .estimate-checklist {
     .checked:before {
@@ -103,17 +168,24 @@ a.muted-link {
     }
     .unchecked:before {
       content:" ";
+      border-radius: 3px;
       width: 16px;
       height: 16px;
       display: inline-block;
-      border: 1px #666 solid;
+      border: 1px $mediumBorder solid;
       margin-right: .5rem;
     }
   }
 }
 
+
 .dc-intro {
   margin: 2.5rem 0;
+  text-align: center;
+}
+
+.dc-outro {
+  margin: 10rem 0;
   text-align: center;
 }
 
@@ -131,16 +203,18 @@ a.muted-link {
 }
 
 
-a.btn-video-trigger {
+a.btn-video-trigger {  
   display: flex;
   align-items: center;
-  background: #fff;
-  border: 1px #ddd solid;
+  background: $white;
+  border: 1px $lightBorder solid;
   font-size: 20px;
+  padding: 8px;
   i {
     font-size: 52px;
-    color: #fff;
+    color: $white;
     padding: 20px;
+    border-radius: 4px;
     background: $primary;
     margin-right: 20px;
   }
@@ -170,8 +244,19 @@ a.btn-video-trigger {
 .dc-location {
   margin: 5rem 0;
   padding: 2.5rem 0;
-  background: #EFEFF4;
-  border: 1px #ddd solid;
+  border-radius: 4px;
+  background: $containerBackground;
+  border: 1px $lightBorder solid;
+  #zip-label {
+    width: 140px;
+    height: 50px;
+    line-height: 50px;
+    float: left;
+    margin-right: 1rem;
+  }
+  #submit-zip-lookup {
+
+  }
   #city-label {
     font-size: 13px;
     font-weight: 300;
@@ -208,7 +293,7 @@ a.btn-video-trigger {
 
 .dc-finance {
   .finance-embed {
-    background: #fff;
+    background: $white;
     border: 1px rgba(0,0,0,0.25) solid;
     border-radius: 4px;
     box-shadow: 0px 0px 5px rgba(0,0,0,0.125);
@@ -220,24 +305,24 @@ a.btn-video-trigger {
   }
 }
 
-
 .dc-finance,
 .dc-installation-resources,
 .dc-permit-set {
-  margin: 5rem 0;  
+  margin: 5rem 0;
   padding: 5rem 0;
-  background: #EFEFF4;
-  border: 1px #ddd solid;
+  background: $containerBackground;
+  border-radius: 4px;
+  border: 1px $lightBorder solid;
+
   #permit-plan-label {
     float: right;
     font-weight: 400;
   }
 }
 
-
 .dc-foundation,
 .dc-installation {
-  a.install-option {
+  a.option {
     display: block;
     padding: 1rem;
     margin: 1rem auto;
@@ -271,12 +356,12 @@ a.btn-video-trigger {
   }
   .panel-default .panel-title a {
     display: block;
-    color: #666;
+    color: $darkText;
     font-weight: 300;
     font-size: 20px;
     &:hover {
       text-decoration: none;
-      color: #000;
+      color: $black;
     }
   }
   .panel-default .panel-title a:before {
@@ -301,11 +386,11 @@ a.btn-video-trigger {
 
 .dc-footer {
   padding: 2.5rem 0;
-  color: #fff;
+  color: $white;
   text-align: center;
-  background-color: #333; 
+  background-color: $footerBackground;
   a {
-    color: #333;
+    color: $darkText;
   }
   p:last-child {
     margin-bottom: 0;
@@ -313,11 +398,25 @@ a.btn-video-trigger {
   nav.footer-nav {
     display: flex;
     justify-content: space-between;
+    margin: 2.5rem 0;
     a {
-      background: #f9f9f9;
+      font-weight: 600;
+      border-radius: 4px;
+      font-size: 1rem;
+      color: $white;
+      border: 1px $white solid;
+      background: transparent;
       width: 20%;
       padding: 1rem;
       margin: 1rem;
+      .step {
+        display: block;
+      }
+      &:hover {
+        text-decoration: none;
+        background-color: $white;
+        color: $primary;
+      }
     }
     @media (max-width: 767px) {
       display: block;
@@ -331,8 +430,8 @@ a.btn-video-trigger {
 }
 
 .dc-paging {
-  //border-left: 1px #ddd solid;
-  //border-right: 1px #ddd solid;
+  //border-left: 1px $lightBorder solid;
+  //border-right: 1px $lightBorder solid;
   padding: 5rem;
   nav.paging-nav {
     display: flex;
@@ -389,7 +488,7 @@ a.btn-video-trigger {
     margin-bottom: 2rem;
     .inner {
         border: solid 2px #e8e8e8;
-        background-color: #fff;
+        background-color: $white;
         padding-top: 12px;
         height: 100%;
         border-radius: 5px;
@@ -488,7 +587,7 @@ a.btn-video-trigger {
 
   fieldset {
     margin-bottom: 20px;
-    background: #fff;
+    background: $white;
     box-shadow: 0 1px 3px 0 rgba(50, 50, 93, 0.15),
       0 4px 6px 0 rgba(112, 157, 199, 0.15);
     border-radius: 4px;
@@ -654,7 +753,7 @@ a.btn-video-trigger {
   button {
     display: block;
     background: #FFA347;
-    color: #fff;
+    color: $white;
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
     border-radius: 4px;
     border: 0;
@@ -664,6 +763,9 @@ a.btn-video-trigger {
     outline: none;
     cursor: pointer;
     transition: all 0.15s ease;
+    &.disabled {
+      opacity: 0.66;
+    }
   }
 
   button:focus {
@@ -816,7 +918,7 @@ a.btn-video-trigger {
     width: 450px;
     overflow: auto;
     height: 100%;
-    background: #fff;
+    background: $white;
     box-shadow: 0 2px 19px 4px rgba(0, 0, 0, 0.04);
     transition: right 0.3s ease-in-out;
   }
@@ -826,7 +928,7 @@ a.btn-video-trigger {
   }
 
   #summary .header {
-    background: #fff;
+    background: $white;
   }
 
   #summary h1 {
@@ -1006,7 +1108,7 @@ a.btn-video-trigger {
     max-width: 75%;
     height: 350px;
     margin: 100px auto;
-    background: #fff url(/images/order.svg) 75px center no-repeat;
+    background: $white url(/images/order.svg) 75px center no-repeat;
     box-shadow: 0 1px 3px 0 rgba(50, 50, 93, 0.15);
     border-radius: 6px;
   }
@@ -1046,5 +1148,19 @@ a.btn-video-trigger {
 
   #main.error #confirmation .error-message {
     font-family: monospace;
+  }
+}
+
+
+.dc-checkout-summary {
+  img {
+    display: block;
+    margin: 2rem auto;
+    max-width: 300px;
+  }
+
+  tr.total-row{
+    font-weight: bold;
+    font-size: 1.2em;
   }
 }

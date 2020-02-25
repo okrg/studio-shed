@@ -3,11 +3,13 @@
  * Template Name: Home page new
  */
 ?>
-<!--	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-	<link rel="stylesheet" href="<?php// echo get_template_directory_uri() ?>/assets/lib/owlcarousel/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="<?php// echo get_template_directory_uri() ?>/assets/lib/owlcarousel/css/owl.theme.min.css"> -->
+<!---->	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/assets/lib/owlcarousel/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/assets/lib/owlcarousel/css/owl.theme.min.css"> 
 	<link href="/wp-content/themes/studio-shed-child/css/style-home.css" rel="stylesheet" type="text/css" media="all" />
-	/<!--<link href="<?php //echo get_template_directory_uri() ?>/assets/css/custom.css" rel="stylesheet" type="text/css" media="all" />-->
+	<link href="<?php echo get_template_directory_uri() ?>/assets/css/custom.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="<?php echo get_template_directory_uri() ?>/assets/css/style.css" rel="stylesheet" type="text/css" media="all" />
+
 <style>
 @media only screen and (max-width: 500px){
 	img.attachment-post-thumbnail.size-post-thumbnail.wp-post-image {
@@ -23,9 +25,9 @@
 }
 </style>
 <script src="<?php echo get_template_directory_uri() ?>/assets/js/jquery-3.3.1.js"></script>
-<!--	<script src="<?php //echo get_template_directory_uri() ?>/assets/lib/owlcarousel/js/owl.carousel.js"></script>
-	<script src="<?php //echo get_template_directory_uri() ?>/assets/js/common.js"></script>
-  <script src="<?php //echo get_template_directory_uri() ?>/js/jquery.responsiveTabs.min.js"></script> -->
+<script src="<?php echo get_template_directory_uri() ?>/assets/lib/owlcarousel/js/owl.carousel.js"></script>
+		<script src="<?php echo get_template_directory_uri() ?>/assets/js/common.js"></script>
+  <script src="<?php echo get_template_directory_uri() ?>/js/jquery.responsiveTabs.min.js"></script>
 
 <?php get_header('');?>
 <?php $page_id = get_the_ID(); ?>

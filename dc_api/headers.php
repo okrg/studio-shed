@@ -19,6 +19,7 @@ if (empty($_SESSION['csrf_token'])) {
 header('Content-Type: application/json');
 header('Cache-Control: no-cache, must-revalidate, max-age=0');
 $headers = getallheaders();
+$headers = array_change_key_case($headers);
 
 if (isset($headers['x-csrf-token'])) {
   if ($headers['x-csrf-token'] !== $_SESSION['csrf_token']) {

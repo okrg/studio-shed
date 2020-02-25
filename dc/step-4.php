@@ -14,7 +14,8 @@
         <h2 class="text-center ">Final Estimate: <span id="final-estimate">&mdash;</span></h2>
         <h2 class="text-center initial-payment">Initial Payment: <span id="initial-payment">&mdash;</span></h2>
         <p class="text-center">*You will be charged the initial payment of 50% of the final estimate. The remaining amount, including taxes, will be charged upon final shipment.</p>
-        <form class="" action="/dc/checkout.php" method="get">
+        <form class="" action="/dc/checkout.php" method="POST">
+          <input type="hidden" name="stripeFee" id="stripe-fee" />
           <div class="form-group mb-2 w-75 mx-auto">
             <input type="text" placeholder="Enter Referral Code" class="form-control" />
           </div>
@@ -46,11 +47,13 @@
     <section class="dc-finance">
       <div class="row">
         <div class="col-md-8 offset-2">
-          <h2 class="text-center initial-payment">Financing available from Guaranteed Rate</h2>
+          <h2 class="text-center initial-payment">Financing options available</h2>
           <p class="text-center">Quisque tincidunt est a felis ullamcorper, at varius leo vulputate. Ut mi turpis, feugiat quis lacinia ac, sollicitudin ut ante.  Sed massa augue, sollicitudin in bibendum tristique, tincidunt eu nisi.</p>
+          <!--
           <div class="finance-embed">
             <span>Embedded Loan Calculator (if possible)</span>
           </div>
+          -->
           <div class="finance-cta text-center">
             <h2>Do you want to apply for finance?</h2>
             <a href="#" class="btn btn-primary mt-4">Apply Now <i class="fas fa-arrow-right"></i></a>

@@ -1,13 +1,13 @@
 <div class="dc-contact">
   <div class="row">
-    <div class="col-sm-2 offset-2">
-      <img src="https://via.placeholder.com/150" class="img-fluid" />
+    <div class="col-sm-3 offset-2">
+      <img src="https://qikrg2ve4526wc3c3ntlhj1e-wpengine.netdna-ssl.com/wp-content/uploads/2015/04/DSC_1124-r2-1024x714.jpg" class="img-fluid" />
     </div>
-    <div class="col-sm-6">
-      <h3>Contact your Studio Shed Advisor</h3>
+    <div class="col-sm-5">
+      <h4>Contact your Studio Shed Advisor</h4>
       <p>Have a question? Need help pricing or want to to chat about an idea? We can walk you through the entire process.</p>
       <div class="contact-buttons">
-        <a href="#" class="btn btn-primary mb-3 mr-5">Schedule a Call <i class="fas fa-arrow-right"></i></a>
+        <a href="#" class="btn btn-primary mb-3 mr-3">Schedule a Call <i class="fas fa-arrow-right"></i></a>
         <a href="#" class="btn btn-primary mb-3">Send a Message <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="contact-links">

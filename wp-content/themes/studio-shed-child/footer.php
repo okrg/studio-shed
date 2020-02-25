@@ -49,11 +49,15 @@ li.logo a {
 .main-menu-ul>li:hover>a:hover {
     color: #000!important;
 }
+.main-drop-models .featured {
+    background-repeat: no-repeat!important;
+    background-size: cover!important;
+}
 .featured-text p {
     color: #fff;
     font-size: 20px;
     text-align: center;
-    padding: 55% 40px 0;
+    padding: 45% 40px 0;
 }
 .featured-shed-btns p {
 	text-align: center;
@@ -71,10 +75,15 @@ li.logo a {
     background-color: #ffffff;
 	}
 li.cell a   {
-	background: url(https://www.studio-shed.com/wp-content/uploads/2020/02/menu-phone.png) no-repeat 10px center;
+	background: url(/wp-content/uploads/2020/02/menu-phone.png) no-repeat 10px center;
 		}
-#menu-slide li.cell a {
-    background: url(https://www.studio-shed.com/wp-content/uploads/2020/02/menu-phone.png) no-repeat left center;
+#menu-slide li.cell  {
+    background: url(/wp-content/uploads/2020/02/menu-phone-flyout.png) no-repeat left center;
+    color: #000;
+    font-weight: initial;
+}
+	#menu-slide li.cell a {
+    background: none;
     color: #000;
     font-weight: initial;
     padding-left: 20px;
@@ -128,8 +137,12 @@ display: block;
 }
 
 /*
- * Just a quick hamburger
+ * hamburger menu
  */
+@media (max-width: 650px){
+.burger-menu {
+	display: none;}
+	}
 #menuToggle span
 {
   display: block;
@@ -143,9 +156,7 @@ display: block;
   margin-left: 4px;
   margin-right: 4px;
   z-index: 1;
-  
   transform-origin: 4px 0px;
-  
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
               background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
               opacity 0.55s ease;
@@ -161,10 +172,6 @@ display: block;
   transform-origin: 0% 100%;
 }
 
-/* 
- * Transform all the slices of hamburger
- * into a crossmark.
- */
 #menuToggle input:checked ~ span
 {
     opacity: 1;
@@ -177,18 +184,13 @@ display: block;
 
 }
 
-/*
- * But let's hide the middle one.
- */
 #menuToggle input:checked ~ span:nth-last-child(3)
 {
   opacity: 0;
   transform: rotate(0deg) scale(0.2, 0.2);
 }
 
-/*
- * Ohyeah and the last one should go the other direction
- */
+
 #menuToggle input:checked ~ span:nth-last-child(2)
 {
   transform: rotate(-45deg) translate(0, -1px);
@@ -280,6 +282,10 @@ background: #ffffff;
 #footer .footer-subscribe ul#gform_fields_18 li {
     width: 100%;
 }
+#footer .footer-subscribe .gform_wrapper ul.gform_fields li.gfield {
+    padding-right: 0;
+    margin-top: 0;
+}
 .footer-subscribe input#input_18_2 {
     width: 100%;
 }
@@ -290,7 +296,13 @@ background: #ffffff;
     font-size: 16px!important;
     padding: 15px 43px;
     min-width: 220px;
+	margin-right: 0!important;
+    float: right;
+	border-radius: 0;
 }
+	.footer-subscribe input[type=submit]:hover {
+		background: #fff;
+	}
 	
 .footer-subscribe input[type=text]::-webkit-input-placeholder { /* Edge */
   color: #c5c5c6;
@@ -461,6 +473,10 @@ border-color: #ffa544;
 	color: #fff;
 	font-weight: 300;
 }
+.footer-menus .social li {
+    float: left;
+    margin: 20px 0 0 0;
+}
 </style>
 <footer id="footer" class="myfooter">
 	<div class="footer-subscribe">
@@ -561,9 +577,25 @@ border-color: #ffa544;
 			<div class="col-sm-12 col-md-2">
 
 				<img src="https://dev2-studio-shed.pantheonsite.io/wp-content/uploads/2020/01/we-ship-footer-icon.png" />
+				 <div class="social">
+            <ul>
+              <?php
+          $socials = get_field('socials', 'option');
+              foreach ($socials as $key => $social) {?>
+                <li>
+                  <a rel="noopener" target="_blank" href="<?php echo $social["link"]?>">
+                    <i class="icomoon <?php echo $social["type"]?>" aria-hidden="true"></i>
+                  </a>
+                </li>
+              <?php }
+              ?>
+            </ul>
+
+          </div>
 			</div>
 				 <div class="col-sm-12 copyfooter">                          
 					 <?php dynamic_sidebar('copyright'); ?>
+					 
 			</div>
 
 

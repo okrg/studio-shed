@@ -399,8 +399,14 @@ while (have_posts()) : the_post();
             <div id="">
                 <div class="model-product-list">
 					<ul class="text-uppercase container" id="model-product-menu">
-							<li class="product-list-on"><a href="#feature-top">Popular Models</a></li>
+						<?php 			
+						$quickmodel = get_field('what_she');
 
+						if ($quickmodel == ('Signature')) {
+							?>	
+						
+						<li class="product-list-on"><a href="#feature-top">Popular Models</a></li>
+						<?php } ?>
 						<?php
 						$k = 1;
 						foreach ($options as $option) {
@@ -412,6 +418,10 @@ while (have_posts()) : the_post();
 						?>
 					</ul>
 				</div>
+			<?php 						
+			if ($quickmodel == ('Signature')) {
+				?>
+
 				<div id="feature-top">
 					<div class="container">
                         <h3 class=" text-uppercase">
@@ -433,10 +443,11 @@ while (have_posts()) : the_post();
             if ($lv3_product->have_posts()) :
                 while ($lv3_product->have_posts()) :
                     $lv3_product->the_post();
-			$quickmodel = get_field('what_she');
 			$quickprice = get_field('lv3_option_price');
-
-			if (get_field('lv3_option_price', $lv3_product->ID) && $shedmodel == $quickmodel) {
+			
+			/* shows if product is level 3 with price field filled and also if the model is the same as the parent page */
+			/*if (get_field('lv3_option_price', $lv3_product->ID) && $shedmodel == $quickmodel) { */ 
+					if (get_field('lv3_option_price', $lv3_product->ID) && $shedmodel == $quickmodel) {
 
                    
 					
@@ -468,6 +479,7 @@ while (have_posts()) : the_post();
                         </div>
                         <?php
                     }
+					
 			
 				
 		
@@ -487,11 +499,12 @@ while (have_posts()) : the_post();
             </div>
             <!--<div class="text">
                 <?php //the_field('lv2_bottom_description_text') ?>
-                <a class="button" href="<?php //the_field('lv2_bottom_button_link_to') ?>"><?php the_field('lv2_bottom_button_text') ?></a>
+                <a class="button" href="<?php //the_field('lv2_bottom_button_link_to') ?>"><?php// the_field('lv2_bottom_button_text') ?></a>
             </div> -->
         </div>
     </section>
 </div>
+			<?php } ?>
 
                 <?php
                 $k = 1;

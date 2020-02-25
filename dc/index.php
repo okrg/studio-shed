@@ -12,7 +12,7 @@
 
       <div class="row mb-5">
         <div class="col-sm-2 offset-2">
-          <a href="/dc/step-1.php"><img src="https://via.placeholder.com/150" class="img-fluid" /></a>
+          <a href="/dc/step-1.php"><img src="https://qikrg2ve4526wc3c3ntlhj1e-wpengine.netdna-ssl.com/wp-content/uploads/2018/03/well-designed.jpg" class="img-fluid" /></a>
         </div>
         <div class="col-sm-6">
           <h3><a href="/dc/step-1.php">Design Configuration</a></h3>
@@ -23,7 +23,7 @@
 
       <div class="row mb-5">
         <div class="col-sm-2 offset-2">
-          <a href="/dc/step-2.php"><img src="https://via.placeholder.com/150" class="img-fluid" /></a>
+          <a href="/dc/step-2.php"><img src="http://www.studio-shed.com/wp-content/uploads/2015/02/our-story-1.jpg" class="img-fluid" /></a>
         </div>
         <div class="col-sm-6">
           <h3><a href="/dc/step-2.php">Location &amp; Permit Details</a></h3>
@@ -34,7 +34,7 @@
 
       <div class="row mb-5">
         <div class="col-sm-2 offset-2">
-          <a href="/dc/step-3.php"><img src="https://via.placeholder.com/150" class="img-fluid" /></a>
+          <a href="/dc/step-3.php"><img src="https://qikrg2ve4526wc3c3ntlhj1e-wpengine.netdna-ssl.com/wp-content/uploads/2018/03/form-function.jpg" class="img-fluid" /></a>
         </div>
         <div class="col-sm-6">
           <h3><a href="/dc/step-3.php">Installation Details</a></h3>
@@ -45,7 +45,7 @@
 
       <div class="row mb-5">
         <div class="col-sm-2 offset-2">
-          <a href="/dc/step-4.php"><img src="https://via.placeholder.com/150" class="img-fluid" /></a>
+          <a href="/dc/step-4.php"><img src="https://qikrg2ve4526wc3c3ntlhj1e-wpengine.netdna-ssl.com/wp-content/uploads/2015/02/Office-5-791x525.jpg" class="img-fluid" /></a>
         </div>
         <div class="col-sm-6">
           <h3><a href="/dc/step-4.php">Complete Your Order</a></h3>

@@ -14,27 +14,27 @@
         <div class="col-sm-4">
           <h3>Concrete Slab</h3>
           <p>Vestibulum rutrum quam vitae fringilla tincidunt. Suspendisse nec tortor urna. Ut laoreet sodales nisi, quis iaculis nulla iaculis vitae.</p>
-          <a href="#" id="select-concrete-slab" class="btn btn-outline-primary install-option">Select Concrete Slab</a>
+          <a href="#" id="select-concrete-slab" data-foundation="Concrete Slab" class="btn btn-outline-primary option option-foundation">Select Concrete Slab</a>
         </div>
         <div class="col-sm-4">
           <h3>Wood Frame Floor</h3>
           <p>Vestibulum rutrum quam vitae fringilla tincidunt. Suspendisse nec tortor urna. Ut laoreet sodales nisi, quis iaculis nulla iaculis vitae.</p>
-          <a href="#" id="select-wood-frame" class="btn btn-outline-primary install-option">Select Wood Frame Floor</a>
+          <a href="#" id="select-wood-frame" data-foundation="Wood Frame Floor" class="btn btn-outline-primary option option-foundation">Select Wood Frame Floor</a>
         </div>
         <div class="col-sm-4">
           <h3>Not Sure?</h3>
           <p>Vestibulum rutrum quam vitae fringilla tincidunt. Suspendisse nec tortor urna. Ut laoreet sodales nisi, quis iaculis nulla iaculis vitae.</p>
-          <a href="#" id="select-foundation-tbd" class="btn btn-outline-primary install-option">Select Foundation TBD</a>
+          <a href="#" id="select-foundation-tbd" data-foundation="TDB" class="btn btn-outline-primary option option-foundation">Select Foundation TBD</a>
         </div>
     </section>
 
     <section class="dc-installation">
-      <h2 class="text-center mb-5">Select Your Instllation Type</h2>
+      <h2 class="text-center mb-5">Select Your Installation Type</h2>
       <div class="row">
         <div class="col-sm-5">
           <h3>Do-It-Yourself</h3>
           <p>Vestibulum rutrum quam vitae fringilla tincidunt. Suspendisse nec tortor urna. Ut laoreet sodales nisi, quis iaculis nulla iaculis vitae.</p>
-          <a href="#" id="select-diy-install" class="btn btn-outline-primary install-option">
+          <a href="#" id="select-diy-install" data-installation="DIY" data-installation-price="0" class="btn btn-outline-primary option option-installation">
             <span class="label">Select DIY Installation</span>
             <span class="cost">+ $0</span>
           </a>
@@ -45,13 +45,13 @@
         <div class="col-sm-5">
           <h3>Certified Installation</h3>
           <p>Vestibulum rutrum quam vitae fringilla tincidunt. Suspendisse nec tortor urna. Ut laoreet sodales nisi, quis iaculis nulla iaculis vitae.</p>
-          <a href="#" id="select-certified-install-1" class="btn btn-outline-primary install-option">
+          <a href="#" id="select-certified-install-1" data-installation="Certified (Shell Only)" data-installation-price="3400" class="btn btn-outline-primary option option-installation">
             <span class="label">Select Certified Installation<span>
             <span class="sublabel">Shell Only</span>
             <span class="cost">+ $3,400</span>
           </a>
-          <a href="#" id="select-certified-install-2" class="btn btn-outline-primary install-option">
-            <span class="label">Select DIY Installation</span>
+          <a href="#" id="select-certified-install-2" data-installation="Certified (Shell + Lifestyle Interior)" data-installation-price="9720" class="btn btn-outline-primary option option-installation">
+            <span class="label">Select Certified Installation</span>
             <span class="sublabel">Shell + Lifestyle&trade; Interior</span>
             <span class="cost">+ $9,720</span>
           </a>
@@ -140,6 +140,8 @@
         </div>
       </div>
     </section>
+
+    
 
     <?php include('includes/contact.php'); ?>
 

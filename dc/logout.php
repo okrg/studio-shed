@@ -1,4 +1,7 @@
 <?php include('includes/logged-out-header.php'); ?>
+<script type="text/javascript">
+  Cookies.remove('uid');
+</script>
 <main id="logout">
   <div class="container">
     <section class="dc-logged-out">

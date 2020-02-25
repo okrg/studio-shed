@@ -84,10 +84,10 @@ gulp.task('scripts', function () {
     //return gulp.src('src/js/**/*.js')
     return gulp.src([
         'node_modules/jquery/dist/jquery.min.js',
-        'node_modules/jquery-migrate/dist/jquery-migrate.min.js',
         'node_modules/popper.js/dist/umd/popper.min.js',
         'node_modules/bootstrap/dist/js/bootstrap.min.js',
-        'node_modules/owl.carousel/dist/owl.carousel.js',
+        'node_modules/pace-js/pace.min.js',
+        'node_modules/js-cookie/src/js.cookie.js',
         'src/js/**/*.js'
         ])
         .pipe(plumber({
@@ -97,6 +97,26 @@ gulp.task('scripts', function () {
             }
         }))
         .pipe(concat('site.js'))
+        //.pipe(uglify())
+        .pipe(gulp.dest('js'))
+        .pipe(browserSync.stream());
+});
+
+gulp.task('loggedOutScripts', function () {
+    //return gulp.src('src/js/**/*.js')
+    return gulp.src([
+        'node_modules/jquery/dist/jquery.min.js',
+        'node_modules/popper.js/dist/umd/popper.min.js',
+        'node_modules/bootstrap/dist/js/bootstrap.min.js',
+        'node_modules/js-cookie/src/js.cookie.js'
+        ])
+        .pipe(plumber({
+            errorHandler: function (error) {
+                console.log(error.message);
+                this.emit('end');
+            }
+        }))
+        .pipe(concat('loggedOutSite.js'))
         //.pipe(uglify())
         .pipe(gulp.dest('js'))
         .pipe(browserSync.stream());
@@ -113,7 +133,7 @@ gulp.task('fontawesome', function() {
 
 // RUN GULP TASKS
 gulp.task('default', ['browser-sync'], function () {
-    gulp.run('images', 'styles', 'fontawesome', 'scripts');    
+    gulp.run('images', 'styles', 'fontawesome', 'scripts', 'loggedOutScripts');
     gulp.watch("src/css/**/*.scss", ['styles']);
     gulp.watch("src/js/**/*.js", ['scripts']);
     gulp.watch("src/css/**/*.scss", ['bs-reload']);

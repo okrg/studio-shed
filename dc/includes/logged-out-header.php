@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
     <title>Studio Shed Design Center</title>
-    <script src="js/site.js"></script>
+    <script src="js/loggedOutSite.js"></script>
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <script src="https://js.stripe.com/v3/"></script>
     <link href="css/screen.css" rel="stylesheet">

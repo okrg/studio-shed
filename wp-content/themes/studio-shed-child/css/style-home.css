@@ -5,6 +5,14 @@ styles specific to the Studio Shed Home page
 
 */
 /* HOME BANNER */
+@media (min-width: 992px){
+#wrapper {
+    padding-top: 0!important;
+}
+}
+#wrapper {
+    padding-top: 0!important;
+}
 .main-content {
     display: block;
     overflow: hidden;
@@ -93,7 +101,7 @@ styles specific to the Studio Shed Home page
 }
 .main-content .block-two .info h3{
 	color: #000;
-    padding-bottom: 1.9rem;
+    padding-bottom: 2.9rem!important;
 }
 .main-content .block-two .info p.des{
 	margin-bottom: 30px;
@@ -238,18 +246,18 @@ styles specific to the Studio Shed Home page
 	padding: 0 10px;
 	height: 40px;
 	line-height: 40px;
-	font-size: 16px;
+	font-size: 16px!important;
 	color: #f3e6d6;
-	width: 100%;
-	max-width: 500px;
+	width: 100%!important;
+	max-width: 980px!important;
 	clear: both;
 	margin: 0 auto 10px;
 	display: block;
 }
-.main-content .block-three form input[type="text"]::placeholder{
+.block-three form input[type="text"]::placeholder{
 	color: #f3e6d6;
 }
-.main-content .block-three form input[type="submit"]{
+.block-three form input[type="submit"]{
 	display: block;
 	overflow: hidden;
 	width: 220px;
@@ -264,16 +272,19 @@ styles specific to the Studio Shed Home page
 	padding: 0;
 	font-size: inherit;
 }
-.main-content .block-three form input[type="submit"]:hover{
+.block-three form input[type="submit"]:hover{
 	color: #393939;
 	background-color: #fff;
 	border: 1px solid #393939;
 }
-.main-content .block-three form ul{
+.block-three form ul{
 	list-style: none;
 }
-.main-content .block-three form .gfield_label{
+.block-three form .gfield_label{
 	display: none;
+}
+#gform_17 label {
+    display: none!important;
 }
 /* FREESTANDING BLOCK */
 @media only screen and (max-width: 980px){
@@ -521,6 +532,23 @@ styles specific to the Studio Shed Home page
 }
 .main-content .block-three h3:before {
     background-color: #b9650d;
+}
+#form#gform_17 label {
+    display: none;
+}
+.main-content .block-three form input[type="text"] {
+    background-color: rgba(0,0,0,.2);
+    border: 0;
+    padding: 0 10px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    color: #f3e6d6;
+    width: 100%;
+    max-width: 500px;
+    clear: both;
+    margin: 0 auto 10px;
+    display: block;
 }
 .main-content h3:before {
     content: '';

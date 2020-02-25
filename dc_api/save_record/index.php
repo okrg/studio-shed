@@ -16,12 +16,10 @@ if (!function_exists('getallheaders')) {
   }
 }
 $headers = getallheaders();
+$headers = array_change_key_case($headers);
 
-
-
-
-if (isset($headers['X-Api-Key'])) {
-  if ($headers['X-Api-Key'] !== 'e4XaFZRT1TyvLAy3KHdTnU20MluyYotL') {
+if (isset($headers['x-api-key'])) {
+  if ($headers['x-api-key'] !== 'e4XaFZRT1TyvLAy3KHdTnU20MluyYotL') {
     exit(json_encode(['error' => 'Wrong API key.']));
   }
 } else {
@@ -30,7 +28,7 @@ if (isset($headers['X-Api-Key'])) {
 include('../filebase.php');
 $json = json_encode($_POST);
 $data = json_decode($json);
-//print_r($headers);
+
 //print_r($_SERVER);
 //print_r($_POST);
 //exit();
@@ -46,8 +44,13 @@ if( empty($uid) || !isset($uid) ) {
 //  exit(json_encode(['error' => 'Empty JSON']));
 //}
 
+$key = 'xK-<cH];"a:Yd=40^zx)wCXyYiw#bH';
+$time = time();
+$hash = hash_hmac('sha256', $time, $key);
+
 $record = $database->get($uid);
 $record->uniqueid = $uid;
+$record->hash = $hash;
 $record->utm_source = $data->params->utm_source;
 $record->utm_medium = $data->params->utm_medium;
 $record->utm_campaign = $data->params->utm_campaign;
@@ -60,8 +63,6 @@ $record->email = $data->customer->email;
 $record->firstName = $data->customer->firstName;
 $record->lastName = $data->customer->lastName;
 $record->phone = $data->customer->phone;
-$record->zip = '';
-$record->city = '';
 
 $record->model = $data->product->model;
 $record->depth = $data->product->depth;
@@ -76,15 +77,13 @@ foreach($data->product->cart->items as $item) {
   $record->$name = $item->description;
   $record->$price = $item->price;
 }
-$record->save();
 
-$salt = 'xK-<cH];"a:Yd=40^zx)wCXyYiw#bH';
-$hash = md5($salt.$uid);
+$record->save();
 
 exit(json_encode([
   'code' => 'success',
   'response' => 'savedRecord',
-  'redirectURL' => 'https://dev2-studio-shed.pantheonsite.io/dc?h='.$hash.'&u='.$uid
+  'redirectURL' => 'https://dev2-studio-shed.pantheonsite.io/dc?h='.$hash.'&t='.$time.'&u='.$uid
   ]));
 
 
