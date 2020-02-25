@@ -38,5 +38,3 @@ $record->permitNotes = $data['permit_notes'];
 $record->save();
 $data['code'] = 'success';
 exit(json_encode($data));
-
-?>

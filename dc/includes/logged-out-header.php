@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
     <title>Studio Shed Design Center</title>
-    <script src="js/loggedOutSite.js"></script>
+    <script src="/dc/js/loggedOutSite.js"></script>
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <script src="https://js.stripe.com/v3/"></script>
-    <link href="css/screen.css" rel="stylesheet">
+    <link href="/dc/css/screen.css" rel="stylesheet">
 </head>
 <body>
 <div id="app">

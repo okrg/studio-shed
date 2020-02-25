@@ -22,7 +22,7 @@
         <div id="estimate-step-3" class="unchecked">
           <a href="/dc/step-3.php">
             <span id="cart-foundation-label">Foundation</span>
-             and 
+             &amp; 
             <span id="cart-installation-label">Installation</span>
           </a>
         </div>

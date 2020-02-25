@@ -1,3 +1,5 @@
+<?php header("Location: /dc/configurator.php"); ?>
+
 <?php include('includes/logged-out-header.php'); ?>
 <main id="logout">
   <div class="container">

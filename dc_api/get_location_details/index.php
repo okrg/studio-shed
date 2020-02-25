@@ -48,6 +48,7 @@ if( !empty($data) ) {
     $response['permit_time'] = $data['table']['rows'][0]['c'][0]['v'];
     $response['permit_cost'] = $data['table']['rows'][0]['c'][1]['v'];
     $response['permit_notes'] = $data['table']['rows'][0]['c'][2]['v'];
+    //$response['permit_notes'] = nl2br($response['permit_notes']);
   } else {
     $response['permit_data'] = false;
   }

@@ -104,7 +104,7 @@ $(document).ready(function() {
         $('#intro-first-name').text( cart.firstName );
         $('#intro-config').text( cartModelLabel(cart) );
         $('#intro-location').text( cartLocationLabel(cart) );
-        $('#intro-installation').text( cartFoundationLabel(cart) + ' and ' + cartInstallationLabel(cart));
+        $('#intro-installation').text( cartFoundationLabel(cart) + ' & ' + cartInstallationLabel(cart));
         $('#intro-order').text( cartOrderLabel(cart) );
 
 
@@ -212,7 +212,7 @@ $(document).ready(function() {
       $('#zip-label').val(cart.zip);
       $('#shipping-time-label').text(cart.shipping);
       $('#shipping-cost-label').text(formatMoney(cart.shippingPrice));
-      $('#city-label').text(cart.city);    
+      $('#city-label').text(cart.city);
       $('#permit-time-label').text(cart.permitTime);
       $('#permit-cost-label').text(cart.permitCost);
       $('#permit-notes-city-label').text(cart.city).fadeIn();
@@ -282,10 +282,14 @@ $(document).ready(function() {
   }
 
   function updateFoundationSelection(data) {
-    console.log('calling updateFoundationSelection with this:');
-    console.log(data);
-    $('a.option-foundation').removeClass('selected');
-    $('a.option-foundation[data-foundation="'+data.input.foundation+'"]').addClass('selected');
+    var promise = new Promise(function(resolve, reject){
+      console.log('calling updateFoundationSelection with this:');
+      console.log(data);
+      $('a.option-foundation').removeClass('selected');
+      $('a.option-foundation[data-foundation="'+data.input.foundation+'"]').addClass('selected');
+      resolve(data);
+    });
+    return promise;
   }
 
   function updateInstallationSelection(data) {
@@ -352,7 +356,7 @@ $(document).ready(function() {
     if(cart.city) {
       return 'Shipping to ' + cart.city;
     }
-    return 'Location & permit details';
+    return 'Specify your location';
   }
 
 
@@ -361,7 +365,7 @@ $(document).ready(function() {
     if(cart.installation) {
       return cart.installation + ' installation';
     }
-    return 'TBD Installation';
+    return 'Select installation type';
   }
 
 
@@ -369,14 +373,14 @@ $(document).ready(function() {
     if(cart.foundation) {
       return cart.foundation + ' foundation';
     }
-    return 'TBD Foundation';
+    return 'Select foundation type';
   }
 
   function cartOrderLabel(cart) {
     if(cart.paymentIntentCreated) {
-      return 'Initial Payment Submitted';
+      return 'Initial payment submitted';
     }
-    return 'Complete your order';
+    return 'Submit your initial payment';
   }
 
 
@@ -473,7 +477,7 @@ $(document).ready(function() {
       $('#permit-cost-label').text(cart.permitCost).fadeIn();
       $('#permit-notes-city-label').text(cart.city).fadeIn();
       if(cart.permitNotes) {
-        $('#permit-notes-text').text(cart.permitNotes).parent().parent().removeClass('fade');
+        $('#permit-notes-text').text(cart.permitNotes).parent().removeClass('fade');
       }
       $('#submit-zip-spinner').delay(500).fadeOut(function() {
         $(this).prev().attr('disabled', false); 

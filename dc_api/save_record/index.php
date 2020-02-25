@@ -44,13 +44,10 @@ if( empty($uid) || !isset($uid) ) {
 //  exit(json_encode(['error' => 'Empty JSON']));
 //}
 
-$key = 'xK-<cH];"a:Yd=40^zx)wCXyYiw#bH';
-$time = time();
-$hash = hash_hmac('sha256', $time, $key);
+
 
 $record = $database->get($uid);
 $record->uniqueid = $uid;
-$record->hash = $hash;
 $record->utm_source = $data->params->utm_source;
 $record->utm_medium = $data->params->utm_medium;
 $record->utm_campaign = $data->params->utm_campaign;
@@ -63,8 +60,11 @@ $record->email = $data->customer->email;
 $record->firstName = $data->customer->firstName;
 $record->lastName = $data->customer->lastName;
 $record->phone = $data->customer->phone;
-
-$record->model = $data->product->model;
+if($data->product->model) {
+  $record->model = $data->product->model;
+} else {
+  $record->model = 'Signature';
+}
 $record->depth = $data->product->depth;
 $record->length = $data->product->length;
 $record->total = $data->product->cart->total;
@@ -80,10 +80,15 @@ foreach($data->product->cart->items as $item) {
 
 $record->save();
 
+$key = 'xK-<cH];"a:Yd=40^zx)wCXyYiw#bH';
+$time = time();
+$hash = hash_hmac('sha256', $time, $key);
+
 exit(json_encode([
   'code' => 'success',
   'response' => 'savedRecord',
-  'redirectURL' => 'https://dev2-studio-shed.pantheonsite.io/dc?h='.$hash.'&t='.$time.'&u='.$uid
+  'redirectURL' => 'https://dev2-studio-shed.pantheonsite.io/dc/auth?h='.$hash.'&t='.$time.'&u='.$uid,
+  'redirectPath' => '/dc/auth?h='.$hash.'&t='.$time.'&u='.$uid
   ]));
 
 

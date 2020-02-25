@@ -13091,6 +13091,10 @@ a.btn-video-trigger {
           text-align: center;
           width: auto; } }
 
+.dc-footer-logged-out {
+  padding: 5rem 0;
+  text-align: center; }
+
 .dc-paging {
   padding: 5rem; }
   .dc-paging nav.paging-nav {
