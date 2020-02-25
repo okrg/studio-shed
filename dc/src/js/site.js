@@ -101,6 +101,12 @@ $(document).ready(function() {
         $('#initial-payment').text( cartInitialPayment(cart) );
         $('#stripe-fee').val( cartStripeFee(cart) );
 
+        $('#intro-first-name').text( cart.firstName );
+        $('#intro-config').text( cartModelLabel(cart) );
+        $('#intro-location').text( cartLocationLabel(cart) );
+        $('#intro-installation').text( cartFoundationLabel(cart) + ' and ' + cartInstallationLabel(cart));
+        $('#intro-order').text( cartOrderLabel(cart) );
+
 
         var paidDate = new Date(cart.paymentIntentCreated * 1000);
         var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -112,7 +118,6 @@ $(document).ready(function() {
         $('#summary-name').text( cart.firstName + ' ' + cart.lastName );
         $('#summary-location').text( cart.city );
         $('#summary-email').text( cart.email );
-      
         $('#summary-config-id').text( cart.uniqueid );
 
 
@@ -365,6 +370,9 @@ $(document).ready(function() {
   }
 
   function cartOrderLabel(cart) {
+    if(cart.paymentIntentCreated) {
+      return 'Initial Payment Submitted';
+    }
     return 'Complete your order';
   }
 
