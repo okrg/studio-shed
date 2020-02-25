@@ -17,7 +17,7 @@
         <div class="col-sm-12 col-lg-4">
           
           <form id="zip-lookup">
-            <input class="form-control" type="text" id="zip-label" placeholder="Enter Your ZIP Code" value="92101"></input>
+            <input class="form-control" type="text" id="zip-label" placeholder="Enter Your ZIP" value="92101"></input>
             <input class="btn btn-primary btn-sm" type="button" value="Submit" id="submit-zip-lookup"></input>
             <i id="submit-zip-spinner" class="fa fa-spin fa-sync"></i>
           </form>
@@ -87,11 +87,9 @@
               </div>
             </div>
 
-            <div class="dc-permit-notes card fade">
-              <div class="card-body">
-                <h6 class="card-subtitle mb-2 text-muted">Additional Notes about Permits</h6>
-                <div id="permit-notes-text"></div>
-              </div>
+            <div class="dc-permit-notes fade">
+              <h5 class="card-subtitle mb-2 text-muted">Additional Notes about Permits for <span id="permit-notes-city-label"></span></h5>
+              <div id="permit-notes-text"></div>
             </div>
           </div>
         </div>

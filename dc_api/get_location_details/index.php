@@ -9,7 +9,7 @@ if( !empty($data) ) {
     case '92101':
     $response = array(
       'shipping_time' => '3-4 weeks',
-      'shipping_cost' => '2500',
+      'shipping_cost' => '1871',
       'shipping_city_code' => 'CA-San Diego',
       'shipping_city_label' => 'San Diego, CA'
     );
@@ -17,9 +17,17 @@ if( !empty($data) ) {
     case '92008':
     $response = array(
       'shipping_time' => '3-4 weeks',
-      'shipping_cost' => '2300',
+      'shipping_cost' => '1844',
       'shipping_city_code' => 'CA-Carlsbad',
       'shipping_city_label' => 'Carlsbad, CA'
+    );
+    break;
+    case '94061':
+    $response = array(
+      'shipping_time' => '4 weeks',
+      'shipping_cost' => '2184',
+      'shipping_city_code' => 'CA-Redwood City',
+      'shipping_city_label' => 'Redwood City, CA'
     );
     break;
   }

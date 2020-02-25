@@ -12955,6 +12955,15 @@ a.btn-video-trigger {
   .dc-permit #permit-time-label {
     float: right;
     font-weight: 400; }
+  .dc-permit .dc-permit-notes {
+    background: #fff;
+    border: 1px #ddd solid;
+    padding: 40px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.11);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.11); }
+    .dc-permit .dc-permit-notes #permit-notes-text {
+      white-space: pre-wrap; }
 
 .dc-finance .finance-embed {
   background: #fff;
