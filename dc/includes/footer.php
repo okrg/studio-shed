@@ -21,7 +21,7 @@
           Complete Order
         </a>
       </nav>
-      <p>&copy; 2019 Studio shed</p>
+      <p>&copy; <?php echo date('Y'); ?> <a href="https://studio-shed.com/" target="_blank">STUDIOSHED</a> All rights reserved.</p>
     </div>
   </footer>
 </div>

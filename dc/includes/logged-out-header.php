@@ -15,7 +15,7 @@
   <header>
     <div class="container">
       <div class="p-3 bg-white border-bottom box-shadow text-center">
-        <h5 class="my-0 ont-weight-normal">Studio Shed Design Center</h5>
+        <h5 class="my-0 mr-md-auto font-weight-normal"><span style="color:#fba445">Studio</span>Shed Design Center<small>&trade;</small></h5>
       </div>
     </div>
   </header>
