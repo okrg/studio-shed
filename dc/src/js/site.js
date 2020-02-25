@@ -216,7 +216,9 @@ $(document).ready(function() {
       $('#permit-time-label').text(cart.permitTime);
       $('#permit-cost-label').text(cart.permitCost);
       $('#permit-notes-city-label').text(cart.city).fadeIn();
-      $('#permit-notes-text').text(cart.permitNotes).parent().removeClass('fade');
+      if(cart.permitNotes) {
+        $('#permit-notes-text').text(cart.permitNotes).parent().removeClass('fade');
+      }
       resolve(cart);
    });
    return promise;
