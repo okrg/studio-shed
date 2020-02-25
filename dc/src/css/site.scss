@@ -905,7 +905,9 @@ a.btn-video-trigger {
     transition-duration: 0.35s;
     transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
     background: url(/images/error.svg) center left no-repeat;
-    background-size: 15px 15px;
+    background-size: 15px 15px;    
+    justify-content: center;
+    width: 100%;
   }
 
   .element-errors.visible {

@@ -13471,7 +13471,11 @@ a.btn-video-trigger {
     -webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
             transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
     background: url(/images/error.svg) center left no-repeat;
-    background-size: 15px 15px; }
+    background-size: 15px 15px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 100%; }
   .dc-checkout-form .element-errors.visible {
     opacity: 1;
     -webkit-transform: none;

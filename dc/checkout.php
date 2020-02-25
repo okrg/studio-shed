@@ -103,8 +103,11 @@ if(isset($_REQUEST['stripeFee'])) {
 
 
         <button disabled class="payment-button disabled" type="submit" id="submit">Pay</button>
+
+        <div id="card-errors" class="element-errors"></div>
+
       </form>
-      <div id="card-errors" class="element-errors"></div>
+      
       </div>
       <div id="confirmation">
         <div class="status processing">
@@ -339,6 +342,7 @@ $(document).ready(function(){
 
   submitButton.addEventListener('click', function(ev) {
     ev.preventDefault();
+    $('#card-errors').text('').removeClass('visible');
     stripe.confirmCardPayment(clientSecret, {
       payment_method: {
         card: card,
@@ -351,6 +355,7 @@ $(document).ready(function(){
       if (result.error) {
         // Show error to your customer (e.g., insufficient funds)
         console.log(result.error.message);
+        $('#card-errors').text(result.error.message).addClass('visible');
       } else {
         // The payment has been processed!
         //console.log(result);
