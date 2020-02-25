@@ -472,7 +472,9 @@ $(document).ready(function() {
       $('#permit-time-label').text(cart.permitTime).fadeIn();
       $('#permit-cost-label').text(cart.permitCost).fadeIn();
       $('#permit-notes-city-label').text(cart.city).fadeIn();
-      $('#permit-notes-text').text(cart.permitNotes).parent().parent().removeClass('fade');
+      if(cart.permitNotes) {
+        $('#permit-notes-text').text(cart.permitNotes).parent().parent().removeClass('fade');
+      }
       $('#submit-zip-spinner').delay(500).fadeOut(function() {
         $(this).prev().attr('disabled', false); 
         $('#estimate-step-2').removeClass('unchecked').addClass('checked');
