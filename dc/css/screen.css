@@ -12955,6 +12955,8 @@ a.btn-video-trigger {
   .dc-permit #permit-time-label {
     float: right;
     font-weight: 400; }
+  .dc-permit #permit-notes {
+    display: none; }
   .dc-permit .dc-permit-notes {
     background: #fff;
     border: 1px #ddd solid;

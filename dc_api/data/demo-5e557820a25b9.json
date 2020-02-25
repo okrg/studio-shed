@@ -1,6 +1,6 @@
 {
     "__created_at": 1582659733,
-    "__updated_at": 1582659769,
+    "__updated_at": 1582661393,
     "data": {
         "uniqueid": "demo-5e557820a25b9",
         "utm_source": "(direct)",
@@ -50,6 +50,9 @@
         "permitCost": "$5000-9000",
         "permitNotes": "Permits are required when an accessory building is larger than 120 SF, or if it includes electrical or plumbing improvements.\n\nADUs are allowed in any residential zone with a single-family dwelling, regardless of lot size.\nMaximum ADU size for lots under 10,000 SF is 700 SF. 800 SF if ADA compliant.\nMaximum ADU size for lots over 10,000 SF is 900 SF.\nSetbacks: 10 feet rear, 6 feet side.\nOwner must live in the main dwelling or the ADU.",
         "installation": "Certified (Shell Only)",
-        "installationPrice": "4379"
+        "installationPrice": "4379",
+        "paymentIntentAmount": 13684,
+        "paymentIntentCreated": 1582661265,
+        "paymentIntentId": "pi_0GG9gzGmS1cnv9GGqeIrYYga"
     }
 }

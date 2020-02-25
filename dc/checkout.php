@@ -2,7 +2,7 @@
 
 <?php
 require 'vendor/autoload.php';
-\Stripe\Stripe::setApiKey('sk_test_yvJN4lDIYjjUJmZnRkSQHfs4');
+\Stripe\Stripe::setApiKey('sk_test_QhcInpwY7RzwSEINOicTQPNM00pNL7f8Av');
 
 if(isset($_REQUEST['stripeFee'])) {
   $amount = (int)$_REQUEST['stripeFee'];
@@ -13,7 +13,7 @@ if(isset($_REQUEST['stripeFee'])) {
 }
 ?>
 <script type="text/javascript">
-  var stripe = Stripe('pk_test_dObY7AghoaRyd66ClG2wETRT');
+  var stripe = Stripe('pk_test_fOnxYRdPKxD6UIEVyOm1LA5p00JLrteEOh');
   var clientSecret = '<?php echo $intent->client_secret; ?>';
   var elements = stripe.elements();
 </script>

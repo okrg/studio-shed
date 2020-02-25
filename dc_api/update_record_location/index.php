@@ -19,9 +19,16 @@ $record->zip = $data['zip'];
 $record->city = $data['shipping_city_label'];
 $record->shipping = $data['shipping_time'];
 $record->shippingPrice = $data['shipping_cost'];
-$record->permitTime = $data['permit_time'];
-$record->permitCost = $data['permit_cost'];
-$record->permitNotes = $data['permit_notes'];
+
+if($data['permit_data']) {
+  $record->permitTime = $data['permit_time'];
+  $record->permitCost = $data['permit_cost'];
+  $record->permitNotes = $data['permit_notes'];
+} else {
+  unset($record->permitTime);
+  unset($record->permitCost);
+  unset($record->permitNotes);
+}
 
 $record->save();
 $data['code'] = 'updateRecordLocationSuccess';

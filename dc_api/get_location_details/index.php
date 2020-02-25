@@ -6,6 +6,14 @@ $zip = $_REQUEST['zip'];
 if( !empty($data) ) {
   switch($zip) {
     default:
+    case '93650':
+    $response = array(
+      'shipping_time' => '3-4 weeks',
+      'shipping_cost' => '1993',
+      'shipping_city_code' => 'CA-Fresno',
+      'shipping_city_label' => 'Fresno, CA'
+    );
+    break;
     case '92101':
     $response = array(
       'shipping_time' => '3-4 weeks',

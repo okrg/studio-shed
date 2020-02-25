@@ -289,12 +289,14 @@ a.btn-video-trigger {
     float: right;
     font-weight: 400;
   }
+  #permit-notes { display: none; }
   .dc-permit-notes {
     background: $white;
     border: 1px $lightBorder solid;
     padding: 40px;
     border-radius: 4px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.11);
+    
     #permit-notes-text {
       white-space: pre-wrap;
     }

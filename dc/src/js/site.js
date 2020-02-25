@@ -213,12 +213,35 @@ $(document).ready(function() {
       $('#shipping-time-label').text(cart.shipping);
       $('#shipping-cost-label').text(formatMoney(cart.shippingPrice));
       $('#city-label').text(cart.city);
-      $('#permit-time-label').text(cart.permitTime);
-      $('#permit-cost-label').text(cart.permitCost);
+
       $('#permit-notes-city-label').text(cart.city).fadeIn();
+
+      $('#permit-message').text('You may be required to obtain local building permits.');
+      $('#permit-time-label').text('Typically 2-3 weeks');
+      $('#permit-cost-label').text('Typical range is $400 - $1,800');
+
+      if (cart.permitTime) {
+        $('#permit-time-label').text(cart.permitTime);
+      }
+
+      if (cart.permitCost) {
+        $('#permit-cost-label').text(cart.permitCost);
+      }
+
       if(cart.permitNotes) {
         $('#permit-notes-text').text(cart.permitNotes).parent().removeClass('fade');
       }
+
+      if(cart.length <= 12) {
+        $('#permit-message').text('Based off your location and configuration, build permits may not be required. Please check with your local municipality.');
+      }
+     
+
+      $('#submit-zip-spinner').delay(500).fadeOut(function() {
+        $(this).prev().attr('disabled', false); 
+        $('#estimate-step-2').removeClass('unchecked').addClass('checked');
+        $('#permit-notes').fadeIn();
+      });
       resolve(cart);
    });
    return promise;
@@ -825,7 +848,11 @@ $(document).ready(function() {
     $('#submit-zip-lookup').attr('disabled', true);
     $('#submit-zip-spinner').css('display', 'inline-block');
     var zip = $('#zip-label').val();
-    fetchLocationDetails(zip).then(updateRecordLocation).then(renderLocationLabels);
+    fetchLocationDetails(zip)
+      .then(updateRecordLocation)
+      .then(getCart)
+      .then(renderCartLabels)
+      .then(renderShippingElements);      
   });
 
   $('#consent-check').on('change', function() {

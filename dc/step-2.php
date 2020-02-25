@@ -15,7 +15,7 @@
           <h3>Specify Your Location</h3>
         </div>
         <div class="col-sm-12 col-lg-4">
-          
+
           <form id="zip-lookup">
             <input class="form-control" type="text" id="zip-label" placeholder="Enter Your ZIP" value="92101"></input>
             <input class="btn btn-primary btn-sm" type="button" value="Submit" id="submit-zip-lookup"></input>
@@ -52,7 +52,9 @@
     <section class="dc-permit">
       <div class="row">
         <div class="col-sm-8 offset-2">
-          <h2 class="text-center mb-5">Based off your location and shed configuration, you may be required to obtain local building permits.</h2>
+          <h2 class="text-center mb-5">
+            <span id="permit-message"></span>
+          </h2>
           <div class="panel-group accordion" id="permit-notes" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default mb-5">
               <div class="panel-heading" role="tab" id="pheading0">
