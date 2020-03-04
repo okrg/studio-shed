@@ -1,7 +1,12 @@
 <?php
 include('../headers.php');
+include('../shipping-rates.php');
 $data = array('1');
 $zip = $_REQUEST['zip'];
+$depth = $_REQUEST['depth'];
+$interior = $_REQUEST['interior'];
+$length = $_REQUEST['length'];
+$area = $_REQUEST['area'];
 
 if( !empty($data) ) {
   switch($zip) {
@@ -10,39 +15,112 @@ if( !empty($data) ) {
     $response = array(
       'shipping_time' => '3-4 weeks',
       'shipping_cost' => '1993',
-      'shipping_city_code' => 'CA-Fresno',
-      'shipping_city_label' => 'Fresno, CA'
     );
     break;
     case '92101':
     $response = array(
       'shipping_time' => '3-4 weeks',
       'shipping_cost' => '1871',
-      'shipping_city_code' => 'CA-San Diego',
-      'shipping_city_label' => 'San Diego, CA'
     );
     break;
     case '92008':
     $response = array(
       'shipping_time' => '3-4 weeks',
       'shipping_cost' => '1844',
-      'shipping_city_code' => 'CA-Carlsbad',
-      'shipping_city_label' => 'Carlsbad, CA'
     );
     break;
     case '94061':
     $response = array(
       'shipping_time' => '4 weeks',
       'shipping_cost' => '2184',
-      'shipping_city_code' => 'CA-Redwood City',
-      'shipping_city_label' => 'Redwood City, CA'
+      
     );
     break;
   }
 
 
-  $response['zip'] = $zip;
-  
+  $dist_curl = curl_init();
+  curl_setopt_array($dist_curl, array(
+    CURLOPT_URL => "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=80027&destinations=".$zip."&key=AIzaSyBCNRPZ5PTq2P6Q19WleDHQ_LggZyAZImM",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 0,
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "GET",
+  ));
+
+  $dist_response = curl_exec($dist_curl);
+  curl_close($dist_curl);
+  $dist = json_decode($dist_response);
+
+
+  $geocode_curl = curl_init();
+  curl_setopt_array($geocode_curl, array(
+    CURLOPT_URL => "https://maps.googleapis.com/maps/api/geocode/json?address=".$zip."&key=AIzaSyBCNRPZ5PTq2P6Q19WleDHQ_LggZyAZImM",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 0,
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "GET",
+  ));
+
+  $geocode_response = curl_exec($geocode_curl);
+
+  curl_close($geocode_curl);
+  $geocode = json_decode($geocode_response);
+
+  //in meters
+  $distance_meters = $dist->rows[0]->elements[0]->distance->value;
+  //meters to miles
+  $distance_miles = round($distance_meters*0.000621371192);
+
+  for ($j=0;$j<count($geocode->results[0]->address_components);$j++) {
+      $cn=array($geocode->results[0]->address_components[$j]->types[0]);
+      if (in_array("locality", $cn)) {
+          $city = $geocode->results[0]->address_components[$j]->long_name;
+      }
+  }
+
+  for ($j=0;$j<count($geocode->results[0]->address_components);$j++) {
+      $cn=array($geocode->results[0]->address_components[$j]->types[0]);
+      if (in_array("administrative_area_level_1", $cn)) {
+          $state = $geocode->results[0]->address_components[$j]->short_name;
+      }
+  }
+
+  $response['shipping_city_code'] = $state.'-'.$city;
+  $response['shipping_city_label'] = $city.', '.$state;
+  $response['shipping_city'] = $city;
+  $response['shipping_state'] = $state;
+  $response['shipping_distance'] = (int)$distance_miles;
+  $response['zip'] = (string)$zip;
+
+
+  if($state == 'CO') {
+    $state_code = 'CONONLOCAL';
+  } else {
+    $state_code = $state;
+  }
+
+  if($depth >= 12) {
+    $depth_surcharge = $shipping->depth_surcharges->{$depth};
+  }
+
+  if(!empty($interior)){
+    $interior_surcharge = $shipping->interior_surcharges->{$interior};
+  }
+
+  $base = $shipping->base_rates->{$state_code};
+  $subtotal = $distance_miles * $base;
+  $total = $subtotal + $depth_surcharge + $interior_surcharge;
+  $response['shipping_cost'] = round($total, 2);
+
+
+  //Get Permit Notes from G sheet
   $city = urlencode($response['shipping_city_code']);
   $url = "https://docs.google.com/a/google.com/spreadsheets/d/1u371G75G6zQRCiLkm0-3vun_l8Xtw-SQRRXgfgCLx1w/gviz/tq?tq=select%20B%2CC%2CD%20where%20A%20like%20'".$city."'";
   $gsheet = @file_get_contents($url);

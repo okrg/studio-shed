@@ -150,4 +150,9 @@
 
   </div>
 </main>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#progress-step-3').addClass('current');
+});
+</script>
 <?php include('includes/footer.php'); ?>

@@ -26,9 +26,184 @@ if(isset($_REQUEST['stripeFee'])) {
       <h2 class="text-center mb-5">Checkout</h2>
       <div class="row">
         <div class="col-md-8 offset-2">
-        <h2 class="text-center ">Final Estimate: <span id="final-estimate">&mdash;</span></h2>
-        <h2 class="text-center initial-payment">Initial Payment: <span id="initial-payment">&mdash;</span></h2>
-        <p class="text-center">*You will be charged the initial payment of 50% of the final estimate. The remaining amount, including taxes, will be charged upon final shipment.</p>
+
+        </div>
+      </div>
+
+
+      <div class="cart">
+        <div class="row">
+          <div class="col-sm-2 offset-2">
+            <img src="img/shed-screenshot.png" class="shed-screenshot img-fluid" />
+          </div>
+          <div class="col-sm-8">
+            <table id="cart-table">
+              <tr>
+                <td>
+                  <h4><span id="cart-model-label">Shed configuration</span> <a id="show-details" href="#" data-toggle="collapse" data-target=".shed">Show Details</a></h4>
+                </td>
+                <td class="price">
+                  <h4><span id="cart-model-price">Price</span></h4>
+                </td>
+              </tr>
+              <tr>
+                <td class="hiddenRow">
+                  <div class="collapse shed">
+                    Size: <span id="summary-config-size"></span>
+                  </div>
+                </td>
+                <td class="hiddenRow text-right">
+                  <div class="collapse shed">
+                    <span id="summary-config-size-price"></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="hiddenRow">
+                  <div class="collapse shed">
+                    Siding: <span id="summary-config-siding"></span>
+                  </div>
+                </td>
+                <td class="hiddenRow text-right">
+                  <div class="collapse shed">
+                    <span id="summary-config-siding-price"></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="hiddenRow">
+                  <div class="collapse shed">
+                    Front: <span id="summary-config-front"></span>
+                  </div>
+                </td>
+                <td class="hiddenRow text-right">
+                  <div class="collapse shed">
+                    <span id="summary-config-front-price"></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="hiddenRow">
+                  <div class="collapse shed">
+                    Left: <span id="summary-config-left"></span>
+                  </div>
+                </td>
+                <td class="hiddenRow text-right">
+                  <div class="collapse shed">
+                    <span id="summary-config-left-price"></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="hiddenRow">
+                  <div class="collapse shed">Right: <span id="summary-config-right"></span>
+                  </div>
+                </td>
+                <td class="hiddenRow text-right">
+                  <div class="collapse shed"><span id="summary-config-right-price"></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="hiddenRow">
+                  <div class="collapse shed">Back: <span id="summary-config-back"></span>
+                  </div>
+                </td>
+                <td class="hiddenRow text-right">
+                  <div class="collapse shed"><span id="summary-config-back-price"></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="hiddenRow">
+                  <div class="collapse shed">Siding Color: <span id="summary-config-siding-color"></span>
+                  </div>
+                </td>
+                <td class="hiddenRow text-right">
+                  <div class="collapse shed"><span id="summary-config-siding-color-price"></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="hiddenRow">
+                  <div class="collapse shed">Door Color: <span id="summary-config-door-color"></span>
+                  </div>
+                </td>
+                <td class="hiddenRow text-right">
+                  <div class="collapse shed"><span id="summary-config-door-color-price"></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="hiddenRow">
+                  <div class="collapse shed">Eaves Color: <span id="summary-config-eaves-color"></span>
+                  </div>
+                </td>
+                <td class="hiddenRow text-right">
+                  <div class="collapse shed"><span id="summary-config-eaves-color-price"></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="hiddenRow">
+                  <div class="collapse shed">Accessory: <span id="summary-config-accessory"></span></div>
+                </td>
+                <td class="hiddenRow text-right">
+                  <div class="collapse shed"><span id="summary-config-accessory-price"></span></td>
+                  </div>
+              </tr>
+              <tr id="optional-interior-row">
+                <td class="hiddenRow">
+                  <div class="collapse shed">Interior: <span id="summary-config-interior"></span></div>
+                </td>
+                <td class="hiddenRow text-right">
+                  <div class="collapse shed"><span id="summary-config-interior-price"></span></td>
+                  </div>
+              </tr>
+              <tr>
+                <td>
+                  <h4><span id="cart-location-label">Shipping</span></h4>
+                </td>
+                <td class="price">
+                  <h4><span id="cart-location-price">Price</span></h4>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h4><span id="cart-permits-label">Permit Plans Set</span></h4>
+                </td>
+                <td class="price">
+                  <h4><span id="cart-permits-price">Price</span></h4>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h4><span id="cart-installation-label">Installation</span></h4>
+                </td>
+                <td class="price">
+                  <h4><span id="cart-installation-price">Price</span></h4>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h2>Final Estimate</h2>
+                </td>
+                <td class="price">
+                  <h2><span id="final-estimate">&mdash;</span></h2>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h2 class="initial-payment">Initial Payment</h2>
+                </td>
+                <td class="price">
+                  <h2 class="initial-payment"><span id="initial-payment">&mdash;</span></h2>
+                </td>
+              </tr>
+            </table>
+
+        <p>*You will be charged the initial payment of 50% of the final estimate. The remaining amount, including taxes, will be charged upon final shipment.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -312,6 +487,13 @@ if(isset($_REQUEST['stripeFee'])) {
     </div>
   </div>
 </div>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#progress-step-4').addClass('current');
+});
+</script>
 
 <script>
 $(document).ready(function(){

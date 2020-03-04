@@ -228,6 +228,19 @@ $(document).ready(function() {
             //console.log('Setting to localStorage with key:', key);
             //localStorage.setItem(key, json);
             window.cart = cart = JSON.parse(json);
+
+
+            if( $('#idearoomConfigurator').length ) {
+              if( /[?&]designermode=/.test(location.search) ) {
+                //do nothing
+              } else {
+                var configURL = window.cart.configUrl;
+                var queryString = configURL.substring( configURL.indexOf('?') + 1 );
+                console.log('Step 1 string???????????????????');
+                console.log(queryString);
+                //window.location = '/dc/step-1.php?designermode=true&' + queryString;
+              }
+            }
             resolve(cart);
           });
         /*
@@ -259,24 +272,39 @@ $(document).ready(function() {
      var promise = new Promise(function(resolve, reject){
         console.log('third');
         console.log(cart);
+        $('#header-total-label').text( cartTotalLabel(cart) );
+        $('#header-total-price').text( cartTotalPrice(cart) );
+
         $('#cart-total-label').text( cartTotalLabel(cart) );
         $('#cart-total-price').text( cartTotalPrice(cart) );
         $('#cart-model-label').text( cartModelLabel(cart) );
+        $('#cart-model-price').text( cartModelPrice(cart) );
+        $('#cart-model-link').attr( 'href', cartModelLink(cart) );
+
         $('#cart-location-label').text( cartLocationLabel(cart) );
+        $('#cart-location-price').text( cartLocationPrice(cart) );
+
+        $('#cart-permits-label').text( cartPermitPlansLabel(cart) );
+        $('#cart-permits-price').text( cartPermitPlansPrice(cart) );
+
+
         $('#cart-installation-label').text( cartInstallationLabel(cart) );
+        $('#cart-installation-price').text( cartInstallationPrice(cart) );
+
         $('#cart-foundation-label').text( cartFoundationLabel(cart) );
+
         $('#cart-order-label').text( cartOrderLabel(cart) );
 
         if(cart.city && cart.shipping) {
-          $('#estimate-step-2').removeClass('unchecked').addClass('checked');
+          $('#progress-step-2').addClass('active');
         }
 
         if(cart.installation && cart.foundation) {
-          $('#estimate-step-3').removeClass('unchecked').addClass('checked');
+          $('#progress-step-3').addClass('active');
         }
 
-        if(cart.checkout) {
-          $('#estimate-step-4').removeClass('unchecked').addClass('checked');
+        if(cart.paymentIntentId) {
+          $('#progress-step-4').addClass('active');
         }
 
         $('#final-estimate').text( cartTotalPrice(cart) );
@@ -285,6 +313,7 @@ $(document).ready(function() {
 
         $('#intro-first-name').text( cart.firstName );
         $('#intro-config').text( cartModelLabel(cart) );
+        $('#intro-config-link').attr( 'href', cartModelLink(cart) );
         $('#intro-location').text( cartLocationLabel(cart) );
         $('#intro-installation').text( cartFoundationLabel(cart) + ' & ' + cartInstallationLabel(cart));
         $('#intro-order').text( cartOrderLabel(cart) );
@@ -343,6 +372,14 @@ $(document).ready(function() {
         $('#summary-config-accessory').text( cart.accessory );
         $('#summary-config-accessory-price').text( formatMoney(cart.accessoryPrice) );
 
+        //Interior
+        if(cart.interiorPrice) {
+          $('#summary-config-interior').text( cart.interior );
+          $('#summary-config-interior-price').text( formatMoney(cart.interiorPrice) );
+        } else {
+          $('#optional-interior-row').hide();
+        }
+
         //Shipping
         $('#summary-config-shipping').text( cart.shipping + ' to ' + cart. city + ' (' + cart.zip + ')' );
         $('#summary-config-shipping-price').text( formatMoney(cart.shippingPrice) );
@@ -370,6 +407,18 @@ $(document).ready(function() {
      return promise;
   }
 
+
+
+  $(".shed").on('shown.bs.collapse', function(){
+    $('#show-details').text('Hide Details');
+  });
+
+  $(".shed").on('hidden.bs.collapse', function(){
+    $('#show-details').text('Show Details');
+  });
+
+
+
   function renderPermitElements(cart) {
     //get shipping fields and populate
 
@@ -393,7 +442,7 @@ $(document).ready(function() {
       console.log(cart);
       $('#zip-label').val(cart.zip);
       $('#shipping-time-label').text(cart.shipping);
-      $('#shipping-cost-label').text(formatMoney(cart.shippingPrice));
+      $('#shipping-cost-label').text('$'+cart.shippingPrice);
       $('#city-label').text(cart.city);
 
       $('#permit-notes-city-label').text(cart.city).fadeIn();
@@ -434,53 +483,36 @@ $(document).ready(function() {
     var promise = new Promise(function(resolve, reject){
         console.log('renderInstallationElements');
         console.log(cart);
-        //Figure out instllation based on size and model
-        installChart = {
-          "model": {
-            "10x8": {
-              "shellOnly": 2596,
-              "shellPlus": 6669
-            },
-            "10x10": {
-              "shellOnly": 2703,
-              "shellPlus": 6947
-            },
-            "10x12": {
-              "shellOnly": 3244,
-              "shellPlus": 8336
-            },
-            "10x14": {
-              "shellOnly": 2596,
-              "shellPlus": 6669
-            },
-            "10x16": {
-              "shellOnly": 2596,
-              "shellPlus": 6669
-            },
-            "10x18": {
-              "shellOnly": 4379,
-              "shellPlus": 11254
-            },
+        //Figure out installation code
+        $.ajax({
+          url: "/dc_api/get_installation_rates",
+          method: "GET",
+          data: {
+            model: cart.model,
+            state: cart.state,
+            zip: cart.zip,
+            length: cart.length,
+            depth: cart.depth
           }
-        }
+        }).done(function (rates) {
+          //mark previously chosen foundations
+          $('a.option-foundation[data-foundation="'+cart.foundation+'"]').addClass('selected');
+          //mark previously chosen installations
+          $('a.option-installation[data-installation="'+cart.installation+'"]').addClass('selected');
 
-        shellOnly = installChart['model'][cart.depth+'x'+cart.length]['shellOnly'];
-        shellPlus = installChart['model'][cart.depth+'x'+cart.length]['shellPlus'];
+          $('#select-certified-install-1')
+          .attr('data-installation-price', rates.shell)
+          .find('span.cost').text('+ ' + formatMoney(rates.shell));
 
-        //mark previously chosen foundations
-        $('a.option-foundation[data-foundation="'+cart.foundation+'"]').addClass('selected');
+          $('#select-certified-install-2')
+          .attr('data-installation-price', rates.lifestyle)
+          .find('span.cost').text('+ ' + formatMoney(rates.lifestyle));
+          resolve(cart);
+        });
 
-        //mark previously chosen installations
-        $('a.option-installation[data-installation="'+cart.installation+'"]').addClass('selected');
 
 
-        $('#select-certified-install-1')
-        .attr('data-installation-price', shellOnly)
-        .find('span.cost').text('+ ' + formatMoney(shellOnly));
-        $('#select-certified-install-2')
-        .attr('data-installation-price', shellPlus)
-        .find('span.cost').text('+ ' + formatMoney(shellPlus));
-        resolve(cart);
+
 
      });
      return promise;
@@ -510,7 +542,7 @@ $(document).ready(function() {
 
 
   function cartRenderDone() {
-     console.log('render done!');
+    console.log('render done!');
   }
 
   function cartTotalLabel(cart) {
@@ -527,7 +559,7 @@ $(document).ready(function() {
     + ( parseInt(cart.foundationPrice) || 0 )
     + ( parseInt(cart.permitPlansPrice) || 0 )
     + ( parseInt(cart.servicePrice) || 0 );
-    return fig.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    return fig.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
   }
 
   function cartInitialPayment(cart) {
@@ -538,7 +570,7 @@ $(document).ready(function() {
     + ( parseInt(cart.permitPlansPrice) || 0 )
     + ( parseInt(cart.servicePrice) || 0 );
     fig = fig/2;
-    return fig.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    return fig.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 });
   }
 
   function cartStripeFee(cart) {
@@ -557,13 +589,41 @@ $(document).ready(function() {
     return cart.depth + ' x ' + cart.length + ' ' + cart.model + ' studio shed';
   }
 
+  function cartModelPrice(cart) {
+    return cart.total.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });    
+  }
+
+  function cartModelLink(cart) {
+    var configURL = window.cart.configUrl;
+    var queryString = configURL.substring( configURL.indexOf('?') + 1 );
+    return '/dc/step-1.php?designermode=true&' + queryString;
+  }
+
   function cartLocationLabel(cart) {
     if(cart.city) {
       return 'Shipping to ' + cart.city;
     }
     return 'Specify your location';
   }
+  function cartLocationPrice(cart) {
+    console.log('cartLocationPrice');
+    console.log(cart);
+    if(cart.shippingPrice) {
+      return parseInt(cart.shippingPrice).toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
+    }
+  }
 
+  function cartPermitPlansLabel(cart) {
+    if(cart.permitPlans) {
+      return 'Permit plans set included';
+    }
+    return 'No permit plans set included';
+  }
+  function cartPermitPlansPrice(cart) {
+    if(cart.permitPlansPrice) {
+      return parseInt(cart.permitPlansPrice).toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
+    }
+  }
 
 
   function cartInstallationLabel(cart) {
@@ -571,6 +631,12 @@ $(document).ready(function() {
       return cart.installation + ' installation';
     }
     return 'Select installation type';
+  }
+
+  function cartInstallationPrice(cart) {
+    if(cart.installationPrice) {
+      return parseInt(cart.installationPrice).toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
+    }
   }
 
 
@@ -590,7 +656,8 @@ $(document).ready(function() {
 
 
   function formatMoney(number) {
-    return parseInt(number).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    return parseInt(number).toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
+    
   }
 
 
@@ -634,11 +701,11 @@ $(document).ready(function() {
   }
 
 
-  function fetchLocationDetails(zip) {
+  function fetchLocationDetails(zip,cart) {
     return $.ajax({
       url: "/dc_api/get_location_details/",
       method: "POST",
-      data: { zip:zip }
+      data: { zip: zip, length: cart.length, interior: cart.interiorSKU, depth: cart.depth, area: cart.area }
     });
   }
 
@@ -1030,7 +1097,7 @@ $(document).ready(function() {
     $('#submit-zip-lookup').attr('disabled', true);
     $('#submit-zip-spinner').css('display', 'inline-block');
     var zip = $('#zip-label').val();
-    fetchLocationDetails(zip)
+    fetchLocationDetails(zip, cart)
       .then(updateRecordLocation)
       .then(getCart)
       .then(renderCartLabels)

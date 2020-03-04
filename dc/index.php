@@ -15,7 +15,7 @@
           <a href="/dc/step-1.php"><img src="https://qikrg2ve4526wc3c3ntlhj1e-wpengine.netdna-ssl.com/wp-content/uploads/2018/03/well-designed.jpg" class="img-fluid" /></a>
         </div>
         <div class="col-sm-6">
-          <h3><a href="/dc/step-1.php">Design Configuration</a></h3>
+          <h3><a id="intro-config-link" href="/dc/step-1.php">Design Configuration</a></h3>
           <h4><span id="intro-config"></span></h4>
           <p>The following is placeholder text known as “lorem ipsum,” which is scrambled Latin used by designers to mimic real copy. Suspendisse nec congue purus. Nullam sit amet nisi condimentum erat iaculis auctor. Vivamus a ante congue, porta nunc nec, hendrerit turpis. In sit amet felis malesuada, feugiat purus eget, varius mi.</p>
         </div>

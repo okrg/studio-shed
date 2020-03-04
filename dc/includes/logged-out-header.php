@@ -1,9 +1,20 @@
+<?php
+
+session_start();
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
+
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
+    <meta name="csrf-token" content="<?= $_SESSION['csrf_token'] ?>">
     <title>Studio Shed Design Center</title>
     <script src="/dc/js/loggedOutSite.js"></script>
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

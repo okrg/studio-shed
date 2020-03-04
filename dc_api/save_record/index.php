@@ -68,6 +68,13 @@ if(isset($data->product->model)) {
 }
 $record->depth = $data->product->depth;
 $record->length = $data->product->length;
+$record->area = (int)($data->product->depth * $data->product->length);
+
+$record->frontSKU = $data->product->front;
+$record->backSKU = $data->product->back;
+$record->leftSKU = $data->product->left;
+$record->rightSKU = $data->product->right;
+
 $record->total = $data->product->cart->total;
 foreach($data->product->cart->items as $item) {
   $name = trim($item->name);
@@ -75,7 +82,9 @@ foreach($data->product->cart->items as $item) {
   $name = str_replace(" ", "", $name);
   $name = lcfirst($name);
   $price = $name.'Price';
+  $sku = $name.'SKU';
   $record->$name = $item->description;
+  $record->$sku = $item->sku;
   $record->$price = $item->price;
 }
 

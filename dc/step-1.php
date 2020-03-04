@@ -1,4 +1,5 @@
 <?php include('includes/header.php'); ?>
+
 <main id="step-1">
   <div class="container">
     <?php include('includes/estimate.php'); ?>
@@ -9,7 +10,9 @@
     </div>
 
     <div class="dc-configurator">
-      <img src="img/configurator.png" class="img-fluid">
+      <div id="idearoomConfigurator"></div>
+        <!--<script type="application/javascript" src="vendor/modernizr.js"></script>-->
+        <script id="idearoomStartup" type="application/javascript" src="https://studioshedsignature.idearoomstaging.com/idearoom.js"></script>
     </div>
 
     <section class="dc-popular">
@@ -206,4 +209,9 @@
 
   </div>
 </main>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#progress-step-1').addClass('current');
+});
+</script>
 <?php include('includes/footer.php'); ?>

@@ -49,31 +49,71 @@ li.logo a {
 .main-menu-ul>li:hover>a:hover {
     color: #000!important;
 }
+.dropdown-menu.main-menu-dropdown.main-drop-models .container, 
+.dropdown-menu.main-menu-dropdown.main-drop-models {
+    background: #f4f4f4!important;
+    border-top: none;
+	box-shadow: none;
+}
+ul.col-lg-12.types-list , .featured-shed-btns {
+    padding: 10px 100px;
+	width: 100%;
+}
 .main-drop-models .featured {
     background-repeat: no-repeat!important;
     background-size: cover!important;
 }
+	li.parent-type:first-of-type {
+		width: 30%;
+		padding-left: 30px;
+	}
+
+li.parent-type {
+	width: 70%;
+	float: left;
+	
+	border-bottom: none!important;
+	}
+li.parent-type ul li{
+	padding-left: 30px;
+	}
+li.parent-type:last-of-type ul li{
+	width: 50%;
+	float: left;
+	border-bottom: none!important;
+	  
+	}
+	.menu-child-img {
+		min-width: 80px;
+		height: auto;
+	}
 .featured-text p {
     color: #fff;
-    font-size: 20px;
+    font-size: 19px;
     text-align: center;
-    padding: 45% 40px 0;
+    padding: 22% 40px 0;
+}
+.featured-shed-btns .col-lg-6 {
+    text-align: center;
 }
 .featured-shed-btns p {
 	text-align: center;
 		}
 .featured-shed-btns a {
     display: inline-block!important;
-	background-color: #ffa544;
+	background-color: transparent;
 	margin: 10px 40px!important;
-	color: #fff!important;
+	color: #e25d00!important;
+	border-radius: 0;
+	border: solid #e25d00 2px;
 		}
 	}
 .featured-shed-btns a:hover{
-	border: solid #ffa544 2px;
-    color: #ffa544;
-    background-color: #ffffff;
+
+    background-color: #fff!important;
 	}
+	
+	
 li.cell a   {
 	background: url(/wp-content/uploads/2020/02/menu-phone.png) no-repeat 10px center;
 		}
@@ -299,11 +339,16 @@ background: #ffffff;
 	margin-right: 0!important;
     float: right;
 	border-radius: 0;
+	letter-spacing: 1px;
+    text-transform: uppercase;
+	margin-right: 20px;
 }
 	.footer-subscribe input[type=submit]:hover {
 		background: #fff;
 	}
-	
+.gform_wrapper .gform_footer input.button, .gform_wrapper .gform_footer input[type=submit], .gform_wrapper .gform_page_footer input.button, .gform_wrapper .gform_page_footer input[type=submit] {
+    width: initial!important;
+	}
 .footer-subscribe input[type=text]::-webkit-input-placeholder { /* Edge */
   color: #c5c5c6;
 }
@@ -436,8 +481,9 @@ border-color: #ffa544;
 }
 .footer-menus h3 {color:#ffffff;
 	text-transform: uppercase;
-	font-size: 17px;
+	font-size: 17px!important;
 	margin: 30px 0 10px;
+	   text-align: left;
 }
 .footer-menus ul .menu-item {
 	width: 100%;

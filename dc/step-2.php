@@ -25,6 +25,7 @@
 
         </div>
       </div>
+      <!--
       <div class="row mb-5">
         <div class="col-sm-12 col-lg-6 offset-lg-2">
           <h3>Estimated Shipping Time</h3>
@@ -41,6 +42,7 @@
           <span id="shipping-cost-label">&mdash;</span>
         </div>
       </div>
+      -->
       <div class="row mb-0">
         <div class="col-sm-12 col-lg-8 offset-lg-2">
           <a href="#" class="btn btn-video-trigger"><i class="fas fa-play"></i>Shipping and delivery overview video</a>
@@ -232,4 +234,9 @@
 
   </div>
 </main>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#progress-step-2').addClass('current');
+});
+</script>
 <?php include('includes/footer.php'); ?>

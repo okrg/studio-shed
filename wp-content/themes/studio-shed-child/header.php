@@ -764,6 +764,7 @@ li.cell a {
 .main-drop-models .menu-child.menu-list li img {
 
     padding-top: 6px;
+    mix-blend-mode: multiply;
 }
 		}
 		
@@ -1005,14 +1006,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <div class="nav-item-arrows d-lg-none">
                 <i class="icomoon icon-plus2" aria-hidden="true"></i>
               </div>
-              <div class="dropdown-menu main-menu-dropdown main-drop-models">
+				<div class="dropdown-menu main-menu-dropdown main-drop-models">
                 <div class="container">
                   <div class="row">
-                    <ul class="col-lg-5">
+                    <ul class="col-lg-12 types-list">
                       <?php 
                       $i = 1;
                       foreach ($models_childs as $key => $childs) {?>
-                        <li>
+                        <li class="parent-type">
                           <a href="<?php echo $childs["link"]?>"><?php echo $childs["title"]?></a>
                           <div class="nav-item-arrows d-lg-none">
                             <i class="icomoon icon-plus2" aria-hidden="true"></i>
@@ -1020,27 +1021,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                           <ul class="menu-child menu-list">
                             <?php foreach ($childs["childs"] as $key => $child) {?>
                             <li>
+								<a href="<?php echo $child["link"]?>">
                               <div class="row">
-                                <div class="col-lg-5">
-                                  <img src="<?php echo $child["icon"]["url"]?>" alt="">
-                                </div>
-                                <div class="col-lg-7">
+								  
+                                  <img src="<?php echo $child["icon"]["url"]?>" alt="<?php echo $child["title"]?> | Studio Shed" class="menu-child-img">
+								</div>
+								                                <div class="row">
+
                                   <div class="box" item-id="item-<?php echo $i?>">
-                                    <a href="<?php echo $child["link"]?>"><?php echo $child["title"]?></a>
+                                    <a href="<?php echo $child["link"]?>"><?php echo $child["title"]?> ></a>
                                     <p class="intro"><?php echo $child["sub_title"]?></p>
                                     <p class="time"><?php echo $child["start_price"]?></p>
-                                    <span class="icomoon icon-chevron-right"></span>
+									  <a href="<?php echo $child["link"]?>">DESIGN &amp; PRICE</a>
+                                    <!--<span class="icomoon icon-chevron-right"></span>-->
                                   </div>
-                                </div>
                               </div>
+								</a>
                             </li>
                             <?php $i++;}?>
                           </ul>
                         </li>
                       <?php }?>
                     </ul>
-                    <ul class="col-lg-7">
-                      <?php 
+					</div>
+					<div class="row">
+						<div class="col-lg-12 featured-shed-btns">
+							<div class="row">
+                                      <div class="col-lg-6">			
+										  <a class="btn btn-dark" href="/portland-configurator/">Compare Models</a>  
+
+								</div>
+                                      <div class="col-lg-6">
+										<a class="btn btn-white" href="/products/portland-series/">Browse Quick Ship Models</a>                                    
+                                      </div>
+                                    </div>
+						</div>
+                    <!--<ul class="col-lg-12">
+                      <?php /*
                       $i = 1;
                       foreach ($models_childs as $key => $childs) {?>
                             <?php foreach ($childs["childs"] as $key => $child) {
@@ -1051,20 +1068,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                               ?>
                             <li item="item-<?php echo $i?>" class="item-models <?php echo $class?>">
                               <div class="content-model-right" style="width: 100%">
-                                  <div class="featured" style="background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.5)), url(<?php echo $child["image"]["url"]?>); background-size: cover;">
-								  <div class="featured-text"><?php echo $child["content_left"]?></div>
-								                                     
-									  <div class="featured-shed-btns"><?php echo $child["content_right"]?></div>
-</div>
+                                  <div class="featured" style="background-image: url(<?php echo $child["image"]["url"]?>)"></div>
                                   <div class="description">
-                                   <!-- <p class="title"><?php// echo $child["headline"]?></p>-->
-                                    
+                                    <p class="title"><?php echo $child["headline"]?></p>
+                                    <div class="row">
+                                      <div class="col-lg-4">
+                                        <?php echo $child["content_left"]?>
+                                      </div>
+                                      <div class="col-lg-4">
+                                        <?php echo $child["content_center"]?>
+                                      </div>
+                                      <div class="col-lg-4">
+                                        <?php echo $child["content_right"]?>
+                                      </div>
+                                    </div>
                                   </div>
                                 </div>
                             </li>
                             <?php $i++; }?>
-                      <?php }?>
-                    </ul>
+                      <?php } */?>
+                    </ul>-->
                   </div>
                 </div>
               </div>

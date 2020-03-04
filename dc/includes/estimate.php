@@ -10,7 +10,7 @@
       </h2>
       <div class="estimate-checklist">
         <div id="estimate-step-1" class="checked">
-          <a href="/dc/step-1.php">
+          <a id="cart-model-link" href="/dc/step-1.php">
             <span id="cart-model-label">Shed configuration</span>
           </a>
         </div>

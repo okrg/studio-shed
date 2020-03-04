@@ -132,4 +132,10 @@
 
   </div>
 </main>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#progress-step-4').addClass('active');
+});
+</script>
 <?php include('includes/logged-out-footer.php'); ?>

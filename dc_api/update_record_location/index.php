@@ -6,6 +6,7 @@ $rest_json = file_get_contents("php://input");
 $data = json_decode($rest_json, true);
 $uid = $data['uid'];
 
+
 if( !$data ) {
   exit(json_encode(['error' => 'Empty JSON']));
 }
@@ -17,8 +18,10 @@ if( empty($uid) ) {
 $record = $database->get($uid);
 $record->zip = $data['zip'];
 $record->city = $data['shipping_city_label'];
+$record->state = $data['shipping_state'];
 $record->shipping = $data['shipping_time'];
 $record->shippingPrice = $data['shipping_cost'];
+$record->shippingDistance = $data['shipping_distance'];
 
 if($data['permit_data']) {
   $record->permitTime = $data['permit_time'];

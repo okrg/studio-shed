@@ -20,17 +20,219 @@
 	section#content-slider {
 		margin-bottom: 120px;
 	}
-	#content-header {
+.series-info-box {
+    background: rgba(0,0,0,0.7);
+    padding: 20px 20px 30px 60px;
+    width: 50%;
+    display: block;
+    color: #fff;
+	position: relative;
+	top: 110%;
+}
+.title-text-desktop {
+		display: none!important;
+	}
+@media (max-width: 629px){
+.series-info-box {
+	display: none!important;
+		}
+	.title-text-desktop {
+		display: block!important;
+	}
+	.title-text-desktop .btn-row {
+    margin: 50px 0;
+}
+	}
+.series-info-box h2 {
+	text-transform: uppercase;
+	color: #fff;
+	font-size: 30px;
+    font-family: 'Futura-PT-Heavy';
+	letter-spacing: 2px;;
+	}
+.series-info-box p{
+	color: #fff;	
+	}
+.series-info-box .col1 {
+    width: 55%;
+    display: inline-block;
+}
+.series-info-box .col2 {
+    width: 40%;
+    DISPLAY: INLINE-BLOCK;
+    TEXT-ALIGN: right;
+    vertical-align: 60px;
+}
+.ls-fullwidth .ls-thumbnail-slide a {
+    margin-right: 7px;
+}
+@media (max-width: 1500){
+.series-info-box {
+	top: 90%;
+}
+	}
+@media (max-width: 1189px){
+.series-info-box {
+	padding: 10px 10px 10px 30px;
+    width: 80%;
+	top: 80%;
+	}
+.series-info-box h2 {
+	margin-top: 0;
+	margin-bottom: 5px;
+
+}
+.series-info-box p{
+font-size: 12px;	}
+	.series-info-box .col1 {
+    width: 65%;
+}
+.series-info-box .col2 {
+    width: 32%;
+    vertical-align: top;
+}
+.series-info-box .col2 .buidbt {
+
+    font-size: 14px;
+    min-width: 100px;
+    margin: 10px 0 0 0;
+}
+	}
+@media (max-width: 829px){
+.series-info-box {
+	padding: 10px 10px 10px 30px;
+    width: 100%;
+	}
+.series-info-box h2 {
+    font-size: 18px;
+	margin-top: 0;
+	margin-bottom: 5px;
+
+}
+.series-info-box p{
+font-size: 12px;	}
+	.series-info-box .col1 {
+    width: 65%;
+}
+.series-info-box .col2 {
+    width: 32%;
+    vertical-align: top;
+}
+.series-info-box .col2 .buidbt {
+
+    font-size: 13px;
+    padding: 10px;
+    min-width: 100px;
+    margin: 10px 0 0 0;
+}
+section#content-slider {
+    margin-bottom: 60px;
+}
+.single-products #wrapper {
+    padding-top: 35px;
+}
+ul#model-product-menu li {
+    font-size: 9.5px;
+    vertical-align: middle;
+    width: 15%;
+}
+.model-product-list.sticky-menu {
+    top: 70px!important;
+}
+	.bottom-info {
+    padding: 50px 0 30px!important;
+    clear: both;
+}
+.bottom-info .text, .bottom-info .big {
+    float: none;
+    color: #5E5F5D!important;
+	padding-bottom: 50px;
+}
+
+#feature-1 .container, #feature-2 .container, #feature-3 .container, #feature-4 .container, #feature-5 .container {
+    padding: 0 15px 15px!important;
+}
+#feature-1 .tab-left, #feature-1 .tab-right, #feature-2 .tab-left, #feature-2 .tab-right, #feature-3 .tab-left, #feature-3 .tab-right {
+    width: 100%!important;
+    float: none!important;
+	padding-right: 0!important;
+}
+.products-page.lv2 .bottom-info {
+    padding: 20px 0 230px;
+}
+	
+#feature-top #childs-list.container {
+    padding-bottom: 20px !important;
+    background-image: url(/wp-content/uploads/2016/09/summer-grass.jpg)!important;
+    background-position: right bottom -8px!important;
+    background-size: 100% auto!important;
+}	
+	
+.products-page.lv2 .bottom-info .text .big {
+    color: #5E5F5D!important;
+}
+.products-page #childs-list .pr-box {
+    width: 50%!importabt;
+}
+	}
+@media (max-width: 519px){
+.bottom-info .text .big {
+    line-height: 125%!important;
+}
+#childs-list .pr-box {
+    height: 220px;
+}
+	}
+@media (max-width: 599px){
+#childs-list > .inside {
+    margin-right: -15px;
+}
+#childs-list .pr-box {
+    padding-right: 15px;
+    margin-bottom: 15px;
+}
+		#feature-1 .tab-right, 
+#content .content-right,
+#feature-2 .tab-right,
+#feature-3 .tab-right {
+    padding-left: 0px!important;
+}
+	.pr-box img {
+    width: 100%;
+    height: auto;
+}
+	}
+@media (max-width: 439px){
+#childs-list .pr-box {
+    height: 180px;
+}
+.products-page .pr-box .sub-headline {
+    font-size: 12px;
+}
+	}
+@media (max-width: 359px){}
+.products-page .pr-box .sub-headline {
+    padding-right: 10px;
+}
+@media (max-width: 709px){
+#childs-list .pr-box {
+    width: 50%!important;
+}
+.pr-box .inside {
+    overflow: hidden;
+}
+	}
+#content-header {
 		text-align: center;
 	}
-	#content-header .intro .titleintro {
+#content-header .intro .titleintro {
     color: #1c1c1c;
     font-size: 30px;
     font-family: 'Futura-PT-Heavy';
 }
-	#create-shed {
-		margin-top: 50px;
-		margin-bottom: 50px;
+#create-shed {
+	margin-top: 50px;
+	margin-bottom: 50px;
 	}
 .phone-create a {
     text-transform: uppercase;
@@ -57,10 +259,10 @@
 .model-product-list a {
 	color: #1c1c1c;
 	}
-	#content-model-product {
+#content-model-product {
 	scroll-behavior: smooth;
 	}
-	.model-product-list a:hover {
+.model-product-list a:hover {
 	color: #ffa11e;
 	}
 .model-product-list ul li {	
@@ -76,9 +278,9 @@
 	background: #ffa11e;
 
 }*/
-	.product-list-sec {
-		padding-top: 50px;
-		padding-bottom: 30px;
+.product-list-sec {
+	padding-top: 50px;
+	padding-bottom: 30px;
 	}
 .model-product-list ul li a.active {
     color: #fff !important;
@@ -89,20 +291,20 @@
     -ms-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
-	#feature-top .container{
-		background: #f8f8f8;
+#feature-top .container{
+	background: #f8f8f8;
 	}
-	#feature-top p{
-			text-align: center;
+#feature-top p{
+	text-align: center;
 	
 	}
-	.sticky-menu {
+.sticky-menu {
     top: 108px!important;
     position: fixed;
-		width: 100%;
-		z-index: 1;
+	width: 100%;
+	z-index: 1;
 }
-		.buidbt {
+.buidbt {
 	border: solid #ffffff 2px;
     letter-spacing: 1px;
     color: #fff;
@@ -114,11 +316,12 @@
     box-shadow: 0 0 12px 0 #999;
     margin: 10px 0 0 0;
 }
-	.buidbt a:hover{
+	a.buidbt:hover{
 	border: solid #ffa544 2px;
     color: #ffa544;
     background-color: #ffffff;
 	}
+
 	/* quick ship models */
 #childs-list {
     padding-top: 30px!important;
@@ -130,21 +333,21 @@
     background-color: #f8f8f8;
     overflow: hidden;
 }
-	#childs-list .pr-box {
+#childs-list .pr-box {
     width: 33.33333%;
     float: left;
     padding-right: 25px;
     height: 270px;
     margin-bottom: 25px;
 }
-	#childs-list .pr-box {
+#childs-list .pr-box {
     width: 33.33333%;
     float: left;
     padding-right: 25px;
     height: 270px;
     margin-bottom: 25px;
 }
-	.pr-box .inside {
+.pr-box .inside {
     border: solid 2px #e8e8e8;
     background-color: #fff;
     padding-top: 12px;
@@ -153,7 +356,7 @@
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
 }
-	.pr-box .headline, .pr-box .sub-headline {
+.pr-box .headline, .pr-box .sub-headline {
     padding-left: 12px;
     margin-bottom: 0;
 }
@@ -189,7 +392,7 @@
     line-height: 180%;
     letter-spacing: 1px;s
 }
-	.bottom-info .text .button {
+.bottom-info .text .button {
     color: #fff;
     display: inline-block;
     background: #ffa347;
@@ -223,8 +426,15 @@
 #content .content-left,
 #feature-2 .tab-left,
 #feature-3 .tab-left {
-    padding-right: 50px;
+    padding-right: 25px;
 }
+#feature-1 .tab-right, 
+#content .content-right,
+#feature-2 .tab-right,
+#feature-3 .tab-right {
+    padding-left: 25px;
+}
+
 
 #feature-1 .tab-left, #feature-1 .tab-right,
 #feature-2 .tab-left, #feature-2 .tab-right,
@@ -264,10 +474,20 @@
 	#feature-5 h3,
 	#feature-6 h3 {
 		margin-bottom: 50px;
+		font-size: 24px;
+}
 	}
 	.btn-row {
     margin: 40px auto;
     text-align: center;
+}
+	#feature-1 .btn-row ,
+	#feature-2 .btn-row ,
+	#feature-3 .btn-row ,
+	#feature-4 .btn-row ,
+	#feature-5 .btn-row ,
+	#feature-6 .btn-row {
+    margin: 50px 0;
 }
 
 p {
@@ -371,21 +591,23 @@ while (have_posts()) : the_post();
                 </div>
         </div>
     </section>
-    <section id="content-header" class="container">
+   <section id="content-header" class="container title-text-desktop ">
         <div class="row">
             
                 <div class="col-md-12 intro no-slide">
                     <p class="titleintro text-uppercase"><?php the_title(); ?></p>
                     <p><?php the_excerpt(); ?></p>
+					
                 </div>
+			<div class="btn-row"><a class="buidbt" href="/configurator/">BUILD &amp; Price</a></div>
+
         </div>
-    </section>
+    </section> 
     <section id="create-shed" class="container hidden-xs hidden-sm">
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h3><?php the_field('title_description'); ?></h3>
                 <p><?php the_field('content_description'); ?></p>
-				<div class="btn-row"><a class="buidbt" href="/configurator/">BUILD &amp; Price</a></div>
             
             
             <div class="col-sm-12 text-center phone-create">

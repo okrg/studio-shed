@@ -12839,6 +12839,65 @@ header, .estimate, h1, h2, h3, h4, a.btn, nav a {
     display: block;
     margin-bottom: 1rem; }
 
+header h5 {
+  text-align: center; }
+
+header h5 .span-dc-mark {
+  font-size: 16px; }
+
+.progressbar {
+  counter-reset: step;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative; }
+  .progressbar li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: left;
+    width: 25%;
+    position: relative;
+    text-align: center; }
+    .progressbar li:before {
+      content: counter(step);
+      counter-increment: step;
+      width: 30px;
+      height: 30px;
+      border: 2px solid #bebebe;
+      display: block;
+      margin: 0 auto 10px auto;
+      border-radius: 50%;
+      line-height: 27px;
+      background: white;
+      color: #bebebe;
+      text-align: center;
+      font-weight: bold; }
+    .progressbar li:after {
+      content: '';
+      position: absolute;
+      width: 72%;
+      height: 6px;
+      border-radius: 6px;
+      background: #979797;
+      top: 12px;
+      left: -36%; }
+    .progressbar li:first-child:after {
+      content: none; }
+  .progressbar li.active:after {
+    background: #fba445; }
+  .progressbar li.active:before {
+    border-color: #fba445;
+    background: #fba445;
+    color: white; }
+  .progressbar li.current a {
+    color: #969695;
+    cursor: default; }
+
+#header-estimate {
+  font-weight: bold;
+  text-align: center; }
+
 .estimate,
 .dc-cart {
   margin: 5rem 0;
@@ -12916,6 +12975,17 @@ a.btn-video-trigger {
   .dc-logged-out .form-signin {
     margin: 0 auto;
     max-width: 400px; }
+
+#linksModal a.btn {
+  display: block;
+  margin-bottom: 1rem; }
+  #linksModal a.btn span {
+    display: block;
+    color: #888;
+    font-size: 14px; }
+
+#linksModal .modal-header {
+  border: none; }
 
 .dc-location {
   margin: 5rem 0;
@@ -13053,12 +13123,14 @@ a.btn-video-trigger {
   font-weight: 300; }
 
 .dc-footer {
+  margin-top: 2.5rem;
   padding: 2.5rem 0;
   color: #fff;
   text-align: center;
   background-color: #0f1c2c; }
   .dc-footer a {
-    color: #5d5e5d; }
+    color: #fff;
+    font-weight: bold; }
   .dc-footer p:last-child {
     margin-bottom: 0; }
   .dc-footer nav.footer-nav {
@@ -13173,6 +13245,21 @@ a.btn-video-trigger {
 
 .dc-checkout-intro {
   margin: 5rem 0; }
+  .dc-checkout-intro table#cart-table {
+    width: 100%; }
+    .dc-checkout-intro table#cart-table h4 {
+      font-size: 18px; }
+    .dc-checkout-intro table#cart-table td.price {
+      text-align: right; }
+    .dc-checkout-intro table#cart-table .hiddenRow {
+      padding: 0 !important;
+      background: #EFEFF4;
+      font-size: 16px;
+      text-transform: uppercase; }
+    .dc-checkout-intro table#cart-table .shed {
+      padding: 5px 5px 5px 20px; }
+    .dc-checkout-intro table#cart-table #show-details {
+      font-size: 14px; }
 
 .dc-checkout-form {
   margin: 5rem 0;
@@ -13189,6 +13276,8 @@ a.btn-video-trigger {
     .dc-checkout-form #checkout section {
       padding: 0;
       margin: 0; }
+  .dc-checkout-form fieldset label.state {
+    border-bottom: none !important; }
   .dc-checkout-form #main.checkout #checkout {
     visibility: visible;
     opacity: 1; }

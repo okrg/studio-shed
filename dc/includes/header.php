@@ -12,9 +12,6 @@ session_start();
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
-
-
-
 ?>
 
 <!doctype html>
@@ -33,12 +30,48 @@ if (empty($_SESSION['csrf_token'])) {
 <body>
 <div id="app">
   <header>
-    <div class="container">
-      <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-        <h5 class="my-0 mr-md-auto font-weight-normal"><span style="color:#fba445">Studio</span>Shed Design Center<small>&trade;</small></h5>
-        <nav class="my-2 my-md-0 mr-md-3">
-          <a href="/dc/logout.php">Log Out</a>
-        </nav>
+  
+      <div class="d-flex flex-column justify-content-between flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow fixed-top">
+        <h5 class="my-0 font-weight-normal"><span style="color:#fba445">Studio</span>Shed<br /><span class="span-dc-mark">Design Center<small>&trade;</small></span></h5>
+
+        <ul class="progressbar">
+          <li id="progress-step-1" class="active">
+            <a id="cart-model-link" href="/dc/step-1.php">
+            Design Configuration
+            </a>
+          </li>
+          <li id="progress-step-2">
+            <a href="/dc/step-2.php">
+            Location &amp; Permits
+            </a>
+            </li>
+          <li id="progress-step-3">
+            <a href="/dc/step-3.php">
+            Installation Details
+            </a>
+          </li>
+          <li id="progress-step-4">
+            <a href="#">
+            Complete Order
+            </a>
+          </li>
+        </ul>
+
+        <div id="header-estimate">
+            <div id="header-total-label"></div>
+            <div id="header-total-price"></div>
+        </div>
+
       </div>
-    </div>
   </header>
+<form id="checkout-form" class="" action="/dc/checkout.php" method="POST">
+  <input type="hidden" name="stripeFee" id="stripe-fee" />
+</form>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#progress-step-4 a').click(function(e) {
+    e.preventDefault();
+    $('#checkout-form').submit();
+  });
+});
+</script>
