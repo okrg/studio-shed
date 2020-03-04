@@ -623,8 +623,11 @@ border-color: #ffa544;
 			<div class="col-sm-12 col-md-2">
 
 				<img src="https://dev2-studio-shed.pantheonsite.io/wp-content/uploads/2020/01/we-ship-footer-icon.png" />
+			<!--	<ul class="social-list">
+                            <?php //dynamic_sidebar('social'); ?>
+                        </ul>
 				 <div class="social">
-            <ul>
+            <ul> -->
               <?php
           $socials = get_field('socials', 'option');
               foreach ($socials as $key => $social) {?>
