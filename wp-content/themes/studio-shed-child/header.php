@@ -113,9 +113,12 @@
     color: inherit;
 }
 .main-drop-models .menu-child.menu-list .box .time, .main-drop-models .menu-child.menu-list .box:hover .time  {
-    color: #fba347;
+    color: #5d5e5d!important;
 }
-
+.main-drop-models .menu-child.menu-list .box .box-link a, .main-drop-models .menu-child.menu-list .box:hover .box-link a {
+color: #f35100;	
+	font-weight: 700;
+		}
 .menu-child.menu-list .box p {
     height: auto!important;
 }
@@ -355,9 +358,13 @@ TisaSansPro—Network resource(19 glyphs)
 .main-drop-models .menu-child.menu-list .col-lg-7:hover a, .main-drop-models .menu-child.menu-list .col-lg-7:hover p {
     color: inherit;
 }
+.main-drop-models .menu-child.menu-list .box a {
+    padding-bottom: 0!important;
+    font-weight: 700;
+}
 .main-drop-models .menu-child.menu-list .box .time {
-    margin-bottom: 12px;
-    color: #fba347;
+    margin-bottom: 0px!important;
+    color: #949494;
 }
 .menu-child.menu-list .box p {
     height: auto!important;
@@ -1029,10 +1036,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								                                <div class="row">
 
                                   <div class="box" item-id="item-<?php echo $i?>">
-                                    <a href="<?php echo $child["link"]?>"><?php echo $child["title"]?> ></a>
+                                    <p class="box-model"><a href="<?php echo $child["link"]?>"><?php echo $child["title"]?> ></a></p>
                                     <p class="intro"><?php echo $child["sub_title"]?></p>
                                     <p class="time"><?php echo $child["start_price"]?></p>
-									  <a href="<?php echo $child["link"]?>">DESIGN &amp; PRICE</a>
+									  <p class="box-link"><a href="<?php echo $child["link"]?>">DESIGN &amp; PRICE</a></p>
                                     <!--<span class="icomoon icon-chevron-right"></span>-->
                                   </div>
                               </div>
@@ -1128,7 +1135,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </ul>
               </div>
             </li>
-			<li class="design-center"><a href="/configurator-gateway/">Design Center</a></li>
+			<li class="design-center"><a href="/design-center/">Design Center</a></li>
 
            <!-- <li class="has-sub mega-dropdown">
               <a href="<?php //echo $menu_sh_link?>"><span class="icomoon icon-screwdriver"></span><?php //echo $menu_sh_title?></a>

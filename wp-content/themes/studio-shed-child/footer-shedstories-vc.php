@@ -29,9 +29,10 @@
     DISPLAY: INLINE-BLOCK;
     TEXT-ALIGN: right;
     vertical-align: top;
+	margin-top: 15px;
 }
 .ls-fullwidth .ls-thumbnail-slide a {
-    margin-right: 7px;
+    margin-right: 3px;
 }
 .buidbt {
     border: solid #ffffff 2px;
@@ -63,12 +64,15 @@
 #shedstories .series-info-box {
 	display: none;
 		}
+#shedstories .title-text-desktop {
+    display: block;
+}
 	}
 @media (max-width: 1189px){
 #shedstories .series-info-box {
 	padding: 10px 10px 10px 30px;
-    width: 80%;
-	top: 90%;
+    width: 70%;
+	min-height: 120px;
 	}
 	
 #shedstories .series-info-box h2 {
@@ -84,7 +88,7 @@ font-size: 12px;	}
 .series-info-box .col2 {
     width: 32%;
     vertical-align: top;
-	padding-top: 15px;
+	margin-top: 15px;
 }
 .series-info-box .col2 .buidbt {
 
@@ -94,7 +98,7 @@ font-size: 12px;	}
     padding: 10px 15px;
 }
 	}
-@media (max-width: 829px){
+@media (max-width: 850px){
 .series-info-box {
 	padding: 10px 10px 10px 30px;
     width: 100%;
@@ -113,7 +117,6 @@ font-size: 12px;	}
 .series-info-box .col2 {
     width: 32%;
     vertical-align: top;
-	padding-top: 15px;
 }
 .series-info-box .col2 .buidbt {
 

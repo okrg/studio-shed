@@ -436,7 +436,7 @@ border-color: #ffa544;
     float: left;
     padding-right: 20px;
 }
-.footer-escape button {
+.footer-escape button, .footer-escape a.button {
 	    border: solid #ffffff 2px;
     letter-spacing: 1px;
     /* text-shadow: 0px 0px 1px #000000; */
@@ -449,7 +449,7 @@ border-color: #ffa544;
     text-transform: uppercase;
 
 }
-.footer-escape button:hover {
+.footer-escape button:hover, .footer-escape a.button:hover {
 	color: #fba445;
 	background-color: #fff;
 	border: 2px solid #fba445;
@@ -561,7 +561,7 @@ border-color: #ffa544;
 			</div>
 			<div class="col-sm-12 col-md-3">
 
-			<button class="vce-button--style-basic">Build &amp; Price</button>
+			<a href="/design-center/" class="vce-button--style-basic button">Build &amp; Price</a>
 			</div>
 			</iv>
 		</div>

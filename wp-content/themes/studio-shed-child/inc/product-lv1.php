@@ -26,8 +26,7 @@
     width: 50%;
     display: block;
     color: #fff;
-	position: relative;
-	top: 110%;
+
 }
 .title-text-desktop {
 		display: none!important;
@@ -48,7 +47,7 @@
 	color: #fff;
 	font-size: 30px;
     font-family: 'Futura-PT-Heavy';
-	letter-spacing: 2px;;
+	letter-spacing: 2px;
 	}
 .series-info-box p{
 	color: #fff;	
@@ -66,16 +65,11 @@
 .ls-fullwidth .ls-thumbnail-slide a {
     margin-right: 7px;
 }
-@media (max-width: 1500){
-.series-info-box {
-	top: 90%;
-}
-	}
-@media (max-width: 1189px){
+@media (max-width: 1289px){
 .series-info-box {
 	padding: 10px 10px 10px 30px;
-    width: 80%;
-	top: 80%;
+    width: 70%;
+	
 	}
 .series-info-box h2 {
 	margin-top: 0;
@@ -90,6 +84,7 @@ font-size: 12px;	}
 .series-info-box .col2 {
     width: 32%;
     vertical-align: top;
+	margin-top: 15px;
 }
 .series-info-box .col2 .buidbt {
 
@@ -98,7 +93,7 @@ font-size: 12px;	}
     margin: 10px 0 0 0;
 }
 	}
-@media (max-width: 829px){
+@media (max-width: 850px){
 .series-info-box {
 	padding: 10px 10px 10px 30px;
     width: 100%;
