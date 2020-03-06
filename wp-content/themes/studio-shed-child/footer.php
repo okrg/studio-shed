@@ -56,7 +56,7 @@ li.logo a {
 	box-shadow: none;
 }
 ul.col-lg-12.types-list , .featured-shed-btns {
-    padding: 10px 100px;
+    padding: 23px 70px 15px;
 	width: 100%;
 }
 .main-drop-models .featured {
@@ -64,12 +64,12 @@ ul.col-lg-12.types-list , .featured-shed-btns {
     background-size: cover!important;
 }
 	li.parent-type:first-of-type {
-		width: 30%;
+		width: 33%;
 		padding-left: 30px;
 	}
 
 li.parent-type {
-	width: 70%;
+	width: 66%;
 	float: left;
 	
 	border-bottom: none!important;
@@ -106,6 +106,8 @@ li.parent-type:last-of-type ul li{
 	color: #e25d00!important;
 	border-radius: 0;
 	border: solid #e25d00 2px;
+	padding: 10px 5px;
+	min-width: 260px;
 		}
 	}
 .featured-shed-btns a:hover{
@@ -267,6 +269,18 @@ transform: translate(0, -500PX);
 #menuToggle input:checked ~ ul
 {
   transform: none;
+}
+/* default blog pages */
+#sub-menu {
+    background: #ffffff!important;
+}
+#content-header .intro .titleintro {
+text-align: center;
+}
+#pagination {
+    padding: 20px 0;
+    border-bottom: none!important;
+
 }
 /*footer */
 footer h3 {
@@ -572,7 +586,7 @@ border-color: #ffa544;
 			<div class="col-sm-9 col-md-5">
 				<h3>Delivering Your Customized Shed Anywhere in the U.S.</h3>
 				<hr>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p></p>
+				<p>Studio Shed ships to all 50 U.S. states and select locations in Canada. Our products are built right here in Colorado and then shipped directly to your front door. Shipping costs will be calculated during the design process based on your exact location. </p></p>
 			</div>
 			<div class="col-sm-3 col-md-5">
 				<p>&nbsp;</p>			
@@ -623,11 +637,8 @@ border-color: #ffa544;
 			<div class="col-sm-12 col-md-2">
 
 				<img src="https://dev2-studio-shed.pantheonsite.io/wp-content/uploads/2020/01/we-ship-footer-icon.png" />
-			<!--	<ul class="social-list">
-                            <?php //dynamic_sidebar('social'); ?>
-                        </ul>
 				 <div class="social">
-            <ul> -->
+            <ul>
               <?php
           $socials = get_field('socials', 'option');
               foreach ($socials as $key => $social) {?>

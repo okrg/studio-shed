@@ -1039,7 +1039,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                     <p class="box-model"><a href="<?php echo $child["link"]?>"><?php echo $child["title"]?> ></a></p>
                                     <p class="intro"><?php echo $child["sub_title"]?></p>
                                     <p class="time"><?php echo $child["start_price"]?></p>
-									  <p class="box-link"><a href="<?php echo $child["link"]?>">DESIGN &amp; PRICE</a></p>
+									  <?php echo $child["content_right"]?>
                                     <!--<span class="icomoon icon-chevron-right"></span>-->
                                   </div>
                               </div>
@@ -1055,11 +1055,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<div class="col-lg-12 featured-shed-btns">
 							<div class="row">
                                       <div class="col-lg-6">			
-										  <a class="btn btn-dark" href="/portland-configurator/">Compare Models</a>  
+										  <a class="btn btn-dark" href="/design-center/">Compare Models</a>  
 
 								</div>
                                       <div class="col-lg-6">
-										<a class="btn btn-white" href="/products/portland-series/">Browse Quick Ship Models</a>                                    
+										<a class="btn btn-white" href="/products/signature-series/shed-types/">Browse Quick Ship Models</a>                                    
                                       </div>
                                     </div>
 						</div>

@@ -157,10 +157,18 @@ ul#model-product-menu li {
 #feature-1 .container, #feature-2 .container, #feature-3 .container, #feature-4 .container, #feature-5 .container {
     padding: 0 15px 15px!important;
 }
-#feature-1 .tab-left, #feature-1 .tab-right, #feature-2 .tab-left, #feature-2 .tab-right, #feature-3 .tab-left, #feature-3 .tab-right {
+#feature-1 .tab-left, #feature-1 .tab-right, #feature-2 .tab-left, #feature-2 .tab-right, #feature-3 .tab-left, #feature-3 .tab-right, #feature-5 .tab-left, #feature-5 .tab-right, #feature-5 .product-center {
     width: 100%!important;
     float: none!important;
 	padding-right: 0!important;
+	padding-left: 0!important;
+}
+#feature-5 .tab-left, #feature-5 .tab-right {
+    border: none!important;
+    margin: 0;
+    padding:0 0 10px 0!important;
+    text-align: left!important;
+    min-height: 250px!important;
 }
 .products-page.lv2 .bottom-info {
     padding: 20px 0 230px;
@@ -450,10 +458,16 @@ ul#model-product-menu li {
 	#feature-1 .container,
 	#feature-2 .container,
 	#feature-3 .container,
-	#feature-4 .container,
-	#feature-5 .container
+	#feature-4 .container
 	{padding: 0 150px 100px 150px;
 	margin: 0 auto;
+	}
+#feature-5 .container
+	{padding: 0 0px 150px 0px;
+	margin: 0 auto;
+	}
+#feature-5 .product-center{
+	padding: 0 150px 10px 150px;
 	}
 #feature-3 .container,
 #feature-4 .container {
@@ -472,6 +486,23 @@ ul#model-product-menu li {
 	#feature-2 img{
     max-WIDTH: 100%;
 }
+.tab-left b, .tab-left strong, .tab-right b, .tab-right strong  {
+    font-weight: 700;
+    color: #E25D00;
+}
+#feature-5 .tab-left, #feature-5 .tab-right {
+    width: 48%;
+    float: left!important;
+    /* padding-right: 0!important; */
+    border: 1px solid #333;
+    margin: 0 1%;
+    padding: 40px;
+    text-align: center;
+    min-height: 550px;
+}
+#feature-5 .tab-left a, #feature-5 .tab-right a{
+    text-decoration: underline;
+}
 	#feature-1 h3,
 	#feature-2 h3,
 	#feature-3 h3,
@@ -480,6 +511,9 @@ ul#model-product-menu li {
 	#feature-6 h3 {
 		margin-bottom: 50px;
 		font-size: 24px;
+}
+	.product-center h3 {
+    margin-top: 50px;
 }
 	}
 	.btn-row {
@@ -747,6 +781,9 @@ while (have_posts()) : the_post();
                                 echo $option['option_name'];
                             ?></h3>
                         <div class="">
+							 <?php if ($option['content_center']) { ?>
+							    <div class="product-center"><?php echo $option['content_center']; ?></div>
+						<?php } ?>
                             <?php if ($option['content_right']) { ?>
                                 <div class="tab-left"><?php echo $option['option_content']; ?></div>
                                 <div class="tab-right"><?php echo $option['content_right']; ?></div>

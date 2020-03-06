@@ -1,6 +1,11 @@
 <div class="products-page lv2">
     <?php echo get_template_part('inc/products-sub-menu'); ?>
 
+<div id="quick-ship-landing">
+	<div class="container">
+
+		<h1><?php the_field('title_'); ?></h1>
+					<?php the_content(); ?>
     <section id="top-info" class="container" style="background-image: url(<?php the_field('lv2_top_background'); ?>);">
         <div class="row">
             <div class="text-in">
@@ -68,6 +73,8 @@
             </div>
         </div>
     </section>
+</div>
+	</div>
 </div>
 <script type="text/javascript">
     (function ($) {
