@@ -48,6 +48,7 @@
 	}
 	.title-text-desktop .btn-row {
     margin: 50px 0;
+		text-align: center;
 }
 	}
 .series-info-box h2 {
@@ -293,7 +294,6 @@ ul#model-product-menu li {
 }*/
 .product-list-sec {
 	padding-top: 50px;
-	padding-bottom: 30px;
 	}
 .model-product-list ul li a.active {
     color: #fff !important;
@@ -458,12 +458,12 @@ ul#model-product-menu li {
 	#feature-1 .container,
 	#feature-2 .container,
 	#feature-3 .container,
-	#feature-4 .container
-	{padding: 0 150px 100px 150px;
+	#feature-4 .container {
+	padding: 0 150px 40px 150px;
 	margin: 0 auto;
 	}
 #feature-5 .container
-	{padding: 0 0px 150px 0px;
+	{padding: 0 0px 40px 0px;
 	margin: 0 auto;
 	}
 #feature-5 .product-center{
@@ -478,7 +478,7 @@ ul#model-product-menu li {
     border-top: #999999 1px solid;
 	border-bottom: #999999 1px solid;
     background: #EBEBEB!important;
-    padding: 75px 0 ;
+    padding-top: 50px;
 }
 	#feature-2 .container {
 		background: #EBEBEB!important;
@@ -498,7 +498,7 @@ ul#model-product-menu li {
     margin: 0 1%;
     padding: 40px;
     text-align: center;
-    min-height: 550px;
+    min-height: 570px;
 }
 #feature-5 .tab-left a, #feature-5 .tab-right a{
     text-decoration: underline;
@@ -508,7 +508,8 @@ ul#model-product-menu li {
 	#feature-3 h3,
 	#feature-4 h3,
 	#feature-5 h3,
-	#feature-6 h3 {
+	#feature-6 h3,
+	#create-shed h3 {
 		margin-bottom: 50px;
 		font-size: 24px;
 }
@@ -527,10 +528,13 @@ ul#model-product-menu li {
 	#feature-5 .btn-row ,
 	#feature-6 .btn-row {
     margin: 50px 0;
+		text-align: center;
 }
 
 p {
     margin: 0 0 10px;
+	font-family: "Tisa-Sans-Pro";
+    font-size: 15px;
 }
 *, .bootstrap-select .btn:focus, :active, :focus, button, button:active, button:focus, input, input:active, input:focus, option {
     outline: none!important;
@@ -555,8 +559,8 @@ body {
     font-size: 19px;
 }
 body {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 14px;
+    font-family: "Tisa-Sans-Pro";
+    font-size: 15px;
     line-height: 1.42857143;
     color: #333;
     background-color: #fff;

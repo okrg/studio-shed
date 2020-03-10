@@ -389,9 +389,14 @@ span#input_18_1_3_container.name_first {
 .footer-subscribe span#input_18_1_3_container, .footer-subscribe span#input_18_1_6_container {
     width: 100%;
 }	
-.footer-subscribe .gform_footer.top_label {
-    float: left;
+#gform_submit_button_18, .footer-subscribe .gform_footer.top_label input {
+    float: none;
 }
+.footer-subscribe .gform_footer.top_label {
+    float: none;
+	text-align: center;
+}
+
 	}
 .footer-escape {
 		background: #1F1F1F;
@@ -570,7 +575,7 @@ border-color: #ffa544;
 			<div class="col-sm-9 col-md-7">
 
 			<h3>Make Your Escape</h3>
-				<p><span style="color: #ffffff;">Typography is the art and technique of arranging type to make written language legible, readable and appealing when displayed. The arrangement of type involves selecting typefaces, point size, line length, line-spacing (leading), letter-spacing (tracking), and adjusting the space within letters pairs (kerning).</span></p>
+				<p><span style="color: #ffffff;">One shed does not fit all. Our innovative modular system allows for tremendous customization. There are millions of combinationa of sizes, door and window placements, and colors. All thoughtfully designed to work together.</span></p>
 
 			</div>
 			<div class="col-sm-12 col-md-3">

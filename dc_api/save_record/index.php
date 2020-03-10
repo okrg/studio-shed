@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+
 $rest_json = file_get_contents("php://input");
 $_POST = json_decode($rest_json, true);
 
@@ -74,18 +77,26 @@ $record->frontSKU = $data->product->front;
 $record->backSKU = $data->product->back;
 $record->leftSKU = $data->product->left;
 $record->rightSKU = $data->product->right;
-
 $record->total = $data->product->cart->total;
+
 foreach($data->product->cart->items as $item) {
   $name = trim($item->name);
   $name = ucwords($name);
   $name = str_replace(" ", "", $name);
   $name = lcfirst($name);
-  $price = $name.'Price';
-  $sku = $name.'SKU';
+
   $record->$name = $item->description;
-  $record->$sku = $item->sku;
-  $record->$price = $item->price;
+
+  if(isset($item->sku)) {
+    $sku = $name.'SKU';
+    $record->$sku = $item->sku;
+  }
+
+  if(isset($item->price)) {
+    $price = $name.'Price';
+    $record->$price = $item->price;
+  }
+
 }
 
 $record->save();
