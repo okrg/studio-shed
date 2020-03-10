@@ -331,7 +331,7 @@ section#client-logo img {
 			text-transform: uppercase;
 			font-size: .8em;
 			letter-spacing: 2px;
-}
+		}
 		#menu-header-menu .the-box-item.design-yours-now > a
 		{
 			padding: 6px 25px;
@@ -360,13 +360,21 @@ section#client-logo img {
 		font-family: "Futura-PT-Book";
 		text-align: center;
 		color: #fff;
-		font-size: 4.8em;
-		padding: 25px 0 0px;
+		font-size: 3em;
+		line-height: 1.2em;
+		padding: 25px 20% 0px;
 		background: transparent;
-		text-transform: capitalize;
-		margin-bottom: 3px;
+		text-transform: uppercase;
+		margin-bottom: 25px;
 		letter-spacing:1px;
-}
+		}
+		.priceless-creative-top h1 span{
+			font-family: "Futura-PT-Heavy";
+			font-size: 0.9em;
+			font-weight: bold;
+			color: #ffa347;
+			display: block;
+			margin: 0 auto;
 		}
 		.owl-nav {
     margin: 0 auto;
@@ -387,8 +395,9 @@ section#client-logo img {
 			color: #ffffff;
 		}
 		#below-top-btn {
+			font-family: "Futura-PT-Book";
 			text-align: center;
-			font-size: .8em;
+			font-size: 1.1em;
 			color: #fff;
 			margin: 21px 0 100px 0;
 		}
@@ -656,7 +665,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="row">
 			<div id="title_head">
 							<!-- <h1><?php the_title(); ?></h1> -->
-			<h1><span>12% Off</span> In Celebration of 12 Years in Business</h1>
+			<h1><span>12% Off</span> In Celebration of <br/> 12 Years in Business</h1>
 <a href="<?php echo $button_news_url; ?>" class="but"><?php echo $button_top_text; ?></a>
 			</div>
 				<div id="below-top-btn"><?php echo $lower_header; ?></div>
