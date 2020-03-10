@@ -225,9 +225,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			    margin-top: 25px!important;
 			}
 			.priceless-creative-top h1 {
-			    margin: 0px auto 0!important;
+			    margin: 0px auto 25px !important;
 			    font-size: 2.3em!important;
-			    padding-top: 100px!important;
+			    padding: 20% 0 0 !important;
 			}
 			.priceless-creative-top h2.subhead {
 			    font-size: 2.3em!important;
@@ -252,6 +252,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			}
 			#below-top-btn {
 			    margin: 21px 0 40px 0!important;
+			    padding-bottom: 30% !important;
 			}
 			#ship-fast.container .row2 .col-3:first-child{
 				margin-left: 0 !important;
