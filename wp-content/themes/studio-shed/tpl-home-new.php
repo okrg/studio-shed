@@ -4,6 +4,29 @@
  */
 ?>
 <style>
+/* Banner Promo on the top left of banner*/
+.banner-home .banner-promo{
+}
+.banner-home .banner-promo img{
+    width:170px;
+    position:absolute;
+    top:100%;
+	left: 10%;
+    opacity:0;
+    animation:promo_load_down 3s forwards;
+    -webkit-animation:promo_load_down 3s forwards;
+}
+@keyframes promo_load_down{
+    from{opacity:0;top:-250px;}
+    to{opacity:1;top:0;}    
+}
+@-webkit-keyframes promo_load_down{
+    from{opacity:0;top:-250px;}
+    to{opacity:1;top:0;}
+}
+
+/* Banner Promo on the right hand side*/
+/*
 .banner-home .banner-promo{
 }
 .banner-home .banner-promo img{
@@ -17,13 +40,14 @@
 }
 @keyframes promo_load_down{
     from{opacity:0;top:-250px;}
-    to{opacity:1;top:35%;}
-    
-}@-webkit-keyframes promo_load_down{
+    to{opacity:1;top:35%;}    
+}
+@-webkit-keyframes promo_load_down{
     from{opacity:0;top:-250px;}
     to{opacity:1;top:35%;}
-    
 }
+*/
+
 @media only screen and (max-width: 500px){
 	img.attachment-post-thumbnail.size-post-thumbnail.wp-post-image {
     display: none;
@@ -35,6 +59,7 @@
     background-position: center center!important;
 	background-size: cover!important;
 }
+/* Banner Promo on mobile is centered */
 .banner-home .banner-promo img{
 	right: 0;
 	left: 0;
