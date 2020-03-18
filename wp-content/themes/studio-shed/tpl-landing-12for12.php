@@ -695,7 +695,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="news shadow">
 			<div class="row">
 				<h2>Save on our Quick Ship models!</h2>
-				<h3>Choose from our most popular models for a faster turnaround. Ships in 2-3 weeks.</h3>
+				<h3>21% Off Quick Ship Models! Choose from our most popular models for a faster turnaround. Ships in 1 week!</h3>
 			</div>
 			<div class="block-news1">
 				<div class="row row1">
