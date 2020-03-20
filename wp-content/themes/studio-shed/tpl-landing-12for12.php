@@ -694,7 +694,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<section id="ship-fast" class="container one-column">
 		<div class="news shadow">
 			<div class="row">
-				<h2>Save 21% Off on our Quick Ship models!</h2>
+				<h2>Save 21% on our Quick Ship models!</h2>
 				<h3>Choose from our most popular models for a faster turnaround. Ships in 1 week!</h3>
 			</div>
 			<div class="block-news1">
