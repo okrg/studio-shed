@@ -1,6 +1,6 @@
 <?php
 include('../headers.php');
-$model = $_REQUEST['model'];
+$model = strtolower($_REQUEST['model']);
 $state = $_REQUEST['state'];
 $length = $_REQUEST['length'];
 $depth = $_REQUEST['depth'];
@@ -191,7 +191,7 @@ $install->portland = json_decode('{
 
 
 
-if($model == 'Signature') {
+if($model == 'signature') {
   if($area <= 96) {
     $response = array(
       'state_code' => $state,
@@ -216,7 +216,7 @@ if($model == 'Signature') {
   }
 }
 
-if($model == 'Summit') {
+if($model == 'summit') {
   if($area <= 350) {
     $response = array(
       'state_code' => $state,
@@ -235,7 +235,7 @@ if($model == 'Summit') {
 }
 
 
-if($model == 'Portland') {
+if($model == 'portland') {
   if($area <= 350) {
     $response = array(
       'state_code' => $state,

@@ -109,6 +109,22 @@ foreach($data->product->cart->items as $item) {
 
 }
 
+
+//Reset prior costs
+unset($record->shippingPrice);
+unset($record->shippingDistance);
+
+unset($record->permitTime);
+unset($record->permitCost);
+unset($record->permitNotes);
+
+unset($record->installation);
+unset($record->installationPrice);
+
+unset($record->foundation);
+unset($record->foundationPrice);
+
+
 $record->save();
 
 $key = 'xK-<cH];"a:Yd=40^zx)wCXyYiw#bH';
