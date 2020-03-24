@@ -7,7 +7,7 @@
 </main>
 <script type="text/javascript">
 $(document).ready(function() {
-  $('#checkout-form').submit();
+  $('#progress-step-4').addClass('current');
 });
 </script>
 <?php include('includes/footer.php'); ?>

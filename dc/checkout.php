@@ -1,5 +1,3 @@
-<?php include('includes/header.php'); ?>
-
 <?php
 require 'vendor/autoload.php';
 \Stripe\Stripe::setApiKey('sk_test_QhcInpwY7RzwSEINOicTQPNM00pNL7f8Av');
@@ -11,14 +9,9 @@ if(isset($_REQUEST['stripeFee'])) {
     'currency' => 'usd',
   ]);
 }
+
+include('includes/header.php');
 ?>
-<script type="text/javascript">
-  var stripe = Stripe('pk_test_fOnxYRdPKxD6UIEVyOm1LA5p00JLrteEOh');
-  var clientSecret = '<?php echo $intent->client_secret; ?>';
-  var elements = stripe.elements();
-</script>
-
-
 <main id="step-4">
   <div class="container">
 
@@ -33,10 +26,10 @@ if(isset($_REQUEST['stripeFee'])) {
 
       <div class="cart">
         <div class="row">
-          <div class="col-sm-2 offset-2">
+          <div class="col-md-4 text-center">
             <img src="img/shed-screenshot.png" class="shed-screenshot img-fluid" />
           </div>
-          <div class="col-sm-8">
+          <div class="col-md-8">
             <table id="cart-table">
               <tr>
                 <td>
@@ -165,7 +158,7 @@ if(isset($_REQUEST['stripeFee'])) {
                   <h4><span id="cart-location-label">Shipping</span></h4>
                 </td>
                 <td class="price">
-                  <h4><span id="cart-location-price">Price</span></h4>
+                  <h4><span id="cart-location-price">&mdash;</span></h4>
                 </td>
               </tr>
               <tr>
@@ -173,7 +166,7 @@ if(isset($_REQUEST['stripeFee'])) {
                   <h4><span id="cart-permits-label">Permit Plans Set</span></h4>
                 </td>
                 <td class="price">
-                  <h4><span id="cart-permits-price">Price</span></h4>
+                  <h4><span id="cart-permits-price">&mdash;</span></h4>
                 </td>
               </tr>
               <tr>
@@ -181,7 +174,7 @@ if(isset($_REQUEST['stripeFee'])) {
                   <h4><span id="cart-installation-label">Installation</span></h4>
                 </td>
                 <td class="price">
-                  <h4><span id="cart-installation-price">Price</span></h4>
+                  <h4><span id="cart-installation-price">&mdash;</span></h4>
                 </td>
               </tr>
               <tr>
@@ -488,15 +481,15 @@ if(isset($_REQUEST['stripeFee'])) {
   </div>
 </div>
 
-
-<script type="text/javascript">
-$(document).ready(function() {
-  $('#progress-step-4').addClass('current');
-});
-</script>
-
 <script>
 $(document).ready(function(){
+
+  $('#progress-step-4').addClass('current');
+
+  var stripe = Stripe('pk_test_fOnxYRdPKxD6UIEVyOm1LA5p00JLrteEOh');
+  var clientSecret = '<?php echo $intent->client_secret; ?>';
+  var elements = stripe.elements();
+
   var style = {
     base: {
       // Add your base input styles here. For example:
@@ -583,7 +576,7 @@ $(document).ready(function(){
 
   $('#accept-btn').click(function(){
     $('#termsModal').modal('hide');
-    $('#consent-check').prop('checked', true);
+    $('#consent-check').prop('checked', true).trigger('change');
   });
 
 

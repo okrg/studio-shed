@@ -51,12 +51,14 @@
 		text-align: center;
 }
 	}
-.series-info-box h2 {
+.series-info-box h2,
+.series-info-box h1{
 	text-transform: uppercase;
 	color: #fff;
 	font-size: 30px;
     font-family: 'Futura-PT-Heavy';
 	letter-spacing: 2px;
+	margin-top: 7px;
 	}
 .series-info-box p{
 	color: #fff;	
@@ -81,9 +83,11 @@
 	margin-top: 40px;
 	
 	}
-.series-info-box h2 {
+.series-info-box h2,
+.series-info-box h1{
 	margin-top: 0;
 	margin-bottom: 5px;
+	margin-top: 5px;
 
 }
 .series-info-box p{
@@ -109,10 +113,12 @@ font-size: 12px;	}
     width: 100%;
 	margin-top: 0;
 	}
-.series-info-box h2 {
+.series-info-box h2,
+.series-info-box h1 {
     font-size: 18px;
 	margin-top: 0;
 	margin-bottom: 5px;
+	margin-top: 0px;
 
 }
 .series-info-box p{
@@ -138,9 +144,10 @@ section#content-slider {
     padding-top: 35px;
 }
 ul#model-product-menu li {
-    font-size: 9.5px;
+    /*font-size: 9.5px; */
+	font-size:  12px;
     vertical-align: middle;
-    width: 15%;
+   /* width: 15%;*/
 }
 .model-product-list.sticky-menu {
     top: 70px!important;
@@ -164,6 +171,17 @@ ul#model-product-menu li {
 	padding-right: 0!important;
 	padding-left: 0!important;
 }
+#feature-2 .tab-left img, #feature-2 .tab-right img {
+	margin: 10px auto;
+	text-align: center;
+	width: 100%;
+	height: auto;
+	
+}
+#feature-2 .tab-left p a, #feature-2 .tab-right p a{
+margin: 10px auto;
+	text-align: center;
+}
 #feature-5 .tab-left, #feature-5 .tab-right {
     border: none!important;
     margin: 0;
@@ -171,6 +189,7 @@ ul#model-product-menu li {
     text-align: left!important;
     min-height: 250px!important;
 }
+	
 .products-page.lv2 .bottom-info {
     padding: 20px 0 230px;
 }
@@ -260,15 +279,31 @@ ul#model-product-menu li {
     font-family: 'Futura-PT-Book';
     text-align: center;
 }
+.scroll {
+  white-space: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar; }
+		/* [5] */
+.scroll::-webkit-scrollbar {
+  display: none; 
+		}
 .model-product-list{
 	background: #edecee;
 	color: #fff;
 	margin-bottom: 1px;
+	width: 100%;
+	padding: 20px 0 15px 0;
+	-webkit-box-shadow: 0 3px 7px 0 rgba(0,0,0,.1);
+    box-shadow: 0 3px 7px 0 rgba(0,0,0,.1);
+    border-bottom: 1px solid #ddd;
 	}
 .model-product-list .container {
 	background: #edecee;
 	padding: 0;
 	margin-bottom: 0;
+	overflow: sroll;
+	width: 600px;
 	}
 .model-product-list a {
 	color: #1c1c1c;
@@ -283,9 +318,9 @@ ul#model-product-menu li {
 	display: inline-block;
     margin: 0;
     list-style: none;
-	width: 16%;
+	/*width: 16%; */
 	text-align: center;
-	padding: 10px 0;
+	padding: 10px 15px;
 
 }
 /*.model-product-list ul li.product-list-on {	
@@ -638,7 +673,7 @@ while (have_posts()) : the_post();
         <div class="row">
             
                 <div class="col-md-12 intro no-slide">
-                    <p class="titleintro text-uppercase"><?php the_title(); ?></p>
+                    <h1 class="titleintro text-uppercase"><?php the_title(); ?></h1>
                     <p><?php the_excerpt(); ?></p>
 					
                 </div>
@@ -662,7 +697,7 @@ while (have_posts()) : the_post();
         <!--Horizontal Tab-->
         <div class="">
             <div id="">
-                <div class="model-product-list">
+                <div class="model-product-list scroll">
 					<ul class="text-uppercase container" id="model-product-menu">
 						<?php 			
 						$quickmodel = get_field('what_she');
@@ -802,6 +837,9 @@ while (have_posts()) : the_post();
                                     </a>
                                 </div>
                             <?php  } ?>
+							 <?php if ($option['content_center_bot']) { ?>
+							    <div class="product-center"><?php echo $option['content_center_bot']; ?></div>
+						<?php } ?>
                             <?php
                            // $dem = 0;
                           //  foreach ($option['infographics'] as $image) {

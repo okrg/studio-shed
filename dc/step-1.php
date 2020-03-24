@@ -1,5 +1,24 @@
 <?php include('includes/header.php'); ?>
 
+<?php
+  $model = strtolower($_GET['model']);
+  switch($model) {
+    default:
+    case 'signature':
+      $idearoomDiv = 'idearoomConfigurator';
+      $ideaRoomModel = 'studioshedsignature';
+      break;
+    case 'summit':
+      $idearoomDiv = 'idearoomConfigurator';
+      $ideaRoomModel = 'studioshedsummit';
+      break;
+    case 'sortland':
+      $idearoomDiv = 'shedConfigurator';
+      $ideaRoomModel = 'studioshedportland';
+      break;
+  }
+
+?>
 <main id="step-1">
   <div class="container">
     <?php include('includes/estimate.php'); ?>
@@ -10,93 +29,93 @@
     </div>
 
     <div class="dc-configurator">
-      <div id="idearoomConfigurator"></div>
+      <div id="<?php echo $idearoomDiv; ?>" style="margin: 0 auto;"></div>
         <!--<script type="application/javascript" src="vendor/modernizr.js"></script>-->
-        <script id="idearoomStartup" type="application/javascript" src="https://studioshedsignature.idearoomstaging.com/idearoom.js"></script>
+        <script id="idearoomStartup" type="application/javascript" src="https://<?php echo $ideaRoomModel; ?>.idearoomstaging.com/idearoom.js"></script>
     </div>
 
     <section class="dc-popular">
       <h3>Need help deciding Try these popular configurations</h3>
-      <div class="inside">
-        <div class="pr-box">
+      <div class="inside owl-carousel owl-theme">
+        <div class="pr-box item">
           <div class="inner">
             <p class="headline">
-              <a href="https://www.studio-shed.com/products/signature-series/shed-types/trico/">Trico</a>
+              <a target="_blank" href="https://www.studio-shed.com/products/signature-series/shed-types/trico/">Trico</a>
             </p>
             <p class="sub-headline">Simple and Stylish Storage</p>
             <p class="option-text">Starting at $8,285</p>
             <div class="thumb-wrap">
-              <a href="https://www.studio-shed.com/products/signature-series/shed-types/trico/">
+              <a target="_blank" href="https://www.studio-shed.com/products/signature-series/shed-types/trico/">
                 <img src="https://qikrg2ve4526wc3c3ntlhj1e-wpengine.netdna-ssl.com/wp-content/uploads/2017/01/Trico-10x12-FR-1-300x200.png" alt=" - Trico-10x12-FR" />
               </a>
             </div>
           </div>
         </div>
-        <div class="pr-box">
+        <div class="pr-box item">
           <div class="inner">
             <p class="headline">
-              <a href="https://www.studio-shed.com/products/signature-series/shed-types/pagoda/">Pagoda</a>
+              <a target="_blank" href="https://www.studio-shed.com/products/signature-series/shed-types/pagoda/">Pagoda</a>
             </p>
             <p class="sub-headline">The Original with All-New Updates</p>
             <p class="option-text">Starting at $9,800</p>
             <div class="thumb-wrap">
-              <a href="https://www.studio-shed.com/products/signature-series/shed-types/pagoda/">
+              <a target="_blank" href="https://www.studio-shed.com/products/signature-series/shed-types/pagoda/">
                 <img src="https://qikrg2ve4526wc3c3ntlhj1e-wpengine.netdna-ssl.com/wp-content/uploads/2017/01/Pagoda-10x12-Costco-FR_edit-300x200.png" alt=" - Pagoda-10x12-Costco-FR_edit" />
               </a>
             </div>
           </div>
         </div>
-        <div class="pr-box">
+        <div class="pr-box item">
           <div class="inner">
             <p class="headline">
-              <a href="https://www.studio-shed.com/products/signature-series/shed-types/boreas/">Boreas</a>
+              <a target="_blank" href="https://www.studio-shed.com/products/signature-series/shed-types/boreas/">Boreas</a>
             </p>
             <p class="sub-headline">French Doors and a Flexible Layout</p>
             <p class="option-text">Starting at $9,900</p>
             <div class="thumb-wrap">
-              <a href="https://www.studio-shed.com/products/signature-series/shed-types/boreas/">
+              <a target="_blank" href="https://www.studio-shed.com/products/signature-series/shed-types/boreas/">
                 <img src="https://qikrg2ve4526wc3c3ntlhj1e-wpengine.netdna-ssl.com/wp-content/uploads/2017/01/Boreas-10x12-Costco-FR_edit2-300x200.png" alt=" - Boreas-10x12-Costco-FR_edit2" />
               </a>
             </div>
           </div>
         </div>
-        <div class="pr-box">
+        <div class="pr-box item">
           <div class="inner">
             <p class="headline">
-              <a href="https://www.studio-shed.com/products/signature-series/shed-types/solitude/">Solitude</a>
+              <a target="_blank" href="https://www.studio-shed.com/products/signature-series/shed-types/solitude/">Solitude</a>
             </p>
             <p class="sub-headline">Your Turnkey Backyard Sanctuary</p>
             <p class="option-text">Starting at $11,800</p>
             <div class="thumb-wrap">
-              <a href="https://www.studio-shed.com/products/signature-series/shed-types/solitude/">
+              <a target="_blank" href="https://www.studio-shed.com/products/signature-series/shed-types/solitude/">
                 <img src="https://qikrg2ve4526wc3c3ntlhj1e-wpengine.netdna-ssl.com/wp-content/uploads/2017/01/Solitude-10x12-Costco-FR-1-300x200.png" alt=" - Solitude-10x12 FR">
                 </a>
               </div>
             </div>
           </div>
-          <div class="pr-box">
+          <div class="pr-box item">
             <div class="inner">
               <p class="headline">
-                <a href="https://www.studio-shed.com/products/signature-series/shed-types/flora/">Telluride</a>
+                <a target="_blank" href="https://www.studio-shed.com/products/signature-series/shed-types/flora/">Telluride</a>
               </p>
               <p class="sub-headline">Light-Filled Backyard Retreat or Studio</p>
               <p class="option-text">Starting at $12,495</p>
               <div class="thumb-wrap">
-                <a href="https://www.studio-shed.com/products/signature-series/shed-types/flora/">
+                <a target="_blank" href="https://www.studio-shed.com/products/signature-series/shed-types/flora/">
                   <img src="https://qikrg2ve4526wc3c3ntlhj1e-wpengine.netdna-ssl.com/wp-content/uploads/2017/01/Telluride-10x12-Home-Depot-3d-FR-300x200.png" alt=" - Telluride-10x12 3d FR">
                   </a>
                 </div>
               </div>
             </div>
-            <div class="pr-box">
+            <div class="pr-box item">
               <div class="inner">
                 <p class="headline">
-                  <a href="https://www.studio-shed.com/products/signature-series/shed-types/medano/">Medano</a>
+                  <a target="_blank" href="https://www.studio-shed.com/products/signature-series/shed-types/medano/">Medano</a>
                 </p>
                 <p class="sub-headline">The Ultimate Backyard Retreat</p>
                 <p class="option-text">Starting at $13,700</p>
                 <div class="thumb-wrap">
-                  <a href="https://www.studio-shed.com/products/signature-series/shed-types/medano/">
+                  <a target="_blank" href="https://www.studio-shed.com/products/signature-series/shed-types/medano/">
                     <img src="https://qikrg2ve4526wc3c3ntlhj1e-wpengine.netdna-ssl.com/wp-content/uploads/2017/01/Medano-10x12-FR-300x200.png" alt=" - Medano-10x12-FR">
                     </a>
                   </div>
@@ -105,6 +124,7 @@
             </div>
           </section>
 
+    <!--
     <section class="dc-stories">
       <h3>Want to more inspiration? See customer stories</h3>
       <div class="row">
@@ -132,6 +152,7 @@
       </div>
       <h5><a href="#">See All Shed Stories</a></h5>
     </section>
+    -->
 
     <section class="dc-faq">
       <div class="row">
@@ -212,6 +233,24 @@
 <script type="text/javascript">
 $(document).ready(function() {
   $('#progress-step-1').addClass('current');
+
+  $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    
+    responsive:{
+        0:{
+            items:2
+        },
+        600:{
+            items:2
+        },
+        1000:{
+            items:3
+        }
+    }
+  });
+
 });
 </script>
 <?php include('includes/footer.php'); ?>

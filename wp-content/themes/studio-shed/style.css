@@ -23,7 +23,7 @@ Version:        1.0
     font-style: normal;
 }
 @font-face{font-family:"Futura-PT-Heavy-Oblique";src:url("fonts/Futura-PT-Heavy-Oblique.eot"), url("fonts/Futura-PT-Heavy-Oblique.woff") format("woff"), url("fonts/Futura-PT-Heavy-Oblique.ttf") format("truetype");}
-body{color:#5D5E5D; font-family: "Tisa-Sans-Pro"; font-size:19px;}
+body{color:#5D5E5D; font-family: "Tisa-Sans-Pro"; font-size:19px; font-weight: 350; line-height: 1.4 em;}
 a,a:hover,a:focus,a:active,a.active{outline:0;}
 a{color:#E25D00; text-decoration:none;}
 a:hover{text-decoration: none; color: #B4B4B4 !important;}
@@ -414,7 +414,7 @@ div.wpcf7-mail-sent-ok {
     padding: 0;
     margin: 0;
     clear: both;
-    position: absolute;
+    position: unset /*absolute */;
     bottom: 19px;
     right: 5px;
 }
@@ -435,52 +435,6 @@ div.wpcf7-mail-sent-ok {
 }
 .newletter .gform_wrapper .top_label .gfield_error{
     width: 100%;
-}
-/* Gravity Form Newsletter signup post Gravity Form updates */
-.myfooter .newletter .gform_wrapper{
-}
-.myfooter .newletter .gform_wrapper ul.gform_fields li.gfield,
-.modal .newletter .gform_wrapper ul.gform_fields li.gfield{
-	margin: 0;
-	padding-right: 0;
-}
-.myfooter .newletter .gform_wrapper .top_label div.ginput_complex.ginput_container.gf_name_has_2,
-.modal .newletter .gform_wrapper .top_label div.ginput_complex.ginput_container.gf_name_has_2{
-	width: 100%;
-	margin-top: 0;
-}
-.myfooter .newletter .gform_wrapper div.ginput_container_name span,
-.modal .newletter .gform_wrapper div.ginput_container_name span{
-	padding-right: 0;
-}
-.myfooter .newletter .gform_wrapper .gform_footer,
-.modal .newletter .gform_wrapper .gform_footer{
-	width: initial;
-	bottom: 4px;
-	text-align: right;
-}
-.myfooter .newletter .gform_wrapper .gform_footer input[type=submit],
-.modal .newletter .gform_wrapper .gform_footer input[type=submit]{
-	margin-right: 0;
-}
-@media (min-width:320px) and (max-width: 900px){
-	.myfooter .newsletter .gform_wrapper li.field_sublabel_below .ginput_complex,
-	.modal .newsletter .gform_wrapper li.field_sublabel_below .ginput_complex{
-		margin-top: 0 !important;
-	}
-	.myfooter .newletter .gform_wrapper .ginput_complex.ginput_container.has_first_name.no_middle_name.has_last_name span,
-	.modal .newletter .gform_wrapper .ginput_complex.ginput_container.has_first_name.no_middle_name.has_last_name span	{
-		display: inline-block;
-		margin-bottom: 0 !important;
-	}
-	.myfooter .gform_wrapper .gform_footer input.button, .gform_wrapper .gform_footer input[type=submit],
-	.modal .gform_wrapper .gform_footer input.button, .gform_wrapper .gform_footer input[type=submit]	{
-		margin-bottom: 0;
-	}
-	.myfooter .gform_wrapper input:not([type=radio]):not([type=checkbox]):not([type=image]):not([type=file]),
-	.modal .gform_wrapper input:not([type=radio]):not([type=checkbox]):not([type=image]):not([type=file])	{
-		line-height: 1.4em;
-	}
 }
 .view-img.youbube a{position: relative; display: block;}
 .view-img.youbube a:after, .video-home a:after{   content: url("images/youtube.png");
@@ -649,14 +603,18 @@ div.wpcf7-mail-sent-ok {
     line-height: 1
 }
 .content-question .g-content p{letter-spacing: 1px;}
-.menu-item-has-children a:first-child {
-};
+/*.menu-item-has-children a:first-child {
+}*/
 /*-----fix 24/3/2015-----*/
-.newletter .gform_wrapper .ginput_complex.ginput_container.has_first_name.no_middle_name.has_last_name span, .newletter .gform_wrapper .ginput_complex.ginput_container.no_first_name.has_middle_name.has_last_name span, .newletter .gform_wrapper .ginput_complex.ginput_container.has_first_name.has_middle_name.no_last_name span{width: 48% !important;}
+.ne wletter .gform_wrapper .ginput_complex.ginput_container.has_first_name.no_middle_name.has_last_name span, .newletter .gform_wrapper .ginput_complex.ginput_container.no_first_name.has_middle_name.has_last_name span, .newletter .gform_wrapper .ginput_complex.ginput_container.has_first_name.has_middle_name.no_last_name span{width: 49% !important;}
 .newletter .gform_wrapper .ginput_complex.ginput_container.has_first_name.no_middle_name.has_last_name span.name_first {
-    margin-right: 4%!important;
+    margin-right: 2%!important;
 }
-.newletter .gform_wrapper .ginput_complex.ginput_container.has_first_name.no_middle_name.has_last_name span{width: 48%!important;}
+.newletter .gform_wrapper .ginput_complex.ginput_container.has_first_name.no_middle_name.has_last_name span{width: 48%!important; float: left;}
+.newletter .gform_wrapper .ginput_complex.ginput_container.has_first_name.no_middle_name.has_last_name span.name_first label,
+.newletter .gform_wrapper .ginput_complex.ginput_container.has_first_name.no_middle_name.has_last_name span{width: 48%!important; float: left;}
+.newsletter label, .newletter .gform_wrapper .ginput_complex.ginput_container.has_first_name.no_middle_name.has_last_name span.name_last label {
+	display: none;}
 .newletter .gform_wrapper div.validation_error{width: 100%;}
 .newletter .gform_wrapper li.gfield.gfield_error.gfield_contains_required div.ginput_container{padding: 5px 0;}
 /*------fix 12/6/2015---------*/
@@ -710,7 +668,7 @@ div.wpcf7-mail-sent-ok {
 }
 .page-template-tpl-document-3-columns #content .doc-grid .doc-item .img-wrapper img {
     height: 100%;
-    width: auto;
+    width: 100%;
     max-width: none;
     margin-left: -100px;
     margin-right: -100px;

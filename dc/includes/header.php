@@ -32,7 +32,9 @@ if (empty($_SESSION['csrf_token'])) {
   <header>
   
       <div class="d-flex flex-column justify-content-between flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow fixed-top">
-        <h5 class="my-0 font-weight-normal"><span style="color:#fba445">Studio</span>Shed<br /><span class="span-dc-mark">Design Center<small>&trade;</small></span></h5>
+        <h5 class="my-0 font-weight-normal"><span style="color:#fba445">Studio</span>Shed<br /><span class="span-dc-mark">Design Center<small>&trade;</small></span><br />
+          <span style="font-size: 13px;"><a href="/dc/logout.php">Log out</a></span>
+        </h5>
 
         <ul class="progressbar">
           <li id="progress-step-1" class="active">
@@ -69,9 +71,6 @@ if (empty($_SESSION['csrf_token'])) {
 </form>
 <script type="text/javascript">
 $(document).ready(function() {
-  $('#progress-step-4 a').click(function(e) {
-    e.preventDefault();
-    $('#checkout-form').submit();
-  });
+
 });
 </script>

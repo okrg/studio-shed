@@ -47,9 +47,10 @@ if( empty($uid) || !isset($uid) ) {
 //  exit(json_encode(['error' => 'Empty JSON']));
 //}
 
-
-
+//Try to get record
 $record = $database->get($uid);
+
+
 $record->uniqueid = $uid;
 $record->utm_source = $data->params->utm_source;
 $record->utm_medium = $data->params->utm_medium;
@@ -59,16 +60,25 @@ $record->visitor_id = $data->params->visitor_id;
 $record->configUrl = $data->product->configUrl;
 $record->imageUrl = $data->product->imageUrl;
 
-$record->email = $data->customer->email;
-$record->firstName = $data->customer->firstName;
-$record->lastName = $data->customer->lastName;
-$record->phone = $data->customer->phone;
+if(isset($data->customer->email)) {
+  $record->email = $data->customer->email;
+}
+if(isset($data->customer->firstName)) {
+  $record->firstName = $data->customer->firstName;
+}
+if(isset($data->customer->lastName)) {
+  $record->lastName = $data->customer->lastName;
+}
+if(isset($data->customer->phone)) {
+  $record->phone = $data->customer->phone;
+}
 
 if(isset($data->product->model)) {
   $record->model = $data->product->model;
 } else {
   $record->model = 'Signature';
 }
+
 $record->depth = $data->product->depth;
 $record->length = $data->product->length;
 $record->area = (int)($data->product->depth * $data->product->length);

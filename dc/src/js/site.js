@@ -97,7 +97,19 @@ $(document).ready(function() {
         $('#cart-total-price').text( cartTotalPrice(cart) );
         $('#cart-model-label').text( cartModelLabel(cart) );
         $('#cart-model-price').text( cartModelPrice(cart) );
+
         $('#cart-model-link').attr( 'href', cartModelLink(cart) );
+        
+
+        if(cart.paymentIntentCreated){
+          $('#progress-step-4 a').attr('href', '/dc/thank-you.php?c=' + cart.paymentIntentCreated + '&uid=' + cart.uniqueid );
+        } else {
+          $('#progress-step-4 a').click(function(e) {
+            e.preventDefault();
+            $('#checkout-form').submit();
+          });
+        }
+
 
         $('#cart-location-label').text( cartLocationLabel(cart) );
         $('#cart-location-price').text( cartLocationPrice(cart) );
@@ -238,15 +250,14 @@ $(document).ready(function() {
 
 
   function renderPermitElements(cart) {
-    //get shipping fields and populate
-
-
     var promise = new Promise(function(resolve, reject){
       console.log('renderPermitElements');
       console.log(cart);
       if(cart.permitPlans) {
-        $('#permitPlanSelect').prop('checked', true);
-      }      
+        $('a.option-permitPlans[data-permitPlans="true"]').addClass('selected');
+      } else {
+        $('a.option-permitPlans[data-permitPlans="false"]').addClass('selected');
+      }
       resolve(cart);
    });
    return promise;
@@ -278,7 +289,13 @@ $(document).ready(function() {
       }
 
       if(cart.permitNotes) {
-        $('#permit-notes-text').text(cart.permitNotes).parent().removeClass('fade');
+        console.log('Had notes');
+        $('#permit-notes-text').text(cart.permitNotes);
+        $('.dc-permit-notes').removeClass('fade');
+      } else {
+        console.log('N notes');
+        $('#permit-notes-text').text('');
+        $('.dc-permit-notes').addClass('fade');
       }
 
       if(cart.length <= 12) {
@@ -335,6 +352,21 @@ $(document).ready(function() {
      });
      return promise;
   }
+
+
+
+
+  function updatePermitPlansSelection(data) {
+    var promise = new Promise(function(resolve, reject){
+      console.log('calling updatePermitPlansSelection with this:');
+      console.log(data);
+      $('a.option-permitPlans').removeClass('selected');
+      $('a.option-permitPlans[data-permitPlans="'+data.input.permitPlans+'"]').addClass('selected');
+      resolve(data);
+    });
+    return promise;
+  }
+
 
   function updateFoundationSelection(data) {
     var promise = new Promise(function(resolve, reject){
@@ -414,7 +446,7 @@ $(document).ready(function() {
   function cartModelLink(cart) {
     var configURL = window.cart.configUrl;
     var queryString = configURL.substring( configURL.indexOf('?') + 1 );
-    return '/dc/step-1.php?designermode=true&' + queryString;
+    return '/dc/step-1.php?designermode=true&model=' + cart.model + '&' + queryString;
   }
 
   function cartLocationLabel(cart) {
@@ -567,7 +599,8 @@ $(document).ready(function() {
       $('#permit-cost-label').text(cart.permitCost).fadeIn();
       $('#permit-notes-city-label').text(cart.city).fadeIn();
       if(cart.permitNotes) {
-        $('#permit-notes-text').text(cart.permitNotes).parent().removeClass('fade');
+        $('#permit-notes-text').text(cart.permitNotes);
+        $('.dc-permit-notes').removeClass('fade');
       }
       $('#submit-zip-spinner').delay(500).fadeOut(function() {
         $(this).prev().attr('disabled', false); 
@@ -880,6 +913,28 @@ $(document).ready(function() {
       .then(renderCartLabels);
   });
 
+
+
+
+
+
+  $('.dc-permit-set a.option-permitPlans').click(function(e) {
+    e.preventDefault();
+    input = {
+      permitPlans: $(this).attr('data-permitPlans'),
+      permitPlansPrice: $(this).attr('data-permitPlans-price'),
+    };
+    getUidCookie(input)
+      .then(updateRecordPermitPlans)
+      .then(updatePermitPlansSelection)
+      .then(getCart)
+      .then(renderCartLabels);
+  });
+
+
+
+
+
   $('.dc-foundation a.option-foundation').click(function(e) {
     e.preventDefault();
     input = {
@@ -919,7 +974,7 @@ $(document).ready(function() {
       .then(updateRecordLocation)
       .then(getCart)
       .then(renderCartLabels)
-      .then(renderShippingElements);      
+      .then(renderShippingElements);
   });
 
   $('#consent-check').on('change', function() {
@@ -930,18 +985,10 @@ $(document).ready(function() {
     }
   });
 
+  $('.progressbar li').click(function(e){
+    $(this).find('a').get(0).click();
 
-  if( $('main#step-3').length ) {
-    $('#estimate-step-2').removeClass('unchecked').addClass('checked');
-  }
-
-  if( $('main#step-4').length ) {
-    $('#estimate-step-2').removeClass('unchecked').addClass('checked');
-    $('#estimate-step-3').removeClass('unchecked').addClass('checked');
-  }
-
-
-
+  });
 
 
 });

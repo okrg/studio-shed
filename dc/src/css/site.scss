@@ -109,6 +109,7 @@ a.muted-link {
   }
 }
 .btn-outline-primary {
+  background: $white;
   border-color: $primary;
   color: $primary;
   &.selected, &:hover, &:active  {
@@ -166,6 +167,7 @@ header h5 .span-dc-mark {
   list-style: none;
   position: relative;
   li {
+    cursor: pointer;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -201,18 +203,27 @@ header h5 .span-dc-mark {
     &:first-child:after {
       content: none;
     }
+    &:hover:not(.current) a {
+      color: darken($primary, 10%);
+      text-decoration: underline;
+    }
   }
   li.active:after{
     background: $primary;
   }
   li.active:before{
+    font-family: 'Font Awesome 5 Free';
+    content: "\f00c";
     border-color: $primary;
     background: $primary;
     color: white
   }
   li.current a {
     color: #969695;
-    cursor: default;    
+    cursor: default;
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
@@ -328,10 +339,6 @@ a.btn-video-trigger {
 
 .dc-location {
   margin: 5rem 0;
-  padding: 2.5rem 0;
-  border-radius: 4px;
-  background: $containerBackground;
-  border: 1px $lightBorder solid;
   #zip-label {
     width: 140px;
     height: 50px;
@@ -361,31 +368,7 @@ a.btn-video-trigger {
 
 .dc-permit {
   margin: 5rem 0;
-  .permit-disclaimer {
-    display: none;
-    text-align: right;
-    float: right;
-    font-size: 14px;
-    line-height: 25px;
-    margin-right: 0.5rem;
-  }
-  #permit-cost-label,
-  #permit-time-label {
-    float: right;
-    font-weight: 400;
-  }
-  #permit-notes { display: none; }
-  .dc-permit-notes {
-    background: $white;
-    border: 1px $lightBorder solid;
-    padding: 40px;
-    border-radius: 4px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.11);
-    
-    #permit-notes-text {
-      white-space: pre-wrap;
-    }
-  }
+
 }
 
 .dc-finance {
@@ -417,6 +400,32 @@ a.btn-video-trigger {
   }
 }
 
+
+.dc-permit-set {
+  .permit-disclaimer {
+    display: none;
+    text-align: right;
+    float: right;
+    font-size: 14px;
+    line-height: 25px;
+    margin-right: 0.5rem;
+  }
+  #permit-cost-label,
+  #permit-time-label {
+    float: right;
+    font-weight: 400;
+  }
+  #permit-notes { display: none; }
+  .dc-permit-notes {
+    
+    
+    #permit-notes-text {
+      white-space: pre-wrap;
+    }
+  }
+}
+
+.dc-permit-set,
 .dc-foundation,
 .dc-installation {
   a.option {

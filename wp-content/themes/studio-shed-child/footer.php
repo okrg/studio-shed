@@ -7,7 +7,7 @@ a.but{
 	overflow: hidden;
 	margin: 0 auto;
 	padding: 0;
-	width: 200px;
+    width: 220px;
 	line-height: 50px;
 	height: 50px;
 	text-align: center;
@@ -16,14 +16,17 @@ a.but{
 	background-color: #fba445;
 	color: #fff;
 	font-size: 16px;
-	border: 1px solid transparent;
+	border: 2px solid transparent;
 	box-shadow: 1px 1px 5px rgba(0, 0, 0, .3);
 	-webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, .3);
+	font-family: "Futura-PT-Book";    
+    border-radius: 0;
+    letter-spacing: 1px;
 }
 a.but:hover{
 	color: #fba445;
 	background-color: #fff;
-	border: 1px solid #fba445;
+	border: 2px solid #fba445;
 }
 	
 	
@@ -38,6 +41,7 @@ li.logo a {
     padding: 22px 30px;
 }
 	}
+	
 @media (min-width: 992px){
 .main-menu-ul>li>a {
 	   color: #000;
@@ -55,14 +59,27 @@ li.logo a {
     border-top: none;
 	box-shadow: none;
 }
-ul.col-lg-12.types-list , .featured-shed-btns {
+.dropdown-menu.main-menu-dropdown.main-drop-models .menu-child.menu-list .box .time {
+    color: #fba347!important;
+}
+/* 
+	model menu horz
+	ul.col-lg-12.types-list , .featured-shed-btns {
     padding: 23px 70px 15px;
 	width: 100%;
-}
+} */
 .main-drop-models .featured {
     background-repeat: no-repeat!important;
     background-size: cover!important;
 }
+.main-drop-models .featured {
+    min-height: 315px;
+	color: #fff;
+	text-align: center;
+	vertical-align: bottom;
+}
+/*	models - horz
+	
 	li.parent-type:first-of-type {
 		width: 33%;
 		padding-left: 30px;
@@ -74,6 +91,7 @@ li.parent-type {
 	
 	border-bottom: none!important;
 	}
+	
 li.parent-type ul li{
 	padding-left: 30px;
 	}
@@ -82,40 +100,55 @@ li.parent-type:last-of-type ul li{
 	float: left;
 	border-bottom: none!important;
 	  
-	}
+	}*/
 	.menu-child-img {
 		min-width: 80px;
 		height: auto;
 	}
 .featured-text p {
+	
     color: #fff;
     font-size: 19px;
     text-align: center;
     padding: 22% 40px 0;
 }
+.content-model-right .description{
+    vertical-align: bottom;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.55))!important;
+    padding: 20px 60px;
+    height: 100%;
+}
+.content-model-right .description p {
+	text-align: center;
+	color: #fff;
+	font-size: 18px;
+	margin-top: 100px
+		}
 .featured-shed-btns .col-lg-6 {
     text-align: center;
 }
-.featured-shed-btns p {
-	text-align: center;
-		}
-.featured-shed-btns a {
+
+.main-menu-dropdown ul .featured-shed-btns a {
     display: inline-block!important;
-	background-color: transparent;
-	margin: 10px 40px!important;
-	color: #e25d00!important;
+	background-color: #ffa544!important;
+	margin: 10px 2%!important;
+	color: #fff!important;
 	border-radius: 0;
-	border: solid #e25d00 2px;
+	border: solid #ffa544 2px;
 	padding: 10px 5px;
-	min-width: 260px;
+	min-width: 180px;
+	text-transform: uppercase!important;
 		}
 	}
-.featured-shed-btns a:hover{
+.main-menu-dropdown ul .featured-shed-btns a:hover{
 
     background-color: #fff!important;
+	color: #ffa544!important;
 	}
 	
-	
+.main-menu-dropdown ul a {
+    text-transform: initial!important;
+}
 li.cell a   {
 	background: url(/wp-content/uploads/2020/02/menu-phone.png) no-repeat 10px center;
 		}
@@ -178,12 +211,14 @@ display: block;
   -webkit-touch-callout: none;
 }
 
-/*
- * hamburger menu
+/* hamburger menu
  */
-@media (max-width: 650px){
+@media (max-width: 901px){
 .burger-menu {
 	display: none;}
+.burger-menu li.cell a   {
+	background: url(/wp-content/uploads/2020/02/menu-phone.png) no-repeat 50px center;
+		}
 	}
 #menuToggle span
 {
@@ -252,7 +287,11 @@ display: block;
 transform: translate(0, -500PX);  
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
-
+@media (max-width:901px){
+		ul#menu-slide, li.burger-menu {
+    display: none!important;
+}
+	}
 #menu-header-flyout li {
     padding-left: 20px!important;
 }
@@ -282,6 +321,41 @@ text-align: center;
     border-bottom: none!important;
 
 }
+	@media (max-width: 991px){
+.main-menu-ul .has-sub .main-menu-dropdown li a {
+    font-size: 14px;
+}
+	}
+/*newslettr pop up */
+.newletter .gform_wrapper label.gfield_label {
+    display: none;
+}
+/* blog post pages */
+	section.one-column {
+    margin-bottom: 50px;
+}
+.emaillist label {
+    width: 100%!important;
+}
+.emaillist input.es_required_field.es_txt_email  {
+    width: 100%;
+    padding: 7px;
+}
+input#es_subscription_form_submit_1584396535, .emaillist input[type=submit] {
+    border: 2px solid #fff;
+    background: transparent;
+    padding: 7px 15px;
+    text-transform: uppercase;
+    font-family: "Futura-PT-Book";
+}
+input#es_subscription_form_submit_1584396535:hover, .emaillist input[type=submit]:hover {
+    border: 2px solid #000;
+    background: #fff;
+	color: #000;
+}
+.blog-sidebar label, .emaillist label {
+		font-family: "Tisa-Sans-Pro"
+	}
 /*footer */
 footer h3 {
 	font-family: "Futura-PT-Heavy"!important;
@@ -411,16 +485,40 @@ span#input_18_1_3_container.name_first {
 		float: none;
 	}
 @media (max-width: 600px){
-		.footer-escape .row {
+.footer-escape .row {
 		display: block;
+		padding: 20px 0;
 	}
-	.footer-escape .row div {
+.footer-escape .row div {
 		display: block;
 		float: left;
 	}
-	.footer-escape img {
+.footer-escape .col-sm-3.col-md-2 {
+    float: none;
+}
+.footer-escape .col-sm-9.col-md-7 {
+    padding: 10px 15px 30px 15px;
+}
+.footer-escape img {
 		margin-bottom: 20px;
 	}
+	.footer-escape img, .footer-escape p {
+    text-align: center;
+    margin: 0 auto 10px;
+    /* float: none; */
+    display: flex;
+}
+.footer-escape h3 {
+		text-align: center;
+	}
+ .footer-escape .col-sm-12.col-md-3 {
+    text-align: center;
+    padding-top: 30px;
+	 float: none;
+}
+	.footer-escape button, .footer-escape a.button {
+    float: none!important;
+}
 }	
 	.footer-escape img, .footer-escape p {
 		width: 100%;
@@ -438,9 +536,10 @@ span#input_18_1_3_container.name_first {
 	font-size: 15px;
 }
 .footer-escape .delivery{
-	background: url(/wp-content/uploads/2020/01/service-area-bg.jpg) right no-repeat!important;
+	background: url(/wp-content/uploads/2020/01/service-area-bg.jpg) right center no-repeat!important;
     padding: 50px 0;
     margin: 20px 0 0 0;
+	background-size: cover!important;
 	}
 .footer-escape .delivery h3{
 		text-align: center;
@@ -468,10 +567,11 @@ border-color: #ffa544;
     text-transform: uppercase;
 
 }
-.footer-escape button:hover, .footer-escape a.button:hover {
-	color: #fba445;
-	background-color: #fff;
-	border: 2px solid #fba445;
+.footer-escape button:hover, 
+.footer-escape a.button.vce-button--style-basic:hover {
+	color: #fba445!important;
+	background-color: #fff!important;
+	border: 2px solid #fba445!important;
 }
 	.footer-menus {
 		background: #000000;

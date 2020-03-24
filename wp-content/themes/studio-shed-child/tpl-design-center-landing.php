@@ -34,101 +34,72 @@
 	<section id="steps" class="wide-container">
 		<table border="0" cellspacing="0" cellpadding="0">
 			<tr>
-				<td>
+				<td class="first-step">
 					<div class="step-number">
 						<img src="<?php print $steps[0]['number_image']; ?>" class="wide-only" />
 						<img src="<?php print $steps[0]['mobile_number_image']; ?>" class="mobile-only" />
 					</div>
-				</td>
-				<td>
-					<div class="step-number">
-						<img src="<?php print $steps[1]['number_image']; ?>" class="wide-only" />
-						<img src="<?php print $steps[1]['mobile_number_image']; ?>" class="mobile-only" />
-					</div>
-				</td>
-				<td>
-					<div class="step-number">
-						<img src="<?php print $steps[2]['number_image']; ?>" class="wide-only" />
-						<img src="<?php print $steps[2]['mobile_number_image']; ?>" class="mobile-only" />
-					</div>
-				</td>
-				<td>
-					<div class="step-number">
-						<img src="<?php print $steps[3]['number_image']; ?>" class="wide-only" />
-						<img src="<?php print $steps[3]['mobile_number_image']; ?>" class="mobile-only" />
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
 					<div class="step-title">
 						<?php print $steps[0]['title']; ?>
 					</div>
-				</td>
-				<td>
-					<div class="step-title">
-						<?php print $steps[1]['title']; ?>
-					</div>
-				</td>
-				<td>
-					<div class="step-title">
-						<?php print $steps[2]['title']; ?>
-					</div>
-				</td>
-				<td>
-					<div class="step-title">
-						<?php print $steps[3]['title']; ?>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
 					<div class="step-description">
 						<?php print $steps[0]['description']; ?>
 					</div>
-				</td>
-				<td>
-					<div class="step-description">
-						<?php print $steps[1]['description']; ?>
-					</div>
-				</td>
-				<td>
-					<div class="step-description">
-						<?php print $steps[2]['description']; ?>
-					</div>
-				</td>
-				<td>
-					<div class="step-description">
-						<?php print $steps[3]['description']; ?>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>
 					<div class="step-icon">
 						<img src="<?php print $steps[0]['icon']; ?>" class="wide-only" />
 						<img src="<?php print $steps[0]['mobile_icon']; ?>" class="mobile-only" />
 					</div>
 				</td>
-				<td>
+				<td  class="second-step">
+					<div class="step-number">
+						<img src="<?php print $steps[1]['number_image']; ?>" class="wide-only" />
+						<img src="<?php print $steps[1]['mobile_number_image']; ?>" class="mobile-only" />
+					</div>
+					<div class="step-title">
+						<?php print $steps[1]['title']; ?>
+					</div>
+					<div class="step-description">
+						<?php print $steps[1]['description']; ?>
+					</div>
 					<div class="step-icon">
 						<img src="<?php print $steps[1]['icon']; ?>" class="wide-only" />
 						<img src="<?php print $steps[1]['mobile_icon']; ?>" class="mobile-only" />
 					</div>
 				</td>
-				<td>
+				<td class="third-step">
+					<div class="step-number">
+						<img src="<?php print $steps[2]['number_image']; ?>" class="wide-only" />
+						<img src="<?php print $steps[2]['mobile_number_image']; ?>" class="mobile-only" />
+					</div>
+					<div class="step-title">
+						<?php print $steps[2]['title']; ?>
+					</div>
+					<div class="step-description">
+						<?php print $steps[1]['description']; ?>
+					</div>
 					<div class="step-icon">
 						<img src="<?php print $steps[2]['icon']; ?>" class="wide-only" />
 						<img src="<?php print $steps[2]['mobile_icon']; ?>" class="mobile-only" />
 					</div>
 				</td>
-				<td>
+				<td class="fourth-step">
+					<div class="step-number">
+						<img src="<?php print $steps[3]['number_image']; ?>" class="wide-only" />
+						<img src="<?php print $steps[3]['mobile_number_image']; ?>" class="mobile-only" />
+					</div>
+					<div class="step-title">
+						<?php print $steps[3]['title']; ?>
+					</div>
+					<div class="step-description">
+						<?php print $steps[3]['description']; ?>
+					</div>
 					<div class="step-icon">
 						<img src="<?php print $steps[3]['icon']; ?>" class="wide-only" />
 						<img src="<?php print $steps[3]['mobile_icon']; ?>" class="mobile-only" />
 					</div>
 				</td>
 			</tr>
+			
 		</table>
 	</section>
 	<!--End Steps Table-->

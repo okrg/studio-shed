@@ -135,7 +135,7 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-  $('#progress-step-4').addClass('active');
+  $('#progress-step-4').addClass('current');
 });
 </script>
 <?php include('includes/logged-out-footer.php'); ?>

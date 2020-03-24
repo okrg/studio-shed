@@ -358,9 +358,14 @@ TisaSansPro—Network resource(19 glyphs)
 .main-drop-models .menu-child.menu-list .col-lg-7:hover a, .main-drop-models .menu-child.menu-list .col-lg-7:hover p {
     color: inherit;
 }
+
 .main-drop-models .menu-child.menu-list .box a {
     padding-bottom: 0!important;
     font-weight: 700;
+	font-size: 13px;
+}
+.main-drop-models .menu-child.menu-list .box .intro {
+    margin-bottom: 5px;
 }
 .main-drop-models .menu-child.menu-list .box .time {
     margin-bottom: 0px!important;
@@ -1016,11 +1021,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<div class="dropdown-menu main-menu-dropdown main-drop-models">
                 <div class="container">
                   <div class="row">
-                    <ul class="col-lg-12 types-list">
+                    <ul class="col-lg-5">
                       <?php 
                       $i = 1;
                       foreach ($models_childs as $key => $childs) {?>
-                        <li class="parent-type">
+                        <li>
                           <a href="<?php echo $childs["link"]?>"><?php echo $childs["title"]?></a>
                           <div class="nav-item-arrows d-lg-none">
                             <i class="icomoon icon-plus2" aria-hidden="true"></i>
@@ -1028,43 +1033,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                           <ul class="menu-child menu-list">
                             <?php foreach ($childs["childs"] as $key => $child) {?>
                             <li>
-								<a href="<?php echo $child["link"]?>">
                               <div class="row">
-								  
-                                  <img src="<?php echo $child["icon"]["url"]?>" alt="<?php echo $child["title"]?> | Studio Shed" class="menu-child-img">
-								</div>
-								                                <div class="row">
-
+                                <div class="col-lg-5">
+                                  <img src="<?php echo $child["icon"]["url"]?>" alt="">
+                                </div>
+                                <div class="col-lg-7">
                                   <div class="box" item-id="item-<?php echo $i?>">
-                                    <p class="box-model"><a href="<?php echo $child["link"]?>"><?php echo $child["title"]?> ></a></p>
+                                    <a href="<?php echo $child["link"]?>"><?php echo $child["title"]?></a>
                                     <p class="intro"><?php echo $child["sub_title"]?></p>
                                     <p class="time"><?php echo $child["start_price"]?></p>
-									  <?php echo $child["content_right"]?>
-                                    <!--<span class="icomoon icon-chevron-right"></span>-->
+                                    <span class="icomoon icon-chevron-right"></span>
                                   </div>
+                                </div>
                               </div>
-								</a>
                             </li>
                             <?php $i++;}?>
                           </ul>
                         </li>
                       <?php }?>
                     </ul>
-					</div>
-					<div class="row">
-						<div class="col-lg-12 featured-shed-btns">
-							<div class="row">
-                                      <div class="col-lg-6">			
-										  <a class="btn btn-dark" href="/design-center/">Compare Models</a>  
-
-								</div>
-                                      <div class="col-lg-6">
-										<a class="btn btn-white" href="/products/signature-series/shed-types/">Browse Quick Ship Models</a>                                    
-                                      </div>
-                                    </div>
-						</div>
-                    <!--<ul class="col-lg-12">
-                      <?php /*
+					    <ul class="col-lg-7">
+                      <?php 
                       $i = 1;
                       foreach ($models_childs as $key => $childs) {?>
                             <?php foreach ($childs["childs"] as $key => $child) {
@@ -1075,9 +1064,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                               ?>
                             <li item="item-<?php echo $i?>" class="item-models <?php echo $class?>">
                               <div class="content-model-right" style="width: 100%">
-                                  <div class="featured" style="background-image: url(<?php echo $child["image"]["url"]?>)"></div>
+                                  <div class="featured" style="background: url(<?php echo $child["image"]["url"]?>);">
                                   <div class="description">
-                                    <p class="title"><?php echo $child["headline"]?></p>
+									  <?php echo $child["content_left"]?>
+                                   <!-- <p class="title"><?php //echo $child["headline"]?></p>
                                     <div class="row">
                                       <div class="col-lg-4">
                                         <?php echo $child["content_left"]?>
@@ -1089,16 +1079,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                         <?php echo $child["content_right"]?>
                                       </div>
                                     </div>
+-->
+									  <div class="featured-shed-btns">
+							<div class="row">
+                                      <div class="col-lg-6">			
+										  <a href="<?php echo $child["link"]?>">Learn More</a>  
+
+								</div>
+                                      <div class="col-lg-6">
+										<a href="/design-center/">Design &amp; Price</a> 
+										 <!--  <a class="btn" href="/design-center/">Design &amp; Price</a> -->
+                                      </div>
+                                    </div>
+						</div>
+                    
                                   </div>
+									  </div>
                                 </div>
                             </li>
                             <?php $i++; }?>
-                      <?php } */?>
-                    </ul>-->
-                  </div>
+                      <?php }?>
+                    </ul>
+					</div>
+					
                 </div>
               </div>
-            </li>
+            </li> 
                
             <?php
             $title_r_1 = get_field('title_r_1', 'option');

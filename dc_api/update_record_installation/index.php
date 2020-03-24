@@ -16,7 +16,8 @@ if( empty($uid) ) {
 
 $record = $database->get($uid);
 $record->installation = $data['input']['installation'];
-$record->installationPrice = $data['input']['installationPrice'];
+$record->installationPrice = filter_var($data['input']['installationPrice'],
+  FILTER_VALIDATE_INT);
 $record->save();
 
 $data['code'] = 'updateRecordInstallationSuccess';

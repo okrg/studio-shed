@@ -61,7 +61,8 @@ gulp.task('styles', function () {
         .pipe(autoprefixer('last 2 versions'))
         .pipe(concat('screen.scss')),
         gulp.src([
-            //'node_modules/flickity/dist/flickity.min.css',
+            'node_modules/owl.carousel/dist/assets/owl.carousel.min.css',
+            'node_modules/owl.carousel/dist/assets/owl.theme.default.min.css',
             //'node_modules/stuff/file.css'
         ])
         .pipe(concat('plugins.css')))
@@ -86,7 +87,7 @@ gulp.task('scripts', function () {
         'node_modules/jquery/dist/jquery.min.js',
         'node_modules/popper.js/dist/umd/popper.min.js',
         'node_modules/bootstrap/dist/js/bootstrap.min.js',
-        'node_modules/pace-js/pace.min.js',
+        'node_modules/owl.carousel/dist/owl.carousel.min.js',
         'node_modules/js-cookie/src/js.cookie.js',
         'src/js/**/*.js'
         ])

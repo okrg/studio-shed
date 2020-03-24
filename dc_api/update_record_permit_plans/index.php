@@ -15,8 +15,9 @@ if( empty($uid) ) {
 }
 
 $record = $database->get($uid);
-$record->permitPlans = $data['input']['permitPlans'];
-$record->permitPlansPrice = $data['input']['permitPlansPrice'];
+$record->permitPlans = filter_var($data['input']['permitPlans'], FILTER_VALIDATE_BOOLEAN);
+$record->permitPlansPrice = filter_var($data['input']['permitPlansPrice'],
+  FILTER_VALIDATE_INT);
 $record->save();
 
 $data['code'] = 'updatedRecordPermitPlansSuccess';

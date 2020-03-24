@@ -9,16 +9,15 @@
       <p>Short introduction about this page and basic instructions on how to use it.</p>
     </div>
 
-    <section class="dc-location">
+    <section class="dc-location dc-permit">
       <div class="row mb-5">
-        <div class="col-sm-12 col-lg-6 offset-lg-2">
+        <div class="col-sm-12 col-lg-4 offset-lg-2">
           <h3>Specify Your Location</h3>
         </div>
         <div class="col-sm-12 col-lg-4">
-
           <form id="zip-lookup">
-            <input class="form-control" type="text" id="zip-label" placeholder="Enter Your ZIP" value="92101"></input>
-            <input class="btn btn-primary btn-sm" type="button" value="Submit" id="submit-zip-lookup"></input>
+            <input class="form-control" type="text" id="zip-label" placeholder="Enter Your ZIP" value="92101" />
+            <input class="btn btn-primary btn-sm" type="button" value="Submit" id="submit-zip-lookup" />
             <i id="submit-zip-spinner" class="fa fa-spin fa-sync"></i>
           </form>
           <span id="city-label"></span>
@@ -42,21 +41,24 @@
           <span id="shipping-cost-label">&mdash;</span>
         </div>
       </div>
-      -->
+      
       <div class="row mb-0">
         <div class="col-sm-12 col-lg-8 offset-lg-2">
           <a href="#" class="btn btn-video-trigger"><i class="fas fa-play"></i>Shipping and delivery overview video</a>
         </div>
       </div>
+      -->
+
     </section>
 
-
-    <section class="dc-permit">
-      <div class="row">
+    <section class="dc-permit-set">
+      <div class="row mb-5">
         <div class="col-sm-8 offset-2">
           <h2 class="text-center mb-5">
             <span id="permit-message"></span>
           </h2>
+          
+          <!--
           <div class="panel-group accordion" id="permit-notes" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default mb-5">
               <div class="panel-heading" role="tab" id="pheading0">
@@ -80,7 +82,6 @@
                 <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#permit-notes" href="#permits1" aria-expanded="true" aria-controls="permits1">
                 Estimated Permit Cost
                 <div id="permit-cost-label">&mdash;</div>
-                <!--<div class="permit-disclaimer">(Paid to the local permit authority)</div>-->
                 </a>
               </h4>
               </div>
@@ -90,48 +91,61 @@
               </div>
               </div>
             </div>
+            --> 
 
-            <div class="dc-permit-notes fade">
-              <h5 class="card-subtitle mb-2 text-muted">Additional Notes about Permits for <span id="permit-notes-city-label"></span></h5>
+
+
+
+
+
+        <div class="dc-permit-notes fade">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-subtitle mb-2 text-center">Information about building permits in <span id="permit-notes-city-label"></span></h5>
               <div id="permit-notes-text"></div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section class="dc-permit-set">
-      <div class="row mb-5">
-        <div class="col-sm-8 offset-2">
 
+
+
+
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-sm-8 offset-2">
+            <h2 class="text-center">Permit Plan Set by Studio Shed</h2>
               <div class="row mb-3">
                 <div class="col-sm-12 col-lg-6">
-                  <h4>Permit Plan Set by Studio Shed</h4>
-                </div>
-                <div class="col-sm-12 col-lg-6 text-center">
+                  <p>This supporting product is only necessary if you are required to permit your Studio Shed.</p>
+                  <p>These permit plans are engineer-stamped architectural plans with foundation detail specific to your site.</p>
 
-                  <div class="form-check custom-control custom-checkbox mb-2">
-                    <input class="form-check-input custom-control-input" type="checkbox" name="permitPlanSelect" id="permitPlanSelect" value="permitPlanSelect">
-                    <label class="form-check-label custom-control-label" for="permitPlanSelect">
-                      Include the plans <strong>(+ $3,995)</strong>
-                    </label>
-                  </div>
+                  <p><strong>Includes:</strong> site, architectural, energy, structural, and electrical plans compliant with local codes for wind, snow, seismi, and soil.</p>
+                  <p><strong>Excludes:</strong> submittal and other site work.</p>
 
-                </div>
-              </div>
-
-
-
-              <div class="row">
-                <div class="col-sm-12 col-lg-6">
-                <p>Engineer-stamped architectural plans with foundation detail specific to your site. Includes site, architectural, energy, structural, and electrical plans compliant with local codes for wind, snow, seismi, and soil. Excludes submittal and other site work.</p>
                 </div>
                 <div class="col-sm-12 col-lg-6">
                   <img src="img/permit-plans.png" class="img-fluid" />
                 </div>
               </div>
 
-
+            <div class="row mb-5">
+              <div class="col-md-6">
+                <a href="#" id="select-permit-plans-false" data-permitPlans="false" data-permitPlans-price="0" class="btn btn-outline-primary btn-block option option-permitPlans">
+                  <span class="label">DIY Permit Plans</span>
+                  <span class="cost">+ $0</span>
+                </a>
+              </div>
+              <div class="col-md-6">
+                <a href="#" id="select-permit-plans-true" data-permitPlans="true" data-permitPlans-price="3995" class="btn btn-outline-primary btn-block option option-permitPlans">
+                  <span class="label">Include the Permit Plan Set</span>
+                  <span class="cost">+ $3,995</span>
+                </a>
+              </div>
+            </div>
         </div>
       </div>
 
