@@ -1,4 +1,6 @@
 <?php
+include('../shipping-rates.php');
+
 ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 
@@ -75,8 +77,6 @@ if(isset($data->customer->phone)) {
 
 if(isset($data->product->model)) {
   $record->model = $data->product->model;
-} else {
-  $record->model = 'Signature';
 }
 
 $record->depth = $data->product->depth;
@@ -111,8 +111,35 @@ foreach($data->product->cart->items as $item) {
 
 
 //Reset prior costs
-unset($record->shippingPrice);
-unset($record->shippingDistance);
+if(isset($record->shippingDistance) && isset($record->zip)) {
+  $distance_miles = $record->shippingDistance;
+  $depth = $record->depth;
+  $interior = $record->interiorSKU;
+  $state = $record->state;
+
+  if($state == 'CO') {
+    $state_code = 'CONONLOCAL';
+  } else {
+    $state_code = $state;
+  }
+
+  if($depth >= 12) {
+    $depth_surcharge = $shipping->depth_surcharges->{$depth};
+  }
+
+  if(!empty($interior)){
+    $interior_surcharge = $shipping->interior_surcharges->{$interior};
+  }
+
+  $base = $shipping->base_rates->{$state_code};
+  $subtotal = $distance_miles * $base;
+  $total = $subtotal + $depth_surcharge + $interior_surcharge;
+  $record->shippingPrice = round($total, 2);
+
+}
+
+
+
 
 unset($record->permitTime);
 unset($record->permitCost);
@@ -123,6 +150,9 @@ unset($record->installationPrice);
 
 unset($record->foundation);
 unset($record->foundationPrice);
+
+
+
 
 
 $record->save();
