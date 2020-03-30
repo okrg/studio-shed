@@ -142,7 +142,7 @@
                         <h3>subscribe to our blog</h3>
                         <p>Enter your email address to receive notifications of new posts</p>
                         <?php dynamic_sidebar('email-subscribe'); ?>
-                        <input type="submit" value="submit">
+                        <!-- <input type="submit" value="submit"> -->
                     </div>
 
                 </div>

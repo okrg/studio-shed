@@ -3093,6 +3093,10 @@ input[type=range]::-ms-fill-upper {
     border: 1px solid #fff;
     box-shadow: 0px 0px 3px 1px #fff;
 }
+.page-template-tpl-blog .email-subscribe .form-subscribe input[type=submit]{
+    line-height: 30px;
+    height: auto;
+}
 .email-subscribe .es_lablebox,.email-subscribe .es_button {
     display: none;
 }
