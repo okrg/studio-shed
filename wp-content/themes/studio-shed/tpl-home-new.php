@@ -138,6 +138,11 @@
 					</div>
 				</div>
 			</div>
+			<?php if(get_field('video_block')) : ?>
+			<div class="block-primere-video">
+				<?php echo get_field('video_block'); ?>
+			</div>
+			<? endif ?>
 			<div class="block-three">
 				<div class="block-flex">
 					<div class="column">
