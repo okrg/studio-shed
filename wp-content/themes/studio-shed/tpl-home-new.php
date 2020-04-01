@@ -142,7 +142,7 @@
 			<div class="block-primere-video">
 				<?php echo get_field('video_block'); ?>
 			</div>
-			<? endif ?>
+			<?php endif; ?>
 			<div class="block-three">
 				<div class="block-flex">
 					<div class="column">
