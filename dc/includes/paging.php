@@ -1,7 +1,8 @@
 <?php
-  $page =  $_SERVER["REQUEST_URI"];
+  $page =  strtok(basename($_SERVER["REQUEST_URI"]), '?');
+  
   switch($page) {
-    case "/dc/step-1.php":
+    case "step-1.php":
       $prev = array(
         'label' => 'Design Center Home',
         'link' => '/dc/index.php'
@@ -12,7 +13,7 @@
         'class' => 'nextStep'
       );
       break;
-    case "/dc/step-2.php":
+    case "step-2.php":
       $prev = array(
         'label' => 'Configuration',
         'link' => '/dc/step-1.php'
@@ -23,7 +24,7 @@
         'class' => 'nextStep'
       );
       break;
-    case "/dc/step-3.php":
+    case "step-3.php":
       $prev = array(
         'label' => 'Location &amp; Permit Details',
         'link' => '/dc/step-2.php'
@@ -34,7 +35,7 @@
         'class' => 'paymentIntent'
       );
       break;
-    case "/dc/step-4.php":
+    case "step-4.php":
       $prev = array(
         'label' => 'Installation Details',
         'link' => '/dc/step-3.php'
