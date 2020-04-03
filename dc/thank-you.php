@@ -1,12 +1,6 @@
 <?php include('includes/header.php'); ?>
 <main id="step-4">
   <div class="container">
-    
-
-    <section class="dc-outro">
-      <h2>Your Order is Completed</h2>
-      <p>Short introduction about this page and basic instructions on how to use it.</p>
-    </section>
 
     <section class="dc-checkout-summary">
       <div class="row">
@@ -129,6 +123,7 @@
       </div>
     </section>
 
+    <?php include('includes/contact.php'); ?>
 
   </div>
 </main>

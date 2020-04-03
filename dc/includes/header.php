@@ -22,7 +22,8 @@ if (empty($_SESSION['csrf_token'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="<?= $_SESSION['csrf_token'] ?>">
     <title>Studio Shed Design Center</title>
-    <script src="js/site.js"></script>ß
+    <script src="js/site.js"></script>
+    <script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=k8vke2igcws1ep5vtqtmwg" async="true"></script>
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <script src="https://js.stripe.com/v3/"></script>
     <link href="css/screen.css" rel="stylesheet">
@@ -53,7 +54,7 @@ if (empty($_SESSION['csrf_token'])) {
             </a>
           </li>
           <li id="progress-step-4">
-            <a href="#">
+            <a href="#" class="paymentIntent">
             Complete Order
             </a>
           </li>

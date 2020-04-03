@@ -100,12 +100,11 @@ $(document).ready(function() {
         $('#cart-model-price').text( cartModelPrice(cart) );
 
         $('#cart-model-link').attr( 'href', cartModelLink(cart) );
-        
 
         if(cart.paymentIntentCreated){
-          $('#progress-step-4 a').attr('href', '/dc/thank-you.php?c=' + cart.paymentIntentCreated + '&uid=' + cart.uniqueid );
+          $('a.paymentIntent').attr('href', '/dc/thank-you.php?c=' + cart.paymentIntentCreated + '&uid=' + cart.uniqueid );          
         } else {
-          $('#progress-step-4 a').click(function(e) {
+          $('a.paymentIntent').click(function(e) {
             e.preventDefault();
             $('#checkout-form').submit();
           });

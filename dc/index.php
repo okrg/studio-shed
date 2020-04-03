@@ -49,7 +49,7 @@
           <a href="/dc/step-4.php"><img src="https://qikrg2ve4526wc3c3ntlhj1e-wpengine.netdna-ssl.com/wp-content/uploads/2015/02/Office-5-791x525.jpg" class="img-fluid" /></a>
         </div>
         <div class="col-sm-6">
-          <h3><a href="/dc/step-4.php">Complete Your Order</a></h3>
+          <h3><a href="#" class="paymentIntent">Complete Your Order</a></h3>
           <h4><span id="intro-order"></span></h4>
           <p>You’ve designed and chosen your perfect Studio Shed – it’s time to complete your order. Your dream backyard is only a few clicks away. Fill out your payment details, explore available financing, and complete your order.</p>
         </div>
