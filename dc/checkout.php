@@ -27,7 +27,7 @@ include('includes/header.php');
       <div class="cart">
         <div class="row">
           <div class="col-md-4 text-center">
-            <img src="img/shed-screenshot.png" class="shed-screenshot img-fluid" />
+            <img id="summary-config-render" class="img-fluid" />
           </div>
           <div class="col-md-8">
             <table id="cart-table">
@@ -285,7 +285,7 @@ include('includes/header.php');
         </div>
         <div class="status success">
           <h1>Thanks for your order!</h1>
-          <p>Woot! You successfully made a payment with Stripe.</p>
+          <p>You successfully made a payment.</p>
           <p class="note">We just sent your receipt to your email address, and your items will be on their way shortly.</p>
         </div>
         <div class="status receiver">

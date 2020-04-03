@@ -28,7 +28,9 @@ $footerBackground: #0f1c2c;
 }
 @font-face{font-family:"Futura-PT-Heavy-Oblique";src:url("/dc/fonts/Futura-PT-Heavy-Oblique.eot"), url("/dc/fonts/Futura-PT-Heavy-Oblique.woff") format("woff"), url("/dc/fonts/Futura-PT-Heavy-Oblique.ttf") format("truetype");}
 
-
+.odometer.odometer-auto-theme.odometer-animating-down.odometer-animating .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
+  transition: transform 1s !important;
+}
 
 body {  
   font-family: "Tisa-Sans-Pro", sans-serif;
@@ -159,7 +161,11 @@ header h5 .span-dc-mark {
   font-size: 16px;
 
 }
-
+.shed-prev {
+  max-height: 150px;
+  margin: 0 auto;
+  display: block;
+}
 .progressbar {
   counter-reset: step;
   margin: 0;
@@ -230,6 +236,11 @@ header h5 .span-dc-mark {
 #header-estimate {
   font-weight: bold;
   text-align: center;
+  #header-total-price {
+    .odometer-inside:before {
+      content: "$";
+    }
+  }
 }
 
 
@@ -385,6 +396,8 @@ a.btn-video-trigger {
   }
 }
 
+
+
 .dc-finance,
 .dc-installation-resources,
 .dc-permit-set {
@@ -445,6 +458,13 @@ a.btn-video-trigger {
   }
 }
 
+.dc-foundation {
+  .col-sm-4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
 
 
 .dc-faq {
@@ -1289,7 +1309,6 @@ a.btn-video-trigger {
   img {
     display: block;
     margin: 2rem auto;
-    max-width: 300px;
   }
 
   tr.total-row{

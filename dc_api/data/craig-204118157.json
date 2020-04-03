@@ -1,0 +1,29 @@
+{
+    "__created_at": 1585786534,
+    "__updated_at": 1585786534,
+    "data": {
+        "uniqueid": "craig-204118157",
+        "utm_source": "(direct)",
+        "utm_medium": "(none)",
+        "utm_campaign": "(not set)",
+        "gclid": "undefined",
+        "visitor_id": "c3e263f5-86af-4435-a68e-05acee3881fc",
+        "configUrl": "http://localhost:8081/configurator.html#44183e1dbeb9cb5828c1317e4cd0bd47",
+        "imageUrl": "https://idearoom-render.s3.amazonaws.com/studioshedportland-render/product:440-275:f99475a3f725032e5a51a241a6db7629.png",
+        "email": "cboobar@idearoominc.com",
+        "firstName": "Craig",
+        "lastName": "Craig",
+        "phone": "2085595350",
+        "model": "portland",
+        "depth": 10,
+        "length": 12,
+        "area": 120,
+        "frontSKU": "GF12-3-W3-D72C",
+        "backSKU": "GB12",
+        "leftSKU": "GL10",
+        "rightSKU": "GR10-60C",
+        "total": null,
+        "": "Three CloudLite Windows, Centered 72\" Door",
+        "Price": 1250
+    }
+}

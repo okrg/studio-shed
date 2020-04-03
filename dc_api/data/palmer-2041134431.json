@@ -1,0 +1,29 @@
+{
+    "__created_at": 1585770298,
+    "__updated_at": 1585770298,
+    "data": {
+        "uniqueid": "palmer-2041134431",
+        "utm_source": "(direct)",
+        "utm_medium": "(none)",
+        "utm_campaign": "(not set)",
+        "gclid": "undefined",
+        "visitor_id": "11c934c4-0877-4077-85cc-623e18589012",
+        "configUrl": "http://localhost:8081/configurator.html#53e3882906535ec46dcbb14bd1aadaaf",
+        "imageUrl": "https://idearoom-render.s3.amazonaws.com/studioshedportland-render/product:440-275:dafba2fa4f094544defff33907caa50c.png",
+        "email": "cboobar@idearoominc.com",
+        "firstName": "Arnold",
+        "lastName": "Palmer",
+        "phone": "2085595350",
+        "model": "portland",
+        "depth": 16,
+        "length": 16,
+        "area": 256,
+        "frontSKU": "GF16-4-W3-60L",
+        "backSKU": "GB16",
+        "leftSKU": "GL16",
+        "rightSKU": "GR16",
+        "total": null,
+        "": "Four CloudLite Windows, Left Justified 60\" x 30\" Fixed Over Operable Window",
+        "Price": 945
+    }
+}

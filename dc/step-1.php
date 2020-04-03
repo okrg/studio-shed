@@ -12,7 +12,7 @@
       $idearoomDiv = 'idearoomConfigurator';
       $ideaRoomModel = 'studioshedsummit';
       break;
-    case 'sortland':
+    case 'portland':
       $idearoomDiv = 'shedConfigurator';
       $ideaRoomModel = 'studioshedportland';
       break;
@@ -25,7 +25,7 @@
 
     <div class="dc-intro">
       <h2>Step 1 of 4: Design Configuration</h2>
-      <p>Short introduction about this page and basic instructions on how to use it.</p>
+      <p>Bring your backyard dreams to life by designing your dream Studio Shed. Choose your size, configuration, siding, and colors.</p>
     </div>
 
     <div class="dc-configurator">

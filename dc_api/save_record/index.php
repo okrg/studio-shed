@@ -34,21 +34,11 @@ include('../filebase.php');
 $json = json_encode($_POST);
 $data = json_decode($json);
 
-//print_r($_SERVER);
-//print_r($_POST);
-//exit();
-//exit(json_encode($json));
-
 $uid = $data->product->uniqueid;
 
 if( empty($uid) || !isset($uid) ) {
   exit(json_encode(['error' => 'No uid??']));
 }
-//$json = json_decode($json, true);
-//if( !$json ) {
-//  exit(json_encode(['error' => 'Empty JSON']));
-//}
-
 //Try to get record
 $record = $database->get($uid);
 
@@ -109,7 +99,6 @@ foreach($data->product->cart->items as $item) {
 
 }
 
-
 //Reset prior costs
 if(isset($record->shippingDistance) && isset($record->zip)) {
   $distance_miles = $record->shippingDistance;
@@ -138,22 +127,15 @@ if(isset($record->shippingDistance) && isset($record->zip)) {
 
 }
 
-
-
-
-unset($record->permitTime);
-unset($record->permitCost);
-unset($record->permitNotes);
+//unset($record->permitTime);
+//unset($record->permitCost);
+//unset($record->permitNotes);
 
 unset($record->installation);
 unset($record->installationPrice);
 
 unset($record->foundation);
 unset($record->foundationPrice);
-
-
-
-
 
 $record->save();
 
@@ -167,6 +149,4 @@ exit(json_encode([
   'redirectURL' => 'https://dev2-studio-shed.pantheonsite.io/dc/auth?h='.$hash.'&t='.$time.'&u='.$uid,
   'redirectPath' => '/dc/auth?h='.$hash.'&t='.$time.'&u='.$uid
   ]));
-
-
 ?>

@@ -18,11 +18,11 @@ if (empty($_SESSION['csrf_token'])) {
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="<?= $_SESSION['csrf_token'] ?>">
-    <title>Design Center</title>
-    <script src="js/site.js"></script>
-    
+    <title>Studio Shed Design Center</title>
+    <script src="js/site.js"></script>ß
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <script src="https://js.stripe.com/v3/"></script>
     <link href="css/screen.css" rel="stylesheet">

@@ -6,7 +6,7 @@
 
     <div class="dc-intro">
       <h2>Step 2 of 4: Location &amp; Permit Details</h2>
-      <p>Short introduction about this page and basic instructions on how to use it.</p>
+      <p>Time to focus on location. Calculate your shipping time and cost while figuring out your permits.</p>
     </div>
 
     <section class="dc-location dc-permit">

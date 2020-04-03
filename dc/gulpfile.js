@@ -63,6 +63,7 @@ gulp.task('styles', function () {
         gulp.src([
             'node_modules/owl.carousel/dist/assets/owl.carousel.min.css',
             'node_modules/owl.carousel/dist/assets/owl.theme.default.min.css',
+            'node_modules/odometer/themes/odometer-theme-default.css',
             //'node_modules/stuff/file.css'
         ])
         .pipe(concat('plugins.css')))
@@ -89,6 +90,7 @@ gulp.task('scripts', function () {
         'node_modules/bootstrap/dist/js/bootstrap.min.js',
         'node_modules/owl.carousel/dist/owl.carousel.min.js',
         'node_modules/js-cookie/src/js.cookie.js',
+        'node_modules/odometer/odometer.min.js',
         'src/js/**/*.js'
         ])
         .pipe(plumber({

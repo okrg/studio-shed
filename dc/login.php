@@ -3,7 +3,8 @@
   <div class="container">
     <section class="dc-logged-out">
       <form class="form-signin" action="/dc/gen-auth.php" method="POST">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Welcome to the Studio Shed Design Center.</h1>
+      <p>Your dream backyard is only a few clicks away. Enter your email address below to get started designing!</p>
       <div class="my-3">
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
@@ -74,7 +75,8 @@ $(document).ready(function() {
       if( links[index].model ) {
       $('#linksModal .modal-body').append(
         '<div><a href="#" data-uid="' +
-        links[index].uid + '" class="btn btn-outline-primary trigger-magic-link">'
+        links[index].uid + '" class="btn btn-outline-primary trigger-magic-link"><img class="img-fluid shed-prev" src="'
+        + links[index].imageUrl + '"/>'
         + links[index].depth + '&times;'
         + links[index].length + ' '
         + links[index].model + '<span>Base price: '
@@ -99,7 +101,7 @@ $(document).ready(function() {
       console.log(result);
       $('#linksModal').modal('show');
       $('#linksModal .modal-body').empty();
-      $('#linksModal .modal-body').append('<h5 class="text-center">Please check your email for the link to continue.</h5>');
+      $('#linksModal .modal-body').append('<h5 class="text-center">You’re almost there.</h5><p class="text-center">Check your inbox for a confirmation login link.</p>');
       $('#linksModal .modal-body').append('<p class="text-center">TEMP: <a href="'+result.magicLinkPath+'">Click here to log in to the design center.</a></p>');
 
     });

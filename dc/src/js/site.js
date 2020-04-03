@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
 
   $.ajaxSetup({
@@ -54,7 +55,7 @@ $(document).ready(function() {
               } else {
                 var configURL = window.cart.configUrl;
                 var queryString = configURL.substring( configURL.indexOf('?') + 1 );
-                console.log('Step 1 string???????????????????');
+                console.log('Step 1 string');
                 console.log(queryString);
                 //window.location = '/dc/step-1.php?designermode=true&' + queryString;
               }
@@ -161,6 +162,7 @@ $(document).ready(function() {
         $('#summary-email').text( cart.email );
         $('#summary-config-id').text( cart.uniqueid );
 
+        $('#summary-config-render').attr('src', cart.imageUrl );
 
         //Size
         $('#summary-config-size').text( cart.size );
@@ -289,11 +291,9 @@ $(document).ready(function() {
       }
 
       if(cart.permitNotes) {
-        console.log('Had notes');
         $('#permit-notes-text').text(cart.permitNotes);
         $('.dc-permit-notes').removeClass('fade');
       } else {
-        console.log('N notes');
         $('#permit-notes-text').text('');
         $('.dc-permit-notes').addClass('fade');
       }
@@ -410,6 +410,7 @@ $(document).ready(function() {
     + ( parseInt(cart.permitPlansPrice) || 0 )
     + ( parseInt(cart.servicePrice) || 0 );
     return fig.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
+    //return fig;
   }
 
   function cartInitialPayment(cart) {

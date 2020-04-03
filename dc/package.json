@@ -28,7 +28,8 @@
     "popper.js": "^1.16.1",
     "streamqueue": "^1.1.2",
     "js-cookie": "^2.2.1",
-    "pace-js": "^1.0.2"
+    "pace-js": "^1.0.2",
+    "odometer": "^0.4.8"
   },
   "dependencies": {
     "lodash": "^4.17.15",

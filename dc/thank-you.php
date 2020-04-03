@@ -35,7 +35,7 @@
 
         <h2 class="text-center mt-5">Configuration Details</h2>
 
-        <img class="img-fluid" src="img/shed-render.png" />
+        <img id="summary-config-render" class="img-fluid" />
 
         <table class="table">
           <tbody>
