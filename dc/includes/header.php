@@ -26,13 +26,19 @@ if (empty($_SESSION['csrf_token'])) {
     <script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=k8vke2igcws1ep5vtqtmwg" async="true"></script>
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <script src="https://js.stripe.com/v3/"></script>
-    <link href="css/screen.css" rel="stylesheet">
+    <link href="css/screen.css?v=1.1" rel="stylesheet">
 </head>
 <body>
+<form id="checkout-form" class="" action="/dc/checkout.php" method="POST">
+  <input type="hidden" name="stripeFee" id="stripe-fee" />
+</form>
+<script type="text/javascript">
+$(document).ready(function() {
+});
+</script>
 <div id="app">
-  <header>
-  
-      <div class="d-flex flex-column justify-content-between flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow fixed-top">
+  <header class="sticky-top">
+      <div class="d-flex flex-column justify-content-between flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom box-shadow">
         <h5 class="my-0 font-weight-normal"><span style="color:#fba445">Studio</span>Shed<br /><span class="span-dc-mark">Design Center<small>&trade;</small></span><br />
           <span style="font-size: 13px;"><a href="/dc/logout.php">Log out</a></span>
         </h5>
@@ -67,11 +73,3 @@ if (empty($_SESSION['csrf_token'])) {
 
       </div>
   </header>
-<form id="checkout-form" class="" action="/dc/checkout.php" method="POST">
-  <input type="hidden" name="stripeFee" id="stripe-fee" />
-</form>
-<script type="text/javascript">
-$(document).ready(function() {
-
-});
-</script>
