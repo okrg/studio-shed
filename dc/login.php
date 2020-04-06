@@ -17,7 +17,7 @@
 <div class="modal" id="linksModal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">        
+      <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -42,16 +42,17 @@ $(document).ready(function() {
   });
 
   function getMagicLink(email) {
-    console.log('calling getMagicLink');
-    console.log(email);
+    $('p.text-danger').remove();
+
+    if(email == '') {
+      $('#start-login').before('<p class="text-center text-danger">Please enter an email address.</p>');
+      return false;
+    }
     $.ajax({
       url: '/dc_api/find_magic_link/',
       method: 'POST',
       data: { email: email }
-    }).done(function (result) {
-      console.log('heress the result');
-      console.log(result);
-      console.log(result.length);
+    }).done(function (result) {      
       if(result.length == 0 ) {
         //no configuration for this email
         noMagicLinks();
@@ -64,8 +65,11 @@ $(document).ready(function() {
     });
   }
 
-  function listMagicLinks(links) {
-    console.log('calling listMagicLinks');
+  function noMagicLinks() {    
+    $('#start-login').before('<p class="text-center text-danger">No configurations were found for this email address. Please confirm you entered the correct address and try again.</p>');
+  }
+
+  function listMagicLinks(links) {  
     $('#linksModal').modal('show');
     $('#linksModal .modal-body').empty();
     $('#linksModal .modal-body').append('<h5 class="text-center">Select a configuration</h5>');
@@ -97,13 +101,10 @@ $(document).ready(function() {
         email: $('#inputEmail').val()
       }
     }).done(function (result) {
-      console.log('heres the triggerMagicLink result');
       console.log(result);
       $('#linksModal').modal('show');
       $('#linksModal .modal-body').empty();
-      $('#linksModal .modal-body').append('<h5 class="text-center">You’re almost there.</h5><p class="text-center">Check your inbox for a confirmation login link.</p>');
-      $('#linksModal .modal-body').append('<p class="text-center">TEMP: <a href="'+result.magicLinkPath+'">Click here to log in to the design center.</a></p>');
-
+      $('#linksModal .modal-body').append('<h5 class="text-center">You’re almost there.</h5><p class="text-center">Check your inbox for a link to log in.</p>');
     });
   }
   $('#start-login').click(function(e) {

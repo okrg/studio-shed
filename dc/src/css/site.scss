@@ -69,7 +69,22 @@ section {
 }
 
 main {
-  margin-top: 150px;
+  &:before {
+    content: " ";
+    background-image: url('https://dev2-studio-shed.pantheonsite.io/wp-content/uploads/2020/02/secondary_bg08.jpg');
+    background-position: center center;
+    width: 100%;
+    height: 250px;
+    display: block;
+  }
+  .container:first-child {
+    margin-top: -170px;
+    background: #fff;
+    padding-top: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,.25);
+  }
+
+
 }
 
 i#submit-zip-spinner {
@@ -136,15 +151,19 @@ header, .estimate, h1, h2, h3, h4, a.btn, nav a {
   font-family:"Futura-PT-Book";text-transform: uppercase;
 }
 
+#secondary-header {
+  .header-wrap {
+    min-height: 250px;
+  }
+}
+
 .dc-checkout-summary, input, select, textarea {
   font-family:"Futura-PT-Book";
 }
 
 
 .dc-contact { 
-  border-radius: 4px;
-  background: $containerBackground;
-  border: 1px $lightBorder solid;
+  background: $containerBackground;  
   padding: 2rem;
   margin-left: -15px;
   margin-right: -15px;
@@ -326,7 +345,8 @@ a.btn-video-trigger {
 }
 
 .dc-logged-out {
-  margin: 10rem 0 15rem 0;
+  margin: 5rem 0 5rem 0;
+  padding-bottom: 10rem;
   text-align: center;
   .form-signin {
    margin: 0 auto;
@@ -401,7 +421,7 @@ a.btn-video-trigger {
 .dc-finance,
 .dc-installation-resources,
 .dc-permit-set {
-  margin: 5rem 0;
+  margin: 5rem 2.5rem;
   padding: 5rem 0;
   background: $containerBackground;
   border-radius: 4px;

@@ -10,7 +10,6 @@ you should use hash_equals for comparing hashes to prevent timing attacks
 we use an HMAC to guarantee data integrity and authentication. See https://crypto.stackexchange.com/questions/1070/why-is-hkx-not-a-secure-mac-construction for why we mustn't just concatenate time & key
 */
 
-print_r($_REQUEST);
 $hash = $_REQUEST['h'];
 $time = $_REQUEST['t'];
 $uid = $_REQUEST['u'];
@@ -23,7 +22,6 @@ if ($time <= strtotime('-12 hours')) {
   $expired = true;
 }
 ?>
-
 
 <?php if ($expired): ?>
   Link expired

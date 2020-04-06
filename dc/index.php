@@ -1,6 +1,6 @@
 <?php include('includes/header.php'); ?>
 <main>
-  <div class="container">
+  <div class="container primary-container">
     <?php include('includes/estimate.php'); ?>
 
     <section class="dc-intro">
