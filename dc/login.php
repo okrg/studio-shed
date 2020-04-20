@@ -52,12 +52,11 @@ $(document).ready(function() {
       url: '/dc_api/find_magic_link/',
       method: 'POST',
       data: { email: email }
-    }).done(function (result) {      
+    }).done(function (result) {
       if(result.length == 0 ) {
         //no configuration for this email
         noMagicLinks();
       } else if (result.length > 1) {
-        console.log('damn');
         listMagicLinks(result);
       } else {
         triggerMagicLink(result[0].uid);
@@ -65,11 +64,11 @@ $(document).ready(function() {
     });
   }
 
-  function noMagicLinks() {    
+  function noMagicLinks() {
     $('#start-login').before('<p class="text-center text-danger">No configurations were found for this email address. Please confirm you entered the correct address and try again.</p>');
   }
 
-  function listMagicLinks(links) {  
+  function listMagicLinks(links) {
     $('#linksModal').modal('show');
     $('#linksModal .modal-body').empty();
     $('#linksModal .modal-body').append('<h5 class="text-center">Select a configuration</h5>');
@@ -105,6 +104,7 @@ $(document).ready(function() {
       $('#linksModal').modal('show');
       $('#linksModal .modal-body').empty();
       $('#linksModal .modal-body').append('<h5 class="text-center">You’re almost there.</h5><p class="text-center">Check your inbox for a link to log in.</p>');
+      //$('#linksModal .modal-body').append('<a href="'+result.link+'">Link</a>');
     });
   }
   $('#start-login').click(function(e) {

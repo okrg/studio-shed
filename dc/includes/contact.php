@@ -1,9 +1,9 @@
 <div class="dc-contact">
   <div class="row">
-    <div class="col-sm-3 offset-2">
-      <img src="https://qikrg2ve4526wc3c3ntlhj1e-wpengine.netdna-ssl.com/wp-content/uploads/2015/04/DSC_1124-r2-1024x714.jpg" class="img-fluid" />
+    <div class="col-sm-12 col-lg-3 offset-lg-2">
+      <img src="https://qikrg2ve4526wc3c3ntlhj1e-wpengine.netdna-ssl.com/wp-content/uploads/2015/04/DSC_1124-r2-1024x714.jpg" class="img-fluid mb-5" />
     </div>
-    <div class="col-sm-5">
+    <div class="col-sm-12 col-lg-5">
       <h4>Contact your Studio Shed Advisor</h4>
       <p>Have a question? Need help pricing or want to to chat about an idea? We can walk you through the entire process.</p>
       <div class="contact-buttons">

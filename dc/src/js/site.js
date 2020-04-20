@@ -1,4 +1,4 @@
-
+var cart;
 $(document).ready(function() {
 
   $.ajaxSetup({
@@ -48,7 +48,13 @@ $(document).ready(function() {
             //localStorage.setItem(key, json);
             window.cart = cart = JSON.parse(json);
 
-
+            if(cart.city && cart.installation && cart.foundation) {
+              cart.checkoutReady = true;
+              console.log('Checkout Ready!');
+            } else {
+              cart.checkoutReady = false;
+              console.log(':( NOT Checkout Ready!');
+            }
             if( $('#idearoomConfigurator').length ) {
               if( /[?&]designermode=/.test(location.search) ) {
                 //do nothing
@@ -100,6 +106,8 @@ $(document).ready(function() {
         $('#cart-model-price').text( cartModelPrice(cart) );
 
         $('#cart-model-link').attr( 'href', cartModelLink(cart) );
+
+        //$('#loader-btn').attr('href', mobileConfiguratorLink(cart) );
 
         if(cart.paymentIntentCreated){
           $('a.paymentIntent').attr('href', '/dc/thank-you.php?c=' + cart.paymentIntentCreated + '&uid=' + cart.uniqueid );          
@@ -176,8 +184,10 @@ $(document).ready(function() {
         $('#summary-config-left-price').text( formatMoney(cart.leftPrice) );
 
         //Back
-        $('#summary-config-back').text( cart.back );
-        $('#summary-config-back-price').text( formatMoney(cart.backPrice) );
+        if(cart.back) {
+          $('#summary-config-back').text( cart.back );
+          $('#summary-config-back-price').text( formatMoney(cart.backPrice) );
+        }
 
         //Front
         $('#summary-config-front').text( cart.front );
@@ -196,12 +206,51 @@ $(document).ready(function() {
         $('#summary-config-door-color-price').text( formatMoney(cart.doorColorPrice) );
 
         //Eaves Color
-        $('#summary-config-eaves-color').text( cart.eavesColor );
-        $('#summary-config-eaves-color-price').text( formatMoney(cart.eavesColorPrice) );
+        if(cart.model == 'portland') {
+          $('#summary-config-eaves-color').text( cart.eaveColor );
+          $('#summary-config-eaves-color-price').text( formatMoney(cart.eaveColorPrice) );
+        } else {
+          $('#summary-config-eaves-color').text( cart.eavesColor );
+          $('#summary-config-eaves-color-price').text( formatMoney(cart.eavesColorPrice) );
+        }
+
+
 
         //Accessory
-        $('#summary-config-accessory').text( cart.accessory );
-        $('#summary-config-accessory-price').text( formatMoney(cart.accessoryPrice) );
+        if(cart.accessory0Price) {
+          $('#summary-config-accessory0').text( cart.accessory0 );
+          $('#summary-config-accessory0-price').text( formatMoney(cart.accessory0Price) );
+        } else {
+          $('#accessory0-row').hide();
+        }
+
+        if(cart.accessory1Price) {
+          $('#summary-config-accessory1').text( cart.accessory1 );
+          $('#summary-config-accessory1-price').text( formatMoney(cart.accessory1Price) );
+        } else {
+          $('#accessory1-row').hide();
+        }
+
+        if(cart.accessory2Price) {
+          $('#summary-config-accessory2').text( cart.accessory2 );
+          $('#summary-config-accessory2-price').text( formatMoney(cart.accessory2Price) );
+        } else {
+          $('#accessory2-row').hide();
+        }
+
+        if(cart.accessory3Price) {
+          $('#summary-config-accessory3').text( cart.accessory3 );
+          $('#summary-config-accessory3-price').text( formatMoney(cart.accessory3Price) );
+        } else {
+          $('#accessory3-row').hide();
+        }
+
+        if(cart.accessory4Price) {
+          $('#summary-config-accessory4').text( cart.accessory4 );
+          $('#summary-config-accessory4-price').text( formatMoney(cart.accessory4Price) );
+        } else {
+          $('#accessory4-row').hide();
+        }
 
         //Interior
         if(cart.interiorPrice) {
@@ -228,9 +277,9 @@ $(document).ready(function() {
 
         $('#summary-config-total-price').text( cartTotalPrice(cart) );
 
+        //Reciept
         $('#summary-config-initial-payment-date').text( 'Paid ' + paidDateString );
-        $('#summary-config-initial-payment-price').text( cartInitialPayment(cart) );
-
+         $('#summary-config-initial-payment-price').text( cartInitialPayment(cart) );
 
         resolve(cart);
 
@@ -390,8 +439,21 @@ $(document).ready(function() {
   }
 
 
-  function cartRenderDone() {
-    console.log('render done!');
+  function cartRenderDone(cart) {
+    if(cart.checkoutReady) {
+      //do nothing
+    } else {
+      $('#cart').empty().append('<h6 class="text-center">Finish choosing your location and installation details to complete your order.</h6>');
+      $('#checkout').empty();
+    }
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+      console.log('device!');
+      console.log(cart);
+      if(cart.model == 'portland') {
+        $('#shedConfigurator').empty();
+        $('#mobile-portland').show();
+      }
+    }
   }
 
   function cartTotalLabel(cart) {
@@ -436,7 +498,7 @@ $(document).ready(function() {
 
 
   function cartModelLabel(cart) {
-    return cart.depth + ' x ' + cart.length + ' ' + cart.model + ' studio shed';
+    return cart.depth + ' x ' + cart.length + ' ' + cart.model + ' series';
   }
 
   function cartModelPrice(cart) {
@@ -445,9 +507,21 @@ $(document).ready(function() {
 
   function cartModelLink(cart) {
     var configURL = window.cart.configUrl;
-    var queryString = configURL.substring( configURL.indexOf('?') + 1 );
-    return '/dc/step-1.php?designermode=true&model=' + cart.model + '&' + queryString;
+    if(cart.model == 'portland') {
+      var queryString = configURL.substring( configURL.indexOf('#') + 1 );
+      return '/dc/step-1.php?designermode=true&model=' + cart.model + '#' + queryString;
+    } else {
+      var queryString = configURL.substring( configURL.indexOf('?') + 1 );
+      return '/dc/step-1.php?designermode=true&model=' + cart.model + '&' + queryString;
+    }
   }
+
+  function mobileConfiguratorLink(cart) {
+    var configURL = window.cart.configUrl;
+    var queryString = configURL.substring( configURL.indexOf('?') + 1 );
+    return '/dc/mobile-configurator.php?designermode=true&model=' + cart.model + '&' + queryString;    
+  }
+
 
   function cartLocationLabel(cart) {
     if(cart.city) {

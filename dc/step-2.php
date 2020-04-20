@@ -19,8 +19,9 @@
             <input class="form-control" type="text" id="zip-label" placeholder="Enter Your ZIP" value="92101" />
             <input class="btn btn-primary btn-sm" type="button" value="Submit" id="submit-zip-lookup" />
             <i id="submit-zip-spinner" class="fa fa-spin fa-sync"></i>
+            <span id="city-label"></span>
           </form>
-          <span id="city-label"></span>
+          
 
         </div>
       </div>
@@ -53,7 +54,7 @@
 
     <section class="dc-permit-set">
       <div class="row mb-5">
-        <div class="col-sm-8 offset-2">
+        <div class="col-sm-12 col-lg-8 offset-lg-2">
           <h2 class="text-center mb-5">
             <span id="permit-message"></span>
           </h2>
@@ -116,7 +117,7 @@
 
 
         <div class="row">
-          <div class="col-sm-8 offset-2">
+          <div class="col-sm-12 col-lg-8 offset-lg-2">
             <h2 class="text-center">Permit Plan Set by Studio Shed</h2>
               <div class="row mb-3">
                 <div class="col-sm-12 col-lg-6">
@@ -153,17 +154,17 @@
 
 
       <div class="row mb-2">
-        <div class="col-sm-8 offset-2">
+        <div class="col-sm-12 col-lg-8 offset-lg-2">
           <a href="#" class="btn btn-video-trigger"><i class="fas fa-play"></i>Permit Process Overview</a>
         </div>
       </div>
       <div class="row mb-2">
-        <div class="col-sm-8 offset-2">
+        <div class="col-sm-12 col-lg-8 offset-lg-2">
           <a href="#" class="btn btn-video-trigger"><i class="fas fa-file-alt"></i>How to Obtain a Site Survey</a>
         </div>
       </div>
       <div class="row mb-2">
-        <div class="col-sm-8 offset-2">
+        <div class="col-sm-12 col-lg-8 offset-lg-2">
           <a href="#" class="btn btn-video-trigger"><i class="fas fa-file-alt"></i>Typical Factors to Consider for Permits</a>
         </div>
       </div>
@@ -173,7 +174,7 @@
 
     <section class="dc-faq">
       <div class="row">
-        <div class="col-sm-8 offset-2">
+        <div class="col-sm-12 col-lg-8 offset-lg-2">
           <h2 class="text-center mb-5">Frequently Asked Questions</h2>
           <div class="panel-group accordion" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default mb-5">

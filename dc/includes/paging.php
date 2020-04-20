@@ -46,6 +46,18 @@
         'class' => 'nextStep'
       );
       break;
+    case "checkout.php":
+      $prev = array(
+        'label' => 'Installation Details',
+        'link' => '/dc/step-3.php'
+      );
+      $next = array(
+        'label' => 'Design Center Home',
+        'link' => '/dc/index.php',
+        'class' => 'nextStep'
+      );
+
+    break;
   }
 ?>
 

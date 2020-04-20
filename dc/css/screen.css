@@ -12772,20 +12772,33 @@ p, ul, li {
 section {
   margin: 5rem 0; }
 
+section.dc-checkout-intro,
+section.dc-installation,
+section.dc-foundation {
+  padding-left: 5rem;
+  padding-right: 5rem; }
+  @media (max-width: 992px) {
+    section.dc-checkout-intro,
+    section.dc-installation,
+    section.dc-foundation {
+      padding: 0; } }
+
 main:before {
   content: " ";
   background-image: url("https://dev2-studio-shed.pantheonsite.io/wp-content/uploads/2020/02/secondary_bg08.jpg");
   background-position: center center;
   width: 100%;
   height: 250px;
-  display: block; }
+  display: block;
+  margin-top: 90px; }
 
-main .container:first-child {
-  margin-top: -170px;
-  background: #fff;
-  padding-top: 20px;
-  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
-          box-shadow: 0 0 20px rgba(0, 0, 0, 0.25); }
+@media (min-width: 992px) {
+  main .container:first-child {
+    margin-top: -170px;
+    background: #fff;
+    padding-top: 20px;
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.25); } }
 
 i#submit-zip-spinner {
   display: none; }
@@ -12823,6 +12836,11 @@ a.muted-link {
   .btn-primary:active, .btn-primary:focus {
     -webkit-box-shadow: 0 0 0 0.2rem #fdd5a9 !important;
             box-shadow: 0 0 0 0.2rem #fdd5a9 !important; }
+  @media (max-width: 992px) {
+    .btn-primary {
+      height: auto;
+      line-height: 1.5rem;
+      padding: 0.5rem; } }
 
 .btn-outline-primary {
   background: #fff;
@@ -12850,6 +12868,24 @@ header, .estimate, h1, h2, h3, h4, a.btn, nav a {
 #secondary-header .header-wrap {
   min-height: 250px; }
 
+header nav {
+  -webkit-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+  line-height: 1rem; }
+  header nav .navbar-collapse {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between; }
+    @media (max-width: 992px) {
+      header nav .navbar-collapse {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column; } }
+
 .dc-checkout-summary, input, select, textarea {
   font-family: "Futura-PT-Book"; }
 
@@ -12861,6 +12897,9 @@ header, .estimate, h1, h2, h3, h4, a.btn, nav a {
   .dc-contact .contact-links a {
     display: block;
     margin-bottom: 1rem; }
+  @media (max-width: 992px) {
+    .dc-contact {
+      text-align: center; } }
 
 header h5 {
   text-align: center; }
@@ -12880,6 +12919,7 @@ header h5 .span-dc-mark {
   list-style: none;
   position: relative; }
   .progressbar li {
+    line-height: 1rem;
     cursor: pointer;
     margin: 0;
     padding: 0;
@@ -12888,6 +12928,14 @@ header h5 .span-dc-mark {
     width: 25%;
     position: relative;
     text-align: center; }
+    @media (max-width: 992px) {
+      .progressbar li {
+        width: 100%;
+        border-bottom: 1px #ddd solid;
+        padding-top: 1rem;
+        padding-bottom: 1rem; }
+        .progressbar li a {
+          line-height: 30px; } }
     .progressbar li:before {
       content: counter(step);
       counter-increment: step;
@@ -12902,6 +12950,10 @@ header h5 .span-dc-mark {
       color: #bebebe;
       text-align: center;
       font-weight: bold; }
+      @media (max-width: 992px) {
+        .progressbar li:before {
+          float: left;
+          margin-bottom: 0; } }
     .progressbar li:after {
       content: '';
       position: absolute;
@@ -12911,6 +12963,9 @@ header h5 .span-dc-mark {
       background: #979797;
       top: 12px;
       left: -36%; }
+      @media (max-width: 992px) {
+        .progressbar li:after {
+          display: none; } }
     .progressbar li:first-child:after {
       content: none; }
     .progressbar li:hover:not(.current) a {
@@ -12935,6 +12990,9 @@ header h5 .span-dc-mark {
   text-align: center; }
   #header-estimate #header-total-price .odometer-inside:before {
     content: "$"; }
+  @media (max-width: 992px) {
+    #header-estimate {
+      padding: 1rem 0; } }
 
 .estimate,
 .dc-cart {
@@ -13034,10 +13092,16 @@ a.btn-video-trigger {
     line-height: 50px;
     float: left;
     margin-right: 1rem; }
+  .dc-location #zip-lookup {
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative; }
   .dc-location #city-label {
     font-size: 13px;
     font-weight: 300;
-    position: absolute; }
+    position: absolute;
+    left: 0;
+    bottom: -30px; }
   .dc-location h3 {
     font-size: 24px;
     font-weight: 300; }
@@ -13081,6 +13145,13 @@ a.btn-video-trigger {
   .dc-permit-set #permit-plan-label {
     float: right;
     font-weight: 400; }
+  @media (max-width: 992px) {
+    .dc-finance,
+    .dc-installation-resources,
+    .dc-permit-set {
+      padding: 1rem;
+      margin-left: 0;
+      margin-right: 0; } }
 
 .dc-permit-set .permit-disclaimer {
   display: none;
@@ -13227,6 +13298,53 @@ a.btn-video-trigger {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between; }
+    @media (max-width: 992px) {
+      .dc-paging nav.paging-nav {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: reverse;
+            -ms-flex-direction: column-reverse;
+                flex-direction: column-reverse; } }
+
+.dc-configurator #mobile-portland {
+  display: none;
+  margin-top: 10rem; }
+
+.dc-configurator ul.pagination {
+  margin-bottom: 1rem; }
+  .dc-configurator ul.pagination li a {
+    padding: 0.5rem; }
+
+@media (max-width: 1200px) {
+  .dc-configurator #shedConfigurator, .dc-configurator #idearoomConfigurator {
+    max-width: 100%; }
+  .dc-configurator #shedConfigurator .buttono, .dc-configurator #idearoomConfigurator .buttono {
+    width: 336px; }
+  .dc-configurator #shedConfigurator .configurator-heading div, .dc-configurator #idearoomConfigurator .configurator-heading div {
+    width: auto !important; } }
+
+@media (max-width: 992px) {
+  .dc-configurator #shedConfigurator, .dc-configurator #idearoomConfigurator {
+    min-height: 0px !important;
+    width: 100%;
+    margin: 0 auto;
+    height: auto;
+    position: absolute;
+    overflow-y: hidden;
+    top: 90px;
+    bottom: 60px;
+    left: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; }
+  .dc-configurator #shedConfigurator .buttono, .dc-configurator #idearoomConfigurator .buttono {
+    width: 285px; } }
+
+@media (max-width: 992px) {
+  main#step-1:before {
+    display: none; }
+  main#step-1 ~ .dc-footer, main#step-1 .dc-paging, main#step-1 .dc-popular, main#step-1 .dc-faq, main#step-1 .dc-contact, main#step-1 .dc-intro {
+    display: none; } }
 
 .dc-popular h3,
 .dc-stories h3 {
@@ -13624,7 +13742,7 @@ a.btn-video-trigger {
     margin-top: -20px; }
   .dc-checkout-form #consent {
     text-align: center;
-    padding: 2rem 0 4rem 0; }
+    padding: 2rem 2rem 4rem 2rem; }
   .dc-checkout-form #summary {
     position: fixed;
     top: 0;

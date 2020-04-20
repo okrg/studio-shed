@@ -18,13 +18,13 @@ include('includes/header.php');
     <section class="dc-checkout-intro">
       <h2 class="text-center mb-5">Checkout</h2>
       <div class="row">
-        <div class="col-md-8 offset-2">
+        <div class="col-sm-12 col-lg-8 offset-lg-2">
 
         </div>
       </div>
 
 
-      <div class="cart">
+      <div id="cart" class="cart">
         <div class="row">
           <div class="col-md-4 text-center">
             <img id="summary-config-render" class="img-fluid" />
@@ -137,12 +137,44 @@ include('includes/header.php');
                   </div>
                 </td>
               </tr>
-              <tr>
+              <tr id="accessory0-row">
                 <td class="hiddenRow">
-                  <div class="collapse shed">Accessory: <span id="summary-config-accessory"></span></div>
+                  <div class="collapse shed">Accessory: <span id="summary-config-accessory0"></span></div>
                 </td>
                 <td class="hiddenRow text-right">
-                  <div class="collapse shed"><span id="summary-config-accessory-price"></span></td>
+                  <div class="collapse shed"><span id="summary-config-accessory0-price"></span></td>
+                  </div>
+              </tr>
+              <tr id="accessory1-row">
+                <td class="hiddenRow">
+                  <div class="collapse shed">Accessory: <span id="summary-config-accessory1"></span></div>
+                </td>
+                <td class="hiddenRow text-right">
+                  <div class="collapse shed"><span id="summary-config-accessory1-price"></span></td>
+                  </div>
+              </tr>
+              <tr id="accessory2-row">
+                <td class="hiddenRow">
+                  <div class="collapse shed">Accessory: <span id="summary-config-accessory2"></span></div>
+                </td>
+                <td class="hiddenRow text-right">
+                  <div class="collapse shed"><span id="summary-config-accessory2-price"></span></td>
+                  </div>
+              </tr>
+              <tr id="accessory3-row">
+                <td class="hiddenRow">
+                  <div class="collapse shed">Accessory: <span id="summary-config-accessory3"></span></div>
+                </td>
+                <td class="hiddenRow text-right">
+                  <div class="collapse shed"><span id="summary-config-accessory3-price"></span></td>
+                  </div>
+              </tr>
+              <tr id="accessory4-row">
+                <td class="hiddenRow">
+                  <div class="collapse shed">Accessory: <span id="summary-config-accessory4"></span></div>
+                </td>
+                <td class="hiddenRow text-right">
+                  <div class="collapse shed"><span id="summary-config-accessory4-price"></span></td>
                   </div>
               </tr>
               <tr id="optional-interior-row">
@@ -195,7 +227,7 @@ include('includes/header.php');
               </tr>
             </table>
 
-        <p>*You will be charged the initial payment of 50% of the final estimate. The remaining amount, including taxes, will be charged upon final shipment.</p>
+            <p>*You will be charged the initial payment of 50% of the final estimate. The remaining amount, including taxes, will be charged upon final shipment.</p>
           </div>
         </div>
       </div>
@@ -203,7 +235,7 @@ include('includes/header.php');
 
     <section class="dc-checkout-form">
       <div class="row">
-        <div class="col-md-8 offset-2">
+        <div class="col-sm-12 col-lg-8 offset-lg-2">
 
           <div id="checkout">
       <form id="payment-form" method="POST" action="/orders">
@@ -307,7 +339,7 @@ include('includes/header.php');
 
     <section class="dc-faq">
       <div class="row">
-        <div class="col-sm-8 offset-2">
+        <div class="col-sm-12 col-lg-8 offset-lg-2">
           <h2 class="text-center mb-5">Frequently Asked Questions</h2>
           <div class="panel-group accordion" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default mb-5">
@@ -482,6 +514,7 @@ include('includes/header.php');
 </div>
 
 <script>
+
 $(document).ready(function(){
 
   $('#progress-step-4').addClass('current');

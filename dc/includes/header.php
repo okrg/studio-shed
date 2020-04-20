@@ -32,17 +32,22 @@ if (empty($_SESSION['csrf_token'])) {
 <form id="checkout-form" class="" action="/dc/checkout.php" method="POST">
   <input type="hidden" name="stripeFee" id="stripe-fee" />
 </form>
-<script type="text/javascript">
-$(document).ready(function() {
-});
-</script>
+
 <div id="app">
   <header class="sticky-top">
-      <div class="d-flex flex-column justify-content-between flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom box-shadow">
-        <h5 class="my-0 font-weight-normal"><span style="color:#fba445">Studio</span>Shed<br /><span class="span-dc-mark">Design Center<small>&trade;</small></span><br />
+
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
+
+        <h5 class="navbar-brand">
+          <span style="color:#fba445">Studio</span>Shed<br /><span class="span-dc-mark">Design Center<small>&trade;</small></span><br />
           <span style="font-size: 13px;"><a href="/dc/logout.php">Log out</a></span>
         </h5>
 
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="progressbar">
           <li id="progress-step-1" class="active">
             <a id="cart-model-link" href="/dc/step-1.php">
@@ -70,6 +75,11 @@ $(document).ready(function() {
             <div id="header-total-label"></div>
             <div id="header-total-price"></div>
         </div>
+        </div>
 
-      </div>
+
+
+
+
+      </nav>
   </header>

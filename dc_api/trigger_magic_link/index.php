@@ -32,7 +32,8 @@ if(!empty($email) && $record->email == $email) {
   exit(json_encode([
     'code' => 'success',
     'response' => 'triggeredMagicLink',
-    'result' => $result
+    'result' => $result,
+    'link' => $link
     ]));
 } else {
   exit(json_encode([

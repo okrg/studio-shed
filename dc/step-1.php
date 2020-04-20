@@ -29,6 +29,13 @@
     </div>
 
     <div class="dc-configurator">
+      
+      
+      <div id="mobile-portland">
+        <div class="alert alert-warning">Please use your desktop computer to log into the design center and modify your Portland series configuration.</div>
+      </div>
+      
+      
       <div id="<?php echo $idearoomDiv; ?>" style="margin: 0 auto;"></div>
         <!--<script type="application/javascript" src="vendor/modernizr.js"></script>-->
         <script id="idearoomStartup" type="application/javascript" src="https://<?php echo $ideaRoomModel; ?>.idearoomstaging.com/idearoom.js"></script>
@@ -232,6 +239,8 @@
 </main>
 <script type="text/javascript">
 $(document).ready(function() {
+    
+
   $('#progress-step-1').addClass('current');
 
   $('.owl-carousel').owlCarousel({

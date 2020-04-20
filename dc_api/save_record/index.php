@@ -1,6 +1,7 @@
 <?php
+include('../env.php');
 include('../shipping-rates.php');
-
+include('../filebase.php');
 ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 
@@ -30,20 +31,29 @@ if (isset($headers['x-api-key'])) {
 } else {
   exit(json_encode(['error' => 'No API key.']));
 }
-include('../filebase.php');
+
+//Init data
 $json = json_encode($_POST);
 $data = json_decode($json);
-
 $uid = $data->product->uniqueid;
+$model = $data->product->model;
 
+
+//Exit if missing model or uid 
 if( empty($uid) || !isset($uid) ) {
-  exit(json_encode(['error' => 'No uid??']));
+  exit(json_encode(['error' => 'No uid']));
 }
-//Try to get record
+if( empty($model) || !isset($model) ) {
+  exit(json_encode(['error' => 'No model']));
+}
+
+//Get or create new record
 $record = $database->get($uid);
 
 
+//Global logic
 $record->uniqueid = $uid;
+$record->model = $model;
 $record->utm_source = $data->params->utm_source;
 $record->utm_medium = $data->params->utm_medium;
 $record->utm_campaign = $data->params->utm_campaign;
@@ -55,18 +65,17 @@ $record->imageUrl = $data->product->imageUrl;
 if(isset($data->customer->email)) {
   $record->email = $data->customer->email;
 }
+
 if(isset($data->customer->firstName)) {
   $record->firstName = $data->customer->firstName;
 }
+
 if(isset($data->customer->lastName)) {
   $record->lastName = $data->customer->lastName;
 }
+
 if(isset($data->customer->phone)) {
   $record->phone = $data->customer->phone;
-}
-
-if(isset($data->product->model)) {
-  $record->model = $data->product->model;
 }
 
 $record->depth = $data->product->depth;
@@ -77,29 +86,50 @@ $record->frontSKU = $data->product->front;
 $record->backSKU = $data->product->back;
 $record->leftSKU = $data->product->left;
 $record->rightSKU = $data->product->right;
-$record->total = $data->product->cart->total;
 
+
+
+if($model == 'portland') {
+  $record->total = intval($data->product->total);
+  $cart_label = 'group';
+  $sku_label = 'groupExtra';
+} else {
+  $record->total = $data->product->cart->total;
+  $cart_label = 'name';
+  $sku_label = 'sku';
+}
+
+$ai = 0;
 foreach($data->product->cart->items as $item) {
-  $name = trim($item->name);
+  $name = trim($item->$cart_label);
   $name = ucwords($name);
   $name = str_replace(" ", "", $name);
   $name = lcfirst($name);
 
+  if( in_array($name, array('shipping', 'foundation', 'service')) ){continue;}
+
+  if($name == 'accessory'){
+    //Append accessory iterator so that multiple accessories can be listed
+    $name = $name.$ai;
+    $ai++;
+  }
+
   $record->$name = $item->description;
 
-  if(isset($item->sku)) {
+  if(isset($item->$sku_label)) {
     $sku = $name.'SKU';
-    $record->$sku = $item->sku;
+    $record->$sku = $item->$sku_label;
   }
 
   if(isset($item->price)) {
     $price = $name.'Price';
     $record->$price = $item->price;
   }
-
 }
 
-//Reset prior costs
+
+
+//If set, reset prior costs
 if(isset($record->shippingDistance) && isset($record->zip)) {
   $distance_miles = $record->shippingDistance;
   $depth = $record->depth;
@@ -142,11 +172,50 @@ $record->save();
 $key = 'xK-<cH];"a:Yd=40^zx)wCXyYiw#bH';
 $time = time();
 $hash = hash_hmac('sha256', $time, $key);
+$redirectPath = '/dc/auth?h='.$hash.'&t='.$time.'&u='.$uid;
+$redirectURL = $host.$redirectPath;
+
+//Write contact to Campaign Monitor list
+$auth = array('api_key' => $email_api_key);
+$wrap = new CS_REST_General($auth);
+
+//$result = $wrap->get_clients();
+
+$wrap = new CS_REST_Subscribers($email_list_id, $auth);
+
+$result = $wrap->add(array(
+    'EmailAddress' => $record->email,
+    'Name' => $record->firstName . ' ' . $record->lastName,
+    'CustomFields' => array(
+        array(
+            'Key' => 'DCUniqueID',
+            'Value' => $record->uniqueid
+        ),
+        array(
+            'Key' => 'DCModel',
+            'Value' => $record->model
+        ),
+        array(
+            'Key' => 'DCMagicLink',
+            'Value' => $redirectURL
+        ),
+        array(
+            'Key' => 'DCStep1Done',
+            'Value' => 'true'
+        )
+
+    ),
+    'ConsentToTrack' => 'yes',
+    'Resubscribe' => true
+));
+
+
 
 exit(json_encode([
   'code' => 'success',
   'response' => 'savedRecord',
-  'redirectURL' => 'https://dev2-studio-shed.pantheonsite.io/dc/auth?h='.$hash.'&t='.$time.'&u='.$uid,
-  'redirectPath' => '/dc/auth?h='.$hash.'&t='.$time.'&u='.$uid
+  'redirectURL' => $redirectURL,
+  'redirectPath' => $redirectPath,
+  'cm_response' => $result->response
   ]));
 ?>

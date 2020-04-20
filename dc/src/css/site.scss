@@ -47,8 +47,8 @@ body a.btn, body input.btn, body button, nav a {
     transition: all 200ms linear;
 }
 h2 { 
-  font-size: 24px; 
-  font-weight: 300;  
+  font-size: 24px;
+  font-weight: 300;
 }
 h5 a {
   text-decoration: underline;
@@ -56,7 +56,6 @@ h5 a {
 p, ul, li {
   font-size: 14px;
   line-height: 20px;
-  
 }
 
 .custom-control-input:checked ~ .custom-control-label::before {
@@ -67,7 +66,13 @@ p, ul, li {
 section {
   margin: 5rem 0;
 }
-
+section.dc-checkout-intro,
+section.dc-installation,
+section.dc-foundation {
+  padding-left: 5rem;
+  padding-right: 5rem;
+  @media (max-width: 992px) { padding:0;}
+}
 main {
   &:before {
     content: " ";
@@ -76,12 +81,15 @@ main {
     width: 100%;
     height: 250px;
     display: block;
+    margin-top: 90px;
   }
-  .container:first-child {
-    margin-top: -170px;
-    background: #fff;
-    padding-top: 20px;
-    box-shadow: 0 0 20px rgba(0,0,0,.25);
+  @media (min-width: 992px) {
+    .container:first-child {
+      margin-top: -170px;
+      background: #fff;
+      padding-top: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,.25);
+    }
   }
 
 
@@ -124,6 +132,11 @@ a.muted-link {
   &:active,&:focus {
     box-shadow: 0 0 0 0.2rem lighten($primary, 20%) !important;
   }
+  @media (max-width: 992px) {
+    height: auto;
+    line-height: 1.5rem;
+    padding: 0.5rem;
+  }
 }
 .btn-outline-primary {
   background: $white;
@@ -157,6 +170,24 @@ header, .estimate, h1, h2, h3, h4, a.btn, nav a {
   }
 }
 
+
+
+header nav {
+  box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
+  line-height: 1rem;
+  .navbar-brand {
+
+  }
+  .navbar-collapse {
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: 992px) {
+      flex-direction: column;
+    }
+  }
+}
+
+
 .dc-checkout-summary, input, select, textarea {
   font-family:"Futura-PT-Book";
 }
@@ -172,6 +203,9 @@ header, .estimate, h1, h2, h3, h4, a.btn, nav a {
       display: block;
       margin-bottom: 1rem;
     }
+  }
+  @media (max-width: 992px) {
+    text-align: center;
   }
 }
 
@@ -192,6 +226,7 @@ header h5 .span-dc-mark {
   list-style: none;
   position: relative;
   li {
+    line-height: 1rem;
     cursor: pointer;
     margin: 0;
     padding: 0;
@@ -200,6 +235,15 @@ header h5 .span-dc-mark {
     width: 25%;
     position: relative;
     text-align: center;
+    @media (max-width: 992px) {
+      width: 100%;
+      border-bottom: 1px #ddd solid;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      a {
+        line-height: 30px;
+      }
+    }
     &:before {
       content:counter(step);
       counter-increment: step;
@@ -214,6 +258,10 @@ header h5 .span-dc-mark {
       color: #bebebe;
       text-align: center;
       font-weight: bold;
+      @media (max-width: 992px) {
+        float: left;
+        margin-bottom: 0;
+      }
     }
     &:after {
       content: '';
@@ -224,6 +272,9 @@ header h5 .span-dc-mark {
       background: #979797;
       top: 12px;
       left: -36%;
+      @media (max-width: 992px) {
+        display: none;
+      }
     }
     &:first-child:after {
       content: none;
@@ -259,6 +310,9 @@ header h5 .span-dc-mark {
     .odometer-inside:before {
       content: "$";
     }
+  }
+  @media (max-width: 992px) {
+    padding: 1rem 0;
   }
 }
 
@@ -377,6 +431,11 @@ a.btn-video-trigger {
     float: left;
     margin-right: 1rem;
   }
+  #zip-lookup {
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+  }
   #submit-zip-lookup {
 
   }
@@ -384,6 +443,8 @@ a.btn-video-trigger {
     font-size: 13px;
     font-weight: 300;
     position: absolute;
+    left: 0;
+    bottom: -30px;
   }
   h3 {
     font-size: 24px;
@@ -430,6 +491,11 @@ a.btn-video-trigger {
   #permit-plan-label {
     float: right;
     font-weight: 400;
+  }
+  @media (max-width: 992px) { 
+    padding: 1rem;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
@@ -588,14 +654,66 @@ a.btn-video-trigger {
   nav.paging-nav {
     display: flex;
     justify-content: space-between;
+    @media (max-width: 992px) {
+      flex-direction: column-reverse;
+      
+    }
   }
 }
 
 
 .dc-configurator {
-  
+  #mobile-portland {
+    display: none;
+    margin-top: 10rem;
+  }
+  ul.pagination  {
+    margin-bottom: 1rem;
+    li a {
+      padding: 0.5rem;
+    }
+  }
+  @media (max-width: 1200px) {
+    #shedConfigurator, #idearoomConfigurator {
+      max-width: 100%;
+    }
+    #shedConfigurator .buttono, #idearoomConfigurator .buttono {
+      width: 336px;
+    }
+    #shedConfigurator .configurator-heading, #idearoomConfigurator .configurator-heading {
+      div {width: auto !important;}
+    }
+  }
+  @media (max-width: 992px) {
+    #shedConfigurator, #idearoomConfigurator {
+    min-height: 0px !important;
+    width: 100%;
+    margin: 0 auto;
+    height: auto;
+    position: absolute;
+    overflow-y: hidden;
+    top: 90px;
+    bottom: 60px;
+    left: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    box-sizing: border-box;
+    }
+    #shedConfigurator .buttono, #idearoomConfigurator .buttono {
+      width: 285px;
+    }
+  }
 }
 
+
+@media (max-width: 992px) {
+main#step-1{
+
+&:before{display: none;}
+&~.dc-footer, .dc-paging,.dc-popular, .dc-faq, .dc-contact, .dc-intro {display: none;}
+}
+
+}
 
 .dc-popular,
 .dc-stories {  
@@ -1078,7 +1196,7 @@ a.btn-video-trigger {
 
   #consent {
     text-align: center;
-    padding: 2rem 0 4rem 0;
+    padding: 2rem 2rem 4rem 2rem;
   }
 
   /* Order Summary */

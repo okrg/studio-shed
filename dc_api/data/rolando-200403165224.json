@@ -1,6 +1,6 @@
 {
     "__created_at": 1585957945,
-    "__updated_at": 1585958005,
+    "__updated_at": 1586237032,
     "data": {
         "uniqueid": "rolando-200403165224",
         "utm_source": "(direct)",
@@ -46,11 +46,20 @@
         "interiorPrice": 0,
         "service": "",
         "servicePrice": 0,
-        "shipping": "",
-        "shippingPrice": 0,
+        "shipping": "3-4 weeks",
+        "shippingPrice": 2843.84,
         "installation": "Certified (Shell Only)",
         "installationPrice": 3400,
         "foundation": "Wood Frame Floor",
-        "foundationPrice": 0
+        "foundationPrice": 0,
+        "zip": "92008",
+        "city": "Carlsbad, CA",
+        "state": "CA",
+        "shippingDistance": 1072,
+        "permitTime": "3-6 weeks",
+        "permitCost": null,
+        "permitNotes": "ADU's are allowed on lots zoned for single- and multi-family residences.\nNo minimum lot size. Minimum ADU size allowed is 150 SF, and maximum size is 1,200 SF.\n4 foot side and rear setbacks apply to most detached ADU's.",
+        "permitPlans": true,
+        "permitPlansPrice": 3995
     }
 }

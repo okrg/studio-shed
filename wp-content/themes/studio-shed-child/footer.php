@@ -73,8 +73,9 @@ li.logo a {
     background-size: cover!important;
 }
 .main-drop-models .featured {
-    min-height: 315px;
-	color: #fff;
+	min-height: 402px;  /* with sprout 4 sheds*/
+  /*  min-height: 315px; */ /* # sheds */
+	color: #fff2
 	text-align: center;
 	vertical-align: bottom;
 }

@@ -929,7 +929,7 @@ jQuery(document).ready(function(){
       // Using jQuery's animate() method to add smooth page scroll
       // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
       jQuery('html, body').animate({
-        scrollTop: jQuery(hash).offset().top - 100 
+    .scrollTop( 300 )    scrollTop: jQuery(hash).offset().top 100 
       }, 800, function(){
    
         // Add hash (#) to URL when done scrolling (default click behavior)

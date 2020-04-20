@@ -1,4 +1,5 @@
 <?php
+include('../env.php');
 include('../headers.php');
 include('../filebase.php');
 
@@ -35,4 +36,27 @@ if($data['permit_data']) {
 
 $record->save();
 $data['code'] = 'updateRecordLocationSuccess';
+
+//Update contact in Campaign Monitor list
+$auth = array('api_key' => $email_api_key);
+$wrap = new CS_REST_General($auth);
+$wrap = new CS_REST_Subscribers($email_list_id, $auth);
+
+$result = $wrap->add(array(
+    'EmailAddress' => $record->email,
+    'CustomFields' => array(
+        array(
+            'Key' => 'DCStep2Done',
+            'Value' => 'true'
+        ),
+        array(
+            'Key' => 'Location',
+            'Value' => $record->city
+        )
+
+    ),
+    'ConsentToTrack' => 'yes',
+    'Resubscribe' => true
+));
+
 exit(json_encode($data));

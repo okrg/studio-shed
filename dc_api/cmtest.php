@@ -1,11 +1,13 @@
 <?php
+include('env.php');
 require_once 'vendor/autoload.php';
-$auth = array('api_key' => 'c1fedf87053c376ad39939c4ff025504');
+$auth = array('api_key' => $email_api_key);
 $wrap = new CS_REST_General($auth);
 
 //$result = $wrap->get_clients();
 
-$wrap = new CS_REST_Subscribers('8c1054e78f19705b462d5c5651f8dce6', $auth);
+$wrap = new CS_REST_Subscribers($email_list_id, $auth);
+
 $result = $wrap->add(array(
     'EmailAddress' => 'rolando.garcia@gmail.com',
     'Name' => 'Rolando Garcia',

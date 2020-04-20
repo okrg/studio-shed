@@ -1,0 +1,29 @@
+{
+    "__created_at": 1586287785,
+    "__updated_at": 1586287785,
+    "data": {
+        "uniqueid": "garcia-2047122940",
+        "utm_source": "undefined",
+        "utm_medium": "undefined",
+        "utm_campaign": "undefined",
+        "gclid": "undefined",
+        "visitor_id": "7edf1050-71e1-457b-81c3-b11640247f36",
+        "configUrl": "https://dev2-studio-shed.pantheonsite.io/portland-configurator/#814a3dc15d8d88e51b976926324a66e8",
+        "imageUrl": "https://idearoom-render.s3.amazonaws.com/studioshedportland-render/product:440-275:1df8ffcf4ca525a137c5f80e2ed1eed8.png",
+        "email": "rolando.garcia@gmail.com",
+        "firstName": "Rolo",
+        "lastName": "Garcia",
+        "phone": "6199579779",
+        "model": "portland",
+        "depth": 10,
+        "length": 12,
+        "area": 120,
+        "frontSKU": "GF12-3-W3-D72C",
+        "backSKU": "GB12",
+        "leftSKU": "GL10",
+        "rightSKU": "GR10-60C",
+        "total": null,
+        "": "",
+        "Price": 0
+    }
+}
