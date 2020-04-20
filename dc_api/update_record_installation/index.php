@@ -1,4 +1,5 @@
 <?php
+include('../env.php');
 include('../headers.php');
 include('../filebase.php');
 

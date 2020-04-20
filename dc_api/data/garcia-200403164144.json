@@ -1,6 +1,6 @@
 {
     "__created_at": 1585957306,
-    "__updated_at": 1585957332,
+    "__updated_at": 1587413399,
     "data": {
         "uniqueid": "garcia-200403164144",
         "utm_source": null,
@@ -46,7 +46,14 @@
         "interiorPrice": 0,
         "service": "",
         "servicePrice": 0,
-        "shipping": "",
-        "shippingPrice": 0
+        "shipping": "3-4 weeks",
+        "shippingPrice": 3093.84,
+        "zip": "92008",
+        "city": "Carlsbad, CA",
+        "state": "CA",
+        "shippingDistance": 1072,
+        "permitTime": null,
+        "permitCost": null,
+        "permitNotes": "ADU's are allowed on lots zoned for single- and multi-family residences.\nNo minimum lot size. Minimum ADU size allowed is 150 SF, and maximum size is 1,200 SF.\n4 foot side and rear setbacks apply to most detached ADU's."
     }
 }

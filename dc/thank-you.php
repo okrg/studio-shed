@@ -4,7 +4,7 @@
 
     <section class="dc-checkout-summary">
       <div class="row">
-        <div class="col-md-8 offset-2">
+        <div class="col-sm-12 col-lg-8 offset-lg-2">
         <h2 class="text-center ">Order Summary</h2>
         <table class="table">
           <tbody>
@@ -78,10 +78,30 @@
               <td><span id="summary-config-eaves-color"></span></td>
               <td class="text-right"><span id="summary-config-eaves-color-price"></span></td>
             </tr>
-            <tr>
-              <th scope="row">Accessory</th>
-              <td><span id="summary-config-accessory"></span></td>
-              <td class="text-right"><span id="summary-config-accessory-price"></span></td>
+            <tr id="accessory0-row">
+              <th scope="row">Accessory:</th>
+              <td><span id="summary-config-accessory0"></span></td>
+              <td class="text-right"><span id="summary-config-accessory0-price"></span></td>
+            </tr>
+            <tr id="accessory1-row">
+              <th scope="row">Accessory:</th>
+              <td><span id="summary-config-accessory1"></span></td>
+              <td class="text-right"><span id="summary-config-accessory1-price"></span></td>
+            </tr>
+            <tr id="accessory2-row">
+              <th scope="row">Accessory:</th>
+              <td><span id="summary-config-accessory2"></span></td>
+              <td class="text-right"><span id="summary-config-accessory2-price"></span></td>
+            </tr>
+            <tr id="accessory3-row">
+              <th scope="row">Accessory:</th>
+              <td><span id="summary-config-accessory3"></span></td>
+              <td class="text-right"><span id="summary-config-accessory3-price"></span></td>
+            </tr>
+            <tr id="accessory4-row">
+              <th scope="row">Accessory:</th>
+              <td><span id="summary-config-accessory4"></span></td>
+              <td class="text-right"><span id="summary-config-accessory4-price"></span></td>
             </tr>
             <tr>
               <th scope="row">Shipping</th>
