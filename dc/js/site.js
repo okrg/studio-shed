@@ -819,7 +819,13 @@ $(document).ready(function() {
     return $.ajax({
       url: "/dc_api/get_location_details/",
       method: "POST",
-      data: { zip: zip, length: cart.length, interior: cart.interiorSKU, depth: cart.depth, area: cart.area }
+      data: { 
+        zip: zip, 
+        length: cart.length, 
+        interior: cart.interiorSKU, 
+        depth: cart.depth, 
+        area: cart.area 
+      }
     });
   }
 

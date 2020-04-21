@@ -99,6 +99,7 @@ if($model == 'portland') {
   $sku_label = 'sku';
 }
 
+//accessory iterator for allowing multiple accesory line items
 $ai = 0;
 foreach($data->product->cart->items as $item) {
   $name = trim($item->$cart_label);
@@ -106,12 +107,21 @@ foreach($data->product->cart->items as $item) {
   $name = str_replace(" ", "", $name);
   $name = lcfirst($name);
 
-  if( in_array($name, array('shipping', 'foundation', 'service')) ){continue;}
+  if( in_array($name, array('shipping', 'foundation', 'service')) ) {
+    continue;
+  }
 
   if($name == 'accessory'){
     //Append accessory iterator so that multiple accessories can be listed
-    $name = $name.$ai;
-    $ai++;
+
+    //Check if this is a portland lifestyle interior
+    if(strpos($item->description, 'Interior Package') !== false) {
+      $name = 'interior';
+      $item->$sku_label = 'LifestyleInteriorPackage';
+    } else {
+      $name = $name.$ai;
+      $ai++;
+    }
   }
 
   $record->$name = $item->description;
@@ -126,7 +136,6 @@ foreach($data->product->cart->items as $item) {
     $record->$price = $item->price;
   }
 }
-
 
 
 //If set, reset prior costs
