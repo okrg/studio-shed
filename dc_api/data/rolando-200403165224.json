@@ -1,6 +1,6 @@
 {
     "__created_at": 1585957945,
-    "__updated_at": 1586237032,
+    "__updated_at": 1587766999,
     "data": {
         "uniqueid": "rolando-200403165224",
         "utm_source": "(direct)",
@@ -47,19 +47,19 @@
         "service": "",
         "servicePrice": 0,
         "shipping": "3-4 weeks",
-        "shippingPrice": 2843.84,
+        "shippingPrice": 2859.32,
         "installation": "Certified (Shell Only)",
         "installationPrice": 3400,
         "foundation": "Wood Frame Floor",
         "foundationPrice": 0,
-        "zip": "92008",
-        "city": "Carlsbad, CA",
+        "zip": "92123",
+        "city": "San Diego, CA",
         "state": "CA",
-        "shippingDistance": 1072,
-        "permitTime": "3-6 weeks",
-        "permitCost": null,
-        "permitNotes": "ADU's are allowed on lots zoned for single- and multi-family residences.\nNo minimum lot size. Minimum ADU size allowed is 150 SF, and maximum size is 1,200 SF.\n4 foot side and rear setbacks apply to most detached ADU's.",
+        "shippingDistance": 1081,
         "permitPlans": true,
-        "permitPlansPrice": 3995
+        "permitPlansPrice": 3995,
+        "permitTime": null,
+        "permitCost": null,
+        "permitNotes": "One ADU my be permitted on lots with an existing or proposed single-family dwelling within a \nresidential or mixed-use zone. \n\nTotal floor area of a detached ADU shall not exceed 1,200 SF, independent of the square footage\nof the existing sing-family dwelling.\n\nMinimum side and rear setbacks of 4 feet. (contact appropriate fire department for fire setbacks)"
     }
 }

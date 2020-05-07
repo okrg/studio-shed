@@ -75,7 +75,7 @@
 						<?php print $steps[2]['title']; ?>
 					</div>
 					<div class="step-description">
-						<?php print $steps[1]['description']; ?>
+						<?php print $steps[2]['description']; ?>
 					</div>
 					<div class="step-icon">
 						<img src="<?php print $steps[2]['icon']; ?>" class="wide-only" />

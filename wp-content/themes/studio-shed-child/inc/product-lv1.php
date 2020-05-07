@@ -163,7 +163,7 @@ ul#model-product-menu li {
 }
 
 #feature-1 .container, #feature-2 .container, #feature-3 .container, #feature-4 .container, #feature-5 .container {
-    padding: 0 15px 15px!important;
+    padding: 0 15px 50px!important;
 }
 #feature-1 .tab-left, #feature-1 .tab-right, #feature-2 .tab-left, #feature-2 .tab-right, #feature-3 .tab-left, #feature-3 .tab-right, #feature-5 .tab-left, #feature-5 .tab-right, #feature-5 .product-center {
     width: 100%!important;
@@ -291,7 +291,7 @@ margin: 10px auto;
 .model-product-list{
 	background: #edecee;
 	color: #fff;
-	margin-bottom: 1px;
+	margin-bottom: 100px;
 	width: 100%;
 	padding: 20px 0 15px 0;
 	-webkit-box-shadow: 0 3px 7px 0 rgba(0,0,0,.1);
@@ -309,7 +309,7 @@ margin: 10px auto;
 	color: #1c1c1c;
 	}
 #content-model-product {
-	scroll-behavior: smooth;
+	scroll-behavior: smooth!important;
 	}
 .model-product-list a:hover {
 	color: #ffa11e;
@@ -455,6 +455,14 @@ margin: 10px auto;
     -webkit-border-radius: 2px;
     border: solid 1px #fff;
     margin-top: 13px;
+	margin-bottom: 100px;
+}
+.product-header-img {
+    margin: -110px auto 0px;
+    text-align: center;
+}
+.product-header-img img {
+    width: 120px;
 }
 
 .one_half ul, .tab-left ul, .tab-right ul {
@@ -494,8 +502,9 @@ margin: 10px auto;
 	#feature-2 .container,
 	#feature-3 .container,
 	#feature-4 .container {
-	padding: 0 150px 40px 150px;
+	padding: 0 150px 120px 150px;
 	margin: 0 auto;
+	scroll-behavior: smooth!important;
 	}
 #feature-5 .container
 	{padding: 0 0px 40px 0px;
@@ -506,16 +515,16 @@ margin: 10px auto;
 	}
 #feature-3 .container,
 #feature-4 .container {
-	border-bottom: #999999 1px solid;
+	/*border-bottom: #999999 1px solid;*/
 	}
 	
-#feature-2 {
-    border-top: #999999 1px solid;
-	border-bottom: #999999 1px solid;
+#feature-2, #feature-4 {
+    /*border-top: #999999 1px solid;
+	border-bottom: #999999 1px solid;*/
     background: #EBEBEB!important;
     padding-top: 50px;
 }
-	#feature-2 .container {
+	#feature-2 .container,#feature-4 .container {
 		background: #EBEBEB!important;
 	}
 	#feature-2 img{
@@ -529,7 +538,7 @@ margin: 10px auto;
     width: 48%;
     float: left!important;
     /* padding-right: 0!important; */
-    border: 1px solid #333;
+    border: 1px solid #ebebeb;
     margin: 0 1%;
     padding: 40px;
     text-align: center;
@@ -548,11 +557,11 @@ margin: 10px auto;
 		margin-bottom: 50px;
 		font-size: 24px;
 }
-	.product-center h3 {
+.product-center h3 {
     margin-top: 50px;
 }
 	}
-	.btn-row {
+.btn-row {
     margin: 40px auto;
     text-align: center;
 }
@@ -565,11 +574,55 @@ margin: 10px auto;
     margin: 50px 0;
 		text-align: center;
 }
-
+.product-features-meta {
+    display: inline-block;
+    width: auto;
+    margin: 30px 0 0 0;
+}
+.product-features-image {
+    width: 84px;
+    height: 84px;
+	margin: 0 10px 0 0;	
+    float: left;
+    border-radius: 100px;
+    overflow: hidden;
+    background-size: contain;
+    background-position: center center;
+    -webkit-animation: avia_appear 0.4s 1 cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    animation: avia_appear 0.4s 1 cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+	display: block;
+}
+.product-features-text {
+    text-align: left;
+    overflow: visible;
+    float: left;
+    line-height: 1.8em;
+    padding-top: 0;
+	display: block;
+	width: 240px;
+}
+.product-features-text p solid {
+	text-transform: uppercase;
+	
+	}
+.product-features-text li {
+    font-size: 13px;
+    list-style: disc;
+    list-style-position: outside;
+    margin-left: 18px;
+	color: #707070;
+	margin-bottom: 5px;
+	line-height: 1.5em;
+}
 p {
     margin: 0 0 10px;
 	font-family: "Tisa-Sans-Pro";
     font-size: 15px;
+	margin-bottom: 5px;
+
 }
 *, .bootstrap-select .btn:focus, :active, :focus, button, button:active, button:focus, input, input:active, input:focus, option {
     outline: none!important;
@@ -718,6 +771,66 @@ while (have_posts()) : the_post();
 						?>
 					</ul>
 				</div>
+				<!-- summit layout -->
+				<?php 						
+			if ($quickmodel == ('Summit')) {
+				?>
+				<?php $page_id = 3265; ?>
+				
+				<div id="newsTabs" class="block-news1">
+			<?php $ideas = get_field("flrpln_idea_sct", $page_id) ?>
+			<h3 class="title-flrpln"><?php echo get_field( "flrpln_h", $page_id ); ?></h3>
+			<ul class="flrpln-btn">
+				<?php $count = 1; ?>
+				<?php foreach ($ideas as $idea) { ?>
+					<li><p class="detail">
+						<a href="#newsTab-<?php echo $count ?>"  data-item="<?php echo $count ?>" class="but"><?php echo $idea['sct_button_label']; ?></a></p>
+					</li>
+					<?php $count ++ ?>
+				<?php } ?>
+			</ul>
+			<?php $count=1; ?>
+			<?php foreach ($ideas as $idea) { ?>
+				<div id="newsTab-<?php echo $count ?>" class="news-wrapper">
+					<?php  $images = $idea['flrpln_images']; ?>
+					<?php if($images != null){ ?>
+						<div class="center-flr-<?php echo $count ?> tab-container">
+							<?php foreach ($images as $image) { ?>
+								<img src="<?php echo $image['sizes']['custom-slide-inter'];?>" alt="">
+							<?php } ?>
+						</div>
+					<?php } ?>
+					<ul class="floorplan-amount">
+						<?php if($idea['kitchen_sq_ft']){?>
+						<li>
+							<span class="amount"><?php echo $idea['kitchen_sq_ft']; ?></span>
+							<span class="description">
+								<p>sq ft</p>
+								<p>kitchen</p>
+							</span>
+						</li>
+						<?php } ?>
+						<?php if($idea['bath_sq_ft']){?>
+						<li>
+							<span class="amount"><?php echo $idea['bath_sq_ft']; ?></span>
+							<span class="description">
+								<p>sq ft</p>
+								<p>full bath</p>
+							</span>
+						</li>
+						<?php } ?>
+					</ul>
+					<div class="bullet-list">
+						<div class="content left"><?php echo $idea['bullet_list_1']; ?></div>
+						<div class="content right"><?php echo $idea['bullet_list_2']; ?></div>
+					</div>
+				</div>
+				<?php $count++; ?>
+			<?php } ?>
+		</div>
+				
+				<?php } ?>
+<!-- end summit layout -->
 			<?php 						
 			if ($quickmodel == ('Signature')) {
 				?>
@@ -794,8 +907,8 @@ while (have_posts()) : the_post();
         <div class="bottom-info">
 			<div class="text">
                 <p>Looking for something truly unique?</p>
-<div class="big">Customize your Studio Shed&nbsp;in our 3D Design Studio.</div>
-                <a class="button" href="/configurator/">Configure</a>
+<div class="big">Customize your Studio Shed&nbsp;in our 3D Design Center.</div>
+                <a class="button" href="/configurator/">Build &amp; Price</a>
             </div>
             <!--<div class="text">
                 <?php //the_field('lv2_bottom_description_text') ?>
@@ -812,7 +925,10 @@ while (have_posts()) : the_post();
                     ?>
 				
                     <div id="feature-<?php echo $k; ?>" class="product-list-sec">
+						<div class="product-header-img"><img src="<?php echo $option['infographic']['sizes']['large']; ?>" alt="<?php echo $option['infographic']['alt']; ?>" title="<?php echo $option['infographic']['title']; ?>"/> 
+								</div>
 						<div class="container">
+
                         <h3 class=" text-uppercase"><?php
                             if ($option['title_content'])
                                 echo $option['title_content'];
@@ -831,11 +947,11 @@ while (have_posts()) : the_post();
                                 <?php echo $option['option_content']; ?>
                             <?php } ?>
                             <?php  if ($option['infographic']) { ?> 
-                             <div class="infographic">
-                                    <a rel="lightbox[img-ct]" href="<?php echo $option['infographic']['url']; ?>">
-                                        <img src="<?php echo $option['infographic']['sizes']['large']; ?>" alt="<?php echo $option['infographic']['alt']; ?>" title="<?php echo $option['infographic']['title']; ?>"/> 
+                             <!--<div class="infographic">
+                                    <a rel="lightbox[img-ct]" href="<?php //echo $option['infographic']['url']; ?>">
+                                        <img src="<?php //echo $option['infographic']['sizes']['large']; ?>" alt="<?php //echo $option['infographic']['alt']; ?>" title="<?php // echo $option['infographic']['title']; ?>"/> 
                                     </a>
-                                </div>
+                                </div> -->
                             <?php  } ?>
 							 <?php if ($option['content_center_bot']) { ?>
 							    <div class="product-center"><?php echo $option['content_center_bot']; ?></div>
@@ -882,9 +998,15 @@ while (have_posts()) : the_post();
 	(jQuery);
 	
 	window.addEventListener("hashchange", function () {
-   window.scrollTo(window.scrollX, window.scrollY - 100);
+   window.scrollTo(window.scrollX, window.scrollY - 250);
    });
+	
 		
+	
+	
+	
+	
+	
 /*	window.addEventListener("hashchange", () => window.scrollTo({
   top: 100,
   behavior: 'smooth',
@@ -913,30 +1035,45 @@ window.addEventListener('scroll', function() {
 });
 
 </script>
-	<script>
-jQuery(document).ready(function(){
-  // Add smooth scrolling to all links
-  jQuery("a").on('click', function(event) {
-
-    // Make sure this.hash has a value before overriding default behavior
-    if (this.hash !== "") {
-      // Prevent default anchor click behavior
-      event.preventDefault();
-
-      // Store hash
-      var hash = this.hash;
-
-      // Using jQuery's animate() method to add smooth page scroll
-      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-      jQuery('html, body').animate({
-    .scrollTop( 300 )    scrollTop: jQuery(hash).offset().top 100 
-      }, 800, function(){
-   
-        // Add hash (#) to URL when done scrolling (default click behavior)
-        window.location.hash = hash;
-      });
-    } // End if
-  });
-});
+<?php 						
+			if ($quickmodel == ('Summit')) {
+				?>	
+ <script src="<?php echo get_template_directory_uri() ?>/assets/js/jquery-3.3.1.js"></script>
+	<script src="<?php echo get_template_directory_uri() ?>/assets/js/common.js"></script>
+		
+<link href='<?php echo bloginfo('template_directory');?>/css/slick.css' rel='stylesheet' type='text/css'/>
+<link href='<?php echo bloginfo('template_directory');?>/css/slick-theme.css' rel='stylesheet' type='text/css'/>
+<script type="text/javascript" src="<?php echo bloginfo('template_directory');?>/js/slick.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		$(".center-flr-1").slick({
+			infinite: true,
+			centerMode: false,
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			centerPadding: '10px',
+		});
+		$(".center-flr-2").slick({
+			infinite: true,
+			centerMode: false,
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			centerPadding: '10px',
+		});
+		$(".center-flr-3").slick({
+			infinite: true,
+			centerMode: false,
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			centerPadding: '10px',
+		});
+		// $(".r-tabs-anchor").click(function(){
+		// 	$('.center-flr-' + $(this).attr('data-item')).slick('refresh');
+		// });
+		$(".r-tabs-anchor").on('click touchstart', function() {
+       		$('.center-flr-' + $(this).attr('data-item')).slick('refresh');
+       	});
+	});
 </script>
-
+		<?php } ?>

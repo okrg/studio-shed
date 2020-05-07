@@ -3,11 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	  
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1" /> -->
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1"/>
     <meta name="format-detection" content="telephone=no">
     <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
     <meta name="google-site-verification" content="uWi-LXgJCHaP6FM_-ggd2tuTMEU08yeWuUhgfF8jA88" />
+	  
     <?php 
       if(is_page() || get_single_template('products')){
         if(get_field('meta_data', get_the_ID())){
@@ -1070,13 +1072,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                    <!-- <p class="title"><?php //echo $child["headline"]?></p>
                                     <div class="row">
                                       <div class="col-lg-4">
-                                        <?php echo $child["content_left"]?>
+                                        <?php //echo $child["content_left"]?>
                                       </div>
                                       <div class="col-lg-4">
-                                        <?php echo $child["content_center"]?>
+                                        <?php// echo $child["content_center"]?>
                                       </div>
                                       <div class="col-lg-4">
-                                        <?php echo $child["content_right"]?>
+                                        <?php// echo $child["content_right"]?>
                                       </div>
                                     </div>
 -->
@@ -1087,7 +1089,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 								</div>
                                       <div class="col-lg-6">
-										<a href="/design-center/">Design &amp; Price</a> 
+									<!--	<a href="/design-center/">Design &amp; Price</a> -->
+										  <?php echo $child["content_right"]?>
 										 <!--  <a class="btn" href="/design-center/">Design &amp; Price</a> -->
                                       </div>
                                     </div>

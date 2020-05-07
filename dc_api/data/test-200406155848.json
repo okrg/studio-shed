@@ -1,15 +1,15 @@
 {
     "__created_at": 1586213930,
-    "__updated_at": 1586213930,
+    "__updated_at": 1587684292,
     "data": {
         "uniqueid": "test-200406155848",
-        "utm_source": "undefined",
-        "utm_medium": "undefined",
-        "utm_campaign": "undefined",
-        "gclid": "undefined",
-        "visitor_id": "58831b13-b003-4d13-9050-69c750565776",
-        "configUrl": "https://dev2-studio-shed.pantheonsite.io/configurator/?depth=10&length=10&trim=Lap%2FMetal&sidingColor=Platform+Beige&doorColor=Fireworks&eaveColor=Natural+Stain&metalColor=&floorOption=Vermont+Maple&bathroomFloorOption=&cabinetColor=&countertopColor=&front=F10-D36L-BL&back=B10-BL&left=L10x-36C-BL&right=R10x-36C-BL&foundation=Foundation&doorStyleKey=standard-door&uniqueid=test-200406155848",
-        "imageUrl": "https://idearoom-render.s3.amazonaws.com/studioshedsignature-render/product:475-360:b8cd0794693d4118c32b92b00bacf873.png",
+        "utm_source": null,
+        "utm_medium": null,
+        "utm_campaign": null,
+        "gclid": null,
+        "visitor_id": null,
+        "configUrl": "https://dev2-studio-shed.pantheonsite.io/dc/step-1.php?depth=10&length=10&trim=Lap%2FMetal&sidingColor=Platform%20Beige&doorColor=Fireworks&eaveColor=Natural%20Stain&metalColor=&floorOption=Vermont%20Maple&bathroomFloorOption=&cabinetColor=&countertopColor=&front=F10-D36L-BL&back=B10-BL&left=L10x-36C-BL&right=R10x-36C-BL&foundation=Foundation&doorStyleKey=full-lite-glass-door&uniqueid=test-200406155848",
+        "imageUrl": "https://idearoom-render.s3.amazonaws.com/studioshedsignature-render/product:475-360:4ce41b8cbfcf667297a788be4dbcb2f0.png",
         "email": "jessica.fielder@businessol.com",
         "firstName": "test",
         "lastName": "test",
@@ -22,7 +22,7 @@
         "backSKU": "B10-BL",
         "leftSKU": "L10x-36C-BL",
         "rightSKU": "R10x-36C-BL",
-        "total": 13615,
+        "total": 14005,
         "size": "10' x 10' Base Price",
         "sizePrice": 10815,
         "siding": "Lap/Metal",
@@ -44,6 +44,10 @@
         "service": "",
         "servicePrice": 0,
         "shipping": "",
-        "shippingPrice": 0
+        "shippingPrice": 0,
+        "accessory0": "Full-Lite Glass Door",
+        "accessory0Price": 390,
+        "permitPlans": true,
+        "permitPlansPrice": 3995
     }
 }
