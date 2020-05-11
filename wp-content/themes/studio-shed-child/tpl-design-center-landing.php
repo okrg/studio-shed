@@ -28,81 +28,45 @@
 	<div class="container">
 
 		<h1><?php the_field('title_'); ?></h1>
-					<?php the_content(); ?>
+		<p>
+			<?php print get_field('top_subhead', $page_id); ?>
+		</p>					
 
-	
-	<section id="steps" class="wide-container">
-		<table border="0" cellspacing="0" cellpadding="0">
-			<tr>
-				<td class="first-step">
-					<div class="step-number">
-						<img src="<?php print $steps[0]['number_image']; ?>" class="wide-only" />
-						<img src="<?php print $steps[0]['mobile_number_image']; ?>" class="mobile-only" />
-					</div>
-					<div class="step-title">
-						<?php print $steps[0]['title']; ?>
-					</div>
-					<div class="step-description">
-						<?php print $steps[0]['description']; ?>
-					</div>
-					<div class="step-icon">
-						<img src="<?php print $steps[0]['icon']; ?>" class="wide-only" />
-						<img src="<?php print $steps[0]['mobile_icon']; ?>" class="mobile-only" />
-					</div>
-				</td>
-				<td  class="second-step">
-					<div class="step-number">
-						<img src="<?php print $steps[1]['number_image']; ?>" class="wide-only" />
-						<img src="<?php print $steps[1]['mobile_number_image']; ?>" class="mobile-only" />
-					</div>
-					<div class="step-title">
-						<?php print $steps[1]['title']; ?>
-					</div>
-					<div class="step-description">
-						<?php print $steps[1]['description']; ?>
-					</div>
-					<div class="step-icon">
-						<img src="<?php print $steps[1]['icon']; ?>" class="wide-only" />
-						<img src="<?php print $steps[1]['mobile_icon']; ?>" class="mobile-only" />
-					</div>
-				</td>
-				<td class="third-step">
-					<div class="step-number">
-						<img src="<?php print $steps[2]['number_image']; ?>" class="wide-only" />
-						<img src="<?php print $steps[2]['mobile_number_image']; ?>" class="mobile-only" />
-					</div>
-					<div class="step-title">
-						<?php print $steps[2]['title']; ?>
-					</div>
-					<div class="step-description">
-						<?php print $steps[2]['description']; ?>
-					</div>
-					<div class="step-icon">
-						<img src="<?php print $steps[2]['icon']; ?>" class="wide-only" />
-						<img src="<?php print $steps[2]['mobile_icon']; ?>" class="mobile-only" />
-					</div>
-				</td>
-				<td class="fourth-step">
-					<div class="step-number">
-						<img src="<?php print $steps[3]['number_image']; ?>" class="wide-only" />
-						<img src="<?php print $steps[3]['mobile_number_image']; ?>" class="mobile-only" />
-					</div>
-					<div class="step-title">
-						<?php print $steps[3]['title']; ?>
-					</div>
-					<div class="step-description">
-						<?php print $steps[3]['description']; ?>
-					</div>
-					<div class="step-icon">
-						<img src="<?php print $steps[3]['icon']; ?>" class="wide-only" />
-						<img src="<?php print $steps[3]['mobile_icon']; ?>" class="mobile-only" />
-					</div>
-				</td>
-			</tr>
+	<div class="login-text">
+		<h4><?php print get_field('login_title', $page_id); ?></h4>
+		<p><?php print get_field('login_text', $page_id); ?></p>
+		</div>
+		<section id="design-center-steps">
+		
 			
-		</table>
-	</section>
-	<!--End Steps Table-->
+			
+			<?php if( have_rows('steps') ): ?>
+
+
+	<?php while( have_rows('steps') ): the_row(); 
+
+		// vars
+		$image = get_sub_field('icon');
+		$hfourtitle = get_sub_field('title');
+		$content = get_sub_field('description');
+
+		?>
+		
+			
+			<div class="product-features-meta">
+<div class="product-features-image" itemprop="image" style="background-image:url(<?php echo $image; ?>);"></div>
+<div class="product-features-text">
+<h4><?php echo $hfourtitle; ?></h4>
+ <p> <?php echo $content; ?></p></div>
+</div>
+	<?php endwhile; ?>
+			
+			
+
+<?php endif; ?>
+			
+		</section>
+	
 	
 	<!--Begin Headline-->
 	<section id="headline" class="wide-container">

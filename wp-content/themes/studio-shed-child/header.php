@@ -917,7 +917,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- <div class="container">
       <nav class="navbar">
        <div class="navbar-header">
-          <a class="navbar-brand" href="<?php echo get_home_url(); ?>"><img class="img-responsive" src="/wp-content/uploads/2016/03/logo.png" alt="logo" title="Studio Shed"/></a>
+          <a class="navbar-brand" href="<?php //echo get_home_url(); ?>"><img class="img-responsive" src="/wp-content/uploads/2016/03/logo.png" alt="logo" title="Studio Shed"/></a>
           <div class="mobile-header">
             <a href="/configurator/" class="cta-mobile" >Get Started Now</a>
             <a href="tel:+18889003933&#10;" class="phone-mobile"><i class="fa fa-phone" aria-hidden="true"></i></a>

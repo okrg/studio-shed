@@ -686,10 +686,10 @@ border-color: #ffa544;
 			</iv>
 		</div>
 		<div class="row delivery">
-			<div class="col-sm-3 col-md-2">
+			<div class="col-sm-0 col-md-2">
 				<p>&nbsp;</p>			
 			</div>
-			<div class="col-sm-9 col-md-5">
+			<div class="col-sm-12 col-md-5">
 				<h3>Delivering Your Customized Shed Anywhere in the U.S.</h3>
 				<hr>
 				<p>Studio Shed ships to all 50 U.S. states and select locations in Canada. Our products are built right here in Colorado and then shipped directly to your front door. Shipping costs will be calculated during the design process based on your exact location. </p></p>
@@ -709,32 +709,32 @@ border-color: #ffa544;
 			<div class="col-sm-12">
 				<img src="/wp-content/uploads/2019/09/studio-shed-logo-white.png" alt="studio shed"/>
 			</div>
-			<div class="col-sm-12 col-md-2">
+			<div class="col-sm-3 col-xs-12 col-md-2">
 
 				<h3>MODELS</h3>
 				<?php wp_nav_menu( array( 'theme_location' => 'footer1-menu', 'container_class' => 'menu_class' ) ); ?>
 	
 
 			</div>
-			<div class="col-sm-12 col-md-2">
+			<div class="col-sm-3 col-xs-12 col-md-2">
 
 				<h3>SHED STORIES</h3>
 				<?php wp_nav_menu(array('theme_location' => 'footer2-menu', 'container' => '', 'menu_class' => '')); ?>
 
 			</div>
-			<div class="col-sm-12 col-md-2">
+			<div class="col-sm-3 col-xs-12 col-md-2">
 
 				<h3>SHOPPING TOOLS</h3>
 				<?php wp_nav_menu(array('theme_location' => 'footer3-menu', 'container' => '', 'menu_class' => '')); ?>
 
 			</div>
-			<div class="col-sm-12 col-md-2">
+			<div class="col-sm-3 col-xs-12 col-md-2">
 
 				<h3>RESOURCES</h3>
 				<?php wp_nav_menu(array('theme_location' => 'footer4-menu', 'container' => '', 'menu_class' => '')); ?>
 
 			</div>
-			<div class="col-sm-12 col-md-2">
+			<div class="col-sm-3 col-xs-12 col-md-2">
 
 				<h3>ABOUT US</h3>
 				<?php wp_nav_menu(array('theme_location' => 'footer5-menu', 'container' => '', 'menu_class' => '')); ?>
@@ -770,46 +770,6 @@ border-color: #ffa544;
 		</div>
 	
 	</div>
-
-  <!--  <div class="container">
-        <div class="row">
-            <?php //if (!is_page_template('tpl-document-3-columns.php')): ?>
-                <div class="top-footer">
-                    <div class="col-sm-5 newletter">
-                        <?php //dynamic_sidebar('contact-form'); ?>
-                    </div>
-                    <div class="col-sm-6 sitemap">
-                        <div class="title-ft text-uppercase">Sitemap</div>
-                        <?php //wp_nav_menu(array('theme_location' => 'footer-menu', 'container' => '', 'menu_class' => '')); ?>
-                        <ul class="mn-sitemap">
-                            <?php // dynamic_sidebar('copyright'); ?>
-                        </ul>
-                    </div>
-                </div>
-            <?php //endif; ?>
-        </div>
-    </div> -->
-    <!--   <div id="bottom-footer">
-        <div class="container">
-            <div class="row">
-                <div class="bottom-footer">
-                    <div class="col-sm-7 col-md-8">
-                        <!-- Start Social Links -->
-                        <!--   <ul class="social-list">
-                            <?php// dynamic_sidebar('social'); ?>
-                        </ul>
-                        <!-- End Social Links -->
-                        <!--   <div class="phone"><?php //dynamic_sidebar('phone-ft'); ?></div>
-                    </div>
-                    <div class="col-sm-5 col-md-4 text-right">
-                        <ul>
-                            <?php// dynamic_sidebar('button-footer'); ?>
-                        </ul>
-                    </div>
-                </div>
-            </div> 
-        </div>
-    </div>-->
 </footer>
 <div id="myModal" class="modal fade">
     <div class="modal-dialog">
