@@ -59,7 +59,7 @@
 	
 	}
 @media (max-width: 750px){
-		#feature-1 .tab-left, #feature-1 .tab-right, #feature-2 .tab-left, #feature-2 .tab-right, #feature-3 .tab-left, #feature-3 .tab-right, #newsTabs .left, #newsTabs .right {
+		#feature-1 .tab-left, #feature-1 .tab-right, #feature-2 .tab-left, #feature-2 .tab-right, #feature-3 .tab-left, #feature-3 .tab-right, #newsTabs .left, #newsTabs .right, #feature-1 .product-center .product-features-meta{
     width: 100%!important;
     float: none!important;
 	padding-right: 0!important;
@@ -923,7 +923,7 @@ Futura PT Book—Network resource(19 glyphs)
     width: 120px;
 }
 
-.one_half ul, .tab-left ul, .tab-right ul {
+.one_half ul, .tab-left ul, .tab-right ul, #feature-1 .product-center ul {
     margin-left: 0;
     padding-left: 0;
 	margin-bottom: 15px;
@@ -933,7 +933,8 @@ Futura PT Book—Network resource(19 glyphs)
 	}
 	.one-half p strong,
 	.tab-left p,
-	.tab-right p {
+	.tab-right p , 
+	.product-center p{
 		color: #333;
 	}
 #feature-1 .tab-left, 
@@ -989,7 +990,8 @@ Futura PT Book—Network resource(19 glyphs)
 	#feature-2 img{
     max-WIDTH: 100%;
 }
-.tab-left b, .tab-left strong, .tab-right b, .tab-right strong  {
+.tab-left b, .tab-left strong, .tab-right b, .tab-right strong, 
+	#feature-1 .product-center b, #feature-1 .product-center strong{
     font-weight: 700;
     color: #E25D00;
 }
@@ -1042,7 +1044,11 @@ Futura PT Book—Network resource(19 glyphs)
     display: inline-block;
     width: auto;
     margin: 30px 0 0 0;
-}
+    width: 47%;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 2%;
+}	
 .product-features-image {
     width: 84px;
     height: 84px;

@@ -150,9 +150,9 @@ li.parent-type:last-of-type ul li{
 .main-menu-dropdown ul a {
     text-transform: initial!important;
 }
-li.cell a   {
+/*li.cell a   {
 	background: url(/wp-content/uploads/2020/02/menu-phone.png) no-repeat 10px center;
-		}
+		}*/
 #menu-slide li.cell  {
     background: url(/wp-content/uploads/2020/02/menu-phone-flyout.png) no-repeat left center;
     color: #000;
@@ -370,9 +370,8 @@ footer .container .row {
     max-width: 100%;
 }
 .footer-subscribe {
-	border-top: #999999 1px solid;
 	background: #EBEBEB!important;
-	padding: 15px 0 30px;
+	padding: 40px 0;
 }
 .footer-subscribe h3 {
 	color: #525252;
@@ -386,6 +385,7 @@ footer .container .row {
 	/*list-style-image: url(/wp-content/uploads/2020/01/footer-subscribe-check.png);*/
 	padding-left: 20px!important;
 	font-size: 15px;
+	display: block!important
 	}
 	li.check-li {
 	background:url(/wp-content/uploads/2020/01/footer-subscribe-check.png) no-repeat;
@@ -406,7 +406,7 @@ background: #ffffff;
 	width: 100%!important;
 	}
 .footer-subscribe  span#input_18_1_6_container {
-    width: 49.5%;
+    width: 50%;
 }
 #footer .footer-subscribe ul#gform_fields_18 li {
     width: 100%;
@@ -475,7 +475,7 @@ span#input_18_1_3_container.name_first {
 	}
 .footer-escape {
 		background: #1F1F1F;
-			padding: 20px 0;
+			padding: 40px 0;
 	}
 .footer-escape .row {
 		display: table;
@@ -539,7 +539,7 @@ span#input_18_1_3_container.name_first {
 .footer-escape .delivery{
 	background: url(/wp-content/uploads/2020/01/service-area-bg.jpg) right center no-repeat!important;
     padding: 50px 0;
-    margin: 20px 0 0 0;
+    margin: 40px 0 0 0;
 	background-size: cover!important;
 	}
 .footer-escape .delivery h3{

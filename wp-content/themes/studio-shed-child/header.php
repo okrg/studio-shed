@@ -150,10 +150,11 @@ p {
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
-@media (min-width: 992px)
+		@media (min-width: 992px){
 .menu-list .box {
     cursor: pointer;
 }
+		}
 .main-menu-dropdown li li {
     text-transform: none;
 }
@@ -208,14 +209,13 @@ user agent stylesheet
 ul {
     list-style-type: disc;
 }
-@media (min-width: 992px)
+		@media (min-width: 992px){
 .main-menu-ul>li .main-menu-dropdown {
     display: block;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
 }
-@media (min-width: 992px)
 .main-menu-dropdown {
     min-width: 300px;
     width: 100%;
@@ -228,6 +228,7 @@ ul {
     -webkit-box-shadow: 2px 9px 18px -6px rgba(0,0,0,.22);
     box-shadow: 2px 9px 18px -6px rgba(0,0,0,.22);
 }
+		}
 .main-menu-dropdown {
     border: none;
     background-color: transparent;
@@ -401,11 +402,37 @@ p {
     margin-inline-start: 0px;
     margin-inline-end: 0px;
 }
-		@media (min-width: 992px){
+@media (min-width: 992px){
+
+#wrapper {
+	padding-top:40px!important;
+	}
+#header-logo img {
+	width: 200px;
+	}
+
 .menu-list .box {
     cursor: pointer;
 }
 		}
+@media (max-width: 950px){
+.navbar-brand img {
+    max-width: 80%;
+}
+#wrapper {
+	padding-top:40px!important;
+	}
+
+.header-mobile {
+    min-height: 52px!important;
+}
+.header-mobile .col-mb-8 {
+    padding: 20px 0;
+}
+		}
+.main-menu-ul {
+    padding-top: 20px!important;
+}
 .main-menu-dropdown li li {
     text-transform: none;
 }
@@ -460,26 +487,7 @@ user agent stylesheet
 ul {
     list-style-type: disc;
 }
-@media (min-width: 992px)
-.main-menu-ul>li .main-menu-dropdown {
-    display: block;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-}
-@media (min-width: 992px)
-.main-menu-dropdown {
-    min-width: 300px;
-    width: 100%;
-    right: 0;
-    left: auto;
-    margin: 0;
-    font-size: 1em;
-    border: none;
-    background-color: #fff;
-    -webkit-box-shadow: 2px 9px 18px -6px rgba(0,0,0,.22);
-    box-shadow: 2px 9px 18px -6px rgba(0,0,0,.22);
-}
+
 .main-menu-dropdown {
     border: none;
     background-color: transparent;
@@ -709,7 +717,7 @@ ul {
     visibility: hidden;
     pointer-events: none;
 }
-@media (min-width: 992px)
+	@media (min-width: 992px){
 .main-menu-dropdown {
     min-width: 300px;
     width: 100%;
@@ -722,6 +730,7 @@ ul {
     -webkit-box-shadow: 2px 9px 18px -6px rgba(0,0,0,.22);
     box-shadow: 2px 9px 18px -6px rgba(0,0,0,.22);
 }
+		}
 .main-menu-dropdown {
     border: none;
     background-color: transparent;
@@ -756,11 +765,11 @@ ul {
     color: #000;
 }
 li.cell a   {
-			background: url(https://www.studio-shed.com/wp-content/uploads/2020/02/menu-phone.png) no-repeat left center;
+			background: url(/wp-content/uploads/2020/02/menu-phone.png) no-repeat 10px center;
 		}
 @media (max-width: 650px){
 li.cell a {
-    background: url(https://www.studio-shed.com/wp-content/uploads/2020/02/menu-phone.png) no-repeat 60px center;
+    background: url(/wp-content/uploads/2020/02/menu-phone.png) no-repeat 60px center;
 }
 		}
 		@media (min-width: 992px){
@@ -950,7 +959,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <nav class="container navbar navbar-expand-lg" role="navigation">
           <div class="header-mobile">
             <div class="col-mb-8">
-              <a href="<?php echo get_home_url(); ?>" id="header-logo" class="navbar-brand d-lg-none">
+              <a href="<?php echo get_home_url(); ?>" id="header-logo" class=" d-lg-none">
                 <img src="<?php echo $logo["url"]?>" alt="index">
               </a>
             </div>
