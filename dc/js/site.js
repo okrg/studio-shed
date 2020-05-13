@@ -185,986 +185,774 @@ animateIn:!1},e.prototype.swap=function(){if(1===this.core.settings.items&&a.sup
 	return init(function () {});
 }));
 
-/*! odometer 0.4.8 */
-(function(){var a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G=[].slice;q='<span class="odometer-value"></span>',n='<span class="odometer-ribbon"><span class="odometer-ribbon-inner">'+q+"</span></span>",d='<span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner">'+n+"</span></span>",g='<span class="odometer-formatting-mark"></span>',c="(,ddd).dd",h=/^\(?([^)]*)\)?(?:(.)(d+))?$/,i=30,f=2e3,a=20,j=2,e=.5,k=1e3/i,b=1e3/a,o="transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd",y=document.createElement("div").style,p=null!=y.transition||null!=y.webkitTransition||null!=y.mozTransition||null!=y.oTransition,w=window.requestAnimationFrame||window.mozRequestAnimationFrame||window.webkitRequestAnimationFrame||window.msRequestAnimationFrame,l=window.MutationObserver||window.WebKitMutationObserver||window.MozMutationObserver,s=function(a){var b;return b=document.createElement("div"),b.innerHTML=a,b.children[0]},v=function(a,b){return a.className=a.className.replace(new RegExp("(^| )"+b.split(" ").join("|")+"( |$)","gi")," ")},r=function(a,b){return v(a,b),a.className+=" "+b},z=function(a,b){var c;return null!=document.createEvent?(c=document.createEvent("HTMLEvents"),c.initEvent(b,!0,!0),a.dispatchEvent(c)):void 0},u=function(){var a,b;return null!=(a=null!=(b=window.performance)&&"function"==typeof b.now?b.now():void 0)?a:+new Date},x=function(a,b){return null==b&&(b=0),b?(a*=Math.pow(10,b),a+=.5,a=Math.floor(a),a/=Math.pow(10,b)):Math.round(a)},A=function(a){return 0>a?Math.ceil(a):Math.floor(a)},t=function(a){return a-x(a)},C=!1,(B=function(){var a,b,c,d,e;if(!C&&null!=window.jQuery){for(C=!0,d=["html","text"],e=[],b=0,c=d.length;c>b;b++)a=d[b],e.push(function(a){var b;return b=window.jQuery.fn[a],window.jQuery.fn[a]=function(a){var c;return null==a||null==(null!=(c=this[0])?c.odometer:void 0)?b.apply(this,arguments):this[0].odometer.update(a)}}(a));return e}})(),setTimeout(B,0),m=function(){function a(b){var c,d,e,g,h,i,l,m,n,o,p=this;if(this.options=b,this.el=this.options.el,null!=this.el.odometer)return this.el.odometer;this.el.odometer=this,m=a.options;for(d in m)g=m[d],null==this.options[d]&&(this.options[d]=g);null==(h=this.options).duration&&(h.duration=f),this.MAX_VALUES=this.options.duration/k/j|0,this.resetFormat(),this.value=this.cleanValue(null!=(n=this.options.value)?n:""),this.renderInside(),this.render();try{for(o=["innerHTML","innerText","textContent"],i=0,l=o.length;l>i;i++)e=o[i],null!=this.el[e]&&!function(a){return Object.defineProperty(p.el,a,{get:function(){var b;return"innerHTML"===a?p.inside.outerHTML:null!=(b=p.inside.innerText)?b:p.inside.textContent},set:function(a){return p.update(a)}})}(e)}catch(q){c=q,this.watchForMutations()}}return a.prototype.renderInside=function(){return this.inside=document.createElement("div"),this.inside.className="odometer-inside",this.el.innerHTML="",this.el.appendChild(this.inside)},a.prototype.watchForMutations=function(){var a,b=this;if(null!=l)try{return null==this.observer&&(this.observer=new l(function(a){var c;return c=b.el.innerText,b.renderInside(),b.render(b.value),b.update(c)})),this.watchMutations=!0,this.startWatchingMutations()}catch(c){a=c}},a.prototype.startWatchingMutations=function(){return this.watchMutations?this.observer.observe(this.el,{childList:!0}):void 0},a.prototype.stopWatchingMutations=function(){var a;return null!=(a=this.observer)?a.disconnect():void 0},a.prototype.cleanValue=function(a){var b;return"string"==typeof a&&(a=a.replace(null!=(b=this.format.radix)?b:".","<radix>"),a=a.replace(/[.,]/g,""),a=a.replace("<radix>","."),a=parseFloat(a,10)||0),x(a,this.format.precision)},a.prototype.bindTransitionEnd=function(){var a,b,c,d,e,f,g=this;if(!this.transitionEndBound){for(this.transitionEndBound=!0,b=!1,e=o.split(" "),f=[],c=0,d=e.length;d>c;c++)a=e[c],f.push(this.el.addEventListener(a,function(){return b?!0:(b=!0,setTimeout(function(){return g.render(),b=!1,z(g.el,"odometerdone")},0),!0)},!1));return f}},a.prototype.resetFormat=function(){var a,b,d,e,f,g,i,j;if(a=null!=(i=this.options.format)?i:c,a||(a="d"),d=h.exec(a),!d)throw new Error("Odometer: Unparsable digit format");return j=d.slice(1,4),g=j[0],f=j[1],b=j[2],e=(null!=b?b.length:void 0)||0,this.format={repeating:g,radix:f,precision:e}},a.prototype.render=function(a){var b,c,d,e,f,g,h;for(null==a&&(a=this.value),this.stopWatchingMutations(),this.resetFormat(),this.inside.innerHTML="",f=this.options.theme,b=this.el.className.split(" "),e=[],g=0,h=b.length;h>g;g++)c=b[g],c.length&&((d=/^odometer-theme-(.+)$/.exec(c))?f=d[1]:/^odometer(-|$)/.test(c)||e.push(c));return e.push("odometer"),p||e.push("odometer-no-transitions"),f?e.push("odometer-theme-"+f):e.push("odometer-auto-theme"),this.el.className=e.join(" "),this.ribbons={},this.formatDigits(a),this.startWatchingMutations()},a.prototype.formatDigits=function(a){var b,c,d,e,f,g,h,i,j,k;if(this.digits=[],this.options.formatFunction)for(d=this.options.formatFunction(a),j=d.split("").reverse(),f=0,h=j.length;h>f;f++)c=j[f],c.match(/0-9/)?(b=this.renderDigit(),b.querySelector(".odometer-value").innerHTML=c,this.digits.push(b),this.insertDigit(b)):this.addSpacer(c);else for(e=!this.format.precision||!t(a)||!1,k=a.toString().split("").reverse(),g=0,i=k.length;i>g;g++)b=k[g],"."===b&&(e=!0),this.addDigit(b,e)},a.prototype.update=function(a){var b,c=this;return a=this.cleanValue(a),(b=a-this.value)?(v(this.el,"odometer-animating-up odometer-animating-down odometer-animating"),b>0?r(this.el,"odometer-animating-up"):r(this.el,"odometer-animating-down"),this.stopWatchingMutations(),this.animate(a),this.startWatchingMutations(),setTimeout(function(){return c.el.offsetHeight,r(c.el,"odometer-animating")},0),this.value=a):void 0},a.prototype.renderDigit=function(){return s(d)},a.prototype.insertDigit=function(a,b){return null!=b?this.inside.insertBefore(a,b):this.inside.children.length?this.inside.insertBefore(a,this.inside.children[0]):this.inside.appendChild(a)},a.prototype.addSpacer=function(a,b,c){var d;return d=s(g),d.innerHTML=a,c&&r(d,c),this.insertDigit(d,b)},a.prototype.addDigit=function(a,b){var c,d,e,f;if(null==b&&(b=!0),"-"===a)return this.addSpacer(a,null,"odometer-negation-mark");if("."===a)return this.addSpacer(null!=(f=this.format.radix)?f:".",null,"odometer-radix-mark");if(b)for(e=!1;;){if(!this.format.repeating.length){if(e)throw new Error("Bad odometer format without digits");this.resetFormat(),e=!0}if(c=this.format.repeating[this.format.repeating.length-1],this.format.repeating=this.format.repeating.substring(0,this.format.repeating.length-1),"d"===c)break;this.addSpacer(c)}return d=this.renderDigit(),d.querySelector(".odometer-value").innerHTML=a,this.digits.push(d),this.insertDigit(d)},a.prototype.animate=function(a){return p&&"count"!==this.options.animation?this.animateSlide(a):this.animateCount(a)},a.prototype.animateCount=function(a){var c,d,e,f,g,h=this;if(d=+a-this.value)return f=e=u(),c=this.value,(g=function(){var i,j,k;return u()-f>h.options.duration?(h.value=a,h.render(),void z(h.el,"odometerdone")):(i=u()-e,i>b&&(e=u(),k=i/h.options.duration,j=d*k,c+=j,h.render(Math.round(c))),null!=w?w(g):setTimeout(g,b))})()},a.prototype.getDigitCount=function(){var a,b,c,d,e,f;for(d=1<=arguments.length?G.call(arguments,0):[],a=e=0,f=d.length;f>e;a=++e)c=d[a],d[a]=Math.abs(c);return b=Math.max.apply(Math,d),Math.ceil(Math.log(b+1)/Math.log(10))},a.prototype.getFractionalDigitCount=function(){var a,b,c,d,e,f,g;for(e=1<=arguments.length?G.call(arguments,0):[],b=/^\-?\d*\.(\d*?)0*$/,a=f=0,g=e.length;g>f;a=++f)d=e[a],e[a]=d.toString(),c=b.exec(e[a]),null==c?e[a]=0:e[a]=c[1].length;return Math.max.apply(Math,e)},a.prototype.resetDigits=function(){return this.digits=[],this.ribbons=[],this.inside.innerHTML="",this.resetFormat()},a.prototype.animateSlide=function(a){var b,c,d,f,g,h,i,j,k,l,m,n,o,p,q,s,t,u,v,w,x,y,z,B,C,D,E;if(s=this.value,j=this.getFractionalDigitCount(s,a),j&&(a*=Math.pow(10,j),s*=Math.pow(10,j)),d=a-s){for(this.bindTransitionEnd(),f=this.getDigitCount(s,a),g=[],b=0,m=v=0;f>=0?f>v:v>f;m=f>=0?++v:--v){if(t=A(s/Math.pow(10,f-m-1)),i=A(a/Math.pow(10,f-m-1)),h=i-t,Math.abs(h)>this.MAX_VALUES){for(l=[],n=h/(this.MAX_VALUES+this.MAX_VALUES*b*e),c=t;h>0&&i>c||0>h&&c>i;)l.push(Math.round(c)),c+=n;l[l.length-1]!==i&&l.push(i),b++}else l=function(){E=[];for(var a=t;i>=t?i>=a:a>=i;i>=t?a++:a--)E.push(a);return E}.apply(this);for(m=w=0,y=l.length;y>w;m=++w)k=l[m],l[m]=Math.abs(k%10);g.push(l)}for(this.resetDigits(),D=g.reverse(),m=x=0,z=D.length;z>x;m=++x)for(l=D[m],this.digits[m]||this.addDigit(" ",m>=j),null==(u=this.ribbons)[m]&&(u[m]=this.digits[m].querySelector(".odometer-ribbon-inner")),this.ribbons[m].innerHTML="",0>d&&(l=l.reverse()),o=C=0,B=l.length;B>C;o=++C)k=l[o],q=document.createElement("div"),q.className="odometer-value",q.innerHTML=k,this.ribbons[m].appendChild(q),o===l.length-1&&r(q,"odometer-last-value"),0===o&&r(q,"odometer-first-value");return 0>t&&this.addDigit("-"),p=this.inside.querySelector(".odometer-radix-mark"),null!=p&&p.parent.removeChild(p),j?this.addSpacer(this.format.radix,this.digits[j-1],"odometer-radix-mark"):void 0}},a}(),m.options=null!=(E=window.odometerOptions)?E:{},setTimeout(function(){var a,b,c,d,e;if(window.odometerOptions){d=window.odometerOptions,e=[];for(a in d)b=d[a],e.push(null!=(c=m.options)[a]?(c=m.options)[a]:c[a]=b);return e}},0),m.init=function(){var a,b,c,d,e,f;if(null!=document.querySelectorAll){for(b=document.querySelectorAll(m.options.selector||".odometer"),f=[],c=0,d=b.length;d>c;c++)a=b[c],f.push(a.odometer=new m({el:a,value:null!=(e=a.innerText)?e:a.textContent}));return f}},null!=(null!=(F=document.documentElement)?F.doScroll:void 0)&&null!=document.createEventObject?(D=document.onreadystatechange,document.onreadystatechange=function(){return"complete"===document.readyState&&m.options.auto!==!1&&m.init(),null!=D?D.apply(this,arguments):void 0}):document.addEventListener("DOMContentLoaded",function(){return m.options.auto!==!1?m.init():void 0},!1),"function"==typeof define&&define.amd?define([],function(){return m}):"undefined"!=typeof exports&&null!==exports?module.exports=m:window.Odometer=m}).call(this);
-
 var cart;
-$(document).ready(function() {
 
-  $.ajaxSetup({
-      headers: {
-        'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
-      },
-      beforeSend: function(xhr) {
-        xhr.setRequestHeader('x-api-key', 'e4XaFZRT1TyvLAy3KHdTnU20MluyYotL');
-      }
+$.ajaxSetup({
+  headers: {
+    'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+  },
+  beforeSend: function(xhr) {
+    xhr.setRequestHeader('x-api-key', 'e4XaFZRT1TyvLAy3KHdTnU20MluyYotL');
+  }
+});
+
+function getLookupUid(uid) {
+  var promise = new Promise(function(resolve, reject){
+    resolve({
+      uid:uid
+    });
   });
+  return promise;
+}
 
 
+function getUidCookie(input) {
+  var promise = new Promise(function(resolve, reject){
+    //Try to read uid cookie
+    if (typeof Cookies.get('uid') !== 'undefined') {
+      var uid = Cookies.get('uid');
+      window.dc_uid = uid;
+      resolve({
+        uid:uid,
+        input: input
+      });
+    } else {
+      window.location = '/dc/login.php';
+    }
+  });
+  return promise;
+}
 
-  function getUidCookie(input) {
-     var promise = new Promise(function(resolve, reject){
-      console.log('first');
-      //Try to read uid cookie
-      if (typeof Cookies.get('uid') !== 'undefined') {
-        var uid = Cookies.get('uid');
-        window.dc_uid = uid;
-        resolve({uid:uid, input: input});
-      } else {
-        //redirect
-        window.location = '/dc/login.php';
+/**
+ * Get the record from the api
+ */
+function getCart(data) {
+  var promise = new Promise(function(resolve, reject){
+    uid = data.uid;
+    input = data.input;
+    $.ajax({
+      url: "/dc_api/get_record/",
+      method: "GET",
+      data: {
+        uid:uid
       }
-     });
-     return promise;
-  }
+    }).done(function (result) {
+      json = JSON.stringify(result);
+      window.cart = cart = JSON.parse(json);
 
+      if(cart.city && cart.installation && cart.foundation) {
+        cart.checkoutReady = true;
+      } else {
+        cart.checkoutReady = false;
+      }
 
-  function getCart(data) {
-     var promise = new Promise(function(resolve, reject){
-        console.log('getCart');
-        console.log(data);
-        uid = data.uid;
-        input = data.input;
-        console.log(uid);
-        console.log(input);
+      if(cart.paymentIntentCreated){
+        cart.orderComplete = true;
+        lockInputs();
+      } else {
+        cart.orderComplete = false;
+      }
 
-          $.ajax({
-            url: "/dc_api/get_record/",
-            method: "GET",
-            data: {uid:uid}
-          }).done(function (result) {
-            json = JSON.stringify(result);
-            //console.log('Setting to localStorage with key:', key);
-            //localStorage.setItem(key, json);
-            window.cart = cart = JSON.parse(json);
-
-            if(cart.city && cart.installation && cart.foundation) {
-              cart.checkoutReady = true;
-              console.log('Checkout Ready!');
-            } else {
-              cart.checkoutReady = false;
-              console.log(':( NOT Checkout Ready!');
-            }
-            if( $('#idearoomConfigurator').length ) {
-              if( /[?&]designermode=/.test(location.search) ) {
-                //do nothing
-              } else {
-                var configURL = window.cart.configUrl;
-                var queryString = configURL.substring( configURL.indexOf('?') + 1 );
-                console.log('Step 1 string');
-                console.log(queryString);
-                //window.location = '/dc/step-1.php?designermode=true&' + queryString;
-              }
-            }
-            resolve(cart);
-          });
-        /*
-        if ( localStorage.getItem(key) ) {
-          console.log('Getting from localStorage instead');
-          // If it's in local storage execute callback immediately  
-          window.cart = cart = JSON.parse(localStorage.getItem(key));
-          resolve(cart);
+      if( $('#idearoomConfigurator').length ) {
+        if( /[?&]designermode=/.test(location.search) ) {
+          //do nothing
         } else {
-          console.log('No results locally, making XHR request...');
-          $.ajax({
-            url: "/dc_api/get_record/",
-            method: "GET",
-            data: {uid:key}
-          }).done(function (result) {
-            json = JSON.stringify(result);
-            console.log('Setting to localStorage with key:', key);
-            localStorage.setItem(key, json);
-            window.cart = cart = JSON.parse(json);
-            resolve(cart);
-          });
+          var configURL = window.cart.configUrl;
+          var queryString = configURL.substring( configURL.indexOf('?') + 1 );
+          //window.location = '/dc/step-1.php?designermode=true&' + queryString;
         }
-        */
-     });
-     return promise;
-  }
+      }
+      resolve(cart);
+    });
+  });
+  return promise;
+}
 
-  function renderCartLabels(cart) {
-     var promise = new Promise(function(resolve, reject){
-        console.log('third');
-        console.log(cart);
-        $('#header-total-label').text( cartTotalLabel(cart) );
-        $('#header-total-price').text( cartTotalPrice(cart) );
+function renderCartLabels(cart) {
+  var promise = new Promise(function(resolve, reject){
+      $('#header-total-label').text( cartTotalLabel(cart) );
+      $('#header-total-price').text( cartTotalPrice(cart) );
 
-        $('#cart-total-label').text( cartTotalLabel(cart) );
-        $('#cart-total-price').text( cartTotalPrice(cart) );
-        $('#cart-model-label').text( cartModelLabel(cart) );
-        $('#cart-model-price').text( cartModelPrice(cart) );
+      $('#cart-total-label').text( cartTotalLabel(cart) );
+      $('#cart-total-price').text( cartTotalPrice(cart) );
+      $('#cart-model-label').text( cartModelLabel(cart) );
+      $('#cart-model-price').text( cartModelPrice(cart) );
 
-        $('#cart-model-link').attr( 'href', cartModelLink(cart) );
+      $('a[data-menu-step="0"]').bind( 'click', function(e){
+        e.preventDefault();
+        window.location = '/dc/index.php';
+      });
 
-        //$('#loader-btn').attr('href', mobileConfiguratorLink(cart) );
 
-        if(cart.paymentIntentCreated){
-          $('a.paymentIntent').attr('href', '/dc/thank-you.php?c=' + cart.paymentIntentCreated + '&uid=' + cart.uniqueid );          
+      $('a[data-menu-step="1"]').bind( 'click', function(e){
+        e.preventDefault();
+        var configURL = window.cart.configUrl;
+        if(cart.model == 'portland') {
+          var queryString = configURL.substring( configURL.indexOf('#') + 1 );
+          window.location = '/dc/step-1.php?designermode=true&model=' + cart.model + '#' + queryString;
         } else {
-          $('a.paymentIntent').click(function(e) {
-            e.preventDefault();
-            $('#checkout-form').submit();
-          });
+          var queryString = configURL.substring( configURL.indexOf('?') + 1 );
+          window.location = '/dc/step-1.php?designermode=true&model=' + cart.model + '&' + queryString;
         }
-
-
-        $('#cart-location-label').text( cartLocationLabel(cart) );
-        $('#cart-location-price').text( cartLocationPrice(cart) );
-
-        $('#cart-permits-label').text( cartPermitPlansLabel(cart) );
-        $('#cart-permits-price').text( cartPermitPlansPrice(cart) );
-
-
-        $('#cart-installation-label').text( cartInstallationLabel(cart) );
-        $('#cart-installation-price').text( cartInstallationPrice(cart) );
-
-        $('#cart-foundation-label').text( cartFoundationLabel(cart) );
-
-        $('#cart-order-label').text( cartOrderLabel(cart) );
-
-        if(cart.city && cart.shipping) {
-          $('#progress-step-2').addClass('active');
+      });
+      $('a[data-menu-step="2"]').bind( 'click', function(e){
+        e.preventDefault();
+        window.location = '/dc/step-2.php';
+      });
+      $('a[data-menu-step="3"]').bind( 'click', function(e){
+        e.preventDefault();
+        window.location = '/dc/step-3.php';
+      });
+      $('a[data-menu-step="4"]').bind( 'click', function(e){
+        e.preventDefault();
+        if(window.cart.paymentIntentCreated){
+          window.location = '/dc/thank-you.php?c=' + cart.paymentIntentCreated + '&uid=' + cart.uniqueid ;
+        } else {
+          $('#checkout-form').submit();
         }
+      });
 
-        if(cart.installation && cart.foundation) {
-          $('#progress-step-3').addClass('active');
-        }
-
-        if(cart.paymentIntentId) {
-          $('#progress-step-4').addClass('active');
-        }
-
-        $('#final-estimate').text( cartTotalPrice(cart) );
-        $('#initial-payment').text( cartInitialPayment(cart) );
-        $('#stripe-fee').val( cartStripeFee(cart) );
-
-        $('#intro-first-name').text( cart.firstName );
-        $('#intro-config').text( cartModelLabel(cart) );
-        $('#intro-config-link').attr( 'href', cartModelLink(cart) );
-        $('#intro-location').text( cartLocationLabel(cart) );
-        $('#intro-installation').text( cartFoundationLabel(cart) + ' & ' + cartInstallationLabel(cart));
-        $('#intro-order').text( cartOrderLabel(cart) );
+      $('#cart-location-label').text( cartLocationLabel(cart) );
+      $('#cart-location-price').text( cartLocationPrice(cart) );
+      $('#cart-permits-label').text( cartPermitPlansLabel(cart) );
+      $('#cart-permits-price').text( cartPermitPlansPrice(cart) );
+      $('#cart-installation-label').text( cartInstallationLabel(cart) );
+      $('#cart-installation-price').text( cartInstallationPrice(cart) );
+      $('#cart-foundation-label').text( cartFoundationLabel(cart) );
+      $('#cart-order-label').text( cartOrderLabel(cart) );
+      $('#final-estimate').text( cartTotalPrice(cart) );
+      $('#initial-payment').text( cartInitialPayment(cart) );
+      $('#stripe-fee').val( cartStripeFee(cart) );
+      $('#intro-first-name').text( cart.firstName );
+      $('#intro-config').text( cartModelLabel(cart) );
+      $('#intro-location').text( cartLocationLabel(cart) );
+      $('#intro-installation').text( cartFoundationLabel(cart) + ' & ' + cartInstallationLabel(cart));
+      $('#intro-order').text( cartOrderLabel(cart) );
 
 
-        var paidDate = new Date(cart.paymentIntentCreated * 1000);
-        var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-        var year = paidDate.getFullYear();
-        var month = months[paidDate.getMonth()];
-        var date = paidDate.getDate();
-        var paidDateString = month + ' ' + date + ', ' + year;
+      var paidDate = new Date(cart.paymentIntentCreated * 1000);
+      var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      var year = paidDate.getFullYear();
+      var month = months[paidDate.getMonth()];
+      var date = paidDate.getDate();
+      var paidDateString = month + ' ' + date + ', ' + year;
 
-        $('#summary-name').text( cart.firstName + ' ' + cart.lastName );
-        $('#summary-location').text( cart.city );
-        $('#summary-email').text( cart.email );
-        $('#summary-config-id').text( cart.uniqueid );
+      $('#summary-name').text( cart.firstName + ' ' + cart.lastName );
+      $('#summary-location').text( cart.city );
+      $('#summary-email').text( cart.email );
+      $('#summary-config-id').text( cart.uniqueid );
+      $('#summary-config-render').attr('src', cart.imageUrl );
+      $('#summary-config-model').text( cart.model );
 
-        $('#summary-config-render').attr('src', cart.imageUrl );
-
-        //Size
+      if(cart.size) {
         $('#summary-config-size').text( cart.size );
         $('#summary-config-size-price').text( formatMoney(cart.sizePrice) );
+      }
 
-        //Siding
+      if(cart.siding) {
         $('#summary-config-siding').text( cart.siding );
         $('#summary-config-siding-price').text( formatMoney(cart.sidingPrice) );
+      }
 
-        //Left
+      if(cart.left) {
         $('#summary-config-left').text( cart.left );
         $('#summary-config-left-price').text( formatMoney(cart.leftPrice) );
+      }
 
-        //Back
-        if(cart.back) {
-          $('#summary-config-back').text( cart.back );
-          $('#summary-config-back-price').text( formatMoney(cart.backPrice) );
-        }
+      if(cart.back) {
+        $('#summary-config-back').text( cart.back );
+        $('#summary-config-back-price').text( formatMoney(cart.backPrice) );
+      }
 
-        //Front
+      if(cart.front) {
         $('#summary-config-front').text( cart.front );
         $('#summary-config-front-price').text( formatMoney(cart.frontPrice) );
+      }
 
-        //Right
+      if(cart.right) {
         $('#summary-config-right').text( cart.right );
         $('#summary-config-right-price').text( formatMoney(cart.rightPrice) );
+      }
 
-        //Siding Color
+      if(cart.sidingColor) {
         $('#summary-config-siding-color').text( cart.sidingColor );
         $('#summary-config-siding-color-price').text( formatMoney(cart.sidingColorPrice) );
+      }
 
-        //Door Color
+      if(cart.doorColor) {
         $('#summary-config-door-color').text( cart.doorColor );
         $('#summary-config-door-color-price').text( formatMoney(cart.doorColorPrice) );
-
-        //Eaves Color
-        if(cart.model == 'portland') {
-          $('#summary-config-eaves-color').text( cart.eaveColor );
-          $('#summary-config-eaves-color-price').text( formatMoney(cart.eaveColorPrice) );
-        } else {
-          $('#summary-config-eaves-color').text( cart.eavesColor );
-          $('#summary-config-eaves-color-price').text( formatMoney(cart.eavesColorPrice) );
-        }
-
-
-
-        //Accessory
-        if(cart.accessory0Price) {
-          $('#summary-config-accessory0').text( cart.accessory0 );
-          $('#summary-config-accessory0-price').text( formatMoney(cart.accessory0Price) );
-        } else {
-          $('#accessory0-row').hide();
-        }
-
-        if(cart.accessory1Price) {
-          $('#summary-config-accessory1').text( cart.accessory1 );
-          $('#summary-config-accessory1-price').text( formatMoney(cart.accessory1Price) );
-        } else {
-          $('#accessory1-row').hide();
-        }
-
-        if(cart.accessory2Price) {
-          $('#summary-config-accessory2').text( cart.accessory2 );
-          $('#summary-config-accessory2-price').text( formatMoney(cart.accessory2Price) );
-        } else {
-          $('#accessory2-row').hide();
-        }
-
-        if(cart.accessory3Price) {
-          $('#summary-config-accessory3').text( cart.accessory3 );
-          $('#summary-config-accessory3-price').text( formatMoney(cart.accessory3Price) );
-        } else {
-          $('#accessory3-row').hide();
-        }
-
-        if(cart.accessory4Price) {
-          $('#summary-config-accessory4').text( cart.accessory4 );
-          $('#summary-config-accessory4-price').text( formatMoney(cart.accessory4Price) );
-        } else {
-          $('#accessory4-row').hide();
-        }
-
-        //Interior
-        if(cart.interiorPrice) {
-          $('#summary-config-interior').text( cart.interior );
-          $('#summary-config-interior-price').text( formatMoney(cart.interiorPrice) );
-        } else {
-          $('#optional-interior-row').hide();
-        }
-
-        //Shipping
-        $('#summary-config-shipping').text( cart.shipping + ' to ' + cart. city + ' (' + cart.zip + ')' );
-        $('#summary-config-shipping-price').text( formatMoney(cart.shippingPrice) );
-
-        //Permit Plans Set
-        $('#summary-config-permit-plans').text( cart.permitPlans ? 'Yes' : 'No' );
-        $('#summary-config-permit-plans-price').text( formatMoney(cart.permitPlansPrice) );
-
-        //Foundation Type
-        $('#summary-config-foundation').text( cart.foundation );
-
-        //Installation
-        $('#summary-config-installation').text( cart.installation );
-        $('#summary-config-installation-price').text( formatMoney(cart.installationPrice) );
-
-        $('#summary-config-total-price').text( cartTotalPrice(cart) );
-
-        //Reciept
-        $('#summary-config-initial-payment-date').text( 'Paid ' + paidDateString );
-         $('#summary-config-initial-payment-price').text( cartInitialPayment(cart) );
-
-        resolve(cart);
-
-     });
-     return promise;
-  }
-
-
-
-  $(".shed").on('shown.bs.collapse', function(){
-    $('#show-details').text('Hide Details');
-  });
-
-  $(".shed").on('hidden.bs.collapse', function(){
-    $('#show-details').text('Show Details');
-  });
-
-
-
-  function renderPermitElements(cart) {
-    var promise = new Promise(function(resolve, reject){
-      console.log('renderPermitElements');
-      console.log(cart);
-      if(cart.permitPlans) {
-        $('a.option-permitPlans[data-permitPlans="true"]').addClass('selected');
-      } else {
-        $('a.option-permitPlans[data-permitPlans="false"]').addClass('selected');
-      }
-      resolve(cart);
-   });
-   return promise;
-  }
-
-
-  function renderShippingElements(cart) {
-    //get shipping fields and populate
-    var promise = new Promise(function(resolve, reject){
-      console.log('renderShippingElements');
-      console.log(cart);
-      $('#zip-label').val(cart.zip);
-      $('#shipping-time-label').text(cart.shipping);
-      $('#shipping-cost-label').text('$'+cart.shippingPrice);
-      $('#city-label').text(cart.city);
-
-      $('#permit-notes-city-label').text(cart.city).fadeIn();
-
-      $('#permit-message').text('You may be required to obtain local building permits.');
-      $('#permit-time-label').text('Typically 2-3 weeks');
-      $('#permit-cost-label').text('Typical range is $400 - $1,800');
-
-      if (cart.permitTime) {
-        $('#permit-time-label').text(cart.permitTime);
       }
 
-      if (cart.permitCost) {
-        $('#permit-cost-label').text(cart.permitCost);
-      }
-
-      if(cart.permitNotes) {
-        $('#permit-notes-text').text(cart.permitNotes);
-        $('.dc-permit-notes').removeClass('fade');
-      } else {
-        $('#permit-notes-text').text('');
-        $('.dc-permit-notes').addClass('fade');
-      }
-
-      if(cart.length <= 12) {
-        $('#permit-message').text('Based off your location and configuration, build permits may not be required. Please check with your local municipality.');
-      }
-     
-
-      $('#submit-zip-spinner').delay(500).fadeOut(function() {
-        $(this).prev().attr('disabled', false); 
-        $('#estimate-step-2').removeClass('unchecked').addClass('checked');
-        $('#permit-notes').fadeIn();
-      });
-      resolve(cart);
-   });
-   return promise;
-  }
-
-
-  function renderInstallationElements(cart) {
-    var promise = new Promise(function(resolve, reject){
-        console.log('renderInstallationElements');
-        console.log(cart);
-        //Figure out installation code
-        $.ajax({
-          url: "/dc_api/get_installation_rates",
-          method: "GET",
-          data: {
-            model: cart.model,
-            state: cart.state,
-            zip: cart.zip,
-            length: cart.length,
-            depth: cart.depth
-          }
-        }).done(function (rates) {
-          //mark previously chosen foundations
-          $('a.option-foundation[data-foundation="'+cart.foundation+'"]').addClass('selected');
-          //mark previously chosen installations
-          $('a.option-installation[data-installation="'+cart.installation+'"]').addClass('selected');
-
-          $('#select-certified-install-1')
-          .attr('data-installation-price', rates.shell)
-          .find('span.cost').text('+ ' + formatMoney(rates.shell));
-
-          $('#select-certified-install-2')
-          .attr('data-installation-price', rates.lifestyle)
-          .find('span.cost').text('+ ' + formatMoney(rates.lifestyle));
-          resolve(cart);
-        });
-
-
-
-
-
-     });
-     return promise;
-  }
-
-
-
-
-  function updatePermitPlansSelection(data) {
-    var promise = new Promise(function(resolve, reject){
-      console.log('calling updatePermitPlansSelection with this:');
-      console.log(data);
-      $('a.option-permitPlans').removeClass('selected');
-      $('a.option-permitPlans[data-permitPlans="'+data.input.permitPlans+'"]').addClass('selected');
-      resolve(data);
-    });
-    return promise;
-  }
-
-
-  function updateFoundationSelection(data) {
-    var promise = new Promise(function(resolve, reject){
-      console.log('calling updateFoundationSelection with this:');
-      console.log(data);
-      $('a.option-foundation').removeClass('selected');
-      $('a.option-foundation[data-foundation="'+data.input.foundation+'"]').addClass('selected');
-      resolve(data);
-    });
-    return promise;
-  }
-
-  function updateInstallationSelection(data) {
-    var promise = new Promise(function(resolve, reject){
-      console.log('updateInstallationSelection');
-      console.log(data);
-      $('a.option-installation').removeClass('selected');
-      $('a.option-installation[data-installation="'+data.input.installation+'"]').addClass('selected');
-      resolve(data);
-    });
-    return promise;
-  }
-
-
-  function cartRenderDone(cart) {
-    if(cart.checkoutReady) {
-      //do nothing
-    } else {
-      $('#cart').empty().append('<h6 class="text-center">Finish choosing your location and installation details to complete your order.</h6>');
-      $('#checkout').empty();
-    }
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-      console.log('device!');
-      console.log(cart);
       if(cart.model == 'portland') {
-        $('#shedConfigurator').empty();
-        $('#mobile-portland').show();
+        $('#summary-config-eaves-color').text( cart.eaveColor );
+        $('#summary-config-eaves-color-price').text( formatMoney(cart.eaveColorPrice) );
+      } else {
+        $('#summary-config-eaves-color').text( cart.eavesColor );
+        $('#summary-config-eaves-color-price').text( formatMoney(cart.eavesColorPrice) );
       }
-    }
-  }
 
-  function cartTotalLabel(cart) {
-    if(cart.shippingPrice || cart.installPrice) {
-      return "Estimated total:";
-    }
-    return "Starting at:";
-  }
+      if(cart.accessory0Price) {
+        $('#summary-config-accessory0').text( cart.accessory0 );
+        $('#summary-config-accessory0-price').text( formatMoney(cart.accessory0Price) );
+      } else {
+        $('#accessory0-row').hide();
+      }
 
-  function cartTotalPrice(cart) {
-    fig =  cart.total
-    + ( parseInt(cart.shippingPrice) || 0 )
-    + ( parseInt(cart.installationPrice) || 0 )
-    + ( parseInt(cart.foundationPrice) || 0 )
-    + ( parseInt(cart.permitPlansPrice) || 0 )
-    + ( parseInt(cart.servicePrice) || 0 );
-    return fig.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
-    //return fig;
-  }
+      if(cart.accessory1Price) {
+        $('#summary-config-accessory1').text( cart.accessory1 );
+        $('#summary-config-accessory1-price').text( formatMoney(cart.accessory1Price) );
+      } else {
+        $('#accessory1-row').hide();
+      }
 
-  function cartInitialPayment(cart) {
-    fig =  cart.total
-    + ( parseInt(cart.shippingPrice) || 0 )
-    + ( parseInt(cart.installationPrice) || 0 )
-    + ( parseInt(cart.foundationPrice) || 0 )
-    + ( parseInt(cart.permitPlansPrice) || 0 )
-    + ( parseInt(cart.servicePrice) || 0 );
-    fig = fig/2;
-    return fig.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 });
-  }
+      if(cart.accessory2Price) {
+        $('#summary-config-accessory2').text( cart.accessory2 );
+        $('#summary-config-accessory2-price').text( formatMoney(cart.accessory2Price) );
+      } else {
+        $('#accessory2-row').hide();
+      }
 
-  function cartStripeFee(cart) {
-    fig =  cart.total
-    + ( parseInt(cart.shippingPrice) || 0 )
-    + ( parseInt(cart.installationPrice) || 0 )
-    + ( parseInt(cart.foundationPrice) || 0 )
-    + ( parseInt(cart.permitPlansPrice) || 0 )
-    + ( parseInt(cart.servicePrice) || 0 );
-    fig = (fig/2)*100;
-    return fig;
-  }
+      if(cart.accessory3Price) {
+        $('#summary-config-accessory3').text( cart.accessory3 );
+        $('#summary-config-accessory3-price').text( formatMoney(cart.accessory3Price) );
+      } else {
+        $('#accessory3-row').hide();
+      }
+
+      if(cart.accessory4Price) {
+        $('#summary-config-accessory4').text( cart.accessory4 );
+        $('#summary-config-accessory4-price').text( formatMoney(cart.accessory4Price) );
+      } else {
+        $('#accessory4-row').hide();
+      }
+
+      if(cart.interiorPrice) {
+        $('#summary-config-interior').text( cart.interior );
+        $('#summary-config-interior-price').text( formatMoney(cart.interiorPrice) );
+      } else {
+        $('#optional-interior-row').hide();
+      }
+
+      $('#summary-config-shipping').text( cart. city + ' (' + cart.zip + ')' );
+      $('#summary-config-shipping-price').text( formatMoney(cart.shippingPrice) );
+
+      $('#summary-config-permit-plans').text( cart.permitPlans ? 'Yes' : 'No' );
+      $('#summary-config-permit-plans-price').text( formatMoney(cart.permitPlansPrice) );
+
+      $('#summary-config-foundation').text( cart.foundation );
+
+      $('#summary-config-installation').text( cart.installation );
+      $('#summary-config-installation-price').text( formatMoney(cart.installationPrice) );
+
+      $('#summary-config-total-price').text( cartTotalPrice(cart) );
+
+      $('#summary-config-initial-payment-date').text( 'Paid ' + paidDateString );
+      $('#summary-config-initial-payment-price').text( cartInitialPayment(cart) );
+
+      if(cart.city && cart.shippingPrice) {
+        $('li[data-progress-step="2"]').addClass('active');
+      }
+
+      if(cart.installation && cart.foundation) {
+        $('li[data-progress-step="3"]').addClass('active');
+      }
+
+      if(cart.paymentIntentId) {
+        $('li[data-progress-step="4"]').addClass('active');
+      }
+
+      if(cart.city === undefined) {
+        $('#step-location').prepend('<span class="badge badge-pill badge-primary">Next Step</span> ');
+      }
+
+      if(cart.city != undefined && cart.installation === undefined) {
+        $('#step-installation').prepend('<span class="badge badge-pill badge-primary">Next Step</span> ');
+      }
+
+      if(cart.city != undefined && cart.installation != undefined && cart.paymentIntentId === undefined) {
+        $('#step-order').prepend('<span class="badge badge-pill badge-primary">Next Step</span> ');
+      }
+
+      resolve(cart);
+
+   });
+   return promise;
+}
 
 
-  function cartModelLabel(cart) {
-    return cart.depth + ' x ' + cart.length + ' ' + cart.model + ' series';
-  }
-
-  function cartModelPrice(cart) {
-    return cart.total.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });    
-  }
-
-  function cartModelLink(cart) {
-    var configURL = window.cart.configUrl;
-    if(cart.model == 'portland') {
-      var queryString = configURL.substring( configURL.indexOf('#') + 1 );
-      return '/dc/step-1.php?designermode=true&model=' + cart.model + '#' + queryString;
-    } else {
-      var queryString = configURL.substring( configURL.indexOf('?') + 1 );
-      return '/dc/step-1.php?designermode=true&model=' + cart.model + '&' + queryString;
-    }
-  }
-
-  function mobileConfiguratorLink(cart) {
-    var configURL = window.cart.configUrl;
-    var queryString = configURL.substring( configURL.indexOf('?') + 1 );
-    return '/dc/mobile-configurator.php?designermode=true&model=' + cart.model + '&' + queryString;    
-  }
-
-
-  function cartLocationLabel(cart) {
-    if(cart.city) {
-      return 'Shipping to ' + cart.city;
-    }
-    return 'Specify your location';
-  }
-  function cartLocationPrice(cart) {
-    console.log('cartLocationPrice');
-    console.log(cart);
-    if(cart.shippingPrice) {
-      return parseInt(cart.shippingPrice).toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
-    }
-  }
-
-  function cartPermitPlansLabel(cart) {
+function renderPermitElements(cart) {
+  var promise = new Promise(function(resolve, reject){    
     if(cart.permitPlans) {
-      return 'Permit plans set included';
+      $('a.option-permitPlans[data-permitPlans="true"]').addClass('selected');
+    } else {
+      $('a.option-permitPlans[data-permitPlans="false"]').addClass('selected');
     }
-    return 'No permit plans set included';
-  }
-  function cartPermitPlansPrice(cart) {
-    if(cart.permitPlansPrice) {
-      return parseInt(cart.permitPlansPrice).toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
+    resolve(cart);
+ });
+ return promise;
+}
+
+
+function renderShippingElements(cart) {
+  //get shipping fields and populate
+  var promise = new Promise(function(resolve, reject){
+    $('#zip-label').val(cart.zip);
+    $('#shipping-time-label').text(cart.shipping);
+    $('#shipping-cost-label').text('$'+cart.shippingPrice);
+    $('#city-label').text(cart.city);
+
+    $('#permit-notes-city-label').text(cart.city).fadeIn();
+
+    $('#permit-message').text('You may be required to obtain local building permits.');
+    $('#permit-time-label').text('Typically 2-3 weeks');
+    $('#permit-cost-label').text('Typical range is $400 - $1,800');
+
+    if (cart.permitTime) {
+      $('#permit-time-label').text(cart.permitTime);
     }
-  }
 
-
-  function cartInstallationLabel(cart) {
-    if(cart.installation) {
-      return cart.installation + ' installation';
+    if (cart.permitCost) {
+      $('#permit-cost-label').text(cart.permitCost);
     }
-    return 'Select installation type';
-  }
 
-  function cartInstallationPrice(cart) {
-    if(cart.installationPrice) {
-      return parseInt(cart.installationPrice).toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
+    if(cart.permitNotes) {
+      $('#permit-notes-text').text(cart.permitNotes);
+      $('.dc-permit-notes').removeClass('fade');
+    } else {
+      $('#permit-notes-text').text('');
+      $('.dc-permit-notes').addClass('fade');
     }
-  }
 
-
-  function cartFoundationLabel(cart) {
-    if(cart.foundation) {
-      return cart.foundation + ' foundation';
+    if( (cart.length*cart.depth) <= 120) {
+      $('#permit-message').text('Based off your location and configuration, build permits may not be required. Please check with your local municipality.');
     }
-    return 'Select foundation type';
-  }
 
-  function cartOrderLabel(cart) {
-    if(cart.paymentIntentCreated) {
-      return 'Initial payment submitted';
-    }
-    return 'Submit your initial payment';
-  }
+    resolve(cart);
+ });
+ return promise;
+}
 
 
-  function formatMoney(number) {
-    return parseInt(number).toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
-    
-  }
-
-
-  function updateRecordPermitPlans(data){
-    console.log('calling updateRecordFoundation with this:');
-    console.log(data);
-    return $.ajax({
-      url: "/dc_api/update_record_permit_plans/",
-      method: "POST",
-      dataType: 'json',
-      contentType: 'application/json',
-      data: JSON.stringify(data)
-    });
-  }
-
-
-
-  function updateRecordFoundation(data){
-    console.log('calling updateRecordFoundation with this:');
-    console.log(data);
-    return $.ajax({
-      url: "/dc_api/update_record_foundation/",
-      method: "POST",
-      dataType: 'json',
-      contentType: 'application/json',
-      data: JSON.stringify(data)
-    });
-  }
-
-
-  function updateRecordInstallation(data){
-    console.log('calling updateRecordInstallation with this:');    
-    console.log(data);
-    return $.ajax({
-      url: "/dc_api/update_record_installation/",
-      method: "POST",
-      dataType: 'json',
-      contentType: 'application/json',
-      data: JSON.stringify(data)
-    });
-  }
-
-
-  function fetchLocationDetails(zip,cart) {
-    return $.ajax({
-      url: "/dc_api/get_location_details/",
-      method: "POST",
-      data: { 
-        zip: zip, 
-        length: cart.length, 
-        interior: cart.interiorSKU, 
-        depth: cart.depth, 
-        area: cart.area 
-      }
-    });
-  }
-
-
-  function updateRecordLocation(data, textStatus, jqXHR){
-    data.uid = window.dc_uid;
-    console.log('calling updateRecordLocation with this:');
-    console.log(textStatus);
-    console.log(data);
-    return $.ajax({
-      url: "/dc_api/update_record_location/",
-      method: "POST",
-      dataType: 'json',
-      contentType: 'application/json',
-      data: JSON.stringify(data)
-    });
-  }
-
-  function renderLocationLabels(data, textStatus, jqXHR){
-    console.log('calling renderLocationLabels with this:');
-    console.log(textStatus);
-    console.log(data);
-    var request = $.ajax({
-      url: "/dc_api/get_record/",
-      method: "GET",
-      data: {uid:data.uid}
-    });
-    request.done(function(data){
-      console.log('final result');
-      console.log(data);
-      key = data.uniqueid;
-      json = JSON.stringify(data);
-      //console.log('Setting to localStorage with key:', key);
-      //localStorage.setItem(key, json);
-      window.cart = cart = JSON.parse(json);
-      $('#shipping-time-label').text(cart.shipping).fadeIn();
-      $('#shipping-cost-label').text(formatMoney(cart.shippingPrice)).fadeIn();
-      $('#city-label').text(cart.city).fadeIn();
-      $('#cart-location-label').text( cartLocationLabel(cart) );
-      $('#permit-time-label').text(cart.permitTime).fadeIn();
-      $('#permit-cost-label').text(cart.permitCost).fadeIn();
-      $('#permit-notes-city-label').text(cart.city).fadeIn();
-      if(cart.permitNotes) {
-        $('#permit-notes-text').text(cart.permitNotes);
-        $('.dc-permit-notes').removeClass('fade');
-      }
-      $('#submit-zip-spinner').delay(500).fadeOut(function() {
-        $(this).prev().attr('disabled', false); 
-        $('#estimate-step-2').removeClass('unchecked').addClass('checked');
-      });
-    });
-
-    request.fail(function(jqXHR, textStatus) {
-      console.log("Request failed: " + textStatus);
-    });
-  }
-
-
-  function updateRecord(uid, key, value, price) {
-    request = $.ajax({
-      url: "/dc_api/update_record/",
-      method: "POST",
-      data: {
-        uid: uid,
-        key: key,
-        value: value,
-        price: price
-      },
-      dataType: "json"
-    });
-
-    request.done(function(data){
-      console.log( 'data loaded:');
-      console.log(data);
-    });
-
-    request.fail(function(jqXHR, textStatus) {
-      console.log("Request failed: " + textStatus);
-    });
-  }
-
-
-
-  function getRecord(uid) {
-    return $.ajax({
-      url: "/dc_api/get_record/",
-      method: "GET",
-      data: {uid:uid}
-    });
-  }
-
-
-  function getRecordDebug(uid) {
-    request = $.ajax({
-      url: "/dc_api/get_record/",
+function renderInstallationElements(cart) {
+  var promise = new Promise(function(resolve, reject){
+    //Figure out installation code
+    $.ajax({
+      url: "/dc_api/get_installation_rates",
       method: "GET",
       data: {
-        uid: uid
+        model: cart.model,
+        state: cart.state,
+        zip: cart.zip,
+        length: cart.length,
+        depth: cart.depth
       }
+    }).done(function (rates) {
+      //mark previously chosen foundations
+      $('a.option-foundation[data-foundation="'+cart.foundation+'"]').addClass('selected');
+      //mark previously chosen installations
+      $('a.option-installation[data-installation="'+cart.installation+'"]').addClass('selected');
+
+      $('#select-certified-install-1')
+      .attr('data-installation-price', rates.shell)
+      .find('span.cost').text('+ ' + formatMoney(rates.shell));
+
+      $('#select-certified-install-2')
+      .attr('data-installation-price', rates.lifestyle)
+      .find('span.cost').text('+ ' + formatMoney(rates.lifestyle));
+      resolve(cart);
     });
-    request.done(function(data){
-      console.log( "data loaded:");
-      console.log(data);
-    });
-    request.fail(function(jqXHR, textStatus) {
-      console.log("Request failed: " + textStatus);
-    });
+  });
+ return promise;
+}
+
+
+function updatePermitPlansSelection(data) {
+  var promise = new Promise(function(resolve, reject){
+    $('a.option-permitPlans').removeClass('selected');
+    $('a.option-permitPlans[data-permitPlans="'+data.input.permitPlans+'"]').addClass('selected');
+    resolve(data);
+  });
+  return promise;
+}
+
+
+function updateFoundationSelection(data) {
+  var promise = new Promise(function(resolve, reject){
+    $('a.option-foundation').removeClass('selected');
+    $('a.option-foundation[data-foundation="'+data.input.foundation+'"]').addClass('selected');
+    resolve(data);
+  });
+  return promise;
+}
+
+
+function updateInstallationSelection(data) {
+  var promise = new Promise(function(resolve, reject){
+    $('a.option-installation').removeClass('selected');
+    $('a.option-installation[data-installation="'+data.input.installation+'"]').addClass('selected');
+    resolve(data);
+  });
+  return promise;
+}
+
+
+function cartRenderDone(cart) {
+  if(cart.checkoutReady) {
+    //do nothing
+  } else {
+    $('#cart').empty().append('<h6 class="text-center">Finish choosing your location and installation details to complete your order.</h6>');
+    $('#checkout').empty();
   }
-
-  function createRecord(json) {
-    request = $.ajax({
-      url: '/dc_api/save_record/',
-      method: 'POST',
-      dataType: 'json',
-      contentType: 'application/json',
-      data: JSON.stringify(json)
-    });
-    request.done(function(data){
-      console.log( 'data loaded:');
-      console.log(data);
-    });
-    request.fail(function(jqXHR, textStatus) {
-      console.log('Request failed: ' + textStatus);
-    });
-  }
-
-
-  function lookupEmail(email) {
-    request = $.ajax({
-      url: "/dc_api/lookup_email/",
-      method: "GET",
-      data: {email:email}
-    });
-    request.done(function(data){
-      console.log( "data loaded:");
-      console.log(data);
-    });
-    request.fail(function(jqXHR, textStatus) {
-      console.log("Request failed: " + textStatus);
-    });
-  }
-
-
-  function getLocationDetails(zip) {
-    request = $.ajax({
-      url: "/dc_api/get_location_details/",
-      method: "POST",
-      data: {zip:zip}
-      //dataType: "json"
-    });
-    request.done(function(data){
-      console.log( 'data loaded:');
-      console.log(data);
-    });
-
-    request.fail(function(jqXHR, textStatus) {
-      console.log("Request failed: " + textStatus);
-    });
-  }
-
-  var obj = {
-    "customer": {
-      "contact": true,
-      "newsletter": true,
-      "phone": "2085595350",
-      "firstName": "Rolz",
-      "lastName": "G",
-      "email": "rolando.garcia@businessol.com"
-    },
-    "product": {
-      "uniqueid": "rolo-123456789",
-      "depth": 10,
-      "length": 18,
-      "front": "F18-60L-D36R-BL",
-      "back": "B18-18L-BL",
-      "left": "L10x-18C-BL",
-      "right": "R10x-W1L-BL",
-      "sidingColor": "Volcano Gray",
-      "doorColor": "Fireworks",
-      "metalColor": "Bronze",
-      "doorStyleKey": "full-lite-glass-door",
-      "elevation": "iso",
-      "configUrl": "http://localhost:8081/configurator.html?depth=10&length=18&trim=Lap%2FMetal&sidingColor=Volcano+Gray&doorColor=Fireworks&eaveColor=Natural+Stain&metalColor=&floorOption=Vermont+Maple&bathroomFloorOption=&cabinetColor=&countertopColor=&options%5B%5D=Shortened+Eaves&options%5B%5D=Dark+Bronze+Aluminum&front=F18-60L-D36R-BL&back=B18-18L-BL&left=L10x-18C-BL&right=R10x-W1L-BL&foundation=Foundation&doorStyleKey=full-lite-glass-door",
-      "imageUrl": null,
-      "cart": {
-        "items": [
-          {
-            "name": "Size",
-            "sku": null,
-            "description": "10' x 18' Base Price",
-            "price": 13840,
-            "category": "building-size"
-          },
-          {
-            "name": "Siding",
-            "sku": null,
-            "description": "Lap/Metal",
-            "price": 0,
-            "category": "exterior-siding"
-          },
-          {
-            "name": "Left",
-            "sku": "L10x-18C-BL",
-            "description": "Centered 18\" x 36\" Operable Window",
-            "price": 525,
-            "category": "exterior-wall"
-          },
-          {
-            "name": "Back",
-            "sku": "B18-18L-BL",
-            "description": "Left Justified 18\" x 36\" Operable Window",
-            "price": 525,
-            "category": "exterior-wall"
-          },
-          {
-            "name": "Front",
-            "sku": "F18-60L-D36R-BL",
-            "description": "Left Justified 60\" x 30\" Fixed Over Operable Window, Right Justified 36\" Door",
-            "price": 1395,
-            "category": "exterior-wall"
-          },
-          {
-            "name": "Right",
-            "sku": "R10x-W1L-BL",
-            "description": "Left Justified Vistalite (Fixed Vertical Window)",
-            "price": 950,
-            "category": "exterior-wall"
-          },
-          {
-            "name": "Door Color",
-            "sku": null,
-            "description": "Fireworks",
-            "price": 300,
-            "category": "exterior-color"
-          },
-          {
-            "name": "Eaves Color",
-            "sku": null,
-            "description": "Natural Stain",
-            "price": 1260,
-            "category": "exterior-color"
-          },
-          {
-            "name": "Siding Color",
-            "sku": null,
-            "description": "Volcano Gray",
-            "price": 0,
-            "category": "exterior-color"
-          },
-          {
-            "name": "Accessory",
-            "sku": null,
-            "description": "Dark Bronze Aluminum",
-            "price": 1440,
-            "category": "exterior-accessory"
-          },
-          {
-            "name": "Accessory",
-            "description": "Full-Lite Glass Door",
-            "price": 390,
-            "category": "exterior-accessory"
-          },
-          {
-            "name": "Accessory",
-            "sku": null,
-            "description": "Back Eaves Shortened to 6\"",
-            "price": 180,
-            "category": "interior-accessory"
-          },
-          {
-            "name": "Foundation",
-            "sku": null,
-            "description": "",
-            "price": 0,
-            "priceListText": "TBD",
-            "category": "foundation"
-          },
-          {
-            "name": "Service",
-            "sku": null,
-            "description": "",
-            "price": 0,
-            "priceListText": "TBD",
-            "category": "service"
-          },
-          {
-            "name": "Shipping",
-            "sku": null,
-            "description": "",
-            "price": 0,
-            "priceListText": "TBD",
-            "category": "shipping"
-          }
-        ],
-        "total": 20805,
-        "baseTotal": 20805,
-        "payment": 10402.5,
-        "discount": 0,
-        "discountAmount": 0,
-        "discountPercent": 0
-      }
-    },
-    "params": {
-      "utm_source": "(direct)",
-      "utm_medium": "(none)",
-      "utm_campaign": "(not set)",
-      "gclid": "undefined",
-      "visitor_id": "c32b183e-bb73-40e6-8c27-2bbd241368c2"
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    if(cart.model == 'portland') {
+      $('#shedConfigurator').empty();
+      $('#mobile-portland').show();
     }
-  };
+  }
+}
 
-  //Action stages
-  //createRecord(obj);
-  //getRecord('craig-200218154413');
-  //lookupEmail('rolando.garcia@businessol.com');
-  //getLocationDetails('92108');
-  //updateRecord('craig-200218154413', 'zip', '92018', 0);
-  //updateRecord('craig-200218154413', 'shipping', '5 weeks',  3000);
-  //updateRecord('craig-200218154413', 'foundation', 'concrete',  500);
-  //updateRecord('craig-200218154413', 'plans', 'permit plan set',  2500);
-  //updateRecord('craig-200218154413', 'service', 'certified install',  5000);
+function cartTotalLabel(cart) {
+  if(cart.shippingPrice || cart.installPrice) {
+    return "Estimated total:";
+  }
+  return "Starting at:";
+}
 
-  getUidCookie()
-    .then(getCart)
-    .then(renderCartLabels)
-    .then(renderShippingElements)
-    .then(renderPermitElements)
-    .then(renderInstallationElements)
-    .then(cartRenderDone);
+function cartTotalPrice(cart) {
+  fig =  cart.total
+  + ( parseInt(cart.shippingPrice) || 0 )
+  + ( parseInt(cart.installationPrice) || 0 )
+  + ( parseInt(cart.foundationPrice) || 0 )
+  + ( parseInt(cart.permitPlansPrice) || 0 )
+  + ( parseInt(cart.servicePrice) || 0 );
+  return fig.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
+  //return fig;
+}
+
+function cartInitialPayment(cart) {
+  fig =  cart.total
+  + ( parseInt(cart.shippingPrice) || 0 )
+  + ( parseInt(cart.installationPrice) || 0 )
+  + ( parseInt(cart.foundationPrice) || 0 )
+  + ( parseInt(cart.permitPlansPrice) || 0 )
+  + ( parseInt(cart.servicePrice) || 0 );
+  fig = fig/2;
+  return fig.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 });
+}
+
+function cartStripeFee(cart) {
+  fig =  cart.total
+  + ( parseInt(cart.shippingPrice) || 0 )
+  + ( parseInt(cart.installationPrice) || 0 )
+  + ( parseInt(cart.foundationPrice) || 0 )
+  + ( parseInt(cart.permitPlansPrice) || 0 )
+  + ( parseInt(cart.servicePrice) || 0 );
+  fig = (fig/2)*100;
+  return fig;
+}
+
+
+function cartModelLabel(cart) {
+  return cart.depth + ' x ' + cart.length + ' ' + cart.model + ' series';
+}
+
+function cartModelPrice(cart) {
+  return cart.total.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });    
+}
+
+function mobileConfiguratorLink(cart) {
+  var configURL = window.cart.configUrl;
+  var queryString = configURL.substring( configURL.indexOf('?') + 1 );
+  return '/dc/mobile-configurator.php?designermode=true&model=' + cart.model + '&' + queryString;
+}
+
+
+function cartLocationLabel(cart) {
+  if(cart.city) {
+    return 'Shipping to ' + cart.city;
+  }
+  return 'Specify your location';
+}
+function cartLocationPrice(cart) {  
+  if(cart.shippingPrice) {
+    return parseInt(cart.shippingPrice).toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
+  }
+}
+
+function cartPermitPlansLabel(cart) {
+  if(cart.permitPlans) {
+    return 'Permit plans set included';
+  }
+  return 'No permit plans set included';
+}
+function cartPermitPlansPrice(cart) {
+  if(cart.permitPlansPrice) {
+    return parseInt(cart.permitPlansPrice).toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
+  }
+}
+
+
+function cartInstallationLabel(cart) {
+  if(cart.installation) {
+    return cart.installation + ' installation';
+  }
+  return 'Select installation type';
+}
+
+function cartInstallationPrice(cart) {
+  if(cart.installationPrice) {
+    return parseInt(cart.installationPrice).toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
+  }
+}
+
+
+function cartFoundationLabel(cart) {
+  if(cart.foundation) {
+    return cart.foundation + ' foundation';
+  }
+  return 'Select foundation type';
+}
+
+function cartOrderLabel(cart) {
+  if(cart.paymentIntentCreated) {
+    return 'Initial payment submitted';
+  }
+  return 'Submit your initial payment';
+}
+
+
+function formatMoney(number) {
+  return parseInt(number).toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
+  
+}
+
+
+function updateRecordPermitPlans(data){
+  if(cart.orderComplete) {
+    return false;
+  }  
+  return $.ajax({
+    url: "/dc_api/update_record_permit_plans/",
+    method: "POST",
+    dataType: 'json',
+    contentType: 'application/json',
+    data: JSON.stringify(data)
+  });
+}
 
 
 
+function updateRecordFoundation(data){
+  if(cart.orderComplete) {
+    return false;
+  }
+  return $.ajax({
+    url: "/dc_api/update_record_foundation/",
+    method: "POST",
+    dataType: 'json',
+    contentType: 'application/json',
+    data: JSON.stringify(data)
+  });
+}
 
 
+function updateRecordInstallation(data){
+  if(cart.orderComplete) {
+    return false;
+  }
+  return $.ajax({
+    url: "/dc_api/update_record_installation/",
+    method: "POST",
+    dataType: 'json',
+    contentType: 'application/json',
+    data: JSON.stringify(data)
+  });
+}
 
 
+function fetchLocationDetails(zip,cart) {
+  return $.ajax({
+    url: "/dc_api/get_location_details/",
+    method: "POST",
+    data: {
+      zip: zip,
+      length: cart.length,
+      interior: cart.interiorSKU,
+      depth: cart.depth,
+      area: cart.area
+    }
+  });
+}
+
+
+function updateRecordLocation(data, textStatus, jqXHR){
+  if(cart.orderComplete) {
+    return false;
+  }
+  data.uid = window.dc_uid;
+  return $.ajax({
+    url: "/dc_api/update_record_location/",
+    method: "POST",
+    dataType: 'json',
+    contentType: 'application/json',
+    data: JSON.stringify(data)
+  });
+}
+
+function renderLocationLabels(data, textStatus, jqXHR){
+  var request = $.ajax({
+    url: "/dc_api/get_record/",
+    method: "GET",
+    data: {uid:data.uid}
+  });
+  request.done(function(data){
+    key = data.uniqueid;
+    json = JSON.stringify(data);
+    window.cart = cart = JSON.parse(json);
+    $('#shipping-time-label').text(cart.shipping).fadeIn();
+    $('#shipping-cost-label').text(formatMoney(cart.shippingPrice)).fadeIn();
+    $('#city-label').text(cart.city).fadeIn();
+    $('#cart-location-label').text( cartLocationLabel(cart) );
+    $('#permit-time-label').text(cart.permitTime).fadeIn();
+    $('#permit-cost-label').text(cart.permitCost).fadeIn();
+    $('#permit-notes-city-label').text(cart.city).fadeIn();
+    if(cart.permitNotes) {
+      $('#permit-notes-text').text(cart.permitNotes);
+      $('.dc-permit-notes').removeClass('fade');
+    }
+  });
+  request.fail(function(jqXHR, textStatus) {
+    console.log("Fail: " + textStatus);
+  });
+}
+
+
+function updateRecord(uid, key, value, price) {
+  request = $.ajax({
+    url: "/dc_api/update_record/",
+    method: "POST",
+    data: {
+      uid: uid,
+      key: key,
+      value: value,
+      price: price
+    },
+    dataType: "json"
+  });
+
+  request.done(function(data){
+  });
+
+  request.fail(function(jqXHR, textStatus) {
+    console.log("Fail: " + textStatus);
+  });
+}
+
+
+function getRecord(uid) {
+  return $.ajax({
+    url: "/dc_api/get_record/",
+    method: "GET",
+    data: {uid:uid}
+  });
+}
+
+
+function getRecordDebug(uid) {
+  request = $.ajax({
+    url: "/dc_api/get_record/",
+    method: "GET",
+    data: {
+      uid: uid
+    }
+  });
+
+  request.done(function(data){
+  });
+
+  request.fail(function(jqXHR, textStatus) {
+    console.log("Fail: " + textStatus);
+  });
+}
+
+
+function createRecord(json) {
+  request = $.ajax({
+    url: '/dc_api/save_record/',
+    method: 'POST',
+    dataType: 'json',
+    contentType: 'application/json',
+    data: JSON.stringify(json)
+  });
+
+  request.done(function(data){
+  });
+
+  request.fail(function(jqXHR, textStatus) {
+    console.log(textStatus);
+  });
+}
+
+
+function lookupEmail(email) {
+  request = $.ajax({
+    url: "/dc_api/lookup_email/",
+    method: "GET",
+    data: {email:email}
+  });
+
+  request.done(function(data){
+  });
+
+  request.fail(function(jqXHR, textStatus) {
+    console.log(textStatus);
+  });
+}
+
+
+function getLocationDetails(zip) {
+  request = $.ajax({
+    url: "/dc_api/get_location_details/",
+    method: "POST",
+    data: {zip:zip}
+    //dataType: "json"
+  });
+
+  request.done(function(data){
+  });
+
+  request.fail(function(jqXHR, textStatus) {
+    console.log(textStatus);
+  });
+}
+
+function lockInputs() {
+  $('main#step-1 .dc-intro').remove();
+  $('main#step-1 .dc-configurator').remove();
+  $('main#step-1 .dc-popular').remove();
+  $('main#step-1 #configuration-details').show();
+
+  $('#submit-zip-lookup').prop('disabled', true);
+  $('#zip-label').prop('disabled', true);
+
+  $('#select-permit-plans-false').addClass('disabled');
+  $('#select-permit-plans-true').addClass('disabled');
+
+  $('#select-concrete-slab').addClass('disabled');
+  $('#select-wood-frame').addClass('disabled');
+  $('#select-foundation-tbd').addClass('disabled');
+
+  $('#select-diy-install').addClass('disabled');
+  $('#select-certified-install-1').addClass('disabled');
+  $('#select-certified-install-2').addClass('disabled');
+
+}
+
+
+$(document).ready(function() {
 
   //Button binds
-
   $('.dc-permit-set input#permitPlanSelect').click(function(e) {
     if( $(this).is(':checked') ) {
       input = {
@@ -1183,11 +971,6 @@ $(document).ready(function() {
       .then(renderCartLabels);
   });
 
-
-
-
-
-
   $('.dc-permit-set a.option-permitPlans').click(function(e) {
     e.preventDefault();
     input = {
@@ -1200,10 +983,6 @@ $(document).ready(function() {
       .then(getCart)
       .then(renderCartLabels);
   });
-
-
-
-
 
   $('.dc-foundation a.option-foundation').click(function(e) {
     e.preventDefault();
@@ -1232,10 +1011,8 @@ $(document).ready(function() {
       .then(renderCartLabels);
   });
 
-
   $('#submit-zip-lookup').click(function (e) {
-    console.log('zip lookup submitted');
-    //stop submitting the form to see the disabled button effect
+    console.log('zip lookup submitted');    
     e.preventDefault();
     $('#submit-zip-lookup').attr('disabled', true);
     $('#submit-zip-spinner').css('display', 'inline-block');
@@ -1245,6 +1022,9 @@ $(document).ready(function() {
       .then(getCart)
       .then(renderCartLabels)
       .then(renderShippingElements);
+    $('#submit-zip-spinner').delay(500).fadeOut(function() {
+      $(this).prev().attr('disabled', false); 
+    });
   });
 
   $('#consent-check').on('change', function() {
@@ -1257,8 +1037,10 @@ $(document).ready(function() {
 
   $('.progressbar li').click(function(e){
     $(this).find('a').get(0).click();
-
   });
 
+
+  $('#navbarModelsBtn').on ('click', function() {  $('#navbarCollapse').collapse('hide'); });
+  $('#navbarMenuBtn').on ('click', function() { $('#modelsCollapse').collapse('hide'); });
 
 });

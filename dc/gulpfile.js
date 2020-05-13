@@ -89,8 +89,7 @@ gulp.task('scripts', function () {
         'node_modules/popper.js/dist/umd/popper.min.js',
         'node_modules/bootstrap/dist/js/bootstrap.min.js',
         'node_modules/owl.carousel/dist/owl.carousel.min.js',
-        'node_modules/js-cookie/src/js.cookie.js',
-        'node_modules/odometer/odometer.min.js',
+        'node_modules/js-cookie/src/js.cookie.js',        
         'src/js/**/*.js'
         ])
         .pipe(plumber({

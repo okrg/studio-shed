@@ -20,7 +20,6 @@ $record = $database->get($uid);
 $record->zip = $data['zip'];
 $record->city = $data['shipping_city_label'];
 $record->state = $data['shipping_state'];
-$record->shipping = $data['shipping_time'];
 $record->shippingPrice = $data['shipping_cost'];
 $record->shippingDistance = $data['shipping_distance'];
 

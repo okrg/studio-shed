@@ -33,7 +33,8 @@ include('includes/header.php');
             <table id="cart-table">
               <tr>
                 <td>
-                  <h4><span id="cart-model-label">Shed configuration</span> <a id="show-details" href="#" data-toggle="collapse" data-target=".shed">Show Details</a></h4>
+                  <h4><span id="cart-model-label">Shed configuration</span>
+                    <br /><a id="show-details" href="#" data-toggle="collapse" data-target=".shed">Show Details</a></h4>
                 </td>
                 <td class="price">
                   <h4><span id="cart-model-price">Price</span></h4>
@@ -345,14 +346,13 @@ include('includes/header.php');
             <div class="panel panel-default mb-5">
               <div class="panel-heading" role="tab" id="heading0">
               <h4 class="panel-title">
-                <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse0" aria-expanded="true" aria-controls="collapse0">
-                Mauris scelerisque lacus consectetur elit consectetur, non faucibus massa iaculis?
+                <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse0" aria-expanded="true" aria-controls="collapse0">What happens once I place my deposit? 
                 </a>
               </h4>
               </div>
               <div id="collapse0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading0">
-              <div class="panel-body px-3 mb-4">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in sem aliquam, efficitur eros eu, vehicula elit. Donec metus sapien, sollicitudin vitae nibh eu, efficitur efficitur dui. In vitae dolor ex. Phasellus feugiat ligula ac orci ullamcorper, sit amet egestas dui auctor. Fusce sed laoreet purus. Curabitur aliquam sit amet nulla vel placerat. Donec id laoreet ligula, nec pharetra libero. Nunc imperdiet lorem ac rhoncus lacinia. Praesent cursus turpis eu metus ultrices laoreet. Nulla posuere ante ligula, eu elementum purus euismod sed. Ut ornare sit amet risus vitae cursus. Mauris posuere sed odio vitae viverra.</p>
+              <div class="panel-body mb-4">
+                <p>A Studio Shed customer experience representative contacts you to confirm your order and discuss fulfillment process.</p>
               </div>
               </div>
             </div>
@@ -360,14 +360,18 @@ include('includes/header.php');
             <div class="panel panel-default mb-5">
               <div class="panel-heading" role="tab" id="heading1">
               <h4 class="panel-title">
-                <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                Aliquam quis nisi id ex dapibus consequat in vitae magna?
-                </a>
+                <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">What are your payment terms?</a>
               </h4>
               </div>
               <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
-              <div class="panel-body px-3 mb-4">
-                <p>Sed efficitur a massa eget rutrum. Ut sed mattis ante, a lacinia mi. In hac habitasse platea dictumst. Morbi a ligula eget lorem faucibus volutpat nec sed nibh. Ut non semper dui. Pellentesque sed tellus dictum, euismod urna et, convallis lorem. Nam vehicula leo eget dui lacinia gravida. Etiam eu augue vehicula, tempor augue ac, egestas mi. Quisque id nunc feugiat, mollis ipsum id, vulputate libero. Proin elit justo, pharetra ac vestibulum ac, euismod et tortor. Phasellus vehicula sem ac dapibus auctor. Nulla molestie malesuada sapien, pulvinar auctor erat tincidunt eu.</p>
+              <div class="panel-body mb-4">
+                <p>Unpermitted Units: 100% payment due in full at time of order.</p>
+                <p>Permitted Units: Unless otherwise agreed to in writing with Studio Shed, the following payment schedule is required to proceed with the order:</p>
+                <ol>
+                  <li>Initial 25% deposit due at time of order</li>
+                  <li>Next 25% due upon delivery of plan set to the Customer</li>
+                  <li>Final 50% due 14 calendar days prior to the Estimated Ship Date. Customer’s Order will NOT ship until Studio Shed receives full payment.</li>
+                </ol>
               </div>
               </div>
             </div>
@@ -375,32 +379,17 @@ include('includes/header.php');
             <div class="panel panel-default mb-5">
               <div class="panel-heading" role="tab" id="heading2">
               <h4 class="panel-title">
-                <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true" aria-controls="collapse2">
-                Nunc arcu enim, rutrum at nisi eu, iaculis ultricies neque. Nam in scelerisque urn?
-                </a>
+                <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true" aria-controls="collapse2">Do you offer financing?</a>
               </h4>
               </div>
               <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
-              <div class="panel-body px-3 mb-4">
-                <p>Nunc auctor nisl hendrerit, semper quam nec, varius neque. Pellentesque ac dui nec arcu molestie posuere non ut quam. Phasellus tempus viverra dui, at venenatis orci sollicitudin rhoncus. Duis nec libero finibus, malesuada libero sit amet, ultricies ex. Sed sodales rutrum fermentum.</p>
+              <div class="panel-body mb-4">
+                <p>Studio Shed has multiple partners with simple financing options. For smaller financed amounts (<$30k) Lightstream offers <a href="https://www.lightstream.com/?fact=16943&irad=592187&irmp=1414314" target="_blank">fast-approval unsecured loans.</a></p>
+                <p>For larger projects, we work with First Western Trust on the right secured lending product that fits your project and budget. For more information <a href="https://myfw.com/talent/bretgiuliani/" target="_blank">contact Bret Giuliani</a>.</p>
               </div>
               </div>
             </div>
 
-            <div class="panel panel-default mb-5">
-              <div class="panel-heading" role="tab" id="heading3">
-              <h4 class="panel-title">
-                <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="true" aria-controls="collapse3">
-                Nullam non urna placerat, aliquet velit vel, eleifend turpis. Integer rhoncus ut purus non pharetra?
-                </a>
-              </h4>
-              </div>
-              <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
-              <div class="panel-body px-3 mb-4">
-                <p>Cras scelerisque finibus magna sed tempus. Donec porta pulvinar urna, nec faucibus felis vulputate a. Mauris fermentum fringilla arcu, eu feugiat erat vulputate non. In posuere odio leo, id cursus felis condimentum a. Sed convallis, lacus ut facilisis accumsan, lacus dolor placerat massa, tempus dapibus neque diam ut quam. Sed mollis, neque eget tincidunt volutpat, erat leo cursus tortor, et ultrices metus libero ut arcu. Duis euismod mauris et ex aliquet, nec lobortis diam elementum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce dolor enim, fringilla in facilisis pretium, interdum a nulla. Maecenas scelerisque commodo sem, sed eleifend velit euismod non.</p>
-              </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -517,7 +506,7 @@ include('includes/header.php');
 
 $(document).ready(function(){
 
-  $('#progress-step-4').addClass('current');
+  $('li[data-progress-step="4"]').addClass('current');
 
   var stripe = Stripe('pk_test_fOnxYRdPKxD6UIEVyOm1LA5p00JLrteEOh');
   var clientSecret = '<?php echo $intent->client_secret; ?>';
@@ -612,6 +601,14 @@ $(document).ready(function(){
     $('#consent-check').prop('checked', true).trigger('change');
   });
 
+
+  getUidCookie()
+    .then(getCart)
+    .then(renderCartLabels)
+    .then(renderShippingElements)
+    .then(renderPermitElements)
+    .then(renderInstallationElements)
+    .then(cartRenderDone);
 
 });
 </script>

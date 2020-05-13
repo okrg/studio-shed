@@ -28,6 +28,35 @@ $footerBackground: #0f1c2c;
 }
 @font-face{font-family:"Futura-PT-Heavy-Oblique";src:url("/dc/fonts/Futura-PT-Heavy-Oblique.eot"), url("/dc/fonts/Futura-PT-Heavy-Oblique.woff") format("woff"), url("/dc/fonts/Futura-PT-Heavy-Oblique.ttf") format("truetype");}
 
+
+
+
+@font-face {
+    font-family: icomoon;
+    src: url(/wp-content/themes/studio-shed/fonts/icomoon.eot?aemgks);
+    src: url(/wp-content/themes/studio-shed/fonts/icomoon.eot?aemgks#iefix) format("embedded-opentype"),url(/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks) format("truetype"),url(/wp-content/themes/studio-shed/fonts/icomoon.woff?aemgks) format("woff"),url(/wp-content/themes/studio-shed/fonts/icomoon.svg?aemgks#icomoon) format("svg");
+    font-weight: 400;
+    font-style: normal
+}
+
+.icomoon {
+    font-family: icomoon!important;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+.icon-chevron-down:before {
+    content: "\e90c";
+}
+.icon-chevron-right:before {
+    content: "\e90a";
+}
+
 .odometer.odometer-auto-theme.odometer-animating-down.odometer-animating .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
   transition: transform 1s !important;
 }
@@ -46,7 +75,7 @@ a {
 body a.btn, body input.btn, body button, nav a {
     transition: all 200ms linear;
 }
-h2 { 
+h2 {
   font-size: 24px;
   font-weight: 300;
 }
@@ -54,10 +83,14 @@ h5 a {
   text-decoration: underline;
 }
 p, ul, li {
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 21px;
 }
-
+.badge-primary {background: $primary; }
+.btn-outline-primary.disabled, .btn-outline-primary:disabled {
+    color: #000;
+    background-color: #fff;
+}
 .custom-control-input:checked ~ .custom-control-label::before {
   color: #fff;
   border-color: $primary;
@@ -82,6 +115,10 @@ main {
     height: 250px;
     display: block;
     margin-top: 90px;
+    @media (max-width: 992px) {
+      height: 300px;
+      margin-top: 0;
+    }
   }
   @media (min-width: 992px) {
     .container:first-child {
@@ -172,21 +209,115 @@ header, .estimate, h1, h2, h3, h4, a.btn, nav a {
 
 
 
-header nav {
+header nav.navbar {
   box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
   line-height: 1rem;
+  background: #fff;
+  padding-bottom:0;
   .navbar-brand {
 
   }
+  #navbarMenuBtn {
+    display: inline-flex;
+    align-items: center;
+  }
+  #navbarMenuBtn,
+  #navbarModelsBtn {
+    border-radius: 0;
+    background: #ddd;
+    height: 50px;
+    font-size: 14px;
+  }
+  #navbarMenuBtn.collapsed,
+  #navbarModelsBtn.collapsed {
+    background: none;
+  }
+  .navbar-toggler {
+    border: none;
+    text-transform: uppercase;
+  }
+  button:focus { outline: none; }
+}
+
+
+header {
   .navbar-collapse {
-    display: flex;
-    justify-content: space-between;
+    box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
+    max-width: 400px;
+    background: #fff;
+    position: fixed;
+    right: 0;
+    top: 85px;
     @media (max-width: 992px) {
       flex-direction: column;
+      width: 100%;
+      max-width: none;
+      top: 60px;
     }
+  }
+
+  a.model-menu-item {
+    padding: 1rem 2rem;
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid hsla(0,0%,59%,.25);
+    .model-thumb {
+      margin-right: 1rem;
+      img {
+        max-width: 100px;
+      }
+    }
+    .model-labels {
+      position: relative;
+    }
+    .model-name,
+    .model-size,
+    .model-price {
+      display: block;
+      text-decoration: none;
+    }
+    .model-name {
+      color: #000;
+      font-weight: bold;
+    }
+    .model-size {
+      color: #919191;
+    }
+    .model-price {
+      color: #5d5e5d;
+    }
+    .icon-chevron-right {
+      color: #5d5e5d; 
+
+    }
+    &:hover {text-decoration: none;}
+  }
+
+  a.site-menu-item {
+    clear: both;
+    padding: 0.5rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid hsla(0,0%,59%,.25);
+    display: block;
+    color: #5d5e5d;
   }
 }
 
+
+img#summary-config-render {
+  margin: 0 auto;
+  display: block;
+}
+
+main#step-1 #configuration-details {
+  display: none;
+}
+
+#summary-config-model {
+  text-transform: capitalize;
+}
 
 .dc-checkout-summary, input, select, textarea {
   font-family:"Futura-PT-Book";
@@ -225,6 +356,7 @@ header h5 .span-dc-mark {
   padding: 0;
   list-style: none;
   position: relative;
+  padding-bottom: 0.5rem;
   li {
     line-height: 1rem;
     cursor: pointer;
@@ -232,21 +364,37 @@ header h5 .span-dc-mark {
     padding: 0;
     list-style: none;
     float: left;
-    width: 25%;
+    width: 20%;
     position: relative;
     text-align: center;
+    font-size: 14px;
     @media (max-width: 992px) {
       width: 100%;
       border-bottom: 1px #ddd solid;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
       a {
         line-height: 30px;
       }
     }
-    &:before {
+    &.start:before {
+      font-family: 'Font Awesome 5 Free';
+      content: "\f015";
+      width: 30px;
+      height: 30px;
+      font-size: 25px;
+      display: block;
+      margin: 0 auto 10px auto;
+      
+      line-height: 27px;
+      background: white;
+      color: $primary;
+      text-align: center;
+      
+    }
+    &.counter:before {
       content:counter(step);
-      counter-increment: step;
+      counter-increment: step +1;
       width: 30px;
       height: 30px;
       border: 2px solid #bebebe;
@@ -259,8 +407,9 @@ header h5 .span-dc-mark {
       text-align: center;
       font-weight: bold;
       @media (max-width: 992px) {
-        float: left;
-        margin-bottom: 0;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
       }
     }
     &:after {
@@ -301,6 +450,19 @@ header h5 .span-dc-mark {
       text-decoration: none;
     }
   }
+}
+.navbar-collapse .progressbar li a {
+  color: #5d5e5d;
+}
+.navbar-collapse .progressbar li:before {
+  width:24px;
+  height: 24px;
+  line-height: 21px;
+  font-size: 14px;
+  position: relative;
+  display: inline-block;
+  transform: none;
+  top: auto;
 }
 
 #header-estimate {
@@ -583,6 +745,8 @@ a.btn-video-trigger {
     font-size: 1.5rem;
     color: $primary;
     margin-top: -12px;
+    display: inline-block;
+    width: 20px;
   }
   .panel-default .panel-title a.collapsed:before {
     content: "\f105";
@@ -801,7 +965,9 @@ main#step-1{
       font-size: 16px;
       text-transform: uppercase;
     }
-    .shed {padding: 5px 5px 5px 20px; }
+    .shed {
+      padding: 0.5rem 1rem;
+    }
     #show-details { font-size: 14px; }
   }
 
@@ -922,6 +1088,7 @@ main#step-1{
     min-width: 125px;
     padding: 0 15px;
     text-align: right;
+    @media (max-width: 992px) { min-width:0; }
   }
 
   fieldset .redirect label span {
@@ -1051,7 +1218,7 @@ main#step-1{
     height: 40px;
     outline: none;
     cursor: pointer;
-    transition: all 0.15s ease;
+    
     &.disabled {
       opacity: 0.66;
     }

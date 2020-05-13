@@ -104,7 +104,7 @@ $(document).ready(function() {
       $('#linksModal').modal('show');
       $('#linksModal .modal-body').empty();
       $('#linksModal .modal-body').append('<h5 class="text-center">You’re almost there.</h5><p class="text-center">Check your inbox for a link to log in.</p>');
-      //$('#linksModal .modal-body').append('<a href="'+result.link+'">Link</a>');
+      $('#linksModal .modal-body').append('<a href="'+result.link+'">Link</a>');
     });
   }
   $('#start-login').click(function(e) {

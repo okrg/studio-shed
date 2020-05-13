@@ -16,15 +16,15 @@ $uid = $_REQUEST['u'];
 $key = 'xK-<cH];"a:Yd=40^zx)wCXyYiw#bH';
 $expected_hash = hash_hmac('sha256', $time, $key);
 $hash_equals = hash_equals($expected_hash, $hash);
-$expired = false;
+$expired = true;
 
-if ($time <= strtotime('-12 hours')) {
-  $expired = true;
+if ($time >= strtotime('-1 month')) {
+  $expired = false;
 }
 ?>
 
 <?php if ($expired): ?>
-  Link expired
+  <p>Sorry this link has expired. <a href="/dc">Please try to login again.</a></p>
 <?php else: ?>
   <?php if ($hash_equals): ?>
     <script type="text/javascript">

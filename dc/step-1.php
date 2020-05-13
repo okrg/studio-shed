@@ -21,7 +21,8 @@
 ?>
 <main id="step-1">
   <div class="container">
-    <?php include('includes/estimate.php'); ?>
+
+    <?php include('includes/configuration-details.php'); ?>
 
     <div class="dc-intro">
       <h2>Step 1 of 4: Design Configuration</h2>
@@ -29,13 +30,11 @@
     </div>
 
     <div class="dc-configurator">
-      
-      
+
       <div id="mobile-portland">
         <div class="alert alert-warning">Please use your desktop computer to log into the design center and modify your Portland series configuration.</div>
       </div>
-      
-      
+
       <div id="<?php echo $idearoomDiv; ?>" style="margin: 0 auto;"></div>
         <!--<script type="application/javascript" src="vendor/modernizr.js"></script>-->
         <script id="idearoomStartup" type="application/javascript" src="https://<?php echo $ideaRoomModel; ?>.idearoomstaging.com/idearoom.js"></script>
@@ -169,14 +168,14 @@
             <div class="panel panel-default mb-5">
               <div class="panel-heading" role="tab" id="heading0">
               <h4 class="panel-title">
-                <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse0" aria-expanded="true" aria-controls="collapse0">
-                Mauris scelerisque lacus consectetur elit consectetur, non faucibus massa iaculis?
-                </a>
+                <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse0" aria-expanded="true" aria-controls="collapse0">What is the difference between your product lines?</a>
               </h4>
               </div>
               <div id="collapse0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading0">
-              <div class="panel-body px-3 mb-4">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in sem aliquam, efficitur eros eu, vehicula elit. Donec metus sapien, sollicitudin vitae nibh eu, efficitur efficitur dui. In vitae dolor ex. Phasellus feugiat ligula ac orci ullamcorper, sit amet egestas dui auctor. Fusce sed laoreet purus. Curabitur aliquam sit amet nulla vel placerat. Donec id laoreet ligula, nec pharetra libero. Nunc imperdiet lorem ac rhoncus lacinia. Praesent cursus turpis eu metus ultrices laoreet. Nulla posuere ante ligula, eu elementum purus euismod sed. Ut ornare sit amet risus vitae cursus. Mauris posuere sed odio vitae viverra.</p>
+              <div class="panel-body mb-4">
+                <p>Our Signature Series line is focused on single room studios in sizes from 8’x8’ up to 12’x20’. It has integrated structural transom windows and exposed rafter ends.</p>
+                <p>The Summit Series is available in sizes from 14×18 to 20×50. They feature taller ceilings, enclosed eaves, thicker walls, and customizable interior layouts sure to fit any type of need.</p>
+                <p>Our Portland Series features a gable-style roof offering a more traditional option. It retains the same high-quality mix of materials and clean design as our other product lines, and fits with a wide variety of residential aesthetics.</p>
               </div>
               </div>
             </div>
@@ -184,14 +183,13 @@
             <div class="panel panel-default mb-5">
               <div class="panel-heading" role="tab" id="heading1">
               <h4 class="panel-title">
-                <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                Aliquam quis nisi id ex dapibus consequat in vitae magna?
-                </a>
+                <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">What is included in the interior kits?</a>
               </h4>
               </div>
               <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
-              <div class="panel-body px-3 mb-4">
-                <p>Sed efficitur a massa eget rutrum. Ut sed mattis ante, a lacinia mi. In hac habitasse platea dictumst. Morbi a ligula eget lorem faucibus volutpat nec sed nibh. Ut non semper dui. Pellentesque sed tellus dictum, euismod urna et, convallis lorem. Nam vehicula leo eget dui lacinia gravida. Etiam eu augue vehicula, tempor augue ac, egestas mi. Quisque id nunc feugiat, mollis ipsum id, vulputate libero. Proin elit justo, pharetra ac vestibulum ac, euismod et tortor. Phasellus vehicula sem ac dapibus auctor. Nulla molestie malesuada sapien, pulvinar auctor erat tincidunt eu.</p>
+              <div class="panel-body mb-4">
+                <p>For our Signature Series, our Lifestyle interior includes finished flooring, electrical wiring and fixtures, insulation, and drywall interior on installed units.</p>
+                <p>The Summit Series models are configurable with bathrooms, kitchens, and even bedrooms on larger models. Studio Shed provides the cabinets, countertops, fixtures, and electrical components. The only item not included is the rough plumbing connections, as these details will vary by site and location. It is typical for our installation teams to work directly with you on a quote for this portion of the project based on your unique site details.</p>
               </div>
               </div>
             </div>
@@ -199,54 +197,38 @@
             <div class="panel panel-default mb-5">
               <div class="panel-heading" role="tab" id="heading2">
               <h4 class="panel-title">
-                <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true" aria-controls="collapse2">
-                Nunc arcu enim, rutrum at nisi eu, iaculis ultricies neque. Nam in scelerisque urn?
-                </a>
+                <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true" aria-controls="collapse2">Can I make customizations to the product?</a>
               </h4>
               </div>
               <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
-              <div class="panel-body px-3 mb-4">
-                <p>Nunc auctor nisl hendrerit, semper quam nec, varius neque. Pellentesque ac dui nec arcu molestie posuere non ut quam. Phasellus tempus viverra dui, at venenatis orci sollicitudin rhoncus. Duis nec libero finibus, malesuada libero sit amet, ultricies ex. Sed sodales rutrum fermentum.</p>
+              <div class="panel-body mb-4">
+                <p>Some limited customization may be possible depending on the size and configuration of your order. Any customizations are subject to additional fees and lead time. The best way to determine if your custom request is feasible is to save the closest thing to what you desire in our 3D configurator for follow-up with our design department.</p>
               </div>
               </div>
             </div>
 
-            <div class="panel panel-default mb-5">
-              <div class="panel-heading" role="tab" id="heading3">
-              <h4 class="panel-title">
-                <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="true" aria-controls="collapse3">
-                Nullam non urna placerat, aliquet velit vel, eleifend turpis. Integer rhoncus ut purus non pharetra?
-                </a>
-              </h4>
-              </div>
-              <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
-              <div class="panel-body px-3 mb-4">
-                <p>Cras scelerisque finibus magna sed tempus. Donec porta pulvinar urna, nec faucibus felis vulputate a. Mauris fermentum fringilla arcu, eu feugiat erat vulputate non. In posuere odio leo, id cursus felis condimentum a. Sed convallis, lacus ut facilisis accumsan, lacus dolor placerat massa, tempus dapibus neque diam ut quam. Sed mollis, neque eget tincidunt volutpat, erat leo cursus tortor, et ultrices metus libero ut arcu. Duis euismod mauris et ex aliquet, nec lobortis diam elementum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce dolor enim, fringilla in facilisis pretium, interdum a nulla. Maecenas scelerisque commodo sem, sed eleifend velit euismod non.</p>
-              </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </section>
-
-    <?php include('includes/contact.php'); ?>
-
     <?php include('includes/paging.php'); ?>
-
-
+    <?php include('includes/contact.php'); ?>
   </div>
 </main>
 <script type="text/javascript">
 $(document).ready(function() {
-    
+  getUidCookie()
+    .then(getCart)
+    .then(renderCartLabels)
+    .then(renderShippingElements)
+    .then(renderPermitElements)
+    .then(renderInstallationElements)
+    .then(cartRenderDone);
 
-  $('#progress-step-1').addClass('current');
-
+  $('li[data-progress-step="1"]').addClass('current');
   $('.owl-carousel').owlCarousel({
     loop:true,
     margin:10,
-    
     responsive:{
         0:{
             items:2
@@ -259,7 +241,6 @@ $(document).ready(function() {
         }
     }
   });
-
 });
 </script>
 <?php include('includes/footer.php'); ?>

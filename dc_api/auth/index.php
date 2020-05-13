@@ -8,7 +8,7 @@ $key = 'xK-<cH];"a:Yd=40^zx)wCXyYiw#bH';
 
 //Timestimp in limits?
 if ($time <= strtotime('-12 hours')) {
-  echo 'older than 12 hours';
+  echo 'Link Expired';
 } else {
   //time is good compare
   $expected_hash = hash_hmac('sha256', $time, $key);

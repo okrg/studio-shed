@@ -5,56 +5,66 @@
     case "step-1.php":
       $prev = array(
         'label' => 'Design Center Home',
-        'link' => '/dc/index.php'
+        'link' => '/dc/index.php',
+        'step' => 0
       );
       $next = array(
         'label' => 'Location &amp; Permit Details',
         'link' => '/dc/step-2.php',
-        'class' => 'nextStep'
+        'class' => 'nextStep',
+        'step' => 2
       );
       break;
     case "step-2.php":
       $prev = array(
         'label' => 'Configuration',
-        'link' => '/dc/step-1.php'
+        'link' => '/dc/step-1.php',
+        'step' => 1
       );
       $next = array(
         'label' => 'Installation Details',
         'link' => '/dc/step-3.php',
-        'class' => 'nextStep'
+        'class' => 'nextStep',
+        'step' => 3
       );
       break;
     case "step-3.php":
       $prev = array(
         'label' => 'Location &amp; Permit Details',
-        'link' => '/dc/step-2.php'
+        'link' => '/dc/step-2.php',
+        'step' => 2
       );
       $next = array(
         'label' => 'Complete Order',
         'link' => '#',
-        'class' => 'paymentIntent'
+        'class' => 'paymentIntent',
+        'step' => 4
       );
       break;
     case "step-4.php":
       $prev = array(
         'label' => 'Installation Details',
-        'link' => '/dc/step-3.php'
+        'link' => '/dc/step-3.php',
+        'step' => 3
       );
       $next = array(
         'label' => 'Design Center Home',
         'link' => '/dc/index.php',
-        'class' => 'nextStep'
+        'class' => 'nextStep',
+        'step' => 0
       );
       break;
     case "checkout.php":
       $prev = array(
         'label' => 'Installation Details',
-        'link' => '/dc/step-3.php'
+        'link' => '/dc/step-3.php',
+        'step' => 3
       );
       $next = array(
         'label' => 'Design Center Home',
         'link' => '/dc/index.php',
-        'class' => 'nextStep'
+        'class' => 'nextStep',
+        'step' => 0
       );
 
     break;
@@ -63,10 +73,10 @@
 
 <div class="dc-paging">
   <nav class="paging-nav">
-    <a class="btn btn-link" href="<?php echo $prev['link'];?>">
+    <a class="btn btn-link" href="javascript:void(0);" data-menu-step="<?=$prev['step'];?>">
       < Back
     </a>
-    <a class="btn btn-primary <?php echo $next['class']; ?>" href="<?php echo $next['link'];?>">
+    <a class="btn btn-primary <?php echo $next['class']; ?>" href="javascript:void(0);" data-menu-step="<?=$next['step'];?>">
       <?php echo $next['label'];?> <i class="fas fa-arrow-right"></i>
     </a>
   </nav>
