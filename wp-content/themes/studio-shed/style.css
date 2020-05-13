@@ -3895,4 +3895,10 @@ end configurator landing page
 #header {
     z-index: 999999!important;
 }
+
+@media only screen and (max-width: 980px){
+    .home .main-content .block-two .cover {
+        height: auto;
+    }
+}
 /* end added */
