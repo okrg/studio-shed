@@ -408,19 +408,25 @@ p {
 	padding-top:40px!important;
 	}
 #header-logo img {
-	width: 200px;
+	width: 200px!important;
+	height: 23px!important;
 	}
 
 .menu-list .box {
     cursor: pointer;
 }
 		}
+@media (max-width: 770px){
+	#header-logo img {
+    max-width: 122px;
+    height: 13px;
+}		
 @media (max-width: 950px){
 .navbar-brand img {
     max-width: 80%;
 }
 #wrapper {
-	padding-top:40px!important;
+	padding-top:0px!important;
 	}
 
 .header-mobile {
@@ -815,6 +821,7 @@ body {
     color: #5D5E5D;
     font-family: "Tisa-Sans-Pro";
     font-size: 19px;
+	position: relative;
 }
 body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -955,6 +962,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           $logo= get_field('logo', 'option');
 		
       ?>
+	<!--------
+	PLEASE NOTE 
+	- Any changes made to the navigation will only effect the main site, you will need to go into the files for the design center to update the drop down nav there as well 
+	--------------------->
     <header id="header" class="module" data-module="header">
         <nav class="container navbar navbar-expand-lg" role="navigation">
           <div class="header-mobile">

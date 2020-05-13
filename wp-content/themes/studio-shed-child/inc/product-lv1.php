@@ -40,6 +40,10 @@
 		display: none!important;
 	}
 @media (max-width: 770px){
+
+	section#content-slider {
+	margin-top:47px;
+}
 	#feature-1 .container, #feature-2 .container, #feature-3 .container, #feature-4 .container, #feature-5 .container {
     padding: 0 15px 80px!important;
 }
@@ -85,19 +89,21 @@ margin: 10px auto;
     min-height: 250px!important;
 	width: 100%!important;
 }
-	
 .products-page.lv2 .bottom-info {
     padding: 20px 0 230px;
 }
 	}
 .series-info-box h2,
-.series-info-box h1{
+.series-info-box h1,
+.series-info-mobile h1
+	{
 	text-transform: uppercase;
 	color: #fff;
 	font-size: 30px;
     font-family: 'Futura-PT-Heavy';
 	letter-spacing: 2px;
 	margin-top: 7px;
+	text-shadow: 1px 1px 2px black; 
 	}
 .series-info-box p{
 	color: #fff;	
@@ -111,6 +117,9 @@ margin: 10px auto;
     DISPLAY: INLINE-BLOCK;
     TEXT-ALIGN: right;
     vertical-align: 60px;
+}
+.series-info-mobile .col2 {
+    margin-top: 25px;
 }
 .ls-fullwidth .ls-thumbnail-slide a {
     margin-right: 7px;
@@ -768,6 +777,9 @@ Futura PT Book—Network resource(19 glyphs)
 	}
 #content-model-product {
 	scroll-behavior: smooth!important;
+    overflow-y: scroll;
+    position: relative;
+    height: 100%;
 	}
 .model-product-list a:hover {
 	color: #ffa11e;
@@ -805,7 +817,8 @@ Futura PT Book—Network resource(19 glyphs)
 	
 	}
 .sticky-menu {
-    top: 108px!important;
+	top: 78px!important;
+    /*top: 108px!important;*/
     position: fixed;
 	width: 100%;
 	z-index: 1;
@@ -1216,7 +1229,7 @@ while (have_posts()) : the_post();
             </div>
         </div>
     </section>
-    <section id="content-model-product" class="">
+    <section id="content-model-product" class="" data-spy="scroll" data-target="#model-product-menu">
         <!--Horizontal Tab-->
         <div class="">
             <div id="">
@@ -1459,6 +1472,7 @@ while (have_posts()) : the_post();
     </section>
 <?php endwhile; ?>
 <script type="text/javascript">
+	
     (function ($) {
 
         jQuery(window).load(function () {
@@ -1475,12 +1489,8 @@ while (have_posts()) : the_post();
 	(jQuery);
 	
 	window.addEventListener("hashchange", function () {
-   window.scrollTo(window.scrollX, window.scrollY - 250);
+   window.scrollTo(window.scrollX, window.scrollY - 220);
    });
-	
-		
-	
-	
 	
 	
 	
@@ -1512,6 +1522,10 @@ window.addEventListener('scroll', function() {
 });
 
 </script>
+		<script>
+		$('#content-model-product').scrollspy({ target: '#model-product-menu' })
+
+		</script>
 <?php 						
 			if ($quickmodel == ('Summit')) {
 				?>	
