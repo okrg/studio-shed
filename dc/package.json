@@ -1,0 +1,38 @@
+{
+  "name": "StudioShedDesignCenter",
+  "version": "1.0.0",
+  "description": "A basic gulp dev framework. Run npm install. Edit gulpconfig.js proxy seting and run gulp to parse scripts and load browsersync.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rolo",
+  "license": "ISC",
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.10.0",
+    "bootstrap": "^4.3.1",
+    "browser-sync": "^2.26.3",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-cache": "^1.1.1",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^5.0.3",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "4.0.2",
+    "gulp-uglify": "^3.0.2",
+    "jquery": "^3.4.1",
+    "jquery-migrate": "^3.1.0",
+    "owl.carousel": "^2.3.4",
+    "popper.js": "^1.16.1",
+    "streamqueue": "^1.1.2",
+    "js-cookie": "^2.2.1",
+    "pace-js": "^1.0.2",
+    "odometer": "^0.4.8"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "npm": "^6.13.7"
+  }
+}

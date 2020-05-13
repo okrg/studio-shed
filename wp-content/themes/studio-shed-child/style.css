@@ -1,0 +1,17 @@
+/*
+Theme Name:     studio-shed Child
+Theme URI:      studio-shed.com
+Description:    This is a new Child Template for studio-shed
+Author:         HDint
+Template:     studio-shed
+Author URI:     HDint.net
+Version:        1.0
+*/
+
+
+#field_19_12 .budget {
+	width: 100%
+}
+input.range{
+	height: 15px;
+}

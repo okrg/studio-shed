@@ -137,6 +137,12 @@ if (function_exists('register_nav_menus')) {
             array(
                 'header-menu' => __('Header Menu'),
                 'footer-menu' => __('Footer Menu'),
+				'flyout-menu' => __('Flyout Menu'),
+				'footer1-menu' => __('Footer One'),
+				'footer2-menu' => __('Footer Two'),
+				'footer3-menu' => __('Footer Three'),
+				'footer4-menu' => __('Footer Four'),
+				'footer5-menu' => __('Footer Five'),
     ));
 }
 // Declare sidebar widget zone
@@ -605,9 +611,12 @@ register_sidebar(array(
 	'after_title' => '-->'
 ));
 
+/*
+remove special template for summit series product pages
+
 function multisite_body_classes($classes) {
-    $classes[] = 'page-template-tpl-summit';
-    $classes[] = 'page-template-tpl-summit-php';
+    //$classes[] = 'page-template-tpl-summit';
+   // $classes[] = 'page-template-tpl-summit-php';
     return $classes;
 }
 
@@ -632,4 +641,4 @@ function requesters_find_rewrite_catch($templates)
         return $templates;
     }
 }
-add_action('template_include', 'requesters_find_rewrite_catch');
+add_action('template_include', 'requesters_find_rewrite_catch'); */

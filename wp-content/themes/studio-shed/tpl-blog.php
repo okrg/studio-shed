@@ -136,12 +136,13 @@
                         <li><a target="_blank" href="https://www.facebook.com/StudioShed"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                         <li><a target="_blank" href="https://plus.google.com/+Studio-shed/posts"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
                         <li><a target="_blank" href="mailto:answers@studio-shed.com"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
-                        <li><a target="_blank" href="/feed"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                        <li><a target="_blank" href="/sitemap.xml"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
                     </ul>
                     <div class="form-subscribe">
                         <h3>subscribe to our blog</h3>
                         <p>Enter your email address to receive notifications of new posts</p>
                         <?php dynamic_sidebar('email-subscribe'); ?>
+                        <!-- <input type="submit" value="submit"> -->
                     </div>
 
                 </div>

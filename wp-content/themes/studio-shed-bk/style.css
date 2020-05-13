@@ -1,5 +1,5 @@
 /*
-Theme Name:     studio-shed
+Theme Name:     studio-shed bk
 Theme URI:      studio-shed.com
 Description:    This is a new Template for studio-shed
 Author:         HDint
@@ -43,7 +43,7 @@ a:hover{text-decoration: none; color: #B4B4B4 !important;}
 #sologan .modal-header .close{line-height: 20px;}
 .seo-bar-link{position: absolute; top: 0; left: 0; right: 40px; height: 100%;}
 .seo-content{padding: 0 40px;font-size: 16px;}
-.navbar{border:none;margin-bottom:0;}
+/*.navbar{border:none;margin-bottom:0;}
 .navbar-nav > li > a{opacity: 0.6;padding-top:25px;padding-bottom:25px;font-size:14px;color:#5D5E5D;font-family:"Futura-PT-Book";text-transform:uppercase;}
 .navbar-brand{padding:25px 0;height:auto;}
 .nav > li > a:hover, .nav > li > a:focus, .nav > li.current-menu-item > a, .nav li.current-menu-ancestor > a{color: #000000 !important; background: none; opacity: 1;}
@@ -55,6 +55,7 @@ a:hover{text-decoration: none; color: #B4B4B4 !important;}
 .nav ul a:hover, .nav ul li.current-menu-item > a{opacity: 1; color: #000 !important;}
 .nav ul ul a{font-size: 14px; padding: 5px 20px 5px 35px}
 #menu-header-menu > li > ul{display: none; z-index: 99; background: #ffffff; box-shadow: 1px 1px 5px rgba(0,0,0,0.4),-1px 1px 5px rgba(0,0,0,0.4);border-radius: 0 0 3px 3px;}
+*/
 /*-- Main slide --*/
 .carousel-fade .carousel-inner .item{opacity:0.5;transition-property:opacity;}
 .carousel-fade .carousel-inner .active{opacity:1;}
@@ -3881,5 +3882,9 @@ end configurator landing page
 		width: 100% !important;
 		padding: 15px !important;
 	}
+}
+
+#header {
+    z-index: 999999!important;
 }
 /* end added */

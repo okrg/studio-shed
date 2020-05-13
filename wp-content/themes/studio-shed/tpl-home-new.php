@@ -3,51 +3,12 @@
  * Template Name: Home page new
  */
 ?>
+<!--	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<link rel="stylesheet" href="<?php// echo get_template_directory_uri() ?>/assets/lib/owlcarousel/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="<?php// echo get_template_directory_uri() ?>/assets/lib/owlcarousel/css/owl.theme.min.css"> -->
+	<link href="<?php echo get_template_directory_uri() ?>/wp-content/themes/studio-shed-child/css/style-home.css" rel="stylesheet" type="text/css" media="all" />
+	/<!--<link href="<?php //echo get_template_directory_uri() ?>/assets/css/custom.css" rel="stylesheet" type="text/css" media="all" />-->
 <style>
-/* Banner Promo on the top left of banner*/
-.banner-home .banner-promo{
-}
-.banner-home .banner-promo img{
-    width:170px;
-    position:absolute;
-    top:100%;
-	left: 10%;
-    opacity:0;
-    animation:promo_load_down 3s forwards;
-    -webkit-animation:promo_load_down 3s forwards;
-}
-@keyframes promo_load_down{
-    from{opacity:0;top:-250px;}
-    to{opacity:1;top:0;}    
-}
-@-webkit-keyframes promo_load_down{
-    from{opacity:0;top:-250px;}
-    to{opacity:1;top:0;}
-}
-
-/* Banner Promo on the right hand side*/
-/*
-.banner-home .banner-promo{
-}
-.banner-home .banner-promo img{
-    width:170px;
-    position:absolute;
-    top:100%;
-	right:8%;
-    opacity:0;
-    animation:promo_load_down 3s forwards;
-    -webkit-animation:promo_load_down 3s forwards;
-}
-@keyframes promo_load_down{
-    from{opacity:0;top:-250px;}
-    to{opacity:1;top:35%;}    
-}
-@-webkit-keyframes promo_load_down{
-    from{opacity:0;top:-250px;}
-    to{opacity:1;top:35%;}
-}
-*/
-
 @media only screen and (max-width: 500px){
 	img.attachment-post-thumbnail.size-post-thumbnail.wp-post-image {
     display: none;
@@ -59,35 +20,18 @@
     background-position: center center!important;
 	background-size: cover!important;
 }
-/* Banner Promo on mobile is centered */
-.banner-home .banner-promo img{
-	right: 0;
-	left: 0;
-	margin: 0 auto;
-}
-@keyframes promo_load_down{
-    from{opacity:0;top:-250px;}
-    to{opacity:1;top:25%;}
-    
-}@-webkit-keyframes promo_load_down{
-    from{opacity:0;top:-250px;}
-    to{opacity:1;top:25%;}
-    
-}
 }
 </style>
-<?php get_header('new');?>
+<script src="<?php echo get_template_directory_uri() ?>/assets/js/jquery-3.3.1.js"></script>
+<!--	<script src="<?php //echo get_template_directory_uri() ?>/assets/lib/owlcarousel/js/owl.carousel.js"></script>
+	<script src="<?php //echo get_template_directory_uri() ?>/assets/js/common.js"></script>
+  <script src="<?php //echo get_template_directory_uri() ?>/js/jquery.responsiveTabs.min.js"></script> -->
+
+<?php get_header('');?>
 <?php $page_id = get_the_ID(); ?>
 	<div class="main-content">
 			<div class="block-main banner-home" style="background: url('') no-repeat center center;">
 				<?php echo get_the_post_thumbnail();  ?>
-				<?php if(get_field('promo_image')) : ?>
-					<div class="promotion banner-promo">
-						<a href="<?php echo get_field('promo_link'); ?>">
-							<img src="<?php echo get_field('promo_image'); ?>" alt="<?php echo get_field('promo_image_alt_text'); ?>">
-						</a>
-					</div>
-				<?php endif; ?>
 				<div class="info textinfo  fall-promodiv">
 					<h2><?php echo get_field( "image_title" ); ?></h2>
 					<p class="des">
@@ -138,11 +82,6 @@
 					</div>
 				</div>
 			</div>
-			<?php if(get_field('video_block')) : ?>
-			<div class="block-primere-video">
-				<?php echo get_field('video_block'); ?>
-			</div>
-			<?php endif; ?>
 			<div class="block-three">
 				<div class="block-flex">
 					<div class="column">
@@ -386,4 +325,4 @@
 		</div>	
 	
 	
-<?php get_footer('new'); ?>
+<?php get_footer(''); ?>

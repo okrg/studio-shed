@@ -1,0 +1,6 @@
+{
+    "require": {
+        "tmarois/filebase": "^1.0",
+        "campaignmonitor/createsend-php": "^6.1.0"
+    }
+}
