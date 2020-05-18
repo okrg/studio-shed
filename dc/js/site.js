@@ -664,7 +664,10 @@ function cartModelLabel(cart) {
 }
 
 function cartModelPrice(cart) {
-  return cart.total.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });    
+  if(!cart.total) {
+    cart.total = 0.00;
+  }
+  return cart.total.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
 }
 
 function mobileConfiguratorLink(cart) {
