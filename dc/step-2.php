@@ -136,13 +136,20 @@
 </main>
 <script type="text/javascript">
 $(document).ready(function() {
+
+  $('#zip-label').keypress(function (e) {
+    if (e.which == 13) {
+      $('#submit-zip-lookup').trigger('click');
+      return false;
+    }
+  });
+
   $('li[data-progress-step="2"]').addClass('current');
   getUidCookie()
     .then(getCart)
     .then(renderCartLabels)
     .then(renderShippingElements)
     .then(renderPermitElements)
-    .then(renderInstallationElements)
     .then(cartRenderDone);
 });
 </script>

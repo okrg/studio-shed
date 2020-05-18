@@ -29,7 +29,7 @@
       <p>Bring your backyard dreams to life by designing your dream Studio Shed. Choose your size, configuration, siding, and colors.</p>
     </div>
 
-    <div class="dc-configurator">
+    <div class="dc-configurator" id="configurator-parent">
 
       <div id="mobile-portland">
         <div class="alert alert-warning">Please use your desktop computer to log into the design center and modify your Portland series configuration.</div>
@@ -241,6 +241,8 @@ $(document).ready(function() {
         }
     }
   });
+
+
 });
 </script>
 <?php include('includes/footer.php'); ?>

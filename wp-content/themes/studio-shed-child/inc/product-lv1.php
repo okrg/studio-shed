@@ -103,7 +103,7 @@ margin: 10px auto;
     font-family: 'Futura-PT-Heavy';
 	letter-spacing: 2px;
 	margin-top: 7px;
-	text-shadow: 1px 1px 2px black; 
+	text-shadow: -1px 2px 8px rgba(0,0,0,0.68);
 	}
 .series-info-box p{
 	color: #fff;	
@@ -817,8 +817,7 @@ Futura PT Book—Network resource(19 glyphs)
 	
 	}
 .sticky-menu {
-	top: 78px!important;
-    /*top: 108px!important;*/
+    top: 108px!important;
     position: fixed;
 	width: 100%;
 	z-index: 1;

@@ -426,7 +426,7 @@ p {
     max-width: 80%;
 }
 #wrapper {
-	padding-top:0px!important;
+	padding-top:40px!important;
 	}
 
 .header-mobile {
@@ -436,7 +436,7 @@ p {
     padding: 20px 0;
 }
 		}
-.main-menu-ul {
+#main-menu ul {
     padding-top: 20px!important;
 }
 .main-menu-dropdown li li {
@@ -468,6 +468,7 @@ li {
 }
 #main-menu ul {
     list-style: none;
+	padding-top: 20px;
 }
 user agent stylesheet
 ul ul ul {
@@ -526,6 +527,9 @@ ul {
 }
 .main-menu-ul li.active, .main-menu-ul li:hover {
     color: #000;
+}
+	section#content-header {
+    margin-top: 100px;
 }
 @media (min-width: 992px)
 .main-menu-ul>li {

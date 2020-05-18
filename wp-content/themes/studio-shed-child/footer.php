@@ -742,7 +742,7 @@ border-color: #ffa544;
 			</div>
 			<div class="col-sm-12 col-md-2">
 
-				<img src="https://dev2-studio-shed.pantheonsite.io/wp-content/uploads/2020/01/we-ship-footer-icon.png" />
+				<img src="/wp-content/uploads/2020/01/we-ship-footer-icon.png" />
 				 <div class="social">
             <ul>
               <?php

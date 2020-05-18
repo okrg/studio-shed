@@ -1,5 +1,5 @@
 var cart;
-
+var configuratorState;
 $.ajaxSetup({
   headers: {
     'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
@@ -110,6 +110,12 @@ function renderCartLabels(cart) {
       });
       $('a[data-menu-step="2"]').bind( 'click', function(e){
         e.preventDefault();
+
+        if( configuratorState == 'unsaved') {
+          result = confirm('Any configuration changes you may have made have not been saved. Do you want to continue without saving?');
+          if(!result) {return false;}
+        }
+
         window.location = '/dc/step-2.php';
       });
       $('a[data-menu-step="3"]').bind( 'click', function(e){
@@ -847,6 +853,14 @@ $(document).ready(function() {
       $('button#submit').prop('disabled', true).addClass('disabled');
     }
   });
+
+  $('body').click(function(e) {
+    if (e.target.id == 'configurator-parent' || $(e.target).parents('#configurator-parent').length) {      
+      configuratorState = 'unsaved';
+    }
+  });
+
+
 
   $('.progressbar li').click(function(e){
     $(this).find('a').get(0).click();
