@@ -304,13 +304,18 @@ transform: translate(0, -500PX);
 }
 
 /*
- * And let's slide it in from the left
+ * Atoggle slides to the left
  */
 #menuToggle input:checked ~ ul
 {
   transform: none;
 }
 /* default blog pages */
+.list-blogs, .sidebar, section#content-header, #secondary-header, #design-landing-header { /*edited to fix cut off on header */
+    margin-top: 50px;
+}{
+    margin-top: 50px;
+}
 #sub-menu {
     background: #ffffff!important;
 }

@@ -3,14 +3,15 @@ include('../env.php');
 include('../headers.php');
 include('../filebase.php');
 
+$rest_json = file_get_contents("php://input");
+$data = json_decode($rest_json, true);
+$uid = $data['uid'];
+
+//generate $link for email
 $key = 'wCXyYiw#bHxK-<cH];"a:Yd=40^zx)';
 $time = time();
 $hash = hash_hmac('sha256', $time, $key);
 $link = $host.'/dc/lookup-config?h='.$hash.'&t='.$time.'&u='.$uid;
-
-$rest_json = file_get_contents("php://input");
-$data = json_decode($rest_json, true);
-$uid = $data['uid'];
 
 if( !$data ) {
   exit(json_encode(['error' => 'Empty JSON']));

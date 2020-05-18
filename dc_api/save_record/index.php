@@ -8,6 +8,27 @@ ini_set('display_startup_errors', 0);
 $rest_json = file_get_contents("php://input");
 $_POST = json_decode($rest_json, true);
 
+if ($_ENV['PANTHEON_ENVIRONMENT'] === 'dev2') {
+  //Copy data to dev this is a temp fix. 
+  $url = 'https://dev-studio-shed.pantheonsite.io/dc_api/save_record/';
+  $ch=curl_init($url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+  curl_setopt($ch, CURLOPT_POSTFIELDS, $rest_json);
+  curl_setopt($ch, CURLOPT_HEADER, true);
+  curl_setopt($ch, CURLOPT_HTTPHEADER,
+      array(
+          'Content-Type:application/json',
+          'X-Api-Key: e4XaFZRT1TyvLAy3KHdTnU20MluyYotL',
+          'Content-Length: ' . strlen($rest_json)
+      )
+  );
+  $result = curl_exec($ch);
+  curl_close($ch);
+}
+
+
+
 header('Content-Type: application/json');
 header('Cache-Control: no-cache, must-revalidate, max-age=0');
 if (!function_exists('getallheaders')) {
