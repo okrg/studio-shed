@@ -73,7 +73,7 @@ function getCart(data) {
 
 
       if (typeof Cookies.get('welcome') !== 'undefined') {
-        model = cart.model.charAt(0).toUpperCase() + cart.model.slice(1);        
+        model = cart.model.charAt(0).toUpperCase() + cart.model.slice(1);
         Cookies.remove('welcome');
         window.dataLayer.push({
           event: 'configurator.save',
@@ -331,6 +331,15 @@ function renderCartLabels(cart) {
         $('#step-order').prepend('<span class="badge badge-pill badge-primary">Next Step</span> ');
       }
 
+      if (typeof Cookies.get('checkout') !== 'undefined') {
+        model = cart.model.charAt(0).toUpperCase() + cart.model.slice(1);
+        Cookies.remove('checkout');
+        window.dataLayer.push({
+          event: 'configurator.checkout',
+          productSeries: model
+        });
+      }
+
       resolve(cart);
 
    });
@@ -339,7 +348,7 @@ function renderCartLabels(cart) {
 
 
 function renderPermitElements(cart) {
-  var promise = new Promise(function(resolve, reject){    
+  var promise = new Promise(function(resolve, reject){
     if(cart.permitPlans) {
       $('a.option-permitPlans[data-permitPlans="true"]').addClass('selected');
     } else {

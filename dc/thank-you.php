@@ -30,7 +30,6 @@
 
         <?php include('includes/configuration-details.php'); ?>
 
-      
     </section>
 
     <?php include('includes/contact.php'); ?>
@@ -44,9 +43,6 @@ $(document).ready(function() {
   getUidCookie()
     .then(getCart)
     .then(renderCartLabels)
-    .then(renderShippingElements)
-    .then(renderPermitElements)
-    .then(renderInstallationElements)
     .then(cartRenderDone);
 });
 </script>

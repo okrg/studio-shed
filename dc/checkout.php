@@ -577,13 +577,10 @@ $(document).ready(function(){
             data: JSON.stringify(json)
           });
           request.done(function(data){
-
-            model = window.cart.model.charAt(0).toUpperCase() + window.cart.model.slice(1);
-            window.dataLayer.push({
-              event: 'configurator.checkout',
-              productSeries: model
+            var inFiveMinutes = new Date(new Date().getTime() + 5 * 60 * 1000);
+            Cookies.set('checkout', result.paymentIntent.id, {
+              expires: inFiveMinutes
             });
-
             window.location='/dc/thank-you.php?c='+result.paymentIntent.created+'&uid='+window.dc_uid;
           });
 

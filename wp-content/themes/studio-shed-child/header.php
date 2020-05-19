@@ -262,7 +262,6 @@ ul {
 .main-menu-ul li.active, .main-menu-ul li:hover {
     color: #000;
 }
-@media (min-width: 992px)
 .main-menu-ul>li {
     text-transform: uppercase;
     font-size: 1em;
@@ -373,6 +372,10 @@ TisaSansPro—Network resource(19 glyphs)
 .main-drop-models .menu-child.menu-list .box .time {
     margin-bottom: 0px!important;
     color: #949494;
+}
+.main-drop-models .menu-child.menu-list li img {
+    padding: 3px 0;
+    mix-blend-mode: multiply;
 }
 .menu-child.menu-list .box p {
     height: auto!important;
@@ -720,14 +723,15 @@ user agent stylesheet
 ul {
     list-style-type: disc;
 }
-@media (min-width: 992px)
+
+
+	@media (min-width: 992px){
 .main-menu-ul>li .main-menu-dropdown {
     display: block;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
 }
-	@media (min-width: 992px){
 .main-menu-dropdown {
     min-width: 300px;
     width: 100%;
@@ -794,11 +798,7 @@ li.cell a {
 		
 
 
-.main-drop-models .menu-child.menu-list li img {
 
-    padding-top: 6px;
-    mix-blend-mode: multiply;
-}
 		}
 		
 user agent stylesheet

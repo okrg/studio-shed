@@ -86,7 +86,7 @@ margin: 10px auto;
     margin: 0;
     padding:0 0px 10px 0px!important;
     text-align: left!important;
-    min-height: 250px!important;
+    min-height: 0px!important;
 	width: 100%!important;
 }
 .products-page.lv2 .bottom-info {
@@ -1017,6 +1017,14 @@ Futura PT Book—Network resource(19 glyphs)
     text-align: center;
     min-height: 570px;
 }
+	@media (min-width:751px){
+.postid-181 #feature-5 .tab-right {
+    min-height: 300px;
+}
+.postid-181 #feature-5 .tab-left {
+    min-height: 300px;
+}
+	}
 #feature-5 .tab-left a, #feature-5 .tab-right a{
     text-decoration: underline;
 }
