@@ -577,7 +577,13 @@ $(document).ready(function(){
             data: JSON.stringify(json)
           });
           request.done(function(data){
-            //console.log(data);
+
+            model = window.cart.model.charAt(0).toUpperCase() + window.cart.model.slice(1);
+            window.dataLayer.push({
+              event: 'configurator.checkout',
+              productSeries: model
+            });
+
             window.location='/dc/thank-you.php?c='+result.paymentIntent.created+'&uid='+window.dc_uid;
           });
 
@@ -585,11 +591,6 @@ $(document).ready(function(){
             console.log("Request failed: " + textStatus);
           });
 
-          // Show a success message to your customer
-          // There's a risk of the customer closing the window before callback
-          // execution. Set up a webhook or plugin to listen for the
-          // payment_intent.succeeded event that handles any business critical
-          // post-payment actions.
         }
       }
     });
@@ -605,9 +606,6 @@ $(document).ready(function(){
   getUidCookie()
     .then(getCart)
     .then(renderCartLabels)
-    .then(renderShippingElements)
-    .then(renderPermitElements)
-    .then(renderInstallationElements)
     .then(cartRenderDone);
 
 });

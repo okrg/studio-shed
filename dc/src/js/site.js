@@ -11,9 +11,14 @@ $.ajaxSetup({
 
 function getLookupUid(uid) {
   var promise = new Promise(function(resolve, reject){
-    resolve({
-      uid:uid
-    });
+    if (typeof Cookies.get('sslookup') !== 'undefined') {
+      var sslookup = Cookies.get('sslookup');
+      resolve({
+        uid:uid
+      });
+    } else {
+      window.location = '/dc/lookup/login.php';
+    }
   });
   return promise;
 }
@@ -64,6 +69,16 @@ function getCart(data) {
         lockInputs();
       } else {
         cart.orderComplete = false;
+      }
+
+
+      if (typeof Cookies.get('welcome') !== 'undefined') {
+        model = cart.model.charAt(0).toUpperCase() + cart.model.slice(1);        
+        Cookies.remove('welcome');
+        window.dataLayer.push({
+          event: 'configurator.save',
+          productSeries: model
+        });
       }
 
       if( $('#idearoomConfigurator').length ) {
@@ -148,17 +163,19 @@ function renderCartLabels(cart) {
       $('#intro-installation').text( cartFoundationLabel(cart) + ' & ' + cartInstallationLabel(cart));
       $('#intro-order').text( cartOrderLabel(cart) );
 
-
-      var paidDate = new Date(cart.paymentIntentCreated * 1000);
-      var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-      var year = paidDate.getFullYear();
-      var month = months[paidDate.getMonth()];
-      var date = paidDate.getDate();
-      var paidDateString = month + ' ' + date + ', ' + year;
+      if(cart.paymentIntentCreated) {
+        var paidDate = new Date(cart.paymentIntentCreated * 1000);
+        var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        var year = paidDate.getFullYear();
+        var month = months[paidDate.getMonth()];
+        var date = paidDate.getDate();
+        var paidDateString = month + ' ' + date + ', ' + year;
+      }
 
       $('#summary-name').text( cart.firstName + ' ' + cart.lastName );
       $('#summary-location').text( cart.city );
       $('#summary-email').text( cart.email );
+      $('#summary-phone').text( cart.phone );
       $('#summary-config-id').text( cart.uniqueid );
       $('#summary-config-render').attr('src', cart.imageUrl );
       $('#summary-config-model').text( cart.model );
@@ -253,21 +270,42 @@ function renderCartLabels(cart) {
         $('#optional-interior-row').hide();
       }
 
-      $('#summary-config-shipping').text( cart. city + ' (' + cart.zip + ')' );
-      $('#summary-config-shipping-price').text( formatMoney(cart.shippingPrice) );
+      if(cart.city && cart.zip) {
+        $('#summary-config-shipping').text( cart.city + ' (' + cart.zip + ')' );
+      }
+      if(cart.shippingPrice) {
+        $('#summary-config-shipping-price').text( formatMoney(cart.shippingPrice) );
+      } else {
+        $('#summary-config-shipping-price').text('TBD');
+      }
 
-      $('#summary-config-permit-plans').text( cart.permitPlans ? 'Yes' : 'No' );
-      $('#summary-config-permit-plans-price').text( formatMoney(cart.permitPlansPrice) );
+      if(cart.permitPlansPrice) {
+        $('#summary-config-permit-plans').text( cart.permitPlans ? 'Yes' : 'No' );
+        $('#summary-config-permit-plans-price').text( formatMoney(cart.permitPlansPrice) );
+      } else {
+        $('#summary-config-permit-plans-price').text('TBD');
+      }
 
-      $('#summary-config-foundation').text( cart.foundation );
-
-      $('#summary-config-installation').text( cart.installation );
-      $('#summary-config-installation-price').text( formatMoney(cart.installationPrice) );
+      if(cart.foundation) {
+        $('#summary-config-foundation').text( cart.foundation );
+      } else {
+        $('#summary-config-foundation').text('TBD');
+      }
+      if(cart.installationPrice) {
+        $('#summary-config-installation').text( cart.installation );
+        $('#summary-config-installation-price').text( formatMoney(cart.installationPrice) );
+      } else {
+        $('#summary-config-installation-price').text('TBD');
+      }
 
       $('#summary-config-total-price').text( cartTotalPrice(cart) );
 
-      $('#summary-config-initial-payment-date').text( 'Paid ' + paidDateString );
-      $('#summary-config-initial-payment-price').text( cartInitialPayment(cart) );
+      if(cart.paymentIntentCreated) {
+        $('#summary-config-initial-payment-date').text( 'Paid ' + paidDateString );
+        $('#summary-config-initial-payment-price').text( cartInitialPayment(cart) );
+      } else {
+        $('#summary-config-initial-payment-date').text('TBD').parent().removeClass('badge-success').addClass('badge-secondary');
+      }
 
       if(cart.city && cart.shippingPrice) {
         $('li[data-progress-step="2"]').addClass('active');

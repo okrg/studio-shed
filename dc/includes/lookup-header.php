@@ -24,6 +24,9 @@ if (empty($_SESSION['csrf_token'])) {
     <div class="container">
       <div class="p-3 bg-white border-bottom box-shadow text-center">
         <h5 class="my-0 mr-md-auto font-weight-normal"><span style="color:#fba445">Studio</span>Shed Design Center<small>&trade;</small></h5>
+        <div class="mr-auto">
+          <a href="/dc/lookup">Config Lookup</a> | <a href="/dc/lookup/logout.php">Log Out</a>
+        </div>
       </div>
     </div>
   </header>

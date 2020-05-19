@@ -9,11 +9,10 @@ don't use MD5: the algorithm is completely broken and doesn't provide any securi
 you should use hash_equals for comparing hashes to prevent timing attacks
 we use an HMAC to guarantee data integrity and authentication. See https://crypto.stackexchange.com/questions/1070/why-is-hkx-not-a-secure-mac-construction for why we mustn't just concatenate time & key
 */
-$welcome = $_REQUEST['w'];
+
 $hash = $_REQUEST['h'];
 $time = $_REQUEST['t'];
-$uid = $_REQUEST['u'];
-$key = 'xK-<cH];"a:Yd=40^zx)wCXyYiw#bH';
+$key = 'wCXyYiw#bHxK-<cH];"a:Yd=40^zx)';
 $expected_hash = hash_hmac('sha256', $time, $key);
 $hash_equals = hash_equals($expected_hash, $hash);
 $expired = true;
@@ -28,14 +27,8 @@ if ($time >= strtotime('-1 month')) {
 <?php else: ?>
   <?php if ($hash_equals): ?>
     <script type="text/javascript">
-      Cookies.set('uid', '<?php echo $uid; ?>',  { expires: 30 });
-      <?php if(isset($welcome)): ?>
-        var inFiveMinutes = new Date(new Date().getTime() + 5 * 60 * 1000);
-        Cookies.set('welcome', '<?php echo $time; ?>', {
-          expires: inFiveMinutes
-        });
-      <?php endif; ?>
-      window.location = "/dc";
+      Cookies.set('sslookup', '<?php echo $hash; ?>');
+      window.location = "/dc/lookup";
     </script>
   <?php endif; ?>
 <?php endif; ?>

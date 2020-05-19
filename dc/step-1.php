@@ -220,9 +220,6 @@ $(document).ready(function() {
   getUidCookie()
     .then(getCart)
     .then(renderCartLabels)
-    .then(renderShippingElements)
-    .then(renderPermitElements)
-    .then(renderInstallationElements)
     .then(cartRenderDone);
 
   $('li[data-progress-step="1"]').addClass('current');

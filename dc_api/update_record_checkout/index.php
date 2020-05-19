@@ -11,7 +11,7 @@ $uid = $data['uid'];
 $key = 'wCXyYiw#bHxK-<cH];"a:Yd=40^zx)';
 $time = time();
 $hash = hash_hmac('sha256', $time, $key);
-$link = $host.'/dc/lookup-config?h='.$hash.'&t='.$time.'&u='.$uid;
+$link = $host.'/dc/lookup/config.php?h='.$hash.'&t='.$time.'&u='.$uid;
 
 if( !$data ) {
   exit(json_encode(['error' => 'Empty JSON']));

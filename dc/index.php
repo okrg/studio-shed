@@ -67,9 +67,6 @@ $(document).ready(function() {
   getUidCookie()
     .then(getCart)
     .then(renderCartLabels)
-    .then(renderShippingElements)
-    .then(renderPermitElements)
-    .then(renderInstallationElements)
     .then(cartRenderDone);
 });
 </script>

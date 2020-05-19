@@ -9,7 +9,7 @@ $rest_json = file_get_contents("php://input");
 $_POST = json_decode($rest_json, true);
 
 if ($_ENV['PANTHEON_ENVIRONMENT'] === 'dev2') {
-  //Copy data to dev this is a temp fix. 
+  //Copy data to dev this is a temp fix.
   $url = 'https://dev-studio-shed.pantheonsite.io/dc_api/save_record/';
   $ch=curl_init($url);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -17,11 +17,11 @@ if ($_ENV['PANTHEON_ENVIRONMENT'] === 'dev2') {
   curl_setopt($ch, CURLOPT_POSTFIELDS, $rest_json);
   curl_setopt($ch, CURLOPT_HEADER, true);
   curl_setopt($ch, CURLOPT_HTTPHEADER,
-      array(
-          'Content-Type:application/json',
-          'X-Api-Key: e4XaFZRT1TyvLAy3KHdTnU20MluyYotL',
-          'Content-Length: ' . strlen($rest_json)
-      )
+    array(
+      'Content-Type:application/json',
+      'X-Api-Key: e4XaFZRT1TyvLAy3KHdTnU20MluyYotL',
+      'Content-Length: ' . strlen($rest_json)
+    )
   );
   $result = curl_exec($ch);
   curl_close($ch);
@@ -202,7 +202,7 @@ $record->save();
 $key = 'xK-<cH];"a:Yd=40^zx)wCXyYiw#bH';
 $time = time();
 $hash = hash_hmac('sha256', $time, $key);
-$redirectPath = '/dc/auth?h='.$hash.'&t='.$time.'&u='.$uid;
+$redirectPath = '/dc/auth?w=1&h='.$hash.'&t='.$time.'&u='.$uid;
 $redirectURL = $host.$redirectPath;
 
 //Write contact to Campaign Monitor list

@@ -311,10 +311,18 @@ transform: translate(0, -500PX);
   transform: none;
 }
 /* default blog pages */
-.list-blogs, .sidebar, section#content-header, #secondary-header, #design-landing-header { /*edited to fix cut off on header */
+.list-blogs, .sidebar,
+.page-id-1235 section#content-header,
+.single-post .col-md-8, /* single blog posts */
+.page-id-1280 section#content-header,
+.parent-pageid-70 section#content-header, /* newsletter pages */
+.page-template-default section#content-header, /* default template */
+.page-template-tpl-content-oneColumn section#content-header /* one column template */
+	{ /*edited to fix cut off on header */
     margin-top: 50px;
-}{
-    margin-top: 50px;
+}
+.config-container {/*configurator design center template - edited to fix cut off on header */
+    margin-top: 60px;
 }
 #sub-menu {
     background: #ffffff!important;

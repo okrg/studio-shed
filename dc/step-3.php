@@ -11,34 +11,26 @@
     <section class="dc-foundation">
       <h2 class="text-center mb-5">Select Your Foundation Type</h2>
       <div class="row">
-        <div class="col-sm-12 col-lg-4 mb-5">
+        <div class="col-sm-12 col-lg-4 mb-5 d-flex flex-column justify-content-between">
           <div>
             <h3>Concrete Slab</h3>
             <p>Because every site is different, other than for our pre-configured selections, Studio Shed does not directly quote the cost of foundations or pour concrete. However, this is a service that the majority of our professional installers provide, and they will work with you directly to get the best foundation for your site in an efficient way.</p>
           </div>
+          <a href="#" tabindex="-1" id="select-concrete-slab" data-foundation="Concrete Slab" class="btn btn-block btn-outline-primary option option-foundation">Select Concrete Slab</a>
         </div>
-        <div class="col-sm-12 col-lg-4 mb-5">
+        <div class="col-sm-12 col-lg-4 mb-5 d-flex flex-column justify-content-between">
           <div>
             <h3>Wood Frame Floor</h3>
             <p>A self-supported joisted floor system similar to a deck is the most popular method and consists of simple poured or pre-cast concrete piers. For small, unfinished units, a 4×4 skid foundation may suffice.</p>
           </div>
+          <a href="#" tabindex="-1" id="select-wood-frame" data-foundation="Wood Frame Floor" class="btn btn-block btn-outline-primary option option-foundation">Select Wood Frame Floor</a>
         </div>
-        <div class="col-sm-12 col-lg-4 mb-5">
+        <div class="col-sm-12 col-lg-4 mb-5 d-flex flex-column justify-content-between">
           <div>
             <h3>Not Sure?</h3>
             <p>Contact us to talk about the various factors to consider when choosing your foundation type.</p>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12 col-lg-4 mb-5">
-          <a href="#" tabindex="-1" id="select-concrete-slab" data-foundation="Concrete Slab" class="btn btn-outline-primary option option-foundation">Select Concrete Slab</a>
-        </div>
-        <div class="col-sm-12 col-lg-4 mb-5">
-          <a href="#" tabindex="-1" id="select-wood-frame" data-foundation="Wood Frame Floor" class="btn btn-outline-primary option option-foundation">Select Wood Frame Floor</a>
-        </div>
-        <div class="col-sm-12 col-lg-4 mb-5">
-          <a href="#" tabindex="-1" id="select-foundation-tbd" data-foundation="TDB" class="btn btn-outline-primary option option-foundation">Select Foundation TBD</a>
+          <a href="#" tabindex="-1" id="select-foundation-tbd" data-foundation="TDB" class="btn btn-block btn-outline-primary option option-foundation">Select Foundation TBD</a>
         </div>
       </div>
     </section>
@@ -136,12 +128,11 @@
   </div>
 </main>
 <script type="text/javascript">
-$(document).ready(function() {  
+$(document).ready(function() {
   $('li[data-progress-step="3"]').addClass('current');
   getUidCookie()
     .then(getCart)
     .then(renderCartLabels)
-    .then(renderShippingElements)
     .then(renderPermitElements)
     .then(renderInstallationElements)
     .then(cartRenderDone);
