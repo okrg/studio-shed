@@ -8,8 +8,8 @@
 .only-in-portland {
 		display: none;
 	}
-@media (max-width: 1024px) {
-		.config-container .row {
+@media (max-width: 800px) {
+ .portland-container .row {
     display: none;
 }
 .only-in-portland {
@@ -38,14 +38,14 @@
 <section id="content-header" class="container">
 	<div class="row">
     	<div class="col-md-12 intro no-slide">
-			<p class="titleintro text-uppercase"><?php the_title(); ?></p>
+			<p class="titleintro text-uppercase"><?php// the_title(); ?></p>
     	</div>
 	</div>
 </section>
 -->
 
 
-<section class="container config-container">
+<section class="container config-container <?php  if(is_page(1666)){ ?>portland-container <?php } ?>">
 	
 
 	

@@ -42,7 +42,7 @@
 @media (max-width: 770px){
 
 	section#content-slider {
-	margin-top:47px;
+	margin-top:0px;
 }
 	#feature-1 .container, #feature-2 .container, #feature-3 .container, #feature-4 .container, #feature-5 .container {
     padding: 0 15px 80px!important;
@@ -1220,7 +1220,7 @@ while (have_posts()) : the_post();
                     <p><?php the_excerpt(); ?></p>
 					
                 </div>
-			<div class="btn-row"><a class="buidbt" href="/configurator/">BUILD &amp; Price</a></div>
+			<div class="btn-row"><a class="buidbt" href="<?php the_field('link_create'); ?>">BUILD &amp; Price</a></div>
 
         </div>
     </section> 

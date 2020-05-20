@@ -39,7 +39,6 @@ if(!empty($email) && email_valid($email)) {
   $message = array(
     'To' => $email,
     'Data' => array(
-        'firstname' => $firstname,
         'DCMagicLink' => $link,
     ),
   );

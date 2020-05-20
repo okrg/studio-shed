@@ -294,10 +294,6 @@ body {
     color: #5D5E5D;
     font-family: "Tisa-Sans-Pro";
     font-size: 19px;
-}
-body {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 14px;
     line-height: 1.42857143;
     color: #333;
     background-color: #fff;
@@ -532,7 +528,7 @@ ul {
     color: #000;
 }
 	section#content-header {
-    margin-top: 100px;
+    margin-top: 50px;
 }
 @media (min-width: 992px)
 .main-menu-ul>li {
@@ -825,7 +821,6 @@ body {
     color: #5D5E5D;
     font-family: "Tisa-Sans-Pro";
     font-size: 19px;
-	position: relative;
 }
 body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;

@@ -27,6 +27,10 @@ $record->paymentIntentCreated = $data['input']['paymentIntentCreated'];
 $record->paymentIntentId = $data['input']['paymentIntentId'];
 $record->save();
 
+if(!isset($record->permitPlans)) {
+  $record->permitPlans = 'No';
+}
+
 $data['code'] = 'updateRecordCheckoutSuccess';
 
 //Update contact in Campaign Monitor list
