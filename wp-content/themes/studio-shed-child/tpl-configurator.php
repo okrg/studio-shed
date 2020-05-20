@@ -5,14 +5,17 @@
 ?>
 <?php get_header(); ?>
 <style>
-.only-in-portland {
+.only-in-portland,
+.only-for-sprout {
 		display: none;
 	}
 @media (max-width: 800px) {
- .portland-container .row {
+ .portland-container .row,
+ .sprout-container .row{
     display: none;
 }
-.only-in-portland {
+.only-in-portland,
+.only-for-sprout {
 	display: block;
     margin: 0 20px 60px;
     padding: 20px 20px 10px;
@@ -31,6 +34,12 @@
   </h4>
 			</div>
 		<?php } ?>
+<?php  if(is_page(1123)){ ?>
+		<div class="only-for-sprout">
+			<h4>Please use your <b>desktop computer </b>to log into the design center and modify your Sprout configuration.
+  </h4>
+			</div>
+		<?php } ?>
 <?php
     if (have_posts()) : while (have_posts()) : the_post();
 ?>
@@ -45,7 +54,7 @@
 -->
 
 
-<section class="container config-container <?php  if(is_page(1666)){ ?>portland-container <?php } ?>">
+<section class="container config-container <?php  if(is_page(1666)){ ?>portland-container<?php } ?><?php  if(is_page(1123)){ ?>sprout-container<?php } ?>">
 	
 
 	

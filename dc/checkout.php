@@ -1,6 +1,15 @@
 <?php
 require 'vendor/autoload.php';
-\Stripe\Stripe::setApiKey('sk_test_QhcInpwY7RzwSEINOicTQPNM00pNL7f8Av');
+$sk = 'sk_test_QhcInpwY7RzwSEINOicTQPNM00pNL7f8Av';
+$pk = 'pk_test_fOnxYRdPKxD6UIEVyOm1LA5p00JLrteEOh';
+
+if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
+  if($_ENV['PANTHEON_ENVIRONMENT'] == 'live') {
+    $sk = 'sk_live_rq9Qm2x21UyHJyvZolwdGqeW00CWWgz9ys';
+    $pk = 'pk_live_WSBCgiilEtefMWNSQjB5bzv500RRBgQR2i';
+  }
+}
+\Stripe\Stripe::setApiKey($sk);
 
 if(isset($_REQUEST['stripeFee'])) {
   $amount = (int)$_REQUEST['stripeFee'];
@@ -241,7 +250,7 @@ include('includes/header.php');
           <div id="checkout">
       <form id="payment-form" method="POST" action="/orders">
         <section>
-          <h2>Shipping &amp; Billing Information</h2>
+          <h2>Billing Information</h2>
           <fieldset class="with-state">
             <label>
               <span>Name</span>
@@ -508,7 +517,7 @@ $(document).ready(function(){
 
   $('li[data-progress-step="4"]').addClass('current');
 
-  var stripe = Stripe('pk_test_fOnxYRdPKxD6UIEVyOm1LA5p00JLrteEOh');
+  var stripe = Stripe('<?php echo $pk; ?>');
   var clientSecret = '<?php echo $intent->client_secret; ?>';
   var elements = stripe.elements();
 

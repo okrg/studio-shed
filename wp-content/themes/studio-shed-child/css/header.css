@@ -1,0 +1,391 @@
+@charset "UTF-8";
+/* CSS Document 
+for header*/
+
+@media (max-width: 991px){
+	.main-menu-ul>li.has-sub:hover>a {
+    background-color: #f4f4f4!important;
+    color: #717372!important;
+}
+		}
+      .menu-child.menu-list .box p{
+        height: auto!important;
+      }
+      #wpadminbar {
+        z-index: 9999999!important;
+    }
+    .main-menu-dropdown li {
+        font-size: 0.97em;
+    }
+    .main-menu-ul li {
+        line-height: 1.1em;
+    }
+    #sub-menu .navbar-toggle{
+      background: #ffffff!important;
+    }
+    #main-menu{
+       font-family: 'Tisa-Sans-Pro', Arial, Helvetica, sans-serif;
+    }
+    .main-menu-ul>li>a{
+      font-family: 'Tisa-Sans-Pro', Arial, Helvetica, sans-serif;
+      font-size: 14px;
+    }
+    .main-menu-dropdown > ul > li > a{
+      font-size: .9em;
+      font-family: 'Tisa-Sans-Pro', Arial, Helvetica, sans-serif;
+    }
+      /*.main-drop-models .featured{height: 433px!important;}*/
+      .content-model-right .description p{
+        height: auto!important;
+      }
+      @media (max-width: 991px){
+          .main-menu-ul .has-sub .main-menu-dropdown .row .col-lg-4 > li>a {
+               font-size: 14px; 
+          }
+          .main-menu-ul>li>a {
+              font-size: 1.0em;
+          }
+      }
+.main-drop-models .menu-child.menu-list li:hover, 
+.main-drop-models .menu-child.menu-list .col-lg-7:hover,
+.main-menu-dropdown .row>ul a:hover {
+    background-color: #d9d6d6;
+}
+.main-drop-models .menu-child.menu-list li:hover, 
+		.main-drop-models .menu-child.menu-list .col-lg-7:hover{
+    color: #000;
+}
+.main-drop-models .menu-child.menu-list .box:hover p.intro {
+    color: #717372;
+}
+.main-drop-models .menu-child.menu-list .col-lg-7:hover a, .main-drop-models .menu-child.menu-list .col-lg-7:hover p {
+    color: inherit;
+}
+.main-drop-models .menu-child.menu-list .box .time, .main-drop-models .menu-child.menu-list .box:hover .time  {
+    color: #5d5e5d!important;
+}
+.main-drop-models .menu-child.menu-list .box .box-link a, .main-drop-models .menu-child.menu-list .box:hover .box-link a {
+color: #f35100;	
+	font-weight: 700;
+		}
+.menu-child.menu-list .box p {
+    height: auto!important;
+}
+
+
+		@media (min-width: 992px){
+.menu-list .box {
+    cursor: pointer;
+}
+		}
+.main-menu-dropdown li li {
+    text-transform: none;
+}
+.main-menu-dropdown ul li {
+    color: #717372;
+}
+.main-menu-ul li {
+    line-height: 1.1em;
+}
+.main-menu-dropdown li {
+    font-size: 0.97em;
+}
+.main-menu-dropdown li {
+    text-transform: none;
+    font-size: .85em;
+}
+.main-menu-ul li {
+    margin: 0;
+    position: relative;
+    color: #000;
+    font-weight: 600;
+    line-height: 1.2em;
+}
+
+@media (min-width: 992px){
+.main-menu-ul>li .main-menu-dropdown {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+.main-menu-dropdown {
+    min-width: 300px;
+    width: 100%;
+    right: 0;
+    left: auto;
+    margin: 0;
+    font-size: 1em;
+    border: none;
+    background-color: #fff;
+    -webkit-box-shadow: 2px 9px 18px -6px rgba(0,0,0,.22);
+    box-shadow: 2px 9px 18px -6px rgba(0,0,0,.22);
+}
+		}
+.main-menu-dropdown {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-size: 1em;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+.main-menu-ul li.active, .main-menu-ul li:hover {
+    color: #000;
+}
+.main-menu-ul>li {
+    text-transform: uppercase;
+    font-size: 1em;
+}
+.main-menu-ul>li {
+    font-size: 1.3em;
+    text-transform: uppercase;
+}
+.main-drop-models .menu-child.menu-list li img {
+    padding: 3px 0;
+    mix-blend-mode: multiply;
+}
+.menu-child.menu-list .box p {
+    height: auto!important;
+}
+
+@media (min-width: 992px){
+
+#wrapper {
+	padding-top:40px!important;
+	}
+#header-logo img {
+	width: 200px!important;
+	height: 23px!important;
+	}
+		}
+@media (max-width: 770px){
+	#header-logo img {
+    max-width: 122px;
+    height: 13px;
+}		
+@media (max-width: 950px){
+.navbar-brand img {
+    max-width: 80%;
+}
+#wrapper {
+	padding-top:40px!important;
+	}
+
+.header-mobile {
+    min-height: 52px!important;
+}
+.header-mobile .col-mb-8 {
+    padding: 20px 0;
+}
+		}
+#main-menu ul {
+    padding-top: 20px!important;
+}
+.main-menu-dropdown li li {
+    text-transform: none;
+}
+.main-menu-dropdown ul li {
+    color: #717372;
+}
+.main-menu-ul li {
+    line-height: 1.1em;
+}
+.main-menu-dropdown li {
+    font-size: 0.97em;
+}
+.main-menu-dropdown li {
+    text-transform: none;
+    font-size: .85em;
+}
+.main-menu-ul li {
+    margin: 0;
+    position: relative;
+    color: #717372;
+    font-weight: 600;
+    line-height: 1.2em;
+}
+user agent stylesheet
+li {
+    text-align: -webkit-match-parent;
+}
+#main-menu ul {
+    list-style: none;
+	padding-top: 20px;
+}
+user agent stylesheet
+ul ul ul {
+    list-style-type: square;
+}
+user agent stylesheet
+ul ul {
+    list-style-type: circle;
+}
+user agent stylesheet
+ul {
+    list-style-type: disc;
+}
+user agent stylesheet
+li {
+    text-align: -webkit-match-parent;
+}
+user agent stylesheet
+ul ul {
+    list-style-type: circle;
+}
+user agent stylesheet
+ul {
+    list-style-type: disc;
+}
+
+.main-menu-dropdown {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-size: 1em;
+}
+
+	section#content-header {
+    margin-top: 5px;
+}
+
+.main-drop-models .menu-child.menu-list .col-lg-7:hover a, .main-drop-models .menu-child.menu-list .col-lg-7:hover p {
+    color: inherit;
+}
+.main-drop-models .menu-child.menu-list .box:hover .time {
+    margin-bottom: 12px;
+    color: #fba347;
+}
+.menu-child.menu-list .box p {
+    height: auto!important;
+}
+p {
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.3em;
+}
+p {
+    margin: 0 0 10px;
+}
+*, .bootstrap-select .btn:focus, :active, :focus, button, button:active, button:focus, input, input:active, input:focus, option {
+    outline: none!important;
+    outline: 0!important;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+user agent stylesheet
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+@media (min-width: 992px)
+.menu-list .box {
+    cursor: pointer;
+}
+.main-menu-dropdown li li {
+    text-transform: none;
+}
+.main-menu-dropdown ul li {
+    color: #717372;
+}
+.main-menu-ul li {
+    line-height: 1.1em;
+}
+.main-menu-dropdown li {
+    font-size: 0.97em;
+}
+.main-menu-dropdown li {
+    text-transform: none;
+    font-size: .85em;
+}
+.main-menu-ul li {
+    margin: 0;
+    position: relative;
+    color: #717372;
+    font-weight: 600;
+    line-height: 1.2em;
+}
+
+
+	@media (min-width: 992px){
+.main-menu-ul>li .main-menu-dropdown {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+.main-menu-dropdown {
+    min-width: 300px;
+    width: 100%;
+    right: 0;
+    left: auto;
+    margin: 0;
+    font-size: 1em;
+    border: none;
+    background-color: #fff;
+    -webkit-box-shadow: 2px 9px 18px -6px rgba(0,0,0,.22);
+    box-shadow: 2px 9px 18px -6px rgba(0,0,0,.22);
+}
+		}
+.main-menu-dropdown {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-size: 1em;
+}
+
+
+li.cell a   {
+			background: url(/wp-content/uploads/2020/02/menu-phone.png) no-repeat 10px center;
+		}
+@media (max-width: 650px){
+li.cell a {
+    background: url(/wp-content/uploads/2020/02/menu-phone.png) no-repeat 60px center;
+}
+		}
+		@media (min-width: 992px){
+.main-menu-ul>li {
+    text-transform: uppercase;
+    font-size: 1em;
+}
+.main-menu-ul>li {
+    font-size: 1.3em;
+    text-transform: uppercase;
+}
+		
+
+
+
+		}

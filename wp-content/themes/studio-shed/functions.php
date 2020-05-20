@@ -509,6 +509,32 @@ function ss_post_url( $entry, $form ) {
     GFCommon::log_debug( 'gform_after_submission: response => ' . print_r( $response, true ) );
 }
 
+add_action( 'gform_after_submission_19', 'ss_post_url_quote_2', 10, 2 );
+function ss_post_url_quote_2( $entry, $form ) {
+    $post_url = rtrim( get_site_url(), '/' ) . '/filemaker/process_RequestQuote.php';
+    $body = array(
+        'fname' => rgar( $entry, '25' ), 
+        'lname' => rgar( $entry, '26' ),
+        'email' => rgar( $entry, '9' ),
+        'zipcode' => rgar( $entry, '3' ),
+        'phone' => rgar( $entry, '4' ),
+        'desired' => rgar( $entry, '10' ),
+        'intended' => rgar( $entry, '11' ),
+        'budget' => rgar( $entry, '13' ),
+        'comments' => rgar( $entry, '8' ),
+        'utm_source' => rgar( $entry, '22' ),
+        'utm_medium' => rgar( $entry, '23' ),
+        'utm_campaign' => rgar( $entry, '19' ),
+        'gclid' => rgar( $entry, '20' ),
+        'visitor_id' => rgar( $entry, '21' ),
+        );
+    GFCommon::log_debug( 'gform_after_submission: body => ' . print_r( $body, true ) );
+
+    $request = new WP_Http();
+    $response = $request->post( $post_url, array( 'body' => $body ) );
+    GFCommon::log_debug( 'gform_after_submission: response => ' . print_r( $response, true ) );
+}
+
 // Post Contact Us Form Submission to Filemaker
 /*
 add_action( 'gform_after_submission_1', 'ss_post_url_contact', 10, 2 );
