@@ -46,6 +46,22 @@ section#content-slider {
     margin: 50px 0;
 		text-align: center;
 }
+.newsTabs .floorplan-amount, #feature-0 .floorplan-amount {
+
+    padding: 5px;
+}
+ul.floorplan-amount {
+    padding-left: 10px!important;
+}
+.floorplan-amount li {
+		padding: 0 5px 0 0;
+	}
+.floorplan-amount li .amount {
+    font-size: 38px;
+}
+.floorplan-amount li .description p {
+    font-size: 12px;
+}
 	
 	}
 @media (max-width: 750px){
@@ -92,6 +108,7 @@ margin: 10px auto;
 	}
 .series-info-box p{
 	color: #fff;	
+	font-size: 15px;	
 	}
 .series-info-box .col1 {
     width: 55%;
@@ -123,8 +140,6 @@ margin: 10px auto;
 	margin-top: 5px;
 
 }
-.series-info-box p{
-font-size: 12px;	}
 	.series-info-box .col1 {
     width: 65%;
 }
@@ -182,7 +197,7 @@ ul#model-product-menu li {
    /* width: 15%;*/
 }
 .model-product-list.sticky-menu {
-    top: 70px!important;
+    top: 50px!important;
 }
 	.bottom-info {
     padding: 50px 0 30px!important;
@@ -377,9 +392,17 @@ a.but {
 	background: #edecee;
 	padding: 0;
 	margin-bottom: 0;
+	width: 800px;
+    text-align: center;
+	}
+@media (max-width: 800px){
+.model-product-list .container {
 	overflow: sroll;
 	width: 600px;
+	text-align: left;
 	}
+	
+}
 .model-product-list a {
 	color: #1c1c1c;
 	}

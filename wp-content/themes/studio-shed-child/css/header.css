@@ -170,7 +170,9 @@ color: #f35100;
 .menu-child.menu-list .box p {
     height: auto!important;
 }
-
+.menu-models .menu-child.menu-list li a {
+    padding: 0!important;
+}
 @media (min-width: 992px){
 
 #wrapper {

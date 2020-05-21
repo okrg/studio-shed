@@ -225,7 +225,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li>
                               <div class="row">
                                 <div class="col-lg-5">
-                                  <img src="<?php echo $child["icon"]["url"]?>" alt="">
+                                  <a href="<?php echo $child["link"]?>"><img src="<?php echo $child["icon"]["url"]?>" alt=""></a>
                                 </div>
                                 <div class="col-lg-7">
                                   <div class="box" item-id="item-<?php echo $i?>">
