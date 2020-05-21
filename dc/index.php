@@ -23,7 +23,7 @@
 
       <div class="row mb-5">
         <div class="col-sm-4 col-lg-2 offset-lg-2">
-          <a href="/dc/step-2.php"><img src="http://www.studio-shed.com/wp-content/uploads/2015/02/our-story-1.jpg" class="img-fluid" /></a>
+          <a href="/dc/step-2.php"><img src="https://www.studio-shed.com/wp-content/uploads/2015/02/our-story-1.jpg" class="img-fluid" /></a>
         </div>
         <div class="col-sm-8 col-lg-6">
           <h3 id="step-location"><a href="javascript:void(0);" data-menu-step="2">Location &amp; Permits</a></h3>
