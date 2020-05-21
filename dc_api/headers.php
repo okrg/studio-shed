@@ -21,6 +21,7 @@ header('Cache-Control: no-cache, must-revalidate, max-age=0');
 $headers = getallheaders();
 $headers = array_change_key_case($headers);
 
+/*
 if (isset($headers['x-csrf-token'])) {
   if ($headers['x-csrf-token'] !== $_SESSION['csrf_token']) {
     exit(json_encode(['error' => 'Wrong CSRF token.']));
@@ -28,3 +29,4 @@ if (isset($headers['x-csrf-token'])) {
 } else {
   exit(json_encode(['error' => 'No CSRF token.']));
 }
+*/
