@@ -332,6 +332,12 @@ transform: translate(0, -500PX);
 .config-container {/*configurator design center template - edited to fix cut off on header */
     margin-top: 60px;
 }
+@media (max-width: 800px){
+.sidebar,
+	.single-post .col-md-8 /* single blog posts */ {
+	    margin-top: 0px;
+	}
+}
 #sub-menu {
     background: #ffffff!important;
 }
