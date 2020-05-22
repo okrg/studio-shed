@@ -188,6 +188,7 @@ color: #f35100;
     max-width: 122px;
     height: 13px;
 }		
+}
 @media (max-width: 950px){
 .navbar-brand img {
     max-width: 80%;
@@ -197,10 +198,20 @@ color: #f35100;
 	}
 
 .header-mobile {
-    min-height: 52px!important;
+    min-height: 60px!important;
 }
 .header-mobile .col-mb-8 {
-    padding: 20px 0;
+    padding: 10px 0;
+}
+#header-logo {
+		padding: 12px 0;
+	}
+.header-mobile .models {
+	    padding: 10px;
+	}
+.hamburger-menu {
+    cursor: pointer;
+    padding: 10px 7px!important;
 }
 		}
 #main-menu ul {
