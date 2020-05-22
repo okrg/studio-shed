@@ -47,12 +47,17 @@ class Json implements FormatInterface
         $decoded = json_decode($data, true);
 
         if ($data !== false && $decoded === null) {
+            $decoded = json_decode("{error:1}", true);
+            $report = substr($data, 0, 180);
+            error_log('JSON error: '.$report);
+            /*
             throw new DecodingException(
-                "json_decode: '" . json_last_error_msg() . "'",
+                "json_decode: '" . json_last_error_msg() . "':" . $data,
                 0,
                 null,
                 $data
             );
+            */
         }
 
         return $decoded;
