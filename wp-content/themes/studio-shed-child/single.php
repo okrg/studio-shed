@@ -139,7 +139,7 @@ while (have_posts()) : the_post();
                         <li><a target="_blank" href="https://www.facebook.com/StudioShed"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                         <li><a target="_blank" href="https://plus.google.com/+Studio-shed/posts"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
                         <li><a target="_blank" href="mailto:answers@studio-shed.com"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
-                        <li><a target="_blank" href="/sitemap.xml"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                        <li><a target="_blank" href="/feed/"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
                     </ul>
                     <?php
                     $shed_title = get_field('shed_title');
