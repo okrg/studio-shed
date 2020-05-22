@@ -66,32 +66,32 @@
 			<div class="col-sm-12">
 				<img src="/wp-content/uploads/2019/09/studio-shed-logo-white.png" alt="studio shed"/>
 			</div>
-			<div class="col-sm-3 col-xs-12 col-md-2">
+			<div class="col-sm-6 col-md-2">
 
 				<h3>MODELS</h3>
 				<?php wp_nav_menu( array( 'theme_location' => 'footer1-menu', 'container_class' => 'menu_class' ) ); ?>
 	
 
 			</div>
-			<div class="col-sm-3 col-xs-12 col-md-2">
+			<div class="col-sm-6 col-md-2">
 
 				<h3>SHED STORIES</h3>
 				<?php wp_nav_menu(array('theme_location' => 'footer2-menu', 'container' => '', 'menu_class' => '')); ?>
 
 			</div>
-			<div class="col-sm-3 col-xs-12 col-md-2">
+			<div class="col-sm-6 col-md-2">
 
 				<h3>SHOPPING TOOLS</h3>
 				<?php wp_nav_menu(array('theme_location' => 'footer3-menu', 'container' => '', 'menu_class' => '')); ?>
 
 			</div>
-			<div class="col-sm-3 col-xs-12 col-md-2">
+			<div class="col-sm-6 col-md-2">
 
 				<h3>RESOURCES</h3>
 				<?php wp_nav_menu(array('theme_location' => 'footer4-menu', 'container' => '', 'menu_class' => '')); ?>
 
 			</div>
-			<div class="col-sm-3 col-xs-12 col-md-2">
+			<div class="col-sm-6 col-md-2">
 
 				<h3>ABOUT US</h3>
 				<?php wp_nav_menu(array('theme_location' => 'footer5-menu', 'container' => '', 'menu_class' => '')); ?>
