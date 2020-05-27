@@ -108,6 +108,7 @@ color: #f35100;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+	background: #f4f4f4!important
 }
 .main-menu-dropdown {
     min-width: 300px;
