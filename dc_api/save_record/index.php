@@ -8,6 +8,7 @@ ini_set('display_startup_errors', 0);
 $rest_json = file_get_contents("php://input");
 $_POST = json_decode($rest_json, true);
 
+/*
 if ($_ENV['PANTHEON_ENVIRONMENT'] === 'dev2') {
   //Copy data to dev this is a temp fix.
   $url = 'https://dev-studio-shed.pantheonsite.io/dc_api/save_record/';
@@ -26,7 +27,7 @@ if ($_ENV['PANTHEON_ENVIRONMENT'] === 'dev2') {
   $result = curl_exec($ch);
   curl_close($ch);
 }
-
+*/
 
 
 header('Content-Type: application/json');
@@ -240,12 +241,43 @@ $result = $wrap->add(array(
 ));
 
 
+//Send notification to StudioShed
+$inbox = 'rolando.garcia@businessol.com';
+if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
+  if($_ENV['PANTHEON_ENVIRONMENT'] == 'live') {
+    $inbox = 'wishlist@studioshed.com';
+  }
+}
+//generate $link for email
+$key = 'wCXyYiw#bHxK-<cH];"a:Yd=40^zx)';
+$time = time();
+$hash = hash_hmac('sha256', $time, $key);
+$link = $host.'/dc/lookup/config.php?h='.$hash.'&t='.$time.'&u='.$uid;
+$smart_email_id = 'c2670199-49bf-4fe5-83ba-973aa60f6d92';
+$notification = new CS_REST_Transactional_SmartEmail($smart_email_id, $auth);
+$message = array(
+    "To" => $inbox,
+    "Data" => array(
+        'firstname' => $record->firstName,
+        'lastname' => $record->lastName,
+        'location' => $record->city,
+        'customerEmail' => $record->email,
+        'customerPhone' => $record->phone,
+        'uniqueid' => $record->uniqueid,
+        'model' => $record->model,
+        'size' => $record->depth .' x '. $record->length,
+        'DCLookupLink' => $link,
+    ),
+);
+$consent_to_track = 'unchanged';
+$result = $notification->send($message, $consent_to_track);
+
+
 
 exit(json_encode([
   'code' => 'success',
   'response' => 'savedRecord',
   'redirectURL' => $redirectURL,
-  'redirectPath' => $redirectPath,
-  'cm_response' => $result->response
+  'redirectPath' => $redirectPath
   ]));
 ?>

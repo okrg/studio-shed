@@ -360,7 +360,7 @@ window.addEventListener('scroll', function() {
 <?php 						
 			if ($quickmodel == ('Summit')) {
 				?>	
- <script src="<?php echo get_template_directory_uri() ?>/assets/js/jquery-3.3.1.js"></script>
+ <script src="<?php echo get_template_directory_uri() ?>/assets/js/jquery-3.3.1.js"></script><!-- This library is interferring with the mobile menu -->
 	<script src="<?php echo get_template_directory_uri() ?>/assets/js/common.js"></script>
 		
 <link href='<?php echo bloginfo('template_directory');?>/css/slick.css' rel='stylesheet' type='text/css'/>

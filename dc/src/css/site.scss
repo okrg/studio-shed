@@ -14,23 +14,17 @@ $footerBackground: #0f1c2c;
 @import 'node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import 'node_modules/@fortawesome/fontawesome-free/scss/brands.scss';
 @import 'node_modules/@fortawesome/fontawesome-free/scss/solid.scss';
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap');
-
 @font-face{font-family:"Futura-PT-Book";src:url("/dc/fonts/Futura-PT-Book.eot"), url("/dc/fonts/Futura-PT-Book.woff") format("woff"), url("/dc/fonts/Futura-PT-Book.ttf") format("truetype");}
 @font-face{font-family:"Futura-PT-Heavy";src:url("/dc/fonts/Futura-PT-Heavy.eot"), url("/dc/fonts/Futura-PT-Heavy.woff") format("woff"), url("/dc/fonts/Futura-PT-Heavy.ttf") format("truetype");}
 @font-face{font-family:"Tisa-Sans-Pro";src:url("/dc/fonts/Tisa-Sans-Pro.eot"), url("/dc/fonts/Tisa-Sans-Pro.woff") format("woff"), url("/dc/fonts/Tisa-Sans-Pro.ttf") format("truetype");}
 @font-face {
     font-family: 'Tisa-Sans-Pro-Italic';
-    src: url('fonts/TisaSansPro-Italic.eot?#iefix') format('embedded-opentype'),  url('fonts/TisaSansPro-Italic.otf')  format('opentype'),
-        url('fonts/TisaSansPro-Italic.woff') format('woff'), url('fonts/TisaSansPro-Italic.ttf')  format('truetype'), url('fonts/TisaSansPro-Italic.svg#Tisa-Sans-Pro-Italic') format('svg');
+    src: url('/dc/fonts/TisaSansPro-Italic.eot?#iefix') format('embedded-opentype'),  url('/dc/fonts/TisaSansPro-Italic.otf')  format('opentype'),
+        url('/dc/fonts/TisaSansPro-Italic.woff') format('woff'), url('/dc/fonts/TisaSansPro-Italic.ttf')  format('truetype'), url('/dc/fonts/TisaSansPro-Italic.svg#Tisa-Sans-Pro-Italic') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 @font-face{font-family:"Futura-PT-Heavy-Oblique";src:url("/dc/fonts/Futura-PT-Heavy-Oblique.eot"), url("/dc/fonts/Futura-PT-Heavy-Oblique.woff") format("woff"), url("/dc/fonts/Futura-PT-Heavy-Oblique.ttf") format("truetype");}
-
-
-
-
 @font-face {
     font-family: icomoon;
     src: url(/wp-content/themes/studio-shed/fonts/icomoon.eot?aemgks);
@@ -56,12 +50,7 @@ $footerBackground: #0f1c2c;
 .icon-chevron-right:before {
     content: "\e90a";
 }
-
-.odometer.odometer-auto-theme.odometer-animating-down.odometer-animating .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
-  transition: transform 1s !important;
-}
-
-body {  
+body {
   font-family: "Tisa-Sans-Pro", sans-serif;
   color: $darkText;
   background: $pageBackground;
@@ -1107,13 +1096,6 @@ main#step-1{
     background: #f8fbfd;
   }
 
-  p.tip {
-    margin: -10px auto 10px;
-    padding: 5px 0 5px 30px;
-    font-size: 14px;
-    background: url(/images/tip.svg) left center no-repeat;
-  }
-
   span#generate {
     cursor: pointer;
     color: #525f7f;
@@ -1349,8 +1331,7 @@ main#step-1{
     transition-property: opacity, transform;
     transition-duration: 0.35s;
     transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-    background: url(/images/error.svg) center left no-repeat;
-    background-size: 15px 15px;    
+    background-size: 15px 15px;
     justify-content: center;
     width: 100%;
   }
@@ -1568,8 +1549,7 @@ main#step-1{
     padding: 0 75px 0 275px;
     max-width: 75%;
     height: 350px;
-    margin: 100px auto;
-    background: $white url(/images/order.svg) 75px center no-repeat;
+    margin: 100px auto;    
     box-shadow: 0 1px 3px 0 rgba(50, 50, 93, 0.15);
     border-radius: 6px;
   }

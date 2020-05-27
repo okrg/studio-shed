@@ -5,7 +5,6 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap");
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -12725,7 +12724,7 @@ readers do not read off random characters that represent icons */
 
 @font-face {
   font-family: 'Tisa-Sans-Pro-Italic';
-  src: url("fonts/TisaSansPro-Italic.eot?#iefix") format("embedded-opentype"), url("fonts/TisaSansPro-Italic.otf") format("opentype"), url("fonts/TisaSansPro-Italic.woff") format("woff"), url("fonts/TisaSansPro-Italic.ttf") format("truetype"), url("fonts/TisaSansPro-Italic.svg#Tisa-Sans-Pro-Italic") format("svg");
+  src: url("/dc/fonts/TisaSansPro-Italic.eot?#iefix") format("embedded-opentype"), url("/dc/fonts/TisaSansPro-Italic.otf") format("opentype"), url("/dc/fonts/TisaSansPro-Italic.woff") format("woff"), url("/dc/fonts/TisaSansPro-Italic.ttf") format("truetype"), url("/dc/fonts/TisaSansPro-Italic.svg#Tisa-Sans-Pro-Italic") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -12756,12 +12755,6 @@ readers do not read off random characters that represent icons */
 
 .icon-chevron-right:before {
   content: "\e90a"; }
-
-.odometer.odometer-auto-theme.odometer-animating-down.odometer-animating .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
-  -webkit-transition: -webkit-transform 1s !important;
-  transition: -webkit-transform 1s !important;
-  transition: transform 1s !important;
-  transition: transform 1s, -webkit-transform 1s !important; }
 
 body {
   font-family: "Tisa-Sans-Pro", sans-serif;
@@ -13693,11 +13686,6 @@ a.btn-video-trigger {
     padding: 0 5px;
     text-align: center;
     background: #f8fbfd; }
-  .dc-checkout-form p.tip {
-    margin: -10px auto 10px;
-    padding: 5px 0 5px 30px;
-    font-size: 14px;
-    background: url(/images/tip.svg) left center no-repeat; }
   .dc-checkout-form span#generate {
     cursor: pointer;
     color: #525f7f;
@@ -13880,7 +13868,6 @@ a.btn-video-trigger {
             transition-duration: 0.35s;
     -webkit-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
             transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-    background: url(/images/error.svg) center left no-repeat;
     background-size: 15px 15px;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -14055,7 +14042,6 @@ a.btn-video-trigger {
     max-width: 75%;
     height: 350px;
     margin: 100px auto;
-    background: #fff url(/images/order.svg) 75px center no-repeat;
     -webkit-box-shadow: 0 1px 3px 0 rgba(50, 50, 93, 0.15);
             box-shadow: 0 1px 3px 0 rgba(50, 50, 93, 0.15);
     border-radius: 6px; }

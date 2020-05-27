@@ -50,17 +50,23 @@ $result = $wrap->add(array(
   'Resubscribe' => true
 ));
 
+//Send notification to StudioShed
+$inbox = 'rolando.garcia@businessol.com';
+if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
+  if($_ENV['PANTHEON_ENVIRONMENT'] == 'live') {
+    $inbox = 'orders@studioshed.com';
+  }
+}
 $smart_email_id = '7f06774d-bb7a-46f7-b52a-2358479ff8fe';
 $notification = new CS_REST_Transactional_SmartEmail($smart_email_id, $auth);
 $message = array(
-    "To" => 'rolando.garcia@businessol.com',
+    "To" => $inbox,
     "Data" => array(
-        'x-apple-data-detectors' => 'x-apple-data-detectorsTestValue',
-        'style*="font-size:1px"' => 'style*="font-size:1px"TestValue',
         'firstname' => $record->firstName,
         'lastname' => $record->lastName,
         'location' => $record->city,
         'customerEmail' => $record->email,
+        'customerPhone' => $record->phone,
         'uniqueid' => $record->uniqueid,
         'model' => $record->model,
         'size' => $record->depth .' x '. $record->length,
