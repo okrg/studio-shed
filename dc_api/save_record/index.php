@@ -63,6 +63,7 @@ $model = $data->product->model;
 
 //Exit if missing model or uid 
 if( empty($uid) || !isset($uid) ) {
+  print_r($data);
   exit(json_encode(['error' => 'No uid']));
 }
 if( empty($model) || !isset($model) ) {
@@ -264,7 +265,7 @@ $message = array(
         'customerEmail' => $record->email,
         'customerPhone' => $record->phone,
         'uniqueid' => $record->uniqueid,
-        'model' => $record->model,
+        'model' => ucfirst($record->model),
         'size' => $record->depth .' x '. $record->length,
         'DCLookupLink' => $link,
     ),
