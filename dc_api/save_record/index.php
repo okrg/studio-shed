@@ -5,9 +5,6 @@ include('../filebase.php');
 ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 
-$rest_json = file_get_contents("php://input");
-$_POST = json_decode($rest_json, true);
-
 /*
 if ($_ENV['PANTHEON_ENVIRONMENT'] === 'dev2') {
   //Copy data to dev this is a temp fix.
@@ -55,17 +52,14 @@ if (isset($headers['x-api-key'])) {
 }
 
 //Init data
-$json = json_encode($_POST);
-$data = json_decode($json);
+$rest_json = file_get_contents("php://input");
+$data = json_decode($rest_json);
 $uid = $data->product->uniqueid;
 $model = $data->product->model;
 
-
-//Exit if missing model or uid 
+//Exit if missing model or uid
 if( empty($uid) || !isset($uid) ) {
-  print_r($json);
-  print_r($data);
-  //exit(json_encode(['error' => 'No uid?']));
+  exit(json_encode(['error' => 'No uid?']));
 }
 if( empty($model) || !isset($model) ) {
   exit(json_encode(['error' => 'No model']));
