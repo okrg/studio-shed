@@ -7,7 +7,7 @@ include('../filebase.php');
 $email = $_REQUEST['email'];
 
 function email_valid($email){
-  $allowed = ['businessol.com', 'studio-shed.com'];
+  $allowed = ['businessol.com', 'studio-shed.com', 'studioshed.com'];
   if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $parts = explode('@', $email);
     $domain = array_pop($parts);
