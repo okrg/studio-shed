@@ -1,6 +1,6 @@
 <?php
 //default to localhost
-$host = 'http://'.$_SERVER['HTTP_HOST']
+$host = 'http://'.$_SERVER['HTTP_HOST'];
 
 if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
   if($_ENV['PANTHEON_ENVIRONMENT'] == 'live') {
