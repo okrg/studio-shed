@@ -63,8 +63,9 @@ $model = $data->product->model;
 
 //Exit if missing model or uid 
 if( empty($uid) || !isset($uid) ) {
+  print_r($json);
   print_r($data);
-  exit(json_encode(['error' => 'No uid?']));
+  //exit(json_encode(['error' => 'No uid?']));
 }
 if( empty($model) || !isset($model) ) {
   exit(json_encode(['error' => 'No model']));
