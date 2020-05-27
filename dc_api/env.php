@@ -10,7 +10,7 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
     $host = 'https://test-studio-shed.pantheonsite.io';
   }
   if($_ENV['PANTHEON_ENVIRONMENT'] == 'dev') {
-    $host = 'https://dev-studio-shed.pantheonsite.io/';
+    $host = 'https://dev-studio-shed.pantheonsite.io';
   }
 }
 
