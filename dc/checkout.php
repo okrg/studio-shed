@@ -56,7 +56,9 @@ include('includes/header.php');
               <tr>
                 <td class="hiddenRow">
                   <div class="collapse shed">
-                    Front: <span id="summary-config-front"></span>
+                    Front: <span id="summary-config-front-sku"></span>
+                    <br />
+                    <span id="summary-config-front"></span>
                   </div>
                 </td>
                 <td class="hiddenRow text-right">
@@ -68,7 +70,7 @@ include('includes/header.php');
               <tr>
                 <td class="hiddenRow">
                   <div class="collapse shed">
-                    Left: <span id="summary-config-left"></span>
+                    Left: <span id="summary-config-left-sku"></span><br /><span id="summary-config-left"></span>
                   </div>
                 </td>
                 <td class="hiddenRow text-right">
@@ -79,7 +81,8 @@ include('includes/header.php');
               </tr>
               <tr>
                 <td class="hiddenRow">
-                  <div class="collapse shed">Right: <span id="summary-config-right"></span>
+                  <div class="collapse shed">
+                    Right: <span id="summary-config-right-sku"></span><br /><span id="summary-config-right"></span>
                   </div>
                 </td>
                 <td class="hiddenRow text-right">
@@ -89,7 +92,8 @@ include('includes/header.php');
               </tr>
               <tr>
                 <td class="hiddenRow">
-                  <div class="collapse shed">Back: <span id="summary-config-back"></span>
+                  <div class="collapse shed">
+                    Back: <span id="summary-config-back-sku"></span><br /><span id="summary-config-back"></span>
                   </div>
                 </td>
                 <td class="hiddenRow text-right">
@@ -169,7 +173,9 @@ include('includes/header.php');
               </tr>
               <tr id="optional-interior-row">
                 <td class="hiddenRow">
-                  <div class="collapse shed">Interior: <span id="summary-config-interior"></span></div>
+                  <div class="collapse shed">
+                    Interior: <span id="summary-config-interior-sku"></span><br /><span id="summary-config-interior"></span>
+                  </div>
                 </td>
                 <td class="hiddenRow text-right">
                   <div class="collapse shed"><span id="summary-config-interior-price"></span></td>
@@ -506,10 +512,10 @@ $(document).ready(function(){
       data: { "stripeFee": stripeFee  }
     });
     getIntent.done(function(data){
-      $('#star-checkout').fadeOut();
+      $('#start-checkout').fadeOut();
       $('#checkout').fadeIn();
       $('html, body').animate({
-        scrollTop: $("#checkout").offset().top-120
+        scrollTop: $("#checkout").offset().top-150
       }, 600);
 
       var stripe = Stripe(data.pk);

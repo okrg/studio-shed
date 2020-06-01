@@ -186,8 +186,8 @@ LightStream provides good-credit consumers with a low-interest, seamless and
 
  end old FAQ section-->
 
-<script src="<?php echo get_template_directory_uri() ?>/js/jquery-ui/jquery-1.10.2.js"></script>
-<script src="<?php echo get_template_directory_uri() ?>/js/jquery-ui/jquery-ui.js"></script>
+<!--<script src="<?php echo get_template_directory_uri() ?>/js/jquery-ui/jquery-1.10.2.js"></script>
+<script src="<?php echo get_template_directory_uri() ?>/js/jquery-ui/jquery-ui.js"></script>-->
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#term").selectmenu({

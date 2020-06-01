@@ -49,7 +49,7 @@
     <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico"/>
 
     <?php if ( 'tpl-financing-page.php' == get_page_template_slug() ): ?>
-      <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/js/jquery-ui/jquery-ui.css">
+     <!-- <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/js/jquery-ui/jquery-ui.css"> -->
     <?php endif; ?>
 
     <link rel="stylesheet" href="<?php echo bloginfo('template_directory');?>/style.css" type="text/css" />

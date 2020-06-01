@@ -59,7 +59,7 @@ function getCart(data) {
       json = JSON.stringify(result);
       window.cart = cart = JSON.parse(json);
 
-      if(cart.code && cart.code == 'configurationError') {        
+      if(cart.code && cart.code == 'configurationError') {
         window.alert('There was an unexpected error with your configuration. Please try saving your configuration again or contact us for assistance at: answers@studioshed.com');
         window.location.href='/dc/logout.php';
       }
@@ -193,25 +193,21 @@ function renderCartLabels(cart) {
         $('#summary-config-siding-price').text( formatMoney(cart.sidingPrice) );
       }
 
-      if(cart.left) {
-        $('#summary-config-left').text( cart.left );
-        $('#summary-config-left-price').text( formatMoney(cart.leftPrice) );
-      }
+      $('#summary-config-left').text( cart.left);
+      $('#summary-config-left-sku').text( cart.leftSKU);
+      $('#summary-config-left-price').text( formatMoney(cart.leftPrice) );
 
-      if(cart.back) {
-        $('#summary-config-back').text( cart.back );
-        $('#summary-config-back-price').text( formatMoney(cart.backPrice) );
-      }
+      $('#summary-config-back').text( cart.back );
+      $('#summary-config-back-sku').text( cart.backSKU);
+      $('#summary-config-back-price').text( formatMoney(cart.backPrice) );
 
-      if(cart.front) {
-        $('#summary-config-front').text( cart.front );
-        $('#summary-config-front-price').text( formatMoney(cart.frontPrice) );
-      }
+      $('#summary-config-front').text( cart.front );
+      $('#summary-config-front-sku').text( cart.frontSKU);
+      $('#summary-config-front-price').text( formatMoney(cart.frontPrice) );
 
-      if(cart.right) {
-        $('#summary-config-right').text( cart.right );
-        $('#summary-config-right-price').text( formatMoney(cart.rightPrice) );
-      }
+      $('#summary-config-right').text( cart.right );
+      $('#summary-config-right-sku').text( cart.rightSKU);
+      $('#summary-config-right-price').text( formatMoney(cart.rightPrice) );
 
       if(cart.sidingColor) {
         $('#summary-config-siding-color').text( cart.sidingColor );
@@ -266,8 +262,9 @@ function renderCartLabels(cart) {
         $('#accessory4-row').hide();
       }
 
-      if(cart.interiorPrice) {
+      if(cart.interior) {
         $('#summary-config-interior').text( cart.interior );
+        $('#summary-config-interior-sku').text( cart.interiorSKU );
         $('#summary-config-interior-price').text( formatMoney(cart.interiorPrice) );
       } else {
         $('#optional-interior-row').hide();
@@ -603,8 +600,8 @@ function cartOrderLabel(cart) {
 
 
 function formatMoney(number) {
-  return parseInt(number).toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
-  
+  amt = parseInt(number) || 0;
+  return amt.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
 }
 
 
