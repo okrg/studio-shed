@@ -117,6 +117,11 @@ if($model == 'portland') {
   $sku_label = 'sku';
 }
 
+if($model == 'summit') {
+  $record->permitPlans = true;
+  $record->permitPlansPrice = 0;
+}
+
 //accessory iterator for allowing multiple accesory line items
 $ai = 0;
 foreach($data->product->cart->items as $item) {
@@ -262,11 +267,31 @@ $message = array(
         'uniqueid' => $record->uniqueid,
         'model' => ucfirst($record->model),
         'size' => $record->depth .' x '. $record->length,
+        'siding' => $record->siding,
+        'front' => $record->front,
+        'frontSKU' => $record->frontSKU,
+        'back' => $record->back,
+        'backSKU' => $record->backSKU,
+        'left' => $record->left,
+        'leftSKU' => $record->leftSKU,
+        'right' => $record->right,
+        'rightSKU' => $record->rightSKU,
+        'doorColor' => $record->doorColor,
+        'eavesColor' => $record->eavesColor,
+        'sidingColor' => $record->sidingColor,
+        'interior' => $record->interior,
+        'interiorSKU' => $record->interiorSKU,
+        'accessory0' => $record->accessory0,
+        'accessory1' => $record->accessory1,
+        'accessory2' => $record->accessory2,
+        'accessory3' => $record->accessory3,
+        'accessory4' => $record->accessory4,
+        'accessory5' => $record->accessory5,
         'DCLookupLink' => $link,
     ),
 );
 $consent_to_track = 'unchanged';
-$result = $notification->send($message, $consent_to_track);
+$smartEmail = $notification->send($message, $consent_to_track);
 
 
 

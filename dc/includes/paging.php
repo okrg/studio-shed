@@ -11,7 +11,7 @@
       $next = array(
         'label' => 'Location &amp; Permit Details',
         'link' => '/dc/step-2.php',
-        'class' => 'nextStep',
+        'class' => 'btn-primary',
         'step' => 2
       );
       break;
@@ -24,7 +24,7 @@
       $next = array(
         'label' => 'Installation Details',
         'link' => '/dc/step-3.php',
-        'class' => 'nextStep',
+        'class' => 'btn-primary',
         'step' => 3
       );
       break;
@@ -36,8 +36,8 @@
       );
       $next = array(
         'label' => 'Complete Order',
-        'link' => '#',
-        'class' => 'paymentIntent',
+        'link' => '/dc/checkout.php',
+        'class' => 'btn-primary',
         'step' => 4
       );
       break;
@@ -50,7 +50,7 @@
       $next = array(
         'label' => 'Design Center Home',
         'link' => '/dc/index.php',
-        'class' => 'nextStep',
+        'class' => 'btn-link',
         'step' => 0
       );
       break;
@@ -63,7 +63,7 @@
       $next = array(
         'label' => 'Design Center Home',
         'link' => '/dc/index.php',
-        'class' => 'nextStep',
+        'class' => 'btn-link',
         'step' => 0
       );
 
@@ -76,7 +76,7 @@
     <a class="btn btn-link" href="javascript:void(0);" data-menu-step="<?=$prev['step'];?>">
       < Back
     </a>
-    <a class="btn btn-primary <?php echo $next['class']; ?>" href="javascript:void(0);" data-menu-step="<?=$next['step'];?>">
+    <a class="btn <?php echo $next['class']; ?>" href="javascript:void(0);" data-menu-step="<?=$next['step'];?>">
       <?php echo $next['label'];?> <i class="fas fa-arrow-right"></i>
     </a>
   </nav>

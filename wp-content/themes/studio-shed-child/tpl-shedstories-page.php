@@ -21,9 +21,9 @@
 	</div>
 	
 </div>
- <script src="<?php echo get_template_directory_uri() ?>/assets/js/jquery-3.3.1.js"></script>
+ <!--<script src="<?php echo get_template_directory_uri() ?>/assets/js/jquery-3.3.1.js"></script>-->
 <!--<script src="<?php echo get_template_directory_uri() ?>/js/jquery-ui/jquery-1.10.2.js"></script>-->
-<script src="<?php echo get_template_directory_uri() ?>/js/jquery-ui/jquery-ui.js"></script>
+<!--<script src="<?php echo get_template_directory_uri() ?>/js/jquery-ui/jquery-ui.js"></script>-->
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#term").selectmenu({

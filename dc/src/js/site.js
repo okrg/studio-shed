@@ -1,5 +1,6 @@
 var cart;
 var configuratorState = 'none';
+var stripeFee;
 $.ajaxSetup({
   headers: {
     'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
@@ -57,6 +58,11 @@ function getCart(data) {
     }).done(function (result) {
       json = JSON.stringify(result);
       window.cart = cart = JSON.parse(json);
+
+      if(cart.code && cart.code == 'configurationError') {        
+        window.alert('There was an unexpected error with your configuration. Please try saving your configuration again or contact us for assistance at: answers@studioshed.com');
+        window.location.href='/dc/logout.php';
+      }
 
       if(cart.city && cart.installation && cart.foundation) {
         cart.checkoutReady = true;
@@ -132,10 +138,11 @@ function renderCartLabels(cart) {
       });
       $('a[data-menu-step="4"]').bind( 'click', function(e){
         e.preventDefault();
+        //window.location = '/dc/checkout.php';
         if(window.cart.paymentIntentCreated){
           window.location = '/dc/thank-you.php?c=' + cart.paymentIntentCreated + '&uid=' + cart.uniqueid ;
         } else {
-          $('#checkout-form').submit();
+          window.location = '/dc/checkout.php';
         }
       });
 
@@ -149,7 +156,10 @@ function renderCartLabels(cart) {
       $('#cart-order-label').text( cartOrderLabel(cart) );
       $('#final-estimate').text( cartTotalPrice(cart) );
       $('#initial-payment').text( cartInitialPayment(cart) );
-      $('#stripe-fee').val( cartStripeFee(cart) );
+
+      //$('#stripe-fee').val( cartStripeFee(cart) );
+      stripeFee = cartStripeFee(cart);
+
       $('#intro-first-name').text( cart.firstName );
       $('#intro-config').text( cartModelLabel(cart) );
       $('#intro-location').text( cartLocationLabel(cart) );
@@ -326,10 +336,12 @@ function renderCartLabels(cart) {
 
       if (typeof Cookies.get('checkout') !== 'undefined') {
         model = cart.model.charAt(0).toUpperCase() + cart.model.slice(1);
+        paymentIntentAmount = cart.paymentIntentAmount.toFixed(2).toString();
         Cookies.remove('checkout');
         window.dataLayer.push({
           event: 'configurator.checkout',
-          productSeries: model
+          productSeries: model,
+          checkoutValue: paymentIntentAmount
         });
       }
 
@@ -342,6 +354,12 @@ function renderCartLabels(cart) {
 
 function renderPermitElements(cart) {
   var promise = new Promise(function(resolve, reject){
+    //Exception to special price for Summit permit plans
+    if(cart.model == 'summit') {
+      $('#select-permit-plans-true')
+      .attr('data-permitPlans-price', '0')
+      .find('span.cost').text('Included');
+    }
     if(cart.permitPlans) {
       $('a.option-permitPlans[data-permitPlans="true"]').addClass('selected');
     } else {
@@ -752,7 +770,7 @@ function createRecord(json) {
   });
 
   request.fail(function(jqXHR, textStatus) {
-    console.log(textStatus);
+    console.log("Fail: " + textStatus);
   });
 }
 
@@ -768,7 +786,7 @@ function lookupEmail(email) {
   });
 
   request.fail(function(jqXHR, textStatus) {
-    console.log(textStatus);
+    console.log("Fail: " + textStatus);
   });
 }
 
@@ -785,7 +803,7 @@ function getLocationDetails(zip) {
   });
 
   request.fail(function(jqXHR, textStatus) {
-    console.log(textStatus);
+    console.log("Fail: " + textStatus);
   });
 }
 
@@ -874,7 +892,6 @@ $(document).ready(function() {
   });
 
   $('#submit-zip-lookup').click(function (e) {
-    console.log('zip lookup submitted');    
     e.preventDefault();
     $('#submit-zip-lookup').attr('disabled', true);
     $('#submit-zip-spinner').css('display', 'inline-block');
@@ -898,7 +915,7 @@ $(document).ready(function() {
   });
 
   $('body').click(function(e) {
-    if (e.target.id == 'configurator-parent' || $(e.target).parents('#configurator-parent').length) {      
+    if (e.target.id == 'configurator-parent' || $(e.target).parents('#configurator-parent').length) {
       if(configuratorState === 'none'){
         configuratorState = 'unsaved';
         $(window).bind('beforeunload', function(){
@@ -909,6 +926,10 @@ $(document).ready(function() {
     }
   });
 
+  $('body').on('click', '.checkoutButton a.buttono', function() {
+    configuratorState = 'saved';
+    $(window).unbind('beforeunload');
+  });
 
 
   $('.progressbar li').click(function(e){

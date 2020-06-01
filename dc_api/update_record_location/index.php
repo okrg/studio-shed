@@ -17,24 +17,31 @@ if( empty($uid) ) {
 }
 
 $record = $database->get($uid);
-$record->zip = $data['zip'];
-$record->city = $data['shipping_city_label'];
-$record->state = $data['shipping_state'];
-$record->shippingPrice = $data['shipping_cost'];
-$record->shippingDistance = $data['shipping_distance'];
 
-if($data['permit_data']) {
-  $record->permitTime = $data['permit_time'];
-  $record->permitCost = $data['permit_cost'];
-  $record->permitNotes = $data['permit_notes'];
+if(isset($record->uniqueid) && isset($record->model)) {
+  $record->zip = $data['zip'];
+  $record->city = $data['shipping_city_label'];
+  $record->state = $data['shipping_state'];
+  $record->shippingPrice = $data['shipping_cost'];
+  $record->shippingDistance = $data['shipping_distance'];
+  if($data['permit_data']) {
+    $record->permitTime = $data['permit_time'];
+    $record->permitCost = $data['permit_cost'];
+    $record->permitNotes = $data['permit_notes'];
+  } else {
+    unset($record->permitTime);
+    unset($record->permitCost);
+    unset($record->permitNotes);
+  }
+  $record->save();
+  $data['code'] = 'updateRecordLocationSuccess';
 } else {
-  unset($record->permitTime);
-  unset($record->permitCost);
-  unset($record->permitNotes);
+  //This record is missing a unique id and model something is not right
+  //Trash it and force the user to log out and start over
+  $record->delete();
+  $data['code'] = 'configurationError';
 }
 
-$record->save();
-$data['code'] = 'updateRecordLocationSuccess';
 
 //Update contact in Campaign Monitor list
 $auth = array('api_key' => $email_api_key);

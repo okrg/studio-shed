@@ -25,7 +25,7 @@ if (empty($_SESSION['csrf_token'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="<?= $_SESSION['csrf_token'] ?>">
   <title>Studio Shed Design Center</title>
-  <script src="js/site.js?v=1.31"></script>
+  <script src="js/site.js?v=1.4"></script>
   <script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=k8vke2igcws1ep5vtqtmwg" async="true"></script>
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <script src="https://js.stripe.com/v3/"></script>
@@ -37,9 +37,6 @@ if (empty($_SESSION['csrf_token'])) {
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFQVBLT"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <form id="checkout-form" class="" action="/dc/checkout.php" method="POST">
-    <input type="hidden" name="stripeFee" id="stripe-fee" />
-  </form>
 
   <div id="app">
     <header class="sticky-top">

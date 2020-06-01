@@ -72,9 +72,9 @@ $(document).ready(function() {
     $('#linksModal').modal('show');
     $('#linksModal .modal-body').empty();
     $('#linksModal .modal-body').append('<h5 class="text-center">Select a configuration</h5>');
-    console.log(links);
+    //console.log(links);
     for (index = 0; index < links.length; ++index) {
-      console.log(links[index]);
+      //console.log(links[index]);
       if( links[index].model ) {
       $('#linksModal .modal-body').append(
         '<div><a href="#" data-uid="' +
@@ -90,8 +90,8 @@ $(document).ready(function() {
 
   }
   function triggerMagicLink(uid) {
-    console.log('triggerMagicLink');
-    console.log(uid);
+    //console.log('triggerMagicLink');
+    //console.log(uid);
     $.ajax({
       url: '/dc_api/trigger_magic_link/',
       method: 'POST',
@@ -100,7 +100,7 @@ $(document).ready(function() {
         email: $('#inputEmail').val()
       }
     }).done(function (result) {
-      console.log(result);
+      //console.log(result);
       $('#linksModal').modal('show');
       $('#linksModal .modal-body').empty();
       $('#linksModal .modal-body').append('<h5 class="text-center">You’re almost there.</h5><p class="text-center">Check your inbox for a link to log in.</p>');

@@ -1,31 +1,11 @@
 <?php
-require 'vendor/autoload.php';
-$sk = 'sk_test_QhcInpwY7RzwSEINOicTQPNM00pNL7f8Av';
-$pk = 'pk_test_fOnxYRdPKxD6UIEVyOm1LA5p00JLrteEOh';
-
-if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
-  if($_ENV['PANTHEON_ENVIRONMENT'] == 'live') {
-    $sk = 'sk_live_rq9Qm2x21UyHJyvZolwdGqeW00CWWgz9ys';
-    $pk = 'pk_live_WSBCgiilEtefMWNSQjB5bzv500RRBgQR2i';
-  }
-}
-\Stripe\Stripe::setApiKey($sk);
-
-if(isset($_REQUEST['stripeFee'])) {
-  $amount = (int)$_REQUEST['stripeFee'];
-  $intent = \Stripe\PaymentIntent::create([
-    'amount' => $amount,
-    'currency' => 'usd',
-  ]);
-}
-
 include('includes/header.php');
 ?>
 <main id="step-4">
   <div class="container">
 
     <section class="dc-checkout-intro">
-      <h2 class="text-center mb-5">Checkout</h2>
+      <h2 class="text-center mb-5">Complete Your Order</h2>
       <div class="row">
         <div class="col-sm-12 col-lg-8 offset-lg-2">
 
@@ -236,8 +216,10 @@ include('includes/header.php');
                 </td>
               </tr>
             </table>
-
             <p>*You will be charged the initial payment of 50% of the final estimate. The remaining amount, including taxes, will be charged upon final shipment.</p>
+            <div class="text-right" id="checkout-notifier">
+              <a class="btn btn-lg btn-primary" href="#" id="start-checkout">Start Checkout</a>
+            </div>
           </div>
         </div>
       </div>
@@ -246,8 +228,7 @@ include('includes/header.php');
     <section class="dc-checkout-form">
       <div class="row">
         <div class="col-sm-12 col-lg-8 offset-lg-2">
-
-          <div id="checkout">
+          <div id="checkout" style="display:none;">
       <form id="payment-form" method="POST" action="/orders">
         <section>
           <h2>Billing Information</h2>
@@ -517,89 +498,111 @@ $(document).ready(function(){
 
   $('li[data-progress-step="4"]').addClass('current');
 
-  var stripe = Stripe('<?php echo $pk; ?>');
-  var clientSecret = '<?php echo $intent->client_secret; ?>';
-  var elements = stripe.elements();
-
-  var style = {
-    base: {
-      // Add your base input styles here. For example:
-      fontSize: '16px',
-      color: '#32325d',
-    },
-  };
-
-  // Create an instance of the card Element.
-  var card = elements.create('card', {style: style});
-
-  // Add an instance of the card Element into the `card-element` <div>.
-  card.mount('#card-element');
-
-  card.addEventListener('change', function(event) {
-    var displayError = document.getElementById('card-errors');
-    if (event.error) {
-      displayError.textContent = event.error.message;
-    } else {
-      displayError.textContent = '';
-    }
-  });
-
-  var submitButton = document.getElementById('submit');
-
-  submitButton.addEventListener('click', function(ev) {
-    ev.preventDefault();
-    $('#card-errors').text('').removeClass('visible');
-    stripe.confirmCardPayment(clientSecret, {
-      payment_method: {
-        card: card,
-        billing_details: {
-          name: window.cart.firstName + ' ' + window.cart.lastName,
-          email: window.cart.email
-        }
-      }
-    }).then(function(result) {
-      if (result.error) {
-        // Show error to your customer (e.g., insufficient funds)
-        console.log(result.error.message);
-        $('#card-errors').text(result.error.message).addClass('visible');
-      } else {
-        // The payment has been processed!
-        //console.log(result);
-
-        if (result.paymentIntent.status === 'succeeded') {
-          //console.log(result);
-          //post Results to Record
-          var json = {
-            uid: window.dc_uid,
-            record: 'checkout',
-            input: {
-              paymentIntentAmount: result.paymentIntent.amount,
-              paymentIntentCreated: result.paymentIntent.created,
-              paymentIntentId: result.paymentIntent.id
-            }
-          };
-          var request = $.ajax({
-            url: "/dc_api/update_record_checkout/",
-            method: "POST",
-            dataType: 'json',
-            contentType: 'application/json',
-            data: JSON.stringify(json)
-          });
-          request.done(function(data){
-            var inFiveMinutes = new Date(new Date().getTime() + 5 * 60 * 1000);
-            Cookies.set('checkout', result.paymentIntent.id, {
-              expires: inFiveMinutes
-            });
-            window.location='/dc/thank-you.php?c='+result.paymentIntent.created+'&uid='+window.dc_uid;
-          });
-
-          request.fail(function(jqXHR, textStatus) {
-            console.log("Request failed: " + textStatus);
-          });
-
-        }
-      }
+  $('#start-checkout').click(function(e) {
+    e.preventDefault();
+    var getIntent = $.ajax({
+      url: "/dc/stripe-intent.php",
+      method: "POST",
+      data: { "stripeFee": stripeFee  }
     });
+    getIntent.done(function(data){
+      $('#star-checkout').fadeOut();
+      $('#checkout').fadeIn();
+      $('html, body').animate({
+        scrollTop: $("#checkout").offset().top-120
+      }, 600);
+
+      var stripe = Stripe(data.pk);
+      var clientSecret = data.clientSecret;
+      var elements = stripe.elements();
+
+      var style = {
+        base: {
+          // Add your base input styles here. For example:
+          fontSize: '16px',
+          color: '#32325d',
+        },
+      };
+
+      // Create an instance of the card Element.
+      var card = elements.create('card', {style: style});
+
+      // Add an instance of the card Element into the `card-element` <div>.
+      card.mount('#card-element');
+
+      card.addEventListener('change', function(event) {
+        var displayError = document.getElementById('card-errors');
+        if (event.error) {
+          displayError.textContent = event.error.message;
+        } else {
+          displayError.textContent = '';
+        }
+      });
+
+      var submitButton = document.getElementById('submit');
+
+      submitButton.addEventListener('click', function(ev) {
+        ev.preventDefault();
+        $('#card-errors').text('').removeClass('visible');
+        stripe.confirmCardPayment(clientSecret, {
+          payment_method: {
+            card: card,
+            billing_details: {
+              name: window.cart.firstName + ' ' + window.cart.lastName,
+              email: window.cart.email
+            }
+          }
+        }).then(function(result) {
+          if (result.error) {
+            // Show error to your customer (e.g., insufficient funds)
+            console.log(result.error.message);
+            $('#card-errors').text(result.error.message).addClass('visible');
+          } else {
+            // The payment has been processed!
+            //console.log(result);
+
+            if (result.paymentIntent.status === 'succeeded') {
+              //console.log(result);
+              //post Results to Record
+              var json = {
+                uid: window.dc_uid,
+                record: 'checkout',
+                input: {
+                  paymentIntentAmount: result.paymentIntent.amount,
+                  paymentIntentCreated: result.paymentIntent.created,
+                  paymentIntentId: result.paymentIntent.id
+                }
+              };
+              var request = $.ajax({
+                url: "/dc_api/update_record_checkout/",
+                method: "POST",
+                dataType: 'json',
+                contentType: 'application/json',
+                data: JSON.stringify(json)
+              });
+              request.done(function(data){
+                var inFiveMinutes = new Date(new Date().getTime() + 5 * 60 * 1000);
+                Cookies.set('checkout', result.paymentIntent.id, {
+                  expires: inFiveMinutes
+                });
+                window.location='/dc/thank-you.php?c='+result.paymentIntent.created+'&uid='+window.dc_uid;
+              });
+
+              request.fail(function(jqXHR, textStatus) {
+                console.log("Request failed: " + textStatus);
+              });
+
+            }
+          }
+        });
+      });
+
+    });
+    getIntent.fail(function(jqXHR, textStatus) {
+      $('#checkout-notifier').append('<p class="text-danger">There was an issue trying to checkout with your configuration. Please contact us at answers@studioshed.com for assistance.</p><p>'+textStatus+'</p>');
+      console.log("Request failed: " + textStatus);
+    });
+
   });
 
 

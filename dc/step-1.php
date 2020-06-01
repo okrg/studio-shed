@@ -37,7 +37,7 @@
 
       <div id="<?php echo $idearoomDiv; ?>" style="margin: 0 auto;"></div>
         <!--<script type="application/javascript" src="vendor/modernizr.js"></script>-->
-        <script id="idearoomStartup" type="application/javascript" src="https://<?php echo $ideaRoomModel; ?>.idearoomtech.com/idearoom.js"></script>
+        <script id="idearoomStartup" type="application/javascript" src="https://<?php echo $ideaRoomModel; ?>.idearoomstaging.com/idearoom.js"></script>
     </div>
 
     <section class="dc-popular">
