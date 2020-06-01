@@ -915,17 +915,16 @@ $(document).ready(function() {
     if (e.target.id == 'configurator-parent' || $(e.target).parents('#configurator-parent').length) {
       if(configuratorState === 'none'){
         configuratorState = 'unsaved';
-        $(window).bind('beforeunload', function(){
+        $(window).on('beforeunload', function(){
           return true;
         });
       }
-
     }
   });
 
   $('body').on('click', '.checkoutButton a.buttono', function() {
     configuratorState = 'saved';
-    $(window).unbind('beforeunload');
+    $(window).off('beforeunload');
   });
 
 
