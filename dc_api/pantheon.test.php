@@ -3,17 +3,18 @@ include('headers.php');
 include('filebase.php');
 $uid = $_REQUEST['uid'];
 $record = $database->get($uid);
+$server = $_SERVER;
 $env = $_ENV;
 if(isset($record->uniqueid) && isset($record->model)) {
   $data['code'] = 'SUCCESS';
-  $data['uid'] = $uid;
-  $data['env'] = $env;
+  $data['uid'] = $uid;  
+  $data['server'] = $server;
   $data['data'] = $record->toArray();
   exit(json_encode($data));
 } else {
   $data['code'] = 'ERROR';
   $data['uid'] = $uid;
-  $data['env'] = $env;
+  $data['server'] = $server;
   $data['data'] = $record->toArray();
   exit(json_encode($data));
 }
