@@ -449,13 +449,34 @@ function renderCartLabels(cart) {
         $('#accessory4-row').hide();
       }
 
+      if(cart.accessory5Price) {
+        $('#summary-config-accessory5').text( cart.accessory5 );
+        $('#summary-config-accessory5-price').text( formatMoney(cart.accessory5Price) );
+      } else {
+        $('#accessory5-row').hide();
+      }
+
       if(cart.interior) {
         $('#summary-config-interior').text( cart.interior );
         $('#summary-config-interior-sku').text( cart.interiorSKU );
         $('#summary-config-interior-price').text( formatMoney(cart.interiorPrice) );
       } else {
-        $('#optional-interior-row').hide();
+        $('#interior-row').hide();
       }
+      if(cart.flooring) {
+        $('#summary-config-flooring').text( cart.flooring );
+        $('#summary-config-flooring-price').text( formatMoney(cart.flooringPrice) );
+      } else {
+        $('#flooring-row').hide();
+      }
+
+      if(cart.finish) {
+        $('#summary-config-finish').text( cart.finish );
+        $('#summary-config-finish-price').text( formatMoney(cart.finishPrice) );
+      } else {
+        $('#finish-row').hide();
+      }
+
 
       if(cart.city && cart.zip) {
         $('#summary-config-shipping').text( cart.city + ' (' + cart.zip + ')' );
@@ -836,22 +857,36 @@ function updateRecordInstallation(data){
 
 
 function fetchLocationDetails(zip,cart) {
-  return $.ajax({
-    url: "/dc_api/get_location_details/",
-    method: "POST",
-    data: {
-      zip: zip,
-      length: cart.length,
-      interior: cart.interiorSKU,
-      depth: cart.depth,
-      area: cart.area
-    }
+  var promise = new Promise(function(resolve, reject){
+    $.ajax({
+      url: "/dc_api/get_location_details/",
+      method: "POST",
+      data: {
+        zip: zip,
+        length: cart.length,
+        interior: cart.interiorSKU,
+        depth: cart.depth,
+        area: cart.area
+      }
+    }).done(function (data) {
+      if(data.shipping_city === null) {
+        reject(data);
+        alert('ZIP code was not valid. Please check and try again.');
+      } else {
+        resolve(data);
+      }
+    });
   });
+  return promise;
 }
 
 
 function updateRecordLocation(data, textStatus, jqXHR){
   if(cart.orderComplete) {
+    return false;
+  }
+  if(data.shipping_city === null) {
+    alert('Zip code not found');
     return false;
   }
   data.uid = window.dc_uid;
@@ -1080,11 +1115,20 @@ $(document).ready(function() {
     $('#submit-zip-lookup').attr('disabled', true);
     $('#submit-zip-spinner').css('display', 'inline-block');
     var zip = $('#zip-label').val();
-    fetchLocationDetails(zip, cart)
+
+    var isValidZip = /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(zip);
+    if(isValidZip) {
+
+      fetchLocationDetails(zip, cart)
       .then(updateRecordLocation)
       .then(getCart)
       .then(renderCartLabels)
       .then(renderShippingElements);
+
+    } else {
+      alert('ZIP code was not valid. Please check and try again.');
+    }
+
     $('#submit-zip-spinner').delay(500).fadeOut(function() {
       $(this).prev().attr('disabled', false); 
     });

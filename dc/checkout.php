@@ -103,6 +103,36 @@ include('includes/header.php');
               </tr>
               <tr>
                 <td class="hiddenRow">
+                  <div class="collapse shed">
+                    Interior: <span id="summary-config-interior-sku"></span><br /><span id="summary-config-interior"></span>
+                  </div>
+                </td>
+                <td class="hiddenRow text-right">
+                  <div class="collapse shed"><span id="summary-config-interior-price"></span></td>
+                  </div>
+              </tr>
+              <tr id="flooring-row">
+                <td class="hiddenRow">
+                  <div class="collapse shed">
+                    Flooring: <span id="summary-config-flooring"></span>
+                  </div>
+                </td>
+                <td class="hiddenRow text-right">
+                  <div class="collapse shed"><span id="summary-config-flooring-price"></span></td>
+                  </div>
+              </tr>
+              <tr id="finish-row">
+                <td class="hiddenRow">
+                  <div class="collapse shed">
+                    Finish: <span id="summary-config-finish"></span>
+                  </div>
+                </td>
+                <td class="hiddenRow text-right">
+                  <div class="collapse shed"><span id="summary-config-finish-price"></span></td>
+                  </div>
+              </tr>
+              <tr>
+                <td class="hiddenRow">
                   <div class="collapse shed">Siding Color: <span id="summary-config-siding-color"></span>
                   </div>
                 </td>
@@ -169,16 +199,6 @@ include('includes/header.php');
                 </td>
                 <td class="hiddenRow text-right">
                   <div class="collapse shed"><span id="summary-config-accessory4-price"></span></td>
-                  </div>
-              </tr>
-              <tr id="optional-interior-row">
-                <td class="hiddenRow">
-                  <div class="collapse shed">
-                    Interior: <span id="summary-config-interior-sku"></span><br /><span id="summary-config-interior"></span>
-                  </div>
-                </td>
-                <td class="hiddenRow text-right">
-                  <div class="collapse shed"><span id="summary-config-interior-price"></span></td>
                   </div>
               </tr>
               <tr>

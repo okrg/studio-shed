@@ -52,13 +52,27 @@
         </td>
         <td class="text-right"><div id="summary-config-back-price"></div></td>
       </tr>
-      <tr>
+      <tr id="interior-row">
         <th scope="row">Interior</th>
         <td>
           <div id="summary-config-interior-sku"></div>
           <div id="summary-config-interior"></div>
         </td>
         <td class="text-right"><div id="summary-config-interior-price"></div></td>
+      </tr>
+      <tr id="flooring-row">
+        <th scope="row">Flooring</th>
+        <td>
+          <div id="summary-config-flooring"></div>
+        </td>
+        <td class="text-right"><div id="summary-config-flooring-price"></div></td>
+      </tr>
+      <tr id="finish-row">
+        <th scope="row">Finish</th>
+        <td>
+          <div id="summary-config-finish"></div>
+        </td>
+        <td class="text-right"><div id="summary-config-finish-price"></div></td>
       </tr>
       <tr>
         <th scope="row">Siding Color</th>
