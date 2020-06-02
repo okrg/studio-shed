@@ -60,8 +60,8 @@ function getCart(data) {
       window.cart = cart = JSON.parse(json);
 
       if(cart.code && cart.code == 'configurationError') {
-        window.alert('There was an unexpected error with your configuration. Please try saving your configuration again or contact us for assistance at: answers@studioshed.com');
-        window.location.href='/dc/logout.php';
+        window.alert('There was an unexpected error with your configuration. Please try reloading the page or recreating your configuration again or contact us for assistance at: answers@studioshed.com');
+        //window.location.href='/dc/logout.php';
       }
 
       if(cart.city && cart.installation && cart.foundation) {

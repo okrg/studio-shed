@@ -10,7 +10,8 @@ if(isset($record->uniqueid) && isset($record->model)) {
 } else {
   //This record is missing a unique id and model something is not right
   //Trash it and force the user to log out and start over
-  $record->delete();
+  //$record->delete();
   $data['code'] = 'configurationError';
+  $data['uid'] = $uid;
   exit(json_encode($data));
 }
