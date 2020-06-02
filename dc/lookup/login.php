@@ -31,7 +31,12 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-  Cookies.remove('uid');
+  //Cookies.remove('uid');
+
+  if (typeof Cookies.get('sslookup') !== 'undefined') {
+    window.location = "/dc/lookup";
+  }
+
   $.ajaxSetup({
       headers: {
         'x-csrf-token': $('meta[name="csrf-token"]').attr('content')

@@ -913,18 +913,19 @@ $(document).ready(function() {
 
   $('body').click(function(e) {
     if (e.target.id == 'configurator-parent' || $(e.target).parents('#configurator-parent').length) {
-      if(configuratorState === 'none'){
+      if(configuratorState == 'none'){
         configuratorState = 'unsaved';
-        $(window).on('beforeunload', function(){
+        $(window).bind('beforeunload', function(){
           return true;
         });
       }
+
     }
   });
 
   $('body').on('click', '.checkoutButton a.buttono', function() {
     configuratorState = 'saved';
-    $(window).off('beforeunload');
+    $(window).unbind('beforeunload');
   });
 
 

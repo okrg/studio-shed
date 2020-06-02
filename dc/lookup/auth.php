@@ -27,7 +27,7 @@ if ($time >= strtotime('-1 month')) {
 <?php else: ?>
   <?php if ($hash_equals): ?>
     <script type="text/javascript">
-      Cookies.set('sslookup', '<?php echo $hash; ?>');
+      Cookies.set('sslookup', '<?php echo $hash; ?>', { expires: 30 });
       window.location = "/dc/lookup";
     </script>
   <?php endif; ?>
