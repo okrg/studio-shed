@@ -9,11 +9,8 @@ if(isset($record->uniqueid) && isset($record->model)) {
   $data['uid'] = $uid;
   $data['env'] = $env;
   $data['data'] = $record->toArray();
-  exit(json_encode($array));
+  exit(json_encode($data));
 } else {
-  //This record is missing a unique id and model something is not right
-  //Trash it and force the user to log out and start over
-  //$record->delete();
   $data['code'] = 'ERROR';
   $data['uid'] = $uid;
   $data['env'] = $env;
