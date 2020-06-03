@@ -17,6 +17,9 @@ if( empty($uid) ) {
 }
 
 $record = $database->get($uid);
+if(!isset($record->uniqueid)) {
+  exit(json_encode(['error' => 'failed']));
+}
 
 if(isset($record->uniqueid) && isset($record->model)) {
   $record->zip = $data['zip'];

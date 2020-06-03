@@ -15,6 +15,10 @@ if( empty($uid) ) {
 }
 
 $record = $database->get($uid);
+if(!isset($record->uniqueid)) {
+  exit(json_encode(['error' => 'failed']));
+}
+
 $record->permitPlans = filter_var($data['input']['permitPlans'], FILTER_VALIDATE_BOOLEAN);
 $record->permitPlansPrice = filter_var($data['input']['permitPlansPrice'],
   FILTER_VALIDATE_INT);

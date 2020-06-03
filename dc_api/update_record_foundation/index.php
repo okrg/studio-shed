@@ -15,6 +15,10 @@ if( empty($uid) ) {
 }
 
 $record = $database->get($uid);
+if(!isset($record->uniqueid)) {
+  exit(json_encode(['error' => 'failed']));
+}
+
 $record->foundation = $data['input']['foundation'];
 $record->foundationPrice = $data['input']['foundationPrice'];
 $record->save();

@@ -16,6 +16,10 @@ if( empty($uid) ) {
 }
 
 $record = $database->get($uid);
+if(!isset($record->uniqueid)) {
+  exit(json_encode(['error' => 'failed']));
+}
+
 $record->installation = $data['input']['installation'];
 $record->installationPrice = filter_var($data['input']['installationPrice'],
   FILTER_VALIDATE_INT);

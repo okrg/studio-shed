@@ -22,6 +22,10 @@ if( empty($uid) ) {
 }
 
 $record = $database->get($uid);
+if(!isset($record->uniqueid)) {
+  exit(json_encode(['error' => 'failed']));
+}
+
 $record->paymentIntentAmount = ($data['input']['paymentIntentAmount']/100);
 $record->paymentIntentCreated = $data['input']['paymentIntentCreated'];
 $record->paymentIntentId = $data['input']['paymentIntentId'];
@@ -54,7 +58,7 @@ $result = $wrap->add(array(
 $inbox = 'rolando.garcia@businessol.com';
 if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
   if($_ENV['PANTHEON_ENVIRONMENT'] == 'live') {
-    $inbox = 'orders@studioshed.com';
+    $inbox = 'studioaccounting@studioshed.com,certeam@studioshed.com';
   }
 }
 $smart_email_id = '7f06774d-bb7a-46f7-b52a-2358479ff8fe';
