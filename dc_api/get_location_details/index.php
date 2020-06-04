@@ -69,12 +69,6 @@ $response['shipping_distance'] = (int)$distance_miles;
 $response['zip'] = (string)$zip;
 
 
-if($state == 'CO') {
-  $state_code = 'CONONLOCAL';
-} else {
-  $state_code = $state;
-}
-
 if($depth >= 12) {
   $depth_surcharge = $shipping->depth_surcharges->{$depth};
 } else {
@@ -87,8 +81,23 @@ if(!empty($interior)){
   $interior_surcharge = 0;
 }
 
-$base = $shipping->base_rates->{$state_code};
-$subtotal = $distance_miles * $base;
+
+if($state == 'CO') {
+  //special logic for Colorado orders
+  if($distance_miles <= 50) {
+    //if distance is within 50 miles use state key 'COLOCAL'
+    $state_code = 'COLOCAL';
+  } else {
+    $state_code = 'CONONLOCAL';
+  }
+  $flat = $shipping->base_rates->{$state_code};
+  $subtotal = $flat;
+} else {
+  $state_code = $state;
+  $base = $shipping->base_rates->{$state_code};
+  $subtotal = $distance_miles * $base;
+}
+
 $total = $subtotal + $depth_surcharge + $interior_surcharge;
 $response['shipping_cost'] = round($total, 2);
 
