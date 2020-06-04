@@ -290,6 +290,7 @@ $message = array(
         'accessory4' => $record->accessory4,
         'accessory5' => $record->accessory5,
         'DCLookupLink' => $link,
+        'configImg' => $record->imageUrl
     ),
 );
 $consent_to_track = 'unchanged';

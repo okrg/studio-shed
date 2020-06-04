@@ -8,11 +8,8 @@ include('includes/header.php');
       <h2 class="text-center mb-5">Complete Your Order</h2>
       <div class="row">
         <div class="col-sm-12 col-lg-8 offset-lg-2">
-
         </div>
       </div>
-
-
       <div id="cart" class="cart">
         <div class="row">
           <div class="col-md-4 text-center">
@@ -38,18 +35,6 @@ include('includes/header.php');
                 <td class="hiddenRow text-right">
                   <div class="collapse shed">
                     <span id="summary-config-size-price"></span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="hiddenRow">
-                  <div class="collapse shed">
-                    Siding: <span id="summary-config-siding"></span>
-                  </div>
-                </td>
-                <td class="hiddenRow text-right">
-                  <div class="collapse shed">
-                    <span id="summary-config-siding-price"></span>
                   </div>
                 </td>
               </tr>
@@ -130,6 +115,18 @@ include('includes/header.php');
                 <td class="hiddenRow text-right">
                   <div class="collapse shed"><span id="summary-config-finish-price"></span></td>
                   </div>
+              </tr>
+              <tr>
+                <td class="hiddenRow">
+                  <div class="collapse shed">
+                    Siding: <span id="summary-config-siding"></span>
+                  </div>
+                </td>
+                <td class="hiddenRow text-right">
+                  <div class="collapse shed">
+                    <span id="summary-config-siding-price"></span>
+                  </div>
+                </td>
               </tr>
               <tr>
                 <td class="hiddenRow">

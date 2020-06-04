@@ -101,6 +101,7 @@ $message = array(
         'installation' => $record->installation,
         'paymentIntentAmount' => '$' . number_format((float)$record->paymentIntentAmount, 2, '.', ''),
         'DCLookupLink' => $link,
+        'configImg' => $record->imageUrl
     ),
 );
 $consent_to_track = 'unchanged';
