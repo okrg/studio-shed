@@ -558,6 +558,7 @@ p {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+	background: #f4f4f4;
 }
 .main-menu-dropdown {
     min-width: 300px;
