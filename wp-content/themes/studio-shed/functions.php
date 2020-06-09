@@ -668,3 +668,10 @@ function requesters_find_rewrite_catch($templates)
     }
 }
 add_action('template_include', 'requesters_find_rewrite_catch'); */
+
+add_filter( 'wc_add_to_cart_message_html', '__return_null' );
+add_filter( 'woocommerce_add_to_cart_validation', 'ss_only_one_in_cart', 99, 2 );
+function ss_only_one_in_cart( $passed, $added_product_id ) {
+   wc_empty_cart();
+   return $passed;
+}

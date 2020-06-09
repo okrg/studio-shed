@@ -12809,7 +12809,7 @@ section.dc-foundation {
 
 main:before {
   content: " ";
-  background-image: url("https://dev2-studio-shed.pantheonsite.io/wp-content/uploads/2020/02/secondary_bg08.jpg");
+  background-image: url("/wp-content/uploads/2020/02/secondary_bg08.jpg");
   background-position: center center;
   width: 100%;
   height: 250px;
