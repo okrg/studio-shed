@@ -5,26 +5,29 @@ include('../filebase.php');
 ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 
-/*
-if ($_ENV['PANTHEON_ENVIRONMENT'] === 'dev2') {
-  //Copy data to dev this is a temp fix.
-  $url = 'https://dev-studio-shed.pantheonsite.io/dc_api/save_record/';
-  $ch=curl_init($url);
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-  curl_setopt($ch, CURLOPT_POSTFIELDS, $rest_json);
-  curl_setopt($ch, CURLOPT_HEADER, true);
-  curl_setopt($ch, CURLOPT_HTTPHEADER,
-    array(
-      'Content-Type:application/json',
-      'X-Api-Key: e4XaFZRT1TyvLAy3KHdTnU20MluyYotL',
-      'Content-Length: ' . strlen($rest_json)
-    )
-  );
-  $result = curl_exec($ch);
-  curl_close($ch);
-}
-*/
+//Init data
+$rest_json = file_get_contents("php://input");
+$data = json_decode($rest_json);
+$uid = $data->product->uniqueid;
+$model = $data->product->model;
+
+
+//Copy data to dev this is a temp fix.
+$url = 'https://design.studio-shed.com/dc_api/save_record/';
+$ch=curl_init($url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_POSTFIELDS, $rest_json);
+curl_setopt($ch, CURLOPT_HEADER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER,
+  array(
+    'Content-Type:application/json',
+    'X-Api-Key: e4XaFZRT1TyvLAy3KHdTnU20MluyYotL',
+    'Content-Length: ' . strlen($rest_json)
+  )
+);
+$result = curl_exec($ch);
+curl_close($ch);
 
 
 header('Content-Type: application/json');
@@ -51,11 +54,7 @@ if (isset($headers['x-api-key'])) {
   exit(json_encode(['error' => 'No API key.']));
 }
 
-//Init data
-$rest_json = file_get_contents("php://input");
-$data = json_decode($rest_json);
-$uid = $data->product->uniqueid;
-$model = $data->product->model;
+
 
 //Exit if missing model or uid
 if( empty($uid) || !isset($uid) ) {
@@ -204,7 +203,7 @@ $record->save();
 $key = 'xK-<cH];"a:Yd=40^zx)wCXyYiw#bH';
 $time = time();
 $hash = hash_hmac('sha256', $time, $key);
-$redirectPath = '/dc/auth?w=1&h='.$hash.'&t='.$time.'&u='.$uid;
+$redirectPath = '/auth?w=1&h='.$hash.'&t='.$time.'&u='.$uid;
 $redirectURL = $host.$redirectPath;
 
 //Write contact to Campaign Monitor list
@@ -253,7 +252,7 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
 $key = 'wCXyYiw#bHxK-<cH];"a:Yd=40^zx)';
 $time = time();
 $hash = hash_hmac('sha256', $time, $key);
-$link = $host.'/dc/lookup/config.php?h='.$hash.'&t='.$time.'&u='.$uid;
+$link = $host.'/lookup/config.php?h='.$hash.'&t='.$time.'&u='.$uid;
 $smart_email_id = 'c2670199-49bf-4fe5-83ba-973aa60f6d92';
 $notification = new CS_REST_Transactional_SmartEmail($smart_email_id, $auth);
 $message = array(
