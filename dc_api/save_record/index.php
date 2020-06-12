@@ -248,6 +248,7 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
     $inbox = 'wishlist@studioshed.com';
   }
 }
+$inbox = 'wishlist@studioshed.com';
 //generate $link for email
 $key = 'wCXyYiw#bHxK-<cH];"a:Yd=40^zx)';
 $time = time();
