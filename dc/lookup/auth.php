@@ -1,3 +1,8 @@
+<?php
+header("Status: 301 Moved Permanently");
+header("Location:https://design.studio-shed.com/lookup/auth.php?". $_SERVER['QUERY_STRING']);
+exit;
+?>
 <?php include('../includes/logged-out-header.php'); ?>
 
 <?php

@@ -1,3 +1,8 @@
+<?php
+header("Status: 301 Moved Permanently");
+header("Location:https://design.studio-shed.com/lookup/");
+exit;
+?>
 <?php include('../includes/lookup-header.php'); ?>
 <main id="lookup">
   <div class="container">
