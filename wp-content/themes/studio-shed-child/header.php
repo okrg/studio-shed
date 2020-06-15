@@ -304,8 +304,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             ?>
 
             <li class="has-sub adu-menu">
-              <a href="<?php echo $adu_menu_link; ?>"><?php echo $adu_menu_title; ?></a>
-
+              <a href="<?php echo $adu_menu_link; ?>"><!--<span class="icomoon icon-script"></span>--><?php echo $adu_menu_title; ?></a>
+              <div class="nav-item-arrows d-lg-none">
+                <i class="icomoon icon-plus2" aria-hidden="true"></i>
+              </div>
               <div class="dropdown-menu main-menu-dropdown">
                 <ul>
                   <?php
