@@ -584,7 +584,7 @@ p {
 
 
 li.cell a   {
-			background: url(/wp-content/uploads/2020/02/menu-phone.png) no-repeat 10px center;
+			background: url(/wp-content/uploads/2020/02/menu-phone.png) no-repeat 5px center;
 		}
 @media (max-width: 650px){
 li.cell a {
