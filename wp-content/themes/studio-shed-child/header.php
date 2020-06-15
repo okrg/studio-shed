@@ -296,7 +296,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
               </div>
             </li> 
-               
+
+            <?php
+            $adu_menu_title = get_field('adu_menu_title', 'option');
+            $adu_menu_link = get_field('adu_menu_link', 'option');
+            $adu_menu_childs = get_field('adu_menu_childs', 'option');
+            ?>
+
+            <li class="has-sub adu-menu">
+              <a href="<?php echo $adu_menu_link; ?>"><?php echo $adu_menu_title; ?></a>
+
+              <div class="dropdown-menu main-menu-dropdown">
+                <ul>
+                  <?php
+                  foreach ($adu_menu_childs as $key => $adu_menu_item) {?>
+                  <li>
+                    <a href="<?php echo $adu_menu_item["adu_menu_child_item_link"]?>"><?php echo $adu_menu_item["adu_menu_child_item_title"]?></a>
+                  </li>
+                  <?php }
+                  ?>
+                </ul>
+              </div>
+            </li>
+
             <?php
             $title_r_1 = get_field('title_r_1', 'option');
             $link_r_1 = get_field('link_r_1', 'option');
