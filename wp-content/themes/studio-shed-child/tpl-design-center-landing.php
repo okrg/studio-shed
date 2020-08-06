@@ -33,8 +33,11 @@
 		</p>					
 
 	<div class="login-text">
+		<!--
 		<h4><?php print get_field('login_title', $page_id); ?></h4>
 		<p><?php print get_field('login_text', $page_id); ?></p>
+		-->
+		<?php print get_field('login_cta_section', $page_id); ?>
 		</div>
 		<section id="design-center-steps">
 		
