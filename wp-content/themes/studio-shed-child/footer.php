@@ -33,7 +33,7 @@
 			<div class="col-sm-9 col-md-7">
 
 			<h3>Make Your Escape</h3>
-				<p><span style="color: #ffffff;">One shed does not fit all. Our innovative modular system allows for tremendous customization. There are millions of combinationa of sizes, door and window placements, and colors. All thoughtfully designed to work together.</span></p>
+				<p><span style="color: #ffffff;">One shed does not fit all. Our innovative modular system allows for tremendous customization. There are millions of combinations of sizes, door and window placements, and colors. All thoughtfully designed to work together.</span></p>
 
 			</div>
 			<div class="col-sm-12 col-md-3">
