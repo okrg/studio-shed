@@ -480,6 +480,39 @@ function ajax_get_gallery_by_size() {
 add_action('wp_ajax_ajax_get_gallery_by_size', 'ajax_get_gallery_by_size');
 add_action('wp_ajax_nopriv_ajax_get_gallery_by_size', 'ajax_get_gallery_by_size');
 
+
+/* Gravity Forms side post submission to FileMaker */
+function split_name($name) {
+    $name = trim($name);
+    $last_name = (strpos($name, ' ') === false) ? '' : preg_replace('#.*\s([\w-]*)$#', '$1', $name);
+    $first_name = trim( preg_replace('#'.$last_name.'#', '', $name ) );
+    return array($first_name, $last_name);
+}
+
+add_action( 'gform_after_submission_1', 'ss_post_contact_us', 10, 2 );
+function ss_post_contact_us( $entry, $form ) {
+    $name = split_name(rgar( $entry, '1' ));
+    $post_url = rtrim( get_site_url(), '/' ) . '/filemaker/process_ContactUs.php';
+    $body = array(
+        'fname' => $name[0], 
+        'lname' => $name[1],
+        'email' => rgar( $entry, '2' ),
+        'state' => rgar( $entry, '3' ),
+        'phone' => rgar( $entry, '4' ),
+        'comments' => rgar( $entry, '5' ),
+        'utm_source' => rgar( $entry, '6' ),
+        'utm_medium' => rgar( $entry, '7' ),
+        'utm_campaign' => rgar( $entry, '8' ),
+        'gclid' => rgar( $entry, '9' ),
+        'visitor_id' => rgar( $entry, '10' ),
+        );
+    GFCommon::log_debug( 'gform_after_submission: body => ' . print_r( $body, true ) );
+
+    $request = new WP_Http();
+    $response = $request->post( $post_url, array( 'body' => $body ) );
+    GFCommon::log_debug( 'gform_after_submission: response => ' . print_r( $response, true ) );
+}
+
 //add_action( 'gform_after_submission_14', 'after_submission', 10, 2 );
 
 // Post Request Quote Form Submission to Filemaker
@@ -521,6 +554,31 @@ function ss_post_url_quote_2( $entry, $form ) {
         'desired' => rgar( $entry, '10' ),
         'intended' => rgar( $entry, '11' ),
         'budget' => rgar( $entry, '13' ),
+        'comments' => rgar( $entry, '8' ),
+        'utm_source' => rgar( $entry, '22' ),
+        'utm_medium' => rgar( $entry, '23' ),
+        'utm_campaign' => rgar( $entry, '19' ),
+        'gclid' => rgar( $entry, '20' ),
+        'visitor_id' => rgar( $entry, '21' ),
+        );
+    GFCommon::log_debug( 'gform_after_submission: body => ' . print_r( $body, true ) );
+
+    $request = new WP_Http();
+    $response = $request->post( $post_url, array( 'body' => $body ) );
+    GFCommon::log_debug( 'gform_after_submission: response => ' . print_r( $response, true ) );
+}
+
+add_action( 'gform_after_submission_20', 'ss_post_consultation', 10, 2 );
+function ss_post_consultation( $entry, $form ) {
+    $post_url = rtrim( get_site_url(), '/' ) . '/filemaker/process_RequestFreeConsultation.php';
+    $body = array(
+        'fname' => rgar( $entry, '26' ), 
+        'lname' => rgar( $entry, '34' ),
+        'email' => rgar( $entry, '9' ),
+        'city' => rgar( $entry, '27' ),
+        'zipcode' => rgar( $entry, '3' ),
+        'phone' => rgar( $entry, '4' ),
+        'intended' => rgar( $entry, '33' ),
         'comments' => rgar( $entry, '8' ),
         'utm_source' => rgar( $entry, '22' ),
         'utm_medium' => rgar( $entry, '23' ),
