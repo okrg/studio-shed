@@ -159,8 +159,9 @@ while (have_posts()) : the_post();
 				<div id="feature-top">
 					<div class="container">
                         <h3 class=" text-uppercase">
-							Our most popular models.<br />Faster Turnaround, TurnkeyFoundations.</h3>
+							Our most popular models.<br />Faster Turnaround, Turnkey Foundations.</h3>
 				<p>These models are the best of our <?php the_title(); ?>. Our most popular designs, they're deleivered to your door in 3-4 weeks. Choose the perfect size, colors, and options for your perfect home office, studio, or backyard retreat.</p>
+						<p>NOTE: Due to the current high demand, turnaround time is typically 6-8 weeks in most markets.</p>
 					</div>
 					 <section id="childs-list" class="container" >
         <div class="inside">
