@@ -101,12 +101,12 @@
 				<?php if(strpos($_SERVER['REQUEST_URI'], 'man-cave') !== false):?>
 
 				<a href="/art-studios/"><img src="/wp-content/uploads/2020/01/the-artist-houseofboysdesign-791x525.png" alt="studio shed Art and Music Studio"/></a><br/>					
-				<h4>Creative Sheds</h4>	
+				<h4><a href="/art-studios/">Creative Sheds</a></h4>	
 				<p>A Studio Shed is your creative sanctuary, just steps from your back door.</p>
 				<?php else: ?> 
 							 
 				<a href="/man-cave/"><img src="/wp-content/uploads/2018/05/ODonnell_Studio-791x525.jpg" alt="studio shed Man Cave"/></a><br/>
-				<h4>Man Cave</h4>
+				<h4><a href="/man-cave/">Man Cave</a></h4>
 				<p>Design the ultimate Man Cave with Studio Shed. The perfect place to get away after a long day that is still just right outside your back door.</p>
 							 
 				<?php endif; ?>
@@ -115,11 +115,11 @@
 								<?php if(strpos($_SERVER['REQUEST_URI'], 'home-office-spaces') !== false):?>
 
 				<a href="/art-studios/"><img src="/wp-content/uploads/2020/01/the-artist-houseofboysdesign-791x525.png" alt="studio shed Art and Music Studio"/></a><br/>					
-				<h4>Creative Sheds</h4>	
+				<h4><a href="/art-studios/">Creative Sheds</a></h4>	
 				<p>A Studio Shed is your creative sanctuary, just steps from your back door.</p>
 				<?php else: ?> 
 				<a href="/home-office-spaces/"><img src="/wp-content/uploads/2015/02/Office-3-791x525.jpg" alt="studio shed Home Office"/></a><br/>
-				<h4>Home Office Spaces</h4>
+				<h4><a href="/home-office-spaces/">Home Office Spaces</a></h4>
 				<p>Our modern world requires that we work in new ways. A Studio Shed backyard office is a place you can commute to in seconds, without the distractions of an office in your home.</p>
 				<?php endif; ?>
 			</div>
@@ -128,11 +128,11 @@
 				<?php if(strpos($_SERVER['REQUEST_URI'], 'music-studios') !== false):?>
 
 				<a href="/art-studios/"><img src="/wp-content/uploads/2020/01/the-artist-houseofboysdesign-791x525.png" alt="studio shed Art and Music Studio"/></a><br/>					
-				<h4>Creative Sheds</h4>	
+				<h4><a href="/art-studios/">Creative Sheds</a></h4>	
 				<p>A Studio Shed is your creative sanctuary, just steps from your back door.</p>
 				<?php else: ?> 
 				<a href="/music-studios/"><img src="/wp-content/uploads/2015/02/Music-Art-3-791x525.jpg" alt="studio shed"/></a><br/>
-				<h4>Music Studios</h4>
+				<h4><a href="/music-studios/">Music Studios</a></h4>
 				<p>We all need a place to play. A Studio Shed is your home music studio, just steps from your back door.</p>
 				<?php endif; ?>
 			</div>
@@ -140,7 +140,7 @@
 		<div class="row">
 			<div class="col-sm-12 col-md-12">
 
-			<h3><a href="/shed-stories/">See all Shed Stories</a></h3>
+			<a href="/shed-stories/" class="vce-button--style-basic button">See all Shed Stories</a>
 				
 
 			</div>
