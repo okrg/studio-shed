@@ -482,7 +482,7 @@ add_action('wp_ajax_nopriv_ajax_get_gallery_by_size', 'ajax_get_gallery_by_size'
 
 
 /* Gravity Forms side post submission to FileMaker */
-/*
+
 function split_name($name) {
     $name = trim($name);
     $last_name = (strpos($name, ' ') === false) ? '' : preg_replace('#.*\s([\w-]*)$#', '$1', $name);
@@ -513,7 +513,7 @@ function ss_post_contact_us( $entry, $form ) {
     $response = $request->post( $post_url, array( 'body' => $body ) );
     GFCommon::log_debug( 'gform_after_submission: response => ' . print_r( $response, true ) );
 }
-*/
+
 
 //add_action( 'gform_after_submission_14', 'after_submission', 10, 2 );
 
@@ -570,18 +570,18 @@ function ss_post_url_quote_2( $entry, $form ) {
     GFCommon::log_debug( 'gform_after_submission: response => ' . print_r( $response, true ) );
 }
 
-/*
+
 add_action( 'gform_after_submission_20', 'ss_post_consultation', 10, 2 );
 function ss_post_consultation( $entry, $form ) {
     $post_url = rtrim( get_site_url(), '/' ) . '/filemaker/process_RequestFreeConsultation.php';
     $body = array(
-        'fname' => rgar( $entry, '26' ), 
-        'lname' => rgar( $entry, '34' ),
+        'fname' => rgar( $entry, '25' ), 
+        'lname' => rgar( $entry, '26' ),
         'email' => rgar( $entry, '9' ),
-        'city' => rgar( $entry, '27' ),
+        'city' => rgar( $entry, '27' ),∂
         'zipcode' => rgar( $entry, '3' ),
         'phone' => rgar( $entry, '4' ),
-        'intended' => rgar( $entry, '33' ),
+        'intended' => rgar( $entry, '28' ),
         'comments' => rgar( $entry, '8' ),
         'utm_source' => rgar( $entry, '22' ),
         'utm_medium' => rgar( $entry, '23' ),
@@ -595,7 +595,7 @@ function ss_post_consultation( $entry, $form ) {
     $response = $request->post( $post_url, array( 'body' => $body ) );
     GFCommon::log_debug( 'gform_after_submission: response => ' . print_r( $response, true ) );
 }
-*/
+
 
 // Post Contact Us Form Submission to Filemaker
 /*
