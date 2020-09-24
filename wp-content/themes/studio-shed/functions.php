@@ -578,7 +578,7 @@ function ss_post_consultation( $entry, $form ) {
         'fname' => rgar( $entry, '25' ), 
         'lname' => rgar( $entry, '26' ),
         'email' => rgar( $entry, '9' ),
-        'city' => rgar( $entry, '27' ),∂
+        'city' => rgar( $entry, '27' ),
         'zipcode' => rgar( $entry, '3' ),
         'phone' => rgar( $entry, '4' ),
         'intended' => rgar( $entry, '28' ),
