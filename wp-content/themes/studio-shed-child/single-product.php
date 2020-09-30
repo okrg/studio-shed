@@ -1,7 +1,4 @@
 <?php 
-error_reporting(E_ALL);
-error_reporting(-1);
-ini_set('error_reporting', E_ALL);
 get_header();?>
 <?php
   $product = wc_get_product($post->ID);
@@ -12,6 +9,8 @@ get_header();?>
   $variations = $product->get_available_variations();
   $product_specs = get_field('product_details_page');
   $tech_specs = get_field('tech_specs_section');
+  $standard_features_left = get_field('product_features_section_left_column');
+  $standard_features_right = get_field('product_features_section_right_column');
 
 
   foreach($floor_attributes as $attribute) {
@@ -136,10 +135,7 @@ get_header();?>
         <li>DIY installation only</li>
         <li>Shipping included</li>
       </ul>
-
       </div>
-
-      
     </td>
   </tr>
   </table>
@@ -148,49 +144,13 @@ get_header();?>
 <div id="feature-1">
 <h3 class=" text-uppercase"><?php the_title(); ?> Standard Features</h3>
 <div class="tab-left"><div class="one_half">
-<p><strong>SIZE:</strong></p>
-<ul>
-<li>10'x12'</li>
-</ul>
-<p><strong>CONSTRUCTION:</strong></p>
-<ul>
-<li>2 x 6 framing and Zip System weatherproof wall panels</li>
-</ul>
-<p><strong>ROOF:</strong></p>
-<ul>
-<li>Full length tapered roof rafters</li>
-<li>1/2″ Plywood decking with Ice and Water shield</li>
-<li>26-gauge corrugated Galvalume roofing with exposed fasteners</li>
-</ul>
-<p><strong>WINDOWS:</strong></p>
-<ul>
-<li>Signature CloudLite aluminum clad double pane windows</li>
-</ul>
-<p><strong>SIDING:</strong></p>
-<ul class="features-list">
-<li>HardiPanel and Galvalume options available in multiple colors.</li>
-</ul>
+<?=$standard_features_left; ?>
 </div>
 </div>
-                                <div class="tab-right"><div class="one_half last">
+
+<div class="tab-right"><div class="one_half last">
 <div class="one_half last">
-<div><strong>DOOR:</strong></div>
-<ul>
-<li>White 36”&nbsp;Thermatru fiberglass door</li>
-</ul>
-<p><strong>HARDWARE:</strong></p>
-<ul>
-<li>Brushed aluminum trim and door/window hardware</li>
-</ul>
-<p><strong>WARRANTY:</strong></p>
-<ul>
-<li>1 year manufacturer warranty on all models plus extended warranties on doors and windows</li>
-</ul>
-<p><strong>GREEN MATERIALS, SUSTAINABLY BUILT:</strong></p>
-<ul>
-<li>FSC certified lumber, mixed-source recycled metal and materials throughout, optimized prefabricated production.</li>
-<li>Meets building codes throughout the US</li>
-</ul>
+<?=$standard_features_right; ?>
 </div>
 
 </div>
@@ -222,13 +182,16 @@ get_header();?>
     margin-bottom: 10rem;
   }
 
+  .products-page #top-info .head-text {
+    font-size: 40px;
+  }
 
   #order-summary li strong {
     font-weight: 600;
     color: #333;
   }
   .summary-label {
-    
+
   }
   .buy-now {
     text-align: center;
