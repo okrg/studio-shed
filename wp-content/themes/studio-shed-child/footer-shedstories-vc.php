@@ -77,7 +77,7 @@
 					<p>Whether you need a home office storage space, guest studio, or backyard retreat, we've got the perfect Studio Shed for your needs. CHoose from our quick turnaround pre-configured selections, or design your own prefab backyard room in our 3D Design Studio.</p>
 				
 				<a href="/design-center/" class="vce-button--style-basic button">Build &amp; Price</a>
-				<a href="/request-a-quote/" class="vce-button--style-basic button">Request a Quote</a>
+				<a href="/request-free-consultation/" class="vce-button--style-basic button">Request Free Consultation</a>
 				<div class="call-us">CALL US: 1-888-900-3933</div>
 
 			</div>
