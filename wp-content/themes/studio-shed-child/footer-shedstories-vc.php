@@ -74,7 +74,7 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<h3>Choose the Perfect Shed</h3>
-					<p>Whether you need a home office storage space, guest studio, or backyard retreat, we've got the perfect Studio Shed for your needs. CHoose from our quick turnaround pre-configured selections, or design your own prefab backyard room in our 3D Design Studio.</p>
+					<p>Whether you need a home office storage space, guest studio, or backyard retreat, we've got the perfect Studio Shed for your needs. Choose from our quick turnaround pre-configured selections, or design your own prefab backyard room in our 3D Design Center.</p>
 				
 				<a href="/design-center/" class="vce-button--style-basic button">Build &amp; Price</a>
 				<a href="/request-free-consultation/" class="vce-button--style-basic button">Request Free Consultation</a>
