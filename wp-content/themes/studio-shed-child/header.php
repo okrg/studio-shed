@@ -322,6 +322,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </li>
 
             <?php
+            $backyard_studios__menu_title = get_field('backyard_studios_menu_title', 'option');
+            $backyard_studios__menu_link = get_field('backyard_studios_menu_link', 'option');
+            $backyard_studios__menu_childs = get_field('backyard_studios_menu_childs', 'option');
+            ?>
+
+            <li class="has-sub backyardj-studios-menu">
+              <a href="<?php echo $backyard_studios_menu_link; ?>"><!--<span class="icomoon icon-script"></span>--><?php echo $backyard_studios_menu_title; ?></a>
+              <div class="nav-item-arrows d-lg-none">
+                <i class="icomoon icon-plus2" aria-hidden="true"></i>
+              </div>
+              <div class="dropdown-menu main-menu-dropdown">
+                <ul>
+                  <?php
+                  foreach ($backyard_studios_menu_childs as $key => $backyard_studios_menu_item) {?>
+                  <li>
+                    <a href="<?php echo $backyard_studios_menu_item["backyard_studios_menu_child_item_link"]?>"><?php echo $backyard_studios_menu_item["backyard_studios_menu_child_item_title"]?></a>
+                  </li>
+                  <?php }
+                  ?>
+                </ul>
+              </div>
+            </li>
+
+
+            <?php
             $title_r_1 = get_field('title_r_1', 'option');
             $link_r_1 = get_field('link_r_1', 'option');
             $childs_r_1 = get_field('childs_r_1', 'option');
@@ -468,7 +493,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </ul>
               </div>
             </li>
-			<li class="faqs"><a href="/faqs/">FAQs</a></li>
+			<!-- <li class="faqs"><a href="/faqs/">FAQs</a></li> -->
 			 <?php 
           $contact_title = get_field('contact_title', 'option');
           $contact_link = get_field('contact_link', 'option');
