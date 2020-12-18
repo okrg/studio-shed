@@ -322,12 +322,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </li>
 
             <?php
-            $backyard_studios__menu_title = get_field('backyard_studios_menu_title', 'option');
-            $backyard_studios__menu_link = get_field('backyard_studios_menu_link', 'option');
-            $backyard_studios__menu_childs = get_field('backyard_studios_menu_childs', 'option');
+            $backyard_studios_menu_title = get_field('backyard_studios_menu_title', 'option');
+            $backyard_studios_menu_link = get_field('backyard_studios_menu_link', 'option');
+            $backyard_studios_menu_childs = get_field('backyard_studios_menu_childs', 'option');
             ?>
 
-            <li class="has-sub backyardj-studios-menu">
+            <li class="has-sub backyard-studios-menu">
               <a href="<?php echo $backyard_studios_menu_link; ?>"><!--<span class="icomoon icon-script"></span>--><?php echo $backyard_studios_menu_title; ?></a>
               <div class="nav-item-arrows d-lg-none">
                 <i class="icomoon icon-plus2" aria-hidden="true"></i>
