@@ -99,7 +99,7 @@
 			</div>
 			<div class="col-sm-12 col-md-2">
 
-				<img src="/wp-content/uploads/2020/01/we-ship-footer-icon.png" />
+				<img alt="We ship nationwide" src="/wp-content/uploads/2020/01/we-ship-footer-icon.png" />
 				 <div class="social">
             <ul>
               <?php
