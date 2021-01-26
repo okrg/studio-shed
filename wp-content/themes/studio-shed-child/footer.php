@@ -49,7 +49,7 @@
 			<div class="col-sm-12 col-md-5">
 				<h3>Delivering Your Customized Shed Anywhere in the U.S.</h3>
 				<hr>
-				<p>Studio Shed ships to all 50 U.S. states and select locations in Canada. Our products are built right here in Colorado and then shipped directly to your front door. Shipping costs will be calculated during the design process based on your exact location. </p></p>
+				<p>Studio Shed ships to all 50 U.S. states. Our products are built right here in Colorado and then shipped directly to your front door. Shipping costs will be calculated during the design process based on your exact location. </p></p>
 			</div>
 			<div class="col-sm-3 col-md-5">
 				<p>&nbsp;</p>			
