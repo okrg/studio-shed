@@ -24,13 +24,13 @@
 				loopAtEnd: false,
 				autoplayVideos: false,
 				queryStringData: {},
-				toggleClassOnLoad: ''
+				toggleClassOnLoad: '',
+				selector: null
 			},
 
 			plugin = this,
 			elements = [], // slides array [ { href:'...', title:'...' }, ...],
 			$elem,
-			selector = elem.selector,
 			isMobile = navigator.userAgent.match( /(iPad)|(iPhone)|(iPod)|(Android)|(PlayBook)|(BB10)|(BlackBerry)|(Opera Mini)|(IEMobile)|(webOS)|(MeeGo)/i ),
 			isTouch = isMobile !== null || document.createTouch !== undefined || ( 'ontouchstart' in window ) || ( 'onmsgesturechange' in window ) || navigator.msMaxTouchPoints,
 			supportSVG = !! document.createElementNS && !! document.createElementNS( 'http://www.w3.org/2000/svg', 'svg').createSVGRect,
@@ -68,7 +68,7 @@
 
 			plugin.settings = $.extend( {}, defaults, options );
 
-			if ( $.isArray( elem ) ) {
+			if ( Array.isArray( elem ) ) {
 
 				elements = elem;
 				ui.target = $( window );
@@ -76,7 +76,7 @@
 
 			} else {
 
-				$( document ).on( 'click', selector, function( event ) {
+				$( elem ).on( 'click', plugin.settings.selector, function( event ) {
 
 					// console.log( isTouch );
 
@@ -85,10 +85,12 @@
 						return false;
 					}
 
-					if ( ! $.isArray( elem ) ) {
-						ui.destroy();
-						$elem = $( selector );
-						ui.actions();
+                    ui.destroy();
+
+					if ( plugin.settings.selector === null ) {
+                        $elem = $( elem );
+                    } else {
+                        $elem = $( elem ).find( plugin.settings.selector );
 					}
 
 					elements = [];
@@ -106,9 +108,7 @@
 					}
 
 					if ( relVal && relVal !== '' && relVal !== 'nofollow' ) {
-						$elem = $( selector ).filter( '[' + relType + '="' + relVal + '"]' );
-					} else {
-						$elem = $( selector );
+						$elem = $elem.filter( '[' + relType + '="' + relVal + '"]' );
 					}
 
 					$elem.each( function() {
@@ -242,9 +242,9 @@
 			resize : function () {
 				var $this = this;
 
-				$( window ).resize( function() {
+				$( window ).on( 'resize', function() {
 					$this.setDim();
-				} ).resize();
+				} ).trigger( 'resize' );
 			},
 
 			/**
@@ -296,7 +296,7 @@
 				bars.addClass( 'visible-bars' );
 				$this.setTimeout();
 
-				$( 'body' ).bind( 'touchstart', function( event ) {
+				$( 'body' ).on( 'touchstart', function( event ) {
 
 					$( this ).addClass( 'touching' );
 					index = $( '#swipebox-slider .slide' ).index( $( '#swipebox-slider .slide.current' ) );
@@ -309,7 +309,7 @@
 						'transform' : 'translate3d(' + currentX + '%, 0, 0)'
 					} );
 
-					$( '.touching' ).bind( 'touchmove',function( event ) {
+					$( '.touching' ).on( 'touchmove',function( event ) {
 						event.preventDefault();
 						event.stopPropagation();
 						endCoords = event.originalEvent.targetTouches[0];
@@ -378,7 +378,7 @@
 
 					return false;
 
-				} ).bind( 'touchend',function( event ) {
+				} ).on( 'touchend',function( event ) {
 					event.preventDefault();
 					event.stopPropagation();
 
@@ -508,19 +508,19 @@
 				bars.addClass( 'visible-bars' );
 				$this.setTimeout();
 
-				$( '#swipebox-slider' ).click( function() {
+				$( '#swipebox-slider' ).on( 'click', function() {
 					if ( ! bars.hasClass( 'visible-bars' ) ) {
 						$this.showBars();
 						$this.setTimeout();
 					}
 				} );
 
-				$( '#swipebox-bottom-bar' ).hover( function() {
+				$( '#swipebox-bottom-bar' ).on( 'mouseenter', function() {
 					$this.showBars();
 					bars.addClass( 'visible-bars' );
 					$this.clearTimeout();
 
-				}, function() {
+				} ).on( 'mouseleave', function() {
 					if ( plugin.settings.hideBarsDelay > 0 ) {
 						bars.removeClass( 'visible-bars' );
 						$this.setTimeout();
@@ -534,7 +534,7 @@
 			 */
 			keyboard : function () {
 				var $this = this;
-				$( window ).bind( 'keyup', function( event ) {
+				$( window ).on( 'keyup', function( event ) {
 					event.preventDefault();
 					event.stopPropagation();
 
@@ -569,14 +569,14 @@
 					}
 
 				} else {
-					$( '#swipebox-prev' ).bind( action, function( event ) {
+					$( '#swipebox-prev' ).on( action, function( event ) {
 						event.preventDefault();
 						event.stopPropagation();
 						$this.getPrev();
 						$this.setTimeout();
 					} );
 
-					$( '#swipebox-next' ).bind( action, function( event ) {
+					$( '#swipebox-next' ).on( action, function( event ) {
 						event.preventDefault();
 						event.stopPropagation();
 						$this.getNext();
@@ -584,7 +584,7 @@
 					} );
 				}
 
-				$( '#swipebox-close' ).bind( action, function() {
+				$( '#swipebox-close' ).on( action, function() {
 					$this.closeSlide();
 				} );
 			},
@@ -756,7 +756,7 @@
 				if ( a.search ) {
 					qs = JSON.parse( '{"' + a.search.toLowerCase().replace('?','').replace(/&/g,'","').replace(/=/g,'":"') + '"}' );
 				}
-				
+
 				// Extend with custom data
 				if ( $.isPlainObject( customData ) ) {
 					qs = $.extend( qs, customData, plugin.settings.queryStringData ); // The dev has always the final word
@@ -919,14 +919,14 @@
 			 * Destroy the whole thing
 			 */
 			destroy : function () {
-				$( window ).unbind( 'keyup' );
-				$( 'body' ).unbind( 'touchstart' );
-				$( 'body' ).unbind( 'touchmove' );
-				$( 'body' ).unbind( 'touchend' );
-				$( '#swipebox-slider' ).unbind();
+				$( window ).off( 'keyup' );
+				$( 'body' ).off( 'touchstart' );
+				$( 'body' ).off( 'touchmove' );
+				$( 'body' ).off( 'touchend' );
+				$( '#swipebox-slider' ).off();
 				$( '#swipebox-overlay' ).remove();
 
-				if ( ! $.isArray( elem ) ) {
+				if ( ! Array.isArray( elem ) ) {
 					elem.removeData( '_swipebox' );
 				}
 

@@ -1,10 +1,10 @@
 === Responsive Lightbox & Gallery ===
 Contributors: dfactory
 Donate link: http://www.dfactory.eu/
-Tags: responsive gallery plugin, lightbox, photo gallery, masonry, video gallery, gallery builder, image gallery
-Requires at least: 4.0
-Tested up to: 5.3
-Stable tag: 2.2.2
+Tags: gallery, galleries, image, images, responsive, lightbox, photo, photography, masonry, video, builder
+Requires at least: 5.0
+Tested up to: 5.6
+Stable tag: 2.3.1
 Requires PHP: 5.2.4
 License: MIT License
 License URI: http://opensource.org/licenses/MIT
@@ -138,6 +138,19 @@ Responsive Lightbox and Gallery plugin comes with many styles and effects alread
 2. screenshot-2.jpg
 
 == Changelog ==
+
+= 2.3.1 =
+* Fix: Plugin capabilities not granted properly
+
+= 2.3.0 =
+* New: WordPress 5.6 compatibility
+* New: Capabilities management
+* New: Admin breadcrumb navigation
+
+= 2.2.3 =
+* Fix: Media Folders js and CSS issues in Media Library
+* Fix: Empty src attribute in Remote Library inserted images
+* Tweak: Remove featured image thumbnail from Media Library access
 
 = 2.2.2 =
 * Fix: Add Media button not working for custom post types
@@ -440,5 +453,5 @@ Initial release
 
 == Upgrade Notice ==
 
-= 2.2.2 =
-* Fix: Multiple bug fixes release
+= 2.3.1 =
+* Fix: Plugin capabilities not granted properly

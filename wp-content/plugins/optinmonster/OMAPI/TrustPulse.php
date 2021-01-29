@@ -63,7 +63,25 @@ class OMAPI_TrustPulse {
 	 *
 	 * @var bool
 	 */
-	public $trustpulse_active;
+	public $active;
+
+	/**
+	 * TrustPulse plugin data.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @var array
+	 */
+	public $plugin_data = array();
+
+	/**
+	 * Whether the TrustPulse plugin is installed.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @var bool
+	 */
+	public $installed;
 
 	/**
 	 * Whether the TrustPulse plugin has been setup.
@@ -80,13 +98,21 @@ class OMAPI_TrustPulse {
 	 * @since 1.9.0
 	 */
 	public function __construct() {
+		if ( ! defined( 'TRUSTPULSE_APP_URL' ) ) {
+			define( 'TRUSTPULSE_APP_URL', 'https://app.trustpulse.com/' );
+		}
+
+		if ( ! defined( 'TRUSTPULSE_URL' ) ) {
+			define( 'TRUSTPULSE_URL', 'https://trustpulse.com/' );
+		}
+
 		// If we are not in admin or admin ajax, return.
 		if ( ! is_admin() ) {
 			return;
 		}
 
 		// If user is in admin ajax or doing cron, return.
-		if ( ( defined( 'DOING_AJAX' ) && DOING_AJAX  ) || ( defined( 'DOING_CRON' ) && DOING_CRON ) ) {
+		if ( ( defined( 'DOING_AJAX' ) && DOING_AJAX ) || ( defined( 'DOING_CRON' ) && DOING_CRON ) ) {
 			return;
 		}
 
@@ -96,16 +122,8 @@ class OMAPI_TrustPulse {
 		}
 
 		// If user cannot manage_options, return.
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! OMAPI::get_instance()->can_access( 'trustpulse' ) ) {
 			return;
-		}
-
-		if ( ! defined( 'TRUSTPULSE_APP_URL' ) ) {
-			define( 'TRUSTPULSE_APP_URL', 'https://app.trustpulse.com/' );
-		}
-
-		if ( ! defined( 'TRUSTPULSE_URL' ) ) {
-			define( 'TRUSTPULSE_URL', 'https://trustpulse.com/' );
 		}
 
 		// Set our object.
@@ -124,9 +142,15 @@ class OMAPI_TrustPulse {
 		self::$instance = $this;
 		$this->base     = OMAPI::get_instance();
 
-		$this->trustpulse_active = function_exists( 'trustpulse_dir_uri' );
+		$plugins           = new OMAPI_Plugins();
+		$data              = $plugins->get_list();
+		$this->plugin_data = ! empty( $data['trustpulse-api/trustpulse.php'] ) ? $data['trustpulse-api/trustpulse.php'] : false;
 
-		$account_id = get_option( 'trustpulse_script_id', null );
+		list( $this->installed, $this->active ) = $this->plugin_data
+			? $plugins->plugin_exists_checks( $this->plugin_data )
+			: array( false, false );
+
+		$account_id             = get_option( 'trustpulse_script_id', null );
 		$this->trustpulse_setup = ! empty( $account_id );
 	}
 
@@ -138,18 +162,18 @@ class OMAPI_TrustPulse {
 	public function register_welcome_page() {
 		$this->hook = add_submenu_page(
 			// If trustpulse is active/setup, don't show the TP sub-menu item under OM.
-			$this->trustpulse_active && $this->trustpulse_setup
-				? 'optin-monster-api-settings-no-menu'
-				: 'optin-monster-api-settings', // Parent slug
-			__( 'TrustPulse', 'optin-monster-api' ), // Page title
-			__( 'TrustPulse', 'optin-monster-api' ),
-			apply_filters( 'optin_monster_api_menu_cap', 'manage_options', 'optin-monster-trustpulse' ), // Cap
+			$this->active && $this->trustpulse_setup
+				? $this->base->menu->parent_slug() . '-no-menu'
+				: $this->base->menu->parent_slug(), // Parent slug
+			esc_html__( 'TrustPulse', 'optin-monster-api' ), // Page title
+			esc_html__( 'Social Proof Widget', 'optin-monster-api' ),
+			$this->base->access_capability( 'optin-monster-trustpulse' ), // Cap
 			'optin-monster-trustpulse', // Slug
 			array( $this, 'display_page' ) // Callback
 		);
 
 		// If TrustPulse is active, we want to redirect to its own landing page.
-		if ( $this->trustpulse_active ) {
+		if ( $this->active ) {
 			add_action( 'load-' . $this->hook, array( __CLASS__, 'redirect_trustpulse_plugin' ) );
 		}
 
@@ -174,7 +198,17 @@ class OMAPI_TrustPulse {
 	 * @since 1.9.0
 	 */
 	public function display_page() {
-		$this->base->output_view( 'trustpulse-settings-page.php' );
+		$plugin_search_url = is_multisite()
+			? network_admin_url( 'plugin-install.php?tab=search&type=term&s=trustpulse' )
+			: admin_url( 'plugin-install.php?tab=search&type=term&s=trustpulse' );
+
+		$this->base->output_view(
+			'trustpulse-settings-page.php',
+			array(
+				'has_plugin'        => $this->installed,
+				'plugin_search_url' => $plugin_search_url,
+			)
+		);
 	}
 
 	/**
@@ -184,11 +218,23 @@ class OMAPI_TrustPulse {
 	 */
 	public function assets() {
 		add_filter( 'admin_body_class', array( $this, 'add_body_classes' ) );
+		$this->base->menu->styles();
+		$this->base->menu->scripts();
 
-		wp_enqueue_style( $this->base->plugin_slug . '-settings', $this->base->url . 'assets/css/settings.css', array(), $this->base->version );
+		wp_enqueue_style( 'om-tp-admin-css', $this->base->url . 'assets/dist/css/trustpulse.min.css', false, $this->base->asset_version() );
+		wp_enqueue_script( 'om-tp-admin-js', $this->base->url . 'assets/dist/js/trustpulse.min.js', false, $this->base->asset_version() );
 
-		wp_enqueue_style( 'om-tp-admin-css',  $this->base->url . 'assets/css/trustpulse-admin.min.css', false, $this->base->version );
-		add_action( 'in_admin_header', array( $this, 'render_banner') );
+		wp_localize_script( 'om-tp-admin-js', 'omapiTp', array(
+			'restUrl'       => rest_url(),
+			'action'        => $this->installed ? 'activate' : 'install',
+			'installNonce'  => wp_create_nonce( 'install_plugin' ),
+			'activateNonce' => wp_create_nonce( 'activate_plugin' ),
+			'restNonce'     => wp_create_nonce( 'wp_rest' ),
+			'pluginUrl'     => isset( $this->plugin_data['url'] )
+				? $this->plugin_data['url']
+				: 'https://downloads.wordpress.org/plugin/trustpulse-api.zip',
+		) );
+		add_action( 'in_admin_header', array( $this, 'render_banner' ) );
 	}
 
 	/**

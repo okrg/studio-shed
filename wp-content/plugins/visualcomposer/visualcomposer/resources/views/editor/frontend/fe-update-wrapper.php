@@ -38,6 +38,7 @@ wp_enqueue_media();
     <link rel="stylesheet"
             href="//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,greek,greek-ext,cyrillic-ext,latin-ext,cyrillic">
     <?php
+    vcevent('vcv:frontend:render', ['sourceId' => $sourceId]);
     $variables = vcfilter(
         'vcv:editor:variables',
         [
@@ -47,7 +48,9 @@ wp_enqueue_media();
                 'type' => 'constant',
             ],
         ],
-        ['slug' => 'vcv-update-fe']
+        [
+            'slug' => 'vcv-update-fe',
+        ]
     );
     if (is_array($variables)) {
         foreach ($variables as $variable) {
@@ -71,6 +74,7 @@ wp_enqueue_media();
     <?php echo $content; ?>
 </div>
 <?php
+vcevent('vcv:frontend:postUpdate:render:footer', ['sourceId' => $sourceId]);
 wp_print_footer_scripts();
 do_action('admin_footer', '');
 do_action('admin_print_footer_scripts-{$hookSuffix}');

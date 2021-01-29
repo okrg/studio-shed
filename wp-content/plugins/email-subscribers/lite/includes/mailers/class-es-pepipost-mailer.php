@@ -11,24 +11,28 @@ if ( ! class_exists( 'ES_Pepipost_Mailer' ) ) {
 	 */
 	class ES_Pepipost_Mailer extends ES_Base_Mailer {
 		/**
+		 * Pepipost API Url
+		 *
 		 * @since 4.3.2
 		 * @var string
 		 *
 		 */
-		var $api_url = 'https://api.pepipost.com/v2/sendEmail';
+		public $api_url = 'https://api.pepipost.com/v2/sendEmail';
 		/**
+		 * API Key
+		 *
 		 * @since 4.3.2
 		 * @var string
 		 *
 		 */
-		var $api_key = '';
+		public $api_key = '';
 
 		/**
 		 * ES_Pepipost_Mailer constructor.
 		 *
 		 * @since 4.3.2
 		 */
-		function __construct() {
+		public function __construct() {
 			parent::__construct();
 		}
 
@@ -42,7 +46,7 @@ if ( ! class_exists( 'ES_Pepipost_Mailer' ) ) {
 		 * @since 4.2.1
 		 * @since 4.3.2 Modified Response
 		 */
-		function send( ES_Message $message ) {
+		public function send( ES_Message $message ) {
 
 			ES()->logger->info( 'Start Sending Email Using Pepipost', $this->logger_context );
 
@@ -61,6 +65,20 @@ if ( ! class_exists( 'ES_Pepipost_Mailer' ) ) {
 			$params['from']['fromName']                = $message->from_name;
 			$params['subject']                         = $message->subject;
 			$params['content']                         = $message->body;
+			
+			$attachments = $message->attachments;
+			if ( ! empty( $attachments ) ) {
+				foreach ( $attachments as $attachment_name => $attachment_path ) {
+					if ( is_file( $attachment_path ) ) {
+						$attachment_content = file_get_contents( $attachment_path );
+						$encoded_content = base64_encode( $attachment_content );
+						$params['attachments'][] = array(
+							'fileContent' => $encoded_content,
+							'fileName' => $attachment_name,
+						);
+					}
+				}
+			}
 
 			$headers = array(
 				'user-agent'   => 'APIMATIC 2.0',
@@ -79,7 +97,7 @@ if ( ! class_exists( 'ES_Pepipost_Mailer' ) ) {
 				'headers' => $headers
 			);
 
-			if ( $method == 'POST' ) {
+			if ( 'POST' == $method ) {
 				$options['body'] = $qs;
 			}
 

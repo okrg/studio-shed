@@ -42,31 +42,16 @@ class CssJsSettings extends Container implements Module
 
         $this->wpAddAction(
             'admin_menu',
-            'addPage'
+            'addPage',
+            3
         );
 
         $this->wpAddFilter('submenu_file', 'subMenuHighlight');
 
         $this->wpAddAction(
-            'in_admin_header',
+            'admin_head',
             'addCss'
         );
-
-        $this->addFilter('vcv:settings:tabs', 'addSettingsTab', 3);
-    }
-
-    /**
-     * @param $tabs
-     *
-     * @return mixed
-     */
-    protected function addSettingsTab($tabs)
-    {
-        $tabs['vcv-global-css-js'] = [
-            'name' => __('CSS, HTML & JavaScript', 'visualcomposer'),
-        ];
-
-        return $tabs;
     }
 
     protected function subMenuHighlight($submenuFile)
@@ -99,7 +84,9 @@ class CssJsSettings extends Container implements Module
             ['vcv:assets:vendor:script'],
             VCV_VERSION
         );
+
         wp_enqueue_script('vcv:wpVcSettings:script');
+        wp_enqueue_script('vcv:assets:runtime:script');
     }
 
     /**
@@ -110,10 +97,12 @@ class CssJsSettings extends Container implements Module
         $page = [
             'slug' => $this->getSlug(),
             'title' => __('CSS, HTML & JavaScript', 'visualcomposer'),
-            'layout' => 'settings-standalone-with-tabs',
-            'showTab' => false,
+            'layout' => 'dashboard-tab-content-standalone',
+            'capability' => 'manage_options',
+            'iconClass' => 'vcv-ui-icon-dashboard-css',
+            'isDashboardPage' => true,
         ];
-        $this->addSubmenuPage($page);
+        $this->addSubmenuPage($page, false);
     }
 
     protected function addCss()

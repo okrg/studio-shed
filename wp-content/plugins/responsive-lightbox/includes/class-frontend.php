@@ -630,8 +630,9 @@ class Responsive_Lightbox_Frontend {
 			// checkbox field?
 			if ( $field['type'] === 'checkbox' ) {
 				// valid argument?
-				if ( array_key_exists( $field_key, $atts ) )
-					$atts[$field_key] = $rl->galleries->sanitize_field( $field_key, array_flip( explode( ',', $atts[$field_key] ) ), $field );
+				if ( array_key_exists( $field_key, $atts ) ) {
+					$atts[$field_key] = $rl->galleries->sanitize_field( $field_key, array_flip( $atts[$field_key] ), $field );
+				}
 			// boolean field?
 			} elseif ( $field['type'] === 'boolean' ) {
 				// multiple field?
@@ -1482,6 +1483,9 @@ class Responsive_Lightbox_Frontend {
 		// get main instance
 		$rl = Responsive_Lightbox();
 
+		if ( ! is_array( $shortcode_atts ) )
+			$shortcode_atts = wp_parse_args( $shortcode_atts, $defaults );
+
 		// is there rl_gallery ID?
 		$rl_gallery_id = $defaults['rl_gallery_id'] = ! empty( $shortcode_atts['rl_gallery_id'] ) ? (int) $shortcode_atts['rl_gallery_id'] : 0;
 
@@ -1694,6 +1698,9 @@ class Responsive_Lightbox_Frontend {
 		// get main instance
 		$rl = Responsive_Lightbox();
 
+		if ( ! is_array( $shortcode_atts ) )
+			$shortcode_atts = wp_parse_args( $shortcode_atts, $defaults );
+
 		// is there rl_gallery ID?
 		$rl_gallery_id = $defaults['rl_gallery_id'] = ! empty( $shortcode_atts['rl_gallery_id'] ) ? (int) $shortcode_atts['rl_gallery_id'] : 0;
 
@@ -1881,6 +1888,9 @@ class Responsive_Lightbox_Frontend {
 
 		// get main instance
 		$rl = Responsive_Lightbox();
+
+		if ( ! is_array( $shortcode_atts ) )
+			$shortcode_atts = wp_parse_args( $shortcode_atts, $defaults );
 
 		// is there rl_gallery ID?
 		$rl_gallery_id = $defaults['rl_gallery_id'] = ! empty( $shortcode_atts['rl_gallery_id'] ) ? (int) $shortcode_atts['rl_gallery_id'] : 0;

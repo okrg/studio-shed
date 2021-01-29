@@ -1,16 +1,16 @@
 <?php
 /**
  * Plugin Name: Visual Composer
- * Plugin URI: https://visualcomposer.com/premium/?utm_medium=wp-dashboard&utm_source=plugins-page&utm_campaign=vcwb&utm_content=plugin-link
+ * Plugin URI: https://visualcomposer.com/premium/?utm_source=vcwb&utm_medium=wp-plugins&utm_campaign=vcbrand&utm_content=text
  * Description: Create your WordPress website with the fast and easy-to-use drag-and-drop builder for experts and beginners.
- * Version: 24.0
+ * Version: 33.0
  * Author: visualcomposer.com
- * Author URI: https://visualcomposer.com/?utm_medium=wp-dashboard&utm_source=plugins-page&utm_campaign=vcwb&utm_content=author-link
+ * Author URI: https://visualcomposer.com/?utm_source=vcwb&utm_medium=wp-plugins&utm_campaign=vcbrand&utm_content=text
  * Copyright: (c) 2017 TechMill Ltd.
  * License: GPLv3
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  * Requires at least: 4.6
- * Tested up to: 5.2.3
+ * Tested up to: 5.6
  * Text Domain: visualcomposer
  * Domain Path: /languages/
  */
@@ -45,7 +45,7 @@ if (defined('VCV_VERSION')) {
 /**
  * Plugin version constant
  */
-define('VCV_VERSION', '24.0');
+define('VCV_VERSION', '33.0');
 /**
  * Plugin url: 'http://web/wp-content/plugins/plugin_dir/'
  */
@@ -64,10 +64,10 @@ define('VCV_PLUGIN_BASE_NAME', plugin_basename(__FILE__));
  */
 define('VCV_PLUGIN_FULL_PATH', __FILE__);
 /**
- * Plugin directory name: 'vc-five'
+ * Plugin directory name: 'visualcomposer'
  */
 define('VCV_PLUGIN_DIRNAME', basename(dirname(VCV_PLUGIN_BASE_NAME)));
-define('VCV_PLUGIN_ASSETS_DIRNAME', VCV_PLUGIN_DIRNAME . '-assets');
+define('VCV_PLUGIN_ASSETS_DIRNAME', 'visualcomposer-assets');
 /**
  * Plugin core prefix for options/meta and etc.
  */
@@ -77,7 +77,7 @@ define('VCV_PREFIX', 'vcv-');
 /**
  * Minimal required PHP version.
  */
-define('VCV_REQUIRED_PHP_VERSION', '5.4');
+define('VCV_REQUIRED_PHP_VERSION', '5.6');
 /**
  * Minimal required WordPress version.
  */
@@ -106,13 +106,8 @@ if (file_exists($dir . '/env-dev.php')) {
     require_once $dir . '/env.php';
 }
 
-if (VcvEnv::get('VCV_TF_ASSETS_IN_UPLOADS', true)) {
-    $uploadDir = wp_upload_dir();
-
-    define('VCV_PLUGIN_ASSETS_DIR_PATH', $uploadDir['basedir'] . '/' . VCV_PLUGIN_ASSETS_DIRNAME);
-} else {
-    define('VCV_PLUGIN_ASSETS_DIR_PATH', WP_CONTENT_DIR . '/' . VCV_PLUGIN_ASSETS_DIRNAME);
-}
+$uploadDir = wp_upload_dir();
+define('VCV_PLUGIN_ASSETS_DIR_PATH', $uploadDir['basedir'] . '/' . VCV_PLUGIN_ASSETS_DIRNAME);
 
 require_once $dir . '/visualcomposer/Requirements.php';
 

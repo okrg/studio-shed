@@ -737,7 +737,7 @@ abstract class GFFeedAddOn extends GFAddOn {
 
 			$feed = $this->_single_submission_feed;
 
-		} elseif ( $entry['id'] ) {
+		} elseif ( ! empty( $entry['id'] ) ) {
 
 			$feeds = $this->get_feeds_by_entry( $entry['id'] );
 
@@ -906,6 +906,17 @@ abstract class GFFeedAddOn extends GFAddOn {
 
 	public function delete_feed( $id ) {
 		global $wpdb;
+
+		/**
+		 * Allows custom actions to be performed just before a feed is deleted from the database.
+		 *
+		 * @since 2.4.21
+		 *
+		 * @param int         $id   The ID of the feed being deleted.
+		 * @param GFFeedAddOn $this The current instance of the add-on for which the feed is being deleted.
+		 */
+		do_action( 'gform_pre_delete_feed', $id, $this );
+		do_action( "gform_{$this->get_short_slug()}_pre_delete_feed", $id, $this );
 
 		$wpdb->delete( "{$wpdb->prefix}gf_addon_feed", array( 'id' => $id ), array( '%d' ) );
 	}

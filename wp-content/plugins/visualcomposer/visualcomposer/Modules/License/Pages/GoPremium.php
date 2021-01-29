@@ -14,6 +14,7 @@ use VisualComposer\Helpers\Traits\EventsFilters;
 use VisualComposer\Helpers\Traits\WpFiltersActions;
 use VisualComposer\Helpers\License;
 use VisualComposer\Helpers\Request;
+use VisualComposer\Helpers\Notice;
 use VisualComposer\Modules\Settings\Traits\Page;
 use VisualComposer\Modules\Settings\Traits\SubMenu;
 
@@ -31,7 +32,7 @@ class GoPremium extends Container implements Module
     /**
      * @var string
      */
-    protected $slug = 'vcv-go-premium';
+    protected $slug = 'vcv-activate-license';
 
     /**
      * GoPremium constructor.
@@ -40,12 +41,14 @@ class GoPremium extends Container implements Module
      */
     public function __construct(License $licenseHelper)
     {
+        $this->wpAddAction('current_screen', 'hubActivationNotice');
+
         if (!$licenseHelper->isPremiumActivated()) {
             /** @see \VisualComposer\Modules\License\Pages\GoPremium::addJs */
             $this->wpAddAction('in_admin_footer', 'addJs');
 
             /** @see \VisualComposer\Modules\License\Pages\GoPremium::addCss */
-            $this->wpAddAction('in_admin_header', 'addCss');
+            $this->wpAddAction('admin_head', 'addCss');
         }
 
         $this->wpAddAction(
@@ -55,7 +58,7 @@ class GoPremium extends Container implements Module
                     return;
                 }
 
-                if (!$licenseHelper->isPremiumActivated()) {
+                if (!$licenseHelper->isPremiumActivated() || $licenseHelper->isThemeActivated()) {
                     $this->call('addPage');
                 }
 
@@ -63,21 +66,54 @@ class GoPremium extends Container implements Module
                     if ($licenseHelper->isFreeActivated()) {
                         // Check is license is upgraded?
                         $licenseHelper->refresh();
-                    } elseif ($licenseHelper->isPremiumActivated()) {
-                        wp_redirect(admin_url('admin.php?page=vcv-about'));
+                    } elseif ($licenseHelper->isPremiumActivated() && !$licenseHelper->isThemeActivated()) {
+                        wp_redirect(admin_url('admin.php?page=vcv-getting-started'));
                         exit;
                     }
                 }
             },
             70
         );
+        $this->addFilter('vcv:editor:variables vcv:wp:dashboard:variables', 'addVariables');
+    }
 
-        if (!$licenseHelper->isPremiumActivated()) {
-            /** @see \VisualComposer\Modules\License\Pages\GoPremium::pluginsPageLink */
-            $this->wpAddFilter(
-                'plugin_action_links_' . VCV_PLUGIN_BASE_NAME,
-                'pluginsPageLink'
-            );
+    protected function addVariables($variables, $payload)
+    {
+        $variables[] = [
+            'key' => 'vcvGoPremiumUrl',
+            'value' => set_url_scheme(admin_url('admin.php?page=vcv-activate-license')),
+            'type' => 'variable',
+        ];
+
+        return $variables;
+    }
+
+    /**
+     * Notice user if there is no activation.
+     *
+     * @param \VisualComposer\Helpers\Notice $noticeHelper
+     * @param \VisualComposer\Helpers\License $licenseHelper
+     */
+    protected function hubActivationNotice(Notice $noticeHelper, License $licenseHelper)
+    {
+        $notices = $noticeHelper->all();
+        $screen = get_current_screen();
+        if (!$licenseHelper->isAnyActivated() && !strpos($screen->id, $this->slug) && !strpos($screen->id, 'vcv-getting-started')) {
+            if (!isset($notices['hubActivationNotice'])) {
+                $noticeHelper->addNotice(
+                    'hubActivationNotice',
+                    sprintf(
+                        __(
+                            '<strong>Visual Composer:</strong> <a href="%s">Activate Visual Composer Hub</a> with a free or premium license to get more content elements, templates, and addons.',
+                            'visualcomposer'
+                        ),
+                        admin_url('admin.php?page=vcv-activate-license&vcv-ref=wp-dashboard')
+                    ),
+                    'info'
+                );
+            }
+        } else {
+            $noticeHelper->removeNotice('hubActivationNotice');
         }
     }
 
@@ -101,31 +137,12 @@ class GoPremium extends Container implements Module
      */
     protected function buttonTitle()
     {
+        $licenseHelper = vchelper('License');
+
         return sprintf(
-            '<strong style="vertical-align: middle;font-weight:500;">%s</strong>',
-            __('Go Premium', 'visualcomposer')
+            '<strong style="vertical-align: middle;font-weight:500;">&#9733; %s</strong>',
+            $licenseHelper->activationButtonTitle()
         );
-    }
-
-    /**
-     * Add go premium link in plugins page
-     *
-     * @param $links
-     *
-     * @return mixed
-     */
-    protected function pluginsPageLink($links)
-    {
-        /** @noinspection HtmlUnknownTarget */
-        $goPremiumLink = sprintf(
-            '<a href="%s">%s</a>',
-            esc_url(admin_url('admin.php?page=vcv-go-premium&vcv-ref=plugins-page')),
-            __('Go Premium', 'visualcomposer')
-        );
-
-        $links[] = $goPremiumLink;
-
-        return $links;
     }
 
     /**
@@ -148,6 +165,7 @@ class GoPremium extends Container implements Module
         );
         wp_enqueue_script('vcv:wpUpdate:script');
         wp_enqueue_style('vcv:wpVcSettings:style');
+        wp_enqueue_script('vcv:assets:runtime:script');
     }
 
     /**

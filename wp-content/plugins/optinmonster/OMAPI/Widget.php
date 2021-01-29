@@ -57,24 +57,26 @@ class OMAPI_Widget extends WP_Widget {
 		// Load the base class object.
 		$this->base = OMAPI::get_instance();
 
-		$widget_ops = apply_filters( 'optin_monster_api_widget_ops',
+		$widget_ops = apply_filters(
+			'optin_monster_api_widget_ops',
 			array(
 				'classname'   => 'optin-monster-api',
-				'description' => __( 'Place an OptinMonster campaign into a widgetized area.', 'optin-monster-api' )
+				'description' => esc_html__( 'Place an OptinMonster campaign into a widgetized area.', 'optin-monster-api' ),
 			)
 		);
 
-		$control_ops = apply_filters( 'optin_monster_api_widget_control_ops',
+		$control_ops = apply_filters(
+			'optin_monster_api_widget_control_ops',
 			array(
 				'id_base' => 'optin-monster-api',
 				'height'  => 350,
-				'width'   => 225
+				'width'   => 225,
 			)
 		);
 
 		parent::__construct(
 			'optin-monster-api',
-			apply_filters( 'optin_monster_api_widget_name', __( 'OptinMonster', 'optin-monster-api' ) ),
+			apply_filters( 'optin_monster_api_widget_name', esc_html__( 'OptinMonster', 'optin-monster-api' ) ),
 			$widget_ops,
 			$control_ops
 		);
@@ -124,9 +126,13 @@ class OMAPI_Widget extends WP_Widget {
 			}
 
 			// Load the optin.
-			optin_monster( $optin->ID, 'id', array(
-				'followrules' => ! empty( $instance['followrules'] ) ? 'true' : 'false',
-			) );
+			optin_monster(
+				$optin->ID,
+				'id',
+				array(
+					'followrules' => ! empty( $instance['followrules'] ) ? 'true' : 'false',
+				)
+			);
 		}
 
 		do_action( 'optin_monster_api_widget_after_optin', $args, $instance );
@@ -181,28 +187,29 @@ class OMAPI_Widget extends WP_Widget {
 		do_action( 'optin_monster_api_widget_before_form', $instance );
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', 'optin-monster-api' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title', 'optin-monster-api' ); ?></label>
 			<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" style="width: 100%;" />
 		</p>
 		<?php do_action( 'optin_monster_api_widget_middle_form', $instance ); ?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'optin_monster_id' ); ?>"><?php _e( 'Campaign', 'optin-monster-api' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'optin_monster_id' ); ?>"><?php esc_html_e( 'Campaign', 'optin-monster-api' ); ?></label>
 			<select id="<?php echo esc_attr( $this->get_field_id( 'optin_monster_id' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'optin_monster_id' ) ); ?>" style="width: 100%;">
-				<?php
-				foreach ( $optins as $optin ) {
-					$type    = get_post_meta( $optin->ID, '_omapi_type', true );
-					$enabled = (bool) get_post_meta( $optin->ID, '_omapi_enabled', true );
+				<?php if ( ! empty( $optins ) ) {
+					foreach ( $optins as $optin ) {
+						$type    = get_post_meta( $optin->ID, '_omapi_type', true );
+						$enabled = (bool) get_post_meta( $optin->ID, '_omapi_enabled', true );
 
-					// Only allow sidebar types.
-					if ( 'sidebar' !== $type && 'inline' !== $type ) {
-						continue;
-					}
+						// Only allow sidebar types.
+						if ( 'sidebar' !== $type && 'inline' !== $type ) {
+							continue;
+						}
 
-					// Display disabled or enabled selection.
-					if ( $enabled ) {
-						echo '<option value="' . $optin->ID . '"' . selected( $optin->ID, $optin_id, false ) . '>' . $optin->post_title . '</option>';
-					} else {
-						echo '<option value="' . $optin->ID . '" disabled="disabled"' . selected( $optin->ID, $optin_id, false ) . '>' . $optin->post_title . ' (' . __( 'Not Enabled', 'optin-monster-api' ) . ')</option>';
+						// Display disabled or enabled selection.
+						if ( $enabled ) {
+							echo '<option value="' . esc_attr( $optin->ID ) . '"' . selected( $optin->ID, $optin_id, false ) . '>' . $optin->post_title . '</option>';
+						} else {
+							echo '<option value="' . esc_attr( $optin->ID ) . '" disabled="disabled"' . selected( $optin->ID, $optin_id, false ) . '>' . $optin->post_title . ' (' . esc_html__( 'Not Enabled', 'optin-monster-api' ) . ')</option>';
+						}
 					}
 				}
 				?>
@@ -210,7 +217,7 @@ class OMAPI_Widget extends WP_Widget {
 		</p>
 		<p>
 			<input id="<?php echo $this->get_field_id( 'followrules' ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'followrules' ) ); ?>" type="checkbox" value="1" <?php checked( $followrules ); ?> />
-			<label for="<?php echo $this->get_field_id( 'followrules' ); ?>"><?php _e( 'Apply Advanced Output Settings?', 'optin-monster-api' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'followrules' ); ?>"><?php esc_html_e( 'Apply Advanced Output Settings?', 'optin-monster-api' ); ?></label>
 		</p>
 		<?php
 

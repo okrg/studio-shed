@@ -1,11 +1,11 @@
 <?php
 /**
  * PageController
- *
- * @package Woocommerce Admin
  */
 
 namespace Automattic\WooCommerce\Admin;
+
+use Automattic\WooCommerce\Admin\Loader;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -131,7 +131,6 @@ class PageController {
 				}
 			}
 		}
-
 		$this->current_page = false;
 	}
 
@@ -168,6 +167,11 @@ class PageController {
 			while ( $parent_id ) {
 				if ( isset( $this->pages[ $parent_id ] ) ) {
 					$parent = $this->pages[ $parent_id ];
+
+					if ( 0 === strpos( $parent['path'], self::PAGE_ROOT ) ) {
+						$parent['path'] = 'admin.php?page=' . $parent['path'];
+					}
+
 					array_unshift( $breadcrumbs, array( $parent['path'], reset( $parent['title'] ) ) );
 					$parent_id = isset( $parent['parent'] ) ? $parent['parent'] : false;
 				} else {
@@ -405,6 +409,7 @@ class PageController {
 	 *   @type string      capability   Capability needed to access the page.
 	 *   @type string      icon         Icon. Dashicons helper class, base64-encoded SVG, or 'none'.
 	 *   @type int         position     Menu item position.
+	 *   @type int         order        Navigation item order.
 	 * }
 	 */
 	public function register_page( $options ) {
@@ -449,6 +454,15 @@ class PageController {
 		}
 
 		$this->connect_page( $options );
+	}
+
+	/**
+	 * Get registered pages.
+	 *
+	 * @return array
+	 */
+	public function get_pages() {
+		return $this->pages;
 	}
 
 	/**

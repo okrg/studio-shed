@@ -7,8 +7,9 @@ if ( ! class_exists( 'WC_Connect_Jetpack' ) ) {
 		 * @return bool
 		 */
 		public static function is_development_mode() {
-			if ( method_exists( 'Jetpack', 'is_development_mode' ) ) {
-				return Jetpack::is_development_mode();
+			if ( method_exists( '\\Automattic\\Jetpack\\Status', 'is_offline_mode' ) ) {
+				$status = new \Automattic\Jetpack\Status();
+				return $status->is_offline_mode();
 			}
 
 			return false;
@@ -19,6 +20,9 @@ if ( ! class_exists( 'WC_Connect_Jetpack' ) ) {
 		 * @return bool
 		 */
 		public static function is_active() {
+			if ( defined( 'WOOCOMMERCE_SERVICES_LOCAL_TEST_MODE') && WOOCOMMERCE_SERVICES_LOCAL_TEST_MODE ) {
+				return true;
+			}
 			if ( method_exists( 'Jetpack', 'is_active' ) ) {
 				return Jetpack::is_active();
 			}
@@ -77,6 +81,7 @@ if ( ! class_exists( 'WC_Connect_Jetpack' ) ) {
 			}
 
 			return false;
+
 		}
 
 		/**

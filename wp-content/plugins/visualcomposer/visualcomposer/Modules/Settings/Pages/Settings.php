@@ -47,7 +47,7 @@ class Settings extends Container implements Module
         $this->wpAddAction(
             'admin_menu',
             'addPage',
-            9
+            2
         );
     }
 
@@ -69,14 +69,15 @@ class Settings extends Container implements Module
      */
     protected function addPage()
     {
-        $layout = 'settings-standalone-with-tabs';
-
         $page = [
             'slug' => $this->slug,
-            'title' => __('Settings', 'visualcomposer'),
-            'showTab' => false,
-            'layout' => $layout,
+            'title' => __('Dashboard', 'visualcomposer'),
+            'innerTitle' => __('Settings', 'visualcomposer'),
+            'subTitle' => __('General', 'visualcomposer'),
+            'layout' => 'dashboard-tab-content-standalone',
             'capability' => 'edit_pages',
+            'iconClass' => 'vcv-ui-icon-dashboard-settings',
+            'isDashboardPage' => true,
         ];
         $this->addSubmenuPage($page);
     }
@@ -84,19 +85,13 @@ class Settings extends Container implements Module
     public function getMainPageSlug()
     {
         $currentUserAccess = vchelper('AccessCurrentUser');
-        $aboutConroller = vcapp('SettingsPagesAbout');
         $gettingStartedController = vcapp('LicensePagesGettingStarted');
-        $licenseHelper = vchelper('License');
         $hasAccess = $currentUserAccess->wpAll('edit_pages')->part('settings')->can('vcv-settings')->get();
 
         if ($hasAccess) {
             $pageSlug = $this->getSlug();
         } else {
-            if ($licenseHelper->isPremiumActivated()) {
-                $pageSlug = $aboutConroller->getSlug();
-            } else {
-                $pageSlug = $gettingStartedController->getSlug();
-            }
+            $pageSlug = $gettingStartedController->getSlug();
         }
 
         return $pageSlug;

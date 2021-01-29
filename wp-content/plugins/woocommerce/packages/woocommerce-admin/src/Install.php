@@ -1,8 +1,6 @@
 <?php
 /**
  * Installation related functions and actions.
- *
- * @package WooCommerce Admin/Classes
  */
 
 namespace Automattic\WooCommerce\Admin;
@@ -10,8 +8,8 @@ namespace Automattic\WooCommerce\Admin;
 defined( 'ABSPATH' ) || exit;
 
 use Automattic\WooCommerce\Admin\API\Reports\Cache;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes;
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes_Historical_Data;
+use \Automattic\WooCommerce\Admin\Notes\Notes;
+use \Automattic\WooCommerce\Admin\Notes\HistoricalData;
 
 /**
  * Install Class.
@@ -44,6 +42,22 @@ class Install {
 			'wc_admin_update_110_remove_facebook_note',
 			'wc_admin_update_110_db_version',
 		),
+		'1.3.0'  => array(
+			'wc_admin_update_130_remove_dismiss_action_from_tracking_opt_in_note',
+			'wc_admin_update_130_db_version',
+		),
+		'1.4.0'  => array(
+			'wc_admin_update_140_change_deactivate_plugin_note_type',
+			'wc_admin_update_140_db_version',
+		),
+		'1.6.0'  => array(
+			'wc_admin_update_160_remove_facebook_note',
+			'wc_admin_update_160_db_version',
+		),
+		'1.7.0'  => array(
+			'wc_admin_update_170_homescreen_layout',
+			'wc_admin_update_170_db_version',
+		),
 	);
 
 	/**
@@ -60,6 +74,10 @@ class Install {
 		'woocommerce_admin_last_orders_milestone'  => 'wc_admin_last_orders_milestone',
 		'woocommerce_admin-wc-helper-last-refresh' => 'wc-admin-wc-helper-last-refresh',
 		'woocommerce_admin_report_export_status'   => 'wc_admin_report_export_status',
+		'woocommerce_task_list_complete'           => 'woocommerce_task_list_complete',
+		'woocommerce_task_list_hidden'             => 'woocommerce_task_list_hidden',
+		'woocommerce_extended_task_list_complete'  => 'woocommerce_extended_task_list_complete',
+		'woocommerce_extended_task_list_hidden'    => 'woocommerce_extended_task_list_hidden',
 	);
 
 	/**
@@ -87,8 +105,16 @@ class Install {
 				continue;
 			}
 
+			if ( '1' === $old_option_value ) {
+				$old_option_value = 'yes';
+			} elseif ( '0' === $old_option_value ) {
+				$old_option_value = 'no';
+			}
+
 			update_option( $new_option, $old_option_value );
-			delete_option( $old_option );
+			if ( $new_option !== $old_option ) {
+				delete_option( $old_option );
+			}
 		}
 	}
 
@@ -223,7 +249,7 @@ class Install {
 		) $collate;
 		CREATE TABLE {$wpdb->prefix}wc_order_coupon_lookup (
 			order_id BIGINT UNSIGNED NOT NULL,
-			coupon_id BIGINT UNSIGNED NOT NULL,
+			coupon_id BIGINT NOT NULL,
 			date_created datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
 			discount_amount double DEFAULT 0 NOT NULL,
 			PRIMARY KEY (order_id, coupon_id),
@@ -237,13 +263,16 @@ class Install {
 			locale varchar(20) NOT NULL,
 			title longtext NOT NULL,
 			content longtext NOT NULL,
-			icon varchar(200) NOT NULL,
 			content_data longtext NULL default null,
 			status varchar(200) NOT NULL,
 			source varchar(200) NOT NULL,
 			date_created datetime NOT NULL default '0000-00-00 00:00:00',
 			date_reminder datetime NULL default null,
 			is_snoozable boolean DEFAULT 0 NOT NULL,
+			layout varchar(20) DEFAULT '' NOT NULL,
+			image varchar(200) NULL DEFAULT NULL,
+			is_deleted boolean DEFAULT 0 NOT NULL,
+			icon varchar(200) NOT NULL default 'info',
 			PRIMARY KEY (note_id)
 		) $collate;
 		CREATE TABLE {$wpdb->prefix}wc_admin_note_actions (
@@ -254,6 +283,7 @@ class Install {
 			query longtext NOT NULL,
 			status varchar(255) NOT NULL,
 			is_primary boolean DEFAULT 0 NOT NULL,
+			actioned_text varchar(255) NOT NULL,
 			PRIMARY KEY (action_id),
 			KEY note_id (note_id)
 		) $collate;
@@ -447,6 +477,8 @@ class Install {
 			'wc-admin-welcome-note',
 			'wc-admin-store-notice-setting-moved',
 			'wc-admin-store-notice-giving-feedback',
+			'wc-admin-learn-more-about-product-settings',
+			'wc-admin-onboarding-profiler-reminder',
 		);
 
 		$additional_obsolete_notes_names = apply_filters(
@@ -461,14 +493,14 @@ class Install {
 			);
 		}
 
-		WC_Admin_Notes::delete_notes_with_name( $obsolete_notes_names );
+		Notes::delete_notes_with_name( $obsolete_notes_names );
 	}
 
 	/**
 	 * Create notes.
 	 */
 	protected static function create_notes() {
-		WC_Admin_Notes_Historical_Data::add_note();
+		HistoricalData::possibly_add_note();
 	}
 
 	/**

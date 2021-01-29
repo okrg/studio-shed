@@ -63,10 +63,11 @@ jQuery(document).ready(function($){
 
 	function postToMailPoet(data) {
 		// Now make an ajax request to make the optin locally.
-		data.action      = 'mailpoet';
-		data.nonce       = omapi_localized.nonce;
-		data.no_provider = true;
-
-		$.post(omapi_localized.ajax, data, function(){}, 'json');
+		$.post(omapi_localized.ajax, {
+			action: 'mailpoet',
+			nonce: omapi_localized.nonce,
+			no_provider: true,
+			optinData: data,
+		}, function(){}, 'json');
 	}
 });

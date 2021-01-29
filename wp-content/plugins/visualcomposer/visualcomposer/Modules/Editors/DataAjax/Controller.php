@@ -47,23 +47,9 @@ class Controller extends Container implements Module
     }
 
     /**
-     * @param $postType
-     * @param $sourceId
-     */
-    protected function updateTempateId($postType, $sourceId)
-    {
-        if ($postType === 'vcv_templates') {
-            if (!get_post_meta($sourceId, '_' . VCV_PREFIX . 'id', true)) {
-                update_post_meta($sourceId, '_' . VCV_PREFIX . 'id', uniqid());
-            }
-        }
-    }
-
-    /**
      * Get post content.
      *
      * @param $response
-     * @param \VisualComposer\Helpers\Request $requestHelper
      * @param \VisualComposer\Helpers\Filters $filterHelper
      *
      * @return mixed|string
@@ -71,7 +57,6 @@ class Controller extends Container implements Module
     private function getData(
         $response,
         $payload,
-        Request $requestHelper,
         Filters $filterHelper
     ) {
         global $post;
@@ -89,8 +74,9 @@ class Controller extends Container implements Module
             if (!empty($postMeta)) {
                 $data = $postMeta;
             } else {
+                // BC for hub templates and old templates
                 // @codingStandardsIgnoreLine
-                if ($post->post_type === 'vcv_templates') {
+                if ($post->post_type === 'vcv_templates' || $post->post_type === 'vcv_tutorials') {
                     $data = rawurlencode(
                         wp_json_encode(
                             [
@@ -113,6 +99,10 @@ class Controller extends Container implements Module
         }
         $response['data'] = $data;
 
+        $elementsCssData = get_post_meta($sourceId, VCV_PREFIX . 'globalElementsCssData', true);
+        $response['elementsCssData'] = $elementsCssData;
+
+
         return $response;
     }
 
@@ -120,6 +110,7 @@ class Controller extends Container implements Module
      * Save post content and used assets.
      *
      * @param $response
+     * @param $payload
      * @param \VisualComposer\Helpers\Request $requestHelper
      * @param \VisualComposer\Helpers\Access\UserCapabilities $userCapabilitiesHelper
      *
@@ -132,23 +123,20 @@ class Controller extends Container implements Module
         UserCapabilities $userCapabilitiesHelper
     ) {
         global $post;
-        if (empty($post) && (!isset($payload['sourceId']) || $payload['sourceId'] !== 'template')) {
-            return ['status' => false];
+        if (!isset($payload['sourceId'])) {
+            return ['status' => false]; // sourceId must be provided
+        }
+
+        $sourceId = $payload['sourceId'];
+        if (!is_numeric($sourceId)) {
+            $sourceId = vcfilter('vcv:dataAjax:setData:sourceId', $sourceId);
+        }
+        if (!empty($post)) {
+            $sourceId = $post->ID;
         }
         if ($requestHelper->input('vcv-ready') !== '1') {
             return $response;
         }
-        if (!empty($post)) {
-            $sourceId = $post->ID;
-        } else {
-            $sourceId = $payload['sourceId'];
-        }
-
-        if (!is_numeric($sourceId) && !empty($sourceId)) {
-            $sourceId = vcfilter('vcv:dataAjax:setData:sourceId', $sourceId);
-        }
-        $postType = get_post_type($sourceId);
-        $this->updateTempateId($postType, $sourceId);
 
         if (!is_array($response)) {
             $response = [];
@@ -218,6 +206,7 @@ class Controller extends Container implements Module
         $currentUserAccessHelper = vchelper('AccessCurrentUser');
         $requestHelper = vchelper('Request');
         $assetsHelper = vchelper('Assets');
+        $optionsHelper = vchelper('Options');
 
         $data = $requestHelper->input('vcv-data');
         $dataDecoded = $requestHelper->inputJson('vcv-data');
@@ -291,13 +280,19 @@ class Controller extends Container implements Module
             update_post_meta($sourceId, VCV_PREFIX . 'pageContent', $data);
         }
 
+        $isAllowed = $optionsHelper->get('settings-itemdatacollection-enabled', false);
+        if ($isAllowed) {
+            $licenseType = $requestHelper->input('vcv-license-type');
+            $elements = $requestHelper->input('vcv-elements');
+            vcevent('vcv:saveUsageStats', ['response' => [], 'payload' => ['sourceId' => $sourceId, 'elements' => $elements, 'licenseType' => $licenseType]]);
+        }
+
         //bring it back once you're done posting
         $postTypeHelper->setupPost($sourceId);
         $responseExtra = $filterHelper->fire(
             'vcv:dataAjax:setData',
             [
-                'status' => true,
-                'postData' => $postTypeHelper->getPostData(),
+                'status' => true
             ],
             [
                 'sourceId' => $sourceId,
@@ -307,6 +302,9 @@ class Controller extends Container implements Module
         );
         // Clearing wp cache
         wp_cache_flush();
+        // Flush global $post cache
+        $postTypeHelper->setupPost($sourceId);
+        $responseExtra['postData'] = $postTypeHelper->getPostData();
         ob_get_clean();
 
         return array_merge($response, $responseExtra);

@@ -73,7 +73,7 @@ class OMAPI_Shortcode {
 	public function set() {
 
 		self::$instance = $this;
-		$this->base 	= OMAPI::get_instance();
+		$this->base     = OMAPI::get_instance();
 
 	}
 
@@ -89,24 +89,33 @@ class OMAPI_Shortcode {
 	 */
 	public function shortcode( $atts ) {
 
+		// Checking if AMP is enabled.
+		if ( OMAPI_Utils::is_amp_enabled() ) {
+			return;
+		}
+
 		global $post;
 
 		// Merge default attributes with passed attributes.
-		$atts = shortcode_atts( array(
-			'slug'        => '',
-			'followrules' => 'false',
-			// id attribute is deprecated.
-			'id'          => '',
-		), $atts, 'optin-monster' );
+		$atts = shortcode_atts(
+			array(
+				'slug'        => '',
+				'followrules' => 'false',
+				// id attribute is deprecated.
+				'id'          => '',
+			),
+			$atts,
+			'optin-monster'
+		);
 
 		$optin_id = false;
 		if ( ! empty( $atts['id'] ) ) {
 			$optin_id = absint( $atts['id'] );
 		} elseif ( isset( $atts['slug'] ) ) {
-				$optin = get_page_by_path( $atts['slug'], OBJECT, 'omapi' );
-				if ( $optin ) {
-					 $optin_id = $optin->ID;
-				}
+				$optin = $this->base->get_optin_by_slug( $atts['slug'] );
+			if ( $optin ) {
+				 $optin_id = $optin->ID;
+			}
 		} else {
 			// A custom attribute must have been passed. Allow it to be filtered to grab the optin ID from a custom source.
 			$optin_id = apply_filters( 'optin_monster_api_custom_optin_id', false, $atts, $post );
@@ -120,9 +129,12 @@ class OMAPI_Shortcode {
 			return false;
 		}
 
+		if ( empty( $optin->ID ) || (int) $optin_id !== (int) $optin->ID ) {
+			$optin = $this->base->get_optin( $optin_id );
+		}
+
 		// Try to grab the stored HTML.
-		$optin = $this->base->get_optin( $optin_id );
-		$html  = $this->base->output->prepare_campaign( $optin );
+		$html = $this->base->output->prepare_campaign( $optin );
 		if ( ! $html ) {
 			return false;
 		}
@@ -157,8 +169,8 @@ class OMAPI_Shortcode {
 		// Run the v2 implementation.
 		$atts['slug'] = $atts['id'];
 		unset( $atts['id'] );
-		return $this->shortcode( $atts );
 
+		return $this->shortcode( $atts );
 	}
 
 }

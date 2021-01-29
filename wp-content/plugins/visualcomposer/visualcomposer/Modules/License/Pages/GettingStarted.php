@@ -16,6 +16,7 @@ use VisualComposer\Helpers\License;
 use VisualComposer\Helpers\Request;
 use VisualComposer\Modules\Settings\Traits\Page;
 use VisualComposer\Modules\Settings\Traits\SubMenu;
+use VisualComposer\Modules\Settings\Pages\Settings;
 
 /**
  * Class GettingStarted
@@ -40,20 +41,27 @@ class GettingStarted extends Container implements Module
     {
         $this->wpAddAction(
             'admin_menu',
-            function (License $licenseHelper, Request $requestHelper) {
+            function () {
                 if (!vchelper('AccessCurrentUser')->wpAll('edit_posts')->get()) {
                     return;
                 }
-
-                if (!$licenseHelper->isPremiumActivated()) {
-                    $this->call('addPage');
-                } elseif ($requestHelper->input('page') === $this->getSlug()) {
-                    wp_redirect(admin_url('admin.php?page=vcv-update'));
-                    exit;
-                }
+                $this->call('addPage');
             },
             70
         );
+        $this->addFilter('vcv:editor:variables', 'addVariables');
+    }
+
+    protected function addVariables($variables, $payload)
+    {
+        // Used in Tutorial Template to get back to WordPress
+        $variables[] = [
+            'key' => 'vcvGettingStartedUrl',
+            'value' => set_url_scheme(admin_url('admin.php?page=vcv-getting-started')),
+            'type' => 'variable',
+        ];
+
+        return $variables;
     }
 
     /**
@@ -76,12 +84,15 @@ class GettingStarted extends Container implements Module
         );
         wp_enqueue_script('vcv:wpUpdate:script');
         wp_enqueue_style('vcv:wpVcSettings:style');
+        wp_enqueue_script('vcv:assets:runtime:script');
     }
 
     /**
+     * @param \VisualComposer\Modules\Settings\Pages\Settings $settingsController
+     *
      * @throws \Exception
      */
-    protected function addPage()
+    protected function addPage(Settings $settingsController)
     {
         $page = [
             'slug' => $this->getSlug(),
@@ -90,7 +101,7 @@ class GettingStarted extends Container implements Module
             'showTab' => false,
             'capability' => 'edit_posts',
         ];
-        $this->addSubmenuPage($page);
+        $this->addSubmenuPage($page, $settingsController->getMainPageSlug());
     }
 
     /**
@@ -112,5 +123,38 @@ class GettingStarted extends Container implements Module
     protected function afterRender($response)
     {
         return $response . implode('', vcfilter('vcv:update:extraOutput', []));
+    }
+
+    /**
+     * @param array $page
+     * @param array $pages
+     *
+     * @return string
+     */
+    protected function renderPage($page, $pages)
+    {
+        $layout = 'standalone';
+
+        // pages can define different layout, by setting 'layout' key/value.
+        if (isset($page['layout'])) {
+            $layout = $page['layout'];
+        }
+
+        if (vchelper('Request')->input('screen', '') === 'license-options') {
+            $customGettingStartedSlug = 'vcv-license-options';
+        } else {
+            $customGettingStartedSlug = $page['slug'];
+        }
+
+        return vcview(
+            'settings/layouts/' . $layout,
+            [
+                'content' => $this->call('render', [$page]),
+                'tabs' => $pages,
+                'activeSlug' => $page['slug'],
+                'slug' => $customGettingStartedSlug,
+                'page' => $page,
+            ]
+        );
     }
 }

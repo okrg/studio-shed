@@ -45,7 +45,6 @@ class VariablesController extends Container implements Module
             'value' => set_url_scheme(admin_url('admin-ajax.php', 'relative')),
             'type' => 'variable',
         ];
-
         $variables[] = [
             'key' => 'vcvAjaxUrl',
             'value' => $urlHelper->ajax(),
@@ -76,10 +75,24 @@ class VariablesController extends Container implements Module
             'value' => VCV_PLUGIN_URL . 'public/sources/',
             'type' => 'variable',
         ];
-
         $variables[] = [
             'key' => 'vcvGutenbergEditorUrl',
             'value' => set_url_scheme(admin_url('post-new.php?post_type=vcv_gutenberg_attr')),
+            'type' => 'variable',
+        ];
+        $variables[] = [
+            'type' => 'variable',
+            'key' => 'vcvManageOptions',
+            'value' => vchelper('AccessCurrentUser')->wpAll('manage_options')->get(),
+        ];
+        $variables[] = [
+            'key' => 'vcvCreateMenuUrl',
+            'value' => set_url_scheme(admin_url('nav-menus.php?action=edit&menu=0')),
+            'type' => 'variable',
+        ];
+        $variables[] = [
+            'key' => 'vcvManageMenuUrl',
+            'value' => set_url_scheme(admin_url('nav-menus.php')),
             'type' => 'variable',
         ];
 
@@ -99,7 +112,7 @@ class VariablesController extends Container implements Module
 
             $sourceId = $payload['sourceId'];
 
-            $feError = intval(get_option('page_for_posts')) === $sourceId ? 'page_for_posts' : false;
+            $feError = (int)get_option('page_for_posts') === $sourceId ? 'page_for_posts' : false;
             $variables[] = [
                 'key' => 'vcvFeError',
                 'value' => $feError,

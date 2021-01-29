@@ -109,6 +109,7 @@ class Update implements Helper
     {
         $urlHelper = vchelper('Url');
         $utmHelper = vchelper('Utm');
+        $licenseHelper = vchelper('License');
         $currentUserAccessHelper = vchelper('AccessCurrentUser');
         $editorPostTypeHelper = vchelper('AccessEditorPostType');
         $requestHelper = vchelper('Request');
@@ -171,7 +172,7 @@ class Update implements Helper
             ];
             $variables[] = [
                 'key' => 'VCV_CREATE_NEW_TEXT',
-                'value' => __('Create new page', 'visualcomposer'),
+                'value' => __('Create a new page', 'visualcomposer'),
                 'type' => 'constant',
             ];
         } elseif (
@@ -186,31 +187,32 @@ class Update implements Helper
 
             $variables[] = [
                 'key' => 'VCV_CREATE_NEW_TEXT',
-                'value' => __('Create new post', 'visualcomposer'),
+                'value' => __('Create a new post', 'visualcomposer'),
                 'type' => 'constant',
             ];
         }
 
         $vcvRef = $requestHelper->input('vcv-ref');
         if (!$vcvRef) {
-            $vcvRef = 'getting-started';
+            // default UTMs if page opened directly without vcv-ref
+            $vcvRef = $licenseHelper->isFreeActivated() ? 'go-premium' : 'activate-hub';
         }
 
+        // Used in vcv-activate-license page
         $variables[] = [
-            'key' => 'VCV_PREMIUM_URL',
-            'value' => admin_url('admin.php?page=vcv-go-premium&vcv-ref=' . $vcvRef),
-            'type' => 'constant',
+            'key' => 'vcvGoPremiumUrlWithRef',
+            'value' => $utmHelper->premiumBtnUtm($vcvRef),
+            'type' => 'variable',
+        ];
+        $variables[] = [
+            'key' => 'vcvGoFreeUrlWithRef',
+            'value' => $utmHelper->freeBtnUtm($vcvRef),
+            'type' => 'variable',
         ];
 
         $variables[] = [
-            'key' => 'VCV_GO_PREMIUM_URL',
-            'value' => $utmHelper->get($vcvRef),
-            'type' => 'constant',
-        ];
-
-        $variables[] = [
-            'key' => 'VCV_GO_FREE_URL',
-            'value' => $utmHelper->get($vcvRef, 'free'),
+            'key' => 'VCV_SUPPORT_URL',
+            'value' => vcvenv('VCV_SUPPORT_URL'),
             'type' => 'constant',
         ];
 
@@ -220,11 +222,20 @@ class Update implements Helper
             'type' => 'constant',
         ];
 
+        $licenseType = $licenseHelper->getType();
         $variables[] = [
-            'key' => 'VCV_ACTIVATE_FREE_URL',
-            'value' => admin_url('admin.php?page=vcv-activate-free&vcv-ref=' . $vcvRef),
+            'key' => 'VCV_LICENSE_TYPE',
+            'value' => $licenseType ? $licenseType : '',
             'type' => 'constant',
         ];
+
+        if (defined('VCV_AUTHOR_API_KEY')) {
+            $variables[] = [
+                'key' => 'VCV_AUTHOR_API_KEY',
+                'value' => VCV_AUTHOR_API_KEY,
+                'type' => 'constant',
+            ];
+        }
 
         return $variables;
     }
@@ -281,8 +292,11 @@ class Update implements Helper
 
     protected function processTeasers($actions)
     {
+
         if (isset($actions['hubTeaser'])) {
             vcevent('vcv:hub:process:action:hubTeaser', ['teasers' => $actions['hubTeaser']]);
+            $optionsHelper = vchelper('Options');
+            $optionsHelper->set('hubAction:hubTeaser', $actions['hubTeaser']['version']);
         }
         if (isset($actions['hubAddons'])) {
             vcevent('vcv:hub:process:action:hubAddons', ['teasers' => $actions['hubAddons']]);

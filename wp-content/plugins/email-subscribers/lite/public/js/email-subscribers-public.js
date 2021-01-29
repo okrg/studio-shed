@@ -119,6 +119,29 @@
 			handleBindFunction(form);
 		});
 
+		let subscription_forms = $('.es_subscription_form');
+		// Check if page contains ES subscription form.
+		if ( subscription_forms.length > 0 ) {
+			// Send an ajax request to get updated nonce value.
+			jQuery.ajax({
+				type: 'POST',
+				url: es_data.es_ajax_url,
+				data: {
+					action: 'ig_es_get_updated_subscription_nonce',
+				},
+				dataType: 'json',
+				success: function(response) {
+					if( true === response.success ) {
+						let data          = response.data;
+						let updated_nonce = data.updated_nonce;
+						// Update nonce field in each subscription form.
+						jQuery(subscription_forms).find('input[name="es-subscribe"]').each(function(){
+							$(this).val(updated_nonce);
+						});
+					}
+				}
+			});
+		}
 	});
 	// Compatibility of ES with IG
 	jQuery( window ).on( "init.icegram", function(e, ig) {
@@ -132,6 +155,7 @@
 			});
 		}
 	});
+	
 })(jQuery);
 
 

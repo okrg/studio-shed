@@ -3,20 +3,18 @@
  * REST API Admin Note Action controller
  *
  * Handles requests to the admin note action endpoint.
- *
- * @package WooCommerce Admin/API
  */
 
 namespace Automattic\WooCommerce\Admin\API;
 
 defined( 'ABSPATH' ) || exit;
 
-use \Automattic\WooCommerce\Admin\Notes\WC_Admin_Notes;
+use Automattic\WooCommerce\Admin\Notes\Note;
+use \Automattic\WooCommerce\Admin\Notes\Notes as NotesFactory;
 
 /**
  * REST API Admin Note Action controller class.
  *
- * @package WooCommerce/API
  * @extends WC_REST_CRUD_Controller
  */
 class NoteActions extends Notes {
@@ -57,7 +55,7 @@ class NoteActions extends Notes {
 	 * @return WP_REST_Request|WP_Error
 	 */
 	public function trigger_note_action( $request ) {
-		$note = WC_Admin_Notes::get_note( $request->get_param( 'note_id' ) );
+		$note = NotesFactory::get_note( $request->get_param( 'note_id' ) );
 
 		if ( ! $note ) {
 			return new \WP_Error(
@@ -89,8 +87,8 @@ class NoteActions extends Notes {
 		/**
 		 * Fires when an admin note action is taken.
 		 *
-		 * @param string        $name The triggered action name.
-		 * @param WC_Admin_Note $note The corresponding Note.
+		 * @param string $name The triggered action name.
+		 * @param Note   $note The corresponding Note.
 		 */
 		do_action( 'woocommerce_note_action', $triggered_action->name, $note );
 
@@ -98,7 +96,7 @@ class NoteActions extends Notes {
 		 * Fires when an admin note action is taken.
 		 * For more specific targeting of note actions.
 		 *
-		 * @param WC_Admin_Note $note The corresponding Note.
+		 * @param Note $note The corresponding Note.
 		 */
 		do_action( 'woocommerce_note_action_' . $triggered_action->name, $note );
 
@@ -122,9 +120,9 @@ class NoteActions extends Notes {
 				'note_type'    => $note->get_type(),
 				'note_title'   => $note->get_title(),
 				'note_content' => $note->get_content(),
-				'note_icon'    => $note->get_icon(),
 				'action_name'  => $triggered_action->name,
 				'action_label' => $triggered_action->label,
+				'screen'       => $this->get_screen_name(),
 			)
 		);
 
@@ -133,5 +131,34 @@ class NoteActions extends Notes {
 		$data = $this->prepare_response_for_collection( $data );
 
 		return rest_ensure_response( $data );
+	}
+
+	/**
+	 * Get screen name.
+	 *
+	 * @return string The screen name.
+	 */
+	public function get_screen_name() {
+		$screen_name = '';
+
+		if ( isset( $_SERVER['HTTP_REFERER'] ) ) {
+			parse_str( wp_parse_url( $_SERVER['HTTP_REFERER'], PHP_URL_QUERY ), $queries ); // phpcs:ignore sanitization ok.
+		}
+		if ( isset( $queries ) ) {
+			$page      = isset( $queries['page'] ) ? $queries['page'] : null;
+			$path      = isset( $queries['path'] ) ? $queries['path'] : null;
+			$post_type = isset( $queries['post_type'] ) ? $queries['post_type'] : null;
+			$post      = isset( $queries['post'] ) ? get_post_type( $queries['post'] ) : null;
+		}
+
+		if ( isset( $page ) ) {
+			$current_page = 'wc-admin' === $page ? 'home_screen' : $page;
+			$screen_name  = isset( $path ) ? substr( str_replace( '/', '_', $path ), 1 ) : $current_page;
+		} elseif ( isset( $post_type ) ) {
+			$screen_name = $post_type;
+		} elseif ( isset( $post ) ) {
+			$screen_name = $post;
+		}
+		return $screen_name;
 	}
 }

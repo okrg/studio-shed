@@ -302,7 +302,7 @@ if ( ! class_exists( 'WC_Connect_Shipping_Method' ) ) {
 			}
 
 			$this->debug( sprintf(
-				'WooCommerce Services debug mode is on - to hide these messages, turn debug mode off in the <a href="%s" style="text-decoration: underline;">settings</a>.',
+				'WooCommerce Shipping & Tax debug mode is on - to hide these messages, turn debug mode off in the <a href="%s" style="text-decoration: underline;">settings</a>.',
 				admin_url( 'admin.php?page=wc-status&tab=connect' )
 			) );
 
@@ -325,7 +325,7 @@ if ( ! class_exists( 'WC_Connect_Shipping_Method' ) ) {
 				return;
 			}
 
-			// TODO: Request rates for all WooCommerce Services powered methods in
+			// TODO: Request rates for all WooCommerce Shipping & Tax powered methods in
 			// the current shipping zone to avoid each method making an independent request
 			$services = array(
 				array(
@@ -343,16 +343,17 @@ if ( ! class_exists( 'WC_Connect_Shipping_Method' ) ) {
 				'wcs_rates_%s',
 				md5( serialize( array( $services, $package, $custom_boxes, $predefined_boxes ) ) )
 			);
-			$debug_mode = 'yes' === get_option( 'woocommerce_shipping_debug_mode', 'no' );
-			$response_body = wp_cache_get( $cache_key );
-			if ( ! $debug_mode && false !== $response_body ) {
+			$is_debug_mode = 'yes' === get_option( 'woocommerce_shipping_debug_mode', 'no' );
+			$response_body = get_transient( $cache_key );
+			$this->debug( false === $response_body ? 'Cache does not contain rates response' : 'Cache contains rates response' );
+			if ( ! $is_debug_mode && false !== $response_body ) {
 				$this->debug( 'Rates response retrieved from cache' );
 			} else {
 				$response_body = $this->api_client->get_shipping_rates( $services, $package, $custom_boxes, $predefined_boxes );
 				if ( $this->check_and_handle_response_error( $response_body, $service_settings ) ) {
 					return;
 				}
-				wp_cache_set( $cache_key, $response_body, '', 3600 );
+				set_transient( $cache_key, $response_body, HOUR_IN_SECONDS );
 			}
 
 			$instances = $response_body->rates;
@@ -611,7 +612,7 @@ if ( ! class_exists( 'WC_Connect_Shipping_Method' ) ) {
 				) );
 
 				if ( ! is_wp_error( $method_classes ) && ! empty( $method_classes ) ) {
-					$class_names = implode( wp_list_pluck( $method_classes, 'name' ), ', ' );
+					$class_names = implode( ', ', wp_list_pluck( $method_classes, 'name' ) );
 				} else {
 					$class_names = 'No shipping classes found';
 				}

@@ -79,6 +79,10 @@ if (is_array($extraOutput)) {
         <div class="vcv-layout-content">
             <div class="vcv-layout-iframe-container">
                 <div class="vcv-layout-iframe-wrapper">
+                    <div class="vcv-layout-guide-helper-controls" data-vcv-guide-helper="element-controls">
+                    </div>
+                    <div class="vcv-layout-guide-helper-bottom-menu" data-vcv-guide-helper="quick-actions">
+                    </div>
                     <iframe class="vcv-layout-iframe"
                             src="<?php
                             // @codingStandardsIgnoreLine
@@ -103,11 +107,12 @@ if (is_array($extraOutput)) {
     <div class="vcv-layout-overlay"></div>
 </div>
 <?php
+vcevent('vcv:frontend:render:footer', ['sourceId' => $sourceId]);
 wp_print_footer_scripts();
 do_action('admin_footer', '');
-do_action('admin_print_footer_scripts-{$hookSuffix}');
+do_action('admin_print_footer_scripts-' . $hookSuffix);
 do_action('admin_print_footer_scripts');
-do_action('admin_footer-{$hookSuffix}');
+do_action('admin_footer-' . $hookSuffix);
 $extraOutput = vcfilter('vcv:frontend:footer:extraOutput', [], ['sourceId' => $sourceId]);
 if (is_array($extraOutput)) {
     foreach ($extraOutput as $output) {

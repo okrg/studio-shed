@@ -2,9 +2,9 @@
 Contributors: amandato
 Donate link: http://angelo.mandato.com/contact/
 Tags: sitemap, page, pages, shortcode, cms, static, short code, map, pagemap, site, html, html sitemap, nav, navigation
-Requires at least: 2.7.0
-Tested up to: 4.9.9
-Stable tag: 1.3.2
+Requires at least: 2.7
+Tested up to: 5.4
+Stable tag: 1.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -106,6 +106,11 @@ Install using the [built-in plugin installer](https://codex.wordpress.org/Admini
 1. HTML Page Sitemap in the Default WordPress theme.
 
 == Changelog ==
+
+= 1.3.3 =
+* Released on 3/14/2020
+* Tested with WordPress up to version 5.4
+
 
 = 1.3.2 =
 * Released on 10/05/2018

@@ -40,6 +40,20 @@ class License extends Container implements Helper
     }
 
     /**
+     * Get hidden license key.
+     *
+     * @return string
+     */
+    public function getHiddenKey()
+    {
+        $optionsHelper = vchelper('Options');
+        $licenseKey = $optionsHelper->get('license-key');
+        $licenseKey = substr($licenseKey, 0, strpos($licenseKey, '-'));
+
+        return $licenseKey . '-****-****-****-************';
+    }
+
+    /**
      * @param $type
      */
     public function setType($type)
@@ -65,6 +79,27 @@ class License extends Container implements Helper
     {
         $optionsHelper = vchelper('Options');
         $optionsHelper->set('license-expiration', $expiration);
+    }
+
+    public function updateUsageDate($refresh = false)
+    {
+        $optionsHelper = vchelper('Options');
+        $usage = $optionsHelper->get('license-usage');
+        if (empty($usage) || $refresh) {
+            $optionsHelper->set('license-usage', time());
+        }
+    }
+
+    public function isActivelyUsed($days = 30)
+    {
+        $optionsHelper = vchelper('Options');
+        $usage = $optionsHelper->get('license-usage');
+        if (!empty($usage) && ((int)$usage + ($days * DAY_IN_SECONDS)) < time()) {
+            // More than 1 month used current license-type
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -125,6 +160,14 @@ class License extends Container implements Helper
     }
 
     /**
+     * @return bool
+     */
+    public function isThemeActivated()
+    {
+        return $this->getType() === 'theme';
+    }
+
+    /**
      * @param $errorCode
      *
      * @codingStandardsIgnoreStart
@@ -151,26 +194,64 @@ class License extends Container implements Helper
                 $message = __('Visual Composer Website Builder license has been deactivated.', 'visualcomposer');
                 break;
             case 4:
-                $message = __('License key is missing, please enter a valid license key.', 'visualcomposer');
+                $message = __('The license key is missing, enter a valid license key.', 'visualcomposer');
                 break;
             case 5:
-                $message = __('Url is missing, please try again.', 'visualcomposer');
+                $message = __('URL is missing, try again.', 'visualcomposer');
                 break;
             case 6:
                 $message = __('Visual Composer Website Builder license is already activated.', 'visualcomposer');
                 break;
             case 7:
-                $message = __('Activation failed, please try again.', 'visualcomposer');
+                $message = __('Activation failed, try again.', 'visualcomposer');
                 break;
             case 'no_activations_left':
-                $message = __('Your license key has reached its activation limit.', 'visualcomposer');
+                $message = __('The license key has reached the activation limit.', 'visualcomposer');
+                break;
+            case 'purchase_key_already_exist':
+                $message = __('The purchase code is already used, deactivate the previous site, and try again.', 'visualcomposer'); // theme activation
                 break;
             default:
-                $message = __('An error occurred, please try again.', 'visualcomposer');
+                $message = __('An error occurred, try again.', 'visualcomposer');
                 break;
         }
 
         // @codingStandardsIgnoreEnd
         return $message;
+    }
+
+    /**
+     * Show button title depending on activation type
+     *
+     * @return string|void
+     */
+    public function activationButtonTitle()
+    {
+        $title = __('Activate Hub', 'visualcomposer');
+
+        if ($this->isAnyActivated()) {
+            $title = __('Go Premium', 'visualcomposer');
+        }
+
+        return $title;
+    }
+
+    /**
+     * Hub description text
+     *
+     * @return string|void
+     */
+    public function hubActivationText()
+    {
+        $description = __(
+            'Activate your free or premium license to get access to the Visual Composer Hub',
+            'visualcomposer'
+        );
+
+        if ($this->isFreeActivated() || $this->isThemeActivated()) {
+            $description = __('Go premium to get unlimited access to the Visual Composer Hub', 'visualcomposer');
+        }
+
+        return $description;
     }
 }

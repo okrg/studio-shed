@@ -33,13 +33,13 @@ class Controller extends Container implements Module
             'listenAjax',
             100
         );
-        /** @see \VisualComposer\Modules\System\Ajax\Controller::listenAjax */
+        /** @see \VisualComposer\Modules\System\Ajax\Controller::disableAjaxErrors */
         $this->wpAddAction(
             'vcv:boot',
             'disableAjaxErrors',
             10
         );
-        /** @see \VisualComposer\Modules\System\Ajax\Controller::listenAjax */
+        /** @see \VisualComposer\Modules\System\Ajax\Controller::listenLateAjax */
         $this->wpAddAction(
             'wp_loaded',
             'listenLateAjax',
@@ -54,11 +54,11 @@ class Controller extends Container implements Module
         if (
             empty($post)
             && $requestHelper->exists('vcv-source-id')
-            && $requestHelper->input('vcv-source-id')
-            && $requestHelper->input('vcv-source-id') !== 'template'
+            && is_numeric($requestHelper->input('vcv-source-id'))
         ) {
-            return '';
+            return ''; // no post with this id found
         }
+        // note that sourceId can be 'template','popup'
 
         $response = vcfilter(
             'vcv:' . $this->scope . ':' . $requestAction,
@@ -85,11 +85,15 @@ class Controller extends Container implements Module
     protected function disableAjaxErrors(Request $requestHelper)
     {
         if ($requestHelper->isAjax()) {
+            // Silence required to avoid warnings in case if function is restricted
+            // @codingStandardsIgnoreStart
+            @set_time_limit(120);
             if (!vcvenv('VCV_DEBUG')) {
-                ini_set('display_errors', 'Off');
-                ini_set('error_reporting', 0);
-                error_reporting(0);
+                @ini_set('display_errors', 'Off');
+                @ini_set('error_reporting', 0);
+                @error_reporting(0);
             }
+            // @codingStandardsIgnoreEnd
         }
     }
 
@@ -131,8 +135,9 @@ class Controller extends Container implements Module
      */
     protected function setSource(Request $requestHelper, PostType $postTypeHelper)
     {
-        if ($requestHelper->exists('vcv-source-id')) {
-            $postTypeHelper->setupPost((int)$requestHelper->input('vcv-source-id'));
+        $sourceId = $requestHelper->input('vcv-source-id');
+        if (is_numeric($sourceId)) {
+            $postTypeHelper->setupPost((int)$sourceId);
         }
     }
 

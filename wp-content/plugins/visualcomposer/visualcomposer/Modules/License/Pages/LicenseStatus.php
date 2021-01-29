@@ -52,18 +52,12 @@ class LicenseStatus extends Container implements Module
                     return;
                 }
 
-                if ($licenseHelper->isAnyActivated()) {
-                    $this->call('addPage');
-                    $this->wpAddFilter('submenu_file', 'subMenuHighlight');
-                    $this->addFilter('vcv:settings:tabs', 'addSettingsTab', 11);
-                    $this->wpAddAction(
-                        'in_admin_header',
-                        'addCss'
-                    );
-                } elseif ($requestHelper->input('page') === $this->getSlug()) {
-                    wp_redirect(admin_url('admin.php?page=vcv-getting-started'));
-                    exit;
-                }
+                $this->call('addPage');
+                $this->wpAddFilter('submenu_file', 'subMenuHighlight');
+                $this->wpAddAction(
+                    'admin_head',
+                    'addCss'
+                );
             },
             70
         );
@@ -76,26 +70,12 @@ class LicenseStatus extends Container implements Module
     {
         $page = [
             'slug' => $this->getSlug(),
-            'title' => $this->buttonTitle(),
-            'layout' => 'settings-standalone-with-tabs',
-            'showTab' => false,
+            'title' => __('License', 'visualcomposer'),
+            'layout' => 'dashboard-tab-content-standalone',
             'capability' => 'manage_options',
+            'isDashboardPage' => true,
         ];
         $this->addSubmenuPage($page);
-    }
-
-    /**
-     * @param $tabs
-     *
-     * @return mixed
-     */
-    protected function addSettingsTab($tabs)
-    {
-        $tabs[ $this->slug ] = [
-            'name' => __('License', 'visualcomposer'),
-        ];
-
-        return $tabs;
     }
 
     /**
@@ -144,6 +124,7 @@ class LicenseStatus extends Container implements Module
         );
         wp_enqueue_script('vcv:wpVcSettings:script');
         wp_enqueue_style('vcv:wpVcSettings:style');
+        wp_enqueue_script('vcv:assets:runtime:script');
     }
 
     /**

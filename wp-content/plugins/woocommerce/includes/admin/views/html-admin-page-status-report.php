@@ -9,6 +9,12 @@ defined( 'ABSPATH' ) || exit;
 
 global $wpdb;
 
+if ( ! defined( 'WC_SSR_PLUGIN_UPDATE_RELEASE_VERSION_TYPE' ) ) {
+	// Define if we're checking against major or minor versions.
+	// Since 5.0 all versions are backwards compatible, so there's no more check.
+	define( 'WC_SSR_PLUGIN_UPDATE_RELEASE_VERSION_TYPE', 'none' );
+}
+
 $report             = wc()->api->get_endpoint_data( '/wc/v3/system_status' );
 $environment        = $report['environment'];
 $database           = $report['database'];
@@ -21,7 +27,7 @@ $security           = $report['security'];
 $settings           = $report['settings'];
 $wp_pages           = $report['pages'];
 $plugin_updates     = new WC_Plugin_Updates();
-$untested_plugins   = $plugin_updates->get_untested_plugins( WC()->version, 'minor' );
+$untested_plugins   = $plugin_updates->get_untested_plugins( WC()->version, WC_SSR_PLUGIN_UPDATE_RELEASE_VERSION_TYPE );
 ?>
 <div class="updated woocommerce-message inline">
 	<p>
@@ -496,10 +502,17 @@ $untested_plugins   = $plugin_updates->get_untested_plugins( WC()->version, 'min
 		?>
 	</tbody>
 </table>
-<table class="wc_status_table widefat" cellspacing="0">
+<table id="status-database" class="wc_status_table widefat" cellspacing="0">
 	<thead>
 	<tr>
-		<th colspan="3" data-export-label="Database"><h2><?php esc_html_e( 'Database', 'woocommerce' ); ?></h2></th>
+		<th colspan="3" data-export-label="Database">
+			<h2>
+				<?php
+					esc_html_e( 'Database', 'woocommerce' );
+					self::output_tables_info();
+				?>
+			</h2>
+		</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -792,7 +805,7 @@ if ( 0 < count( $dropins_mu_plugins['mu_plugins'] ) ) :
 		</tr>
 		<tr>
 			<td data-export-label="Connected to WooCommerce.com"><?php esc_html_e( 'Connected to WooCommerce.com', 'woocommerce' ); ?>:</td>
-			<td class="help"><?php echo wc_help_tip( esc_html__( 'Are your site connected to WooCommerce.com?', 'woocommerce' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?></td>
+			<td class="help"><?php echo wc_help_tip( esc_html__( 'Is your site connected to WooCommerce.com?', 'woocommerce' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?></td>
 			<td><?php echo 'yes' === $settings['woocommerce_com_connected'] ? '<mark class="yes"><span class="dashicons dashicons-yes"></span></mark>' : '<mark class="no">&ndash;</mark>'; ?></td>
 		</tr>
 	</tbody>

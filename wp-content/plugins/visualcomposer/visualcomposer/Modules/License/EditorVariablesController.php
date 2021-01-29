@@ -18,7 +18,7 @@ class EditorVariablesController extends Container implements Module
 
     public function __construct()
     {
-        $this->addFilter('vcv:editor:variables', 'addVariables');
+        $this->addFilter('vcv:editor:variables vcv:wp:dashboard:variables', 'addVariables');
     }
 
     protected function addVariables($variables, $payload)
@@ -38,26 +38,6 @@ class EditorVariablesController extends Container implements Module
         $variables[] = [
             'key' => 'vcvIsAnyActivated',
             'value' => $licenseHelper->isAnyActivated(),
-            'type' => 'variable',
-        ];
-        $variables[] = [
-            'key' => 'vcvGoPremiumUrl',
-            'value' => set_url_scheme(admin_url('admin.php?page=vcv-go-premium')),
-            'type' => 'variable',
-        ];
-        $variables[] = [
-            'key' => 'vcvGettingStartedUrl',
-            'value' => set_url_scheme(admin_url('admin.php?page=vcv-getting-started&vcv-ref=logoFrontend')),
-            'type' => 'variable',
-        ];
-        $variables[] = [
-            'key' => 'vcvUpgradeUrl',
-            'value' => set_url_scheme(admin_url('admin.php?page=vcv-getting-started&vcv-ref=hub-banner')),
-            'type' => 'variable',
-        ];
-        $variables[] = [
-            'key' => 'vcvUpgradeUrlUnsplash',
-            'value' => set_url_scheme(admin_url('admin.php?page=vcv-getting-started&vcv-ref=unsplash')),
             'type' => 'variable',
         ];
 

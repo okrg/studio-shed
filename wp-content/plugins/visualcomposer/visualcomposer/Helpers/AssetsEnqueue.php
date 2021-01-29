@@ -13,6 +13,28 @@ use VisualComposer\Framework\Container;
 
 class AssetsEnqueue extends Container implements Helper
 {
+    protected $sourcesList = [];
+
+    public function addToEnqueueList($sourceId)
+    {
+        $this->sourcesList[] = $sourceId;
+    }
+
+    public function removeFromList($sourceId)
+    {
+        if ($this->sourcesList && in_array($sourceId, $this->sourcesList)) {
+            $sourceKey = array_search($sourceId, $this->sourcesList);
+            unset($this->sourcesList[ $sourceKey ]);
+            $rebaseKeys = array_values($this->sourcesList); // Resetting the array keys
+            $this->sourcesList = $rebaseKeys;
+        }
+    }
+
+    public function getEnqueueList()
+    {
+        return array_unique($this->sourcesList);
+    }
+
     public function enqueueAssets($sourceId)
     {
         $assetsSharedHelper = vchelper('AssetsShared');
@@ -35,7 +57,7 @@ class AssetsEnqueue extends Container implements Helper
                             $styleName,
                             $assetData['url'],
                             [],
-                            $assetData['version']
+                            $assetData['version'] . '-' . $sourceId
                         );
                     }
                 }
@@ -55,7 +77,7 @@ class AssetsEnqueue extends Container implements Helper
                             $scriptName,
                             $assetData['url'],
                             ['jquery'],
-                            $assetData['version'],
+                            $assetData['version'] . '-' . $sourceId,
                             true
                         );
                     }

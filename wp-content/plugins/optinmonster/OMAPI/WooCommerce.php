@@ -90,7 +90,7 @@ class OMAPI_WooCommerce {
 		if ( empty( $data['consumerKey'] ) || empty( $data['consumerSecret'] ) ) {
 			return new WP_Error(
 				'omapi-invalid-woocommerce-keys',
-				__( 'The consumer key or consumer secret appears to be invalid. Try again.', 'optin-monster-api' )
+				esc_html__( 'The consumer key or consumer secret appears to be invalid. Try again.', 'optin-monster-api' )
 			);
 		}
 
@@ -170,13 +170,13 @@ class OMAPI_WooCommerce {
 
 		if ( ! $key ) {
 			return array(
-				'error' => __( 'Consumer key is missing.', 'optin-monster-api' ),
+				'error' => esc_html__( 'Consumer key is missing.', 'optin-monster-api' ),
 			);
 		}
 
 		if ( ! $secret ) {
 			return array(
-				'error' => __( 'Consumer secret is missing.', 'optin-monster-api' ),
+				'error' => esc_html__( 'Consumer secret is missing.', 'optin-monster-api' ),
 			);
 		}
 
@@ -190,7 +190,7 @@ class OMAPI_WooCommerce {
 		) {
 			$keys['consumer_key'] = $key;
 		} else {
-			$keys['error'] = __( 'Consumer secret is invalid.', 'optin-monster-api' );
+			$keys['error'] = esc_html__( 'Consumer secret is invalid.', 'optin-monster-api' );
 		}
 
 		return $keys;
@@ -226,7 +226,7 @@ class OMAPI_WooCommerce {
 
 		if ( empty( $keys ) ) {
 			$keys = array(
-				'error' => __( 'Consumer key is invalid.', 'optin-monster-api' ),
+				'error' => esc_html__( 'Consumer key is invalid.', 'optin-monster-api' ),
 			);
 		}
 

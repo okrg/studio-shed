@@ -11,17 +11,11 @@
 	}
 	.components-placeholder__fieldset {
 		display: block; /* Disable flex box */
-
-		p {
-			font-size: 14px;
-		}
 	}
-	.wc-block-products__add_product_button {
+	.wc-block-products__add-product-button {
 		margin: 0 0 1em;
-		line-height: 24px;
 		vertical-align: middle;
 		height: auto;
-		font-size: 14px;
 		padding: 0.5em 1em;
 
 		svg {
@@ -43,7 +37,7 @@
 		overflow: hidden;
 	}
 	.wc-block-all-products-grid-item-template {
-		border-top: 1px solid #e2e4e7;
+		border-top: 1px solid $gray-200;
 		margin-top: 20px;
 		width: 100%;
 		overflow: hidden;
@@ -102,7 +96,7 @@
 			&::before,
 			&::after {
 				content: "";
-				background: #e2e4e7;
+				background: $gray-200;
 				display: block;
 				position: absolute;
 				width: 100%;
