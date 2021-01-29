@@ -106,11 +106,15 @@ while (have_posts()) : the_post();
                                     </div> 
                                 </div>
                             <?php } ?>
+                            <?php 
+                            /**
                             <?php if (count(get_the_category($post->ID)) > 0) { ?>
                                 <p class="category-tag" style="margin-bottom: 15px;display: inline-block;width: 100%;">
                                     <b>Category: </b><?php the_category(', '); ?>
-                                </p>
+                                </p>                            
                             <?php } ?>
+                            **/
+                            ?>
                            <!-- <section id="create-button" class="hide-mobile">
                                 <div class="row">
                                     <div class="col-sm-6 text-right">
