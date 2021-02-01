@@ -540,6 +540,7 @@ function ls_save_advanced_settings() {
 		'use_custom_jquery',
 		'gsap_sandboxing',
 		'defer_scripts',
+		'use_loading_attribute',
 		'clear_3rd_party_caches',
 		'rocketscript_ignore',
 		'suppress_debug_info',
@@ -1493,6 +1494,7 @@ function ls_do_erase_plugin_data() {
 		'ls_load_all_js_files',
 		'ls_gsap_sandboxing',
 		'ls_defer_scripts',
+		'ls_use_loading_attribute',
 		'ls_use_custom_jquery',
 		'ls_clear_3rd_party_caches',
 		'ls_rocketscript_ignore',
@@ -1516,6 +1518,7 @@ function ls_do_erase_plugin_data() {
 		'ls-latest-version',
 		'ls-store-data',
 		'ls-store-last-updated',
+		'ls-important-notice',
 		'ls-p-url',
 
 		// GDPR

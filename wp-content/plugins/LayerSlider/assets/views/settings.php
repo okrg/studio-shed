@@ -333,6 +333,13 @@ $notifications = array(
 						</td>
 						<td class="desc"><?php _e('Eliminates render-blocking JavaScript files, but might also delay a bit displaying sliders above the fold.', 'LayerSlider') ?></td>
 					</tr>
+					<tr>
+						<td><?php _e('Use "loading" attribute', 'LayerSlider') ?></td>
+						<td>
+							<?php echo lsGetOptionField('checkbox', 'use_loading_attribute', false) ?>
+						</td>
+						<td class="desc"><?php _e('Enables the use of the HTML native lazy loading feature. LayerSlider has its own lazy loading mechanism more suitable for general use and we recommend leaving this option off.', 'LayerSlider') ?></td>
+					</tr>
 				</table>
 
 

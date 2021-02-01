@@ -282,11 +282,18 @@ class KM_UpdatesV3 {
 			}
 
 
-			// Use activation_id when
+			// Store activation_id when provided
 			if( empty( $this->config['activation_id'] ) ) {
 				if( ! empty( $this->data->activation_id ) ) {
 					update_option( $this->config['activationKey'], $this->data->activation_id );
 				}
+			}
+
+			// "Important message" notice
+			if( ! empty( $this->data->_important_notice ) ) {
+				update_option( 'ls-important-notice', $this->data->_important_notice );
+			} else {
+				delete_option( 'ls-important-notice' );
 			}
 
 			if( ! empty( $this->data->full->p_url ) ) {

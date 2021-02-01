@@ -51,14 +51,11 @@ add_action('admin_init', function() {
 function layerslider_important_notice() {
 
 	// Get data
-	$storeData 	= get_option('ls-store-data', false);
+	$notice 	= get_option('ls-important-notice', false);
 	$lastNotice = get_option('ls-last-important-notice', 0);
 
 	// Check if there's an important notice
-	if( $storeData && ! empty( $storeData['important_notice'] ) ) {
-
-		// Get notice data
-		$notice = $storeData['important_notice'];
+	if( ! empty( $notice ) ) {
 
 		// Check notice validity
 		if( ! empty($notice['date']) && ! empty($notice['title']) && ! empty($notice['message']) ) {

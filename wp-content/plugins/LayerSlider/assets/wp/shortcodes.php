@@ -362,17 +362,27 @@ class LS_Shortcode {
 		if( is_array( $slides ) ) {
 
 			// Get DOM utils
-			if( ! defined('LS_DOMDocument') ) {
-				include LS_ROOT_PATH.'/classes/class.ls.dom.php';
+			if( ! class_exists('\LayerSlider\DOM') ) {
+				require_once LS_ROOT_PATH.'/classes/class.ls.dom.php';
 			}
 
 
 			$GLOBALS['lsPremiumNotice'] = array();
 
+			// Temporarily disable using the loading="lazy"
+			// attribute based on the plugin advanced settings
+			if( ! get_option('ls_use_loading_attribute', false ) ) {
+				add_filter( 'wp_lazy_loading_enabled', 'ls_lazy_loading_cb');
+			}
+
 			include LS_ROOT_PATH.'/config/defaults.php';
 			include LS_ROOT_PATH.'/includes/slider_markup_setup.php';
 			include LS_ROOT_PATH.'/includes/slider_markup_html.php';
 			include LS_ROOT_PATH.'/includes/slider_markup_init.php';
+
+			// Remove the filter that we used to temporarily
+			// disable using the loading="lazy" attribute
+			remove_filter( 'wp_lazy_loading_enabled', 'ls_lazy_loading_cb');
 
 			// Admin notice when using premium features on non-activated sites
 			if( ! empty( $GLOBALS['lsPremiumNotice'] ) ) {

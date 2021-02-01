@@ -6,10 +6,6 @@ use DOMDocument, DOMXPath, Exception;
 // Prevent direct file access
 defined( 'LS_ROOT_FILE' ) || exit;
 
-if( ! defined('LS_DOMDocument') ) {
-	define('LS_DOMDocument', true);
-}
-
 libxml_use_internal_errors( true );
 
 class DOM {

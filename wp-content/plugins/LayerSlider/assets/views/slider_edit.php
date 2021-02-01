@@ -55,8 +55,8 @@
 	}
 
 	// Get DOM utils
-	if( ! defined('LS_DOMDocument') ) {
-		include LS_ROOT_PATH.'/classes/class.ls.dom.php';
+	if( ! class_exists('\LayerSlider\DOM') ) {
+		require_once LS_ROOT_PATH.'/classes/class.ls.dom.php';
 	}
 
 	// Get defaults

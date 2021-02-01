@@ -142,14 +142,14 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 			$alt = '';
 
 			if( ! empty($slide['props']['backgroundId'])) {
-				$lsBG = wp_get_attachment_image($slide['props']['backgroundId'], 'full', false, array('class' => 'ls-bg'));
+				$lsBG = ls_get_markup_image( $slide['props']['backgroundId'], array('class' => 'ls-bg') );
 
 			} elseif($slide['props']['background'] == '[image-url]') {
 				$src = $postContent->getWithFormat($slide['props']['background']);
 
 				if(is_object($postContent->post)) {
 					$attchID = get_post_thumbnail_id($postContent->post->ID);
-					$lsBG = wp_get_attachment_image($attchID, 'full', false, array('class' => 'ls-bg'));
+					$lsBG = ls_get_markup_image( $attchID, array('class' => 'ls-bg') );
 				}
 			} else {
 				$src = do_shortcode($slide['props']['background']);
@@ -180,7 +180,7 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 
 				$lsTN = '';
 				if( ! empty($slide['props']['thumbnailId']) ) {
-					$lsTN = wp_get_attachment_image($slide['props']['thumbnailId'], 'full', false, array('class' => 'ls-tn'));
+					$lsTN = ls_get_markup_image( $slide['props']['thumbnailId'], array('class' => 'ls-tn') );
 				}
 
 				if( ! empty( $lsTN ) && ! $useSrcset ) {
@@ -302,13 +302,13 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 				$layerIMG = false;
 				if($layer['props']['type'] == 'img') {
 					if( ! empty($layer['props']['imageId'])) {
-						$layerIMG = wp_get_attachment_image( (int)$layer['props']['imageId'], 'full', false, array('class' => 'ls-l'));
+						$layerIMG = ls_get_markup_image( (int)$layer['props']['imageId'], array('class' => 'ls-l') );
 
 					} elseif($layer['props']['image'] == '[image-url]') {
 
 						if(is_object($postContent->post)) {
 							$attchID = get_post_thumbnail_id($postContent->post->ID);
-							$layerIMG = wp_get_attachment_image($attchID, 'full', false, array('class' => 'ls-l'));
+							$layerIMG = ls_get_markup_image( $attchID, array('class' => 'ls-l') );
 						} else {
 							$innerAttributes['src'] = $postContent->getWithFormat($layer['props']['image']);
 						}

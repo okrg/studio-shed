@@ -7265,7 +7265,7 @@ var initSliderBuilder = function() {
 
 	// Settings: datepicker
 	var datePickerInterval = 0,
-		datepicker = jQuery('.ls-settings .ls-datepicker-input').datepicker({
+		datepicker = jQuery('.ls-settings .ls-datepicker-input').airDatepicker({
 		inline: true,
 		classes: 'ls-datepicker',
 		language: 'en',

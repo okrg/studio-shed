@@ -26,3 +26,11 @@ function layerslider_check_unit($str, $key = '') {
 
 	return $str;
 }
+
+function ls_get_markup_image( $id, $attrs = [] ) {
+	return wp_get_attachment_image( $id, 'full', false, $attrs );
+}
+
+function ls_lazy_loading_cb() {
+	return false;
+}
