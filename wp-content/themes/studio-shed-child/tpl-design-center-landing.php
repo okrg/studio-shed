@@ -99,8 +99,8 @@
 				{
 					?>
 					<div class="shed-section-block">
-						<img src="<?php print $section_block['shed_series_image']; ?>" class="wide-only" />
-						<img src="<?php print $section_block['shed_series_mobile_image']; ?>" class="mobile-only" />
+						<img alt="Photo of <?php print $section_block['series_title']; ?>" src="<?php print $section_block['shed_series_image']; ?>" class="wide-only" />
+						<img alt="Photo of <?php print $section_block['series_title']; ?>" src="<?php print $section_block['shed_series_mobile_image']; ?>" class="mobile-only" />
 						<div class="shed-section-overlay">
 							<div class="shed-section-overlay-inner">
 								<div class="shed-section-overlay-title"><?php print $section_block['series_title']; ?></div>

@@ -28,7 +28,7 @@
 		<div class="container">
 		<div class="row">
 			<div class="col-sm-3 col-md-2">
-				<img src="/wp-content/uploads/2020/01/footer-studio-shed-escape.jpg" alt="studio shed"/>
+				<img src="/wp-content/uploads/2020/01/footer-studio-shed-escape.jpg" alt="Image of Studio Shed design configurator loaded on an ipad" />
 			</div>
 			<div class="col-sm-9 col-md-7">
 

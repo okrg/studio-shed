@@ -511,7 +511,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<span></span>
 				<span></span>
 				<span></span>
-				<ul id="menu-slide">
+				<div id="menu-slide">
 					
 				  				<?php wp_nav_menu(array('theme_location' => 'flyout-menu', 'container' => '', 'menu_class' => '')); ?>
 
