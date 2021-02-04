@@ -448,7 +448,7 @@ a.but {
 	
 	}
 .sticky-menu {
-    top: 108px!important;
+    top: 50px!important;
     position: fixed;
 	width: 100%;
 	z-index: 1;

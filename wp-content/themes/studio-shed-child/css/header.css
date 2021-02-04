@@ -486,8 +486,8 @@ transform: translate(0, -500PX);
     padding: 10px 7px!important;
 }
 		}
-#main-menu ul {
-    padding-top: 20px!important;
+#main-menu ul.navbar-nav {
+    padding-top: 0;
 }
 #main-menu .menu-models ul {
     padding-top: 0!important;
