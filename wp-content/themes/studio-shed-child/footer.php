@@ -1,4 +1,4 @@
-   <link rel="stylesheet" href="/wp-content/themes/studio-shed-child/css/footer.css" type="text/css" />
+   <link rel="stylesheet" href="/wp-content/themes/studio-shed-child/css/footer.css?v=2.0" type="text/css" />
 
 
 <footer id="footer" class="myfooter">

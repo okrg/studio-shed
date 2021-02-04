@@ -354,11 +354,10 @@ window.addEventListener('scroll', function() {
 });
 
 </script>
-		<script>
-		$('#content-model-product').scrollspy({ target: '#model-product-menu' })
-
-		</script>
-<?php 						
+<script>
+//$('#content-model-product').scrollspy({ target: '#model-product-menu' })
+</script>
+<?php
 			if ($quickmodel == ('Summit')) {
 				?>	
 <!--  <script src="<?php echo get_template_directory_uri() ?>/assets/js/jquery-3.3.1.js"></script>This library is interferring with the mobile menu -->
