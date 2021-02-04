@@ -666,6 +666,7 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 				'lite/includes/db/class-es-db-forms.php',
 				'lite/includes/db/class-es-db-blocked-emails.php',
 				'lite/includes/db/class-es-db-actions.php',
+				'lite/includes/db/class-ig-es-db-unsubscribe-feedback.php',
 				'lite/includes/db/class-ig-es-db-wc-cart.php',
 				'lite/includes/db/class-ig-es-db-wc-guest.php',
 

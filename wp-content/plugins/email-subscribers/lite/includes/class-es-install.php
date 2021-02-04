@@ -244,7 +244,10 @@ if ( ! class_exists( 'ES_Install' ) ) {
 				'ig_es_add_country_code_to_contacts_table',
 				'ig_es_update_467_db_version',
 			),
-
+			'4.6.8' => array(
+				'ig_es_update_468_create_unsubscribe_feedback_table',
+				'ig_es_update_468_db_version',
+			),
 		);
 
 		/**
@@ -1246,12 +1249,41 @@ if ( ! class_exists( 'ES_Install' ) ) {
 		public static function get_ig_es_466_schema( $collate = '' ) {
 			global $wpdb;
 
-			$tables = "CREATE TABLE IF NOT EXISTS {$wpdb->prefix}ig_temp_import (
-				ID bigint(20) NOT NULL AUTO_INCREMENT,
-				data longtext NOT NULL,
-				identifier char(13) NOT NULL,
+			$tables = "CREATE TABLE {$wpdb->prefix}ig_temp_import (
+				`ID` bigint(20) NOT NULL AUTO_INCREMENT,
+				`data` longtext NOT NULL,
+				`identifier` char(13) NOT NULL,
 				PRIMARY KEY (ID)
-			) $collate";
+			) $collate;";
+			
+			return $tables;
+		}
+
+		/**
+		 * Create table unsubscribe feedback
+		 *
+		 * @param string $collate
+		 *
+		 * @return string
+		 *
+		 * @since 4.6.8
+		 */
+		public static function get_ig_es_468_schema( $collate = '' ) {
+			global $wpdb;
+
+			$tables = "CREATE TABLE {$wpdb->prefix}ig_unsubscribe_feedback (
+				`id` int(10) NOT NULL AUTO_INCREMENT,
+				`contact_id` int(10) unsigned NOT NULL,
+				`list_id` int(10) unsigned NOT NULL,
+				`campaign_id` int(10) unsigned NOT NULL,
+				`mailing_queue_id` int(10) unsigned NOT NULL,
+				`feedback_slug` varchar(50) NOT NULL,
+				`feedback_text` varchar(500) NOT NULL,
+				`created_at` datetime DEFAULT NULL,
+				`updated_at` datetime DEFAULT NULL,
+				`meta` longtext DEFAULT NULL,
+				PRIMARY KEY (id)
+			) $collate;";
 			
 			return $tables;
 		}
@@ -1274,6 +1306,7 @@ if ( ! class_exists( 'ES_Install' ) ) {
 			$tables .= self::get_ig_es_441_schema( $collate );
 			$tables .= self::get_ig_es_465_schema( $collate );
 			$tables .= self::get_ig_es_466_schema( $collate );
+			$tables .= self::get_ig_es_468_schema( $collate );
 
 			return $tables;
 		}

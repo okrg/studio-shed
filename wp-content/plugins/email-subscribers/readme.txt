@@ -6,7 +6,7 @@ Tags: email marketing, subscription, autoresponder, post notification, welcome e
 Requires at least: 3.9
 Tested up to: 5.6
 Requires PHP: 5.6
-Stable tag: 4.6.7
+Stable tag: 4.6.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses
 
@@ -303,6 +303,11 @@ Refer [here](https://www.icegram.com/documentation/es-faq/).
 
 
 == Changelog ==
+
+**4.6.8 (01.02.2021)**
+
+* New: Allow subscribers to provide feedback for unsubscription [PRO]
+* Update: UI Improvements
 
 **4.6.7 (21.01.2021)**
 

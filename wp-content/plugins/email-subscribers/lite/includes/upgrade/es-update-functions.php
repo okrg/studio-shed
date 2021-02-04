@@ -1384,3 +1384,24 @@ function ig_es_update_467_db_version() {
 }
 
 /* --------------------- ES 4.6.7(End)--------------------------- */
+
+/* --------------------- ES 4.6.8(Start)--------------------------- */
+
+/**
+ * Create table for storing subscribers import CSV data temporarily
+ *
+ * @since 4.6.8
+ */
+function ig_es_update_468_create_unsubscribe_feedback_table() {
+	ES_Install::create_tables( '4.6.8' );
+}
+
+/**
+ * Update DB version
+ *
+ * @since 4.6.8
+ */
+function ig_es_update_468_db_version() {
+	ES_Install::update_db_version( '4.6.8' );
+}
+/* --------------------- ES 4.6.8(End)--------------------------- */
