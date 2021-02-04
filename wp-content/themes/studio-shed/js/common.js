@@ -4,7 +4,7 @@ jQuery(document).ready(function() {
   //accessibility tweaks
   jQuery('#input_18_2').attr('aria-label', 'Enter your email address');
   jQuery('iframe.vce-vim-video-player-iframe').attr('title', 'Vimeo video player frame');
-  jQuery('.vce-post-slider-block-item-link').attr('arial-label', 'Slider link to blog post');
+  jQuery('.vce-post-slider-block-item-link').attr('aria-label', 'Slider link to blog post');
   jQuery('#wp-admin-bar-pantheon-hud img').attr('alt', 'Pantheon logo');
   setTimeout(function(){
     jQuery('a.ls-link').attr('aria-label', 'Layer slider link');
