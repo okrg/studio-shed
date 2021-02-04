@@ -290,7 +290,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <nav class="container navbar navbar-expand-lg" role="navigation">
           <div class="header-mobile">
             <div class="col-mb-8">
-              <a href="<?php echo get_home_url(); ?>" id="header-logo" class="navbar-brand d-lg-none">
+              <a href="<?php echo get_home_url(); ?>" id="mobile-header-logo" class="header-logo navbar-brand d-lg-none">
                 <img src="<?php echo $logo["url"]?>" alt="index">
               </a>
             </div>
@@ -507,7 +507,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </li>
             <li class="logo">
-              <a id="header-logo" class="navbar-brand" title="index" href="<?php echo get_home_url(); ?>">
+              <a id="header-logo" class="header-logo navbar-brand" title="index" href="<?php echo get_home_url(); ?>">
                 <img src="<?php echo $logo["url"]?>" alt="index">
               </a>
             </li>

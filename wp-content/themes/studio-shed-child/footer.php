@@ -106,7 +106,7 @@
           $socials = get_field('socials', 'option');
               foreach ($socials as $key => $social) {?>
                 <li>
-                  <a rel="noopener" target="_blank" href="<?php echo $social["link"]?>">
+                  <a rel="noopener" target="_blank" aria-label="Link to social profile" href="<?php echo $social["link"]?>">
                     <i class="icomoon <?php echo $social["type"]?>" aria-hidden="true"></i>
                   </a>
                 </li>

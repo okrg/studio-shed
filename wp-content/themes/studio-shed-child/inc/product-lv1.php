@@ -117,7 +117,7 @@ while (have_posts()) : the_post();
 					<?php if($images != null){ ?>
 						<div class="center-flr-<?php echo $count ?> tab-container">
 							<?php foreach ($images as $image) { ?>
-								<img src="<?php echo $image['sizes']['custom-slide-inter'];?>" alt="">
+								<img src="<?php echo $image['sizes']['custom-slide-inter'];?>" alt="Studio Shed floorplan">
 							<?php } ?>
 						</div>
 					<?php } ?>

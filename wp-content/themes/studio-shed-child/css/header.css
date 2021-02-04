@@ -449,6 +449,7 @@ transform: translate(0, -500PX);
 #wrapper {
 	padding-top:40px!important;
 	}
+#lg-header-logo img,  
 #header-logo img {
 	width: 200px!important;
 	height: 23px!important;

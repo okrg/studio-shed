@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	  
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1" /> -->
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1"/>
     <meta name="format-detection" content="telephone=no">
     <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
     <meta name="google-site-verification" content="uWi-LXgJCHaP6FM_-ggd2tuTMEU08yeWuUhgfF8jA88" />
@@ -199,7 +199,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div> -->
           <ul class="ml-auto main-menu-ul navbar-nav">
 			<li class="logo">
-              <a id="header-logo" class="navbar-brand" title="index" href="<?php echo get_home_url(); ?>">
+              <a id="lg-header-logo" class="navbar-brand" title="index" href="<?php echo get_home_url(); ?>">
                 <img src="<?php echo $logo["url"]?>" alt="index">
               </a>
             </li>
@@ -507,12 +507,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				A fake / hidden checkbox is used as click reciever,
 				so you can use the :checked selector on it.
 				-->
-				<input type="checkbox" />
+				<input type="checkbox" aria-label="Website additional navigation menu" />
 				<span></span>
 				<span></span>
 				<span></span>
 				<ul id="menu-slide">
-					<li class="cell"><a href="tel:888-900-3933">888.900.3933</a></li>
+					
 				  				<?php wp_nav_menu(array('theme_location' => 'flyout-menu', 'container' => '', 'menu_class' => '')); ?>
 
 				</ul>
