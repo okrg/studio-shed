@@ -53,7 +53,7 @@
     <link rel="stylesheet" href="<?php echo bloginfo('template_directory');?>/style.css" type="text/css" />
     <link rel="stylesheet" href="<?php echo bloginfo('template_directory');?>/css/app.css?v=0.5" type="text/css" />
     <link rel="stylesheet" href="<?php echo bloginfo('template_directory');?>/assets/css/custom.css" type="text/css" />
-	   <link rel="stylesheet" href="/wp-content/themes/studio-shed-child/css/header.css" type="text/css" />
+	   <link rel="stylesheet" href="/wp-content/themes/studio-shed-child/css/header.css?v=2.0" type="text/css" />
 
 
     <?php if(get_the_ID()==73) {?>
