@@ -14,6 +14,19 @@ p {
     line-height: 1.4em;
     font-family: Tisa-Sans-Pro;
 }
+
+
+.block-two p.des,
+.block-two p.des2,
+p.des2 {
+  color: #505050;
+}
+.news .words {
+  color: #4d4d4d;
+}
+.news .live {
+  color: #747474;
+}
 /*BUTTON */
 a.but{
 	display: block;
@@ -26,7 +39,7 @@ a.but{
 	text-align: center;
 	text-transform: uppercase;
 	text-decoration: none;
-	background-color: #fba445;
+	background-color: #5d5e5d;
 	color: #fff;
 	font-size: 16px;
 	border: 2px solid transparent;
@@ -37,12 +50,8 @@ a.but{
     letter-spacing: 1px;
 }
 a.but:hover{
-	color: #fba445;
-	background-color: #fff;
-	border: 2px solid #fba445;
+	opacity: 0.9;
 }
-	
-	
 
 /* default blog pages */
 .list-blogs, .sidebar,
@@ -309,23 +318,24 @@ border-color: #ffa544;
     padding-right: 20px;
 }
 .footer-escape button, .footer-escape a.button {
-	    border: solid #ffffff 2px;
+	  border: solid #fff 2px !important;
     letter-spacing: 1px;
     /* text-shadow: 0px 0px 1px #000000; */
-    color: #fff;
-    background-color: #ffa544;
-    font-size: 16px;
+    color: #666 !important;
+    background-color: #fff !important;
+    font-size: 20px;
     padding: 15px 43px;
     float: right;
     min-width: 220px;
     text-transform: uppercase;
+    text-align: center;
 
 }
 .footer-escape button:hover, 
 .footer-escape a.button.vce-button--style-basic:hover {
-	color: #fba445!important;
+	color: #C75300!important;
 	background-color: #fff!important;
-	border: 2px solid #fba445!important;
+	border: 2px solid #C75300!important;
 }
 	.footer-menus {
 		background: #000000;
@@ -709,14 +719,11 @@ p {
 }
 .vce-col-inner {
   padding: 0 50px;
-  
 }
 .gform_button.button, .seemore:hover {
-
-    color: #FFA347!important;
-
+    color: #C75300 !important;
     border: 1px solid #FFA347;
-    background-color: #FFF;
+    background-color: #FFF !important;
 }
 
 #design-landing h4 {
@@ -809,10 +816,10 @@ section#headline {
   height: auto;
 }
 h3.vce-post-slider-block-item-title {
-    font-size: 20px!important;
-    line-height: 1.4em!important;
-  margin: 0 0 10px 0;
-    color: #fba447!important;
+    font-size: 20px !important;
+    line-height: 1.4em !important;
+    margin: 0 0 10px 0;
+    color: #e57700 !important;
     font-weight: 700;
     min-height: 56px;
 }
