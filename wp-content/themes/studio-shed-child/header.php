@@ -515,7 +515,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					
 				  				<?php wp_nav_menu(array('theme_location' => 'flyout-menu', 'container' => '', 'menu_class' => '')); ?>
 
-				</ul>
+				</div>
 			  </div>
 			  
 			 </li>
