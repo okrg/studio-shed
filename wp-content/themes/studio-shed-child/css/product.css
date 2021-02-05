@@ -141,7 +141,7 @@ margin: 10px auto;
 
 }
 	.series-info-box .col1 {
-    width: 65%;
+    width: 60%;
 }
 .series-info-box .col2 {
     width: 32%;
@@ -453,25 +453,8 @@ a.but {
 	width: 100%;
 	z-index: 1;
 }
-.buidbt {
-	border: solid #ffffff 2px;
-    letter-spacing: 1px;
-    color: #fff;
-    background-color: #ffa544;
-    font-size: 16px;
-    padding: 15px 43px;
-    min-width: 220px;
-    text-transform: uppercase;
-    box-shadow: 0 0 12px 0 #999;
-    margin: 10px 0 0 0;
-}
-	a.buidbt:hover{
-	border: solid #ffa544 2px;
-    color: #ffa544!important;
-    background-color: #ffffff;
-	}
 
-	/* quick ship models */
+/* quick ship models */
 #childs-list {
     padding-top: 30px!important;
 	padding-bottom: 80px !important;
@@ -636,7 +619,7 @@ a.but {
 .tab-left b, .tab-left strong, .tab-right b, .tab-right strong, 
 	#feature-1 .product-center b, #feature-1 .product-center strong{
     font-weight: 700;
-    color: #E25D00;
+    color: #c75200;
 }
 #feature-5 .tab-left, #feature-5 .tab-right {
     width: 48%;
@@ -668,9 +651,9 @@ a.but {
 	#create-shed h3,
 	#feature-0 h3,
 	#newsTabs h3{
-		margin-bottom: 50px;
-		font-size: 24px;
-		   color: #E25D00;
+	margin-bottom: 50px;
+	font-size: 24px;
+    color: #c75200;
     font-family: 'Futura-PT-Book';
     text-align: center;
 }

@@ -2,6 +2,7 @@ jQuery(document).ready(function() {
 
 
   //accessibility tweaks
+  jQuery('#input_18_1_3,#input_18_1_6,#input_18_2,#gform_submit_button_18').removeAttr('tabindex');
   jQuery('#input_18_2').attr('aria-label', 'Enter your email address');
   jQuery('iframe.vce-vim-video-player-iframe').attr('title', 'Vimeo video player frame');
   jQuery('.vce-post-slider-block-item-link').attr('aria-label', 'Slider link to blog post');

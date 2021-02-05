@@ -19,7 +19,7 @@
     letter-spacing: 1px;
     /* text-shadow: 0px 0px 1px #000000; */
     color: #fff;
-    background-color: #ffa544!important;
+    background-color: #5d5e5d!important;
     font-size: 16px;
     padding: 15px 43px;
     min-width: 220px;
@@ -28,9 +28,7 @@
 	margin: 10px 0 0 0;
 }	
 .footerss-choose button:hover, .footerss-choose .vce-button--style-basic:hover {
-	color: #fba445!important;
-	background-color: #fff!important;
-	border: 2px solid #fba445;
+	opacity: 0.9;
 }
 .footerss-choose a.vce-button--style-basic {
 		margin: 10px 20px;

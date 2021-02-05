@@ -25,8 +25,8 @@ Version:        1.0
 @font-face{font-family:"Futura-PT-Heavy-Oblique";src:url("fonts/Futura-PT-Heavy-Oblique.eot"), url("fonts/Futura-PT-Heavy-Oblique.woff") format("woff"), url("fonts/Futura-PT-Heavy-Oblique.ttf") format("truetype");}
 body{color:#5D5E5D; font-family: "Tisa-Sans-Pro"; font-size:19px; font-weight: 350; line-height: 1.4 em;}
 a,a:hover,a:focus,a:active,a.active{outline:0;}
-a{color:#E25D00; text-decoration:none;}
-a:hover{text-decoration: none; color: #B4B4B4 !important;}
+a{color:#c75200; text-decoration:none;}
+a:hover{text-decoration: none;opacity: 0.9;}
 /*img wp*/
 .alignnone{margin:5px 20px 20px 0;}.aligncenter,div.aligncenter{display:block;margin:5px auto 5px auto;}.alignright{float:right;margin:5px 0 20px 20px;}.alignleft{float:left;margin:5px 20px 20px 0;}.aligncenter{display:block;margin:5px auto 5px auto;}a img.alignright{float:right;margin:5px 0 20px 20px;}a img.alignnone{margin:5px 20px 20px 0;}a img.alignleft{float:left;margin:5px 20px 20px 0;}a img.aligncenter{display:block;margin-left:auto;margin-right:auto}.wp-caption{background:#fff;border:1px solid #f0f0f0;max-width:96%;padding:5px 3px 10px;text-align:center;}.wp-caption.alignnone{margin:5px 20px 20px 0;}.wp-caption.alignleft{margin:5px 20px 20px 0;}.wp-caption.alignright{margin:5px 0 20px 20px;}.wp-caption img{border:0 none;height:auto;margin:0;max-width:98.5%;padding:0;width:auto;}.wp-caption p.wp-caption-text{font-size:11px;line-height:17px;margin:0;padding:0 4px 5px;}
 /********/
@@ -82,7 +82,7 @@ a:hover{text-decoration: none; color: #B4B4B4 !important;}
 #featured .feature .content-ft{position:absolute;top:0px;left:0;padding:20px 30px;right:3px;background:url(images/bg-tt.png) repeat-x top left;}
 #featured .feature:nth-child(2n) .content-ft{left:3px;right:0;}
 .content-ft .title{font-family:"Futura-PT-Book";font-size:30px;color:#fff;text-transform:uppercase;}
-.gform_button.button, .seemore{display:inline-block;font-family:"Futura-PT-Book";font-size:14px !important;color:#fff;padding:5px 15px;border-radius:3px;border:1px solid #fff;background-color:#FFA347;text-transform:uppercase;}
+.gform_button.button, .seemore{display:inline-block;font-family:"Futura-PT-Book";font-size:14px !important;color:#fff;padding:5px 15px;border-radius:3px;border:1px solid #fff;background-color:#5d5e5d;text-transform:uppercase;}
 .seemore:hover{color:#fff;text-decoration:none;}
 /*------client-logo------*/
 #client-logo{padding-top:20px;padding-bottom:20px;}
@@ -3205,7 +3205,7 @@ input[type=range]::-ms-fill-upper {
     list-style-type: none;
     text-align: center;
     margin: 0;
-    background: #ffa347;
+    background: #5d5e5d;
     border-bottom: 1px solid #fff;
     padding: 5px 0;
 }
@@ -3222,7 +3222,7 @@ input[type=range]::-ms-fill-upper {
 }
 .sidebar-wrapped .blog-sidebar {
     padding: 15px;
-    background: #ffa347;
+    background: #5d5e5d;
     margin-bottom: 20px;
 }
 .sidebar-wrapped .blog-sidebar h3{
@@ -3307,7 +3307,7 @@ input[type=range]::-ms-fill-upper {
     font-size: 16px;
 }
 .introstories .titleintro{
-    color: #E25D00;
+    color: #c75200;
 }
 #create-button.hide-mobile a{
     font-size: 25px;
@@ -3502,8 +3502,8 @@ Added 1/3/2018 by Cassandra Gelvin
 {
 	height: 45px;
 	width: 100%;
-	background: #ffa347;
-	color: #e7e7e7;
+	background: #5d5e5d;
+	color: #fff;
 	font-family: 'Futura-PT-Book', Arial, Helvetica, sans-serif;
 	font-size: 28px;
 	letter-spacing: 0.08em;

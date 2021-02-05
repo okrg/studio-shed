@@ -134,12 +134,18 @@ while (have_posts()) : the_post();
             <div class="col-md-4 sidebar">
                 <div class="sidebar-wrapped">
                     <ul>
-                        <li><a target="_blank" href="https://twitter.com/studioshed"><i class="fa fa-twitter" aria-hidden="true"></a></i></li>
-                        <li class="houzz"><a target="_blank" href="http://www.houzz.com/studio-shed"><i class="fa fa-houzz" aria-hidden="true"></i></a></li>
-                        <li><a target="_blank" href="https://www.facebook.com/StudioShed"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a target="_blank" href="https://plus.google.com/+Studio-shed/posts"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                        <li><a target="_blank" href="mailto:answers@studio-shed.com"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
-                        <li><a target="_blank" href="/sitemap.xml"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                        <li>
+                            <a target="_blank" href="https://twitter.com/studioshed"><i class="fa fa-twitter" aria-hidden="true" title="Studio Shed Twitter account"></a></i>
+                        </li>
+                        <li class="houzz">
+                            <a target="_blank" href="http://www.houzz.com/studio-shed"><i class="fa fa-houzz" aria-hidden="true" title="Studio Shed Houzz account"></i></a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://www.facebook.com/StudioShed"><i class="fa fa-facebook" aria-hidden="true" title="Studio Shed Facebook account"></i></a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="mailto:answers@studio-shed.com" title="Email us at answers@studioshed.com"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+                        </li>
                     </ul>
                     <?php
                     $shed_title = get_field('shed_title');
@@ -186,6 +192,9 @@ while (have_posts()) : the_post();
 <script type="text/javascript" src="<?php echo bloginfo('template_directory'); ?>/js/jquery.flexslider-min.js"></script>
 <script type="text/javascript">
     jQuery(window).load(function () {
+
+        jQuery('form.es_subscription_form > div > label > input').attr('aria-label', 'Enter your email');
+        jQuery('form.es_subscription_form > label > input').attr('aria-label', 'Do not enter your email here.');
         // The slider being synced must be initialized first
         jQuery('#carousel').flexslider({
             animation: "slide",

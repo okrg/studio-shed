@@ -194,9 +194,20 @@ background: #ffffff;
     text-transform: uppercase;
 	margin-right: 20px;
 }
-	.footer-subscribe input[type=submit]:hover {
-		background: #fff;
-	}
+.footer-subscribe input[type=submit]:hover {
+	background: #fff;
+}
+
+.gform_wrapper .gform_footer input.button, .gform_wrapper .gform_footer input[type=submit] {
+  background: #525252 !important;  
+  border-color: #525252 !important;
+  color: #fff !important;
+}
+.gform_wrapper .gform_footer input.button:hover, .gform_wrapper .gform_footer input[type=submit]:hover {
+  color: #fff !important;
+  border-color: #525252 !important;
+  opacity: 0.9;
+}
 .gform_wrapper .gform_footer input.button, .gform_wrapper .gform_footer input[type=submit], .gform_wrapper .gform_page_footer input.button, .gform_wrapper .gform_page_footer input[type=submit] {
     width: initial!important;
 	}
@@ -407,8 +418,16 @@ border-color: #ffa544;
     float: left;
     margin: 20px 0 0 0;
 }
+#content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
+  color: #c75200;
+}
 
-
+.lp-container .orange-cta {
+  background: #5d5e5d;
+}
+.lp-container .orange-cta:hover {
+  background: #333;
+}
 .hide-me{
   display: none;
 }
@@ -423,8 +442,8 @@ body {
 
 }
 a.vce-button--style-basic {
-    background: #ffa544!important;
-    border: 2px solid #ffa544!important;
+    background: #5d5e5d!important;
+    border: 2px solid #5d5e5d!important;
     color: #fff;
     text-transform: uppercase;
     font-size: 16px;
@@ -433,10 +452,10 @@ a.vce-button--style-basic {
   font-family: "Futura-PT-Book";
 }
 a.vce-button--style-basic.vce-button--style-basic--border-square:hover {
-    background: #fff!important;
-    border: 2px solid #ffa544;
-    color: #ffa544!important;
-  font-family: "Futura-PT-Book";
+  opacity: 0.9;
+  background: #5d5e5d!important;
+  border: 2px solid #5d5e5d!important;
+  color: #fff!important;
 }
 .page-template-tpl-shedstories-page .myfooter a.vce-button--style-basic{
   display: block;
@@ -489,22 +508,22 @@ a.vce-button--style-basic.vce-button--style-basic--border-square:hover {
     margin-right: 3px;
 }
 .buidbt {
-    border: solid #ffffff 2px;
-    letter-spacing: 1px;
-    color: #fff;
-    background-color: #ffa544!important;
-    font-size: 16px;
-    padding: 15px 43px;
-    min-width: 220px;
-    text-transform: uppercase;
-    box-shadow: 0 0 12px 0 #999;
-    margin: 10px 0 0 0;
+  border: solid #ffffff 2px;
+  letter-spacing: 1px;
+  color: #fff;
+  background-color: #5d5e5d!important;
+  font-size: 16px;
+  padding: 15px 43px;
+  min-width: 220px;
+  text-transform: uppercase;
+  box-shadow:none !important;
+  margin: 10px 0 0 0;
 }
 .buidbt:hover {
-    border: solid #ffa544 2px;
-    color: #ffa544!important;
-    background-color: #fff!important;
-
+  opacity: 0.9;
+  background-color: #5d5e5d!important;
+  color: #fff !important;
+  border-color: #fff !important;
 }
 .title-text-desktop {
     display: none;
@@ -727,7 +746,7 @@ p {
 }
 
 #design-landing h4 {
-    color: #e35d00;
+    color: #c75200;
     text-transform: uppercase;
     font-weight: 300;
 }
