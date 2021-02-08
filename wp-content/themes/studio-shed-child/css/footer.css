@@ -28,6 +28,9 @@ p.des2 {
   color: #747474;
 }
 /*BUTTON */
+#loan-offer a.button {
+  background-color: #5d5e5d !important;
+}
 a.but{
 	display: block;
 	overflow: hidden;
