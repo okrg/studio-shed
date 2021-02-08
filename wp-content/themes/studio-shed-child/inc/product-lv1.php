@@ -53,11 +53,6 @@ while (have_posts()) : the_post();
             <div class="col-sm-12 text-center">
                 <h3><?php the_field('title_description'); ?></h3>
                 <p><?php the_field('content_description'); ?></p>
-            
-            
-            <div class="col-sm-12 text-center phone-create">
-                <a href="tel:<?php the_field('phone_create_button'); ?>"><?php the_field('text_phone'); ?></a>
-            </div>
         </div>
     </section>
     <section id="content-model-product" class="" data-spy="scroll" data-target="#model-product-menu">

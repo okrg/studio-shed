@@ -525,6 +525,9 @@ a.vce-button--style-basic.vce-button--style-basic--border-square:hover {
   color: #fff !important;
   border-color: #fff !important;
 }
+.buidbt:focus {
+  color: #fff !important;
+}
 .title-text-desktop {
     display: none;
   }

@@ -607,11 +607,11 @@ a.but {
 #feature-2, #feature-4 {
     /*border-top: #999999 1px solid;
 	border-bottom: #999999 1px solid;*/
-    background: #EBEBEB!important;
+    background: #fff !important;
     padding-top: 50px;
 }
 	#feature-2 .container,#feature-4 .container {
-		background: #EBEBEB!important;
+		background: #fff !important;
 	}
 	#feature-2 img{
     max-WIDTH: 100%;
