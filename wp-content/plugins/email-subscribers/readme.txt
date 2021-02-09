@@ -6,7 +6,7 @@ Tags: email marketing, subscription, autoresponder, post notification, welcome e
 Requires at least: 3.9
 Tested up to: 5.6
 Requires PHP: 5.6
-Stable tag: 4.6.8
+Stable tag: 4.6.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses
 
@@ -303,6 +303,12 @@ Refer [here](https://www.icegram.com/documentation/es-faq/).
 
 
 == Changelog ==
+
+**4.6.9 (05.02.2021)**
+
+* New: Added placeholder keyword support for WooCommerce [PRO]
+* New: Added abandoned cart recovery related triggers [PRO]
+* Update: Improve campaign reports
 
 **4.6.8 (01.02.2021)**
 

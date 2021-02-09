@@ -1405,3 +1405,32 @@ function ig_es_update_468_db_version() {
 	ES_Install::update_db_version( '4.6.8' );
 }
 /* --------------------- ES 4.6.8(End)--------------------------- */
+
+/**
+ * Add meta column in wc_guests table
+ *
+ * @since 4.6.9
+ */
+function ig_es_update_469_alter_wc_guests_table() {
+	global $wpdb;
+	
+	$cols = $wpdb->get_col( "SHOW COLUMNS FROM {$wpdb->prefix}ig_wc_guests" );
+
+	if ( ! in_array( 'meta', $cols, true ) ) {
+		$wpdb->query(
+			"ALTER TABLE {$wpdb->prefix}ig_wc_guests
+			ADD COLUMN `meta` longtext NULL AFTER `last_active`"
+		);
+	}
+}
+
+/**
+ * Update DB version
+ *
+ * @since 4.6.9
+ */
+function ig_es_update_469_db_version() {
+	ES_Install::update_db_version( '4.6.9' );
+}
+
+/* --------------------- ES 4.6.9(End)--------------------------- */

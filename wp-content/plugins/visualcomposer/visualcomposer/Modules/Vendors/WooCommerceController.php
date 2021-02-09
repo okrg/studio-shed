@@ -122,10 +122,12 @@ class WooCommerceController extends Container implements Module
     {
         $sourceId = get_the_ID();
         $optionsHelper = vchelper('Options');
-        if ($sourceId && wc_get_page_id('terms') === $sourceId
+        if (
+            $sourceId && wc_get_page_id('terms') === $sourceId
             && $optionsHelper->get(
                 'headerFooterSettingsPageType-woocommerce-terms'
-            )) {
+            )
+        ) {
             $templatePartId = $optionsHelper->get(
                 'headerFooterSettingsPageType' . ucfirst($templatePart) . '-woocommerce-terms'
             );
@@ -422,7 +424,7 @@ class WooCommerceController extends Container implements Module
         if ($fileData) {
             $fileLinks = [];
             foreach ($fileData as $file) {
-                $fileLinks[] = '<a href="' . esc_url($file['file']) . '" target="_blank">' . esc_html($file['name'])
+                $fileLinks[] = '<a href="' . esc_url($file['file']) . '" target="_blank" rel="noopener noreferrer">' . esc_html($file['name'])
                     . '</a>';
             }
 
@@ -576,6 +578,7 @@ class WooCommerceController extends Container implements Module
 
     /**
      * Deregister WooCommerce GeoLocation Script
+     *
      * @param $response
      *
      * @return mixed

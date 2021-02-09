@@ -1,11 +1,12 @@
 <?php
+
 /**
  * Plugin Name: Visual Composer
- * Plugin URI: https://visualcomposer.com/premium/?utm_source=vcwb&utm_medium=wp-plugins&utm_campaign=vcbrand&utm_content=text
+ * Plugin URI: https://visualcomposer.com/premium/?utm_source=vcwb&utm_medium=wpplugins&utm_campaign=vcbrand&utm_content=text
  * Description: Create your WordPress website with the fast and easy-to-use drag-and-drop builder for experts and beginners.
- * Version: 33.0
+ * Version: 34.0
  * Author: visualcomposer.com
- * Author URI: https://visualcomposer.com/?utm_source=vcwb&utm_medium=wp-plugins&utm_campaign=vcbrand&utm_content=text
+ * Author URI: https://visualcomposer.com/?utm_source=vcwb&utm_medium=wpplugins&utm_campaign=vcbrand&utm_content=text
  * Copyright: (c) 2017 TechMill Ltd.
  * License: GPLv3
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -45,7 +46,7 @@ if (defined('VCV_VERSION')) {
 /**
  * Plugin version constant
  */
-define('VCV_VERSION', '33.0');
+define('VCV_VERSION', '34.0');
 /**
  * Plugin url: 'http://web/wp-content/plugins/plugin_dir/'
  */

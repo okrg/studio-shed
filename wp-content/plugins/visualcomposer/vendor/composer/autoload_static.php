@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita6dec621de24c75e87f2f71925d708a3
+class ComposerStaticInit475ee553222ba79f28f6264f0685f202
 {
     public static $prefixLengthsPsr4 = array (
         'V' => 
@@ -35,6 +35,7 @@ class ComposerStaticInita6dec621de24c75e87f2f71925d708a3
         'VisualComposer\\Framework\\Illuminate\\Support\\Immutable' => __DIR__ . '/../..' . '/visualcomposer/Framework/Illuminate/Support/Immutable.php',
         'VisualComposer\\Framework\\Illuminate\\Support\\Module' => __DIR__ . '/../..' . '/visualcomposer/Framework/Illuminate/Support/Module.php',
         'VisualComposer\\Framework\\Illuminate\\Support\\Traits\\Container' => __DIR__ . '/../..' . '/visualcomposer/Framework/Illuminate/Support/Traits/Container.php',
+        'VisualComposer\\Framework\\Illuminate\\Support\\Traits\\Php8Container' => __DIR__ . '/../..' . '/visualcomposer/Framework/Illuminate/Support/Traits/Php8Container.php',
         'VisualComposer\\Helpers\\Access\\CurrentUser' => __DIR__ . '/../..' . '/visualcomposer/Helpers/Access/CurrentUser.php',
         'VisualComposer\\Helpers\\Access\\EditorPostType' => __DIR__ . '/../..' . '/visualcomposer/Helpers/Access/EditorPostType.php',
         'VisualComposer\\Helpers\\Access\\Role' => __DIR__ . '/../..' . '/visualcomposer/Helpers/Access/Role.php',
@@ -74,6 +75,7 @@ class ComposerStaticInita6dec621de24c75e87f2f71925d708a3
         'VisualComposer\\Helpers\\Nonce' => __DIR__ . '/../..' . '/visualcomposer/Helpers/Nonce.php',
         'VisualComposer\\Helpers\\Notice' => __DIR__ . '/../..' . '/visualcomposer/Helpers/Notice.php',
         'VisualComposer\\Helpers\\Options' => __DIR__ . '/../..' . '/visualcomposer/Helpers/Options.php',
+        'VisualComposer\\Helpers\\Plugin' => __DIR__ . '/../..' . '/visualcomposer/Helpers/Plugin.php',
         'VisualComposer\\Helpers\\Popups' => __DIR__ . '/../..' . '/visualcomposer/Helpers/Popups.php',
         'VisualComposer\\Helpers\\PostData' => __DIR__ . '/../..' . '/visualcomposer/Helpers/PostData.php',
         'VisualComposer\\Helpers\\PostType' => __DIR__ . '/../..' . '/visualcomposer/Helpers/PostType.php',
@@ -195,6 +197,7 @@ class ComposerStaticInita6dec621de24c75e87f2f71925d708a3
         'VisualComposer\\Modules\\Hub\\GroupsCategories\\Groups' => __DIR__ . '/../..' . '/visualcomposer/Modules/Hub/GroupsCategories/Groups.php',
         'VisualComposer\\Modules\\Hub\\GroupsCategories\\GroupsUpdater' => __DIR__ . '/../..' . '/visualcomposer/Modules/Hub/GroupsCategories/GroupsUpdater.php',
         'VisualComposer\\Modules\\Hub\\JsonActionsController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Hub/JsonActionsController.php',
+        'VisualComposer\\Modules\\Hub\\Pages\\PremiumTeasers' => __DIR__ . '/../..' . '/visualcomposer/Modules/Hub/Pages/PremiumTeasers.php',
         'VisualComposer\\Modules\\Hub\\Pages\\UpdateBePage' => __DIR__ . '/../..' . '/visualcomposer/Modules/Hub/Pages/UpdateBePage.php',
         'VisualComposer\\Modules\\Hub\\Pages\\UpdateFePage' => __DIR__ . '/../..' . '/visualcomposer/Modules/Hub/Pages/UpdateFePage.php',
         'VisualComposer\\Modules\\Hub\\StockMedia\\StockMediaDownloadController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Hub/StockMedia/StockMediaDownloadController.php',
@@ -220,6 +223,7 @@ class ComposerStaticInita6dec621de24c75e87f2f71925d708a3
         'VisualComposer\\Modules\\Migrations\\DatabaseMigration' => __DIR__ . '/../..' . '/visualcomposer/Modules/Migrations/DatabaseMigration.php',
         'VisualComposer\\Modules\\Migrations\\DefaultElementsMigration' => __DIR__ . '/../..' . '/visualcomposer/Modules/Migrations/DefaultElementsMigration.php',
         'VisualComposer\\Modules\\Migrations\\FixPredefinedTemplateUpdate' => __DIR__ . '/../..' . '/visualcomposer/Modules/Migrations/FixPredefinedTemplateUpdate.php',
+        'VisualComposer\\Modules\\Migrations\\FreeMigration' => __DIR__ . '/../..' . '/visualcomposer/Modules/Migrations/FreeMigration.php',
         'VisualComposer\\Modules\\Migrations\\GlobalJavascriptMigration' => __DIR__ . '/../..' . '/visualcomposer/Modules/Migrations/GlobalJavascriptMigration.php',
         'VisualComposer\\Modules\\Migrations\\LicenseMigration' => __DIR__ . '/../..' . '/visualcomposer/Modules/Migrations/LicenseMigration.php',
         'VisualComposer\\Modules\\Migrations\\MigrationsController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Migrations/MigrationsController.php',
@@ -234,7 +238,6 @@ class ComposerStaticInita6dec621de24c75e87f2f71925d708a3
         'VisualComposer\\Modules\\Settings\\Fields\\PostTypes' => __DIR__ . '/../..' . '/visualcomposer/Modules/Settings/Fields/PostTypes.php',
         'VisualComposer\\Modules\\Settings\\MenuController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Settings/MenuController.php',
         'VisualComposer\\Modules\\Settings\\NoticeController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Settings/NoticeController.php',
-        'VisualComposer\\Modules\\Settings\\Pages\\About' => __DIR__ . '/../..' . '/visualcomposer/Modules/Settings/Pages/About.php',
         'VisualComposer\\Modules\\Settings\\Pages\\CssJsSettings' => __DIR__ . '/../..' . '/visualcomposer/Modules/Settings/Pages/CssJsSettings.php',
         'VisualComposer\\Modules\\Settings\\Pages\\Hub' => __DIR__ . '/../..' . '/visualcomposer/Modules/Settings/Pages/Hub.php',
         'VisualComposer\\Modules\\Settings\\Pages\\Settings' => __DIR__ . '/../..' . '/visualcomposer/Modules/Settings/Pages/Settings.php',
@@ -263,6 +266,7 @@ class ComposerStaticInita6dec621de24c75e87f2f71925d708a3
         'VisualComposer\\Modules\\Vendors\\RevSliderController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/RevSliderController.php',
         'VisualComposer\\Modules\\Vendors\\ThemeTwentySeventeenController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/ThemeTwentySeventeenController.php',
         'VisualComposer\\Modules\\Vendors\\WooCommerceController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/WooCommerceController.php',
+        'VisualComposer\\Modules\\Vendors\\WooCommerceSquareController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/WooCommerceSquareController.php',
         'VisualComposer\\Modules\\Vendors\\WordpressController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/WordpressController.php',
         'VisualComposer\\Modules\\Vendors\\WpbakeryController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/WpbakeryController.php',
         'VisualComposer\\Modules\\Vendors\\WpmlController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/WpmlController.php',
@@ -272,9 +276,9 @@ class ComposerStaticInita6dec621de24c75e87f2f71925d708a3
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita6dec621de24c75e87f2f71925d708a3::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita6dec621de24c75e87f2f71925d708a3::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInita6dec621de24c75e87f2f71925d708a3::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit475ee553222ba79f28f6264f0685f202::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit475ee553222ba79f28f6264f0685f202::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit475ee553222ba79f28f6264f0685f202::$classMap;
 
         }, null, ClassLoader::class);
     }

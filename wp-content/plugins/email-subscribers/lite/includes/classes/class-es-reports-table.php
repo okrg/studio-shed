@@ -20,6 +20,8 @@ class ES_Reports_Table extends ES_List_Table {
 			)
 		);
 
+		add_action( 'ig_es_view_activity_table_html', array( $this, 'view_activity_report_table' ), 10, 3 );
+		add_action( 'ig_es_view_email_preview', array( $this, 'display_preview_email' ), 10, 3 );
 	}
 
 	public function es_reports_callback() {
@@ -101,6 +103,8 @@ class ES_Reports_Table extends ES_List_Table {
 				<?php
 			}
 		}
+
+		
 	}
 
 	public function screen_option() {
@@ -122,42 +126,59 @@ class ES_Reports_Table extends ES_List_Table {
 		<tr>
 			<th width="8%" class="py-3 pl-4 es_reports_table_header"><?php esc_html_e( 'Sr No', 'email-subscribers' ); ?></th>
 			<th width="24%" class="py-3 pl-4 es_reports_table_header"><?php esc_html_e( 'Email', 'email-subscribers' ); ?></th>
-			<th width="12%" class=" py-3 pl-6 es_reports_table_header"><?php esc_html_e( 'Status', 'email-subscribers' ); ?></th>
+			<th width="12%" class="py-3 pl-6 es_reports_table_header"><?php esc_html_e( 'Status', 'email-subscribers' ); ?></th>
 			<th width="22%" class="py-3 pl-2 es_reports_table_header"><?php esc_html_e( 'Sent Date', 'email-subscribers' ); ?></th>
-			<th width="22%" class=" py-3 pl-6 es_reports_table_header"><?php esc_html_e( 'Viewed Date', 'email-subscribers' ); ?></th>
+			<th width="22%" class="py-3 pl-6 es_reports_table_header"><?php esc_html_e( 'Viewed Date', 'email-subscribers' ); ?></th>
 		</tr>
 
 		<?php
 	}
 
-	public function view_list( $id ) {
-		$emails             = ES_DB_Sending_Queue::get_emails_by_hash( $id );
-		$email_viewed_count = ES_DB_Sending_Queue::get_viewed_count_by_hash( $id );
-		$total_email_sent   = ES_DB_Sending_Queue::get_total_email_count_by_hash( $id );
+	/**
+	 * Get view activity table data
+	 *
+	 */
+	public function view_list( $hash ) {
 
+		$emails             = ES_DB_Sending_Queue::get_emails_by_hash( $hash );
+		$email_viewed_count = ES_DB_Sending_Queue::get_viewed_count_by_hash( $hash );
+		$total_email_sent   = ES_DB_Sending_Queue::get_total_email_count_by_hash( $hash );
 
 		$insight  = ig_es_get_request_data( 'insight', '' );
 		$_wpnonce = ig_es_get_request_data( '_wpnonce', '' );
 
 		if ( ES()->is_pro() || $insight ) {
-			do_action( 'ig_es_view_report_data', $id, $emails );
+			do_action( 'ig_es_view_report_data', $hash );
 		}
 		?>
 		<div class="wrap">
-			<div class="mt-6 mb-2 max-w-7xl">
+			<?php if ( ! ES()->is_pro() && ! $insight ) { ?>
+				<a href="?page=es_reports&action=view&list=<?php echo esc_attr( $hash ); ?>&_wpnonce=<?php echo esc_attr( $_wpnonce ); ?>&insight=true" class="float-right ig-es-title-button px-2 py-2 mx-2 ig-es-imp-button cursor-pointer"><?php esc_html_e( 'Campaign Analytics', 'email-subscribers' ); ?></a>
+			<?php } ?>
+		</div>
+
+		<?php 
+		 do_action( 'ig_es_view_activity_table_html', $email_viewed_count, $total_email_sent, $emails  ) ;
+	}
+
+	/**
+	 * Display view activity table
+	 *
+	 * @since 4.6.9
+	 *
+	 */
+	public function view_activity_report_table( $email_viewed_count, $total_email_sent, $view_activity_data ) {
+
+		?>
+		<div class="mt-6 mb-2 max-w-7xl">
 				<div class="pt-3">
 					<span class="text-left text-lg font-medium leading-7 tracking-wide text-gray-600"><?php esc_html_e( 'View activity ', 'email-subscribers' ); ?></span>
-
-					<?php if ( ! ES()->is_pro() && ! $insight ) { ?>
-						<a href="?page=es_reports&action=view&list=<?php echo esc_attr( $id ); ?>&_wpnonce=<?php echo esc_attr( $_wpnonce ); ?>&insight=true" class="float-right ig-es-title-button px-2 py-2 mx-2 ig-es-imp-button cursor-pointer"><?php esc_html_e( 'Campaign Analytics', 'email-subscribers' ); ?></a>
-					<?php } ?>
 				</div>
-			</div>
-
-			<div class="mt-2 mb-2 block">
-				<span class="pt-3 pb-4 leading-5 tracking-wide text-gray-600"><?php echo esc_html( 'Viewed ' . $email_viewed_count . '/' . $total_email_sent ); ?>
-				</span>
-			</div>
+		</div>
+		<div class="mt-2 mb-2 block">
+			<span class="pt-3 pb-4 leading-5 tracking-wide text-gray-600"><?php echo esc_html( 'Viewed ' . $email_viewed_count . '/' . $total_email_sent ); ?>
+			</span>
+		</div>
 
 			<div class="mb-2 max-w-7xl flex">
 				<div class="flex w-full bg-white shadow rounded-md break-all">
@@ -168,7 +189,7 @@ class ES_Reports_Table extends ES_List_Table {
 							<?php echo wp_kses_post( $this->prepare_header_footer_row() ); ?>
 							</thead>
 							<tbody>
-							<?php echo wp_kses_post( $this->prepare_body( $emails ) ); ?>
+							<?php echo wp_kses_post( $this->prepare_body( $view_activity_data ) ); ?>
 							</tbody>
 							<tfoot>
 							<?php echo wp_kses_post( $this->prepare_header_footer_row() ); ?>
@@ -177,21 +198,16 @@ class ES_Reports_Table extends ES_List_Table {
 					</form>
 				</div>
 			</div>
-		</div>
-		<?php
-		// $wpdb->update( EMAIL_SUBSCRIBERS_STATS_TABLE, array( 'viewdate' => date( 'Y-m-d H:i:s' ) ), array( 'viewdate' => $id ) );
+
+			<?php
 	}
 
 
-	public function prepare_body( $emails ) {
+	public function prepare_body( $view_activity_data ) {
 
 		$i = 1;
-		foreach ( $emails as $key => $email ) {
-			$class = '';
-			if ( 0 === $i % 2 ) {
-				$class = 'alternate';
-			}
-
+		foreach ( $view_activity_data as $key => $email ) {
+			
 			$email_id  = ! empty( $email['email'] ) ? $email['email'] : ( ! empty( $email['es_deliver_emailmail'] ) ? $email['es_deliver_emailmail'] : '' );
 			$status    = ! empty( $email['status'] ) ? $email['status'] : ( ! empty( $email['es_deliver_sentstatus'] ) ? $email['es_deliver_sentstatus'] : '' );
 			$sent_at   = ! empty( $email['sent_at'] ) ? $email['sent_at'] : ( ! empty( $email['es_deliver_sentdate'] ) ? $email['es_deliver_sentdate'] : '' );
@@ -603,7 +619,7 @@ class ES_Reports_Table extends ES_List_Table {
 				ES_Common::show_message( $message, 'error' );
 			} else {
 				$report_id = ig_es_get_request_data( 'list' );
-				echo wp_kses( $this->preview_email( $report_id ), $allowedtags );
+				$this->preview_email_option( $report_id );
 				die();
 			}
 		}
@@ -623,10 +639,20 @@ class ES_Reports_Table extends ES_List_Table {
 		}
 	}
 
-	public function preview_email( $report_id ) {
-		ob_start();
+	public function preview_email_option( $report_id ) {
+		$preview = array();
+		$preview = ES_DB_Mailing_Queue::get_email_by_id( $report_id );
+		do_action( 'ig_es_view_email_preview', $preview );
+	}
+
+
+	/*
+	* Display the preview of the email content
+	*/
+	public function display_preview_email( $preview ) {
 		$allowedtags = ig_es_allowed_html_tags_in_esc();
 		add_filter( 'safe_style_css', 'ig_es_allowed_css_style' );
+		ob_start();
 		?>
 		<div class="wrap">
 			<h2 style="margin-bottom:1em;">
@@ -638,8 +664,7 @@ class ES_Reports_Table extends ES_List_Table {
 			<div class="tool-box">
 				<div style="padding:15px;background-color:#FFFFFF;">
 					<?php
-					$preview = array();
-					$preview = ES_DB_Mailing_Queue::get_email_by_id( $report_id );
+					
 
 					$es_email_type = get_option( 'ig_es_email_type' );    // Not the ideal way. Email type can differ while previewing sent email.
 
@@ -658,8 +683,7 @@ class ES_Reports_Table extends ES_List_Table {
 		<?php
 		$html = ob_get_clean();
 
-		return $html;
-
+		echo wp_kses( $html, $allowedtags );
 	}
 
 	/**

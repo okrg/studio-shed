@@ -49,7 +49,6 @@ class Localizations extends Container implements Helper
             'publish' => __('Publish', 'visualcomposer'),
             'submitForReview' => __('Submit for Review', 'visualcomposer'),
             'saveDraft' => __('Save Draft', 'visualcomposer'),
-            'activationButtonTitle' => vchelper('License')->activationButtonTitle(),
             'goPremium' => __('Go Premium', 'visualcomposer'),
             'getFreeLicense' => __('Get Free License', 'visualcomposer'),
             'activated' => __('Activated', 'visualcomposer'),
@@ -126,9 +125,7 @@ class Localizations extends Container implements Helper
             'pasteAfter' => __('Paste After', 'visualcomposer'),
             'remove' => __('Remove', 'visualcomposer'),
             'move' => __('Move', 'visualcomposer'),
-            'searchContentElements' => __('Search for content elements', 'visualcomposer'),
-            'searchContentElementsAndTemplates' => __('Search for content elements and templates', 'visualcomposer'),
-            'searchContentTemplates' => __('Search for templates', 'visualcomposer'),
+            'searchWithinCategory' => __('Search within this category', 'visualcomposer'),
             'templateAlreadyExists' => __(
                 'A template with this name already exists. Choose a different template name.',
                 'visualcomposer'
@@ -163,7 +160,7 @@ class Localizations extends Container implements Helper
             ),
             'activationFailed' => __(
                 'An error occurred during the Visual Composer extension download process.
-<ul><li>- Check if your server has a connection to the Internet.</li><li>- Check if your server proxy has proper configuration settings.</li><li>- Check your server firewall settings and access to https://account.visualcomposer.io</li><li>- Check if your server has access to the <a href="https://aws.amazon.com/ru/premiumsupport/knowledge-center/s3-find-ip-address-ranges/" target="_blank" rel="noopener noreferrer">Amazon AWS Region: `us-west-2` IP</a></li></ul>',
+<ul><li>- Check if your server has a connection to the Internet.</li><li>- Check if your server proxy has proper configuration settings.</li><li>- Check your server firewall settings and access to https://my.visualcomposer.com</li><li>- Check if your server has access to the <a href="https://aws.amazon.com/ru/premiumsupport/knowledge-center/s3-find-ip-address-ranges/" target="_blank" rel="noopener noreferrer">Amazon AWS Region: `us-west-2` IP</a></li></ul>',
                 'visualcomposer'
             ),
             'alreadyHaveALicenseText' => __(
@@ -402,12 +399,12 @@ class Localizations extends Container implements Helper
                 'Don\'t close this window while the download is in progress.',
                 'visualcomposer'
             ),
-            'createYourWordpressWebsite' => __('Create Your WordPress Website.', 'visualcomposer'),
-            'anyLayoutFastAndEasy' => __('Any Layout. Fast and Easy.', 'visualcomposer'),
+            'createYourWordpressWebsite' => __('Create Your WordPress Website Today.', 'visualcomposer'),
+            'startEasyBuildFast' => __('Start Easy. Build Fast.', 'visualcomposer'),
             'skipThisPostText' => __('Skip this post', 'visualcomposer'),
-            'getMoreText' => __('Connect to Visual Composer Hub.', 'visualcomposer'),
-            'getMoreTextSubText' => __('Do More.', 'visualcomposer'),
-            'downloadFromHubText' => vchelper('License')->hubActivationText(),
+            'getMoreText' => __('Do More With Visual Composer', 'visualcomposer'),
+            'getMoreTextSubText' => __('Premium', 'visualcomposer'),
+            'downloadFromHubText' => __('Get unlimited access to the Visual Composer Hub with 500+ elements, templates, addons, and integrations.', 'visualcomposer'),
             'getStartedText' => __('Get Started', 'visualcomposer'),
             'sendingErrorReport' => __('Sending Error Report', 'visualcomposer'),
             'doNotCloseWhileSendingErrorReportText' => __(
@@ -545,7 +542,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'freeLicense' => __(
-                'Free License',
+                'Free License (Your plan)',
                 'visualcomposer'
             ),
             'themeBuilderWithHFS' => __(
@@ -774,7 +771,23 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'buildYourSiteWithDragAndDrop' => __(
-                'Build your site with the help of the drag and drop builder straight from the frontend editor - it\'s that easy.',
+                'Build your site with the help of the drag and drop builder and without coding - it\'s that easy.',
+                'visualcomposer'
+            ),
+            'alreadyHaveLicenseText' => __(
+                'Already have a Premium license? %1s or %2s.',
+                'visualcomposer'
+            ),
+            'alreadyHaveLicenseTextOneAction' => __(
+                'Already have a Premium license?',
+                'visualcomposer'
+            ),
+            'activateHere' => __(
+                'Activate here',
+                'visualcomposer'
+            ),
+            'goPremiumLcFirst' => __(
+                'go Premium',
                 'visualcomposer'
             ),
             'bundledInAThemeText' => __(
@@ -1085,12 +1098,12 @@ class Localizations extends Container implements Helper
                 'Activate Hub',
                 'visualcomposer'
             ),
-            'activateVisualComposerHub' => __(
-                'Activate Visual Composer Hub',
+            'activateYourPremiumLicenseText' => __(
+                'Activate Your Premium License',
                 'visualcomposer'
             ),
             'makeTheFinalStep' => __(
-                'Make the final step! Enter your license key to activate Visual Composer Hub and start creating the website right away.',
+                'Make the final step! Enter your license key to activate Visual Composer Premium and get full access to the Visual Composer Hub.',
                 'visualcomposer'
             ),
             'commentsAreaPlaceholderText' => __(
@@ -1250,7 +1263,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'thisIsYourContentLibrary' => __(
-                'This is your content library. <a href="https://visualcomposer.com/help/content-elements-structure/add-content-element/?utm_source='
+                'This is your content library. <a href="https://visualcomposer.com/help/content-elements-structure/add-content/?utm_source='
                 . $source
                 . '&utm_medium=editor&utm_campaign=info&utm_content=help-guide" target="_blank" rel="noopener noreferrer">Add an element</a> by dragging or clicking on it and find templates you have created or downloaded from the <a href="https://visualcomposer.com/help/visual-composer-hub/?utm_source='
                 . $source
@@ -1265,7 +1278,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'useQuickActions' => __(
-                'Use <a href="https://visualcomposer.com/help/content-elements-structure/add-content-element/?utm_source='
+                'Use <a href="https://visualcomposer.com/help/content-elements-structure/add-content/?utm_source='
                 . $source
                 . '&utm_medium=editor&utm_campaign=info&utm_content=help-guide" target="_blank" rel="noopener noreferrer">quick actions</a> at the bottom of the page to add the most popular row/column layouts and elements.',
                 'visualcomposer'
@@ -1555,7 +1568,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'dynamicContentIsAPremiumFeature' => __(
-                'Dynamic content is a premium feature',
+                'Dynamic Content is a Premium Feature',
                 'visualcomposer'
             ),
             'replaceStaticContentWithPremium' => __(
@@ -1570,14 +1583,64 @@ class Localizations extends Container implements Helper
                 'Dynamic View',
                 'visualcomposer'
             ),
-            'thisIsAFreeFeature' => __(
-                'This is a free feature',
+            'elementLockPremiumFeatureHeading' => __(
+                'Element Lock is a Premium feature',
                 'visualcomposer'
             ),
-            'getFreeLicenseToActivateVCHub' => __(
-                'Get a free license to activate the Visual Composer Hub and get access to more free elements and templates.',
+            'elementLockPremiumFeatureText' => __(
+                'With Visual Composer Premium, you can lock or unlock elements to manage who will be able to edit them.',
                 'visualcomposer'
             ),
+            'elementLockFeatureActivateAddonText' => __(
+                'Lock or unlock all elements on your page. Your user roles with Administrator access will be able to edit elements. <br>' .
+                'You can lock/unlock specific elements under the element Edit window. <br>' .
+                'To get access to this feature, download the Role Manager addon from the Visual Composer Hub.',
+                'visualcomposer'
+            ),
+            'popupBuilderPremiumFeatureHeading' => __(
+                'Popup Builder is a Premium Feature',
+                'visualcomposer'
+            ),
+            'popupBuilderPremiumFeatureText' => __(
+                'Build custom popups with the Visual Composer Popup Builder that is available with the premium version of the plugin.',
+                'visualcomposer'
+            ),
+            'popupBuilderFeatureActivateAddonText' => __(
+                'Build custom popups with the Visual Composer Popup Builder. It\'s available in the Visual Composer Hub.',
+                'visualcomposer'
+            ),
+            'downloadPopupBuilder' => __(
+                'Download Popup Builder',
+                'visualcomposer'
+            ),
+            'elementSettingsPremiumFeatureHeading' => __(
+                'Element Settings is a Premium Feature',
+                'visualcomposer'
+            ),
+            'elementSettingsPremiumFeatureText' => __(
+                'With Visual Composer Premium, you can change the default parameters to create a unique element and save it to your Content Library.',
+                'visualcomposer'
+            ),
+            'elementPresetsActivateAddonText' => __(
+                'With the Element Presets addon, you can change the default parameters to create a unique element and save it to your Content Library.',
+                'visualcomposer'
+            ),
+            'agreeHubAccessTerms' => __(
+                'To download content from the Visual Composer Hub, read and accept our <a href="https://visualcomposer.com/terms-of-use/" target="_blank" rel="noopener noreferrer">cloud access terms</a> and <a href="https://visualcomposer.com/privacy-policy/" target="_blank" rel="noopener noreferrer">privacy policy</a>.',
+                'visualcomposer'
+            ),
+            'yesIAgree' => __(
+                'Yes, I agree',
+                'visualcomposer'
+            ),
+            'hidingPlayerControls' => __(
+                'Hiding player controls available only for Vimeo PRO users.',
+                'visualcomposer'
+            ),
+            'vimeoVideoLink' => __(
+                'Vimeo video link',
+                'visualcomposer'
+            )
         ];
 
         return vcfilter('vcv:helpers:localizations:i18n', $locale);

@@ -170,7 +170,12 @@ class Email_Subscribers_Admin {
 
 		if ( ES()->is_es_admin_screen( $page_prefix . '_page_es_workflows' ) ) {
 
+			if ( ! wp_script_is( 'clipboard', 'registered' ) ) {
+				wp_enqueue_script( 'clipboard', plugin_dir_url( __FILE__ ) . 'js/clipboard.js', array( 'jquery' ), '2.0.6', false );
+			}
+
 			wp_enqueue_script( $this->email_subscribers . '-workflows', plugin_dir_url( __FILE__ ) . 'js/ig-es-workflows.js', array( 'jquery', 'jquery-ui-datepicker' ), $this->version, false );
+			wp_enqueue_script( $this->email_subscribers . '-workflows-variables', plugin_dir_url( __FILE__ ) . 'js/ig-es-workflows-variables.js', array( 'jquery', 'clipboard' ), $this->version, false );
 
 			$workflows_data = array(
 				'security'                   => wp_create_nonce( 'ig-es-workflow-nonce' ),
@@ -178,7 +183,10 @@ class Email_Subscribers_Admin {
 				'no_actions_message'         => __( 'Please add some actions before saving the workflow.', 'email-subscribers' ),
 				'no_action_selected_message' => __( 'Please select an action that this workflow should perform before saving the workflow.', 'email-subscribers' ),
 				'trigger_change_message'     => __( 'Changing the trigger will remove existing actions. Do you want to proceed anyway?.', 'email-subscribers' ),
+				'placeholder_copied_message' => __( 'Copied!', 'email-subscribers' ),
 			);
+
+			$workflows_data = array_merge( $workflows_data, ES_Workflow_Admin_Edit::get_workflow_data() );
 
 			wp_localize_script( $this->email_subscribers . '-workflows', 'ig_es_workflows_data', $workflows_data );
 

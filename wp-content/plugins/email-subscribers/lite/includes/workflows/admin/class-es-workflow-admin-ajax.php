@@ -25,12 +25,15 @@ class ES_Workflow_Admin_Ajax {
 	 * Hook in methods
 	 *
 	 * @since 4.4.1
+	 * 
+	 * @since 4.6.9 Added modal_variable_info ajax event.
 	 */
 	public static function init() {
 		$ajax_events = array(
 			'fill_trigger_fields',
 			'fill_action_fields',
 			'toggle_workflow_status',
+			'modal_variable_info',
 		);
 
 		foreach ( $ajax_events as $ajax_event ) {
@@ -142,4 +145,19 @@ class ES_Workflow_Admin_Ajax {
 		}
 	}
 
+	public static function modal_variable_info() {
+		
+		check_ajax_referer( 'ig-es-workflow-nonce', 'security' );
+		
+		$variable = IG_ES_Variables::get_variable( ES_Clean::string( ig_es_get_request_data( 'variable' ) ) );
+
+		if ( $variable ) {
+			ES_Workflow_Admin::get_view( 'modal-variable-info', array(
+				'variable' => $variable
+			));
+			die;
+		}
+
+		wp_die( esc_html__( 'Variable not found.', 'email-subscribers' ) );
+	}
 }

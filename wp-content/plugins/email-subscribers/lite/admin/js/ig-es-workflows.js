@@ -10,6 +10,7 @@
 			init: function() {
 				IG_ES_Workflows.init_triggers_box();
 				IG_ES_Workflows.init_actions_box();
+				IG_ES_Workflows.init_variables_box();
 				IG_ES_Workflows.init_show_hide();
 				IG_ES_Workflows.init_date_pickers();
 				IG_ES_Workflows.init_workflow_status_switch();
@@ -173,6 +174,9 @@
 							if ( ! response.success ) {
 								return;
 							}
+
+							ig_es_workflows_data.trigger = response.data.trigger;
+							IG_ES_Workflows.refine_variables();
 
 							IG_ES_Workflows.$triggers_box.find('tbody').append( response.data.fields );
 							IG_ES_Workflows.$triggers_box.removeClass('ig-es-loading');
@@ -340,7 +344,39 @@
 						$('.ig-es-action:not([data-action-number=""])').remove();
 					}
 				}
-			}
+			},
+
+			init_variables_box: function() {
+				if ( ! ig_es_workflows_data.is_new ) {
+					IG_ES_Workflows.refine_variables();
+				}
+			},
+
+			/**
+			 * Show or hide text var groups based on the selected trigger
+			 */
+			refine_variables: function() {
+
+				let trigger = ig_es_workflows_data.trigger;
+
+				$('.ig-es-variables-group').each(function( i, el ){
+
+					let group = $(el).data( 'ig-es-variable-group' );
+
+					if ( -1 === $.inArray( group, trigger.supplied_data_items ) ) {
+						$(el).addClass('hidden');
+					} else {
+						$(el).removeClass('hidden');
+					}
+				});
+
+				let shown_group = $('.ig-es-variables-group:not(.hidden)');
+				if ( 0 === shown_group.length ) {
+					$('.js-ig-es-no-variables-message').show();
+				} else {
+					$('.js-ig-es-no-variables-message').hide();
+				}
+			},
 		}
 
 		IG_ES_Workflows.init();

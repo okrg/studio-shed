@@ -1589,6 +1589,16 @@ body[class*="_page_es_workflows"] #post-body .postbox .inside {
 	position: static;
 }
 
+.ig-es-close-variable-info-popup {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+#ig_es_workflow_variables.postbox  {
+    z-index: 999;
+}
+
 /** Workflow CSS END */
 
 .frappe-chart .x.axis .line-vertical,

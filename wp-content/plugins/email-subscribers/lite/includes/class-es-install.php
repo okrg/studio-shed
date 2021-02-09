@@ -248,6 +248,11 @@ if ( ! class_exists( 'ES_Install' ) ) {
 				'ig_es_update_468_create_unsubscribe_feedback_table',
 				'ig_es_update_468_db_version',
 			),
+			'4.6.9' => array(
+				'ig_es_update_469_alter_wc_guests_table',
+				'ig_es_update_469_db_version',
+			),
+
 		);
 
 		/**
@@ -1223,6 +1228,7 @@ if ( ! class_exists( 'ES_Install' ) ) {
 				tracking_key varchar(32) NOT NULL default '',
 				created datetime NULL,
 				last_active datetime NULL,
+				meta longtext NOT NULL,
 				language varchar(10) NOT NULL default '',
 				most_recent_order bigint(20) NOT NULL DEFAULT 0,
 				version bigint(20) NOT NULL default 0,

@@ -771,14 +771,19 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 				'lite/includes/workflows/abstracts/class-es-workflow-trigger.php',
 				'lite/includes/workflows/abstracts/class-es-workflow-action.php',
 				'lite/includes/workflows/abstracts/class-es-workflow-data-type.php',
+				'lite/includes/workflows/abstracts/class-ig-es-workflow-variable.php',
 				
 				// Workflow Utility
 				'lite/includes/workflows/class-es-clean.php',
 				'lite/includes/workflows/class-es-format.php',
 				'lite/includes/workflows/class-es-workflow-time-helper.php',
 				'lite/includes/workflows/class-es-workflow-datetime.php',
+				'lite/includes/workflows/class-ig-es-variables-processor.php',
+				'lite/includes/workflows/class-ig-es-workflow-variable-parser.php',
+				'lite/includes/workflows/class-ig-es-variables.php',
+				'lite/includes/workflows/class-ig-es-replace-helper.php',
 				'lite/includes/workflows/workflow-helper-functions.php',
-				
+
 				// Workflow
 				'lite/includes/workflows/class-es-workflow.php',
 				'lite/includes/workflows/class-es-workflow-factory.php',
@@ -787,6 +792,8 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 				'lite/includes/workflows/data-types/abstracts/class-es-data-type-form-data.php',
 				'lite/includes/workflows/data-types/class-es-data-type-user.php',
 				'lite/includes/workflows/class-es-workflow-data-types.php',
+				
+				'lite/includes/workflows/variables/class-es-workflow-data-types.php',
 				
 				// Data Layer
 				'lite/includes/workflows/class-es-workflow-data-layer.php',
