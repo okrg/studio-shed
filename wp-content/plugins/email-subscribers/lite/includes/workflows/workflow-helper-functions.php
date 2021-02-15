@@ -88,7 +88,8 @@ function ig_es_generate_key( $length = 25, $case_sensitive = true, $more_numbers
 }
 
 /**
- * str_replace but limited to one replacement
+ *  Does str_replace but limited to one replacement
+ *
  * @param string$subject
  * @param string$find
  * @param string $replace

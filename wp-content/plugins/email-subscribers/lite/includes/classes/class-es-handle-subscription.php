@@ -275,7 +275,7 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 						'status'        => $this->status,
 						'subscribed_at' => ( 'subscribed' === $this->status ) ? ig_get_current_date_time() : '',
 						'optin_type'    => $optin_type,
-						'subscribed_ip' => ig_es_get_ip(),
+						'subscribed_ip' => '',
 					);
 
 					ES()->lists_contacts_db->add_contact_to_lists( $list_contact_data, $this->list_ids );

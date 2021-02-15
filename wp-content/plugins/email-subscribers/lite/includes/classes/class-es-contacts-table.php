@@ -873,15 +873,11 @@ class ES_Contacts_Table extends ES_List_Table {
 				return $this->get_lists_to_show( $item['id'] );
 			case 'created_at':
 				return ig_es_format_date_time( $item[ $column_name ] );
-			case 'ip':
-				$subscribed_ip = ! empty ( $item['ip_address'] ) ? $item['ip_address'] : '-';
 
-				return $subscribed_ip;
 			case 'first_name':
 			case 'email':
 			default:
 				$column_data = isset( $item[ $column_name ] ) ? $item[ $column_name ] : '-';
-
 				return apply_filters( 'ig_es_contact_column_data', $column_data, $column_name, $item, $this );
 		}
 	}
@@ -1025,17 +1021,13 @@ class ES_Contacts_Table extends ES_List_Table {
 	 */
 	public function get_columns() {
 		$columns      = array(
-			'cb'    => '<input type="checkbox"/>',
-			'name'  => __( 'Name', 'email-subscribers' ),
-			'email' => __( 'Email', 'email-subscribers' ),
-			'lists' => __( 'List(s)', 'email-subscribers' ),
+			'cb'   		 => '<input type="checkbox"/>',
+			'name'  	 => __( 'Name', 'email-subscribers' ),
+			'email' 	 => __( 'Email', 'email-subscribers' ),
+			'lists' 	 => __( 'List(s)', 'email-subscribers' ),
+			'created_at' => __( 'Created', 'email-subscribers' )
 		);
-		$can_track_ip = apply_filters( 'ig_es_can_track_subscriber_ip', 'yes' );
-		if ( 'yes' === $can_track_ip ) {
-			$columns['ip'] = __( 'IP', 'email-subscribers' );
-		}
-		$columns['created_at'] = __( 'Created', 'email-subscribers' );
-
+		
 		return $columns;
 	}
 

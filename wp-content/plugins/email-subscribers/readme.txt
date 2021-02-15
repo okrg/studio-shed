@@ -4,9 +4,9 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Author URI: https://www.icegram.com/
 Tags: email marketing, subscription, autoresponder, post notification, welcome email
 Requires at least: 3.9
-Tested up to: 5.6
+Tested up to: 5.6.1
 Requires PHP: 5.6
-Stable tag: 4.6.9
+Stable tag: 4.6.10
 License: GPLv3
 License URI: http://www.gnu.org/licenses
 
@@ -303,6 +303,12 @@ Refer [here](https://www.icegram.com/documentation/es-faq/).
 
 
 == Changelog ==
+
+**4.6.10 (15.02.2021)**
+
+* New: Added additional stats on campaigns reports dashboard
+* Update: Disable IP tracking in lite version by default to make GDPR compliant
+* Fix: Database vulnerability
 
 **4.6.9 (05.02.2021)**
 

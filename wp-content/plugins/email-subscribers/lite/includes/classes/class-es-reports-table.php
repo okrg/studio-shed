@@ -301,7 +301,7 @@ class ES_Reports_Table extends ES_List_Table {
 	 */
 	public function column_default( $item, $column_name ) {
 		global $wpdb;
-
+		$item = apply_filters( 'es_add_additional_report_column_data', $item, $column_name );
 		switch ( $column_name ) {
 			case 'start_at':
 			case 'finish_at':
@@ -324,7 +324,9 @@ class ES_Reports_Table extends ES_List_Table {
 			case 'count':
 				return $item[ $column_name ];
 			default:
-				return print_r( $item, true ); // Show the whole array for troubleshooting purposes
+				$column_data = isset( $item[ $column_name ] ) ? $item[ $column_name ] : '-';
+
+				return $column_data;
 		}
 	}
 

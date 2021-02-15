@@ -324,7 +324,7 @@ class Email_Subscribers_Public {
 			'status'        => 'subscribed',
 			'subscribed_at' => ig_get_current_date_time(),
 			'optin_type'    => $optin_type,
-			'subscribed_ip' => ig_es_get_ip(),
+			'subscribed_ip' => '',
 		);
 
 		ES()->lists_contacts_db->remove_contacts_from_lists( $contact_id, $list_id );

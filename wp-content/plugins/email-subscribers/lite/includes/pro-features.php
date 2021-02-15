@@ -280,6 +280,24 @@ function ig_es_add_upsale( $fields ) {
 
 	}
 
+	if ( ES()->can_upsell_features(  array( 'lite', 'starter', 'trial' ) ) ) { 
+		$track_ip_address['ig_es_track_ip_address'] = array(
+				'id'         => 'ig_es_track_ip_address_p',
+				'name'       => __( 'Track IP address', 'email-subscribers' ),
+				'info'       => __( 'Store IP address on subscription', 'email-subscribers' ),
+				'type'       => 'checkbox',
+				'default'    => 'no',
+				'is_premium' => true,
+				'link'       => ES_Common::get_utm_tracking_url( array( 'utm_medium' => 'ip_tracking' ) ),
+				'disabled'   => true,
+				/* translators: %s: Icegram Pricing page url with utm tracking */
+				'upgrade_title' => __( 'Track subscribers IP addresses with PRO', 'email-subscribers' ),
+				'upgrade_desc'  => __( 'Enable IP tracking and get more information about your subscribers <b>eg.</b> which country your subscribers are from.', 'email-subscribers' ),
+			);
+
+		$fields['security_settings'] = array_merge( $fields['security_settings'], $track_ip_address );
+	}
+
 	return $fields;
 }
 

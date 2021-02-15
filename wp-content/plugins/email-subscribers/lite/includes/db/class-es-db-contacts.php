@@ -937,15 +937,14 @@ class ES_DB_Contacts extends ES_DB {
 	 */
 	public function insert( $data, $type = '' ) {
 		$source = array( 'admin','import' );
-		$can_track_ip = apply_filters('ig_es_can_track_subscriber_ip', 'yes' ); 
 
-		if ( 'no' === $can_track_ip && ES()->is_pro() ) {
+		if ( ! ES()->is_pro() ) {
 			$data['ip_address']   = '';
 			$data['country_code'] = '';
 		} else {
 			if ( empty( $data['ip_address'] ) && ! in_array( $data['source'], $source ) ) {
-				$data['ip_address'] = ig_es_get_ip();
-				$data = apply_filters( 'ig_es_get_country_based_on_ip', $data );	
+					$data = apply_filters( 'ig_es_get_subscriber_ip', $data, 'ip_address' ); 
+					$data = apply_filters( 'ig_es_get_country_based_on_ip', $data );	
 			}
 		}
 		return parent::insert( $data, $type );
