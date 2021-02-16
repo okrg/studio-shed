@@ -200,7 +200,7 @@ li.logo a {
 	box-shadow: none;
 }
 .dropdown-menu.main-menu-dropdown.main-drop-models .menu-child.menu-list .box .time {
-    color: #fba347!important;
+    color: #333 !important;
 }
 
 .main-drop-models .featured {
@@ -265,11 +265,11 @@ li.parent-type:last-of-type ul li{
 
 .main-menu-dropdown ul .featured-shed-btns a {
     display: inline-block!important;
-	background-color: #ffa544!important;
+	background-color: #5d5e5d!important;
 	margin: 10px 2%!important;
 	color: #fff!important;
 	border-radius: 0;
-	border: solid #ffa544 2px;
+	border: solid #fff 2px;
 	padding: 10px 5px;
 	min-width: 180px;
 	text-transform: uppercase!important;
@@ -278,7 +278,7 @@ li.parent-type:last-of-type ul li{
 .main-menu-dropdown ul .featured-shed-btns a:hover{
 
     background-color: #fff!important;
-	color: #ffa544!important;
+	color: #5d5e5d!important;
 	}
 	
 .main-menu-dropdown ul a {
@@ -638,13 +638,13 @@ body.woocommerce-checkout #order_review {
   margin-bottom: 5rem;
 }
 body.woocommerce-checkout .woocommerce-info {
-  border-top-color: #ffa544;
+  border-top-color: #5d5e5d;
 }
 body.woocommerce-checkout  .woocommerce-info::before {
-  color: #ffa544;
+  color: #5d5e5d;
 }
 body.woocommerce-checkout #place_order {
-  background: #ffa544;
+  background: #5d5e5d;
   text-transform: uppercase;
 }
 body.woocommerce-checkout .woocommerce form .form-row {
