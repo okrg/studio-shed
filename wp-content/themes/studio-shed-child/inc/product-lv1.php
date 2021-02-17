@@ -24,24 +24,22 @@ while (have_posts()) : the_post();
     ?>
 
 
-<section id="content-slider" class="">
-        <div class="row">
-            
-                <div class="col-md-12">
-					<?php
-                        if (get_field("layer_slider_code"))
-                            echo get_field("layer_slider_code");
-                        ?>
-
-                </div>
-        </div>
-    </section>
-   <section id="content-header" class="container title-text-desktop ">
+  <section id="content-slider" class="">
+    <div class="row">
+      <div class="col-md-12">
+			<?php
+        if (get_field("layer_slider_code"))
+          echo get_field("layer_slider_code");
+      ?>
+      </div>
+    </div>
+  </section>
+  <section id="content-header" class="container title-text-desktop ">
         <div class="row">
             
                 <div class="col-md-12 intro no-slide">
                     <h1 class="titleintro text-uppercase"><?php the_title(); ?></h1>
-                    <p><?php the_excerpt(); ?></p>
+                    <h2><?php echo get_the_excerpt(); ?></h2>
 					
                 </div>
 			<div class="btn-row"><a class="buidbt" href="<?php the_field('link_create'); ?>">BUILD &amp; Price</a></div>
