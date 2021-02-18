@@ -7,7 +7,7 @@
 
 		<div class="row">
 			<div class="col-sm-12 col-md-6">
-				<h3>Subscribe and get free studio shed resources delivered to you.</h3>
+				<div class="subscribe-headline">Subscribe and get free studio shed resources delivered to you.</div>
 					<ul>
 					<li class="check-li">Get the latest shed stories, photos, and news from our community.</li>
 					<li class="check-li">Find local events and opportunities to see our products in person.</li>

@@ -642,6 +642,9 @@ a.but {
 #feature-5 .tab-left a, #feature-5 .tab-right a{
     text-decoration: underline;
 }
+    .product-headline {
+        margin-top: 20px;
+    }
 	.product-headline,
     #feature-1 h3,
 	#feature-2 h3,

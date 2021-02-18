@@ -138,7 +138,7 @@ footer .container .row {
 	background: #EBEBEB!important;
 	padding: 40px 0;
 }
-.footer-subscribe h3 {
+.footer-subscribe div.subscribe-headline {
 	color: #525252;
 	margin-bottom: 15px;
 	text-transform: uppercase;
