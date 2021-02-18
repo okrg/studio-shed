@@ -94,7 +94,8 @@ while (have_posts()) : the_post();
 					<div class="product-header-img"><img src="/wp-content/uploads/2020/05/Summit-options.png" title="Studio Shed Summit Series"/> 
 								</div>
 			<?php $ideas = get_field("flrpln_idea_sct", $page_id) ?>
-<h3 class=" text-uppercase">SUMMIT SERIES INTERIOR FEATURES</h3>			<ul class="flrpln-btn">
+  <div class="product-headline text-uppercase">SUMMIT SERIES INTERIOR FEATURES</div>
+  <ul class="flrpln-btn">
 				<?php $count = 1; ?>
 				<?php foreach ($ideas as $idea) { ?>
 					<li><p class="detail">
@@ -151,8 +152,8 @@ while (have_posts()) : the_post();
 
 				<div id="feature-top">
 					<div class="container">
-            <h3 class=" text-uppercase">
-							Our most popular models.<br />Faster Turnaround, Turnkey Foundations.</h3>
+            <div class="product-headline text-uppercase">
+							Our most popular models.<br />Faster Turnaround, Turnkey Foundations.</div>
 				<p>These models are the best of our <?php the_title(); ?>. Our most popular designs, they're delivered to your door in 3-4 weeks. Choose the perfect size, colors, and options for your perfect home office, studio, or backyard retreat.</p>
 						<p>NOTE: Due to the current high demand, turnaround time is typically 6-8 weeks in most markets.</p>
 					</div>
@@ -244,12 +245,12 @@ while (have_posts()) : the_post();
 								</div>
 						<div class="container">
 
-                        <h3 class=" text-uppercase"><?php
+                        <div class="product-headline text-uppercase"><?php
                             if ($option['title_content'])
                                 echo $option['title_content'];
                             else
                                 echo $option['option_name'];
-                            ?></h3>
+                            ?></div>
                         <div class="">
 							 <?php if ($option['content_center']) { ?>
 							    <div class="product-center"><?php echo $option['content_center']; ?></div>
