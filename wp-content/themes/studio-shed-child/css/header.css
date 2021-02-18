@@ -3,8 +3,7 @@
 for header*/
 
 .acsb-sr-only {
-  color: #fff !important;
-  background: #AC1145 !important;
+  background: #fff !important;
 }
 
 @media (max-width: 991px){
