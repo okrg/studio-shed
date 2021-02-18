@@ -49,7 +49,7 @@ while (have_posts()) : the_post();
     <section id="create-shed" class="container hidden-xs hidden-sm">
         <div class="row">
             <div class="col-sm-12 text-center">
-                <h3><?php the_field('title_description'); ?></h3>
+                <div class="product-headline"><?php the_field('title_description'); ?></div>
                 <p><?php the_field('content_description'); ?></p>
         </div>
     </section>
