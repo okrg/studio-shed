@@ -142,8 +142,10 @@ footer .container .row {
 	color: #525252;
 	margin-bottom: 15px;
 	text-transform: uppercase;
-	font-family: "Futura-PT-Book";
+	font-family: "Futura-PT-Heavy";
 	line-height: 1.2em;
+  font-size: 20px;
+  font-weight: bold;
 }
 .footer-subscribe li{
 	list-style-position: outside;
@@ -300,13 +302,16 @@ span#input_18_1_3_container.name_first {
 	.footer-escape img, .footer-escape p {
 		width: 100%;
 	}
-.footer-escape h3, .footer-escape p {
+.footer-escape div.escape-headline, .footer-escape div.delivery-headline,  .footer-escape p {
 	color: #ffffff;
 }
-.footer-escape h3 {
-    margin-bottom: 20px;
+.footer-escape div.escape-headline, .footer-escape div.delivery-headline {
+  margin-bottom: 20px;
 	margin-top: 0;
-    text-transform: uppercase;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Futura-PT-Heavy";
 }
 .footer-escape  p {
 	line-height:1.4em;
@@ -376,11 +381,13 @@ border-color: #ffa544;
 	font-weight: 300!important;
 	font-size: 15px;
 }
-.footer-menus h3 {color:#ffffff;
+.footer-menus .footer-nav-headline {
+  color:#ffffff;
+  font-family: 'Futura-PT-Heavy'!important;
 	text-transform: uppercase;
 	font-size: 17px!important;
 	margin: 30px 0 10px;
-	   text-align: left;
+	text-align: left;
 	line-height: 1.2em!important;
 }
 .footer-menus ul .menu-item {

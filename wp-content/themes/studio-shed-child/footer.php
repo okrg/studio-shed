@@ -32,7 +32,7 @@
 			</div>
 			<div class="col-sm-9 col-md-7">
 
-			<h3>Make Your Escape</h3>
+			<div class="escape-headline">Make Your Escape</div>
 				<p><span style="color: #ffffff;">One shed does not fit all. Our innovative modular system allows for tremendous customization. There are millions of combinations of sizes, door and window placements, and colors. All thoughtfully designed to work together.</span></p>
 
 			</div>
@@ -47,7 +47,7 @@
 				<p>&nbsp;</p>			
 			</div>
 			<div class="col-sm-12 col-md-5">
-				<h3>Delivering Your Customized Shed Anywhere in the U.S.</h3>
+				<div class="delivery-headline">Delivering Your Customized Shed Anywhere in the U.S.</div>
 				<hr>
 				<p>Studio Shed ships to all 50 U.S. states. Our products are built right here in Colorado and then shipped directly to your front door. Shipping costs will be calculated during the design process based on your exact location. </p></p>
 			</div>
@@ -68,32 +68,32 @@
 			</div>
 			<div class="col-sm-6 col-md-2">
 
-				<h3>MODELS</h3>
+				<div class="footer-nav-headline">MODELS</div>
 				<?php wp_nav_menu( array( 'theme_location' => 'footer1-menu', 'container_class' => 'menu_class' ) ); ?>
 	
 
 			</div>
 			<div class="col-sm-6 col-md-2">
 
-				<h3>SHED STORIES</h3>
+				<div class="footer-nav-headline">SHED STORIES</div>
 				<?php wp_nav_menu(array('theme_location' => 'footer2-menu', 'container' => '', 'menu_class' => '')); ?>
 
 			</div>
 			<div class="col-sm-6 col-md-2">
 
-				<h3>SHOPPING TOOLS</h3>
+				<div class="footer-nav-headline">SHOPPING TOOLS</div>
 				<?php wp_nav_menu(array('theme_location' => 'footer3-menu', 'container' => '', 'menu_class' => '')); ?>
 
 			</div>
 			<div class="col-sm-6 col-md-2">
 
-				<h3>RESOURCES</h3>
+				<div class="footer-nav-headline">RESOURCES</div>
 				<?php wp_nav_menu(array('theme_location' => 'footer4-menu', 'container' => '', 'menu_class' => '')); ?>
 
 			</div>
 			<div class="col-sm-6 col-md-2">
 
-				<h3>ABOUT US</h3>
+				<div class="footer-nav-headline">ABOUT US</div>
 				<?php wp_nav_menu(array('theme_location' => 'footer5-menu', 'container' => '', 'menu_class' => '')); ?>
 
 			</div>
