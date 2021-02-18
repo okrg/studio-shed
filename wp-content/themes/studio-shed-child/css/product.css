@@ -235,7 +235,7 @@ a.but {
     border-radius: 0;
     letter-spacing: 1px;
 }
-#content .product-headline, #content h2, #content h3, .be-inspired .author, .titleintro, #content-product strong, .r-tabs-nav a {
+.product-headline, #content h2, #content h3, .be-inspired .author, .titleintro, #content-product strong, .r-tabs-nav a {
     letter-spacing: 2px;
 }
 .r-tabs-anchor {
@@ -359,7 +359,7 @@ a.but {
     margin: 20px;
 	padding-top: 20px;
 }
-#content-model-product h3, #create-shed h3, #create-shed .product-headline {
+#content-model-product h3, #create-shed h3, .product-headline {
     color: #E25D00;
     font-family: 'Futura-PT-Book';
     text-align: center;
@@ -642,7 +642,7 @@ a.but {
 #feature-5 .tab-left a, #feature-5 .tab-right a{
     text-decoration: underline;
 }
-	#create-shed .product-headline,
+	.product-headline,
     #feature-1 h3,
 	#feature-2 h3,
 	#feature-3 h3,
