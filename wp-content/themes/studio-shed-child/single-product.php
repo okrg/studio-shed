@@ -102,7 +102,7 @@ get_header();?>
   </div>
 </div>
 
-
+<?php /*
 <div class="selector">
   <h3 class="selector-label">Include Optional SIP Floor System</h3>
   <div class="sip-thumbs">
@@ -114,13 +114,9 @@ get_header();?>
     <?php endforeach; ?>
   </div>
 </div>
+*/ ?>
 
 </div>
-
-
-
-
-
 
 
 <div class="container">
@@ -166,6 +162,7 @@ get_header();?>
 
 <div id="feature-5">
   <h3 class=" text-uppercase">Need more options?</h3>
+  <?php include('inc/quick-ship-grid.php'); ?>
   <a style="letter-spacing: normal;" class="but" target="_blank" href="/configurator/">Build Your Own</a>
 </div>
 
@@ -435,7 +432,7 @@ get_header();?>
       product_id = <?=$post->ID;?>;
       variation = jQuery('.variation-swatch.selected').data('variation');
       floor = jQuery('.floor-swatch.selected').data('floor');
-      sip = jQuery('.sip-swatch.selected').data('sip');
+      //sip = jQuery('.sip-swatch.selected').data('sip');
 
       if(variation === undefined) {
         triggerValidationError();
@@ -447,15 +444,18 @@ get_header();?>
         return false;
       }
 
+      /*
       if(sip === undefined) {
         triggerValidationError();
         return false;
       }
+      */
 
       params = 'add-to-cart=' + product_id +
         '&variation_id=' + variation +
-        '&attribute_pa_floor=' + floor +
-        '&attribute_pa_sip-floor-system=' + sip;
+        '&attribute_pa_floor=' + floor;
+        //'&attribute_pa_floor=' + floor +
+        //'&attribute_pa_sip-floor-system=' + sip;
 
       window.location = '/checkout/?' + params;
     });
