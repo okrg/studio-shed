@@ -83,8 +83,7 @@ body {
 }
 a {
   color: $primary;
-  &:hover, &:active {
-    color: darken($primary, 10%);
+  &:hover {    
     opacity: 0.9;
   }
 }
@@ -99,7 +98,11 @@ a {
 
 .btn {
   text-transform: uppercase;
+  &:hover, &:active,&:focus,&:click {
+
+  }
 }
+
 .btn-primary {
   padding: 0 40px;
   line-height: 40px;
@@ -115,9 +118,9 @@ a {
   font-size: 14px;
   font-weight: bold;
   letter-spacing: 1.5px;
-  &:hover, &:active, &:focus {
+  &:hover, &:active,&:focus,&:click {
     opacity: 0.9;
-    background-color: $orange;
+    background-color: $orange !important;
   }
   @media (max-width: 992px) {
     height: auto;
@@ -125,11 +128,22 @@ a {
     padding: 0.5rem;
   }
 }
+.btn-primary:hover{
+  background-color: $orange !important;
+}
+
+.btn-outline-light:not(:disabled):not(.disabled):active,
+.btn-outline-light:active,
+.btn-outline-light:hover {
+    color: #212529;
+    background-color: #363636;
+    border-color: #f8f9fa
+}
+
 
 .btn-outline-light {
-  
-  &:hover, &:active, &:focus {
-    background: transparent;
+  &:hover, &:active,&:focus,&:click {
+    background-color: #363636;
     opacity: 0.8;
   }  
   @media (max-width: 992px) {
