@@ -130,10 +130,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           $logo= get_field('logo', 'option');
 		
       ?>
-	<!--------
-	PLEASE NOTE 
-	- Any changes made to the navigation will only effect the main site, you will need to go into the files for the design center to update the drop down nav there as well 
-	--------------------->
+
     <header id="header" class="module" data-module="header">
         <nav class="container navbar navbar-expand-lg" role="navigation">
           <div class="header-mobile">

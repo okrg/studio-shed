@@ -144,25 +144,23 @@ while (have_posts()) : the_post();
 <!-- end summit layout -->
   <?php if ($quickmodel == ('Signature')):?>
 
-  <div id="feature-top">
-    <div class="container">
-      <div class="product-headline text-uppercase">
-        Our most popular models.<br />Faster Turnaround, Turnkey Foundations.
-      </div>
-      <p>These models are the best of our <?php the_title(); ?>. Our most popular designs, they're delivered to your door in 3-4 weeks. Choose the perfect size, colors, and options for your perfect home office, studio, or backyard retreat. Specially priced for DIY installation only. </p>
-      <p>NOTE: Due to the current high demand, turnaround time is typically 6-8 weeks in most markets.</p>
-    </div>
+  <section id="qs-grid-section">
 
     <?php include('quick-ship-grid.php'); ?>
 
-  </div>
+  </section>
   <?php endif; ?>
 
   <?php $k = 1; foreach ($options as $option) { ?>
 
   <div id="feature-<?php echo $k; ?>" class="product-list-sec">
-    <div class="product-header-img"><img src="<?php echo $option['infographic']['sizes']['large']; ?>" alt="<?php echo $option['infographic']['alt']; ?>" title="<?php echo $option['infographic']['title']; ?>"/> 
+
+    <?php if ($quickmodel == ('Signature')):?>
+    <div class="product-header-img" style="margin-top: 20px;"><img src="<?php echo $option['infographic']['sizes']['large']; ?>" alt="<?php echo $option['infographic']['alt']; ?>" title="<?php echo $option['infographic']['title']; ?>"/> 
     </div>
+    <?php else: ?>
+    <div class="product-header-img"><img src="<?php echo $option['infographic']['sizes']['large']; ?>" alt="<?php echo $option['infographic']['alt']; ?>" title="<?php echo $option['infographic']['title']; ?>"/> 
+    <?php endif; ?>
     <div class="container">
 
                         <div class="product-headline text-uppercase"><?php

@@ -25,7 +25,7 @@ Version:        1.0
 @font-face{font-family:"Futura-PT-Heavy-Oblique";src:url("fonts/Futura-PT-Heavy-Oblique.eot"), url("fonts/Futura-PT-Heavy-Oblique.woff") format("woff"), url("fonts/Futura-PT-Heavy-Oblique.ttf") format("truetype");}
 body{color:#5D5E5D; font-family: "Tisa-Sans-Pro"; font-size:19px; font-weight: 350; line-height: 1.4 em;}
 a,a:hover,a:focus,a:active,a.active{outline:0;}
-a{color:#c75200; text-decoration:none;}
+a,a:hover,a:focus{color:#c75200; text-decoration:none;}
 a:hover{text-decoration: none;opacity: 0.9;}
 /*img wp*/
 .alignnone{margin:5px 20px 20px 0;}.aligncenter,div.aligncenter{display:block;margin:5px auto 5px auto;}.alignright{float:right;margin:5px 0 20px 20px;}.alignleft{float:left;margin:5px 20px 20px 0;}.aligncenter{display:block;margin:5px auto 5px auto;}a img.alignright{float:right;margin:5px 0 20px 20px;}a img.alignnone{margin:5px 20px 20px 0;}a img.alignleft{float:left;margin:5px 20px 20px 0;}a img.aligncenter{display:block;margin-left:auto;margin-right:auto}.wp-caption{background:#fff;border:1px solid #f0f0f0;max-width:96%;padding:5px 3px 10px;text-align:center;}.wp-caption.alignnone{margin:5px 20px 20px 0;}.wp-caption.alignleft{margin:5px 20px 20px 0;}.wp-caption.alignright{margin:5px 0 20px 20px;}.wp-caption img{border:0 none;height:auto;margin:0;max-width:98.5%;padding:0;width:auto;}.wp-caption p.wp-caption-text{font-size:11px;line-height:17px;margin:0;padding:0 4px 5px;}
