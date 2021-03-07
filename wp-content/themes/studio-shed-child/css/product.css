@@ -546,7 +546,8 @@ a.but {
     text-align: center;
 }
 .product-header-img img {
-    width: 120px;
+    width: auto;
+    height: auto;
 }
 
 .one_half ul, .tab-left ul, .tab-right ul, #feature-1 .product-center ul {

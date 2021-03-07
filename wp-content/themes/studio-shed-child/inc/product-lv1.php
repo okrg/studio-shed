@@ -91,6 +91,10 @@ while (have_posts()) : the_post();
                 </div>
       <?php $ideas = get_field("flrpln_idea_sct", $page_id) ?>
   <div class="product-headline text-uppercase">SUMMIT SERIES INTERIOR FEATURES</div>
+
+<div class="text-center" style="margin: 50px 0;"><a class="buidbt" href="https://www.studio-shed.com/wp-content/uploads/2020/11/Interiors-Brochure-Final-Online.pdf" target="_blank">Download Our Interior Guide</a></div>
+
+
   <ul class="flrpln-btn">
         <?php $count = 1; ?>
         <?php foreach ($ideas as $idea) { ?>
