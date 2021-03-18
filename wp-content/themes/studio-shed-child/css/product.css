@@ -615,8 +615,9 @@ a.but {
 		background: #fff !important;
 	}
 	#feature-2 img{
-    max-WIDTH: 100%;
-}
+        max-width: 100%;
+        height: auto;
+    }
 .tab-left b, .tab-left strong, .tab-right b, .tab-right strong, 
 	#feature-1 .product-center b, #feature-1 .product-center strong{
     font-weight: 700;
