@@ -12,7 +12,7 @@
             <div class="qs-name">Pagoda</div>
             <p>The Original with All-New Updates</p>
             <div class="qs-price">$19,295*</div>
-            <div class="qs-disclaimer">* Everyday discount applied</div>
+            
             <img src="/wp-content/themes/studio-shed-child/img/qs-pagoda.png">
         </a>
     </article>
@@ -21,7 +21,7 @@
             <div class="qs-name">Boreas</div>
             <p>French Doors and a Flexible Layout</p>
             <div class="qs-price">$19,495*</div>
-            <div class="qs-disclaimer">* Everyday discount applied</div>
+            
             <img src="/wp-content/themes/studio-shed-child/img/qs-boreas.png">
         </a>
     </article>
@@ -30,7 +30,7 @@
             <div class="qs-name">Solitude</div>
             <p>Your Turnkey Backyard Sanctuary</p>
             <div class="qs-price">$21,195*</div>
-            <div class="qs-disclaimer">* Everyday discount applied</div>
+            
             <img src="/wp-content/themes/studio-shed-child/img/qs-solitude.png">
         </a>
     </article>
@@ -39,12 +39,11 @@
             <div class="qs-name">Telluride</div>
             <p>Light-Filled Backyard Retreat or Studio</p>
             <div class="qs-price">$22,895*</div>
-            <div class="qs-disclaimer">* Everyday discount applied</div>
+            
             <img src="/wp-content/themes/studio-shed-child/img/qs-telluride.png">
         </a>
     </article>
   </div>
-
-<p><small>NOTE: Due to the current high demand, turnaround time is typically 6-8 weeks in most markets.</small></p>
-
+<div class="qs-disclaimer">* Everyday discount applied. Not eligible for additoinal promos.</div>
+<div class="qs-disclaimer">NOTE: Due to the current high demand, turnaround time is typically 6-8 weeks in most markets.</div>
 </div>
