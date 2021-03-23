@@ -44,6 +44,6 @@
         </a>
     </article>
   </div>
-<div class="qs-disclaimer">* Everyday discount applied. Not eligible for additoinal promos.</div>
+<div class="qs-disclaimer">* Everyday discount applied. Not eligible for additional promos.</div>
 <div class="qs-disclaimer">NOTE: Due to the current high demand, turnaround time is typically 6-8 weeks in most markets.</div>
 </div>
