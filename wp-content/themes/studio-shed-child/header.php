@@ -11,14 +11,10 @@
     <meta name="google-site-verification" content="uWi-LXgJCHaP6FM_-ggd2tuTMEU08yeWuUhgfF8jA88" />
 	  
     <?php 
-      if(is_page() || get_single_template('products')){
-        if(get_field('meta_data', get_the_ID())){
+      if(is_page() || get_single_template('products')) {
+        if(get_field('meta_data', get_the_ID())) {
           echo get_field('meta_data', get_the_ID());
-        } else { ?>
-        <meta content='https://www.studio-shed.com/wp-content/uploads/2015/02/Landing-2.1-1024x680.jpg' property='og:image'>
-        <meta content='https://www.studio-shed.com/wp-content/uploads/2015/02/home-page-slider-1--1024x680.jpg' property='og:image'>
-        <meta content='https://www.studio-shed.com/wp-content/uploads/2015/02/home-page-slider-1--1024x680.jpg' property='og:image'>
-        <?php }
+        }
       }
     ?>
     <meta name="msvalidate.01" content="0327CBE11137C711E79009049525B4E4" />
