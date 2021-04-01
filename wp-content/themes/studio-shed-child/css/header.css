@@ -59,6 +59,14 @@ for header*/
 		.main-drop-models .menu-child.menu-list .col-lg-7:hover{
     color: #000;
 }
+
+.main-drop-models .menu-child.menu-list .box {
+  padding-top:12px;
+}
+.main-drop-models .menu-child.menu-list .box .intro {
+  margin-bottom: 0;
+}
+
 .main-drop-models .menu-child.menu-list .box:hover p.intro {
     color: #717372;
 }
@@ -72,6 +80,8 @@ for header*/
 color: #f35100;	
 	font-weight: 700;
 		}
+
+
 
 
 
