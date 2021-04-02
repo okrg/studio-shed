@@ -1,6 +1,10 @@
+
+function triggerGTM() {
+  console.log('this triggerGTM ran!!!');
+}
+
+
 jQuery(document).ready(function() {
-
-
   //accessibility tweaks
   jQuery('#input_18_1_3,#input_18_1_6,#input_18_2,#gform_submit_button_18').removeAttr('tabindex');
   jQuery('#field_18_3 label').text('reCAPTCHA');
