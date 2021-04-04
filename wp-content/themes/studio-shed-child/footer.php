@@ -69,7 +69,7 @@
 			<div class="col-sm-6 col-md-2">
 
 				<div class="footer-nav-headline">MODELS</div>
-				<?php wp_nav_menu( array( 'theme_location' => 'footer1-menu', 'container_class' => 'menu_class' ) ); ?>
+				<?php wp_nav_menu( array( 'theme_location' => 'footer1-menu', 'container' => '', 'menu_class' => '')); ?>
 	
 
 			</div>
@@ -116,16 +116,9 @@
 
           </div>
 			</div>
-				 <div class="col-sm-12 copyfooter">                          
-					 <?php dynamic_sidebar('copyright'); ?>
-					 
+			<div class="col-sm-12 copyfooter"><?php dynamic_sidebar('copyright'); ?></div>
 			</div>
-
-
-			</div>
-			
 		</div>
-	
 	</div>
 </footer>
 <div id="myModal" class="modal fade">
