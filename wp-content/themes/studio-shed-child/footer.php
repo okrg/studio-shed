@@ -68,35 +68,104 @@
 			</div>
 			<div class="col-sm-6 col-md-2">
 
-				<div class="footer-nav-headline">MODELS</div>
-				<?php wp_nav_menu( array( 'theme_location' => 'footer1-menu', 'container' => '', 'menu_class' => '')); ?>
-	
+			<div class="footer-nav-headline">MODELS</div>
+            <ul>
+                <li class="menu-item">
+                    <a href="/products/summit-series/">Summit</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/products/signature-series/">Signature</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/products/portland-series/">Portland</a>
+                </li>
+            </ul>
+
+			</div>
+			<div class="col-sm-6 col-md-2">
+            <div class="footer-nav-headline">ADU</div>
+            <ul>
+                <li class="menu-item">
+                    <a href="/adu/">Accessory Dwelling Unit</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/adu/cost-financing/">ADU Cost &amp; Financing</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/adu/design/">Design your ADU</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/adu/granny-flat/">Granny Flat</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/adu/ideas/">ADU Ideas</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/adu/interior-packages/">Interior Packages</a>
+                </li>
+            </ul>
+
+
 
 			</div>
 			<div class="col-sm-6 col-md-2">
 
-				<div class="footer-nav-headline">SHED STORIES</div>
-				<?php wp_nav_menu(array('theme_location' => 'footer2-menu', 'container' => '', 'menu_class' => '')); ?>
-
+            <div class="footer-nav-headline">SHED STORIES</div>
+            <ul>
+                <li class="menu-item">
+                    <a href="/home-office-spaces/">Home Office Spaces</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/music-studios/">Music Studios</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/art-studios/">Art Studios</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/man-cave/">Man Cave</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/she-sheds/">She Shed</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/storage/">Storage</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/diy/">DIY</a>
+                </li>
+            </ul>
 			</div>
 			<div class="col-sm-6 col-md-2">
 
-				<div class="footer-nav-headline">SHOPPING TOOLS</div>
-				<?php wp_nav_menu(array('theme_location' => 'footer3-menu', 'container' => '', 'menu_class' => '')); ?>
-
+            <div class="footer-nav-headline">SHOPPING TOOLS</div>
+            <ul>
+                <li class="menu-item">
+                    <a href="/design-center/">Build &amp; Price</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/financing/">Financing</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/faqs/">Frequently Asked Questions</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/request-free-consultation/">Request Free Consultation</a>
+                </li>
+            </ul>
 			</div>
 			<div class="col-sm-6 col-md-2">
 
-				<div class="footer-nav-headline">RESOURCES</div>
-				<?php wp_nav_menu(array('theme_location' => 'footer4-menu', 'container' => '', 'menu_class' => '')); ?>
-
-			</div>
-			<div class="col-sm-6 col-md-2">
-
-			<div class="footer-nav-headline">ABOUT US</div>
-
-
-            <ul id="menu-footer-about">
+			<div class="footer-nav-headline">MORE</div>
+            <ul>
+                <li class="menu-item">
+                    <a href="/installation-resources/">DIY Installation Guide</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/blog/">Blog</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/about-us/">About Studio Shed</a>
+                </li>
                 <li class="menu-item">
                     <a href="/our-team/">Our Team</a>
                 </li>
