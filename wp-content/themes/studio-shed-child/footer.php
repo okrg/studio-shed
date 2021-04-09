@@ -93,28 +93,37 @@
 			</div>
 			<div class="col-sm-6 col-md-2">
 
-				<div class="footer-nav-headline">ABOUT US</div>
-				<?php wp_nav_menu(array('theme_location' => 'footer5-menu', 'container' => '', 'menu_class' => '')); ?>
+			<div class="footer-nav-headline">ABOUT US</div>
+
+
+            <ul id="menu-footer-about">
+                <li class="menu-item">
+                    <a href="/our-team/">Our Team</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/our-story/">Our Story</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/green-philosophy/">Green Philosophy</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/award-winning-design/">Design Awards</a>
+                </li>
+            </ul>
+
+
+
 
 			</div>
 			<div class="col-sm-12 col-md-2">
 
 				<img alt="We ship nationwide" src="/wp-content/uploads/2020/01/we-ship-footer-icon.png" />
-				 <div class="social">
-            <ul>
-              <?php
-          $socials = get_field('socials', 'option');
-              foreach ($socials as $key => $social) {?>
-                <li>
-                  <a rel="noopener" target="_blank" aria-label="Link to social profile" href="<?php echo $social["link"]?>">
-                    <i class="icomoon <?php echo $social["type"]?>" aria-hidden="true"></i>
-                  </a>
-                </li>
-              <?php }
-              ?>
-            </ul>
+                <p>&nbsp;</p>
+                <div class="social">
+                    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+                    <div class="elfsight-app-cfcb79c5-f528-4f0c-8539-464afdeb2fda"></div>
+                </div>
 
-          </div>
 			</div>
 			<div class="col-sm-12 copyfooter"><?php dynamic_sidebar('copyright'); ?></div>
 			</div>

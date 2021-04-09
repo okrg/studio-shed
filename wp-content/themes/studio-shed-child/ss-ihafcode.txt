@@ -1,0 +1,193 @@
+<style text="text/css">
+@media screen and (min-width: 768px){
+  .modal #field_4_8{
+  position: relative;
+  margin-top: 30px !important;
+  }
+  .modal #field_4_8 .g-recaptcha {
+    transform:scale(0.70);
+  -webkit-transform:scale(0.70);
+  transform-origin:0 0;
+  -webkit-transform-origin:0 0;
+  }
+  .myfooter #field_18_3{
+  position: absolute;
+  margin-top: 15px !important;
+  }
+  .myfooter #field_18_3 .g-recaptcha {
+    transform:scale(0.70);
+  -webkit-transform:scale(0.70);
+  transform-origin:0 0;
+  -webkit-transform-origin:0 0;
+  }
+  .myfooter #gform_submit_button_18{
+    position: relative;
+    z-index: 5;
+  }
+}
+</style>
+
+
+
+<!--Begin WCAG-->
+<script>
+    (function(){
+    var s = document.createElement('script'),
+    e = ! document.body ? document.querySelector('head') : document.body;
+    s.src = 'https://acsbapp.com/apps/app/assets/js/acsb.js';
+    s.async = s.defer = true;
+    s.onload = function(){
+        acsbJS.init({
+        statementLink    : '',
+        feedbackLink     : '',
+        footerHtml       : '',
+        hideMobile       : false,
+        hideTrigger      : false,
+        language         : 'en',
+        position         : 'left',
+        leadColor        : '#FBA447',
+        triggerColor     : '#FBA447',
+        triggerRadius    : '50%',
+        triggerPositionX : 'left',
+        triggerPositionY : 'bottom',
+        triggerIcon      : 'default',
+        triggerSize      : 'medium',
+        triggerOffsetX   : 20,
+        triggerOffsetY   : 20,
+        mobile           : {
+            triggerSize      : 'small',
+            triggerPositionX : 'left',
+            triggerPositionY : 'center',
+            triggerOffsetX   : 0,
+            triggerOffsetY   : 0,
+            triggerRadius    : '0'
+            }
+        });
+    };
+    e.appendChild(s);
+    }());
+</script>
+<!--End WCAG-->
+
+
+
+<!-- 
+<script>
+  $(document).ready(function(){
+  if(!readCookie('notice-bar')){
+    $('#header').prepend('<div id="notice-bar"><div class="notice-bar-inner"><span class="close-notice-bar"><a href="#">close</a></span><p notice-bar-message><strong>NEW</strong> - Financing Options Available!<a class="notice-bar-cta" href="/financing/">Learn More</a></p></div></div>').slideDown("slow");
+  }
+  $('.close-notice-bar a').click(function(e){
+  e.preventDefault();
+    $('#notice-bar').slideUp('slow');
+    /*console.log('notice-bar-click');*/
+    createCookie('notice-bar',1,1);
+  });
+  $(window).scroll(function(){
+    $('#notice-bar').slideUp('slow');
+    /*console.log('notice-bar-scroll');*/
+    createCookie('notice-bar',1,1);
+  });
+  $(window).on('unload',function(){
+    /*console.log('notice-bar-unload');*/
+    createCookie('notice-bar',1,1);
+  });
+});
+createCookie = function(name,value,days) {if (days) {var date = new Date();date.setTime(date.getTime()+(days*24*60*60*1000));var expires = "; expires="+date.toGMTString();}else var expires = "";document.cookie = name+"="+value+expires+"; path=/";};
+readCookie = function(name) {var nameEQ = name + "=";var ca = document.cookie.split(";");for(var i=0;i < ca.length;i++) {var c = ca[i];while (c.charAt(0)==" ") c = c.substring(1,c.length);if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);}return null;};
+</script>
+<style type="text/css">
+#notice-bar{
+  width: 100%;
+  background-color: #ffd966;  
+}
+.notice-bar-inner{
+  position: relative;
+  display: block;
+  color: #000000;
+  max-width: 900px;
+  max-height: 45px;
+  margin: 0 auto;
+  padding: 1%;
+}
+.notice-bar-inner p{
+  font-family: arial, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1em;
+  text-align: center;
+  margin: 0;
+    padding: 0;
+}
+.notice-bar-inner .close-notice-bar{
+  position: absolute;
+    top: 25%;
+    right: 0;
+}
+.notice-bar-inner .close-notice-bar a{
+  display: block;
+  color: #777777;
+  white-space: nowrap;
+  overflow: hidden;
+  text-indent: -9999px;
+}
+.notice-bar-inner .close-notice-bar a:hover{
+  color: #777777 !important;
+  text-decoration: underline;
+}
+.notice-bar-inner .close-notice-bar a:before{
+    content: 'x';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(0,0,0,0.2);
+    color: #777777;
+    top: 0;
+    position: absolute;
+    border-radius: 15px;
+    text-align: center;
+    line-height: 20px;
+    text-indent: 0;
+    float: left;
+}
+.notice-bar-inner .close-notice-bar a:hover:before{
+    background-color: rgba(0,0,0,0.25);
+    color: #ffffff;
+}
+.notice-bar-inner .notice-bar-cta{
+    background-color: #ffd966;
+    border: 1px solid #000000;
+    color: #000000;
+    border-radius: 3px;
+    margin-left: 30px;
+    padding: 2px 10px;
+    font-size: 14px;
+    text-align: center;
+    position: relative;
+    top: -2px;
+}
+.notice-bar-inner .notice-bar-cta:hover{
+  color: #000000 !important;
+  cursor: pointer;
+}
+@media (max-width:768px){
+  .notice-bar-inner{
+    max-height: 75px;
+    padding: 3% 5%;
+  }
+  .notice-bar-inner .close-notice-bar{
+    right: 8%;
+  }
+  .notice-bar-inner p{
+    text-align: left;
+  }
+  .notice-bar-inner .notice-bar-cta{
+    display: block;
+    top: 0;
+    margin-left: 0;
+    margin-top: 2%;
+    max-width: 100px;
+  }
+}
+</style>
+ -->
