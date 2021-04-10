@@ -147,6 +147,9 @@
                 <li class="menu-item">
                     <a href="/request-free-consultation/">Request Free Consultation</a>
                 </li>
+                <li class="menu-item">
+                    <a href="/customer-reviews/">Customer Reviews</a>
+                </li>
             </ul>
 			</div>
 			<div class="col-sm-6 col-md-2">
