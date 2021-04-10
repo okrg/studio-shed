@@ -3,8 +3,7 @@
 
 <footer id="footer" class="myfooter">
 	<div class="footer-subscribe">
-			<div class="container">
-
+		<div class="container">
 		<div class="row">
 			<div class="col-sm-12 col-md-6">
 				<div class="subscribe-headline">Subscribe and get free studio shed resources delivered to you.</div>
@@ -16,12 +15,9 @@
 			</div>
 			<div class="col-sm-12 col-md-6">
 				<?php gravity_form( '18', $display_title = false, $display_description = false, $display_inactive = false, $field_values = null, $ajax = false, $tabindex, $echo = true );
-				
 				?>
-				                        <?php //dynamic_sidebar('contact-form'); ?>
-
 			</div>
-				</div>
+		</div>
 		</div>
 	</div>
 	<div class="footer-escape">
@@ -44,7 +40,7 @@
 		</div>
 		<div class="row delivery">
 			<div class="col-sm-0 col-md-2">
-				<p>&nbsp;</p>			
+				<p>&nbsp;</p>
 			</div>
 			<div class="col-sm-12 col-md-5">
 				<div class="delivery-headline">Delivering Your Customized Shed Anywhere in the U.S.</div>
@@ -52,7 +48,7 @@
 				<p>Studio Shed ships to all 50 U.S. states. Our products are built right here in Colorado and then shipped directly to your front door. Shipping costs will be calculated during the design process based on your exact location. </p></p>
 			</div>
 			<div class="col-sm-3 col-md-5">
-				<p>&nbsp;</p>			
+				<p>&nbsp;</p>
 			</div>
 		</div>
 	
@@ -189,12 +185,24 @@
 				<img alt="We ship nationwide" src="/wp-content/uploads/2020/01/we-ship-footer-icon.png" />
                 <p>&nbsp;</p>
                 <div class="social">
-                    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
-                    <div class="elfsight-app-cfcb79c5-f528-4f0c-8539-464afdeb2fda"></div>
+                    <a href="https://www.facebook.com/StudioShed" target="_blank" title="Facebook profile page">
+                        <img src="/wp-content/themes/studio-shed-child/img/social-fb.png">
+                    </a>
+                    <a href="https://twitter.com/studioshed" target="_blank" title="Twitter profile page">
+                        <img src="/wp-content/themes/studio-shed-child/img/social-tw.png">
+                    </a>
+                    <a href="https://www.instagram.com/studioshed/" target="_blank" title="Instagram profile page">
+                        <img src="/wp-content/themes/studio-shed-child/img/social-ig.png">
+                    </a>
+                    <a href="http://www.houzz.com/studio-shed" target="_blank" title="Houzz profile page">
+                        <img src="/wp-content/themes/studio-shed-child/img/social-hz.png">
+                    </a>
                 </div>
 
 			</div>
-			<div class="col-sm-12 copyfooter"><?php dynamic_sidebar('copyright'); ?></div>
+                <div class="col-sm-12 copyfooter">
+                <div class="copyright">&copy; 2021 - <a href="/privacy/">Privacy</a> - <a href="/terms-and-conditions/">Terms of Use</a></div>
+                </div>
 			</div>
 		</div>
 	</div>
