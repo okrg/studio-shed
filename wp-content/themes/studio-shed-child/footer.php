@@ -197,7 +197,7 @@
                     <a href="https://www.instagram.com/studioshed/" target="_blank" title="Instagram profile page">
                         <img src="/wp-content/themes/studio-shed-child/img/social-ig.png">
                     </a>
-                    <a href="http://www.houzz.com/studio-shed" target="_blank" title="Houzz profile page">
+                    <a href="https://www.houzz.com/pro/studioshed" target="_blank" title="Houzz profile page">
                         <img src="/wp-content/themes/studio-shed-child/img/social-hz.png">
                     </a>
                 </div>
