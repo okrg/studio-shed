@@ -24,7 +24,7 @@
 		<div class="container">
 		<div class="row">
 			<div class="col-sm-3 col-md-2">
-				<img src="/wp-content/uploads/2020/01/footer-studio-shed-escape.jpg" alt="Image of Studio Shed design configurator loaded on an ipad" />
+				<img src="/wp-content/uploads/2020/01/footer-studio-shed-escape.jpg" alt="Image of Studio Shed design configurator loaded on an ipad">
 			</div>
 			<div class="col-sm-9 col-md-7">
 
@@ -34,7 +34,7 @@
 			</div>
 			<div class="col-sm-12 col-md-3">
 
-			<a href="/design-center/" class="vce-button--style-basic button">Build &amp; Price</a>
+			<a href="/design-center/" class="vce-button--style-basic button" title="Build and price your Studio Shed design">Build &amp; Price</a>
 			</div>
 			</iv>
 		</div>
@@ -60,7 +60,9 @@
 		<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
-				<img src="/wp-content/uploads/2019/09/studio-shed-logo-white.png" alt="studio shed"/>
+                <a href="/" title="Studio Shed home page">
+				<img src="/wp-content/uploads/2019/09/studio-shed-logo-white.png" alt="studio shed">
+                </a>
 			</div>
 			<div class="col-sm-6 col-md-2">
 
@@ -185,7 +187,7 @@
 			</div>
 			<div class="col-sm-12 col-md-2">
 
-				<img alt="We ship nationwide" src="/wp-content/uploads/2020/01/we-ship-footer-icon.png" />
+				<img alt="We ship nationwide" src="/wp-content/uploads/2020/01/we-ship-footer-icon.png">
                 <p>&nbsp;</p>
                 <div class="social">
                     <a href="https://www.facebook.com/StudioShed" target="_blank" title="Facebook profile page">
