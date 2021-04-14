@@ -1,5 +1,10 @@
 <?php
 
+function better_search_replace_cap_override() {
+    return 'manage_options';
+}
+add_filter( 'bsr_capability', 'better_search_replace_cap_override' );
+
 add_action( 'woocommerce_thankyou', 'my_custom_tracking' );
 function my_custom_tracking( $order_id ) {
   $order = wc_get_order( $order_id );
