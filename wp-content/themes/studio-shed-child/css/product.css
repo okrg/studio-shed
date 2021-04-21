@@ -451,7 +451,7 @@ a.but {
     top: 50px!important;
     position: fixed;
 	width: 100%;
-	z-index: 1;
+	z-index: 10;
 }
 
 /* quick ship models */
@@ -608,7 +608,7 @@ a.but {
 #feature-4 .container {
 	/*border-bottom: #999999 1px solid;*/
 	}
-	
+#feature-4 img.aligncenter { max-width: 66%; }
 #feature-2, #feature-4 {
     /*border-top: #999999 1px solid;
 	border-bottom: #999999 1px solid;*/
