@@ -545,6 +545,9 @@ a.but {
     margin: -110px auto 0px;
     text-align: center;
 }
+.product-header-img p {
+    text-align: left;
+}
 .product-header-img img {
     width: auto;
     height: auto;
@@ -631,7 +634,6 @@ a.but {
     border: 1px solid #ebebeb;
     margin: 0 1%;
     padding: 40px;
-    text-align: center;
     min-height: 570px;
 }
 	@media (min-width:751px){
