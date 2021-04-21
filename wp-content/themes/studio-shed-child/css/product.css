@@ -584,6 +584,7 @@ a.but {
 #newsTabs .left, #newsTabs .right {
 	width: 50%;
     float: left;
+    text-align: left;
 }
 	#feature-1 .container,
 	#feature-2 .container,
