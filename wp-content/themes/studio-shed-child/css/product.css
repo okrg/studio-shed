@@ -589,7 +589,7 @@ a.but {
 	#feature-2 .container,
 	#feature-3 .container,
 	#feature-4 .container {
-	padding: 0 150px 120px 150px;
+	padding: 0 0 120px 0;
 	margin: 0 auto;
 	scroll-behavior: smooth!important;
 	}
