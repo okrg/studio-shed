@@ -241,7 +241,7 @@
 <script type="text/javascript">
     //Open external links in a new window
     jQuery(document).ready(function($) {
-        $('a').each(function() {
+        $('.container a').each(function() {
         var a = new RegExp('/' + window.location.host + '/');
         if(!a.test(this.href)) {
             $(this).click(function(event) {
