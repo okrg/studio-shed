@@ -124,7 +124,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           $menu_models_link = get_field('link_models', 'option');
           $models_childs = get_field('items', 'option');
           $logo= get_field('logo', 'option');
-		
       ?>
 
     <header id="header" class="module" data-module="header">
@@ -136,7 +135,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </a>
             </div>
             <div class="col-mb-4">
-              <a class="models" href="javascript: void(0);"><?php echo $menu_models_title?> <span class="icomoon icon-chevron-down"></span></a>
+              <a class="models" href="#"><?php echo $menu_models_title?> <span class="icomoon icon-chevron-down"></span></a>
               <span class="text-menu">Menu</span>
               <button class="navbar-toggler hamburger-menu" type="button" data-toggle="collapse" data-target="#main-menu"
               aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
