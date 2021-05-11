@@ -103,7 +103,7 @@
             <div class="acorn-offer">
               <img class="finance-logo" src="/wp-content/themes/studio-shed-child/img/acorn-finance-logo.png" />
               <small>&nbsp;</small>
-              <p>Recieve offers from multiple lenders with no impact to your credit score</p>
+              <p>Receive offers from multiple lenders with no impact to your credit score</p>
               <hr>
               <div class="acorn-payment">
                 <strong>From <span id="acorn-payment-value"></span>/mo</strong> based on a <span id="acorn-amount-value"></span> project
