@@ -21,8 +21,7 @@
 </div>
 
 <div class="instagram-feed">
-  <div class="container">
-  <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+  <div class="container">  
   <div class="elfsight-app-5f644751-5c96-48ba-a9c4-50e4fcc199dc"></div>
   </div>
 </div>
