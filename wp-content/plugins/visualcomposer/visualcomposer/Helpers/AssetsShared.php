@@ -149,12 +149,14 @@ class AssetsShared extends Container implements Helper
                 'sharedLibraries/menuToggle/dist/menuToggle.bundle.js', // shared-library
                 'elements/sandwichMenu/sandwichMenu/public/dist/sandwichMenu.min.js' // initializator
             ],
+            /*
+            
             'assetsLibrary/iconpicker/dist/iconpicker.bundle.css' => [
                 'sharedLibraries/iconpicker/dist/batch.bundle.css',
                 'sharedLibraries/iconpicker/dist/dripicons.bundle.css',
                 'sharedLibraries/iconpicker/dist/entypo.bundle.css',
                 'sharedLibraries/iconpicker/dist/feather.bundle.css',
-                //'sharedLibraries/iconpicker/dist/fontawesome.bundle.css',
+                'sharedLibraries/iconpicker/dist/fontawesome.bundle.css',
                 'sharedLibraries/iconpicker/dist/linearicons.bundle.css',
                 'sharedLibraries/iconpicker/dist/lineicons.bundle.css',
                 'sharedLibraries/iconpicker/dist/material.bundle.css',
@@ -170,7 +172,7 @@ class AssetsShared extends Container implements Helper
                 'sharedLibraries/iconpicker/dist/dripicons.bundle.css',
                 'sharedLibraries/iconpicker/dist/entypo.bundle.css',
                 'sharedLibraries/iconpicker/dist/feather.bundle.css',
-                //'sharedLibraries/iconpicker/dist/fontawesome.bundle.css',
+                'sharedLibraries/iconpicker/dist/fontawesome.bundle.css',
                 'sharedLibraries/iconpicker/dist/linearicons.bundle.css',
                 'sharedLibraries/iconpicker/dist/lineicons.bundle.css',
                 'sharedLibraries/iconpicker/dist/material.bundle.css',
@@ -181,7 +183,7 @@ class AssetsShared extends Container implements Helper
                 'sharedLibraries/iconpicker/dist/socials.bundle.css',
                 'sharedLibraries/iconpicker/dist/typicons.bundle.css',
             ],
-
+            */
             // BC: ClassicTabs to new tabs assets
             'elements/classicTabs/classicTabs/public/dist/vc-classic-tabs-accordion.min.js' => 'assetsLibrary/accordion/dist/accordion.bundle.js',
             'elements/classicTabs/classicTabs/public/dist/vc-classic-tabs-tabs.min.js' => [
