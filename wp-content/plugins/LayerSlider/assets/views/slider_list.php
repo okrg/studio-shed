@@ -363,52 +363,53 @@
 							<?php endforeach; ?>
 						</tbody>
 					</table>
-
-					<!-- Slider actions template -->
-					<div id="ls-slider-actions-template" class="ls-pointer ls-box ls-hidden">
-						<span class="ls-mce-arrow"></span>
-						<ul class="inner">
-							<li>
-								<a href="#" class="embed">
-									<i class="dashicons dashicons-plus"></i>
-									<?php _e('Embed Slider', 'LayerSlider') ?>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="dashicons dashicons-share-alt2"></i>
-									<?php _e('Export', 'LayerSlider') ?>
-								</a>
-							</li>
-							<li>
-								<a href="#" class="ls-html-export">
-									<i class="dashicons dashicons-media-code"></i>
-									<?php _e('Export as HTML', 'LayerSlider') ?>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="dashicons dashicons-admin-page"></i>
-									<?php _e('Duplicate', 'LayerSlider') ?>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<i class="dashicons dashicons-backup"></i>
-									<?php _e('Revisions', 'LayerSlider') ?>
-								</a>
-							</li>
-							<li>
-								<a href="#" class="remove">
-									<i class="dashicons dashicons-trash"></i>
-									<?php _e('Remove', 'LayerSlider') ?>
-								</a>
-							</li>
-						</ul>
-					</div>
-					<!-- End of Slider actions template -->
 				</div>
 				<?php endif ?>
+
+				<!-- Slider actions template -->
+				<div id="ls-slider-actions-template" class="ls-pointer ls-box ls-hidden">
+					<span class="ls-mce-arrow"></span>
+					<ul class="inner">
+						<li>
+							<a href="#" class="embed">
+								<i class="dashicons dashicons-plus"></i>
+								<?php _e('Embed Slider', 'LayerSlider') ?>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="dashicons dashicons-share-alt2"></i>
+								<?php _e('Export', 'LayerSlider') ?>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="ls-html-export">
+								<i class="dashicons dashicons-media-code"></i>
+								<?php _e('Export as HTML', 'LayerSlider') ?>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="dashicons dashicons-admin-page"></i>
+								<?php _e('Duplicate', 'LayerSlider') ?>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="dashicons dashicons-backup"></i>
+								<?php _e('Revisions', 'LayerSlider') ?>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="remove">
+								<i class="dashicons dashicons-trash"></i>
+								<?php _e('Remove', 'LayerSlider') ?>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<!-- End of Slider actions template -->
+
 			</div>
 			<?php else : ?>
 

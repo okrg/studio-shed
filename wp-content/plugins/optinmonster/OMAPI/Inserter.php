@@ -182,7 +182,7 @@ class OMAPI_Inserter {
 		$rest = array_pop( $words_array );
 
 		foreach ( $words_array as $word ) {
-			if ( false !== strpos( $word, $after_word ) ) {
+			if ( ! empty( $after_word ) && false !== strpos( $word, $after_word ) ) {
 				$number_occurrences++;
 			}
 		}

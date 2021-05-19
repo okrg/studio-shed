@@ -234,11 +234,11 @@ class OMAPI_Menu {
 
 		$new_links = $this->base->get_api_credentials()
 			? array(
-				sprintf( '<a href="%s">%s</a>', $this->get_link( 'campaigns' ), __( 'Campaigns', 'optin-monster-api' ) ),
-				sprintf( '<a href="%s">%s</a>', $this->get_link( 'settings' ), __( 'Settings', 'optin-monster-api' ) ),
+				sprintf( '<a href="%s">%s</a>', OMAPI_Urls::campaigns(), __( 'Campaigns', 'optin-monster-api' ) ),
+				sprintf( '<a href="%s">%s</a>', OMAPI_Urls::settings(), __( 'Settings', 'optin-monster-api' ) ),
 			)
 			: array(
-				sprintf( '<a href="%s">%s</a>', $this->get_onboarding_link(), __( 'Get Started', 'optin-monster-api' ) ),
+				sprintf( '<a href="%s">%s</a>', OMAPI_Urls::onboarding(), __( 'Get Started', 'optin-monster-api' ) ),
 			);
 
 		$links = array_merge( $new_links, $links );
@@ -350,7 +350,9 @@ class OMAPI_Menu {
 	}
 
 	/**
-	 * Deque specific scripts that cause conflicts on settings page
+	 * Deque specific scripts that cause conflicts on settings page. E.g.
+	 * - optimizely
+	 * - bigcommerce
 	 *
 	 * @since 1.1.5.9
 	 */
@@ -359,7 +361,18 @@ class OMAPI_Menu {
 
 			// Dequeue scripts that might cause our settings not to work properly.
 			wp_dequeue_script( 'optimizely_config' );
+
+			add_action( 'admin_print_footer_scripts', array( $this, 'dequeue_bigcommerce_admin_script' ), 100 );
 		}
+	}
+
+	/**
+	 * Deque bigcommerce admin script, as it contains conflict with our app.
+	 *
+	 * @since 2.3.0
+	 */
+	public function dequeue_bigcommerce_admin_script() {
+		wp_dequeue_script( 'bigcommerce-admin-scripts' );
 	}
 
 	/**
@@ -419,107 +432,6 @@ class OMAPI_Menu {
 	}
 
 	/**
-	 * Get the settings url.
-	 *
-	 * @return string
-	 */
-	public function get_settings_link() {
-		return $this->get_link( 'settings' );
-	}
-
-	/**
-	 * Get a link to an OM admin page.
-	 *
-	 * @since  2.0.0
-	 *
-	 * @param  string $page Page shortened slug.
-	 *
-	 * @return string
-	 */
-	public function get_link( $page ) {
-		return $this->admin_page_url(
-			array(
-				'page' => 'optin-monster-' . $page,
-			)
-		);
-	}
-
-	/**
-	 * Get the OM wizard url.
-	 *
-	 * @since  2.0.0
-	 *
-	 * @return string
-	 */
-	public function get_wizard_link() {
-		return $this->get_link( 'onboarding-wizard' );
-	}
-
-	/**
-	 * Get the campaign output settings edit url.
-	 *
-	 * @since  2.0.0
-	 *
-	 * @param  string $campaign_slug The campaign slug to edit.
-	 *
-	 * @return string
-	 */
-	public function edit_output_settings( $campaign_slug ) {
-		return $this->admin_page_url(
-			array(
-				'page'       => 'optin-monster-campaigns',
-				'campaignId' => $campaign_slug,
-			)
-		);
-	}
-
-	/**
-	 * Get the OM onboarding dashboard url.
-	 *
-	 * @since  2.0.0
-	 *
-	 * @return string
-	 */
-	public function get_onboarding_link() {
-		return $this->admin_page_url(
-			array(
-				'page' => self::SLUG,
-				'info' => true,
-			)
-		);
-	}
-
-	/**
-	 * Get the contextual OM dashboard url.
-	 *
-	 * @since  1.9.10
-	 *
-	 * @param  array $args Array of query args.
-	 *
-	 * @return string
-	 */
-	public function get_dashboard_link( $args = array() ) {
-		$defaults = array( 'page' => self::SLUG );
-
-		return $this->admin_page_url( wp_parse_args( $args, $defaults ) );
-	}
-
-	/**
-	 * Get an admin page url.
-	 *
-	 * @since  1.9.10
-	 *
-	 * @param  array $args Array of query args.
-	 *
-	 * @return string
-	 */
-	public function admin_page_url( $args = array() ) {
-		$url = add_query_arg( $args, admin_url( 'admin.php' ) );
-
-		return esc_url_raw( $url );
-	}
-
-	/**
 	 * Redirects to main OM page.
 	 *
 	 * @since  1.9.10
@@ -529,7 +441,7 @@ class OMAPI_Menu {
 	 * @return void
 	 */
 	public function redirect_to_dashboard( $args = array() ) {
-		$url = $this->get_dashboard_link( $args );
+		$url = OMAPI_Urls::dashboard( $args );
 		wp_safe_redirect( esc_url_raw( $url ) );
 		exit;
 	}

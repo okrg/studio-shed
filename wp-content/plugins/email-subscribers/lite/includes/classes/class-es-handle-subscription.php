@@ -14,6 +14,7 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 	 * @since 4.0.0
 	 */
 	class ES_Handle_Subscription {
+
 		/**
 		 * Subscriber Email
 		 *
@@ -22,6 +23,7 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 		 *
 		 */
 		public $email;
+
 		/**
 		 * Subscriber Name
 		 *
@@ -30,6 +32,7 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 		 *
 		 */
 		public $name;
+
 		/**
 		 * Subscriber First Name
 		 *
@@ -38,6 +41,7 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 		 *
 		 */
 		public $first_name;
+
 		/**
 		 * Subscriber Last Name
 		 *
@@ -46,6 +50,7 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 		 *
 		 */
 		public $last_name;
+
 		/**
 		 * Optin type
 		 *
@@ -54,6 +59,7 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 		 *
 		 */
 		public $es_optin_type;
+
 		/**
 		 * List Id 
 		 *
@@ -62,6 +68,16 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 		 *
 		 */
 		public $list_ids;
+
+		/**
+		 * List Hashes 
+		 *
+		 * @since 4.6.12
+		 * @var
+		 *
+		 */
+		public $list_hashes;
+
 		/**
 		 * Nonce value
 		 *
@@ -70,6 +86,7 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 		 *
 		 */
 		public $es_nonce;
+		
 		/**
 		 * Subscriber Status
 		 *
@@ -78,6 +95,7 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 		 *
 		 */
 		public $status;
+		
 		/**
 		 * To check if double-optin or not
 		 *
@@ -86,6 +104,7 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 		 *
 		 */
 		public $is_double_optin = false;
+		
 		/**
 		 * Guid
 		 *
@@ -94,6 +113,7 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 		 *
 		 */
 		public $guid;
+		
 		/**
 		 * Database Id
 		 *
@@ -102,6 +122,7 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 		 *
 		 */
 		public $db_id;
+		
 		/**
 		 * Form id
 		 *
@@ -110,6 +131,16 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 		 *
 		 */
 		public $form_id;
+
+		/**
+		 * IP Address
+		 *
+		 * @since 4.7.3
+		 * @var
+		 *
+		 */
+		public $ip_address;
+		
 		/**
 		 * If the user is subscribed from Rainmaker
 		 *
@@ -132,28 +163,9 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 				add_action( 'wp_ajax_nopriv_es_add_subscriber', array( $this, 'process_request' ), 10 );
 			}
 
-			add_action( 'wp_ajax_ig_es_get_updated_subscription_nonce', array( $this, 'get_updated_subscription_nonce' ) );
-			add_action( 'wp_ajax_nopriv_ig_es_get_updated_subscription_nonce', array( $this, 'get_updated_subscription_nonce' ) );
-
 			$this->from_rainmaker = $from_rainmaker;
 
 			$this->handle_external_subscription();
-		}
-
-		/**
-		 * Get updated nonce for 'es-subscribe' action
-		 * 
-		 * @since 4.6.7
-		 */
-		public function get_updated_subscription_nonce() {
-
-			$updated_nonce = wp_create_nonce( 'es-subscribe' );
-			
-			$response = array(
-				'updated_nonce' => $updated_nonce,
-			);
-
-			wp_send_json_success( $response );
 		}
 
 		/**
@@ -199,8 +211,9 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 					exit;
 				}
 
-				$email = ! empty( $form_data['esfpx_email'] ) ? sanitize_email( $form_data['esfpx_email'] ) : '';
-				$name  = ! empty( $form_data['esfpx_name'] ) ? sanitize_text_field( $form_data['esfpx_name'] ) : '';
+				$email       = ! empty( $form_data['esfpx_email'] ) ? sanitize_email( $form_data['esfpx_email'] ) : '';
+				$name        = ! empty( $form_data['esfpx_name'] ) ? sanitize_text_field( $form_data['esfpx_name'] ) : '';
+				$ip_address  = ! empty( $form_data['esfpx_ip_address'] ) ? sanitize_text_field( $form_data['esfpx_ip_address'] ) : '';
 
 				$first_name = '';
 				$last_name 	= '';
@@ -217,7 +230,8 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 				$this->first_name    = $first_name;
 				$this->last_name     = $last_name;
 				$this->email         = $email;
-				$this->list_ids      = isset( $form_data['esfpx_lists'] ) ? $form_data['esfpx_lists'] : array();
+				$this->ip_address         = $ip_address;
+				$this->list_hashes   = isset( $form_data['esfpx_lists'] ) ? $form_data['esfpx_lists'] : array();
 				$this->es_nonce      = isset( $form_data['esfpx_es-subscribe'] ) ? trim( $form_data['esfpx_es-subscribe'] ) : '';
 				$this->form_id       = isset( $form_data['esfpx_form_id'] ) ? trim( $form_data['esfpx_form_id'] ) : 0;
 				$this->es_optin_type = get_option( 'ig_es_optin_type' );
@@ -230,93 +244,108 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 					$this->status = 'subscribed';
 				}
 
-				if ( count( $this->list_ids ) > 0 ) {
-					/**
-					 * Check if subscribers exists?
-					 *  - If yes, get id and save lists into ig_lists_contacts table
-					 *  - If not, create contact and then save list
-					 */
-					$contact_id = ES()->contacts_db->get_contact_id_by_email( $this->email );
-					if ( ! $contact_id ) {
-						$data               = array();
-						$data['first_name'] = $this->first_name;
-						$data['last_name']  = $this->last_name;
-						$data['source']     = 'form';
-						$data['form_id']    = $this->form_id;
-						$data['email']      = $this->email;
-						$data['hash']       = $this->guid;
-						$data['status']     = 'verified';
-						$data['hash']       = $this->guid;
-						$data['created_at'] = ig_get_current_date_time();
-						$data['updated_at'] = null;
-						$data['meta']       = null;
+				if ( ! empty( $this->list_hashes ) ) {
 
-						$data = apply_filters( 'ig_es_add_subscriber_data', $data );
-						if ( 'ERROR' === $data['status'] ) {
-							$this->do_response( $validate_response );
+					$list_hash_str  = ES()->lists_db->prepare_for_in_query( $this->list_hashes );
+					$where          = "hash IN ($list_hash_str)";
+					$this->list_ids = ES()->lists_db->get_column_by_condition( 'id', $where );
+
+					if ( ! empty( $this->list_ids ) ) {
+						
+						
+						/**
+						 * Check if subscribers exists?
+						 *  - If yes, get id and save lists into ig_lists_contacts table
+						 *  - If not, create contact and then save list
+						 */
+						$contact_id = ES()->contacts_db->get_contact_id_by_email( $this->email );
+						if ( ! $contact_id ) {
+							$data               = array();
+							$data['first_name'] = $this->first_name;
+							$data['last_name']  = $this->last_name;
+							$data['source']     = 'form';
+							$data['form_id']    = $this->form_id;
+							$data['email']      = $this->email;
+							$data['hash']       = $this->guid;
+							$data['ip_address'] = $this->ip_address;
+							$data['status']     = 'verified';
+							$data['hash']       = $this->guid;
+							$data['created_at'] = ig_get_current_date_time();
+							$data['updated_at'] = null;
+							$data['meta']       = null;
+
+							$data = apply_filters( 'ig_es_add_subscriber_data', $data );
+							if ( 'ERROR' === $data['status'] ) {
+								$this->do_response( $validate_response );
+								exit;
+							}
+
+							$contact_id = ES()->contacts_db->insert( $data );
+
+							// do_action( 'ig_es_contact_added', $data);
+
+						}
+
+						$contact_lists = ES()->lists_contacts_db->get_list_ids_by_contact( $contact_id, 'subscribed' );
+						if ( empty( array_diff( $this->list_ids, $contact_lists ) ) ) {
+							$response['message'] = 'es_email_exists_notice';
+							$this->do_response( $response );
 							exit;
 						}
-
-						$contact_id = ES()->contacts_db->insert( $data );
-
-						// do_action( 'ig_es_contact_added', $data);
-
-					}
-
-					$contact_lists = ES()->lists_contacts_db->get_list_ids_by_contact( $contact_id, 'subscribed' );
-					if ( empty( array_diff( $this->list_ids, $contact_lists ) ) ) {
-						$response['message'] = 'es_email_exists_notice';
-						$this->do_response( $response );
-						exit;
-					}
-					$optin_type        = $this->is_double_optin ? IG_DOUBLE_OPTIN : IG_SINGLE_OPTIN;
-					$list_contact_data = array(
-						'contact_id'    => $contact_id,
-						'status'        => $this->status,
-						'subscribed_at' => ( 'subscribed' === $this->status ) ? ig_get_current_date_time() : '',
-						'optin_type'    => $optin_type,
-						'subscribed_ip' => '',
-					);
-
-					ES()->lists_contacts_db->add_contact_to_lists( $list_contact_data, $this->list_ids );
-
-					if ( $contact_id ) {
-
-						do_action( 'ig_es_contact_subscribe', $contact_id, $this->list_ids );
-
-						$this->db_id = $contact_id;
-
-						// Get comma(,) separated lists name based on ids.
-						$list_name = ES_Common::prepare_list_name_by_ids( $this->list_ids );
-
-						$merge_tags = array(
-							'email'      => $this->email,
-							'contact_id' => $contact_id,
-							'name'       => ES_Common::prepare_name_from_first_name_last_name( $this->first_name, $this->last_name ),
-							'first_name' => $this->first_name,
-							'last_name'  => $this->last_name,
-							'guid'       => $this->guid,
-							'list_name'  => $list_name,
-							'list_ids'	 => $this->list_ids,
+						$optin_type        = $this->is_double_optin ? IG_DOUBLE_OPTIN : IG_SINGLE_OPTIN;
+						$list_contact_data = array(
+							'contact_id'    => $contact_id,
+							'status'        => $this->status,
+							'subscribed_at' => ( 'subscribed' === $this->status ) ? ig_get_current_date_time() : '',
+							'optin_type'    => $optin_type,
+							'subscribed_ip' => '',
 						);
 
-						if ( $this->is_double_optin ) {
-							$response            = ES()->mailer->send_double_optin_email( $this->email, $merge_tags );
-							$response['message'] = 'es_optin_success_message';
+						ES()->lists_contacts_db->add_contact_to_lists( $list_contact_data, $this->list_ids );
+
+						if ( $contact_id ) {
+
+							do_action( 'ig_es_contact_subscribe', $contact_id, $this->list_ids );
+
+							$this->db_id = $contact_id;
+
+							// Get comma(,) separated lists name based on ids.
+							$list_name = ES_Common::prepare_list_name_by_ids( $this->list_ids );
+
+							$merge_tags = array(
+								'email'      => $this->email,
+								'contact_id' => $contact_id,
+								'name'       => ES_Common::prepare_name_from_first_name_last_name( $this->first_name, $this->last_name ),
+								'first_name' => $this->first_name,
+								'last_name'  => $this->last_name,
+								'guid'       => $this->guid,
+								'list_name'  => $list_name,
+								'list_ids'	 => $this->list_ids,
+							);
+
+							if ( $this->is_double_optin ) {
+								$response            = ES()->mailer->send_double_optin_email( $this->email, $merge_tags );
+								$response['message'] = 'es_optin_success_message';
+							} else {
+								// Send Welcome Email
+								ES()->mailer->send_welcome_email( $this->email, $merge_tags );
+
+								// Send Notifications to admins
+								ES()->mailer->send_add_new_contact_notification_to_admins( $merge_tags );
+
+								$response['message'] = 'es_optin_success_message';
+							}
+
+							$response['status'] = 'SUCCESS';
 						} else {
-							// Send Welcome Email
-							ES()->mailer->send_welcome_email( $this->email, $merge_tags );
 
-							// Send Notifications to admins
-							ES()->mailer->send_add_new_contact_notification_to_admins( $merge_tags );
-
-							$response['message'] = 'es_optin_success_message';
+							$response['message'] = 'es_db_error_notice';
 						}
-
-						$response['status'] = 'SUCCESS';
 					} else {
-
-						$response['message'] = 'es_db_error_notice';
+						$response['status']  = 'SUCCESS';
+						$response['message'] = 'es_optin_success_message';
+						$this->do_response( $response );
+						exit;	
 					}
 				} else {
 					$response['message'] = 'es_no_list_selected';
@@ -519,17 +548,19 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 				$list_hash = ig_es_get_request_data( 'list' );
 				$list      = ES()->lists_db->get_by( 'hash', $list_hash );
 				if ( ! empty( $list ) ) {
-					$list_id  = $list['id'];
-					$name     = ig_es_get_request_data( 'name' );
-					$email    = ig_es_get_request_data( 'email' );
-					$hp_email = ig_es_get_request_data( 'es_hp_email' );
+					$list_id    = $list['id'];
+					$name       = ig_es_get_request_data( 'name' );
+					$email      = ig_es_get_request_data( 'email' );
+					$hp_email   = ig_es_get_request_data( 'es_hp_email' );
+					$ip_address = ig_es_get_request_data( 'ip_address' );
 
 					$form_data = array(
 						'esfpx_name'        => $name,
 						'esfpx_email'       => $email,
 						'esfpx_es_hp_email' => $hp_email,
+						'esfpx_ip_address'  => $ip_address,
 						'esfpx_lists'       => array(
-							$list_id,
+							$list_hash,
 						),
 						'form_type'         => 'external',
 					);

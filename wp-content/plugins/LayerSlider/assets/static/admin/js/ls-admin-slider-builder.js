@@ -1500,10 +1500,10 @@ var LayerSlider = {
 		layerData.media = layerType;
 
 
-		// Set font size to 18 pixels for text based layers
+		// Set font size to 24 pixels for text based layers
 		if( ['text', 'html', 'post'].indexOf( layerType ) !== -1 ) {
 			jQuery.extend( layerData.styles, {
-				'font-size': 18
+				'font-size': 24
 			});
 		}
 
@@ -1531,7 +1531,7 @@ var LayerSlider = {
 					'padding-bottom': 15,
 					'padding-left': 60,
 					'font-family': 'Arial, sans-serif',
-					'font-size': 14,
+					'font-size': 16,
 					'font-weight': 700,
 					'background-color': '#1b9af7',
 					'color': '#fff',
@@ -2971,8 +2971,8 @@ var LayerSlider = {
 			id 		= layerData.id,
 
 			// Get style settings
-			top 	= layerData.styles.top,
-			left 	= layerData.styles.left,
+			top 	= layerData.styles.top || 10,
+			left 	= layerData.styles.left || 10,
 
 			innerAttrs = layerData.innerAttributes || {},
 			outerAttrs = layerData.outerAttributes || {};
@@ -5281,9 +5281,9 @@ var LayerSlider = {
 
 		var image = layerData.image,
 			html = layerData.html,
-			style = layerData.style,
-			top = layerData.styles.top,
-			left = layerData.styles.left,
+			style = layerData.style || {},
+			top = layerData.styles.top || 10,
+			left = layerData.styles.left || 10,
 			skip = layerData.hasOwnProperty('skip'),
 			url = layerData.url,
 			id = layerData.id,
@@ -9414,6 +9414,9 @@ var initSliderBuilder = function() {
 
 
 	}).on( 'dragstart.ls', function(u, ui){
+
+		// Handle disabled layers
+		if( ! ui ) { return false; }
 
 		LS_layerWasDragged = true;
 

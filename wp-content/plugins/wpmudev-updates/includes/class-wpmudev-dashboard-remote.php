@@ -250,6 +250,7 @@ class WPMUDEV_Dashboard_Remote {
 		$this->register_action( 'delete', array( $this, 'action_delete' ) );
 		$this->register_action( 'core_upgrade', array( $this, 'action_core_upgrade' ) );
 		$this->register_action( 'analytics', array( $this, 'action_analytics' ) );
+		$this->register_action( 'sso', array( $this, 'action_sso' ) );
 	}
 
 	/**
@@ -899,6 +900,60 @@ class WPMUDEV_Dashboard_Remote {
 		WPMUDEV_Dashboard::$site->set_option( 'analytics_enabled', ( 'enabled' === $params->status ) );
 
 		// success
+		$this->send_json_success();
+	}
+
+	/**
+	 * Enable or disable SSO.
+	 *
+	 * If the SSO is enabled for the first time,
+	 * set the user id and sync to hub.
+	 *
+	 * @param object $params List of args.
+	 * @param string $action Name of action.
+	 *
+	 * @since 4.11
+	 */
+	public function action_sso( $params, $action ) {
+		if ( ! isset( $params->status ) ) {
+			$this->send_json_error(
+				array(
+					'code'    => 'invalid_params',
+					'message' => __( 'The "status" param is missing.', 'wpmudev' ),
+				)
+			);
+		}
+
+		// Status can only be enabled or disabled.
+		if ( ! in_array( $params->status, array( 'enabled', 'disabled' ), true ) ) {
+			$this->send_json_error(
+				array(
+					'code'    => 'invalid_params',
+					'message' => __( 'Passed invalid value for param "status", it must be either "enabled" or "disabled"', 'wpmudev' ),
+				)
+			);
+		}
+
+		// Enabled status from request.
+		$enable_sso = 'enabled' === $params->status;
+		// Current SSO status.
+		$previous_sso = WPMUDEV_Dashboard::$site->get_option( 'enable_sso', true );
+
+		// Register the user to be logged in for SSO, only if the SSO was just enabled.
+		if ( $enable_sso && ! $previous_sso ) {
+			WPMUDEV_Dashboard::$site->set_option( 'sso_userid', get_current_user_id() );
+		}
+
+		// Set SSO status.
+		WPMUDEV_Dashboard::$site->set_option( 'enable_sso', $enable_sso );
+
+		// If the status of SSO is changed, sync to hub.
+		if ( $enable_sso !== $previous_sso ) {
+			// Also, force a hub-sync, since the SSO setting changed.
+			WPMUDEV_Dashboard::$api->hub_sync( false, true );
+		}
+
+		// Send success.
 		$this->send_json_success();
 	}
 }

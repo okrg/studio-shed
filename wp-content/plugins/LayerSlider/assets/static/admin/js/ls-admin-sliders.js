@@ -195,14 +195,17 @@ jQuery(function($) {
 
 	}).on('click', '.slider-actions-button', function() {
 
-		var $this = $(this);
+		var $this = $(this),
+			$listPage = $('#ls-list-page'),
+			listPageTop = $listPage.offset().top;
+
 		setTimeout(function() {
-			var offsets = $this.position(),
+			var offsets = $this.offset(),
 				height 	= $('#ls-slider-actions-template').removeClass('ls-hidden').show().height();
 
 			$('#ls-slider-actions-template').css({
-				top : offsets.top + 15 - height / 2,
-				right : 40,
+				top : offsets.top - listPageTop + 12 - ( height / 2 ),
+				right : 45,
 				marginTop : 0,
 				opacity : 1
 			});

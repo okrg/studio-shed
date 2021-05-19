@@ -473,16 +473,19 @@ class ES_DB_Lists_Contacts extends ES_DB {
 		if ( count( $contacts ) > 0 ) {
 			$values = array();
 
+			if ( ! is_array( $list_ids ) ) {
+				$list_ids = array( absint( $list_ids ) );
+			}
+			
 			$key = 0;
-			foreach ( $contacts as $contact_id ) {
-
+			foreach ( $contacts as $contact_id => $created_at ) {
 				foreach ( $list_ids as $list_id ) {
 
 					$values[ $key ]['contact_id']      = $contact_id;
 					$values[ $key ]['list_id']         = $list_id;
 					$values[ $key ]['status']          = $status;
 					$values[ $key ]['optin_type']      = $optin_type;
-					$values[ $key ]['subscribed_at']   = $subscribed_at;
+					$values[ $key ]['subscribed_at']   = $created_at;
 					$values[ $key ]['subscribed_ip']   = $subscribed_ip;
 					$values[ $key ]['unsubscribed_at'] = $unsubscribed_at;
 					$values[ $key ]['unsubscribed_ip'] = $unsubscribed_ip;

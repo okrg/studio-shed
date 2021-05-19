@@ -131,9 +131,10 @@ class OMAPI_AssetLoader {
 	 */
 	public function localize( $args ) {
 		foreach ( $this->handles['js'] as $handle ) {
-			wp_localize_script( $handle, 'omWpApi', $args );
+			OMAPI_Utils::add_inline_script( $handle, 'omWpApi', $args );
+
 			if ( isset( $args['omStaticDataKey'] ) ) {
-				wp_localize_script( $handle, 'omStaticDataKey', $args['omStaticDataKey'] );
+				OMAPI_Utils::add_inline_script( $handle, 'omStaticDataKey', $args['omStaticDataKey'] );
 			}
 			// We only need to output once.
 			break;

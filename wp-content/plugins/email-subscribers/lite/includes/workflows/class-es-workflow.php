@@ -171,8 +171,6 @@ class ES_Workflow {
 	/**
 	 * Retrieve ES_Workflow instance.
 	 *
-	 * @since 3.5.0
-	 *
 	 * @global wpdb $wpdb WordPress database abstraction object.
 	 *
 	 * @param int $workflow_id Worfklow ID.

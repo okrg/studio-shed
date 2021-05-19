@@ -72,6 +72,8 @@ class PageTemplatesController extends Container implements Module
                 $customTemplate = str_replace('boxed-blank', 'boxed', $currentPostTemplate);
             }
 
+            $customTemplate = $this->getCustomTemplate($post->ID, $customTemplate, $customTemplateType);
+
             // BC: For 2.9 blank page update to stretchedContent/notStretchedContent options
             list($templateStretch, $customTemplate) = $this->bcBlankPageUpdate(
                 $customTemplateType,
@@ -103,7 +105,7 @@ class PageTemplatesController extends Container implements Module
                     } else {
                         $output = [
                             'type' => 'theme',
-                            'value' => 'default',
+                            'value' => !empty($currentPostTemplate) ? $currentPostTemplate : 'default',
                         ];
                     }
                 } else {
@@ -118,6 +120,15 @@ class PageTemplatesController extends Container implements Module
         return $output;
     }
 
+    protected function getCustomTemplate($postId, $customTemplate, $customTemplateType)
+    {
+        if ($customTemplateType === 'theme') {
+            $customTemplate = get_post_meta($postId, '_wp_page_template', true);
+        }
+
+        return $customTemplate;
+    }
+
     protected function viewPageTemplate($originalTemplate, Request $requestHelper)
     {
         if ($requestHelper->input('vcv-template') === 'default') {
@@ -125,15 +136,14 @@ class PageTemplatesController extends Container implements Module
         }
 
         /** @see \VisualComposer\Modules\Editors\Settings\PageTemplatesController::getCurrentTemplateLayout */
-        $current = $this->call(
-            'getCurrentTemplateLayout',
+        $current = vcfilter(
+            'vcv:editor:settings:pageTemplatesLayouts:current',
             [
-                'output' => [
-                    'type' => 'theme',
-                    'value' => $originalTemplate,
-                ],
+                'type' => 'theme',
+                'value' => $originalTemplate,
             ]
         );
+
         if (!empty($current)) {
             $result = $originalTemplate;
             if ($current['type'] !== 'theme') {

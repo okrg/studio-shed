@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: WPMU DEV Dashboard
- * Plugin URI:  https://premium.wpmudev.org/project/wpmu-dev-dashboard/
+ * Plugin URI:  https://wpmudev.com/project/wpmu-dev-dashboard/
  * Description: Brings the powers of WPMU DEV directly to you. It will revolutionize how you use WordPress. Activate now!
  * Author:      WPMU DEV
- * Version:     4.10.6
- * Author URI:  https://premium.wpmudev.org/
+ * Version:     4.11.0
+ * Author URI:  https://wpmudev.com/
  * Text Domain: wpmudev
  * Domain Path: includes/languages/
  * Network:     true
@@ -44,7 +44,7 @@ class WPMUDEV_Dashboard {
 	 *
 	 * @var string (Version number)
 	 */
-	public static $version = '4.10.6';
+	public static $version = '4.11.0';
 
 	/**
 	 * The current SUI version.
@@ -65,7 +65,7 @@ class WPMUDEV_Dashboard {
 	 * @var   WPMUDEV_Dashboard_Api
 	 * @since 4.0.0
 	 */
-	static $api = null;
+	public static $api = null;
 
 	/**
 	 * Holds the Remote module.
@@ -74,7 +74,7 @@ class WPMUDEV_Dashboard {
 	 * @var   WPMUDEV_Dashboard_Remote
 	 * @since 4.0.0
 	 */
-	static $remote = null;
+	public static $remote = null;
 
 	/**
 	 * Holds the Site/Settings module.
@@ -83,7 +83,7 @@ class WPMUDEV_Dashboard {
 	 * @var   WPMUDEV_Dashboard_Site
 	 * @since 4.0.0
 	 */
-	static $site = null;
+	public static $site = null;
 
 	/**
 	 * Holds the UI module.
@@ -92,7 +92,7 @@ class WPMUDEV_Dashboard {
 	 * @var   WPMUDEV_Dashboard_Ui
 	 * @since 4.0.0
 	 */
-	static $ui = null;
+	public static $ui = null;
 
 	/**
 	 * Holds the Upgrader module.
@@ -101,7 +101,7 @@ class WPMUDEV_Dashboard {
 	 * @var   WPMUDEV_Dashboard_Upgrader
 	 * @since 4.1.0
 	 */
-	static $upgrader = null;
+	public static $upgrader = null;
 
 	/**
 	 * Holds the Notification module.
@@ -110,7 +110,7 @@ class WPMUDEV_Dashboard {
 	 * @var   WPMUDEV_Dashboard_Notice
 	 * @since 4.0.0
 	 */
-	static $notice = null;
+	public static $notice = null;
 
 	/**
 	 * Creates and returns the WPMUDEV Dashboard object.
@@ -122,13 +122,13 @@ class WPMUDEV_Dashboard {
 	 * @return WPMUDEV_Dashboard
 	 */
 	public static function instance() {
-		static $Inst = null;
+		static $inst = null;
 
-		if ( null === $Inst ) {
-			$Inst = new WPMUDEV_Dashboard();
+		if ( null === $inst ) {
+			$inst = new WPMUDEV_Dashboard();
 		}
 
-		return $Inst;
+		return $inst;
 	}
 
 	/**
@@ -171,6 +171,14 @@ class WPMUDEV_Dashboard {
 		// Register the plugin uninstall hook.
 		register_uninstall_hook( __FILE__, array( 'WPMUDEV_Dashboard', 'uninstall_plugin' ) );
 
+		// Get db version.
+		$version = self::$site->get_option( 'version', true, '1.0' );
+
+		// If existing version is not same, upgrade.
+		if ( ! empty( $version ) && version_compare( $version, self::$version, '<' ) ) {
+			$this->upgrade_plugin( $version );
+		}
+
 		/**
 		 * Custom code can be executed after Dashboard is initialized with the
 		 * default settings.
@@ -203,9 +211,15 @@ class WPMUDEV_Dashboard {
 		// On next page load we want to redirect user to login page.
 		self::$site->set_option( 'redirected_v4', 0 );
 
+		// Set plugin version on activation.
+		self::$site->set_option( 'version', self::$version );
+
 		// Force refresh of all data when plugin is activated.
 		self::$site->set_option( 'refresh_profile_flag', 1 );
-		add_action( 'shutdown', array( self::$api, 'refresh_projects_data' ) ); // this needs to trigger after init to prevent Call to undefined function wp_get_current_user() errors.
+
+		// This needs to trigger after init to prevent Call to undefined function wp_get_current_user() errors.
+		add_action( 'shutdown', array( self::$api, 'refresh_projects_data' ) );
+
 		self::$site->schedule_shutdown_refresh();
 	}
 
@@ -230,6 +244,33 @@ class WPMUDEV_Dashboard {
 		// On next page load we want to redirect user to login page.
 		self::$site->logout( false );
 		// TODO Delete all options from DB.
+	}
+
+	/**
+	 * Run code on plugin version upgrade.
+	 *
+	 * @param string $version Old version.
+	 *
+	 * @since  4.11
+	 *
+	 * @return void
+	 */
+	private function upgrade_plugin( $version ) {
+		// Set new version.
+		self::$site->set_option( 'version', self::$version );
+
+		// Show upgrade highlights modal.
+		self::$site->set_option( 'highlights_dismissed', false );
+
+		/**
+		 * Action hook to execute upgrade functions.
+		 *
+		 * @param string $version     Old version.
+		 * @param string $new_version New version.
+		 *
+		 * @since  4.11
+		 */
+		do_action( 'wpmudev_dashboard_version_upgrade', $version, self::$version );
 	}
 };
 

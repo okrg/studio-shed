@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit475ee553222ba79f28f6264f0685f202
+class ComposerStaticInitb58c3eab191615fe64a770f2b9e93b02
 {
     public static $prefixLengthsPsr4 = array (
         'V' => 
@@ -142,6 +142,7 @@ class ComposerStaticInit475ee553222ba79f28f6264f0685f202
         'VisualComposer\\Modules\\Editors\\PageEditable\\Controller' => __DIR__ . '/../..' . '/visualcomposer/Modules/Editors/PageEditable/Controller.php',
         'VisualComposer\\Modules\\Editors\\Popups\\PremiumPromoController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Editors/Popups/PremiumPromoController.php',
         'VisualComposer\\Modules\\Editors\\Settings\\EditorLayoutController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Editors/Settings/EditorLayoutController.php',
+        'VisualComposer\\Modules\\Editors\\Settings\\ItemBadgeController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Editors/Settings/ItemBadgeController.php',
         'VisualComposer\\Modules\\Editors\\Settings\\ItemDataCollectionController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Editors/Settings/ItemDataCollectionController.php',
         'VisualComposer\\Modules\\Editors\\Settings\\ItemInitialHelpersController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Editors/Settings/ItemInitialHelpersController.php',
         'VisualComposer\\Modules\\Editors\\Settings\\ItemPreviewController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Editors/Settings/ItemPreviewController.php',
@@ -265,6 +266,7 @@ class ComposerStaticInit475ee553222ba79f28f6264f0685f202
         'VisualComposer\\Modules\\Vendors\\PluginsController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/PluginsController.php',
         'VisualComposer\\Modules\\Vendors\\RevSliderController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/RevSliderController.php',
         'VisualComposer\\Modules\\Vendors\\ThemeTwentySeventeenController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/ThemeTwentySeventeenController.php',
+        'VisualComposer\\Modules\\Vendors\\TwentyTwentyOneController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/TwentyTwentyOneController.php',
         'VisualComposer\\Modules\\Vendors\\WooCommerceController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/WooCommerceController.php',
         'VisualComposer\\Modules\\Vendors\\WooCommerceSquareController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/WooCommerceSquareController.php',
         'VisualComposer\\Modules\\Vendors\\WordpressController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/WordpressController.php',
@@ -276,9 +278,9 @@ class ComposerStaticInit475ee553222ba79f28f6264f0685f202
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit475ee553222ba79f28f6264f0685f202::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit475ee553222ba79f28f6264f0685f202::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit475ee553222ba79f28f6264f0685f202::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitb58c3eab191615fe64a770f2b9e93b02::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitb58c3eab191615fe64a770f2b9e93b02::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitb58c3eab191615fe64a770f2b9e93b02::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -277,10 +277,10 @@ class OMAPI_Api {
 		}
 
 		// Get the correct success response code to check against.
-		$response_code = 'DELETE' === $this->method ? 204 : 200;
+		$success_code = 'DELETE' === $this->method ? 204 : 200;
 
 		// If not a 200 status header, send back error.
-		if ( (int) $response_code !== (int) $this->response_code ) {
+		if ( (int) $success_code !== (int) $this->response_code ) {
 			$type  = ! empty( $this->response_body->type ) ? $this->response_body->type : 'api-error';
 			$error = ! empty( $this->response_body->message ) ? stripslashes( $this->response_body->message ) : '';
 			if ( empty( $error ) ) {
@@ -346,6 +346,22 @@ class OMAPI_Api {
 		$this->additional_data = null;
 
 		return $this;
+	}
+
+	/**
+	 * Get the request credentials for this API object.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @return array Array containing API credentials.
+	 */
+	public function get_creds() {
+		return ! empty( $this->apikey )
+			? array( 'apikey' => $this->apikey )
+			: array(
+				'user' => $this->user,
+				'key'  => $this->key,
+			);
 	}
 
 	/**

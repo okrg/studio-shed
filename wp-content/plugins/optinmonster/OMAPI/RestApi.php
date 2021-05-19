@@ -346,16 +346,17 @@ class OMAPI_RestApi {
 	 *
 	 * @since 1.9.10
 	 *
-	 * @param  WP_REST_Request $request The REST Request.
 	 * @return WP_REST_Response The API Response
 	 */
-	public function refresh_campaigns( $request ) {
-		$this->base->refresh->refresh();
+	public function refresh_campaigns() {
+		$result = $this->base->refresh->refresh();
 
-		return new WP_REST_Response(
-			array( 'message' => esc_html__( 'OK', 'optin-monster-api' ) ),
-			200
-		);
+		return is_wp_error( $result )
+			? $result
+			: new WP_REST_Response(
+				array( 'message' => esc_html__( 'OK', 'optin-monster-api' ) ),
+				200
+			);
 	}
 
 	/**
@@ -366,11 +367,9 @@ class OMAPI_RestApi {
 	 *
 	 * @since  1.9.10
 	 *
-	 * @param  WP_REST_Request $request The REST Request.
-	 *
 	 * @return WP_REST_Response
 	 */
-	public function output_info( $request ) {
+	public function output_info() {
 		return new WP_REST_Response( $this->base->refresh->get_info_args(), 200 );
 	}
 
@@ -554,7 +553,10 @@ class OMAPI_RestApi {
 			: array();
 
 		if ( $request->get_param( 'refresh' ) ) {
-			$this->base->refresh->refresh();
+			$result = $this->base->refresh->refresh();
+			if ( is_wp_error( $result ) ) {
+				return $result;
+			}
 		}
 
 		$campaign_data = array();
@@ -1339,7 +1341,8 @@ class OMAPI_RestApi {
 	 */
 	public function logged_in_or_has_api_key( $request ) {
 		if (
-			false !== strpos( $_SERVER['HTTP_REFERER'], 'https://wp.app.optinmonster.test' )
+			! empty( $_SERVER['HTTP_REFERER'] )
+			&& false !== strpos( $_SERVER['HTTP_REFERER'], 'https://wp.app.optinmonster.test' )
 			&& 'OPTIONS' === $_SERVER['REQUEST_METHOD']
 		) {
 			return true;

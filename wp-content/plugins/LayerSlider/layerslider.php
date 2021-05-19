@@ -11,7 +11,7 @@
 /*
     Plugin Name:  LayerSlider WP
      Plugin URI:  https://layerslider.kreaturamedia.com
-        Version:  6.11.5
+        Version:  6.11.8
 
     Description:  LayerSlider is a premium multi-purpose content creation and animation platform. Easily create sliders, image galleries, slideshows with mind-blowing effects, popups, landing pages, animated page blocks, or even a full website. LayerSlider empowers millions of active websites on a daily basis with stunning visuals and eye-catching effects.
 
@@ -53,7 +53,7 @@ if( defined('LS_PLUGIN_VERSION') || isset( $GLOBALS['lsPluginPath'] ) ) {
 
 	define( 'LS_ROOT_FILE', __FILE__ );
 
-	define( 'LS_PLUGIN_VERSION', '6.11.5' );
+	define( 'LS_PLUGIN_VERSION', '6.11.8' );
 	define( 'LS_DB_VERSION', '6.9.0' );
 
 	require __DIR__.'/assets/init.php';

@@ -168,6 +168,7 @@ class WPMUDEV_Dashboard_Site {
 			'wdp-project-upgrade-free',
 			'wdp-login-success',
 			'wdp-sso-status',
+			'wdp-dismiss-highlights',
 		);
 		foreach ( $ajax_actions as $action ) {
 			add_action( "wp_ajax_$action", array( $this, 'process_ajax' ) );
@@ -345,6 +346,8 @@ class WPMUDEV_Dashboard_Site {
 			array( $this, 'user_can_edit_branding_image' )
 		);
 
+		// Handle plugin update changes.
+		add_action( 'wpmudev_dashboard_version_upgrade', array( $this, 'upgrade_plugin' ) );
 	}
 
 	/**
@@ -366,35 +369,37 @@ class WPMUDEV_Dashboard_Site {
 	public function init_options( $action = 'init' ) {
 		// Initialize the plugin options stored in the WP Database.
 		$options = array(
-			'limit_to_user'                => '',
-			'remote_access'                => '',
-			'refresh_remote_flag'          => 0,
-			'refresh_profile_flag'         => 0,
-			'updates_data'                 => null,
-			'profile_data'                 => '',
-			'farm133_themes'               => '',
-			'updates_available'            => '',
-			'last_run_updates'             => 0,
-			'last_run_profile'             => 0,
-			'last_check_upfront'           => 0,
-			'staff_notes'                  => '',
-			'redirected_v4'                => 0, // We want to redirect all users after first v4 activation!
-			'autoupdate_dashboard'         => 1,
-			'notifications'                => array(),
+			'limit_to_user'                  => '',
+			'remote_access'                  => '',
+			'refresh_remote_flag'            => 0,
+			'refresh_profile_flag'           => 0,
+			'updates_data'                   => null,
+			'profile_data'                   => '',
+			'farm133_themes'                 => '',
+			'updates_available'              => '',
+			'last_run_updates'               => 0,
+			'last_run_profile'               => 0,
+			'last_check_upfront'             => 0,
+			'staff_notes'                    => '',
+			'redirected_v4'                  => 0, // We want to redirect all users after first v4 activation!
+			'autoupdate_dashboard'           => 1,
+			'notifications'                  => array(),
 			// 'blog_active_projects' => array(), // Only used on multisite. Not finished.
-			'auth_user'                    => null, // NULL means: Ignore during 'reset' action.
-
-			// whitelabel options
-			'whitelabel_enabled'           => false,
-			'whitelabel_branding_enabled'  => false,
-			'whitelabel_branding_image'    => '',
-			'whitelabel_footer_enabled'    => false,
-			'whitelabel_footer_text'       => '',
-			'whitelabel_doc_links_enabled' => false,
-
-			// analytics options
-			'analytics_enabled'            => false,
-			'analytics_role'               => 'administrator',
+			'auth_user'                      => null, // NULL means: Ignore during 'reset' action.
+			'highlights_dismissed'           => true,
+			'version'                        => WPMUDEV_Dashboard::$version,
+			// Whitelabel options.
+			'whitelabel_enabled'             => false,
+			'whitelabel_branding_enabled'    => false,
+			'whitelabel_branding_type'       => 'default',
+			'whitelabel_branding_image'      => '',
+			'whitelabel_branding_image_link' => '',
+			'whitelabel_footer_enabled'      => false,
+			'whitelabel_footer_text'         => '',
+			'whitelabel_doc_links_enabled'   => false,
+			// Analytics options.
+			'analytics_enabled'              => false,
+			'analytics_role'                 => 'administrator',
 		);
 
 		foreach ( $options as $key => $default_val ) {
@@ -499,6 +504,23 @@ class WPMUDEV_Dashboard_Site {
 		foreach ( $flags as $flag => $default_val ) {
 			if ( ! defined( $flag ) ) {
 				define( $flag, $default_val );
+			}
+		}
+	}
+
+	/**
+	 * Upgrade plugin settings after the update.
+	 *
+	 * @param string $old_version Old version.
+	 *
+	 * @since  4.11
+	 */
+	public function upgrade_plugin( $old_version ) {
+		// If upgrading to 4.11.
+		if ( version_compare( $old_version, '4.11', '<' ) ) {
+			// If branding enabled, branding type is custom.
+			if ( $this->get_option( 'whitelabel_branding_enabled' ) ) {
+				$this->set_option( 'whitelabel_branding_type', 'custom' );
 			}
 		}
 	}
@@ -706,11 +728,15 @@ class WPMUDEV_Dashboard_Site {
 						$success = true;
 						break;
 					case 'settings':
-						$setting_data = $_REQUEST; // wpcs CSRF ok. already validated on process_ajax
+						$setting_data = $_REQUEST; // phpcs:ignore
 						$options_map  = array(
 							'branding_enabled'         => array(
 								'option_name' => 'whitelabel_branding_enabled',
 								'default'     => false,
+							),
+							'branding_type'            => array(
+								'option_name' => 'whitelabel_branding_type',
+								'default'     => 'default',
 							),
 							'branding_enabled_subsite' => array(
 								'option_name'   => 'branding_enabled_subsite',
@@ -723,6 +749,11 @@ class WPMUDEV_Dashboard_Site {
 							),
 							'branding_image_id'        => array(
 								'option_name' => 'whitelabel_branding_image_id',
+								'default'     => '',
+
+							),
+							'branding_image_link'      => array(
+								'option_name' => 'whitelabel_branding_image_link',
 								'default'     => '',
 
 							),
@@ -739,6 +770,9 @@ class WPMUDEV_Dashboard_Site {
 								'default'     => false,
 							),
 						);
+
+						// Set branding enabled value.
+						$setting_data['branding_enabled'] = isset( $setting_data['branding_type'] ) && 'default' !== $setting_data['branding_type'];
 
 						foreach ( $options_map as $key => $value ) {
 							if ( ! isset( $value['option_name'] ) || empty( $value['option_name'] ) ) {
@@ -1194,10 +1228,6 @@ class WPMUDEV_Dashboard_Site {
 					}
 					break;
 
-				case 'changelog':
-					WPMUDEV_Dashboard::$ui->wp_popup_changelog( $pid );
-					break;
-
 				case 'credentials':
 					// Remember credentials for FTP update/installation, for 15 min.
 					if ( WPMUDEV_Dashboard::$upgrader->remember_credentials() ) {
@@ -1345,6 +1375,12 @@ class WPMUDEV_Dashboard_Site {
 						WPMUDEV_Dashboard::$site->set_option( 'sso_userid', absint( $_REQUEST['ssoUserId'] ) );
 						$this->send_json_success();
 					}
+					break;
+
+				case 'dismiss-highlights':
+					// Set dismissal flag.
+					WPMUDEV_Dashboard::$site->set_option( 'highlights_dismissed', true );
+					$this->send_json_success();
 					break;
 
 				default:
@@ -2186,7 +2222,7 @@ class WPMUDEV_Dashboard_Site {
 		if ( empty( $user_id ) ) {
 			/*
 			 * @todo calling this too soon bugs out in some wp installs
-			 * http://premium.wpmudev.org/forums/topic/urgenti-lost-permission-after-upgrading#post-227543
+			 * http://wpmudev.com/forums/topic/urgenti-lost-permission-after-upgrading#post-227543
 			 */
 			$user_id = get_current_user_id();
 		}
@@ -3475,20 +3511,22 @@ class WPMUDEV_Dashboard_Site {
 	}
 
 	/**
-	 * Can current blog user access the analytics widget.
+	 * Exclude branding logo image from media library.
 	 *
-	 * Translates the minimum role as defined in settings into a level capability, then checks if current user
-	 *  has that capability.
+	 * If current user do not have access to WPMUDEV Dash settings,
+	 * hide branding logo from media library.
 	 *
-	 * @return bool
+	 * @param array $query WP_Query
+	 *
+	 * @return array
 	 */
-
 	public function user_can_edit_branding_image( $query ) {
 		$user = get_current_user_id();
+		// Only if allowed user.
 		if ( is_admin() && ! $this->allowed_user( $user ) ) {
-			// var_dump( $this->get_option( 'whitelabel_branding_image_id' ) ); die()
 			$query['post__not_in'] = array( $this->get_option( 'whitelabel_branding_image_id' ) );
 		}
+
 		return $query;
 	}
 
@@ -3544,6 +3582,11 @@ class WPMUDEV_Dashboard_Site {
 				'expected_type' => 'boolean',
 				'default'       => false,
 			),
+			'branding_type'            => array(
+				'option_name'   => 'whitelabel_branding_type',
+				'expected_type' => 'string',
+				'default'       => 'default',
+			),
 			'branding_enabled_subsite' => array(
 				'option_name'   => 'branding_enabled_subsite',
 				'expected_type' => 'boolean',
@@ -3556,6 +3599,10 @@ class WPMUDEV_Dashboard_Site {
 			),
 			'branding_image_id'        => array(
 				'option_name' => 'whitelabel_branding_image_id',
+				'default'     => '',
+			),
+			'branding_image_link'      => array(
+				'option_name' => 'whitelabel_branding_image_link',
 				'default'     => '',
 			),
 			'footer_enabled'           => array(
@@ -3627,14 +3674,15 @@ class WPMUDEV_Dashboard_Site {
 			}
 			$default_branding['hide_branding'] = $whitelabel_settings['branding_enabled'];
 			if ( $whitelabel_settings['branding_enabled'] ) {
+				$branding_type = $whitelabel_settings['branding_type'];
 
-				if ( is_multisite() && ! is_network_admin() && 1 === absint( $whitelabel_settings['branding_enabled_subsite'] ) ) {
+				if ( is_multisite() && ! is_network_admin() && 1 === absint( $whitelabel_settings['branding_enabled_subsite'] ) && 'custom' === $branding_type ) {
 					if ( has_custom_logo() ) {
 						$custom_logo_id = get_theme_mod( 'custom_logo' );
 						$image          = wp_get_attachment_image_url( $custom_logo_id, 'full' );
 					}
 				} else {
-					$image = $whitelabel_settings['branding_image'];
+					$image = 'link' === $branding_type ? $whitelabel_settings['branding_image_link'] : $whitelabel_settings['branding_image'];
 				}
 				if ( false === isset( $image ) ) {
 					$image = '';
@@ -3763,7 +3811,7 @@ class WPMUDEV_Dashboard_Site {
 			// same behavior as get_site_option
 			$options[ $key ] = isset( $expectation['default'] ) ? $expectation['default'] : false;
 			if ( isset( $expectation['option_name'] ) && ! empty( $expectation['option_name'] ) ) {
-				$option_value = $this->get_option( $expectation['option_name'] );
+				$option_value = $this->get_option( $expectation['option_name'], true, $options[ $key ] );
 				// initiate with value returned form `get_option`
 				$options[ $key ] = $option_value;
 			}
@@ -4439,6 +4487,21 @@ function is_wpmudev_single_member( $pid = false ) {
 	return false;
 }
 
+/**
+ * Returns true if the current member has an active membership.
+ * Membership can be anything. We just check if it's active,
+ *
+ * @since  4.11
+ *
+ * @return boolean
+ */
+function is_wpmudev_active_member() {
+	// Get membership type.
+	$type = WPMUDEV_Dashboard::$api->get_membership_type();
+
+	return 'free' !== $type;
+}
+
 // this function(s) placed here as its not directly related with WPMUDev Site module
 if ( ! function_exists( 'wpmudev_whitelabel_sui_plugins_branding' ) ) {
 	/**
@@ -4455,8 +4518,9 @@ if ( ! function_exists( 'wpmudev_whitelabel_sui_plugins_branding' ) ) {
 
 		$output = '';
 		if ( $whitelabel_settings['branding_enabled'] ) {
+			$branding_type = $whitelabel_settings['branding_type'];
 
-			if ( is_multisite() && ! is_network_admin() && $whitelabel_settings['branding_enabled_subsite'] ) {
+			if ( is_multisite() && ! is_network_admin() && $whitelabel_settings['branding_enabled_subsite'] && 'custom' === $branding_type ) {
 
 				if ( has_custom_logo() ) {
 					$custom_logo_id = get_theme_mod( 'custom_logo' );
@@ -4464,7 +4528,7 @@ if ( ! function_exists( 'wpmudev_whitelabel_sui_plugins_branding' ) ) {
 					$image          = $image[0];
 				}
 			} else {
-				$image = $whitelabel_settings['branding_image'];
+				$image = 'link' === $branding_type ? $whitelabel_settings['branding_image_link'] : $whitelabel_settings['branding_image'];
 			}
 
 			$additional_summary_class = ! empty( $image ) ? 'sui-rebranded' : 'sui-unbranded';

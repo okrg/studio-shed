@@ -181,7 +181,7 @@ class OMAPI_Validate {
 			if ( 'optin-monster-dashboard' !== $page ) {
 				if ( ! OMAPI_Partners::has_partner_url() ) {
 					echo '<div class="notice notice-error"><p>' . esc_html__( 'There was an error verifying your OptinMonster API credentials. They are either missing or they are no longer valid.', 'optin-monster-api' ) . '</p>';
-					echo '<p><a href="' . esc_url_raw( $this->base->menu->get_settings_link() ) . '" class="button button-primary button-large omapi-new-optin" title="' . esc_html__( 'View API Settings', 'optin-monster-api' ) . '">' . esc_html__( 'View API Settings', 'optin-monster-api' ) . '</a></p></div>';
+					echo '<p><a href="' . esc_url_raw( OMAPI_Urls::settings() ) . '" class="button button-primary button-large omapi-new-optin" title="' . esc_html__( 'View API Settings', 'optin-monster-api' ) . '">' . esc_html__( 'View API Settings', 'optin-monster-api' ) . '</a></p></div>';
 				}
 			}
 		} elseif ( isset( $option['is_disabled'] ) && $option['is_disabled'] ) {
@@ -199,8 +199,8 @@ class OMAPI_Validate {
 					<p>' . esc_html__( 'Please connect to or create an OptinMonster account to start using OptinMonster. This will enable you to start turning website visitors into subscribers & customers.', 'optin-monster-api' ) . '
 					</p>
 					<p>
-						<a href="' . esc_url_raw( $this->base->menu->get_onboarding_link() ) . '" class="button button-primary button-large omapi-new-optin" title="' . esc_html__( 'Get Started', 'optin-monster-api' ) . '">' . esc_html__( 'Get Started' ) . '</a>
-						<a style="margin-left:8px" href="' . esc_url( $this->base->menu->get_onboarding_link() ) . '" title="' . esc_attr__( 'Learn More', 'optin-monster-api' ) . '">' . esc_html__( 'Learn More &rarr;', 'optin-monster-api' ) . '</a>
+						<a href="' . esc_url_raw( OMAPI_Urls::onboarding() ) . '" class="button button-primary button-large omapi-new-optin" title="' . esc_html__( 'Get Started', 'optin-monster-api' ) . '">' . esc_html__( 'Get Started' ) . '</a>
+						<a style="margin-left:8px" href="' . esc_url( OMAPI_Urls::onboarding() ) . '" title="' . esc_attr__( 'Learn More', 'optin-monster-api' ) . '">' . esc_html__( 'Learn More &rarr;', 'optin-monster-api' ) . '</a>
 					</p>
 				</div>
 				';

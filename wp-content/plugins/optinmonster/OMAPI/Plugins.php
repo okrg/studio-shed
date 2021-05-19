@@ -323,19 +323,23 @@ class OMAPI_Plugins {
 		$plugin_basename = $installer->plugin_info();
 
 		// Activate the plugin silently.
-		if ( ! is_wp_error( activate_plugin( $plugin_basename ) ) ) {
+		try {
+			$this->activate_plugin( $plugin_basename );
+
 			return array(
 				'message'      => esc_html__( 'Plugin installed & activated.', 'optin-monster-api' ),
 				'is_activated' => true,
 				'basename'     => $plugin_basename,
 			);
-		}
 
-		return array(
-			'message'      => esc_html__( 'Plugin installed.', 'optin-monster-api' ),
-			'is_activated' => false,
-			'basename'     => $plugin_basename,
-		);
+		} catch ( \Exception $e ) {
+
+			return array(
+				'message'      => esc_html__( 'Plugin installed.', 'optin-monster-api' ),
+				'is_activated' => false,
+				'basename'     => $plugin_basename,
+			);
+		}
 	}
 
 	/**
@@ -366,7 +370,8 @@ class OMAPI_Plugins {
 		}
 
 		return array(
-			'message' => esc_html__( 'Plugin activated.', 'optin-monster-api' ),
+			'message'  => esc_html__( 'Plugin activated.', 'optin-monster-api' ),
+			'basename' => $plugin_id,
 		);
 	}
 

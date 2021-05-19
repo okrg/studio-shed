@@ -87,25 +87,44 @@ $can_use_whitelabel    = WPMUDEV_Dashboard::$api->is_whitelabel_allowed();
 								<div class="sui-tabs-menu">
 
 									<label for="wpmudev-branding-default"
-										   class="sui-tab-item<?php echo esc_attr( $whitelabel_settings['branding_enabled'] ? '' : ' active' ); ?>">
+									       class="sui-tab-item <?php echo 'default' === $whitelabel_settings['branding_type'] ? 'active' : ''; ?>"
+									>
 										<input type="radio"
-											   name="branding_enabled"
-											   value="0"
-											   id="wpmudev-branding-default"
-											   data-checked="false"/>
+										       name="branding_type"
+										       value="default"
+										       id="wpmudev-branding-default"
+										       data-checked="<?php echo 'default' === $whitelabel_settings['branding_type'] ? 'true' : 'false'; ?>"
+											<?php checked( $whitelabel_settings['branding_type'], 'default' ); ?>
+										/>
 										<?php esc_html_e( 'Default', 'wpmudev' ); ?>
 									</label>
 
 									<label for="wpmudev-branding-custom"
-										   class="sui-tab-item<?php echo esc_attr( $whitelabel_settings['branding_enabled'] ? ' active' : '' ); ?>">
+									       class="sui-tab-item <?php echo 'custom' === $whitelabel_settings['branding_type'] ? 'active' : ''; ?>"
+									>
 										<input type="radio"
-											   name="branding_enabled"
-											   value="1"
-											   id="wpmudev-branding-custom"
-											   data-checked="true"
-											   data-tab-menu="wpmudev-branding-upload"
-											<?php checked( $whitelabel_settings['branding_enabled'] ); ?> />
+										       name="branding_type"
+										       value="custom"
+										       id="wpmudev-branding-custom"
+										       data-checked="<?php echo 'custom' === $whitelabel_settings['branding_type'] ? 'true' : 'false'; ?>"
+										       data-tab-menu="wpmudev-branding-upload"
+											<?php checked( $whitelabel_settings['branding_type'], 'custom' ); ?>
+										/>
 										<?php esc_html_e( 'Custom', 'wpmudev' ); ?>
+									</label>
+
+									<label for="wpmudev-branding-link"
+									       class="sui-tab-item <?php echo 'link' === $whitelabel_settings['branding_type'] ? 'active' : ''; ?>"
+									>
+										<input type="radio"
+										       name="branding_type"
+										       value="link"
+										       id="wpmudev-branding-link"
+										       data-checked="<?php echo 'link' === $whitelabel_settings['branding_type'] ? 'true' : 'false'; ?>"
+										       data-tab-menu="wpmudev-branding-link-logo"
+											<?php checked( $whitelabel_settings['branding_type'], 'link' ); ?>
+										/>
+										<?php esc_html_e( 'Link Logo', 'wpmudev' ); ?>
 									</label>
 
 								</div>
@@ -113,8 +132,9 @@ $can_use_whitelabel    = WPMUDEV_Dashboard::$api->is_whitelabel_allowed();
 								<div class="sui-tabs-content">
 
 									<div id="wpmudev-branding-upload"
-										 class="sui-tab-content sui-tab-boxed<?php echo esc_attr( $whitelabel_settings['branding_enabled'] ? ' active' : '' ); ?>"
-										 data-tab-content="wpmudev-branding-upload">
+										 class="sui-tab-content sui-tab-boxed <?php echo 'custom' === $whitelabel_settings['branding_type'] ? 'active' : ''; ?>"
+										 data-tab-content="wpmudev-branding-upload"
+									>
 
 										<div class="sui-form-field">
 
@@ -128,13 +148,15 @@ $can_use_whitelabel    = WPMUDEV_Dashboard::$api->is_whitelabel_allowed();
 														name="branding_image"
 														id="branding_image"
 														readonly="readonly"
-														value="<?php echo esc_attr( $whitelabel_settings['branding_image'] ); ?>">
+														value="<?php echo esc_attr( $whitelabel_settings['branding_image'] ); ?>"
+													>
 												</div>
 												<input type="hidden"
-												name="branding_image_id"
-												id="branding_image_id"
-												readonly="readonly"
-												value="<?php echo esc_attr( $whitelabel_settings['branding_image_id'] ); ?>">
+												       name="branding_image_id"
+												       id="branding_image_id"
+												       readonly="readonly"
+												       value="<?php echo esc_attr( $whitelabel_settings['branding_image_id'] ); ?>"
+												>
 												<div class="sui-upload-image" aria-hidden="true">
 													<div class="sui-image-mask"></div>
 													<div role="button"
@@ -193,6 +215,60 @@ $can_use_whitelabel    = WPMUDEV_Dashboard::$api->is_whitelabel_allowed();
 												<span class="sui-description"><?php esc_html_e( 'By default, subsites will inherit the main branding set here. With this setting enabled, we will use the logo set in the Customizer Menu as the branding across plugins.', 'wpmudev' ); ?></span>
 											</div>
 										<?php endif; ?>
+									</div>
+
+									<div id="wpmudev-branding-link-logo"
+									     class="sui-tab-content sui-tab-boxed <?php echo 'link' === $whitelabel_settings['branding_type'] ? 'active' : ''; ?>"
+									     data-tab-content="wpmudev-branding-link-logo"
+									>
+
+										<div class="sui-form-field" id="branding_link_form_field">
+											<label for="branding_image_link" id="branding_image_link_label" class="sui-label">
+												<?php esc_html_e( 'Insert Logo from URL', 'wpmudev' ); ?>
+											</label>
+											<div class="sui-upload">
+												<div class="sui-upload-image" aria-hidden="true">
+													<div class="sui-image-mask"></div>
+													<div
+															class="sui-image-link-preview <?php echo '' === esc_url( $whitelabel_settings['branding_image_link'] ) ? '' : 'has-logo-image'; ?>"
+															id="branding_link_preview"
+															style="background-image: url('<?php echo esc_url( $whitelabel_settings['branding_image_link'] ); ?>');"
+													></div>
+												</div>
+
+												<div class="sui-with-button sui-with-button-icon">
+													<input
+															id="branding_image_link"
+															name="branding_image_link"
+															class="sui-form-control wp-link-media"
+															data-preview-id="branding_link_preview"
+															data-clear-btn-id="branding_link_clear"
+															data-wrapper-id="branding_link_preview"
+															aria-labelledby="branding_image_link_label"
+															aria-describedby="branding_image_link_desc"
+															value="<?php echo esc_url( $whitelabel_settings['branding_image_link'] ); ?>"
+													/>
+
+													<button
+															type="button"
+															class="sui-button-icon js-clear-link <?php echo empty( $whitelabel_settings['branding_image_link'] ) ? 'hidden-clear-link' : ''; ?>"
+															id="branding_link_clear"
+															data-input-id="branding_image_link"
+													>
+														<span aria-hidden="true" class="sui-icon-close"></span>
+														<span class="sui-screen-reader-text">
+															<?php esc_html_e( 'Remove file', 'wpmudev' ); ?>
+														</span>
+													</button>
+												</div>
+											</div>
+											<span id="branding_image_link_error" class="sui-error-message" role="alert">
+												<?php esc_attr_e( 'Invalid image URL. Please, enter a valid one.', 'wpmudev' ); ?>
+											</span>
+											<span id="branding_image_link_desc" class="sui-description">
+												<?php esc_html_e( 'Maximum height and width of logo should be 192px and 172px respectively. This Logo will appear only in the dashboard section of each WPMU DEV plugin you have installed that supports this feature.', 'wpmudev' ); ?>
+											</span>
+										</div>
 									</div>
 
 								</div>
@@ -404,10 +480,12 @@ $can_use_whitelabel    = WPMUDEV_Dashboard::$api->is_whitelabel_allowed();
 
 					<div class="sui-actions-right">
 
-						<button type="submit"
-							name="status"
-							value="settings"
-							class="sui-button sui-button-blue">
+						<button
+								type="submit"
+								name="status"
+								value="settings"
+								id="save_changes"
+								class="sui-button sui-button-blue">
 
 							<span class="sui-loading-text">
 								<i class="sui-icon-save" aria-hidden="true"></i>

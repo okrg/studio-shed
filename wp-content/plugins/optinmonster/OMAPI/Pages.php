@@ -140,6 +140,12 @@ class OMAPI_Pages {
 				'callback' => array( $this, 'render_app_loading_page' ),
 			);
 
+			$this->pages['optin-monster-personalization'] = array(
+				'name'     => __( 'Personalization', 'optin-monster-api' ),
+				'app'      => true,
+				'callback' => array( $this, 'render_app_loading_page' ),
+			);
+
 			$this->pages['optin-monster-university'] = array(
 				'name'     => __( 'University', 'optin-monster-api' ),
 				'app'      => true,
@@ -328,8 +334,8 @@ class OMAPI_Pages {
 
 			$creds = $this->base->get_api_credentials();
 
-			$admin_parts = parse_url( admin_url( 'admin.php' ) );
-			$url_parts   = parse_url( $this->base->url );
+			$admin_parts = OMAPI_Utils::parse_url( admin_url( 'admin.php' ) );
+			$url_parts   = OMAPI_Utils::parse_url( $this->base->url );
 
 			$current_user = wp_get_current_user();
 
@@ -341,7 +347,7 @@ class OMAPI_Pages {
 					'siteId'          => $this->base->get_site_id(),
 					'siteIds'         => $this->base->get_site_ids(),
 					'wpUrl'           => trailingslashit( site_url() ),
-					'adminUrl'        => $this->base->menu->admin_page_url(),
+					'adminUrl'        => OMAPI_Urls::admin(),
 					'restUrl'         => rest_url(),
 					'adminPath'       => $admin_parts['path'],
 					'apijsUrl'        => OPTINMONSTER_APIJS_URL,
@@ -354,7 +360,7 @@ class OMAPI_Pages {
 					'isItWp'          => true,
 					// 'scriptPath'   => $path,
 					'pages'           => $pages,
-					'titleTag'        => $this->title_tag,
+					'titleTag'        => html_entity_decode( $this->title_tag ),
 					'isWooActive'     => OMAPI::is_woocommerce_active(),
 					'isWooConnected'  => OMAPI_WooCommerce::is_connected(),
 					'blogname'        => esc_attr( get_option( 'blogname' ) ),

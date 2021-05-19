@@ -1434,3 +1434,56 @@ function ig_es_update_469_db_version() {
 }
 
 /* --------------------- ES 4.6.9(End)--------------------------- */
+
+/* --------------------- ES 4.6.13(Start)--------------------------- */
+
+/**
+ * Migrate sequence list settings into campaign rules
+ *
+ * @since 4.6.13
+ */
+function ig_es_migrate_4613_sequence_list_settings_into_campaign_rules() {
+	
+	$args = array(
+		'include_types' => array(
+			'sequence_message'
+		),
+	);
+
+	$sequence_campaigns = ES()->campaigns_db->get_all_campaigns( $args );
+	if ( ! empty( $sequence_campaigns ) ) {
+		foreach ( $sequence_campaigns as $campaign ) {
+			$campaign_id = $campaign['id'];
+			$list_ids    = $campaign['list_ids'];
+			if ( ! empty( $campaign_id ) && ! empty( $list_ids ) ) {
+				$list_ids      = explode( ',', $list_ids );
+				$campaign_meta = ! empty( $campaign['meta'] ) ? maybe_unserialize( $campaign['meta'] ) : array();
+				if ( empty( $campaign_meta['list_conditions'] ) ) {
+					$list_conditions = array();	
+					$list_conditions_data = array(
+						'field'    => '_lists__in',
+						'operator' => 'is',
+						'value'    => array(),
+					);
+					foreach ( $list_ids as $index => $list_id ) {
+						$list_conditions_data['value'][] = $list_id;
+					}
+					$list_conditions[][] = $list_conditions_data;
+					$campaign_meta['list_conditions'] = $list_conditions;
+					ES()->campaigns_db->update_campaign_meta( $campaign_id, $campaign_meta );
+				}
+			}
+		}
+	}
+}
+
+/**
+ * Update DB version
+ *
+ * @since 4.6.13
+ */
+function ig_es_update_4613_db_version() {
+	ES_Install::update_db_version( '4.6.13' );
+}
+
+/* --------------------- ES 4.6.13(End)--------------------------- */

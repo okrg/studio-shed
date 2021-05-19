@@ -23,7 +23,7 @@ class WPMUDEV_Dashboard_Api {
 	 *
 	 * @var string (URL)
 	 */
-	protected $server_root = 'https://premium.wpmudev.org/';
+	protected $server_root = 'https://wpmudev.com/';
 
 	/**
 	 * Path to the REST API on the server.
@@ -312,9 +312,7 @@ class WPMUDEV_Dashboard_Api {
 			$endpoint .= $membership_data['hub_site_id'];
 		}
 
-		$url = $this->rest_url( $endpoint );
-
-		return $url;
+		return $this->rest_url( $endpoint );
 	}
 
 	/**
@@ -372,12 +370,12 @@ class WPMUDEV_Dashboard_Api {
 			$options['headers']['Authorization'] = WPMUDEV_API_AUTHORIZATION;
 		}
 
-		if ( 'GET' == $method ) {
+		if ( 'GET' === $method ) {
 			if ( ! empty( $data ) ) {
 				$link = add_query_arg( $data, $link );
 			}
 			$response = wp_remote_get( $link, $options );
-		} elseif ( 'POST' == $method ) {
+		} elseif ( 'POST' === $method ) {
 			$options['body'] = $data;
 			$response        = wp_remote_post( $link, $options );
 		}
@@ -753,10 +751,21 @@ class WPMUDEV_Dashboard_Api {
 	/**
 	 * Checks if whitelabel is allowed by membership plan.
 	 *
-	 * @return bolean is allowed.
+	 * @return boolean is allowed.
 	 */
 	public function is_whitelabel_allowed() {
 		return $this->is_feature_allowed( 'whitelabel-dashboard' );
+	}
+
+	/**
+	 * Checks if analytics is allowed by membership plan.
+	 *
+	 * @since 4.11
+	 *
+	 * @return boolean is allowed.
+	 */
+	public function is_analytics_allowed() {
+		return $this->is_feature_allowed( 'whitelabel-basic-analytics' );
 	}
 
 	/**
@@ -1204,7 +1213,7 @@ class WPMUDEV_Dashboard_Api {
 		);
 
 		// Report the hosting site_id if in WPMUDEV Hosting environment.
-		if ( isset( $_SERVER['WPMUDEV_HOSTED'] ) ) {
+		if ( defined( 'WPMUDEV_HOSTING_SITE_ID' ) || isset( $_SERVER['WPMUDEV_HOSTED'] ) ) {
 			$data['hosting_site_id'] = defined( 'WPMUDEV_HOSTING_SITE_ID' ) ? WPMUDEV_HOSTING_SITE_ID : gethostname();
 		}
 
@@ -1654,6 +1663,11 @@ class WPMUDEV_Dashboard_Api {
 
 		if ( false !== $cached && ! $force ) {
 			return $cached;
+		}
+
+		// Do not continue if no API is set.
+		if ( ! $this->has_key() ) {
+			return false;
 		}
 
 		// set api base.
@@ -2472,6 +2486,13 @@ class WPMUDEV_Dashboard_Api {
 					wp_safe_redirect( $redirect );
 					exit;
 				} else {
+					error_log(
+						sprintf(
+							'WPMU DEV Dashboard Error: SSO failed. Expected: %s / Recieved: %s',
+							$hmac_state_value,
+							$pre_sso_state
+						)
+					);
 					wp_die( 'Passed state value does not match with the session cookie.' );
 				}
 			} else {
@@ -2559,6 +2580,11 @@ class WPMUDEV_Dashboard_Api {
 	 */
 	public function analytics_stats_overall( $days_ago = 7, $subsite = 0 ) {
 		$site_id = WPMUDEV_Dashboard::$site->get_option( 'analytics_site_id' );
+
+		// Analytics site id is needed.
+		if ( empty( $site_id ) ) {
+			return false;
+		}
 
 		// figure out what widget view we want.
 		if ( is_multisite() ) {
@@ -2956,9 +2982,10 @@ class WPMUDEV_Dashboard_Api {
 	 *
 	 * @return mixed
 	 */
-	public function analytics_stats_single( $days_ago = 7, $type, $filter ) {
-		$site_id = WPMUDEV_Dashboard::$site->get_option( 'analytics_site_id' );
-		$metrics = WPMUDEV_Dashboard::$site->get_metrics_on_analytics();
+	public function analytics_stats_single( $days_ago, $type, $filter ) {
+		$site_id  = WPMUDEV_Dashboard::$site->get_option( 'analytics_site_id' );
+		$metrics  = WPMUDEV_Dashboard::$site->get_metrics_on_analytics();
+		$days_ago = isset( $days_ago ) ? $days_ago : 7;
 
 		$api_base    = $this->server_root . $this->rest_api_analytics;
 		$remote_path = add_query_arg(

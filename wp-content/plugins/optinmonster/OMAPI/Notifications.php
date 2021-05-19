@@ -695,7 +695,7 @@ class OMAPI_Notifications {
 			true
 		);
 
-		wp_localize_script(
+		OMAPI_Utils::add_inline_script(
 			$handle,
 			'OMAPI_Global',
 			array(

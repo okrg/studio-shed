@@ -20,8 +20,8 @@ class ES_Reports_Table extends ES_List_Table {
 			)
 		);
 
-		add_action( 'ig_es_view_activity_table_html', array( $this, 'view_activity_report_table' ), 10, 3 );
-		add_action( 'ig_es_view_email_preview', array( $this, 'display_preview_email' ), 10, 3 );
+
+		add_action( 'admin_footer', array( $this, 'display_preview_email' ), 10 );
 	}
 
 	public function es_reports_callback() {
@@ -35,7 +35,7 @@ class ES_Reports_Table extends ES_List_Table {
 
 		$campaign_types = array( 'sequence', 'sequence_message' );
 		//Only if it is sequence then control will transfer to Sequence Reports class.
-		if ( ! empty ( $campaign_type ) && in_array( $campaign_type, $campaign_types ) ) {
+		if ( ! empty ( $campaign_type ) && in_array( $campaign_type, $campaign_types, true ) ) {
 			if ( ES()->is_pro() ) {
 				$reports = ES_Pro_Sequence_Reports::get_instance();
 				$reports->es_sequence_reports_callback();
@@ -45,8 +45,8 @@ class ES_Reports_Table extends ES_List_Table {
 		} else {
 			$action = ig_es_get_request_data( 'action' );
 			if ( 'view' === $action ) {
-				$list = ig_es_get_request_data( 'list' );
-				$this->view_list( $list );
+				$view_report = new ES_Campaign_Report();
+				$view_report->es_campaign_report_callback();
 			} else {
 				?>
 				<div class="wrap pt-4 font-sans">
@@ -118,173 +118,7 @@ class ES_Reports_Table extends ES_List_Table {
 
 		add_screen_option( $option, $args );
 
-	}
-
-	public function prepare_header_footer_row() {
-
-		?>
-		<tr>
-			<th width="8%" class="py-3 pl-4 es_reports_table_header"><?php esc_html_e( 'Sr No', 'email-subscribers' ); ?></th>
-			<th width="24%" class="py-3 pl-4 es_reports_table_header"><?php esc_html_e( 'Email', 'email-subscribers' ); ?></th>
-			<th width="12%" class="py-3 pl-6 es_reports_table_header"><?php esc_html_e( 'Status', 'email-subscribers' ); ?></th>
-			<th width="22%" class="py-3 pl-2 es_reports_table_header"><?php esc_html_e( 'Sent Date', 'email-subscribers' ); ?></th>
-			<th width="22%" class="py-3 pl-6 es_reports_table_header"><?php esc_html_e( 'Viewed Date', 'email-subscribers' ); ?></th>
-		</tr>
-
-		<?php
-	}
-
-	/**
-	 * Get view activity table data
-	 *
-	 */
-	public function view_list( $hash ) {
-
-		$emails             = ES_DB_Sending_Queue::get_emails_by_hash( $hash );
-		$email_viewed_count = ES_DB_Sending_Queue::get_viewed_count_by_hash( $hash );
-		$total_email_sent   = ES_DB_Sending_Queue::get_total_email_count_by_hash( $hash );
-
-		$insight  = ig_es_get_request_data( 'insight', '' );
-		$_wpnonce = ig_es_get_request_data( '_wpnonce', '' );
-
-		if ( ES()->is_pro() || $insight ) {
-			do_action( 'ig_es_view_report_data', $hash );
-		}
-		?>
-		<div class="wrap">
-			<?php if ( ! ES()->is_pro() && ! $insight ) { ?>
-				<a href="?page=es_reports&action=view&list=<?php echo esc_attr( $hash ); ?>&_wpnonce=<?php echo esc_attr( $_wpnonce ); ?>&insight=true" class="float-right ig-es-title-button px-2 py-2 mx-2 ig-es-imp-button cursor-pointer"><?php esc_html_e( 'Campaign Analytics', 'email-subscribers' ); ?></a>
-			<?php } ?>
-		</div>
-
-		<?php 
-		 do_action( 'ig_es_view_activity_table_html', $email_viewed_count, $total_email_sent, $emails  ) ;
-	}
-
-	/**
-	 * Display view activity table
-	 *
-	 * @since 4.6.9
-	 *
-	 */
-	public function view_activity_report_table( $email_viewed_count, $total_email_sent, $view_activity_data ) {
-
-		?>
-		<div class="mt-6 mb-2 max-w-7xl">
-				<div class="pt-3">
-					<span class="text-left text-lg font-medium leading-7 tracking-wide text-gray-600"><?php esc_html_e( 'View activity ', 'email-subscribers' ); ?></span>
-				</div>
-		</div>
-		<div class="mt-2 mb-2 block">
-			<span class="pt-3 pb-4 leading-5 tracking-wide text-gray-600"><?php echo esc_html( 'Viewed ' . $email_viewed_count . '/' . $total_email_sent ); ?>
-			</span>
-		</div>
-
-			<div class="mb-2 max-w-7xl flex">
-				<div class="flex w-full bg-white shadow rounded-md break-all">
-
-					<form name="frm_es_display" method="post">
-						<table class="w-full table-fixed">
-							<thead>
-							<?php echo wp_kses_post( $this->prepare_header_footer_row() ); ?>
-							</thead>
-							<tbody>
-							<?php echo wp_kses_post( $this->prepare_body( $view_activity_data ) ); ?>
-							</tbody>
-							<tfoot>
-							<?php echo wp_kses_post( $this->prepare_header_footer_row() ); ?>
-							</tfoot>
-						</table>
-					</form>
-				</div>
-			</div>
-
-			<?php
-	}
-
-
-	public function prepare_body( $view_activity_data ) {
-
-		$i = 1;
-		foreach ( $view_activity_data as $key => $email ) {
-			
-			$email_id  = ! empty( $email['email'] ) ? $email['email'] : ( ! empty( $email['es_deliver_emailmail'] ) ? $email['es_deliver_emailmail'] : '' );
-			$status    = ! empty( $email['status'] ) ? $email['status'] : ( ! empty( $email['es_deliver_sentstatus'] ) ? $email['es_deliver_sentstatus'] : '' );
-			$sent_at   = ! empty( $email['sent_at'] ) ? $email['sent_at'] : ( ! empty( $email['es_deliver_sentdate'] ) ? $email['es_deliver_sentdate'] : '' );
-			$opened    = ! empty( $email['opened'] ) ? $email['opened'] : ( ! empty( $email['es_deliver_status'] ) && 'Viewed' === $email['es_deliver_status'] ? 1 : 0 );
-			$opened_at = ! empty( $email['opened_at'] ) ? $email['opened_at'] : ( ! empty( $email['es_deliver_viewdate'] ) ? $email['es_deliver_viewdate'] : '' );
-
-			if ( 'Sent' === $status ) {
-				$status = ( $opened ) ? 'Opened' : $status;
-			}
-
-			?>
-
-			<tr>
-				<td class="pl-6 py-2 border-b border-gray-200 text-sm leading-5 text-gray-500"><?php echo esc_html( $i ); ?></td>
-				<td class="pl-4 py-2 border-b border-gray-200 text-sm leading-5 text-gray-600"><?php echo esc_html( $email_id ); ?></td>
-				<td class="pl-6 pr-2 py-2 border-b border-gray-200 text-sm leading-5 text-gray-500">
-					<span style="color:#03a025;font-weight:bold;">
-						<?php 
-						switch ( $status ) {
-							case 'Sent': 
-								?>
-								<svg class="h-6 w-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-									<title><?php echo esc_html__( 'Sent', 'email-subscribers' ); ?></title>
-									<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-								</svg>
-								<?php
-								break;
-							case 'In Queue': 
-								?>
-								<svg class=" h-6 w-6 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
-								<title><?php echo esc_html__( 'In Queue', 'email-subscribers' ); ?></title>
-								<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-							</svg>
-								<?php
-								break;
-							case 'Sending': 
-								?>
-								<svg class=" h-6 w-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-								<title><?php echo esc_html__( 'Sending', 'email-subscribers' ); ?></title>
-								<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd"/>
-							</svg>
-								<?php
-								break;
-							case 'Opened': 
-								?>
-								<svg xmlns="http://www.w3.org/2000/svg" class="" width="28" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-									<title><?php echo esc_html__( 'Opened', 'email-subscribers' ); ?></title>
-									  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-									  <path d="M7 12l5 5l10 -10" />
-									  <path d="M2 12l5 5m5 -5l5 -5" />
-								</svg>
-								<?php
-								break;
-							case '': 
-								?>
-								<i class="dashicons dashicons-es dashicons-minus"/>
-								<?php
-								break;
-							default: 
-								echo esc_html( $status );
-								break;
-
-						}
-						?>
-					</span>
-				</td>
-
-				<td class="pl-2 pr-2 py-2 border-b border-gray-200 text-sm leading-5 text-gray-500"><?php echo wp_kses_post( ig_es_format_date_time( $sent_at ) ); ?></td>
-				<td class="pl-6 pr-1 py-2 border-b border-gray-200 text-sm leading-5 text-gray-500"><?php echo wp_kses_post( ig_es_format_date_time( $opened_at ) ); ?></td>
-			</tr>
-
-			<?php
-			$i ++;
-		}
-
-	}
-
+	}	
 
 	/** Text displayed when no list data is available */
 	public function no_items() {
@@ -374,8 +208,8 @@ class ES_Reports_Table extends ES_List_Table {
 
 		$actions = array(
 			'view'          => sprintf( '<a href="?page=%s&action=%s&list=%s&_wpnonce=%s" class="text-indigo-600">%s</a>', esc_attr( $page ), 'view', $item['hash'], $es_nonce, __( 'View', 'email-subscribers' ) ),
-			'delete'        => sprintf( '<a href="?page=%s&action=%s&list=%s&_wpnonce=%s">%s</a>', esc_attr( $page ), 'delete', absint( $item['id'] ), $es_nonce, __( 'Delete', 'email-subscribers' ) ),
-			'preview_email' => sprintf( '<a target="_blank" href="?page=%s&action=%s&list=%s&_wpnonce=%s" class="text-indigo-600">%s</a>', esc_attr( $page ), 'preview', absint( $item['id'] ), $es_nonce, __( 'Preview', 'email-subscribers' ) ),
+			'delete'        => sprintf( '<a href="?page=%s&action=%s&list=%s&_wpnonce=%s" onclick="return checkDelete()">%s</a>', esc_attr( $page ), 'delete', absint( $item['id'] ), $es_nonce, __( 'Delete', 'email-subscribers' ) ),
+			'preview_email' => sprintf( '<a href="#" data-campaign-id="%s" class="es-preview-report text-indigo-600">%s</a><img class="es-preview-loader inline-flex align-middle pl-2 h-5 w-7" src="%s" style="display:none;"/>', absint( $item['id'] ), __( 'Preview', 'email-subscribers' ), esc_url( ES_PLUGIN_URL ) . 'lite/admin/images/spinner-2x.gif' ),
 
 		);
 
@@ -414,7 +248,7 @@ class ES_Reports_Table extends ES_List_Table {
 
 		// $content = $total_emails_sent . "/" . $total_emails_to_be_sent;
 
-		return $total_emails_to_be_sent;
+		return number_format( $total_emails_to_be_sent );
 
 	}
 
@@ -594,8 +428,6 @@ class ES_Reports_Table extends ES_List_Table {
 			if ( ! wp_verify_nonce( $nonce, 'es_notification' ) ) {
 				$message = __( 'You do not have permission to view notification', 'email-subscribers' );
 				ES_Common::show_message( $message, 'error' );
-			} else {
-				$this->view_list( ig_es_get_request_data( 'list' ) );
 			}
 		} elseif ( 'delete' === $this->current_action() ) {
 
@@ -611,18 +443,6 @@ class ES_Reports_Table extends ES_List_Table {
 				ES_DB_Sending_Queue::delete_sending_queue_by_mailing_id( array( $notification_ids ) );
 				$message = __( 'Report deleted successfully!', 'email-subscribers' );
 				ES_Common::show_message( $message, 'success' );
-			}
-		} elseif ( 'preview' === $this->current_action() ) {
-			// In our file that handles the request, verify the nonce.
-			$nonce = ig_es_get_request_data( '_wpnonce' );
-
-			if ( ! wp_verify_nonce( $nonce, 'es_notification' ) ) {
-				$message = __( 'You do not have permission to preview notification', 'email-subscribers' );
-				ES_Common::show_message( $message, 'error' );
-			} else {
-				$report_id = ig_es_get_request_data( 'list' );
-				$this->preview_email_option( $report_id );
-				die();
 			}
 		}
 
@@ -641,51 +461,25 @@ class ES_Reports_Table extends ES_List_Table {
 		}
 	}
 
-	public function preview_email_option( $report_id ) {
-		$preview = array();
-		$preview = ES_DB_Mailing_Queue::get_email_by_id( $report_id );
-		do_action( 'ig_es_view_email_preview', $preview );
-	}
-
-
 	/*
 	* Display the preview of the email content
 	*/
-	public function display_preview_email( $preview ) {
-		$allowedtags = ig_es_allowed_html_tags_in_esc();
-		add_filter( 'safe_style_css', 'ig_es_allowed_css_style' );
-		ob_start();
+	public function display_preview_email() {
 		?>
-		<div class="wrap">
-			<h2 style="margin-bottom:1em;">
-				<?php esc_html_e( 'Preview Email', 'email-subscribers' ); ?>
-			</h2>
-			<p>
-				<?php echo wp_kses_post( __( 'This is how the email you sent may look. <br>Note: Different email services (like gmail, yahoo etc) display email content differently. So there could be a slight variation on how your customer will view the email content.', 'email-subscribers' ) ); ?>
-			</p>
-			<div class="tool-box">
-				<div style="padding:15px;background-color:#FFFFFF;">
-					<?php
-					
-
-					$es_email_type = get_option( 'ig_es_email_type' );    // Not the ideal way. Email type can differ while previewing sent email.
-
-					if ( 'WP HTML MAIL' == $es_email_type || 'PHP HTML MAIL' == $es_email_type ) {
-						$preview['body'] = ES_Common::es_process_template_body( $preview['body'] );
-					} else {
-						$preview['body'] = str_replace( '<br />', "\r\n", $preview['body'] );
-						$preview['body'] = str_replace( '<br>', "\r\n", $preview['body'] );
-					}
-
-					echo wp_kses( stripslashes( $preview['body'] ), $allowedtags );
-					?>
+		<div class="hidden" id="report_preview_template">
+			<div class="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full" style="background-color: rgba(0,0,0,.5);">
+				<div style="height:485px" class="absolute h-auto p-4 ml-16 mr-4 text-left bg-white rounded shadow-xl z-80 md:max-w-5xl md:p-6 lg:p-8 ">
+					<h3 class="text-2xl text-center"><?php echo esc_html__( 'Template Preview', 'email-subscribers' ); ?></h3>
+					<p class="m-4 text-center"><?php echo esc_html__( 'There could be a slight variation on how your customer will view the email content.', 'email-subscribers' ); ?></p>
+					<div class="m-4 list-decimal report_preview_container">
+					</div>
+					<div class="flex justify-center mt-8">
+						<button id="es_close_preview" class="px-4 py-2 text-sm font-medium tracking-wide text-gray-700 border rounded select-none no-outline focus:outline-none focus:shadow-outline-red hover:border-red-400 active:shadow-lg "><?php echo esc_html__( 'Close', 'email-subscribers' ); ?></button>
+					</div>
 				</div>
 			</div>
 		</div>
 		<?php
-		$html = ob_get_clean();
-
-		echo wp_kses( $html, $allowedtags );
 	}
 
 	/**
@@ -711,7 +505,12 @@ class ES_Reports_Table extends ES_List_Table {
 				<?php
 				$allowedtags = ig_es_allowed_html_tags_in_esc();
 				add_filter( 'safe_style_css', 'ig_es_allowed_css_style' );
-				$campaign_report_status = ES_Common::prepare_campaign_report_statuses_dropdown_options( $filter_by_status, __( 'All Status', 'email-subscribers' ) );
+				$statuses = array(
+					'Sent'     => __( 'Completed', 'email-subscribers' ),
+					'In Queue' => __( 'In Queue', 'email-subscribers' ),
+					'Sending'  => __( 'Sending', 'email-subscribers' ),
+				);
+				$campaign_report_status = ES_Common::prepare_campaign_report_statuses_dropdown_options( $statuses, $filter_by_status, __( 'All Status', 'email-subscribers' ) );
 				echo wp_kses( $campaign_report_status, $allowedtags );
 				?>
 			</select>
