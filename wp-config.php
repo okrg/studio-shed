@@ -110,6 +110,9 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT']) && php_sapi_name() != 'cli') {
   }
 }
 
+/** Changes location where Autoptimize stores optimized files */
+define('AUTOPTIMIZE_CACHE_CHILD_DIR','/uploads/autoptimize/');
+
 /* That's all, stop editing! Happy Pressing. */
 
 
