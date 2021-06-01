@@ -174,7 +174,7 @@
                     <a href="/our-story/">Our Story</a>
                 </li>
                 <li class="menu-item">
-                    <a href="/green-philosophy/">Green Philosophy</a>
+                    <a href="/sustainability/">Sustainability</a>
                 </li>
                 <li class="menu-item">
                     <a href="/award-winning-design/">Design Awards</a>
