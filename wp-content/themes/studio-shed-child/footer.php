@@ -189,6 +189,8 @@
 
 				<img alt="We ship nationwide" src="/wp-content/uploads/2020/01/we-ship-footer-icon.png">
                 <p>&nbsp;</p>
+                <table style="width: 54px;" cellpadding="0" cellspacing="0"><tr><td><a href="https://www.houzz.co.uk/pro/studioshed/studio-shed-live-large-build-small"><img src="https://st.hzcdn.com/static_en-GB/badge_53_7@2x.png" alt="Studio Shed in Louisville, CO on Houzz" width="54" height="54" border="0" /></a></td></tr></table>
+                <p>&nbsp;</p>
                 <div class="social">
                     <a href="https://www.facebook.com/StudioShed" target="_blank" title="Facebook profile page">
                         <img src="/wp-content/themes/studio-shed-child/img/social-fb.png">
