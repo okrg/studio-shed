@@ -232,6 +232,24 @@ header#hero {
       }
     }
   }
+  .finance-cta {
+    z-index: 3;
+    background-image: url(../img/finance-cta-badge.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: 20%;
+    right: 5%;
+    @include md {
+      width: 123px;
+      height: 123px;
+      top: 20%;
+      right: 20%;
+    }
+  }
   .cta {
     z-index: 3;
     background-image: url(../img/summer-2021-promo.png);
@@ -239,11 +257,11 @@ header#hero {
     background-size: contain;    
     background-position: center bottom;
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.33);
+    background-color: rgba(0, 0, 0, 0.2);
     height: 100%;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+    left: 10%;
+    bottom: 10%;
+    width: 80%;
    @include md {
 
     background-position: center center;
@@ -373,7 +391,7 @@ section#series {
       margin-bottom: 24px;
       padding: 40px 20px;
       @include md {
-        width: calc(50% - 24px);
+        width: calc(33.333% - 24px);
         margin-left: 24px;
       }
       @include lg {
