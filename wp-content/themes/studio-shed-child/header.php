@@ -54,7 +54,7 @@
     <link rel="preload" href="/wp-content/themes/studio-shed/fonts/Futura-PT-Book.woff" as="font" type="font/woff" crossorigin>
     <link rel="preload" href="/wp-content/themes/studio-shed/fonts/Futura-PT-Heavy.woff" as="font" type="font/woff" crossorigin>
     <link rel="preload" href="/wp-content/themes/studio-shed/fonts/Tisa-Sans-Pro.woff" as="font" type="font/woff" crossorigin>
-    <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" type="application/x-font-ttf" crossorigin>
+    <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
 
 
     <?php if(get_the_ID()==73) {?>
