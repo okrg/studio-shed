@@ -127,8 +127,13 @@ a {
     padding: 0.5rem;
   }
 }
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary.focus, .btn-primary:focus, .btn-primary:hover,
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
 .btn-primary:hover{
   background-color: $orange !important;
+  box-shadow: none;
 }
 
 .btn-outline-light:not(:disabled):not(.disabled):active,
