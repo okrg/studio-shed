@@ -806,10 +806,6 @@ class Localizations extends Container implements Helper
                 'Try The Tutorial Template',
                 'visualcomposer'
             ),
-            'createNewPage' => __(
-                'Create a new page',
-                'visualcomposer'
-            ),
             'buildYourSiteWithDragAndDrop' => __(
                 'Build your site with the help of the drag and drop builder and without coding - it\'s that easy.',
                 'visualcomposer'
@@ -859,7 +855,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'elementsLock' => __(
-                'Element lock',
+                'Element Lock',
                 'visualcomposer'
             ),
             'lockAllText' => __(
@@ -887,7 +883,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'lockElementNotificationText' => __(
-                'The element has been locked and can be edited only by the Administrator role.',
+                'The element has been locked and can be edited only by users with editing locked elements permission.',
                 'visualcomposer'
             ),
             'unlockElementNotificationText' => __(
@@ -895,7 +891,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'lockContainerNotificationText' => __(
-                'The element and all inner elements have been locked and can be edited only by the Administrator role.',
+                'The element and all inner elements have been locked and can be edited only by users with editing locked elements permission.',
                 'visualcomposer'
             ),
             'unlockContainerNotificationText' => __(
@@ -1696,6 +1692,26 @@ class Localizations extends Container implements Helper
                 '{name}',
                 '<a href="{createLink}" target="_blank" rel="noopener noreferrer">',
                 '</a>'
+            ),
+            'restrictedText' => __(
+                'Restricted',
+                'visualcomposer'
+            ),
+            'getVisualComposerPremium' => __(
+                'Get Visual Composer Premium',
+                'visualcomposer'
+            ),
+            'getAllTheseAndManyMoreFeatures' => __(
+                'Get all these and many more features with Visual Composer premium.',
+                'visualcomposer'
+            ),
+            'lazyLoad' => __(
+                'Lazy load',
+                'visualcomposer'
+            ),
+            'lazyLoadBackground' => __(
+                'Apply lazy load to the selected background',
+                'visualcomposer'
             )
         ];
 

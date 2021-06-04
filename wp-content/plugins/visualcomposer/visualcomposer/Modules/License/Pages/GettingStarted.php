@@ -12,11 +12,9 @@ use VisualComposer\Framework\Container;
 use VisualComposer\Framework\Illuminate\Support\Module;
 use VisualComposer\Helpers\Traits\EventsFilters;
 use VisualComposer\Helpers\Traits\WpFiltersActions;
-use VisualComposer\Helpers\License;
 use VisualComposer\Helpers\Request;
 use VisualComposer\Modules\Settings\Traits\Page;
 use VisualComposer\Modules\Settings\Traits\SubMenu;
-use VisualComposer\Modules\Settings\Pages\Settings;
 
 /**
  * Class GettingStarted
@@ -80,19 +78,6 @@ class GettingStarted extends Container implements Module
      */
     protected function beforeRender()
     {
-        $urlHelper = vchelper('Url');
-        wp_register_script(
-            'vcv:wpUpdate:script',
-            $urlHelper->to('public/dist/wpUpdate.bundle.js'),
-            ['vcv:assets:vendor:script'],
-            VCV_VERSION
-        );
-        wp_register_style(
-            'vcv:wpVcSettings:style',
-            $urlHelper->to('public/dist/wpVcSettings.bundle.css'),
-            [],
-            VCV_VERSION
-        );
         wp_enqueue_script('vcv:wpUpdate:script');
         wp_enqueue_style('vcv:wpVcSettings:style');
         wp_enqueue_script('vcv:assets:runtime:script');
@@ -103,16 +88,20 @@ class GettingStarted extends Container implements Module
      *
      * @throws \Exception
      */
-    protected function addPage(Settings $settingsController)
+    protected function addPage()
     {
         $page = [
             'slug' => $this->getSlug(),
-            'title' => $this->buttonTitle(),
-            'layout' => 'standalone',
+            'title' => __('Getting Started', 'visualcomposer'),
+            'layout' => 'dashboard-tab-content-standalone',
             'showTab' => false,
             'capability' => 'edit_posts',
+            'isDashboardPage' => true,
+            'hideInWpMenu' => false,
+            'hideTitle' => true,
+            'iconClass' => 'vcv-ui-icon-dashboard-getting-started',
         ];
-        $this->addSubmenuPage($page, $settingsController->getMainPageSlug());
+        $this->addSubmenuPage($page, false);
     }
 
     /**
@@ -134,38 +123,5 @@ class GettingStarted extends Container implements Module
     protected function afterRender($response)
     {
         return $response . implode('', vcfilter('vcv:update:extraOutput', []));
-    }
-
-    /**
-     * @param array $page
-     * @param array $pages
-     *
-     * @return string
-     */
-    protected function renderPage($page, $pages)
-    {
-        $layout = 'standalone';
-
-        // pages can define different layout, by setting 'layout' key/value.
-        if (isset($page['layout'])) {
-            $layout = $page['layout'];
-        }
-
-        if (vchelper('Request')->input('screen', '') === 'license-options') {
-            $customGettingStartedSlug = 'vcv-license-options';
-        } else {
-            $customGettingStartedSlug = $page['slug'];
-        }
-
-        return vcview(
-            'settings/layouts/' . $layout,
-            [
-                'content' => $this->call('render', [$page]),
-                'tabs' => $pages,
-                'activeSlug' => $page['slug'],
-                'slug' => $customGettingStartedSlug,
-                'page' => $page,
-            ]
-        );
     }
 }

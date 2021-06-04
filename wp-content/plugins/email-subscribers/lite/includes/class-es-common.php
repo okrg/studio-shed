@@ -1874,7 +1874,7 @@ class ES_Common {
 						echo wp_kses_post( 'Upgrade now & get <b> 10% discount!</b> <br/><br/>Use coupon code:' );
 							?>
 
-						<span class="ml-2 px-1.5 py-1 font-medium bg-yellow-100 rounded-md border-2 border-dotted border-indigo-300 select-all"><?php esc_html_e( 'PREMIUM10', 'email-subscribers' ); ?> </span>
+						<span class="ml-2 px-1.5 py-1 font-medium bg-yellow-100 rounded-md border-2 border-dotted border-indigo-300 select-all"><?php echo esc_html( 'PREMIUM10' ); ?> </span>
 					</p>
 					<?php
 						}

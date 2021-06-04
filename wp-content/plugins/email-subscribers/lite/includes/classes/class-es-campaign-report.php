@@ -30,12 +30,17 @@ class ES_Campaign_Report extends ES_List_Table {
 		<?php
 		$this->ajax_response();
 		$paged = ig_es_get_request_data( 'paged', 1 );
+		$class = '';
+
+		if ( ES()->is_pro() ) {
+			$campaign_class = 'es_campaign_premium';
+		}
 		?>
 		<div id="poststuff" class="es-items-lists es-campaign-reports-table">
 			<div id="post-body" class="metabox-holder column-1">
 				<div id="post-body-content">
 					<div class="meta-box-sortables ui-sortable">
-						<form method="get" class="es_campaign_report" id="es_campaign_report">
+						<form method="get" class="es_campaign_report <?php echo esc_html( $campaign_class ); ?>" id="es_campaign_report">
 							<input type="hidden" name="order" />
 							<input type="hidden" name="orderby" />
 							<input type="hidden" name="paged" value='<?php echo esc_attr( $paged ); ?>'/>

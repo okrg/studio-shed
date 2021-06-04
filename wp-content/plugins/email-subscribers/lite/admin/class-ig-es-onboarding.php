@@ -1367,7 +1367,8 @@ if ( ! class_exists( 'IG_ES_Onboarding' ) ) {
 				return true;
 			}
 
-			return false;
+			return false;			
+
 		}
 
 		/**

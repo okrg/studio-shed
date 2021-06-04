@@ -342,7 +342,7 @@ class ES_Forms_Table extends ES_List_Table {
 					<div id="post-body" class="metabox-holder column-1">
 						<div id="post-body-content" class="pt-0.5">
 							<div class="bg-white shadow-md rounded-lg mt-5 pt-1">
-								<form class="pt-8 ml-5 mr-4 text-left flex-row mt-2 item-center " method="post" action="admin.php?page=es_forms&action=<?php echo esc_attr( $action ); ?>&form=<?php echo esc_attr( $id ); ?>&_wpnonce=<?php echo esc_attr( $nonce ); ?>">
+								<form class="pt-8 ml-5 mr-4 text-left mt-2 item-center " method="post" action="admin.php?page=es_forms&action=<?php echo esc_attr( $action ); ?>&form=<?php echo esc_attr( $id ); ?>&_wpnonce=<?php echo esc_attr( $nonce ); ?>">
 
 
 									<div class="flex flex-row border-b border-gray-100">
@@ -880,10 +880,9 @@ class ES_Forms_Table extends ES_List_Table {
 
 		$page    = ig_es_get_request_data( 'page' );
 		$actions = array(
-			/* translators: 1: Page  2: Edit Action  3: Form id  4. WP Nonce */
-			'edit'   => sprintf( __( '<a href="?page=%1$s&action=%2$s&form=%3$s&_wpnonce=%4$s" class="text-indigo-600">Edit</a>', 'email-subscribers' ), esc_attr( $page ), 'edit', absint( $item['id'] ), $list_nonce ),
-			/* translators: 1: Page  2: Delete Action  3: Form id  4. WP Nonce */
-			'delete' => sprintf( __( '<a href="?page=%1$s&action=%2$s&form=%3$s&_wpnonce=%4$s" onclick="return checkDelete()">Delete</a>', 'email-subscribers' ), esc_attr( $page ), 'delete', absint( $item['id'] ), $list_nonce )
+			'edit'   => '<a href="?page=' . esc_attr( $page ) . '&action=edit&form=' . absint( $item['id'] ) . '&_wpnonce=' . $list_nonce . '" class="text-indigo-600">' . esc_html__( 'Edit', 'email-subscribers' ) . '</a>',
+
+			'delete' => '<a href="?page=' . esc_attr( $page ) . '&action=delete&form=' . absint( $item['id'] ) . '&_wpnonce=' . $list_nonce . '" onclick="return checkDelete()">' . esc_html__( 'Delete', 'email-subscribers' ) . '</a>',
 		);
 
 		return $title . $this->row_actions( $actions );

@@ -1748,14 +1748,15 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 			// Check if it is an campaign email and headers are enabled on the site.
 			if ( $this->unsubscribe_headers_enabled() ) {
 				$unsubscribe_link = $this->get_unsubscribe_link( $this->link_data );
-	
+
+				/* translators: 1. Subscriber email 2. Blog name */
+				$mail_to_subject   = sprintf( __( 'Unsubscribe %1$s from %2$s', 'email-subscribers' ), $email, get_bloginfo( 'name' ) );
 				$list_unsub_header = sprintf(
-					/* translators: 1. Unsubscribe link 2. Blog admin email 3. Subscriber email 4. Blog name */
-					__( '<%1$s>,<mailto:%2$s?subject=Unsubscribe %3$s from %4$s>', 'email-subscribers' ),
+					/* translators: 1. Unsubscribe link 2. Blog admin email */
+					'<%1$s>,<mailto:%2$s?subject=%3$s',
 					$unsubscribe_link,
 					get_bloginfo( 'admin_email' ),
-					$email,
-					get_bloginfo( 'name' )
+					$mail_to_subject
 				);
 			}
 

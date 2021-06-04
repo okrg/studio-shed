@@ -128,11 +128,16 @@ class GoPremium extends Container implements Module
         $page = [
             'slug' => $this->getSlug(),
             'title' => $this->buttonTitle(),
-            'layout' => 'standalone',
+            'dashboardName' => __('Activate Premium', 'visualcomposer'),
+            'layout' => 'dashboard-tab-content-standalone',
             'showTab' => false,
             'capability' => 'manage_options',
+            'isDashboardPage' => true,
+            'hideInWpMenu' => false,
+            'hideTitle' => true,
+            'iconClass' => 'vcv-ui-icon-dashboard-star',
         ];
-        $this->addSubmenuPage($page);
+        $this->addSubmenuPage($page, false);
     }
 
     /**
@@ -140,19 +145,6 @@ class GoPremium extends Container implements Module
      */
     protected function beforeRender()
     {
-        $urlHelper = vchelper('Url');
-        wp_register_script(
-            'vcv:wpUpdate:script',
-            $urlHelper->to('public/dist/wpUpdate.bundle.js'),
-            ['vcv:assets:vendor:script'],
-            VCV_VERSION
-        );
-        wp_register_style(
-            'vcv:wpVcSettings:style',
-            $urlHelper->to('public/dist/wpVcSettings.bundle.css'),
-            [],
-            VCV_VERSION
-        );
         wp_enqueue_script('vcv:wpUpdate:script');
         wp_enqueue_style('vcv:wpVcSettings:style');
         wp_enqueue_script('vcv:assets:runtime:script');

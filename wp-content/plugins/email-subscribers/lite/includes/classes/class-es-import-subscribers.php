@@ -179,7 +179,7 @@ class ES_Import_Subscribers {
 								<p class="es-api-import-status pt-4 text-sm font-medium text-gray-600 tracking-wide hidden">&nbsp;</p>			
 								<div class="clearfix clear mt-10 -mb-4 ">
 									<button id="es_mailchimp_verify_api_key" class="ig-es-primary-button px-2 py-1" data-callback="verify_api_key">
-										<?php echo esc_html_e('Next', 'email-subscribers'); ?>
+										<?php echo esc_html__('Next', 'email-subscribers'); ?>
 											&nbsp;
 										<svg style="display:none" class="es-import-loader mr-1 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
 										  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -819,7 +819,7 @@ class ES_Import_Subscribers {
 				$list_contact_data    = array();
 				$es_status_mapping    = array(
 					 __( 'Subscribed', 'email-subscribers' ) => 'subscribed',
-					 __( 'Unubscribed', 'email-subscribers' ) => 'unsubscribed',
+					 __( 'Unsubscribed', 'email-subscribers' ) => 'unsubscribed',
 					 __( 'Unconfirmed', 'email-subscribers' ) => 'unconfirmed',
 					 __( 'Hard Bounced', 'email-subscribers' ) => 'hard_bounced' ,
 				);

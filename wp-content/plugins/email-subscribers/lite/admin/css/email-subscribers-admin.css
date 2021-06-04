@@ -1796,13 +1796,17 @@ div.broadcast_side_content{
 	width:3em !important;
 }
 
+.es_campaign_report:not( .es_campaign_premium ) #email{
+ 	width:18em !important;
+}
+
 .es_campaign_report #device{
 	width: 5em !important;
 	padding-left:0;
 }
 
 .es_campaign_report #status {
-	width: 7em !important;
+	width: 6em !important;
 }
 
 .es_campaign_report #os{
@@ -1824,7 +1828,7 @@ div.broadcast_side_content{
 	}
 
 	.es_campaign_report #status {
-		width: 5em !important;
+		width: 4em !important;
 	}
 
 	.es_campaign_report #os{

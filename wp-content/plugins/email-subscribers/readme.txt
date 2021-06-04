@@ -6,7 +6,7 @@ Tags: email marketing, subscription, autoresponder, post notification, welcome e
 Requires at least: 3.9
 Tested up to: 5.7.2
 Requires PHP: 5.6
-Stable tag: 4.7.3
+Stable tag: 4.7.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses
 
@@ -310,15 +310,16 @@ Refer [here](https://www.icegram.com/documentation/es-faq/).
 
 == Upgrade Notice ==
 
-**4.7.3 (19.05.2021)**
-* Fix: Formatting of broadcast test email not matching with actual campaign email **[PRO]**
-* Fix: JavaScript errors on the broadcast screen when a visual mode is disabled for classic editor
-* Fix: Incorrect campaign start date on the reports page
-* Fix: Fixing incorrect count of imported users in the log message when CSV contains duplicate emails
-* Update: Improved email template preview
-* Update: Improved campaign report UI
+**4.7.4 (26.05.2021)**
+* Fix: Localization/internationalization issue
+* Update: Improved UI/IX
 
 == Changelog ==
+
+**4.7.4 (27.05.2021)**
+
+* Fix: Localization/internationalization issue
+* Update: Improved UI/IX
 
 **4.7.3 (19.05.2021)**
 

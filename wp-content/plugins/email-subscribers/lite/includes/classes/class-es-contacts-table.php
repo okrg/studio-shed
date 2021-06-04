@@ -730,7 +730,7 @@ class ES_Contacts_Table extends ES_List_Table {
 		?>
 
 
-		<form method="post" action="<?php echo esc_attr( $action ); ?>" class="ml-5 mr-4 text-left pt-8 flex-row mt-2 item-center ">
+		<form method="post" action="<?php echo esc_attr( $action ); ?>" class="ml-5 mr-4 text-left pt-8 mt-2 item-center ">
 			<?php wp_nonce_field( 'ig-es-contact-nonce', 'ig_es_contact_nonce' ); ?>
 			<div class="flex flex-row border-b border-gray-100">
 				<div class="flex w-1/5">
@@ -1017,13 +1017,12 @@ class ES_Contacts_Table extends ES_List_Table {
 		$page = ig_es_get_request_data( 'page' );
 
 		$actions = array(
-			/* translators: 1: Page 2: Edit action 3: Contact id 4: Wp nonce */
-			'edit'   => sprintf( __( '<a href="?page=%1$s&action=%2$s&subscriber=%3$s&_wpnonce=%4$s" class="text-indigo-600">Edit</a>', 'email-subscribers' ), esc_attr( $page ), 'edit', absint( $item['id'] ), $delete_nonce ),
-			/* translators: 1: Page 2: Delete action 3: Contact id 4: Wp nonce */
-			'delete' => sprintf( __( '<a href="?page=%1$s&action=%2$s&subscriber=%3$s&_wpnonce=%4$s" onclick="return checkDelete()">Delete</a>', 'email-subscribers' ), esc_attr( $page ), 'delete', absint( $item['id'] ), $delete_nonce ),
+			'edit'   => '<a href="?page=' . esc_attr( $page ) . '&action=edit&subscriber=' . absint( $item['id'] ) . '&_wpnonce=' . $delete_nonce . '" class="text-indigo-600">' . esc_html__( 'Edit', 'email-subscribers' ) . '</a>',
+
+			'delete' => '<a href="?page=' . esc_attr( $page ) . '&action=delete&subscriber=' . absint( $item['id'] ) . '&_wpnonce=' . $delete_nonce . '" onclick="return checkDelete()">' . esc_html__( 'Delete', 'email-subscribers' ) . '</a>',
 		);
-		/* translators: 1: Page 2: Resend action 3: Contact id 4: Wp nonce */
-		$actions['resend'] = sprintf( __( '<a href="?page=%1$s&action=%2$s&subscriber=%3$s&_wpnonce=%4$s" class="text-indigo-600">Resend Confirmation<a>', 'email-subscribers' ), esc_attr( ig_es_get_request_data( 'page' ) ), 'resend', absint( $item['id'] ), $delete_nonce );
+
+		$actions['resend'] = '<a href="?page=' . esc_attr( $page ) . '&action=resend&subscriber=' . absint( $item['id'] ) . '&_wpnonce=' . $delete_nonce . '" class="text-indigo-600">' . esc_html__( 'Resend Confirmation', 'email-subscribers' ) . '</a>';
 
 		return $title . $this->row_actions( $actions );
 	}
@@ -1241,7 +1240,7 @@ class ES_Contacts_Table extends ES_List_Table {
 			$nonce = esc_attr( ig_es_get_request_data( '_wpnonce' ) );
 
 			if ( ! wp_verify_nonce( $nonce, 'ig_es_delete_subscriber' ) ) {
-				die( 'You do not have a permission to resend email confirmation' );
+				die( esc_html__( 'You do not have a permission to resend email confirmation', 'email-subscribers' ) );
 			} else {
 				$id         = absint( ig_es_get_request_data( 'subscriber' ) );
 				$resend     = ig_es_get_request_data( 'resend', false );

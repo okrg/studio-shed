@@ -21,17 +21,22 @@ trait SubMenu
      */
     protected function addSubmenuPage($page, $parentSlug = 'vcv-settings')
     {
+        $capability = 'edit_posts';
+        $part = null;
         if (isset($page['capability'])) {
             $capability = $page['capability'];
-        } else {
-            $capability = 'edit_posts';
         }
 
-        $currentUserAccess = vchelper('AccessCurrentUser');
-        if (!$currentUserAccess->wpAll($capability)->get()) {
-            return;
+        if (isset($page['capabilityPart']) && vcvenv('VCV_ADDON_ROLE_MANAGER_ENABLED')) {
+            $part = $page['capabilityPart'];
         }
-        $hasAccess = $currentUserAccess->part('settings')->can($page['slug'] . '-tab')->get();
+        $currentUserAccess = vchelper('AccessCurrentUser');
+        if (!empty($part)) {
+            $hasAccess = $currentUserAccess->part($part)->checkState(true)->get();
+        } else {
+            // Fallback to default logic
+            $hasAccess = $currentUserAccess->wpAll($capability)->get();
+        }
 
         if ($hasAccess) {
             global $submenu;
@@ -39,36 +44,30 @@ trait SubMenu
             if (isset($page['external'])) {
                 $submenu[ $parentSlug ][] = [$page['title'], $capability, $page['external']];
             } else {
-                if (isset($page['isDashboardPage']) && $page['isDashboardPage']) {
-                    $tabsHelper = vchelper('SettingsTabsRegistry');
-                    $tabsHelper->set(
-                        $page['slug'],
+                $tabsHelper = vchelper('SettingsTabsRegistry');
+                $tabsHelper->set(
+                    array_merge(
                         [
                             'name' => isset($page['innerTitle']) ? $page['innerTitle'] : $page['title'],
-                            'subTitle' => isset($page['subTitle']) ? $page['subTitle'] : '',
-                            'capability' => $capability,
                             'parent' => $parentSlug,
-                            'layout' => $page['layout'],
-                            'isDashboardPage' => true,
-                            'hideTitle' => (isset($page['hideTitle']) && $page['hideTitle']),
-                            'iconClass' => isset($page['iconClass']) && $page['iconClass'] ? $page['iconClass'] : '',
+                            'isDashboardPage' => isset($page['isDashboardPage']) && $page['isDashboardPage'],
+                            'hideTitle' => '',
+                            'iconClass' => '',
                             'callback' => function () use ($page) {
-                                if (isset($page['isPremiumTeaser']) && $page['isPremiumTeaser']) {
-                                    $page['layout'] = 'dashboard-premium-teaser';
-                                }
-
                                 /** @see \VisualComposer\Modules\Settings\Traits\SubMenu::renderPage */
-                                echo $this->call('renderPage', ['page' => $page]);
+                                echo $this->call('renderContent', ['page' => $page]);
                             },
-                        ]
-                    );
-                }
+                        ],
+                        $page
+                    )
+                );
 
+                $mainPageSlug = vcapp(\VisualComposer\Modules\Settings\Pages\Settings::class)->getMainPageSlug();
                 add_submenu_page(
-                    isset($page['isDashboardPage']) && $page['isDashboardPage'] ? 'vcv-settings' : $parentSlug,
+                    isset($page['isDashboardPage']) && $page['isDashboardPage'] ? $mainPageSlug : $parentSlug,
                     $page['title'],
                     $page['title'],
-                    $capability,
+                    !empty($part) ? 'edit_posts' : $capability,
                     $page['slug'],
                     function () use ($page) {
                         /** @see \VisualComposer\Modules\Settings\Traits\SubMenu::renderPage::renderPage */
@@ -82,9 +81,12 @@ trait SubMenu
 
                 // After add_submenu_page called last index of $submenu['vcv-settings'] will be recently added item
                 // So we can adjust it to add extra-class to hide
+                $extraClass = 'vcv-submenu--' . vchelper('Str')->slugify($page['slug']);
+                $extraClass .= isset($page['isDashboardPage']) && $page['isDashboardPage'] ? ' vcv-submenu-dashboard-page' : '';
                 if (isset($page['hideInWpMenu']) && $page['hideInWpMenu']) {
-                    $submenu['vcv-settings'][ count($submenu['vcv-settings']) - 1 ][4] = 'vcv-ui-state--hidden';
+                    $extraClass .= ' vcv-ui-state--hidden';
                 }
+                $submenu[$mainPageSlug][ count($submenu[$mainPageSlug]) - 1 ][4] = $extraClass;
             }
         }
     }
@@ -97,7 +99,7 @@ trait SubMenu
      */
     protected function renderPage($page, $pages)
     {
-        $layout = 'standalone';
+        $layout = 'dashboard-main-layout';
 
         // pages can define different layout, by setting 'layout' key/value.
         if (isset($page['layout'])) {
@@ -105,6 +107,10 @@ trait SubMenu
         }
 
         if (isset($page['isDashboardPage']) && $page['isDashboardPage']) {
+            wp_enqueue_style('vcv:wpVcSettings:style');
+            wp_enqueue_script('vcv:wpVcSettings:script');
+            wp_enqueue_script('vcv:assets:runtime:script');
+
             add_action(
                 'admin_head',
                 function () {
@@ -112,6 +118,31 @@ trait SubMenu
                 },
                 1
             );
+        }
+
+        $pageData = [
+            'tabs' => $pages,
+            'activeSlug' => $page['slug'],
+            'slug' => $page['slug'],
+            'page' => $page,
+        ];
+
+        return vcview('settings/layouts/' . $layout, $pageData);
+    }
+
+    /**
+     * @param array $page
+     * @param array $pages
+     *
+     * @return string
+     */
+    protected function renderContent($page, $pages)
+    {
+        $layout = 'dashboard-tab-content-standalone';
+
+        // pages can define different layout, by setting 'layout' key/value.
+        if (isset($page['layout'])) {
+            $layout = $page['layout'];
         }
 
         $pageData = [

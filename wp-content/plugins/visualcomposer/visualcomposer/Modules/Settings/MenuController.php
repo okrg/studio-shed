@@ -33,7 +33,8 @@ class MenuController extends Container implements Module
         /** @see \VisualComposer\Modules\Settings\MenuController::removeFirstMenuItem */
         $this->wpAddAction(
             'admin_menu',
-            'removeFirstMenuItem'
+            'removeFirstMenuItem',
+            100
         );
 
         /** @see \VisualComposer\Modules\Settings\MenuController::addMenuPage */
@@ -76,7 +77,7 @@ class MenuController extends Container implements Module
     protected function removeFirstMenuItem(Settings $settingsController)
     {
         $currentUserAccess = vchelper('AccessCurrentUser');
-        $hasAccess = $currentUserAccess->wpAll('edit_pages')->part('settings')->can('vcv-settings')->get();
+        $hasAccess = $currentUserAccess->wpAll('edit_pages')->get();
         $mainPageSlug = $settingsController->getMainPageSlug();
 
         if (!$hasAccess && !is_network_admin()) {
@@ -88,7 +89,8 @@ class MenuController extends Container implements Module
     {
         echo <<<CSS
     <style>
-        #toplevel_page_vcv-settings .wp-submenu .vcv-ui-state--hidden {
+        #toplevel_page_vcv-settings .wp-submenu .vcv-ui-state--hidden,
+        #toplevel_page_vcv-getting-started .wp-submenu .vcv-ui-state--hidden {
             display: none;
         }
     </style>

@@ -61,6 +61,7 @@ class Utm implements Helper
             'vcdashboard-go-premium' => 'https://visualcomposer.com/premium/?utm_source=' . $source . '&utm_medium=vcdashboard&utm_campaign=gopremium&utm_content=go-premium-menu',
             'vcdashboard-license-go-premium' => 'https://visualcomposer.com/premium/?utm_source=' . $source . '&utm_medium=license-vcdashboard&utm_campaign=gopremium&utm_content=go-premium-button',
             'vcdashboard-logo-url' => 'https://visualcomposer.com/premium/?utm_source=' . $source . '&utm_medium=vcdashboard&utm_campaign=gopremium&utm_content=logo',
+            'vcdashboard-teaser-rolemanager' => 'https://visualcomposer.com/premium/?utm_source=' . $source . '&utm_medium=rolemanager-vcdashboard&utm_campaign=gopremium&utm_content=teaser-go-premium-button',
 
             // wpplugins
             'wpplugins' => 'https://visualcomposer.com/premium/?utm_source=' . $source . '&utm_medium=wpplugins&utm_campaign=gopremium&utm_content=go-premium-text',
@@ -75,6 +76,9 @@ class Utm implements Helper
 
             // Review Popup Button direct URL
             'editor-feedback-review-popup-button' => 'https://my.visualcomposer.com/feedback/visualcomposer/?utm_source=' . $source . '&utm_medium=editor&utm_campaign=feedback&utm_content=leave-your-feedback-popup-button',
+
+            // VC Demo Popup direct URL
+            'vc-demo-popup-button' => 'https://visualcomposer.com/pricing/?utm_source=demovc&utm_medium=demopage&campaign=gopremium&content=button-popup',
 
             // vcv-activate-license myVC licenses URL
             'activate-license-myvc-license-url' => rtrim($myVc, '\//')

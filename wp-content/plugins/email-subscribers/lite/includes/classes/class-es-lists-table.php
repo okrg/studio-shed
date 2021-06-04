@@ -300,7 +300,7 @@ class ES_Lists_Table extends ES_List_Table {
 						<div id="post-body" class="metabox-holder column-1 mt-0.5">
 							<div id="post-body-content">
 								<div class="bg-white shadow-md rounded-lg mt-5">
-									<form class="ml-5 mr-4 text-left pt-8 flex-row mt-2 item-center " method="post" action="admin.php?page=es_lists&action=<?php echo esc_attr( $action ); ?>&list=<?php echo esc_attr( $id ); ?>&_wpnonce=<?php echo esc_attr( $nonce ); ?>">
+									<form class="ml-5 mr-4 text-left pt-8 mt-2 item-center " method="post" action="admin.php?page=es_lists&action=<?php echo esc_attr( $action ); ?>&list=<?php echo esc_attr( $id ); ?>&_wpnonce=<?php echo esc_attr( $nonce ); ?>">
 
 										<div class="flex flex-row ">
 											<div class="flex w-1/5">
@@ -544,10 +544,9 @@ class ES_Lists_Table extends ES_List_Table {
 		if ( 1 != $item['id'] ) {
 			$page    = ig_es_get_request_data( 'page' );
 			$actions = array(
-				/* translators: 1: Page  2: Edit action  3: List id  4: List nonce  */
-				'edit'   => sprintf( __( '<a href="?page=%1$s&action=%2$s&list=%3$s&_wpnonce=%4$s" class="text-indigo-600">Edit</a>', 'email-subscribers' ), esc_attr( $page ), 'edit', absint( $item['id'] ), $list_nonce ),
-				/* translators: 1: Page  2: Delete action  3: List id  4: List nonce  */
-				'delete' => sprintf( __( '<a href="?page=%1$s&action=%2$s&list=%3$s&_wpnonce=%4$s" onclick="return checkDelete()">Delete</a>', 'email-subscribers' ), esc_attr( $page ), 'delete', absint( $item['id'] ), $list_nonce )
+				'edit'   => '<a href="?page=' . esc_attr( $page ) . '&action=edit&list=' . absint( $item['id'] ) . '&_wpnonce=' . $list_nonce . '" class="text-indigo-600">' . esc_html__( 'Edit', 'email-subscribers' ) . '</a>',
+
+				'delete' => '<a href="?page=' . esc_attr( $page ) . '&action=delete&list=' . absint( $item['id'] ) . '&_wpnonce=' . $list_nonce . '" onclick="return checkDelete()">' . esc_html__( 'Delete', 'email-subscribers' ) . '</a>',
 			);
 		}
 

@@ -1850,7 +1850,7 @@
 					let mailchimp_api_key = $('#api-key').val();
 					let api_import_status = $('.es-api-import-status');
 					let steps_loader      = $('.es-import-loader');
-					let api_key = { 
+					let data = { 
 						action       		: 'ig_es_mailchimp_verify_api_key',
 						security     		: ig_es_js_data.security,
 						mailchimp_api_key   : mailchimp_api_key,
@@ -1859,7 +1859,7 @@
 					jQuery.ajax({
 						method: 'POST',
 						url: ajaxurl,
-						data: api_key,
+						data: data,
 						dataType: 'json',
 						beforeSend: function() {
 							steps_loader.show().addClass('animate-spin').attr('disabled', true);

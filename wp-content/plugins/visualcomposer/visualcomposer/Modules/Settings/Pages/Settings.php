@@ -49,18 +49,10 @@ class Settings extends Container implements Module
             'addPage',
             2
         );
-    }
-
-    protected function beforeRender()
-    {
-        $urlHelper = vchelper('Url');
-        wp_register_style(
-            'vcv:wpVcSettings:style',
-            $urlHelper->to('public/dist/wpVcSettings.bundle.css'),
-            [],
-            VCV_VERSION
+        $this->addEvent(
+            'vcv:settings:save',
+            'addPage'
         );
-        wp_enqueue_style('vcv:wpVcSettings:style');
     }
 
     /**
@@ -71,13 +63,15 @@ class Settings extends Container implements Module
     {
         $page = [
             'slug' => $this->slug,
-            'title' => __('Dashboard', 'visualcomposer'),
+            'title' => __('Settings', 'visualcomposer'),
             'innerTitle' => __('Settings', 'visualcomposer'),
             'subTitle' => __('General', 'visualcomposer'),
             'layout' => 'dashboard-tab-content-standalone',
-            'capability' => 'edit_pages',
+            'capability' => 'edit_pages', // TODO: Check default cap
             'iconClass' => 'vcv-ui-icon-dashboard-settings',
             'isDashboardPage' => true,
+            'hideInWpMenu' => false,
+            'position' => -100,
         ];
         $this->addSubmenuPage($page);
     }
@@ -86,7 +80,7 @@ class Settings extends Container implements Module
     {
         $currentUserAccess = vchelper('AccessCurrentUser');
         $gettingStartedController = vcapp('LicensePagesGettingStarted');
-        $hasAccess = $currentUserAccess->wpAll('edit_pages')->part('settings')->can('vcv-settings')->get();
+        $hasAccess = $currentUserAccess->wpAll('edit_pages')->get();
 
         if ($hasAccess) {
             $pageSlug = $this->getSlug();
