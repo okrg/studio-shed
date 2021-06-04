@@ -269,20 +269,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                       </div>
                                     </div>
 -->
-									  <div class="featured-shed-btns">
+						<div class="featured-shed-btns">
 							<div class="row">
-                                      <div class="col-lg-6">			
-										  <a href="<?php echo $child["link"]?>">Learn More</a>  
-
+                <div class="col-lg-6">
+									<a href="<?php echo $child["link"]?>" title="Learn more about <?php echo $child["title"]?>">Learn More</a>
 								</div>
-                                      <div class="col-lg-6">
-									<!--	<a href="/design-center/">Design &amp; Price</a> -->
-										  <?php echo $child["content_right"]?>
-										 <!--  <a class="btn" href="/design-center/">Design &amp; Price</a> -->
-                                      </div>
-                                    </div>
+                <div class="col-lg-6">
+								  <!--	<a href="/design-center/">Design &amp; Price</a> -->
+								  <?php echo $child["content_right"]?>
+								  <!--  <a class="btn" href="/design-center/">Design &amp; Price</a> -->
+                </div>
+              </div>
 						</div>
-                    
                                   </div>
 									  </div>
                                 </div>
@@ -291,7 +289,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                       <?php }?>
                     </ul>
 					</div>
-					
+
                 </div>
               </div>
             </li> 

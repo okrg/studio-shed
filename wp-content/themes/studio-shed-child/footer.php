@@ -192,17 +192,17 @@
                 <table style="width: 54px;" cellpadding="0" cellspacing="0"><tr><td><a href="https://www.houzz.co.uk/pro/studioshed/studio-shed-live-large-build-small"><img src="https://st.hzcdn.com/static_en-GB/badge_53_7@2x.png" alt="Studio Shed in Louisville, CO on Houzz" width="54" height="54" border="0" /></a></td></tr></table>
                 <p>&nbsp;</p>
                 <div class="social">
-                    <a href="https://www.facebook.com/StudioShed" target="_blank" title="Facebook profile page">
-                        <img src="/wp-content/themes/studio-shed-child/img/social-fb.png">
+                    <a href="https://www.facebook.com/StudioShed" target="_blank" rel="noreferrer" title="Facebook profile page">
+                        <img alt="facebook social media icon" src="/wp-content/themes/studio-shed-child/img/social-fb.png">
                     </a>
-                    <a href="https://twitter.com/studioshed" target="_blank" title="Twitter profile page">
-                        <img src="/wp-content/themes/studio-shed-child/img/social-tw.png">
+                    <a href="https://twitter.com/studioshed" target="_blank" rel="noreferrer" title="Twitter profile page">
+                        <img alt="twitter social media icon" src="/wp-content/themes/studio-shed-child/img/social-tw.png">
                     </a>
-                    <a href="https://www.instagram.com/studioshed/" target="_blank" title="Instagram profile page">
-                        <img src="/wp-content/themes/studio-shed-child/img/social-ig.png">
+                    <a href="https://www.instagram.com/studioshed/" target="_blank" rel="noreferrer" title="Instagram profile page">
+                        <img alt="instagram social media icon" src="/wp-content/themes/studio-shed-child/img/social-ig.png">
                     </a>
-                    <a href="https://www.houzz.com/pro/studioshed" target="_blank" title="Houzz profile page">
-                        <img src="/wp-content/themes/studio-shed-child/img/social-hz.png">
+                    <a href="https://www.houzz.com/pro/studioshed" target="_blank" rel="noreferrer" title="Houzz profile page">
+                        <img alt="houzz social media icon" src="/wp-content/themes/studio-shed-child/img/social-hz.png">
                     </a>
                 </div>
 
