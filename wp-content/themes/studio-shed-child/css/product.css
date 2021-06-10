@@ -762,13 +762,15 @@ section#qs-grid-section .container{
     width: calc(25% - 24px);
     margin-left: 24px;
     margin-bottom: 24px;
-    padding: 24px;
     border: solid 2px #e8e8e8;
     background-color: #fff;
     border-radius: 5px;
 }
 .qs-grid article a {
     color: #5D5E5D;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
 }
 
 .qs-grid article img {
@@ -793,7 +795,8 @@ section#qs-grid-section .container{
 }
 .qs-disclaimer {
     text-align: center;
-    font-size: 14px;
+    font-size: 12px;
+    line-height: 14px;
 }
 
 @media screen and (max-width: 992px) {
