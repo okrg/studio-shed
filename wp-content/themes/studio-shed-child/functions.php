@@ -26,3 +26,13 @@ function my_custom_tracking( $order_id ) {
 <?php
 
 }
+
+
+
+add_action( 'woocommerce_before_cart', 'qsdeposit_apply_coupon' ); 
+function qsdeposit_apply_coupon() {
+    $coupon_code = 'Quick Ship Deposit'; 
+    if ( WC()->cart->has_discount( $coupon_code ) ) return;
+    WC()->cart->apply_coupon( $coupon_code );
+    wc_print_notices();
+}
