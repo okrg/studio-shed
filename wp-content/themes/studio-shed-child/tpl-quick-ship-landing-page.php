@@ -91,7 +91,7 @@
 
 <div id="feature-3">
   <h3 class="text-uppercase">Turnkey Lifestyle Interior</h3>
-  <p><img alt="Product turnkey features" width="1024" height="691" src="https://www.studio-shed.com/wp-content/uploads/2020/09/SS-interior-2-1024x691.jpg"></p>
+  <p><img alt="Product turnkey features" class="interior image" src="https://www.studio-shed.com/wp-content/uploads/2021/06/qs-turnkey-interior.png"></p>
 </div>
 
 <div id="feature-4">
@@ -123,7 +123,11 @@
   .qs-grid-section h4, #feature-4 h4 {
     text-align:  center;
   }
-
+  img.interior-img {
+    display:  block;
+    max-width:  100%;
+    margin:  0 auto;
+  }
   img.option-img { 
     display: block;
     max-width:  100%;
