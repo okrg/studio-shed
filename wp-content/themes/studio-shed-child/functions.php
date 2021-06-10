@@ -24,15 +24,12 @@ function my_custom_tracking( $order_id ) {
   </script>
 
 <?php
-
 }
 
-
-
-add_action( 'woocommerce_before_cart', 'qsdeposit_apply_coupon' ); 
-function qsdeposit_apply_coupon() {
-    $coupon_code = 'quick ship deposit';
-    if ( WC()->cart->has_discount( $coupon_code ) ) return;
-    WC()->cart->apply_coupon( $coupon_code );
-    wc_print_notices();
+ // Hook before calculate fees
+add_action('woocommerce_cart_calculate_fees' , 'discount_for_deposit');
+function discount_for_deposit( WC_Cart $cart ){
+    // Calculate the amount to reduce
+    $discount = $cart->subtotal * 0.5;
+    $cart->add_fee( '50% Deposit', -$discount);
 }
