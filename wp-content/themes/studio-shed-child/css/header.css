@@ -451,6 +451,9 @@ transform: translate(0, -500PX);
   font-family: 'Tisa-Sans-Pro', Arial, Helvetica, sans-serif;
   font-size: 14px;
 }
+div.main-explore div.explore-content h3 {
+  color:  #fff;
+}
 
 /*
  * Atoggle slides to the left
