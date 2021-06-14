@@ -445,7 +445,7 @@
               </div>
             </li>
             <li>
-              <a href="/music-studios/">MUSIC STUDIOS</a>
+              <a href="/music-studios/">Music Studios</a>
               <div class="menu-child-lv3" style="top: 0px; height: 0px;">
                 <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/music-studio-menu-scaled.jpg')">
                   <div class="box-explore">
@@ -459,7 +459,7 @@
               </div>
             </li>
             <li>
-              <a href="/art-studios/">ARTS &amp; CREATIVE STUDIOS</a>
+              <a href="/art-studios/">Arts &amp; Creative Studios/a>
               <div class="menu-child-lv3" style="top: 0px; height: 0px;">
                 <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/modular-menu.png')">
                   <div class="box-explore">
@@ -473,7 +473,7 @@
               </div>
             </li>
             <li>
-              <a href="/man-cave/">MAN CAVE</a>
+              <a href="/man-cave/">Man Cave</a>
               <div class="menu-child-lv3" style="top: 0px; height: 0px;">
                 <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/man-cave-menu.png')">
                   <div class="box-explore">
@@ -487,7 +487,7 @@
               </div>
             </li>
             <li>
-              <a href="/she-sheds/">SHE SHEDS</a>
+              <a href="/she-sheds/">She Sheds</a>
               <div class="menu-child-lv3" style="top: 0px; height: 0px;">
                 <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/she-shed-menu.png')">
                   <div class="box-explore">
@@ -501,7 +501,7 @@
               </div>
             </li>
             <li>
-              <a href="/storage/">STORAGE</a>
+              <a href="/storage/">Storage/a>
               <div class="menu-child-lv3" style="top: 0px; height: 0px;">
                 <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/Storage-menu-scaled.jpg')">
                   <div class="box-explore">
@@ -529,7 +529,7 @@
               </div>
             </li>
             <li>
-              <a href="/wellness/">WELLNESS</a>
+              <a href="/wellness/">Wellness</a>
               <div class="menu-child-lv3" style="top: 0px; height: 0px;">
                 <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/Wellness-menu.jpg')">
                   <div class="box-explore">
@@ -543,7 +543,7 @@
               </div>
             </li>
             <li>
-              <a href="/garages/">GARAGES</a>
+              <a href="/garages/">Garages</a>
               <div class="menu-child-lv3" style="top: 0px; height: 0px;">
                 <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/garage-menu.png')">
                   <div class="box-explore">
@@ -557,7 +557,7 @@
               </div>
             </li>
             <li>
-              <a href="/modular-addition/">MODULAR ADDITION</a>
+              <a href="/modular-addition/">Modular Addition</a>
               <div class="menu-child-lv3" style="top: 0px; height: 0px;">
                 <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/modular-menu.png')">
                   <div class="box-explore">
@@ -571,7 +571,7 @@
               </div>
             </li>
             <li>
-              <a href="/commercial/">COMMERCIAL</a>
+              <a href="/commercial/">Commercial</a>
               <div class="menu-child-lv3" style="top: 0px; height: 0px;">
                 <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/Commercial-menu.jpg')">
                   <div class="box-explore">
