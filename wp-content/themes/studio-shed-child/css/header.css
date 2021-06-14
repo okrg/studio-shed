@@ -216,14 +216,15 @@ li.logo a {
 .dropdown-menu.main-menu-dropdown.main-drop-models .menu-child.menu-list .box .time {
     color: #333 !important;
 }
-
+.item-models .content-model-right {
+    height:  100%;
+}
 .main-drop-models .featured {
     background-repeat: no-repeat!important;
     background-size: cover!important;
 }
 .main-drop-models .featured {
-	min-height: 412px;  /* with sprout 4 sheds*/
-  /*  min-height: 315px; */ /* # sheds */
+    height:  100% !important;
 	text-align: center;
 	vertical-align: bottom;
 }
