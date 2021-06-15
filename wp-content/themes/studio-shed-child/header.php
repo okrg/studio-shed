@@ -433,7 +433,7 @@
             <li>
               <a href="/home-office-spaces/">Home Office Spaces</a>
               <div class="menu-child-lv3" style="top: 0px; height: 0px;">
-                <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/home-office-menu.png')">
+                <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/home-office-menu.jpg')">
                   <div class="box-explore">
                     <div class="explore-content">
                       <h3>PREFAB BACKYARD OFFICE SHEDS</h3>
@@ -447,7 +447,7 @@
             <li>
               <a href="/music-studios/">Music Studios</a>
               <div class="menu-child-lv3" style="top: 0px; height: 0px;">
-                <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/music-studio-menu-scaled.jpg')">
+                <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/music-studio-menu-scaled-e1612846366818.jpg')">
                   <div class="box-explore">
                     <div class="explore-content">
                       <h3>HOME MUSIC &amp; RECORDING STUDIOS</h3>
@@ -461,7 +461,7 @@
             <li>
               <a href="/art-studios/">Arts &amp; Creative Studios</a>
               <div class="menu-child-lv3" style="top: 0px; height: 0px;">
-                <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/modular-menu.png')">
+                <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/modular-menu.jpg')">
                   <div class="box-explore">
                     <div class="explore-content">
                       <h3>HOME ART STUDIOS &amp; CREATIVE SHEDS</h3>
@@ -475,7 +475,7 @@
             <li>
               <a href="/man-cave/">Man Cave</a>
               <div class="menu-child-lv3" style="top: 0px; height: 0px;">
-                <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/man-cave-menu.png')">
+                <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/man-cave-menu.jpg')">
                   <div class="box-explore">
                     <div class="explore-content">
                       <h3>BACKYARD MAN CAVE SHEDS AND DIY KITS</h3>
@@ -489,7 +489,7 @@
             <li>
               <a href="/she-sheds/">She Sheds</a>
               <div class="menu-child-lv3" style="top: 0px; height: 0px;">
-                <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/she-shed-menu.png')">
+                <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/she-shed-menu.jpg')">
                   <div class="box-explore">
                     <div class="explore-content">
                       <h3>SHE SHED KITS, IDEAS, AND DESIGNS</h3>
@@ -545,7 +545,7 @@
             <li>
               <a href="/garages/">Garages</a>
               <div class="menu-child-lv3" style="top: 0px; height: 0px;">
-                <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/garage-menu.png')">
+                <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/garage-menu.jpg')">
                   <div class="box-explore">
                     <div class="explore-content">
                       <h3>PREFAB GARAGE KITS</h3>
@@ -559,7 +559,7 @@
             <li>
               <a href="/modular-addition/">Modular Addition</a>
               <div class="menu-child-lv3" style="top: 0px; height: 0px;">
-                <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/modular-menu.png')">
+                <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/modular-menu.jpg')">
                   <div class="box-explore">
                     <div class="explore-content">
                       <h3>PREFAB GUEST HOUSES &amp; MODULAR HOME ADDITIONS</h3>
