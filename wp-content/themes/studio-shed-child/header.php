@@ -459,7 +459,7 @@
               </div>
             </li>
             <li>
-              <a href="/art-studios/">Arts &amp; Creative Studios/a>
+              <a href="/art-studios/">Arts &amp; Creative Studios</a>
               <div class="menu-child-lv3" style="top: 0px; height: 0px;">
                 <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/modular-menu.png')">
                   <div class="box-explore">
@@ -501,7 +501,7 @@
               </div>
             </li>
             <li>
-              <a href="/storage/">Storage/a>
+              <a href="/storage/">Storage</a>
               <div class="menu-child-lv3" style="top: 0px; height: 0px;">
                 <div class="main-explore" style="background-image: url('/wp-content/uploads/2019/01/Storage-menu-scaled.jpg')">
                   <div class="box-explore">
@@ -588,7 +588,7 @@
         </div>
       </li>
 			<li class="design-center"><a href="/design-center/">Design Center</a></li>
-      <li class="has-sub d-lg-none is-open-child">
+      <li class="has-sub">
         <a href="/about-us/">About Us</a>
         <div class="nav-item-arrows d-lg-none">
           <i class="icomoon icon-plus2" aria-hidden="true"></i>
