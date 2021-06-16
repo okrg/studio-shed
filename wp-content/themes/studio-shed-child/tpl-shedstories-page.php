@@ -25,8 +25,6 @@
 <?php endwhile; endif; ?>
 
 <?//php get_template_part('button-create'); ?>
-<script src="https://apps.elfsight.com/p/platform.js" defer></script>
-<div class="elfsight-app-45f44944-baf8-48c1-9d65-70a6bd3fe9b1"></div>
 
 <style>
 .eapp-popup-block-variation-text-text {
