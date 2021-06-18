@@ -353,7 +353,7 @@
         </li>
         <li item="item-4" class="item-models d-none">
           <div class="content-model-right" style="width: 100%">
-            <div class="featured" style="background: url('/wp-content/uploads/2020/09/10x12-Solitude-lap_gray.jpg');">
+            <div class="featured" style="background: url('/wp-content/uploads/2021/06/10x12-Solitude-lap_gray-menu.jpg');">
               <div class="description">
                 <p>Our most popular designs, delivered to your door in weeks. Choose the perfect size, colors, and options for your perfect home office, studio, or backyard retreat. Specially priced for DIY installation only with standard shipping included.</p>
                 <div class="featured-shed-btns">
