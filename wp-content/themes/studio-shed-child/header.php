@@ -382,19 +382,22 @@
         <div class="dropdown-menu main-menu-dropdown">
           <ul>
             <li>
-              <a href="/adu/">Accessory Dwelling Unit</a>
+              <a href="/adu/" title="What is a Studio Shed ADU?">Accessory Dwelling Unit</a>
             </li>
             <li>
-              <a href="/adu/cost-financing/">ADU Cost &amp; Financing</a>
+              <a href="/adu/cost-financing/" title="Learn about Studio Shed ADU financing costs">ADU Cost &amp; Financing</a>
             </li>
             <li>
-              <a href="/adu/design/">Design your ADU</a>
+              <a href="/adu/design/" title="Design your Studio Shed ADU unit">Design your ADU</a>
             </li>
             <li>
-              <a href="/adu/granny-flat/">Granny Flat</a>
+              <a href="/adu/granny-flat/" title="Studio Shed granny flat and ADU backyard spaces">Granny Flat</a>
             </li>
             <li>
-              <a href="/adu/ideas/">ADU Ideas</a>
+              <a href="/adu/ideas/" title="Studio Shed ADU ideas">ADU Ideas</a>
+            </li>
+            <li>
+              <a href="/adu/interior-packages/" title="Studio Shed ADU interior packages">Interior Packages</a>
             </li>
           </ul>
         </div>
