@@ -33,3 +33,13 @@ function discount_for_deposit( WC_Cart $cart ){
     $discount = $cart->subtotal * 0.5;
     $cart->add_fee( '50% Deposit', -$discount);
 }
+
+
+
+add_filter( 'gform_pre_send_email', function ( $email, $message_format ) {
+  if ( $message_format != 'html' ) {
+    return $email;
+  }
+  $email['message'] = html_entity_decode($email['message']);
+  return $email;
+}, 10, 2 );
