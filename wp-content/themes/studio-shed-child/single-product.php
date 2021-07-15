@@ -238,6 +238,7 @@ get_header();?>
     color:  #666;
     display: inline-block;
     font-style: normal;
+    font-family: 'Futura-PT-Book';
   }
   .variation-hero strong {
     color: #3a833c;
