@@ -236,15 +236,16 @@ get_header();?>
     text-decoration: line-through;
     font-size:  15px;
     color:  #666;
-    display: block;
+    display: inline-block;
+    font-style: normal;
   }
   .variation-hero strong {
     color: #3a833c;
-    display: block;
+    display: inline-block;
+    padding: 0 16px;
     font-weight: bold;
     font-size: 13px;
-    text-transform:  uppercase;
-    margin-bottom: 24px;
+    text-transform:  uppercase;    
     font-family: 'Futura-PT-Heavy';
   }
   .variation-thumbs {
