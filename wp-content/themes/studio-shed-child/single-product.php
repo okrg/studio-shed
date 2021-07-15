@@ -232,6 +232,21 @@ get_header();?>
     padding: 0 5rem;
     height: 500px;
   }
+  .variation-hero em {
+    text-decoration: line-through;
+    font-size:  15px;
+    color:  #666;
+    display: block;
+  }
+  .variation-hero strong {
+    color: #3a833c;
+    display: block;
+    font-weight: bold;
+    font-size: 13px;
+    text-transform:  uppercase;
+    margin-bottom: 24px;
+    font-family: 'Futura-PT-Heavy';
+  }
   .variation-thumbs {
     display: flex;
     align-items: center;
