@@ -23,20 +23,25 @@
 	<div class="footer-escape">
 		<div class="container">
 		<div class="row">
-			<div class="col-sm-3 col-md-2">
+			<div class="col-sm-3 col-md-2" style="vertical-align: top;">
 				<img src="/wp-content/uploads/2020/01/footer-studio-shed-escape.jpg" alt="Image of Studio Shed design configurator loaded on an ipad">
 			</div>
-			<div class="col-sm-9 col-md-7">
+			<div class="col-sm-9 col-md-4" style="vertical-align: top;">
 
 			<div class="escape-headline">Make Your Escape</div>
 				<p><span style="color: #ffffff;">One shed does not fit all. Our innovative modular system allows for tremendous customization. There are millions of combinations of sizes, door and window placements, and colors. All thoughtfully designed to work together.</span></p>
-
+                <a href="/design-center/" class="vce-button--style-basic button" title="Build and price your Studio Shed design" style="float: none;">Build &amp; Price</a>
 			</div>
-			<div class="col-sm-12 col-md-3">
+            <div class="col-sm-3 col-md-2" style="vertical-align: top;">
+                <img src="https://dev-studio-shed.pantheonsite.io/wp-content/uploads/2021/07/ss-virtual-showroom-footer-thumb.jpg" alt="Image of Studio Shed virtual tour">
+            </div>
+            <div class="col-sm-9 col-md-4" style="vertical-align: top;">
 
-			<a href="/design-center/" class="vce-button--style-basic button" title="Build and price your Studio Shed design">Build &amp; Price</a>
+            <div class="escape-headline">3D Interactive Tour</div>
+                <p><span style="color: #ffffff;">Enter an immersive 360 degreee experience and explore the collection of sizes, interior layouts, materials and finishes avaialble for our Summit Series.</span></p>
+                <a href="https://tour.studio-shed.com" class="vce-button--style-basic button" title="Explore the Studio Shed virtual showroom" style="float: none;">Explore Now</a>
+            </div>
 			</div>
-			</iv>
 		</div>
 		<div class="row delivery">
 			<div class="col-sm-0 col-md-2">
@@ -139,6 +144,9 @@
             <ul>
                 <li class="menu-item">
                     <a href="/design-center/">Build &amp; Price</a>
+                </li>
+                <li class="menu-item">
+                    <a href="https://tour.studio-shed.com/">Virtual Showroom</a>
                 </li>
                 <li class="menu-item">
                     <a href="/financing/">Financing</a>
