@@ -48,7 +48,7 @@
     <p><strong>ROOF:</strong></p>
     <ul>
       <li>2×6 Full Length Roof Rafters</li>
-      <li>5/8″ Plywood decking with Ice and Water shield</li>
+      <li>5/8″ Plywood decking</li>
       <li>26-gauge Galvalume Roofing</li>
     </ul>
     <p><strong>WINDOWS:</strong></p>
@@ -81,7 +81,7 @@
     <p><strong>GREEN MATERIALS, SUSTAINABLY BUILT:</strong></p>
     <ul>
     <li>FSC certified lumber, mixed-source recycled metal and materials throughout, optimized prefabricated production.</li>
-    <li>Meets building codes throughout the US</li>
+    <li>Able to meet most building codes</li>
     </ul>
   </div>
 </div>
