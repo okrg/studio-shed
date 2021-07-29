@@ -600,8 +600,10 @@
           <ul>
           <li><a href="/request-free-consultation/">Request Free Consultation</a></li>
           <li><a href="/financing/">Financing</a></li>
-          <li><a href="/installation-network/">Installation Process</a></li>
+          <li><a href="/installation-network/">Installation Network</a></li>
           <li><a href="/about-us/">About Studio Shed</a></li>
+          <li><a href="/join-our-team/">Join Our Team</a></li>
+          <li><a href="/partner-with-us/">&nbsp;&nbsp;Partner With Us</a></li>
           <li><a href="/faqs/">FAQs</a></li>
           <li><a href="/newsletter/">Resources</a></li>
           <li><a href="/blog/">Blog</a></li>
@@ -622,8 +624,10 @@
             <li class="menu-item"><a href="tel:888-900-3933">Call us: 888.900.3933</a></li>
             <li class="menu-item"><a href="/request-free-consultation/">Request Free Consultation</a></li>
             <li class="menu-item"><a href="/financing/">Financing</a></li>
-            <li class="menu-item"><a href="/installation-network/">Installation Process</a></li>
+            <li class="menu-item"><a href="/installation-network/">Installation Network</a></li>
             <li class="menu-item"><a href="/about-us/">About Studio Shed</a></li>
+            <li class="menu-item"><a href="/join-our-team/">Join Our Team</a></li>
+            <li class="menu-item"><a href="/partner-with-us/">&nbsp;&nbsp;Partner With Us</a></li>
             <li class="menu-item"><a href="/faqs/">FAQs</a></li>
             <li class="menu-item"><a href="/installation-resources/">Resources</a></li>
             <li class="menu-item"><a href="/blog/">Blog</a></li>

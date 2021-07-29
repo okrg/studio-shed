@@ -187,6 +187,12 @@
                 <li class="menu-item">
                     <a href="/award-winning-design/">Design Awards</a>
                 </li>
+                <li class="menu-item">
+                    <a href="/join-our-team/">Join Our Team</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/partner-with-us/">Partner With Us</a>
+                </li>
             </ul>
 
 
