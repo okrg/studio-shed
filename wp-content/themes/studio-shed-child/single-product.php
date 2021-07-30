@@ -52,7 +52,7 @@ get_header();?>
     <div class="row">
         <div class="text-in">
             <p class="head-text"><?php the_title(); ?></p>
-            <p>10' x 12' &bull; Lap Style Siding &bull; White door color</p>
+            <p>10' x 12' &bull; Lap Style Siding</p>
             <p>DIY installation only &bull; Shipping included</p>
 
         </div>

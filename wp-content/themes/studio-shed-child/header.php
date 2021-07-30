@@ -603,7 +603,7 @@
           <li><a href="/installation-network/">Installation Network</a></li>
           <li><a href="/about-us/">About Studio Shed</a></li>
           <li><a href="/join-our-team/">Join Our Team</a></li>
-          <li><a href="/partner-with-us/"><span>&#8627;</span> Partner With Us</a></li>
+          <li><a href="/partner-with-us/">&mdash; Partner With Us</a></li>
           <li><a href="/faqs/">FAQs</a></li>
           <li><a href="/newsletter/">Resources</a></li>
           <li><a href="/blog/">Blog</a></li>
@@ -627,7 +627,7 @@
             <li class="menu-item"><a href="/installation-network/">Installation Network</a></li>
             <li class="menu-item"><a href="/about-us/">About Studio Shed</a></li>
             <li class="menu-item"><a href="/join-our-team/">Join Our Team</a></li>
-            <li class="menu-item"><a href="/partner-with-us/"><span>&#8627;</span> Partner With Us</a></li>
+            <li class="menu-item"><a href="/partner-with-us/">&mdash; Partner With Us</a></li>
             <li class="menu-item"><a href="/faqs/">FAQs</a></li>
             <li class="menu-item"><a href="/installation-resources/">Resources</a></li>
             <li class="menu-item"><a href="/blog/">Blog</a></li>
