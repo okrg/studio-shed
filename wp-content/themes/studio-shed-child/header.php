@@ -598,16 +598,12 @@
         </div>
         <div class="dropdown-menu main-menu-dropdown">
           <ul>
-          <li><a href="/request-free-consultation/">Request Free Consultation</a></li>
-          <li><a href="/financing/">Financing</a></li>
-          <li><a href="/installation-network/">Installation Network</a></li>
           <li><a href="/about-us/">About Studio Shed</a></li>
-          <li><a href="/join-our-team/">Join Our Team</a></li>
-          <li><a href="/partner-with-us/">&mdash; Partner With Us</a></li>
-          <li><a href="/faqs/">FAQs</a></li>
-          <li><a href="/newsletter/">Resources</a></li>
+          <li><a href="/our-story/">Our Story</a></li>
+          <li><a href="/sustainability/">Sustainability</a></li>
           <li><a href="/blog/">Blog</a></li>
           <li><a href="/in-the-news/">In the News</a></li>
+          <li><a href="/faqs/">FAQs/a></li>
           </ul>
         </div>
       </li>
@@ -622,16 +618,10 @@
         <div id="menu-slide">
           <ul id="menu-header-flyout" class="">
             <li class="menu-item"><a href="tel:888-900-3933">Call us: 888.900.3933</a></li>
-            <li class="menu-item"><a href="/request-free-consultation/">Request Free Consultation</a></li>
             <li class="menu-item"><a href="/financing/">Financing</a></li>
             <li class="menu-item"><a href="/installation-network/">Installation Network</a></li>
-            <li class="menu-item"><a href="/about-us/">About Studio Shed</a></li>
-            <li class="menu-item"><a href="/join-our-team/">Join Our Team</a></li>
-            <li class="menu-item"><a href="/partner-with-us/">&mdash; Partner With Us</a></li>
-            <li class="menu-item"><a href="/faqs/">FAQs</a></li>
-            <li class="menu-item"><a href="/installation-resources/">Resources</a></li>
-            <li class="menu-item"><a href="/blog/">Blog</a></li>
-            <li class="menu-item"><a href="/in-the-news/">News</a></li>
+            <li class="menu-item"><a href="/installation-resources/">Installation Resources</a></li>
+            <li class="menu-item"><a href="/request-free-consultation/">Request Free Consultation</a></li>          
             <li class="menu-item"><a href="/contact-us/">Contact Us</a></li>
           </ul>
         </div>
