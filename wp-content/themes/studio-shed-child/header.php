@@ -603,7 +603,7 @@
           <li><a href="/sustainability/">Sustainability</a></li>
           <li><a href="/blog/">Blog</a></li>
           <li><a href="/in-the-news/">In the News</a></li>
-          <li><a href="/faqs/">FAQs/a></li>
+          <li><a href="/faqs/">FAQ</a></li>
           </ul>
         </div>
       </li>
