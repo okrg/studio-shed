@@ -621,6 +621,8 @@
             <li class="menu-item"><a href="/financing/">Financing</a></li>
             <li class="menu-item"><a href="/installation-network/">Installation Network</a></li>
             <li class="menu-item"><a href="/installation-resources/">Installation Resources</a></li>
+            <li class="menu-item"><a href="/join-our-team/">Join Our Team</a></li>
+            <li class="menu-item"><a href="/partner-with-us/">— Partner With Us</a></li>
             <li class="menu-item"><a href="/request-free-consultation/">Request Free Consultation</a></li>          
             <li class="menu-item"><a href="/contact-us/">Contact Us</a></li>
           </ul>
