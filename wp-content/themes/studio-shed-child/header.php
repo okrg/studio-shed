@@ -116,7 +116,7 @@
                         <div class="box">
                           <a href="/summit-series/">SUMMIT/ADUs SERIES</a>
                           <p class="intro">252-1000 SQFT</p>
-                          <p class="time">Base kit starting at $30,135</p>
+                          <p class="time">Popular size from $37,793</p>
                           <span class="icomoon icon-chevron-right"></span>
                         </div>
                         <a href="/summit-series/" class="ps-as"></a>
@@ -139,7 +139,7 @@
                         <div class="box">
                           <a href="/products/signature-series/">SIGNATURE SERIES</a>
                           <p class="intro">64-240 SQFT</p>
-                          <p class="time">Product Starting at $11,455</p>
+                          <p class="time">Popular size from $13,910</p>
                           <span class="icomoon icon-chevron-right"></span>
                         </div>
                         <a href="/products/signature-series/" class="ps-as"></a>
@@ -155,7 +155,7 @@
                         <div class="box">
                           <a href="/products/portland-series/">PORTLAND SERIES</a>
                           <p class="intro">96-256 SQFT</p>
-                          <p class="time">Product Starting at $15,309</p>
+                          <p class="time">Popular size from $18,590</p>
                           <span class="icomoon icon-chevron-right"></span>
                         </div>
                         <a href="/products/portland-series/" class="ps-as"></a>
@@ -217,7 +217,7 @@
                   <div class="box" item-id="item-1">
                     <a href="/summit-series/">SUMMIT/ADUs SERIES</a>
                     <p class="intro">252-1000 SQFT</p>
-                    <p class="time">Base kit starting at $30,135</p>
+                    <p class="time">Popular size from $37,793</p>
                     <span class="icomoon icon-chevron-right"></span>
                   </div>
                 </div>
@@ -242,7 +242,7 @@
                   <div class="box" item-id="item-2">
                     <a href="/products/signature-series/">SIGNATURE SERIES</a>
                     <p class="intro">64-240 SQFT</p>
-                    <p class="time">Product Starting at $11,455</p>
+                    <p class="time">Popular size from $13,910</p>
                     <span class="icomoon icon-chevron-right"></span>
                   </div>
                 </div>
@@ -259,7 +259,7 @@
                   <div class="box" item-id="item-3">
                     <a href="/products/portland-series/">PORTLAND SERIES</a>
                     <p class="intro">96-256 SQFT</p>
-                    <p class="time">Product Starting at $15,309</p>
+                    <p class="time">Popular size from $18,590</p>
                     <span class="icomoon icon-chevron-right"></span>
                   </div>
                 </div>
