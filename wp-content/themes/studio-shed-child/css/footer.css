@@ -352,7 +352,7 @@ border-color: #ffa544;
     min-width: 220px;
     text-transform: uppercase;
     text-align: center;
-
+    display: inline-block;
 }
 .footer-escape button:hover, 
 .footer-escape a.button.vce-button--style-basic:hover {
