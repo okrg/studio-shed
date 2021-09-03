@@ -13,9 +13,9 @@
         <a href="/product/pagoda/">
             <div class="qs-name">Pagoda</div>
             <p>The Original with All-New Updates</p>
-            <div class="qs-price">$17,365*</div>
+            <div class="qs-price">$19,295*</div>
             <div class="qs-original">$22,250</div>
-            <div class="qs-savings">Save $4,885</div>
+            <div class="qs-savings">Save $2,950</div>
             <img src="/wp-content/themes/studio-shed-child/img/qs-pagoda.png">
         </a>
     </article>
@@ -23,9 +23,9 @@
         <a href="/product/boreas/">
             <div class="qs-name">Boreas</div>
             <p>French Doors and a Flexible Layout</p>
-            <div class="qs-price">$17,545*</div>
+            <div class="qs-price">$19,495*</div>
             <div class="qs-original">$22,285</div>
-            <div class="qs-savings">Save $4,740</div>
+            <div class="qs-savings">Save $2,790</div>
             <img src="/wp-content/themes/studio-shed-child/img/qs-boreas.png">
         </a>
     </article>
@@ -33,9 +33,9 @@
         <a href="/product/solitude/">
             <div class="qs-name">Solitude</div>
             <p>Your Turnkey Backyard Sanctuary</p>
-            <div class="qs-price">$19,075*</div>
+            <div class="qs-price">$21,195*</div>
             <div class="qs-original">$24,185</div>
-            <div class="qs-savings">Save $5,110</div>
+            <div class="qs-savings">Save $2,990</div>
             <img src="/wp-content/themes/studio-shed-child/img/qs-solitude.png">
         </a>
     </article>
@@ -43,9 +43,9 @@
         <a href="/product/telluride/">
             <div class="qs-name">Telluride</div>
             <p>Light-Filled Backyard Retreat or Studio</p>
-            <div class="qs-price">$20,605*</div>
+            <div class="qs-price">$22,895*</div>
             <div class="qs-original">$25,955</div>
-            <div class="qs-savings">Save $5,350</div>
+            <div class="qs-savings">Save $3,060</div>
             <img src="/wp-content/themes/studio-shed-child/img/qs-telluride.png">
         </a>
     </article>
