@@ -172,7 +172,7 @@ header#hero {
       color: #fff;
     }
     .nav-flex {
-      margin:  0 80px;
+      
       display: flex;
       text-align: center;
       flex-direction: column;
@@ -191,6 +191,7 @@ header#hero {
         }
       }
       @include md {
+        margin:  0 80px;
         flex-direction: row;
         justify-content: space-between;
         .nav-links {
@@ -262,13 +263,13 @@ header#hero {
     height: auto;
     background:  rgba(0,0,0,0.24);
     left:  10%;
-    bottom: 10%;
+    bottom: 5%;
     width: 80%;
     text-align:  center;
-    padding-left:  20px; 
+    padding:  20px; 
 
     .heading {      
-      font-size:  40px;
+      font-size:  32px;
       line-height: 40px;
       font-weight: bold;
       font-family: 'Futura-PT-Heavy';
@@ -306,7 +307,7 @@ header#hero {
       
       color:  $orange;
       font-weight:  bold;
-      font-family: 'Futura-PT-Book';
+      font-family: 'Futura-PT-Heavy';
       font-size:  24px;
       line-height: 24px;
     }
