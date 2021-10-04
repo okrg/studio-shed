@@ -105,8 +105,7 @@ if (isset($_ENV['PANTHEON_ENVIRONMENT']) && php_sapi_name() != 'cli') {
     }
 
     if( $_SERVER['REQUEST_URI'] == '/filemaker/process_Configurator.php' ) {
-      //do nothing 
-      exit('nothing happens');
+      //nothing happens      
     } else {
       header('HTTP/1.0 301 Moved Permanently');
       header('Location: https://'. $primary_domain . $_SERVER['REQUEST_URI']);
