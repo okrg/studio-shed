@@ -8,6 +8,76 @@
 
   </div>
 
+
+  <div class="inside qs-grid mt-4">
+    <article>
+      <header>
+        <a href="/product/pagoda/">
+          <div class="qs-name">Pagoda</div>
+          <p>The Original with All-New Updates</p>
+        </a>
+      </header>
+      <footer>
+        <a href="/product/pagoda/">
+          <div class="qs-price">$18,332*</div>
+          <div class="qs-original">$22,250</div>
+          <div class="qs-savings">Save $3,198</div>
+          <img src="/wp-content/themes/studio-shed-child/img/qs-pagoda.png">
+        </a>
+      </footer>
+    </article>
+    <article>
+      <header>
+        <a href="/product/boreas/">
+            <div class="qs-name">Boreas</div>
+            <p>French Doors and a Flexible Layout</p>
+          </a>
+      </header>
+      <footer>
+        <a href="/product/boreas/">
+            <div class="qs-price">$18,520*</div>
+            <div class="qs-original">$22,285</div>
+            <div class="qs-savings">Save $3,765</div>
+            <img src="/wp-content/themes/studio-shed-child/img/qs-boreas.png">
+        </a>
+      </footer>
+    </article>
+    <article>
+      <header>
+        <a href="/product/solitude/">
+            <div class="qs-name">Solitude</div>
+            <p>Your Turnkey Backyard Sanctuary</p>
+        </a>
+      </header>
+      <footer>
+        <a href="/product/solitude/">
+            <div class="qs-price">$20,135*</div>
+            <div class="qs-original">$24,185</div>
+            <div class="qs-savings">Save $4,050</div>
+            <img src="/wp-content/themes/studio-shed-child/img/qs-solitude.png">
+        </a>
+      </footer>
+    </article>
+    <article>
+      <header>
+        <a href="/product/telluride/">
+            <div class="qs-name">Telluride</div>
+            <p>Light-Filled Backyard Retreat or Studio</p>
+        </a>
+      </header>
+      <footer>
+        <a href="/product/telluride/">
+            <div class="qs-price">$21,750*</div>
+            <div class="qs-original">$25,955</div>
+            <div class="qs-savings">Save $4,250</div>
+            <img src="/wp-content/themes/studio-shed-child/img/qs-telluride.png">
+        </a>
+      </footer>
+    </article>
+  </div>
+
+
+  <?php /*
   <div class="inside qs-grid">
     <article>
         <a href="/product/pagoda/">
@@ -50,6 +120,7 @@
         </a>
     </article>
   </div>
+    */?>
 
     <div class="qs-disclaimer">* Everyday discount applied. Not eligible for additional promos.</div>
     <div class="qs-disclaimer">NOTE: Due to the current high demand, turnaround time is typically 6-8 weeks in most markets.</div>
