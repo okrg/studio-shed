@@ -27,11 +27,11 @@ msgstr ""
 msgid "Translate"
 msgstr ""
 
-#: classes/Analytics.php:157
+#: classes/Analytics.php:177
 msgid "Event Type"
 msgstr ""
 
-#: classes/Analytics.php:162, classes/Shortcode/Subscribe.php:410, includes/integrations/ninja-forms/Actions/OpenPopup.php:42
+#: classes/Analytics.php:182, classes/Shortcode/Subscribe.php:410, includes/integrations/ninja-forms/Actions/OpenPopup.php:42
 msgid "Popup ID"
 msgstr ""
 
@@ -1996,8 +1996,8 @@ msgstr ""
 msgid "Insert Preset"
 msgstr ""
 
-#: classes/Admin/Templates.php:490, classes/Admin/Templates.php:523
-msgid "Choose what type of trigger to add?"
+#: classes/Admin/Templates.php:490
+msgid "What kind of trigger do you want?"
 msgstr ""
 
 #: classes/Admin/Templates.php:499
@@ -2006,6 +2006,10 @@ msgstr ""
 
 #: classes/Admin/Templates.php:506
 msgid "Stop showing popup once visitor takes this action:"
+msgstr ""
+
+#: classes/Admin/Templates.php:523
+msgid "New Trigger"
 msgstr ""
 
 #: classes/Admin/Templates.php:547

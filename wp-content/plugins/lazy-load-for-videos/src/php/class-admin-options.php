@@ -45,7 +45,7 @@ class KW_LLV_Admin {
 	}
 
     function text__no_script_fallback($title, $url) {
-        $no_script_fallback = "<noscript>Video can't be loaded because JavaScript is disabled: <a href=\"{$url}\" title=\"{$title}\">{$title} ({$url})</a></noscript>";
+        $no_script_fallback = "<noscript>Video can't be loaded because JavaScript is disabled: <a href=\"" . esc_url($url) . "\" title=\"" . esc_attr($title) . "\">" . esc_attr($title) . " (" . esc_url($url) . ")</a></noscript>";
 
         return $no_script_fallback;
     }
@@ -66,10 +66,17 @@ class KW_LLV_Admin {
 		if ( function_exists( 'amp_is_request' ) && amp_is_request() ) {
 			return $return;
 		}
-		
+
 		// Replacements don't work in feeds
 		if ( is_feed() ) {
 			return $return;
+		}
+		
+		$data_title = isset($data->title) ? $data->title : '';
+		$data_thumbnail = isset($data->thumbnail) ? $data->thumbnail : '';
+
+		if (empty($data_thumbnail) && isset($data->thumbnail_url) && !empty($data->thumbnail_url)) {
+			$data_thumbnail = $data->thumbnail_url;
 		}
 
 		// Youtube support
@@ -81,15 +88,15 @@ class KW_LLV_Admin {
 	    	$a_class = apply_filters( 'lazyload_preview_url_css_youtube', $a_class );
 
 			$play_title_text = sprintf(esc_attr__( 'Play video &quot;%s&quot;', LL_TD ),
-				$data->title
+                $data_title
 			);
 
-       		$preview_url = "<a class=\"{$a_class}\" href=\"{$url}\" data-video-title=\"{$data->title}\" title=\"{$play_title_text}\">{$url}</a>";
+       		$preview_url = "<a href=\"" . esc_url($url) . "\" class=\"{$a_class}\" data-video-title=\"" . esc_attr($data_title) . "\" title=\"" . esc_attr($play_title_text) . "\">{$url}</a>";
 
  			// Wrap container around $preview_url
        		$preview_url = '<div class="container-lazyload preview-lazyload container-youtube js-lazyload--not-loaded">'
 					. $preview_url
-					. $this->text__no_script_fallback($data->title, $url)
+					. $this->text__no_script_fallback($data_title, $url)
 					. '</div>';
 
        		return apply_filters( 'lazyload_replace_video_preview_url_youtube', $preview_url );
@@ -99,29 +106,19 @@ class KW_LLV_Admin {
 	    elseif ( $data->provider_name === 'Vimeo'
 				&& (get_option('llv_opt') == false) // test if Lazy Load for Vimeo is deactivated
 	    	) {
-			$url_path = parse_url($url, PHP_URL_PATH);
-
-			$url_split_path = explode("/", $url_path);
-			foreach($url_split_path as $key=>$value)
-			{
-			    if ( empty( $value ) )
-			        unset($url_split_path[$key]);
-			};
-			$vimeoid = end($url_split_path);
-
 	    	$a_class = 'lazy-load-vimeo preview-lazyload preview-vimeo';
 	    	$a_class = apply_filters( 'lazyload_preview_url_css_vimeo', $a_class );
 
 			$play_title_text = sprintf(esc_attr__( 'Play video &quot;%s&quot;', LL_TD ),
-				$data->title
+                $data_title
 			);
 
-			$preview_url = "<a href=\"{$url}\" id=\"{$vimeoid}\" class=\"{$a_class}\" data-video-thumbnail=\"{$data->thumbnail_url}\" data-video-title=\"{$data->title}\" title=\"{$play_title_text}\">{$url}</a>";
+			$preview_url = "<a href=\"" . esc_url($url) . "\" id=\"{$data->video_id}\" class=\"{$a_class}\" data-video-thumbnail=\"{$data_thumbnail}\" data-video-title=\"" . esc_attr($data_title) . "\" title=\"" . esc_attr($play_title_text) . "\">{$url}</a>";
 
 			// Wrap container around $preview_url
 			$preview_url = '<div class="container-lazyload container-vimeo js-lazyload--not-loaded">'
                     . $preview_url
-                    . $this->text__no_script_fallback($data->title, $url)
+                    . $this->text__no_script_fallback($data_title, $url)
 					. '</div>';
 
 			return apply_filters( 'lazyload_replace_video_preview_url_vimeo', $preview_url );
@@ -144,7 +141,7 @@ class KW_LLV_Admin {
 			'll_opt_customcss',
 			'll_opt_support_for_tablepress',
 			'll_attribute',
-			
+
 			// Youtube
 			'lly_opt',
 			'lly_opt_title',
@@ -156,7 +153,7 @@ class KW_LLV_Admin {
 			'lly_opt_player_controls',
 			'lly_opt_player_loadpolicy',
 			'lly_opt_cookies',
-			
+
 			// Vimeo
 			'llv_opt',
 			'llv_opt_title',
@@ -177,16 +174,15 @@ class KW_LLV_Admin {
 		<?php } ?>
 
 		<div id="tabs" class="ui-tabs">
-			<h2><?php esc_html_e( 'Lazy Load for Videos', LL_TD ); ?> <span class="subtitle"><?php esc_html_e( 'by', LL_TD ); ?> <a href="https://www.kweber.com/ll" target="_blank" title="<?php esc_html_e( 'Website by Kevin Weber', LL_TD ); ?>">Kevin Weber</a> (<?php esc_html_e( 'Version', LL_TD ); ?> <?php echo LL_VERSION; ?>)</span>
-				<br><span class="claim" style="font-size:15px;font-style:italic;position:relative;top:-7px;"><?php esc_html_e( 'Speed up your site and customise your video player!', LL_TD ); ?></span>
-			</h2>
+			<h1><?php esc_html_e( 'Lazy Load for Videos', LL_TD ); ?> <span class="subtitle"><?php esc_html_e( 'by', LL_TD ); ?> <a href="https://www.kweber.com/ll" target="_blank" title="<?php esc_html_e( 'Website by Kevin Weber', LL_TD ); ?>">Kevin Weber</a> (<?php esc_html_e( 'Version', LL_TD ); ?> <?php echo LL_VERSION; ?>)</span></h1>
+			<h2 class="claim" style="font-size:15px;font-style:italic;position:relative;top:-10px;"><?php esc_html_e( 'Speed up your site and customise your video player!', LL_TD ); ?></h2>
 
-			<ul class="ui-tabs-nav">
-		        <li><a href="#general"><?php esc_html_e( 'General/Styling', LL_TD ); ?><span class="newred_dot">&bull;</span></a></li>
-		        <li><a href="#youtube"><?php esc_html_e( 'Youtube', LL_TD ); ?><span class="newred_dot">&bull;</span></a></li>
-		    	<li><a href="#vimeo"><?php esc_html_e( 'Vimeo', LL_TD ); ?></a></li>
-		        <?php do_action( 'lazyload_settings_page_tabs_link_after' ); ?>
-		    </ul>
+			<ul class="nav-tab-wrapper">
+				<li class="nav-tab"><a href="#general"><?php esc_html_e('General/Styling', LL_TD); ?><span class="newred_dot">&bull;</span></a></li>
+				<li class="nav-tab"><a href="#youtube"><?php esc_html_e('YouTube', LL_TD); ?><span class="newred_dot">&bull;</span></a></li>
+				<li class="nav-tab"><a href="#vimeo"><?php esc_html_e('Vimeo', LL_TD); ?></a></li>
+				<?php do_action('lazyload_settings_page_tabs_link_after'); ?>
+			</ul>
 
 			<form method="post" action="options.php">
 			<?php
@@ -370,7 +366,7 @@ class KW_LLV_Admin {
 					        <tr valign="top">
 						        <th scope="row"><label><?php esc_html_e( 'Disable Lazy Load for Vimeo', LL_TD ); ?></label></th>
 						        <td>
-									<input name="llv_opt" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt' ) ); ?> /> 
+									<input name="llv_opt" type="checkbox" value="1" <?php checked( '1', get_option( 'llv_opt' ) ); ?> />
 									<label>
 										<?php printf( esc_html__( 'If checked, Lazy Load will not be used for %1$s videos.', LL_TD ),
 											'<b>Vimeo</b>'

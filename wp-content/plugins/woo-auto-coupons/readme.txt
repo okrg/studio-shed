@@ -1,9 +1,11 @@
 === Auto Coupons for WooCommerce ===
 Contributors: rermis
 Tags: woocommerce, coupons, auto apply, quantity, discount
+License: GPLv3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 4.6
-Tested up to: 5.7
-Stable tag: 2.0.14
+Tested up to: 5.8
+Stable tag: 2.1.5
 
 Apply WooCommerce Coupons automatically with a simple, fast and lightweight plugin.
 
@@ -31,7 +33,12 @@ Apply WooCommerce Coupons automatically with a simple, fast and lightweight plug
 4. Troubleshooting mode
 
 == Changelog ==
-= 2.0.14 = * Compatibility with WC 5.3.
+= 2.1.5 = * WC tested up to: 5.9
+= 2.1.3 = * WC tested up to: 5.7
+= 2.1.2 = * Removed sessions for compatibility with block editors. Added caching via wac_sess().
+= 2.1 = * Allow manual removal of auto-applied coupon code, and cache preference.
+= 2.0.16 = * Compatibility with WP 5.8.
+= 2.0.15 = * Compatibility with WC 5.5.
 = 2.0.12 = * Fixed bug when counting cart quantities.
 = 2.0.9 = * Compatibility with WC 5.2.
 = 2.0.8 = * Compatibility check for WP 5.7, WC 5.1.

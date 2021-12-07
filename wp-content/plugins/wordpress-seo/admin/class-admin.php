@@ -75,12 +75,6 @@ class WPSEO_Admin {
 			add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_assets' ] );
 		}
 
-		if ( WPSEO_Utils::is_api_available() ) {
-			$configuration = new WPSEO_Configuration_Page();
-			$configuration->set_hooks();
-			$configuration->catch_configuration_request();
-		}
-
 		$this->set_upsell_notice();
 
 		$this->initialize_cornerstone_content();
@@ -100,7 +94,6 @@ class WPSEO_Admin {
 		$integrations[] = new WPSEO_Yoast_Columns();
 		$integrations[] = new WPSEO_Statistic_Integration();
 		$integrations[] = new WPSEO_Capability_Manager_Integration( WPSEO_Capability_Manager_Factory::get() );
-		$integrations[] = new WPSEO_Admin_Media_Purge_Notification();
 		$integrations[] = new WPSEO_Admin_Gutenberg_Compatibility_Notification();
 		$integrations[] = new WPSEO_Expose_Shortlinks();
 		$integrations[] = new WPSEO_MyYoast_Proxy();

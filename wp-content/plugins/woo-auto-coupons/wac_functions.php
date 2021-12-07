@@ -3,17 +3,17 @@
 Plugin Name: Auto Coupons for WooCommerce
 Description: Apply WooCommerce Coupons automatically.
 Author: Richard Lerma Design & Development
-Version: 2.0.14
+Version: 2.1.5
 Text Domain: r1cm
 Author URI: https://richardlerma.com/plugins/
 Copyright: (c) 2019-2020 - richardlerma.com - All Rights Reserved
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 WC requires at least: 3.5.0
-WC tested up to: 5.3
+WC tested up to: 5.9
 */
 
-global $wac_version; $wac_version='2.0.14';
+global $wac_version; $wac_version='2.1.5';
 if(!defined('ABSPATH')) exit;
 
 function wac_error() {file_put_contents(dirname(__file__).'/install_log.txt', ob_get_contents());}
@@ -157,7 +157,7 @@ function wac_apply_coupons() {
     ORDER BY exp,individual DESC,CAST(coupon_amount AS SIGNED) DESC;");
   if(!$coupons) return; 
 
-  
+  $user_removed_coupon=wac_get_removed_coupon();
   foreach($cart->cart_contents as $cart_item_key=>$cart_item) $cart_items++;
 
   $coupon_codes[]='';
@@ -172,13 +172,14 @@ function wac_apply_coupons() {
     if(empty($wc_qty_ntf)) $wc_qty_ntf=array(1,-1);
     $wc_min_ntf=$wc_qty_ntf[0];
     $wc_max_ntf=$wc_qty_ntf[1];
-
+    
     if($c->individual=='yes') $individual_use='[Individual Use]';
-    if(!empty($auto_apply_indv)) {$valid=0; $reason.=" Individual use coupon [$auto_apply_indv] has already been applied.";}
-    if($c->exp>0 && $trb>0) {$valid=0; $reason.=" Expired {$c->exp_date}.";}
-    if(!empty($c->product_ids) && $qty_in_cart<1 && empty($coupon)) {if($trb>0) {$valid=0; $reason.=' No qualifying cart items.';} else continue;}
+    if($user_removed_coupon==strtolower($coupon_code)) {$valid=0; if($trb>0) $reason.=" Manually removed from the cart."; else continue;}
+    if(!empty($auto_apply_indv)) {$valid=0; if($trb>0) $reason.=" Individual use coupon [$auto_apply_indv] has already been applied."; else continue;}
+    if($c->exp>0) {$valid=0; if($trb>0) $reason.=" Expired {$c->exp_date}."; else continue;}
+    if(!empty($c->product_ids) && $qty_in_cart<1 && empty($coupon)) {$valid=0; if($trb>0) $reason.=' No qualifying cart items.'; else continue;}
     if(wac_in(strtolower($coupon_code),$cart->applied_coupons)) $applied=1; else $applied=0;
-    if($cart_items==0 && empty($coupon)) {$valid=0; $reason.=' No Items in Cart.';}
+    if($cart_items==0 && empty($coupon)) {$valid=0; if($trb>0) $reason.=' No Items in Cart.'; else continue;}
 
     if($valid>0 && ($c->min_qty>0 || $c->max_qty>0)) { // Check Qty
       $item='';
@@ -229,24 +230,44 @@ function wac_apply_coupons() {
     }
 
     if($valid==0) {
-      if($applied) $woocommerce->cart->remove_coupon($coupon_code); // Remove From Cart
+      if($applied && stripos($reason,'Manual')===false) $woocommerce->cart->remove_coupon($coupon_code); // Remove From Cart
       if(!$applied && $trb>0) {
         if(empty($reason)) $reason=wac_is_coupon_valid($coupon_code,1);
         echo "<div class='woocommerce-message wac trb'><i class='fas fa-exclamation-triangle'></i> $coupon_code -$reason</div>";
       }
     }
 
-  } 
+  }
   if(wac_is_path('ajax')===false) add_action('wp_footer','wac_style_coupons');
 }
 
 add_action('woocommerce_add_to_cart','wac_apply_coupons'); // Product
 add_action('woocommerce_before_checkout_form','wac_apply_coupons'); // Cart
 add_action('woocommerce_before_cart','wac_apply_coupons'); // Checkout
+
 if(isset($_GET['coupon'])) add_action('template_redirect','wac_apply_coupons'); // URL Apply
 
+function wac_cart_coupon() {if(!isset($_POST['coupon_code'])) return; $coupon=$_POST['coupon_code'];$user_removed_coupon=wac_get_removed_coupon(); if($user_removed_coupon==strtolower($coupon)) wac_cache_coupon();}
+if(isset($_POST['coupon_code'])) wac_cart_coupon();  // WC Apply
 
-function wac_style_coupons() { 
+// WC Session Removed Coupon
+function wac_sess() {
+  if(!isset($_SERVER['HTTP_COOKIE'])) return;
+  return sanitize_text_field(explode(';',$_SERVER['HTTP_COOKIE'])[0]);
+}
+
+function wac_cache_coupon($coupon='') {
+  $sess=wac_sess();
+  if(!empty($sess)) if(empty($coupon)) delete_transient("wac_rc_$sess"); else set_transient("wac_rc_$sess",strtolower($coupon),86400); 
+}
+add_action('woocommerce_removed_coupon','wac_cache_coupon',10,1); // WC Remove
+
+function wac_get_removed_coupon() {
+  $sess=wac_sess();
+  if(!empty($sess)) return get_transient("wac_rc_$sess");
+}
+
+function wac_style_coupons() {
   global $coupon_codes;
   if(empty($coupon_codes)) return;
   foreach($coupon_codes as $coupon_code) {

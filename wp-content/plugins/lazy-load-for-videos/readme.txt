@@ -3,9 +3,9 @@ Contributors: kevinweber
 Donate link: https://www.kweber.com/donate/LazyLoadVideos/
 Tags: youtube, vimeo, performance, oembed, seo, media, gdpr, admin, plugin, content, video, mobile, lazy load, privacy
 Requires at least: 5.6
-Tested up to: 5.7.2
+Tested up to: 5.8.1
 Requires PHP: 7.2
-Stable tag: 2.15.2
+Stable tag: 2.16.4
 License: GPL v3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -151,6 +151,22 @@ Note that playlists are not working when you're using the pre-/post-roll feature
 
 
 == Changelog ==
+
+= 2.16.4 =
+* Bugfix: Prevent "Cannot declare class" errors
+
+= 2.16.3 =
+* Handle missing video title and thumbnail data. PR from @markhowellsmead on Github: https://github.com/kevinweber/lazy-load-for-videos/pull/65  
+
+= 2.16.2 =
+* Update styling of tabs on admin page
+* Escape video title and attribute texts so that they can be rendered when containing quotes
+
+= 2.16.1 =
+* Bugfix: In rare cases the video only becomes visible when the window resizes. Hopefully this update fixes it…
+
+= 2.16.0 =
+* Instead of extracting the video ID from the Vimeo URL, use the ID provided by the embed API to support the full range of Vimeo URL formats.
 
 = 2.15.2 =
 * Support Vimeo thumbnails without file extension
