@@ -19,9 +19,9 @@
       </header>
       <footer>
         <a href="/product/pagoda/">
-          <div class="qs-price">$18,332*</div>
+          <div class="qs-price">$19,295*</div>
           <div class="qs-original">$22,250</div>
-          <div class="qs-savings">Save $3,198</div>
+          <div class="qs-savings">Save $2,955</div>
           <img src="/wp-content/themes/studio-shed-child/img/qs-pagoda.png">
         </a>
       </footer>
@@ -35,9 +35,9 @@
       </header>
       <footer>
         <a href="/product/boreas/">
-            <div class="qs-price">$18,520*</div>
+            <div class="qs-price">$19,495*</div>
             <div class="qs-original">$22,285</div>
-            <div class="qs-savings">Save $3,765</div>
+            <div class="qs-savings">Save $2,790</div>
             <img src="/wp-content/themes/studio-shed-child/img/qs-boreas.png">
         </a>
       </footer>
@@ -51,9 +51,9 @@
       </header>
       <footer>
         <a href="/product/solitude/">
-            <div class="qs-price">$20,135*</div>
+            <div class="qs-price">$21,195*</div>
             <div class="qs-original">$24,185</div>
-            <div class="qs-savings">Save $4,050</div>
+            <div class="qs-savings">Save $2,990</div>
             <img src="/wp-content/themes/studio-shed-child/img/qs-solitude.png">
         </a>
       </footer>
@@ -67,9 +67,9 @@
       </header>
       <footer>
         <a href="/product/telluride/">
-            <div class="qs-price">$21,750*</div>
+            <div class="qs-price">$22,895*</div>
             <div class="qs-original">$25,955</div>
-            <div class="qs-savings">Save $4,250</div>
+            <div class="qs-savings">Save $3,060</div>
             <img src="/wp-content/themes/studio-shed-child/img/qs-telluride.png">
         </a>
       </footer>
