@@ -22,7 +22,6 @@ if ( ! class_exists( 'ES_Cache' ) ) {
 		 * Cache enabled/disabled
 		 *
 		 * @var bool
-		 *
 		 */
 		public static $enabled = true;
 
@@ -30,7 +29,6 @@ if ( ! class_exists( 'ES_Cache' ) ) {
 		 * Get default transient expiration
 		 *
 		 * @return mixed|void
-		 *
 		 */
 		public static function get_default_transient_expiration() {
 			return apply_filters( 'ig_es_cache_default_expiration', 10 );
@@ -41,7 +39,7 @@ if ( ! class_exists( 'ES_Cache' ) ) {
 		 *
 		 * @param $key
 		 * @param $value
-		 * @param bool $expiration
+		 * @param bool  $expiration
 		 *
 		 * @return bool
 		 */
@@ -88,7 +86,7 @@ if ( ! class_exists( 'ES_Cache' ) ) {
 		 * Only sets if key is not falsy
 		 *
 		 * @param string $key
-		 * @param mixed $value
+		 * @param mixed  $value
 		 * @param string $group
 		 *
 		 * @since 4.4.0
@@ -107,7 +105,7 @@ if ( ! class_exists( 'ES_Cache' ) ) {
 		 * @param $key
 		 * @param $group
 		 * @param false $force
-		 * @param null $found
+		 * @param null  $found
 		 *
 		 * @return false|mixed
 		 */

@@ -77,7 +77,9 @@ class Email_Subscribers_Public {
 		 * class.
 		 */
 		wp_enqueue_style( $this->email_subscribers, plugin_dir_url( __FILE__ ) . 'css/email-subscribers-public.css', array(), $this->version, 'all' );
-
+		wp_register_style( 'ig-es-popup-frontend', plugin_dir_url( __FILE__ ) . 'css/frontend.css', array(), $this->version, 'all' );
+		wp_register_style( 'ig-es-popup-css', plugin_dir_url( __FILE__ ) . 'css/popup.min.css', array(), $this->version, 'all' );
+		
 	}
 
 	/**
@@ -99,8 +101,11 @@ class Email_Subscribers_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->email_subscribers, plugin_dir_url( __FILE__ ) . 'js/email-subscribers-public.js', array( 'jquery' ), $this->version, false );
 
+		wp_enqueue_script( $this->email_subscribers, plugin_dir_url( __FILE__ ) . 'js/email-subscribers-public.js', array( 'jquery' ), $this->version, false );
+		wp_register_script( 'ig-es-pre-data', plugin_dir_url( __FILE__ ) . 'js/icegram_messages_data.js', array(), $this->version, false );
+		wp_register_script( 'ig-es-popup-js', plugin_dir_url( __FILE__ ) . 'js/icegram.js', array( 'jquery' ), $this->version, false );
+				
 		$es_data = array(
 
 			'messages' => array(
@@ -187,9 +192,8 @@ class Email_Subscribers_Public {
 
 							$data['list_name'] = $list_name;
 
-							ES()->mailer->send_welcome_email( $email, $data );
-
-							ES()->mailer->send_add_new_contact_notification_to_admins( $data );
+							do_action( 'ig_es_contact_subscribed', $data );
+							
 						} elseif ( 'unsubscribe' === $option ) {
 							$unsubscribed = 1;
 

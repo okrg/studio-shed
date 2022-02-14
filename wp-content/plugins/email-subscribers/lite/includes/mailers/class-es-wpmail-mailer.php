@@ -5,6 +5,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'ES_Wpmail_Mailer' ) ) {
 
 	class ES_Wpmail_Mailer extends ES_Base_Mailer {
+
+		/**
+		 * Mailer name
+		 *
+		 * @since 4.8.5
+		 * @var
+		 */
+		public $name = 'WP Mail';
+
+		/**
+		 * Mailer Slug
+		 *
+		 * @since 4.8.5
+		 * @var
+		 */
+		public $slug = 'wp_mail';
+
 		/**
 		 * ES_Wpmail_Mailer constructor.
 		 *

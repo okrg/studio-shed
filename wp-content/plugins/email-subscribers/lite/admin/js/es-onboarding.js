@@ -28,6 +28,11 @@ jQuery(document).ready(function() {
 					is_trial = jQuery('#es_free_trial_preference').is(':checked') ? 'yes': 'no';
 				}
 
+				let allow_tracking = '';
+				if (jQuery('#es_allow_tracking').length > 0) {
+					allow_tracking = jQuery('#es_allow_tracking').is(':checked') ? 'yes': 'no';
+				}
+
 				jQuery('#es_onboarding_emails_list').text(emails.join(", "));
 
 				let params = {
@@ -41,6 +46,7 @@ jQuery(document).ready(function() {
 						es_from_email: es_from_email,
 						create_post_notification: create_post_notification,
 						is_trial: is_trial,
+						allow_tracking: allow_tracking,
 						add_gdpr_consent: add_gdpr_consent,
 						enable_double_optin: enable_double_optin,
 						security: ig_es_js_data.security

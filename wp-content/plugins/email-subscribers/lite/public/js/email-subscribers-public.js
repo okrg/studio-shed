@@ -29,16 +29,31 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 
+	 $(document).ready(function () {
+
+		$('.es_subscription_form').each(function(){
+			// For the forms which are hidden on page load, we need to use AJAX to handle their submission.
+			if ( $(this).is(':hidden') ) {
+				$(this).on('submit', function(e){
+					e.preventDefault();
+					var form = $(this);
+					handleBindFunction(form);
+				});
+			}
+		});
+
+	});
+
 	function prepareFormData(form, formData) {
 		var list_ids = [];
 		var is_multiple_lists = false;
 		jQuery.each((form.serializeArray() || {}), function (i, field) {
 			// Collect all list ids
-			if(field.name === 'lists[]') {
+			if(field.name === 'esfpx_lists[]') {
 				list_ids.push(field.value);
 				is_multiple_lists = true;
 			} else {
-				formData['esfpx_' + field.name] = field.value;
+				formData[field.name] = field.value;
 			}
 		});
 
@@ -109,23 +124,14 @@
 
 		return false;
 	}
-
-	$(document).ready(function () {
-		// var submitButton = $('.es_subscription_form_submit');
-
-		$(document).on('submit', '.es_subscription_form', function (e) {
-			e.preventDefault();
-			var form = $(this);
-			handleBindFunction(form);
-		});
-
-	});
+	
 	// Compatibility of ES with IG
 	jQuery( window ).on( "init.icegram", function(e, ig) {
 		if(typeof ig !== 'undefined' && typeof ig.messages !== 'undefined' ) {
 			jQuery('.icegram .es_shortcode_form, .icegram form[data-source="ig-es"]').each(function(i, v){
 				jQuery(v).bind('submit', function (e) {
 					e.preventDefault();
+					e.stopImmediatePropagation();
 					var form = $(this);
 					handleBindFunction(form, true);
 				});

@@ -131,23 +131,35 @@ class ES_Cron {
 
 		if ( ES()->is_pro() ) {
 
+			//-----------------------------> if not scheduled....schedule hook
+			if ( ! wp_next_scheduled('ig_es_calculate_engagement_score')) {
+				$local_time = 'midnight';
+				$timestamp  = strtotime( $local_time ) - ( get_option('gmt_offset') * HOUR_IN_SECONDS );
+				wp_schedule_event( $timestamp , 'daily', 'ig_es_calculate_engagement_score');
+			}
+			//Schedule hook only our bounce handling feature enabled
+			if ( 'yes' === get_option( 'ig_es_enable_bounce_handling_feature', 'yes' ) ) {
+				if ( ! wp_next_scheduled( 'ig_es_bounce_handler_cron_action' ) ) {
+					wp_schedule_event( time(), 'daily', 'ig_es_bounce_handler_cron_action', array() );
+				}
+			}
+			//-----------------------------<
 			$is_woocommerce_active = $ig_es_tracker::is_plugin_activated( 'woocommerce/woocommerce.php' );
 			if ( $is_woocommerce_active ) {
-	
+
 				if ( IG_ES_Abandoned_Cart_Options::is_cart_tracking_enabled() ) {
-					
+
 					if ( ! wp_next_scheduled( 'ig_es_wc_abandoned_cart_worker' ) ) {
 						wp_schedule_event( floor( time() / 300 ) * 300, 'ig_es_two_minutes', 'ig_es_wc_abandoned_cart_worker' );
 					}
 				}
-		
+
 				// Cron job to detect WooCommerce products which are on sale.
 				if ( ! wp_next_scheduled( 'ig_es_wc_products_on_sale_worker' ) ) {
 					wp_schedule_event( floor( time() / 300 ) * 300, 'ig_es_fifteen_minutes', 'ig_es_wc_products_on_sale_worker' );
 				}
 			}
 		}
-
 
 	}
 
@@ -258,18 +270,18 @@ class ES_Cron {
 	public function cron_schedules( $schedules = array() ) {
 
 		$es_schedules = array(
-			'ig_es_cron_interval' => array(
+			'ig_es_cron_interval'   => array(
 				'interval' => $this->get_cron_interval(),
 				'display'  => __( 'Email Subscribers Cronjob Interval', 'email-subscribers' ),
 			),
-			'ig_es_two_minutes' => array(
+			'ig_es_two_minutes'     => array(
 				'interval' => 2 * MINUTE_IN_SECONDS,
 				'display'  => __( 'Two minutes', 'email-subscribers' ),
 			),
 			'ig_es_fifteen_minutes' => array(
 				'interval' => 15 * MINUTE_IN_SECONDS,
 				'display'  => __( 'Fifteen minutes', 'email-subscribers' ),
-			),
+			)
 		);
 
 		$schedules = array_merge( $schedules, $es_schedules );
@@ -316,8 +328,8 @@ class ES_Cron {
 	/**
 	 * Get Cron URL
 	 *
-	 * @param bool $self
-	 * @param bool $pro
+	 * @param bool   $self
+	 * @param bool   $pro
 	 * @param string $campaign_hash
 	 *
 	 * @return mixed|string|void
@@ -563,7 +575,6 @@ class ES_Cron {
 	 * Handle Data Request
 	 *
 	 * @since 4.6.6
-	 *
 	 */
 	public function handle_data_request() {
 		$es_request = ig_es_get_request_data( 'es' );
@@ -580,9 +591,10 @@ class ES_Cron {
 		$response = array();
 		if ( $is_valid_request ) {
 
-			if ( ES()->is_premium() || ES()->is_trial() ) {
+			$allow_tracking = apply_filters( 'ig_es_allow_tracking', '' );
 
-				global $ig_es_tracker;
+			if ( 'yes' === $allow_tracking ) {
+
 				/*
 				 * Trial start date
 				 * Total # Contacts they have
@@ -591,14 +603,7 @@ class ES_Cron {
 				 * Uninstall Date
 				 */
 
-				$response['meta_info']     = ES_Common::get_ig_es_meta_info();
-				$response['system_status'] = array(
-					'active_plugins'   => implode( ', ', $ig_es_tracker::get_active_plugins() ),
-					'inactive_plugins' => implode( ', ', $ig_es_tracker::get_inactive_plugins() ),
-					'current_theme'    => $ig_es_tracker::get_current_theme_info(),
-					'wp_info'          => $ig_es_tracker::get_wp_info(),
-					'server_info'      => $ig_es_tracker::get_server_info()
-				);
+				$response = apply_filters( 'ig_es_tracking_data', array() );
 			}
 		}
 
@@ -657,18 +662,31 @@ class ES_Cron {
 		$security2             = strlen( $es_c_cronguid_noslash );
 		if ( 34 == $security1 && 30 == $security2 ) {
 			if ( ! preg_match( '/[^a-z]/', $es_c_cronguid_noslash ) ) {
-				$cron_url = ES()->cron->url();
-
-				parse_str( $cron_url, $output );
-
+				$cron_guid = $this->get_cron_guid();
 				// Now, all check pass.
-				if ( $guid === $output['guid'] ) {
+				if ( ! empty( $cron_guid ) && $guid === $cron_guid ) {
 					return true;
 				}
 			}
 		}
 
 		return false;
+	}
+
+	/**
+	 * Get cron guid
+	 *
+	 * @return string $guid
+	 *
+	 * @since 4.7.7
+	 */
+	public function get_cron_guid() {
+
+		$cron_url = ES()->cron->url();
+		parse_str( $cron_url, $result );
+		$guid = ! empty( $result['guid'] ) ? $result['guid'] : '';
+
+		return $guid;
 	}
 
 	/**

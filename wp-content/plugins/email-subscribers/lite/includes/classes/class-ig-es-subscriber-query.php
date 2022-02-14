@@ -14,17 +14,17 @@ class IG_ES_Subscribers_Query {
 	private $args = array();
 
 	private $defaults = array(
-		'select'         => null,
-		'join'           => null,
-		'status'         => null,
-		'status__not_in' => null,
-		'where'          => null,
-		'having'         => null,
-		'orderby'        => null,
-		'order'          => null,
-		'groupby'        => null,
-		'limit'          => null,
-		'offset'         => null,
+		'select'              => null,
+		'join'                => null,
+		'status'              => null,
+		'status__not_in'      => null,
+		'where'               => null,
+		'having'              => null,
+		'orderby'             => null,
+		'order'               => null,
+		'groupby'             => null,
+		'limit'               => null,
+		'offset'              => null,
 
 		'return_ids'          => false,
 		'return_count'        => false,
@@ -86,7 +86,7 @@ class IG_ES_Subscribers_Query {
 		'id',
 		'email',
 		'wp_user_id',
-		'country_code'
+		'country_code',
 	);
 
 	private $action_fields = array(
@@ -106,13 +106,12 @@ class IG_ES_Subscribers_Query {
 		'_click_link__not_in',
 		'_lists__in',
 		'_lists__not_in',
-		'_subscribed_before'
+		'_subscribed_before',
 	);
 
 	private static $_instance = null;
 
 	public function __construct( $args = null, $campaign_id = null ) {
-
 
 		if ( ! is_null( $args ) ) {
 			return $this->run( $args, $campaign_id );
@@ -169,7 +168,7 @@ class IG_ES_Subscribers_Query {
 		}
 
 		$this->args = apply_filters( 'ig_es_subscriber_query_args', $this->args );
-		
+
 		if ( ! empty( $this->args['queue__not_in'] ) ) {
 			$join = "LEFT JOIN {$wpbd->prefix}ig_queue AS queue ON subscribers.id = queue.contact_id";
 			if ( ! empty( $this->args['queue__not_in'] ) ) {
@@ -185,7 +184,7 @@ class IG_ES_Subscribers_Query {
 
 				if ( ! empty( $and_conditions ) ) {
 					foreach ( $and_conditions as $j => $condition ) {
-	
+
 						$field    = isset( $condition['field'] ) ? $condition['field'] : ( isset( $condition[0] ) ? $condition[0] : null );
 						$operator = isset( $condition['operator'] ) ? $condition['operator'] : ( isset( $condition[1] ) ? $condition[1] : null );
 						$value    = isset( $condition['value'] ) ? $condition['value'] : ( isset( $condition[2] ) ? $condition[2] : null );
@@ -205,26 +204,26 @@ class IG_ES_Subscribers_Query {
 
 		if ( ! empty( $this->args['conditions'] ) ) {
 			foreach ( $this->args['conditions'] as $i => $and_conditions ) {
-	
+
 				$sub_cond = array();
-	
+
 				if ( ! empty( $and_conditions ) ) {
 					foreach ( $and_conditions as $j => $condition ) {
-		
+
 						$field    = isset( $condition['field'] ) ? $condition['field'] : ( isset( $condition[0] ) ? $condition[0] : null );
 						$operator = isset( $condition['operator'] ) ? $condition['operator'] : ( isset( $condition[1] ) ? $condition[1] : null );
 						$value    = isset( $condition['value'] ) ? $condition['value'] : ( isset( $condition[2] ) ? $condition[2] : null );
-		
+
 						if ( ! in_array( $field, $this->action_fields, true ) ) {
 							$sub_cond[] = $this->get_condition( $field, $operator, $value );
 						} else {
-		
+
 							$value = $this->remove_empty_values( $value );
-		
+
 							$alias = 'actions' . $field . '_' . $i . '_' . $j;
-		
+
 							if ( '_lists__in' === $field ) {
-								
+
 								if ( $value ) {
 									$sub_cond[] = "lists_subscribers.contact_id IN ( SELECT contact_id FROM {$wpbd->prefix}ig_lists_contacts WHERE list_id IN (" . implode( ',', array_filter( $value, 'is_numeric' ) ) . ') )';
 								}
@@ -236,7 +235,7 @@ class IG_ES_Subscribers_Query {
 									$sub_cond[] = "lists_subscribers.contact_id NOT IN ( SELECT contact_id FROM {$wpbd->prefix}ig_lists_contacts WHERE list_id <> 0 )";
 								}
 							} elseif ( 0 === strpos( $field, '_sent' ) ) {
-		
+
 								$join = "LEFT JOIN {$wpbd->prefix}ig_actions AS $alias ON $alias.type = " . IG_MESSAGE_SENT . " AND subscribers.id = $alias.contact_id";
 								if ( ( '_sent' === $field || '_sent__not_in' === $field ) ) {
 									if ( $value ) {
@@ -245,7 +244,7 @@ class IG_ES_Subscribers_Query {
 										$join .= " AND $alias.campaign_id IS NOT NULL AND $alias.campaign_id <> 0";
 									}
 								}
-								
+
 								if ( '_sent' === $field ) {
 									$sub_cond[] = "$alias.contact_id IS NOT NULL";
 								} elseif ( '_sent__not_in' === $field ) {
@@ -255,11 +254,11 @@ class IG_ES_Subscribers_Query {
 								} elseif ( '_sent_after' === $field ) {
 									$sub_cond[] = "$alias.timestamp >= " . $this->get_timestamp( $value );
 								}
-		
+
 								$joins[] = $join;
-		
+
 							} elseif ( 0 === strpos( $field, '_open' ) ) {
-		
+
 								$join = "LEFT JOIN {$wpbd->prefix}ig_actions AS $alias ON $alias.type = " . IG_MESSAGE_OPEN . " AND subscribers.id = $alias.contact_id";
 								if ( ( '_open' === $field || '_open__not_in' === $field ) ) {
 									if ( $value ) {
@@ -268,7 +267,7 @@ class IG_ES_Subscribers_Query {
 										$join .= " AND $alias.campaign_id IS NOT NULL AND $alias.campaign_id <> 0";
 									}
 								}
-		
+
 								if ( '_open' === $field ) {
 									$sub_cond[] = "$alias.contact_id IS NOT NULL";
 								} elseif ( '_open__not_in' === $field ) {
@@ -278,13 +277,13 @@ class IG_ES_Subscribers_Query {
 								} elseif ( '_open_after' === $field ) {
 									$sub_cond[] = "$alias.timestamp >= " . $this->get_timestamp( $value );
 								}
-		
+
 								$joins[] = $join;
-		
+
 							} elseif ( 0 === strpos( $field, '_click' ) ) {
-		
+
 								$join = "LEFT JOIN {$wpbd->prefix}ig_actions AS $alias ON $alias.type = " . IG_LINK_CLICK . " AND subscribers.id = $alias.contact_id";
-		
+
 								if ( ( '_click' === $field || '_click__not_in' === $field ) ) {
 									if ( $value ) {
 										$join .= " AND $alias.campaign_id IN (" . implode( ',', array_filter( $value, 'is_numeric' ) ) . ')';
@@ -306,7 +305,7 @@ class IG_ES_Subscribers_Query {
 									}
 									$joins[] = "LEFT JOIN {$wpbd->prefix}ig_links AS {$alias}{$field} ON {$alias}{$field}.link IN ('" . implode( "','", $value ) . "')";
 								}
-		
+
 								if ( '_click' === $field ) {
 									$sub_cond[] = "$alias.contact_id IS NOT NULL";
 								} elseif ( '_click__not_in' === $field ) {
@@ -320,10 +319,9 @@ class IG_ES_Subscribers_Query {
 								} elseif ( '_click_link__not_in' === $field ) {
 									$sub_cond[] = "$alias.contact_id IS NULL";
 								}
-		
+
 								$joins[] = $join;
 							}
-							
 						}
 					}
 				}
@@ -333,14 +331,13 @@ class IG_ES_Subscribers_Query {
 				}
 			}
 		}
-		
+
 		if ( ! empty( $cond ) ) {
 			$wheres[] = 'AND ( ' . implode( ' AND ', $cond ) . ' )';
 		}
 
-		$joins[] = "LEFT JOIN {$wpbd->prefix}ig_lists_contacts AS lists_subscribers ON subscribers.id = lists_subscribers.contact_id";
+		$joins[]  = "LEFT JOIN {$wpbd->prefix}ig_lists_contacts AS lists_subscribers ON subscribers.id = lists_subscribers.contact_id";
 		$wheres[] = "AND lists_subscribers.status IN( 'subscribed', 'confirmed' )";
-		
 
 		if ( ! is_bool( $this->args['lists'] ) ) {
 			// unassigned members if NULL
@@ -371,7 +368,7 @@ class IG_ES_Subscribers_Query {
 
 			$ordering = isset( $this->args['order'][0] ) ? strtoupper( $this->args['order'][0] ) : 'ASC';
 			$orders   = array();
-			
+
 			foreach ( $this->args['orderby'] as $i => $orderby ) {
 				$ordering = isset( $this->args['order'][ $i ] ) ? strtoupper( $this->args['order'][ $i ] ) : $ordering;
 				if ( in_array( $orderby, $this->fields ) ) {
@@ -381,10 +378,9 @@ class IG_ES_Subscribers_Query {
 					$orders[] = "$orderby $ordering";
 				}
 			}
-
 		}
 
-		$select = 'SELECT';
+		$select  = 'SELECT';
 		$select .= ' ' . implode( ', ', $this->args['select'] );
 
 		$from = "FROM {$wpbd->prefix}ig_contacts AS subscribers";
@@ -426,8 +422,8 @@ class IG_ES_Subscribers_Query {
 		$sql = apply_filters( 'ig_es_subscriber_query_sql', $sql, $this->args, $campaign_id );
 
 		if ( $this->args['return_sql'] ) {
-			$result           = $sql;
-			$this->last_query = $sql;
+			$result            = $sql;
+			$this->last_query  = $sql;
 			$this->last_error  = null;
 			$this->last_result = null;
 		} else {
@@ -519,7 +515,7 @@ class IG_ES_Subscribers_Query {
 			case 'contains_not':
 				$value = addcslashes( $value, '_%\\' );
 				$value = "'%$value%'";
-				
+
 				$f = "subscribers.$field";
 				$c = $f . ' ' . ( $positive ? 'LIKE' : 'NOT LIKE' ) . " $value";
 				if ( $is_empty && $positive || ! $positive ) {
@@ -533,7 +529,7 @@ class IG_ES_Subscribers_Query {
 			case 'begin_with':
 				$value = addcslashes( $value, '_%\\' );
 				$value = "'$value%'";
-				
+
 				$f = "subscribers.$field";
 				$c = $f . " LIKE $value";
 

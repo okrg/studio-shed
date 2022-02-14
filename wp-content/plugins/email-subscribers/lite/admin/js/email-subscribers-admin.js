@@ -45,6 +45,44 @@
 				});
 			});
 
+			$('.es_template_preview').click(function(){
+				let template_id 	= $(this).data('post-id');
+				let elem = $(this);
+
+				let preview_data = { 
+					action       : 'ig_es_preview_template',
+					security     : ig_es_js_data.security,
+					template_id  : template_id,
+				};
+				
+				jQuery.ajax({
+					method: 'POST',
+					url: ajaxurl,
+					data: preview_data,
+					dataType: 'json',
+					beforeSend: function() {
+						$(elem).next('.es-template-preview-loader').show();
+					},
+					success: function (response) {
+						if (response.success) {
+							if ( 'undefined' !== typeof response.data ) {
+								let response_data = response.data;
+								let template_html = response_data.template_html;
+								$('.template_preview_container').html(template_html);
+								$('#es_preview_template').load().show();
+							}
+						} else {
+							alert( ig_es_js_data.i18n_data.ajax_error_message );
+						}
+					},
+					error: function (err) {
+						alert( ig_es_js_data.i18n_data.ajax_error_message );
+					}
+				}).always(function(){
+					$(elem).next('.es-template-preview-loader').hide();
+				});
+			});
+
 			$(document).on('change', '.es_visible', function () {
 				if ($('.es_visible:checked').length >= 1) {
 					$('.es_required').prop('disabled', false);
@@ -77,7 +115,29 @@
 				return false;
 			});
 
-			$(".pre_btn, #content_menu").click(function() {
+			if(jQuery('#es_allow_contact').is(":checked")){
+				jQuery('#es_list_label').show();
+			}
+			jQuery(document).on('change', '#es_allow_contact' , function(e) {
+				if(jQuery(this).is(":checked")){
+					jQuery('#es_list_label').show();
+				}else{
+					jQuery('#es_list_label').hide();
+				}
+			});
+			
+			if(jQuery('#show_in_popup').is(":checked")){
+				jQuery('#popup_input_block').show();
+			}
+			jQuery(document).on('change', '#show_in_popup' , function(e) {
+				if(jQuery(this).is(":checked")){
+					jQuery('#popup_input_block').show();
+				}else{
+					jQuery('#popup_input_block').hide();
+				}
+			});
+
+			$("#broadcast_form .pre_btn, #broadcast_form #content_menu").click(function() {
 				var fieldset = $(this).closest('.es_fieldset');
 				fieldset.find('.es_broadcast_first').fadeIn('normal');
 				fieldset.next().find('.es_broadcast_second').hide();
@@ -91,13 +151,24 @@
 
 			});
 
-			let schedule_option = $('input:radio[name="broadcast_data[scheduling_option]"]:checked').val()
+			$("#campaign_form #view_campaign_content_button,#campaign_form #campaign_content_menu").click(function() {
+				var fieldset = $(this).closest('.es_fieldset');
+				fieldset.find('.es_campaign_first').fadeIn('normal');
+				fieldset.next().find('.es_campaign_second').hide();
+
+				fieldset.find('#view_campaign_summary_button, #view_campaign_preview_button').show();
+				fieldset.find('#view_campaign_content_button, #campaign_summary_actions_buttons_wrapper').hide();
+
+				$('#campaign_summary_menu').removeClass("active");
+				$('#campaign_content_menu').addClass("active");
+			});
+
+			let schedule_option = $('input:radio[name="campaign_data[scheduling_option]"]:checked').val()
 			broadcast_send_option_change_text(schedule_option);
 
-			$("input:radio[name='broadcast_data[scheduling_option]']").click(function() {
+			$("input:radio[name='campaign_data[scheduling_option]']").click(function() {
 				let scheduling_option = $(this).val();
 				broadcast_send_option_change_text(scheduling_option);
-			
 			});
 			
 			function broadcast_send_option_change_text( scheduling_option = 'Schedule' ) {
@@ -121,6 +192,11 @@
 				$('#preview_template').hide();
 			});
 
+			$("#close-campaign-preview-popup").on('click', function (event) {
+				event.preventDefault();
+				$('#campaign-preview-popup').hide();
+			});
+
 			if (jQuery('.statusesselect').length) {
 				var statusselect = jQuery('.statusesselect')[0].outerHTML;
 			}
@@ -129,6 +205,8 @@
 				var groupselect = jQuery('.groupsselect')[0].outerHTML;
 			}
 
+			//Upsell Send confirmation email on Audience screen
+			$(".email-subscribers_page_es_subscribers #bulk-action-selector-top option[value=bulk_send_confirmation_email_upsell").attr('disabled','disabled');
 			jQuery(".es-audience-view .bulkactions #bulk-action-selector-top").after(statusselect);
 			jQuery(".es-audience-view .bulkactions #bulk-action-selector-top").after(groupselect);
 
@@ -361,6 +439,10 @@
 							});
 							clone.find('.condition-field').val('').trigger('focus');
 							cond = _self.find('.ig-es-condition');
+						})
+						
+						jQuery(_self).closest('.ig-es-campaign-rules').find('.close-conditions').on('click', function(){
+							jQuery(document).trigger('ig_es_update_contacts_counts',[{condition_elem:_self}]);
 						});
 				
 						jQuery(_self).closest('.ig-es-campaign-rules').find('.remove-conditions').on('click', function () {
@@ -577,7 +659,7 @@
 					return;
 				}
 
-				let get_count = 'newsletter' === campaign_type ? 'yes' : 'no'; // Get count only when on broadcast screen
+				let get_count = 'newsletter' === campaign_type || 'post_notification' === campaign_type || 'post_digest' === campaign_type ? 'yes' : 'no'; // Get count only when on broadcast screen
 
 				// Update total count in lists
 				let params = {
@@ -667,7 +749,7 @@
 				});
 			});
 
-			jQuery(document).on('change', '#base_template_id', function () {
+			jQuery(document).on('change', '#broadcast_form #base_template_id', function () {
 				var template_id = $(this).val();
 				// Update total count in lists
 				var params = {
@@ -712,15 +794,59 @@
 				});
 			});
 
+			jQuery(document).on('change', '#campaign_form #base_template_id, #campaign_form #post_digest_template_id', function () {
+				var template_id = $(this).val();
+				// Update total count in lists
+				var params = {
+					action: 'get_template_content',
+					template_id: template_id,
+				};
+				$.ajax({
+					method: 'POST',
+					url: ajaxurl,
+					async: false,
+					data: params,
+					success: function (response) {
+						if (response !== '') {
+							response = JSON.parse(response);
+							if (response.hasOwnProperty('subject')) {
+								jQuery('#ig_es_campaign_subject').val(response.subject);
+								jQuery('.wp-campaign-body-editor').val(response.body);
+								if ('undefined' !== typeof tinyMCE) {
+
+									var activeEditor = tinyMCE.get('edit-es-campaign-body');
+
+									if (activeEditor !== null) { // Make sure we're not calling setContent on null
+										response.body = response.body.replace(/\n/g, "<br />");
+										activeEditor.setContent(response.body); // Update tinyMCE's content
+									}
+								}
+
+								if (response.inline_css && jQuery('#inline_css').length) {
+									jQuery('#inline_css').val(response.inline_css);
+								}
+								if (response.es_utm_campaign && jQuery('#es_utm_campaign').length) {
+									jQuery('#es_utm_campaign').val(response.es_utm_campaign);
+								}
+
+								if ( 1 === $('#edit-es-campaign-body').length ) {
+									ig_es_sync_wp_editor_content();
+									$('#edit-es-campaign-body').trigger('change');
+								}
+							}
+						}
+					}
+				});
+			});
+
 			//post notification category select
 			jQuery(document).on('change', '.es-note-category-parent', function () {
 				var val = jQuery('.es-note-category-parent:checked').val();
 				if ( '{a}All{a}' === val || '{a}None{a}' === val ) {
-					jQuery('input[name="es_note_cat[]"]').not('.es_custom_post_type').closest('tr').hide();
+					jQuery('input[name="campaign_data[es_note_cat][]"]').not('.es_custom_post_type').closest('tr').hide();
 				} else {
-					jQuery('input[name="es_note_cat[]"]').not('.es_custom_post_type').closest('tr').show();
+					jQuery('input[name="campaign_data[es_note_cat][]"]').not('.es_custom_post_type').closest('tr').show();
 				}
-
 			});
 
 			jQuery(document).trigger('bind_campaign_rules_events');
@@ -785,18 +911,35 @@
 				});
 			});
 
-			$('.ig_es_draft_broadcast, .next_btn, #summary_menu').on('click', function(e) {
+			$('.ig_es_save_broadcast, .ig_es_draft_broadcast, .next_btn, #summary_menu').on('click', function(e) {
 				let trigger_elem = $(this);
 				ig_es_draft_broadcast( trigger_elem );
 			});
 
-			$('#ig_es_broadcast_subject,#edit-es-broadcast-body,#inline_css').on('change',function(e){
+			$('.ig_es_save_campaign, .ig_es_draft_campaign, #view_campaign_summary_button, #campaign_summary_menu').on('click', function(e) {
+				let trigger_elem = $(this);
+				ig_es_draft_campaign( trigger_elem );
+			});
+
+			$('#ig_es_broadcast_subject,#edit-es-broadcast-body,#broadcast_form #inline_css').on('change',function(e){
 				let trigger_elem = $(this);
 				ig_es_draft_broadcast( trigger_elem );
 			});
 
-			$(".next_btn, #summary_menu").click(function() {
-				var fieldset = $(this).closest('.es_fieldset');
+			$('#ig_es_campaign_subject,#edit-es-campaign-body,#campaign_form #inline_css').on('change',function(e){
+				let trigger_elem = $(this);
+				ig_es_draft_campaign( trigger_elem );
+			});
+
+			$("#broadcast_form .next_btn, #broadcast_form #summary_menu").click(function() {
+
+				let has_conditions = jQuery('.ig-es-conditions-render-wrapper .ig-es-conditions-render').length > 0;
+				if( ! has_conditions ) {
+					alert( ig_es_js_data.i18n_data.add_conditions_message );
+					return;
+				}
+
+				let fieldset = $(this).closest('.es_fieldset');
 				fieldset.next().find('div.es_broadcast_second').fadeIn('normal');
 				fieldset.find('.es_broadcast_first').hide();
 
@@ -809,7 +952,23 @@
 
 				// Trigger template content changed event to update email preview.
 				$('.wp-editor-boradcast').trigger('change');
+			});
 
+			$("#campaign_form #view_campaign_summary_button, #campaign_form #campaign_summary_menu").click(function() {
+			
+				let fieldset = $(this).closest('.es_fieldset');
+				fieldset.next().find('div.es_campaign_second').fadeIn('normal');
+				fieldset.find('.es_campaign_first').hide();
+			
+				fieldset.find('#view_campaign_content_button,#campaign_summary_actions_buttons_wrapper').show();
+				fieldset.find('#view_campaign_summary_button,#view_campaign_preview_button').hide();
+			
+				$('#campaign_content_menu').removeClass("active");
+				$('#campaign_summary_menu').addClass("active");
+				//$('.active').removeClass('active').next().addClass('active');
+			
+				// Trigger template content changed event to update email preview.
+				$('textarea[name="campaign_data[body]"]').trigger('change');
 			});
 			
 			$('.wp-editor-boradcast, #edit-es-broadcast-body,#ig_es_broadcast_subject').on('change',function(event){
@@ -837,7 +996,46 @@
 								if ( '' !== contact_email ) {
 									$('.broadcast_preview_contact_email').html( '&lt;' + contact_email + '&gt;');
 								}
-								$('.broadcast_preview_content').html(template_html);
+
+								ig_es_load_iframe_preview('.broadcast_preview_content', template_html);
+							}
+						} else {
+							alert( ig_es_js_data.i18n_data.ajax_error_message );
+						}
+					},
+					error: function (err) {
+						alert( ig_es_js_data.i18n_data.ajax_error_message );
+					}
+				});
+			});
+
+			$('.wp-campaign-body-editor, #edit-es-campaign-body,textarea[name="campaign_data[body]"],#ig_es_campaign_subject').on('change',function(event){
+
+				ig_es_sync_wp_editor_content();
+
+				let form_data = $(this).closest('form').serialize();
+				// Add action to form data
+				form_data += form_data + '&action=ig_es_get_campaign_preview&preview_type=inline&security='  + ig_es_js_data.security;
+				jQuery.ajax({
+					method: 'POST',
+					url: ajaxurl,
+					data: form_data,
+					dataType: 'json',
+					success: function (response) {
+						if (response.success) {
+							if ( 'undefined' !== typeof response.data ) {
+								let response_data    = response.data;
+								let preview_html     = response_data.preview_html;
+								let campaign_subject = response_data.campaign_subject;
+								let contact_name     = response_data.contact_name;
+								let contact_email    = response_data.contact_email;
+								$('.campaign_preview_subject').html(campaign_subject);
+								$('.campaign_preview_contact_name').html(contact_name);
+								if ( '' !== contact_email ) {
+									$('.campaign_preview_contact_email').html( '&lt;' + contact_email + '&gt;');
+								}
+
+								ig_es_load_iframe_preview('.campaign_preview_content', preview_html);
 							}
 						} else {
 							alert( ig_es_js_data.i18n_data.ajax_error_message );
@@ -862,6 +1060,13 @@
 				}
 			});
 
+			$('#view_campaign_preview_button').on('click', function(){
+				let template_button = $('#view_campaign_preview_button');
+				$(template_button).parent().find('.es-send-success').hide();
+				$(template_button).parent().find('.es-send-error').hide();
+				ig_es_show_campaign_preview_in_popup();
+			});
+
 			$('#broadcast_form [name="preview_option"]').on('click',function(){
 				let preview_option = $('[name="preview_option"]:checked').val();
 
@@ -872,12 +1077,35 @@
 				}
 			});
 
+			$('#campaign_form [name="preview_option"]').on('click',function(){
+				let preview_option = $('[name="preview_option"]:checked').val();
+
+				if ( 'preview_in_email' === preview_option ) {
+					$('#es_test_send_email').show();
+				} else {
+					$('#es_test_send_email').hide();
+				}
+			});
+
+			$('#toggle-sender-details').on('click',function(){
+				let toggle_control_element = $(this);
+				let sender_details_container_element = $('#sender-details-container');
+				let is_visible = $(sender_details_container_element).is(':visible');
+				if ( is_visible ) {
+					$(sender_details_container_element).hide();
+					$(toggle_control_element).removeClass('toggled');
+				} else {
+					$(sender_details_container_element).show();
+					$(toggle_control_element).addClass('toggled');
+				}
+			});
+
 			// Check spam score
 			jQuery(document).on('click', '.es_spam' , function(e) {
 				e.preventDefault();
 				var tmpl_id = jQuery('.es_spam').next().next('#es_template_id').val();
-				var subject = jQuery('#ig_es_broadcast_subject').val();
-				var content = jQuery('.wp-editor-boradcast').val();
+				var subject = jQuery('#ig_es_broadcast_subject,#ig_es_campaign_subject').val();
+				var content = jQuery('.wp-editor-boradcast,.wp-campaign-body-editor').val();
 				jQuery('.es_spam').next('.es-loader-img').show();
 
 				let from_name  = jQuery( '#from_name' ).val();
@@ -967,6 +1195,13 @@
 				event.preventDefault();
 				$('#report_preview_template').hide();
 			});
+
+			jQuery('#es_close_template_preview').on('click', function (event) {
+				event.preventDefault();
+				$('#es_preview_template').hide();
+			});
+
+
 
 
 			// Workflow JS
@@ -1091,9 +1326,9 @@
 				 *
 				 */
 				init_triggers_box: function() {
-					IG_ES_Workflows.$trigger_select.change(function(){
+					IG_ES_Workflows.$trigger_select.change(function(e){				
 						IG_ES_Workflows.fill_trigger_fields( $(this).val() );
-						IG_ES_Workflows.remove_actions();
+						IG_ES_Workflows.maybe_show_run_option();
 					});
 				},
 	
@@ -1143,6 +1378,7 @@
 					$(document).on('change', '.js-action-select', function () {
 						let $action = $(this).parents('.ig-es-action').first();
 						IG_ES_Workflows.fill_action_fields( $action, $(this).val() );
+						IG_ES_Workflows.maybe_show_run_option();
 					});
 	
 					// Add new action
@@ -1163,12 +1399,18 @@
 							IG_ES_Workflows.action_edit_open($action);
 						}
 					});
+
+					$('input[name="ig_es_workflow_data[actions][{action_id}][attachments][]"]').each( function(){
+						let action_number = $(this).closest('.ig-es-action').data('action-number');
+						$(this).attr('name','ig_es_workflow_data[actions]['+action_number+'][attachments][]');
+					});
 	
 					// Delete action
 					$(document).on('click', '.js-delete-action', function (e) {
 						e.preventDefault();
 						let $action = $(this).parents('.ig-es-action').first();
 						IG_ES_Workflows.action_delete($action);
+						IG_ES_Workflows.maybe_show_run_option();
 					});
 	
 					$('#ig_es_workflow_save #publish').on('click', function(e){
@@ -1225,17 +1467,11 @@
 				},
 	
 				action_edit_close: function( $action ) {
-	
-					let action_number = $action.data('action-number');
-	
 					$action.removeClass('js-open');
 					$action.find('.ig-es-action__fields').slideUp(150);
 				},
 	
 				action_edit_open: function( $action ) {
-	
-					let action_number = $action.data('action-number');
-	
 					$action.addClass('js-open');
 					$action.find('.ig-es-action__fields').slideDown(150);
 				},
@@ -1271,7 +1507,7 @@
 						IG_ES_Workflows.$actions_box.removeClass('ig-es-loading');
 	
 						// Fill select box name
-						$select.attr('name', 'ig_es_workflow_data[actions]['+action_number+'][action_name]' );
+						$select.attr('name', 'ig_es_workflow_data[actions][' + action_number + '][action_name]' );
 	
 						// Pre fill title
 						$action.find('.action-title').text( response.data.title );
@@ -1289,13 +1525,30 @@
 				remove_actions: function() {
 					let number_of_actions = IG_ES_Workflows.get_number_of_actions();
 					if ( number_of_actions > 0 ) {
-						let confirm_trigger_change = window.confirm( ig_es_js_data.i18n_data.trigger_change_message );
-						if ( confirm_trigger_change ) {
-							$('.ig-es-action:not([data-action-number=""])').remove();
-						}
+						$('.ig-es-action:not([data-action-number=""])').remove();
 					}
 				},
 	
+				maybe_show_run_option: function() {
+					let trigger_name        = IG_ES_Workflows.$trigger_select.val();
+					let runnable_triggers   = [ 'ig_es_wc_order_created', 'ig_es_wc_order_completed', 'ig_es_wc_order_refunded' ];
+					let is_trigger_runnable = runnable_triggers.includes( trigger_name );
+					let actions             = $('.ig-es-action:not([data-action-number = ""]) .js-action-select');
+					let has_runnable_action = false;
+					$(actions).each(function(action){
+						let action_name = $(this).val();
+						if ( 'ig_es_add_to_list' === action_name ) {
+							has_runnable_action = true;
+							return false;
+						}
+					});
+					if ( is_trigger_runnable && has_runnable_action ) {
+						$('#run-workflow-checkbox-wrapper').show();
+					} else {
+						$('#run-workflow-checkbox-wrapper').hide();
+					}
+				},
+
 				init_variables_box: function() {
 					this.init_clipboard();
 
@@ -1487,9 +1740,9 @@
 			let importstatus = $('.es-import-step1 .import-status'),
 				progress = $('#progress'),
 				progressbar = progress.find('.bar'),
-				importprogress = $('#importing-progress'),
-				importprogressbar = importprogress.find('.bar'),
-				import_percentage = importprogress.find('.import_percentage'),
+				importprogress,
+				importprogressbar,
+				import_percentage,
 				wpnonce = ig_es_js_data.security,
 				importerrors = 0,
 				importstarttime,
@@ -1563,19 +1816,20 @@
 				uploader.bind('UploadComplete', function (up, files) {
 					importstatus.removeClass('text-red-600').html(ig_es_js_data.i18n_data.prepare_data);
 					progress.addClass('finished');
-					get_import_data();
+					jQuery(document).trigger('ig_es_get_import_data',[{identifier:importidentifier}]);
 				});
 
 				uploader.init();
 			}
 
-			let get_import_data = function () {
+			let get_import_data = function (e, data) {
 
 				progress.removeClass('finished error');
 				import_option = jQuery('[name="es-import-subscribers"]:checked').val();
+				identifier = data.identifier;
 				$.post( ajaxurl, {
 					action: 'ig_es_get_import_data',
-					identifier: importidentifier,
+					identifier: identifier,
 					security: wpnonce,
 					dataType: 'json'
 				}, function( response ) {
@@ -1591,52 +1845,16 @@
 				});
 			}
 
-			let start_import = function(e) {
-				
-				e.preventDefault();
-
-				let is_email_field_set, is_list_name_field_set, is_subscriber_status_field_set = false;
-				let mapping_order = [];
-				$('select[name="mapping_order[]"').each(function(){
-					let mapped_field = $(this).val();
-					mapping_order.push(mapped_field);
-					if ( 'email' === mapped_field ) {
-						is_email_field_set = true;
-					} else if( 'list_name' === mapped_field ){
-						is_list_name_field_set = true;
-					} else if( 'status' === mapped_field ){
-						is_subscriber_status_field_set = true;
-					}
-				});
-				
-
-				if ( ! is_email_field_set ) {
-					alert(ig_es_js_data.i18n_data.select_email_column);
-					return false;
-				}
-
-				let status = $('#es_email_status').val();
-				if ( 'es-import-mailchimp-users' !== import_option && ('' === status || '0' === status) && ! is_subscriber_status_field_set  ) {
-					alert(ig_es_js_data.i18n_data.select_status);
-					return false;
-				}
-
-				let list_id = $('#list_id').val();
-				if ( 'es-import-mailchimp-users' !== import_option && ( '0' === list_id || ( Array.isArray(list_id) && 0 === list_id.length ) ) && ! is_list_name_field_set ) {
-					alert(ig_es_js_data.i18n_data.select_list);
-					return false;
-				}
-
-				if ( ! confirm(ig_es_js_data.i18n_data.confirm_import) ) {
-					return false;
-				}
+			let trigger_import = function(e, data) {
 
 				let _this = $('.start-import').prop('disabled', true),
 					loader = $('#import-ajax-loading').css({
 						'display': 'inline-block'
-					}),
-					identifier = $('#identifier').val(),
-					performance = $('#performance').is(':checked') ? 'yes' : 'no';
+					});
+
+				importprogress = $('#importing-progress'),
+				importprogressbar = importprogress.find('.bar'),
+				import_percentage = importprogress.find('.import_percentage')
 
 				progress.removeClass('hidden');
 				progressbar.stop().width(0);
@@ -1645,15 +1863,17 @@
 				$('.step2-body').html('<br><br>').parent().show();
 				$('.step2-status,.step2-list, .es-import-processing, .wrapper-start-contacts-import').hide();
 
+				let import_data = {
+					id: 0,
+					options: {
+						identifier   : data.identifier,
+						mapping_order: data.mapping_order,
+						list_id      : data.list_id,
+						status       : data.status
+					}
+				}
 				importstarttime = new Date();
-
-				do_import(0, {
-					identifier: identifier,
-					mapping_order: mapping_order,
-					list_id: list_id,
-					status: status,
-					performance: performance
-				});
+				$(document).trigger('ig_es_do_import',[import_data]);
 
 				importstatus = $('.step2 .import-status');
 
@@ -1664,7 +1884,7 @@
 				};
 			}
 
-			let do_import = function(id, options) {
+			let do_import = function(e, import_data) {
 				let percentage = 0;
 				importprogress.removeClass('hidden');
 				$.ajax({
@@ -1673,14 +1893,14 @@
 					dataType: 'json',
 					data: {
 						action: 'ig_es_do_import',
-						id: id,
-						options: options,
+						id: import_data.id,
+						options: import_data.options,
 						security: wpnonce,
 					},
 					success: function( response ) {
-						percentage = (Math.min(1, (response.imported + response.errors) / response.total) * 100);
+						percentage = (Math.min(1, (response.imported + response.errors + response.duplicate_emails_count) / response.total) * 100);
 
-						$('.step2-body').html('<p class="pt-3 pb-2 text-sm text-gray-600">' + get_stats(response.f_imported, response.f_errors, response.f_total, percentage, response.memoryusage) + '</p>');
+						$('.step2-body').html('<p class="pt-3 pb-2 text-sm text-gray-600">' + get_stats(response.f_imported, response.f_errors, response.f_duplicate_emails, response.f_total, percentage, response.memoryusage) + '</p>');
 
 						importerrors = 0;
 						let finished = percentage >= 100;
@@ -1688,7 +1908,8 @@
 						if (response.success) {
 
 							if (!finished) {
-								do_import(id + 1, options);
+								import_data.id += 1;
+								$(document).trigger('ig_es_do_import', [import_data] );
 							}
 							
 							importprogressbar.animate({
@@ -1707,47 +1928,66 @@
 										window.onbeforeunload = null;
 										$('.import-instruction').hide();
 										importprogress.addClass('finished');
-										$('.step2-body').html(response.html).slideDown();
-										importstatus.addClass('text-xl');
+										if ( jQuery('#form_import_subscribers').length ) {
+											$('.step2-body').html(response.html).slideDown();
+											importstatus.addClass('text-xl');
+										} else {
+											$('.step2-body').hide();
+										}
 										importstatus.html(sprintf(ig_es_js_data.i18n_data.import_complete,'<svg class=" w-6 h-6 inline-block text-indigo-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>'));
+										$(document).trigger('ig_es_import_finished').off('ig_es_import_finished');
 									}
 								}
 							});
 						} else {
-							import_error_handler(percentage, id, options);
+							import_error_handler(percentage, import_data);
 						}
 					},
 					error: function(jqXHR, textStatus, errorThrown) {
-						import_error_handler(percentage, id, options);
+						import_error_handler(percentage, import_data);
 					}
 				});
 			}
 
-			let get_stats = function(imported, errors, total, percentage, memoryusage) {
+			let get_stats = function(f_imported, f_errors, f_duplicate_emails,f_total, percentage, memoryusage) {
 				let timepast = new Date().getTime() - importstarttime.getTime(),
 					timeleft = Math.ceil(((100 - percentage) * (timepast / percentage)) / 60000);
 
-				return sprintf(ig_es_js_data.i18n_data.current_stats, '<span class="font-medium">' + imported + '</span>', '<span class="font-medium">' + total + '</span>', '<span class="font-medium">' + errors + '</span>', '<span class="font-medium">' + memoryusage + '</span>') + '<br>' +
-					sprintf(ig_es_js_data.i18n_data.estimate_time, timeleft);
+				let imported_html = '<span class="font-medium">' + f_imported + '</span>';
+				let total_html = '<span class="font-medium">' + f_total + '</span>';
+				let error_html = '<span class="font-medium">' + f_errors + '</span>';
+				let duplicate_html = '<span class="font-medium">' + sprintf( ig_es_js_data.i18n_data.duplicate_emails_found_message, f_duplicate_emails ) + '</span>';
+				let memoryusage_html = '<span class="font-medium">' + memoryusage + '</span>';
+				return sprintf(
+					ig_es_js_data.i18n_data.current_stats,
+					imported_html,
+					total_html,
+					error_html,
+					duplicate_html,
+					memoryusage_html) 
+					+ '<br>' +
+					sprintf(
+						ig_es_js_data.i18n_data.estimate_time, timeleft
+					);
 			}
 
-			let import_error_handler = function(percentage, id, options) {
+			let import_error_handler = function(percentage, import_data) {
 				importerrors++;
 				if (importerrors >= 5) {
-
+			
 					alert(ig_es_js_data.i18n_data.error_importing);
 					importstatus.html(sprintf(ig_es_js_data.i18n_data.import_failed, '<svg class=" w-6 h-6 inline-block text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>'));
 					window.onbeforeunload = null;
 					return;
 				}
-
+			
 				let i = importerrors * 5,
 					str = '',
 					errorint = setInterval(function () {
 						if (i <= 0) {
 							clearInterval(errorint);
 							progress.removeClass('paused');
-							do_import(id, options);
+							jQuery(document).trigger('ig_es_do_import', [import_data] );
 						} else {
 							progress.addClass('paused');
 							str = '<span class="error">' + sprintf(ig_es_js_data.i18n_data.continues_in, (i--)) + '</span>';
@@ -1800,30 +2040,87 @@
 				uploader_init();
 			}
 
-			$('#form_import_subscribers').on('submit', start_import );
+			$(document).on('ig_es_get_import_data', get_import_data );
+			$(document).on('ig_es_trigger_import', trigger_import );
+			$(document).on('ig_es_do_import', do_import );
+			
+			$('#form_import_subscribers').on('submit', function(e){
+				e.preventDefault();
 
-			$('#import_wordpress')
+				let is_email_field_set, is_list_name_field_set, is_subscriber_status_field_set = false;
+				let mapping_order = [];
+				let identifier = $('#identifier').val();
+
+				$('select[name="mapping_order[]"').each(function(){
+					let mapped_field = $(this).val();
+					mapping_order.push(mapped_field);
+					if ( 'email' === mapped_field ) {
+						is_email_field_set = true;
+					} else if( 'list_name' === mapped_field ){
+						is_list_name_field_set = true;
+					} else if( 'status' === mapped_field ){
+						is_subscriber_status_field_set = true;
+					}
+				});
+				
+
+				if ( ! is_email_field_set ) {
+					alert(ig_es_js_data.i18n_data.select_email_column);
+					return false;
+				}
+
+				let status = $('#es_email_status').val();
+				if ( 'es-import-mailchimp-users' !== import_option && ('' === status || '0' === status) && ! is_subscriber_status_field_set  ) {
+					alert(ig_es_js_data.i18n_data.select_status);
+					return false;
+				}
+
+				let list_id = $('#list_id').val();
+				if ( 'es-import-mailchimp-users' !== import_option && ( '0' === list_id || ( Array.isArray(list_id) && 0 === list_id.length ) ) && ! is_list_name_field_set ) {
+					alert(ig_es_js_data.i18n_data.select_list);
+					return false;
+				}
+
+				if ( ! confirm(ig_es_js_data.i18n_data.confirm_import) ) {
+					return false;
+				}
+
+				let import_data = {
+					identifier: identifier,
+					list_id: list_id,
+					status: status,
+					mapping_order: mapping_order
+				}
+				$(document).trigger('ig_es_trigger_import', [import_data]);
+			});
+
+			$('#ig-es-import-wordpress-users-btn')
 				.on('click', function () {
+					let elem = jQuery(this);
+					jQuery(elem).find('.es-btn-arrow').hide();
+					jQuery(elem).find('.es-btn-loader').show().addClass('animate-spin').attr('disabled', true);
 
 					let selected_roles = [];
 					$('#ig-es-wordpress-user-roles input[name="roles[]"]:checked').each(function(){
 						let selected_role = $(this).val();
 						selected_roles.push(selected_role);
 					});
-					_ajax('import_subscribers_upload_handler', {
-						selected_roles: selected_roles
-					}, function (response) {
 
+					_ajax('import_subscribers_upload_handler', {
+						selected_roles: selected_roles,
+						importing_from: 'wordpress_users'
+					}, function (response) {
 						if (response.success) {
 							importidentifier = response.identifier;
 							$('#wordpress-users').fadeOut();
-							get_import_data();
+							jQuery(document).trigger('ig_es_get_import_data',[{identifier:importidentifier}]);
 						} else {
-							importstatus.html(response.message);
+							jQuery(elem).find('.es-btn-arrow').show();
+							jQuery(elem).find('.es-btn-loader').hide().removeClass('animate-spin').removeAttr('disabled');
 							progress.addClass('error');
+							alert(response.message);
 						}
 					}, function () {
-
 						importstatus.html('Error');
 					});
 
@@ -1831,18 +2128,10 @@
 				});	
 
 				$("input:radio[name='es-import-subscribers']").click(function() {
-						let import_option = $(this).attr("value");
-						if( "es-sync-wordpress-users" === import_option ){
-							$(".es-sync-wordpress-users").show();
-							$(".es-import-with-csv, .es-import-mailchimp-users").hide();
-						} else if ("es-import-with-csv" === import_option){
-							$(".es-import-with-csv").show();
-							$(".es-sync-wordpress-users, .es-import-mailchimp-users").hide();
-						} else{
-							$(".es-import-mailchimp-users").show();
-							$(".es-sync-wordpress-users, .es-import-with-csv").hide();
-						}
-			});
+					let import_option = $(this).attr("value");
+					$('.es-import').hide();
+					$('.' + import_option).show();
+				});
 
 				$('#es_mailchimp_verify_api_key').click(function(e){
 					e.preventDefault();
@@ -1930,13 +2219,11 @@
 				}
 
 				function Import_Mailchimp_Lists(){
-					var complete;
 					var items_completed = 0;
 					var current_offset = 0;
 					var current_limit = 1000;
 					var current_item = "";
 					var $current_node;
-					var current_item_hash = "";
 					var current_status;
 					var mailchimp_api_key = jQuery('#api-key').val();
 					var total_list_subscribers_added = 0;
@@ -1968,7 +2255,7 @@
 								$current_node.find('.mailchimp_list_contact_fetch_count').html( '(' + total_list_subscribers_added + '/ ' + response.data.total + ')' );
 								process_current();
 							}
-						} else{
+						} else {
 							current_limit = 500;
 							var error_counter = jQuery($current_node).data('error-counter');
 							error_counter++;
@@ -2022,7 +2309,7 @@
 					}
 
 					function mailchimp_list_import_complete(){
-						get_import_data();
+						jQuery(document).trigger('ig_es_get_import_data',[{identifier:importidentifier}]);
 						jQuery(".mailchimp_notice_nowindow_close").hide();
 						jQuery('.es-list-import-loader').hide().removeClass('animate-spin').attr('disabled', false);
 					}
@@ -2098,9 +2385,26 @@
 				    }
 
 				}
+
+				$('.ig-es-create-campaign').click(function(e){
+					e.preventDefault();
+					let create_campaign_link = $(this).attr('href');
+					$('.campaign-editor-type-choice').each(function(){
+						let editor_type = $(this).data('editor-type');
+						let choice_link = create_campaign_link + '&editor-type=' + editor_type;
+						$(this).attr('href',choice_link);
+					});
+					$('#ig-es-campaign-editor-type-popup').show();
+				});
+
+				jQuery('#close-campaign-editor-type-popup').on('click', function (event) {
+					event.preventDefault();
+					$('#ig-es-campaign-editor-type-popup').hide();
+				});
 		});
 		function ig_es_draft_broadcast( trigger_elem ) {
 			let is_draft_bttuon = $(trigger_elem).hasClass('ig_es_draft_broadcast');
+			let is_save_bttuon  = $(trigger_elem).hasClass('ig_es_save_broadcast');
 		
 			let broadcast_subject = $('#ig_es_broadcast_subject').val();
 			if ( '' === broadcast_subject ) {
@@ -2135,12 +2439,12 @@
 							let response_data = response.data;
 							let broadcast_id  = response_data.broadcast_id;
 							$('#broadcast_id').val( broadcast_id );
-							if ( is_draft_bttuon ) {
-								alert( ig_es_js_data.i18n_data.broadcast_draft_success_message );
+							if ( is_draft_bttuon || is_save_bttuon ) {
+								alert( ig_es_js_data.i18n_data.broadcast_saved_message );
 							}
 						} else {
 							if ( is_draft_bttuon ) {
-								alert( ig_es_js_data.i18n_data.broadcast_draft_error_message );
+								alert( ig_es_js_data.i18n_data.broadcast_error_message );
 							}
 						}
 					} else {
@@ -2154,6 +2458,63 @@
 				$('#ig_es_broadcast_submitted').removeClass('opacity-50 cursor-not-allowed').removeAttr('disabled');
 			});
 		}
+
+		function ig_es_draft_campaign( trigger_elem ) {
+			let is_draft_bttuon = $(trigger_elem).hasClass('ig_es_draft_campaign');
+			let is_save_bttuon  = $(trigger_elem).hasClass('ig_es_save_campaign');
+		
+			let campaign_subject = $('#ig_es_campaign_subject').val();
+			if ( '' === campaign_subject ) {
+				if ( is_draft_bttuon ) {
+					alert( ig_es_js_data.i18n_data.campaign_subject_empty_message );
+				}
+				return;
+			}
+		
+			// If draft button is clicked then change campaign status to draft..
+			if ( is_draft_bttuon ) {
+				$('#campaign_status').val(0);
+			}
+		
+			ig_es_sync_wp_editor_content();
+		
+			let form_data = $(trigger_elem).closest('form').serialize();
+			// Add action to form data
+			form_data += '&action=ig_es_draft_campaign&security='  + ig_es_js_data.security;
+			jQuery.ajax({
+				method: 'POST',
+				url: ajaxurl,
+				data: form_data,
+				dataType: 'json',
+				beforeSend: function() {
+					// Prevent submit button untill saving is complete.
+					$('#ig_es_campaign_submitted').addClass('opacity-50 cursor-not-allowed').attr('disabled','disabled');
+				},
+				success: function (response) {
+					if (response.success) {
+						if ( 'undefined' !== typeof response.data ) {
+							let response_data = response.data;
+							let campaign_id  = response_data.campaign_id;
+							$('#campaign_id').val( campaign_id );
+							if ( is_draft_bttuon || is_save_bttuon ) {
+								alert( ig_es_js_data.i18n_data.campaign_saved_message );
+							}
+						} else {
+							if ( is_draft_bttuon ) {
+								alert( ig_es_js_data.i18n_data.campaign_error_message );
+							}
+						}
+					} else {
+						alert( ig_es_js_data.i18n_data.ajax_error_message );
+					}
+				},
+				error: function (err) {
+					alert( ig_es_js_data.i18n_data.ajax_error_message );
+				}
+			}).always(function(){
+				$('#ig_es_campaign_submitted').removeClass('opacity-50 cursor-not-allowed').removeAttr('disabled');
+			});
+		}
 })(jQuery);
 
 
@@ -2162,8 +2523,6 @@
 function checkDelete() {
 	return confirm( ig_es_js_data.i18n_data.delete_confirmation_message );
 }
-
-
 
 function ig_es_show_broadcast_preview_in_popup() {
 	ig_es_sync_wp_editor_content();
@@ -2196,8 +2555,8 @@ function ig_es_show_broadcast_preview_in_popup() {
 				if ( 'undefined' !== typeof response.data ) {
 					let response_data = response.data;
 					let template_html = response_data.template_html;
-					jQuery('.broadcast_preview_container').html(template_html);
 					jQuery('#preview_template').load().show();
+					ig_es_load_iframe_preview( '.broadcast_preview_container', template_html );
 				}
 			} else {
 				alert( ig_es_js_data.i18n_data.ajax_error_message );
@@ -2211,6 +2570,55 @@ function ig_es_show_broadcast_preview_in_popup() {
 	});
 }
 
+function ig_es_show_campaign_preview_in_popup() {
+	ig_es_sync_wp_editor_content();
+
+	let content = jQuery('textarea[name="campaign_data[body]"]').val();
+	if (jQuery("#edit-es-campaign-body-wrap").hasClass("tmce-active")) {
+		content = tinyMCE.activeEditor.getContent();
+	}
+
+
+	if ( !content ) {
+		alert( ig_es_js_data.i18n_data.empty_template_message );
+		return;
+	}
+
+	let template_button = jQuery('#view_campaign_preview_button');
+	jQuery(template_button).addClass('loading');
+	let form_data = jQuery('#view_campaign_preview_button').closest('form').serialize();
+	// Add action to form data
+	form_data += form_data + '&action=ig_es_get_campaign_preview&security='  + ig_es_js_data.security;
+	jQuery.ajax({
+		method: 'POST',
+		url: ajaxurl,
+		data: form_data,
+		dataType: 'json',
+		success: function (response) {
+			if (response.success) {
+				if ( 'undefined' !== typeof response.data ) {
+					let response_data = response.data;
+					let template_html = response_data.preview_html;
+					jQuery('#browser-preview-tab').trigger('click');
+					ig_es_load_iframe_preview( '#campaign-preview-iframe-container', template_html );
+					// We are setting popup visiblity hidden so that we can calculate iframe width/height before it is shown to user.
+					jQuery('#campaign-preview-popup').css('visibility','hidden').show();
+					setTimeout(()=>{
+						jQuery('#campaign-preview-popup').css('visibility','visible');
+					},100);
+				}
+			} else {
+				alert( ig_es_js_data.i18n_data.ajax_error_message );
+			}
+		},
+		error: function (err) {
+			alert( ig_es_js_data.i18n_data.ajax_error_message );
+		}
+	}).done(function(){
+		jQuery(template_button).removeClass('loading');
+	});
+}
+
 function ig_es_sync_wp_editor_content() {
 	// When visual mode is disabled in wp user profile, tinyMCE library isn't enqueued.
 	// We aren't triggering the save event in that case
@@ -2218,6 +2626,41 @@ function ig_es_sync_wp_editor_content() {
 		// Trigger save event for content of wp_editor instances to sync its content with actual textarea field
 		window.tinyMCE.triggerSave();
 	}
+
+	// Save the editor content to textarea
+	if ( 'undefined' !== typeof window.esVisualEditor ) {
+		let dnd_editor_data = window.esVisualEditor.exportEditorContent();
+		jQuery('#campaign-dnd-editor-data').val(dnd_editor_data.data);
+	}
+}
+
+function ig_es_load_iframe_preview( parent_selector, iframe_html ) {
+	jQuery( parent_selector + ' iframe').remove();
+
+	let iframe = document.createElement('iframe');
+
+	jQuery(parent_selector).html(iframe);
+	
+	let should_set_max_height = jQuery(parent_selector).hasClass('popup-preview');
+
+	if ( should_set_max_height ) {
+		// Provide height and width to it
+		iframe.setAttribute("style","margin:auto;max-height:60vh;height:auto;width:100%;");
+	} else {
+		iframe.setAttribute("style","height:auto;width:100%;");
+	}
+	
+	iframe.setAttribute("onload","ig_es_resize_iframe(this)");
+	jQuery(iframe).attr("srcdoc", iframe_html);
+}
+
+function ig_es_resize_iframe( ifram_elem ) {
+
+	let iframe_width  = ifram_elem.contentWindow.document.documentElement.offsetWidth;
+	let iframe_height = ifram_elem.contentWindow.document.documentElement.offsetHeight;
+
+    ifram_elem.style.width  = iframe_width + 'px';
+    ifram_elem.style.height = iframe_height + 'px';
 }
 
 jQuery.fn.extend({

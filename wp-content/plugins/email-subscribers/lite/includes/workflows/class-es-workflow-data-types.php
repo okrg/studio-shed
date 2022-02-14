@@ -40,6 +40,7 @@ class ES_Workflow_Data_Types extends ES_Workflow_Registry {
 			array(
 				'user'       => 'ES_Data_Type_User',
 				'subscriber' => 'ES_Data_Type_Subscriber',
+				'campaign'   => 'ES_Data_Type_Campaign',
 			)
 		);
 	}

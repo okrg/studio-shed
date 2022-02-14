@@ -25,7 +25,7 @@ class ES_Workflow_Admin_Ajax {
 	 * Hook in methods
 	 *
 	 * @since 4.4.1
-	 * 
+	 *
 	 * @since 4.6.9 Added modal_variable_info ajax event.
 	 */
 	public static function init() {
@@ -147,19 +147,22 @@ class ES_Workflow_Admin_Ajax {
 
 	/**
 	 * Show vairable info modal
-	 * 
+	 *
 	 * @since 4.6.9
 	 */
 	public static function modal_variable_info() {
-		
+
 		check_ajax_referer( 'ig-es-admin-ajax-nonce', 'security' );
-		
+
 		$variable = IG_ES_Variables::get_variable( ES_Clean::string( ig_es_get_request_data( 'variable' ) ) );
 
 		if ( $variable ) {
-			ES_Workflow_Admin::get_view( 'modal-variable-info', array(
-				'variable' => $variable
-			));
+			ES_Workflow_Admin::get_view(
+				'modal-variable-info',
+				array(
+					'variable' => $variable,
+				)
+			);
 			die;
 		}
 

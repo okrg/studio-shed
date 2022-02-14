@@ -2,7 +2,6 @@
 
 /**
  * Get additional system & plugin specific information for feedback
- *
  */
 if ( ! function_exists( 'ig_es_get_additional_info' ) ) {
 
@@ -55,7 +54,7 @@ function ig_es_render_general_feedback_widget() {
 			'force'             => true,
 			'confirmButtonText' => __( 'Send', 'email-subscribers' ),
 			'consent_text'      => __( 'Allow Email Subscribers to track plugin usage. It will help us to understand your issue better. We guarantee no sensitive data is collected.', 'email-subscribers' ),
-			'name'              => ''
+			'name'              => '',
 		);
 
 		ES_Common::render_feedback_widget( $params );
@@ -80,13 +79,13 @@ function ig_es_render_broadcast_created_feedback_widget() {
 		'position'          => 'top-end',
 		'width'             => 300,
 		'delay'             => 2, // seconds
-		'confirmButtonText' => __( 'Send', 'email-subscribers' )
+		'confirmButtonText' => __( 'Send', 'email-subscribers' ),
 	);
 
 	ES_Common::render_feedback_widget( $params );
 }
 
-//add_action( 'ig_es_broadcast_created', 'ig_es_render_broadcast_created_feedback_widget' );
+// add_action( 'ig_es_broadcast_created', 'ig_es_render_broadcast_created_feedback_widget' );
 
 /**
  * Render Broadcast Created feedback widget.
@@ -123,7 +122,7 @@ function ig_es_render_fb_widget() {
 				'delay'             => 2, // seconds
 				'confirmButtonText' => '<i class="dashicons dashicons-es dashicons-facebook"></i> ' . __( 'Join Now', 'email-subscribers' ),
 				'confirmButtonLink' => 'https://www.facebook.com/groups/2298909487017349/',
-				'show_once'         => true
+				'show_once'         => true,
 			);
 
 			ES_Common::render_feedback_widget( $params );
@@ -209,18 +208,18 @@ function ig_es_render_iges_merge_feedback() {
 			return;
 		}
 
+		$event = 'poll.merge_iges';
+
+		// If user has already given feedback on Icegram page, don't ask them again
+		$is_event_tracked = $ig_es_feedback->is_event_tracked( 'ig', $event );
+
+		if ( $is_event_tracked ) {
+			return;
+		}
+
 		$total_contacts = ES()->contacts_db->count_active_contacts_by_list_id();
 
 		if ( $total_contacts >= 5 ) {
-
-			$event = 'poll.merge_iges';
-
-			// If user has already given feedback on Icegram page, don't ask them again
-			$is_event_tracked = $ig_es_feedback->is_event_tracked( 'ig', $event );
-
-			if ( $is_event_tracked ) {
-				return;
-			}
 
 			$params = array(
 				'type'              => 'poll',
@@ -228,20 +227,25 @@ function ig_es_render_iges_merge_feedback() {
 				'event'             => $event,
 				'desc'              => '<div><p class="mt-4">You use <a href="https://wordpress.org/plugins/email-subscribers" target="_blank"><b class="text-blue-700 font-semibold underline">Email Subscribers</b></a> to send email campaigns.</p><p class="mt-3">Would you like us to include onsite popups and action bars in the plugin as well? This way you can <b class="font-semibold">convert visitors to subscribers, drive traffic and run email marketing from a single plugin</b>.</p> <p class="mt-3">Why do we ask?</p> <p class="mt-3">Our <a class="text-blue-700 font-semibold underline" href="https://wordpress.org/plugins/icegram" target="_blank"><b>Icegram</b></a> plugin already does onsite campaigns. We are thinking of merging Icegram & Email Subscribers into a single plugin.</p> <p class="mt-3"><b class="font-semibold">Will a comprehensive ConvertKit / MailChimp like email + onsite campaign plugin be useful to you?</b></p> </div><p class="mt-3">',
 				'poll_options'      => array(
-					'yes' => array( 'text' => '<b>' . __( 'Yes', 'email-subscribers' ) . '</b>', 'color' => 'green' ),
-					'no'  => array( 'text' => '<b>' . __( 'No', 'email-subscribers' ) . '</b>', 'color' => 'red' )
+					'yes' => array(
+						'text'  => '<b>' . __( 'Yes', 'email-subscribers' ) . '</b>',
+						'color' => 'green',
+					),
+					'no'  => array(
+						'text'  => '<b>' . __( 'No', 'email-subscribers' ) . '</b>',
+						'color' => 'red',
+					),
 				),
 				'allow_multiple'    => false,
 				'position'          => 'bottom-center',
 				'width'             => 400,
 				'delay'             => 2, // seconds
 				'confirmButtonText' => __( 'Send my feedback to <b>Icegram team</b>', 'email-subscribers' ),
-				'show_once'         => true
+				'show_once'         => true,
 			);
 
 			ES_Common::render_feedback_widget( $params );
 		}
-
 	}
 }
 
@@ -309,3 +313,31 @@ function ig_es_render_broadcast_ui_review() {
 }
 
 add_action( 'ig_es_broadcast_created', 'ig_es_render_broadcast_ui_review' );
+
+if ( ! function_exists( 'ig_es_show_plugin_usage_tracking_notice' ) ) {
+
+	/**
+	 * Can we show tracking usage optin notice?
+	 *
+	 * @return bool
+	 *
+	 * @since 4.7.7
+	 */
+	function ig_es_show_plugin_usage_tracking_notice( $enable ) {
+
+		// Show notice ES pages except the dashboard page.
+		if ( ES()->is_es_admin_screen() ) {
+
+			$current_page = ig_es_get_request_data( 'page' );
+
+			if ( 'es_dashboard' !== $current_page ) {
+
+				$enable = true;
+			}
+		}
+
+		return $enable;
+	}
+}
+
+add_filter( 'ig_es_show_plugin_usage_tracking_notice', 'ig_es_show_plugin_usage_tracking_notice' );

@@ -7,20 +7,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$referer = wp_get_referer();
+$referer   = wp_get_referer();
 $optin_url = wp_nonce_url(
 	add_query_arg( 'ig_es_trial_consent', 'yes', $referer ),
 	'ig_es_trial_consent'
 );
 
 $optout_url = wp_nonce_url(
-	add_query_arg( 
-		array(
-			'es_dismiss_admin_notice' => 1,
-			'option_name'             => 'trial_consent',
-		), 
-		$referer
-	),
+	add_query_arg( 'ig_es_trial_consent', 'no', $referer ),
 	'ig_es_trial_consent'
 );
 ?>

@@ -1600,6 +1600,10 @@ body[class*="_page_es_workflows"] #post-body .postbox .inside {
     z-index: 999;
 }
 
+.ig-es-action__fields .ig-es-table__row[data-type="hidden"] {
+    display: none;
+}
+
 /** Workflow CSS END */
 
 .frappe-chart .x.axis .line-vertical,
@@ -1652,7 +1656,7 @@ input[type="date"]::-webkit-clear-button {
 	display: none;
 }
 
-.broadcast_preview_container, .report_preview_container {
+.broadcast_preview_container, .report_preview_container, .template_preview_container {
 	height: 300px;
 	overflow: hidden;
 	overflow-y: auto;
@@ -1684,15 +1688,18 @@ body.email-subscribers_page_es_campaigns .column-status .dashicons {
 body.email-subscribers_page_es_campaigns .column-status .dashicons[title="Finished"] {
 	color: #0e9f6e;
 }
-div.broadcast_main_content{
+
+.broadcast_main_content,
+.campaign_main_content {
 	width: 70% ;
 }
 
-div.broadcast_side_content{
+.broadcast_side_content, 
+.campaign_side_content {
 		width: 30% ;
 }
+
 #ig_es_post_notification_list_ids+.select2-container{
-	position: absolute;
 	width: 75% !important;
 }
 .es-preview.broadcast-preview p {
@@ -1727,6 +1734,18 @@ div.broadcast_side_content{
 	transform: translate(50px,230px);
 }
 
+.es-activity-viewed-count{
+	top: 2.1rem;
+	left: 7.5rem;
+}
+
+@media only screen and (max-width: 1080px) and (min-width: 768px) {
+	.es-activity-viewed-count{
+		top: 3.4rem;
+		left: 0;
+	}
+}
+
 /* Campaign Report : end */
 
 .wp-core-ui #poststuff select,  .wp-core-ui .search-box input[name="s"], .wp-core-ui #bulk-action-selector-top, .wp-core-ui #filter-by-date {
@@ -1745,7 +1764,10 @@ div.broadcast_side_content{
 
 .post-type-es_template #wp-content-editor-tools{
 	padding-top: 18px;
+	z-index: 1;
 }
+
+
 
 /* Template Page : end */
 
@@ -1820,6 +1842,10 @@ div.broadcast_side_content{
 #es-flag-icon{
 	width:2em !important;
 	line-height: 1.5em;
+}
+
+.es_campaign_report .tablenav.top{
+	display: none;
 }
 
 @media only screen and (max-width: 1200px) and (min-width: 768px) {
@@ -1915,6 +1941,13 @@ div.broadcast_side_content{
     position: relative;
 }
 
+.es-import-option .es-logo-wrapper {
+    min-height: 40px;
+}
+
+.es-import-option .wc-importer-heading img {
+	width: 45px;
+}
 /* Import Subscriber: end; */
 
 
@@ -1927,19 +1960,22 @@ div.broadcast_side_content{
 	position: static !important;
 }
 
-#es_campaign_report tbody {
-    counter-reset:paragraph;
-}
-
-#es_campaign_report tbody tr td.sr_no:after,
-#es_campaign_report tbody tr td.sr_no::after
-{
-    counter-increment:paragraph;
-    content: counter(paragraph);
-}
-
 .es-campaign-reports-table{
 	padding-top: 0 !important;
+}
+
+#es_campaign_report .pulse-animation{
+	animation: es-pulse-animation 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+}
+
+@keyframes es-pulse-animation {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
 }
 
 #es_campaign_report tbody tr td.country_flag{
@@ -1988,8 +2024,7 @@ div.broadcast_side_content{
 	padding-right: 4px;
 }
 
-.ig-es-conditions-value-fields:not([data-condition="email"]),
-.ig-es-conditions-value-fields:not([data-condition="country"]) {
+.ig-es-conditions-value-fields:not([data-condition="email"]):not([data-condition="country_code"]):not([data-condition="engagement_score"]):not([data-condition="bounce_status"]) {
     max-width: 60%;
 }
 
@@ -2002,7 +2037,8 @@ div.broadcast_side_content{
     margin-bottom: 0;
 }
 
-.ig-es-conditions-value-fields .select2-container:not(.select2-container--focus) .select2-search--inline:not(:only-child) {
+.ig-es-conditions-value-fields .select2-container:not(.select2-container--focus) .select2-search--inline:not(:only-child),
+.ig-es-post-notification-form .select2-container:not(.select2-container--focus) .select2-search--inline:not(:only-child) {
 	display: none;
 }
 
@@ -2156,6 +2192,10 @@ body[class*="es_reports"] .recipient-text {
 	clear: both;
 }
 
+#campaign_form .recipient-text {
+    display: none;
+}
+
 /* Campaign Rules CSS - END */
 
 /** Tailwind tooltip Custom CSS - START */
@@ -2186,3 +2226,183 @@ body[class*="es_reports"] .recipient-text {
 	overflow:visible !important;
 	border-color:transparent;
 }
+
+/** Add/Edit Contact CSS - START **/
+#es-admin-contact-form .form-input[type=email] {
+	padding: .5rem 3rem .5rem 2.5rem;
+    line-height: 1.5;
+}
+/** Add/Edit Contact CSS - END **/
+
+/** REPORTS STATUS COLUMN CSS - START **/
+
+body[class*="es_reports"] .column-status
+.row-actions {
+    display: inline;
+    position: static; /** Fixes issue when admin click on view report link and then hover over pause/resume/send icons*/
+}
+
+body[class*="es_reports"] .column-status .row-actions span {
+    font-size: 0;
+    vertical-align: middle;
+}
+
+body[class*="es_reports"] .column-status .row-actions::before {
+    content: '|';
+    display: inline-block;
+    margin: 0 .5em;
+}
+
+body[class*="es_reports"] #the-list tr[data-status*="paused"] {
+    --bg-opacity: 1;
+    background-color: #f4f5f7;
+    background-color: rgba(244,245,247,var(--bg-opacity));
+}
+
+body[class*="es_campaigns"] #the-list tr.loading,
+body[class*="es_reports"] #the-list tr.loading {
+    opacity: 0.5;
+}
+
+body[class*="es_campaigns"] #the-list td.column-status > svg:only-child, 
+body[class*="es_reports"] #the-list td.column-status > svg:only-child {
+    margin-left: .5rem;
+}
+
+/** REPORTS STATUS COLUMN CSS - END **/
+
+/** Audience CSS - START **/
+body[class*="page_es_subscribers"] .wp-list-table.contacts th#created_at,
+body[class*="page_es_subscribers"] .wp-list-table.contacts th#last_opened_at {
+    width: 170px;
+}
+/** Audience CSS - END **/
+/** Editor CSS - START **/
+.es-editor .es-sidebar .search-holder input{
+	width: 275px !important;
+}
+.es-editor .es-sidebar .search-holder i{
+	right: 25px !important;
+	top: 25px !important;
+}
+/** Editor CSS - END **/
+
+/** New Campaign UI CSS - START **/
+#toggle-sender-details.toggled svg {
+    transform: rotate(180deg);
+    transition: tranform ease;
+}
+
+.campaign-preview-option {
+    border: 1px solid #fff;
+    border-radius: 3px;
+}
+
+.campaign-preview-option.active {
+    border-color: #ccc;
+}
+
+button#close-campaign-preview-popup {
+    margin: 0 0 0 0.2rem;
+}
+
+#campaign-preview-iframe-container {
+    --bg-opacity: 1;
+    background-color: #f4f5f7;
+    background-color: rgb(244, 245, 247);
+}
+
+#campaign-preview-iframe-container iframe {
+    background-color: #fff;
+}
+
+.ig-es-inline-loader {
+    position: relative;
+}
+
+.ig-es-inline-loader .es-btn-loader {
+    position: absolute;
+	display: none;
+}
+
+.ig-es-inline-loader.loading .es-btn-loader {
+	display: block;
+}
+
+.ig-es-inline-loader.loading span {
+    visibility: hidden;
+}
+
+.campaign-preview-option {
+    margin: 0 0.2rem;
+    padding: .1rem;
+}
+
+#edit-campaign-form-container #ig-es-dnd-builder .es-editor {
+    margin: 0;
+}
+
+#edit-campaign-form-container #ig-es-dnd-builder {
+    margin-left: 0;
+}
+
+/* #edit-campaign-form-container #ig-es-dnd-builder .es-top-bar {
+	width: 70.2%;
+	position: relative;
+} */
+
+/* #edit-campaign-form-container #ig-es-dnd-builder .es-content {
+    width: 95%;
+} */
+
+#edit-campaign-form-container.drag-and-drop .campaign_main_content {
+    padding-bottom: 0;
+}
+
+#edit-campaign-form-container.drag-and-drop .message-label-wrapper,
+#edit-campaign-form-container.drag-and-drop .message-label-wrapper label {
+    padding-bottom: 0;
+}
+
+#edit-campaign-form-container #undo-redo-actions {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#edit-campaign-form-container #toggle-template-preview,
+#edit-campaign-form-container #export-html-template {
+    display: none;
+}
+
+#edit-campaign-form-container.drag-and-drop .ig-es-campaign-templates-wrapper {
+    display: none;
+}
+
+#edit-campaign-form-container #ig-es-dnd-builder .es-top-bar {
+    position: relative;
+}
+
+#ig-es-post-notification-settings-popup .ig-es-campaign-number-of-post-wrapper .field-heading {
+    width: auto;
+    margin-right: 1rem;
+    line-height: 1.7rem;
+}
+
+#edit-campaign-form-container #post_digest {
+    width: 100%;
+	padding: 0.5rem 0;
+}
+
+#edit-campaign-form-container.drag-and-drop .campaign-keyword-wrapper {
+    width: 70.3%;
+    margin-top: 0;
+}
+
+#edit-campaign-form-container #ig-es-dnd-builder .es-content .gjs-cv-canvas, #ig-es-dnd-builder .es-content .gjs-editor {
+    border-bottom-left-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+/** New Campaign UI CSS - END **/

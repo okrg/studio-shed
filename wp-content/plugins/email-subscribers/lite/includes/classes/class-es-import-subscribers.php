@@ -28,6 +28,7 @@ class ES_Import_Subscribers {
 			add_action( 'wp_ajax_ig_es_mailchimp_lists', array( &$this, 'api_request' ) );
 			add_action( 'wp_ajax_ig_es_mailchimp_import_list', array( &$this, 'api_request' ) );
 
+			add_action( 'ig_es_remove_import_data', array( __CLASS__, 'remove_import_data' ) );
 		}
 	}
 
@@ -46,25 +47,26 @@ class ES_Import_Subscribers {
 	}
 
 	public function prepare_import_subscriber_form() {
-		
+
 		if ( is_multisite() && ! is_upload_space_available() ) {
 			return;
 		}
 
 		$max_upload_size = $this->get_max_upload_size();
 		$post_params     = array(
-			'action'   => 'ig_es_import_subscribers_upload_handler',
-			'security' => wp_create_nonce( 'ig-es-admin-ajax-nonce' ),
+			'action'         => 'ig_es_import_subscribers_upload_handler',
+			'importing_from' => 'csv',
+			'security'       => wp_create_nonce( 'ig-es-admin-ajax-nonce' ),
 		);
-		
+
 		$upload_action_url = admin_url( 'admin-ajax.php' );
-		$plupload_init = array(
+		$plupload_init     = array(
 			'browse_button'    => 'plupload-browse-button',
 			'container'        => 'plupload-upload-ui',
 			'drop_element'     => 'drag-drop-area',
 			'file_data_name'   => 'async-upload',
 			'url'              => $upload_action_url,
-			'filters'          => array( 
+			'filters'          => array(
 				'max_file_size' => $max_upload_size . 'b',
 				'mime_types'    => array( array( 'extensions' => 'csv' ) ),
 			),
@@ -87,7 +89,7 @@ class ES_Import_Subscribers {
 									<svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
 								</div>
 								<p class="mb-2 text-sm inline-block font-medium text-gray-600">
-									<?php echo esc_html__( 'Import CSV', 'email-subscribers' ); ?>
+									<?php echo esc_html__( 'Import from CSV', 'email-subscribers' ); ?>
 								</p>
 							</div>
 						</label>
@@ -95,7 +97,7 @@ class ES_Import_Subscribers {
 							<input type="radio" class="absolute w-0 h-0 opacity-0 es_mailer" name="es-import-subscribers" value="es-import-mailchimp-users" />
 							<div class="mt-4 px-1 mx-4 border border-gray-200 rounded-lg shadow-md es-mailer-logo es-importer-logo bg-white">
 								<div class="border-0 es-logo-wrapper">
-									<svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+									<img class="h-full w-24" src="<?php echo esc_url( ES_PLUGIN_URL . 'lite/admin/images/mailchimp_logo.png' ); ?>" alt="Icegram.com" />
 								</div>
 								<p class="mb-2 text-sm inline-block font-medium text-gray-600">
 									<?php echo esc_html__( 'Import from MailChimp', 'email-subscribers' ); ?>
@@ -105,7 +107,6 @@ class ES_Import_Subscribers {
 						<?php
 							do_action( 'ig_es_subscriber_import_method_tab_heading' );
 						?>
-						
 					</div>  
 					<hr class="mx-10 border-gray-100 mt-6">    
 				</div>
@@ -119,9 +120,9 @@ class ES_Import_Subscribers {
 											<?php esc_html_e( 'Select CSV file', 'email-subscribers' ); ?>
 										</span>
 										<p class="mt-2 es_helper_text">
-											<?php 
+											<?php
 											/* translators: %s: Max upload size */
-											echo sprintf( esc_html__( 'File size should be less than %s', 'email-subscribers' ), esc_html( size_format( $max_upload_size ) ) ); 
+											echo sprintf( esc_html__( 'File size should be less than %s', 'email-subscribers' ), esc_html( size_format( $max_upload_size ) ) );
 											?>
 										</p>
 										<p class="mt-2 es_helper_text">
@@ -130,7 +131,7 @@ class ES_Import_Subscribers {
 										</p>
 										<p class="mt-4 es_helper_text">
 											<a class="hover:underline text-sm font-medium" href="https://www.icegram.com/documentation/es-how-to-import-or-export-email-addresses/?utm_source=in_app&utm_medium=import_contacts&utm_campaign=es_doc" target="_blank">
-											<?php esc_html_e( 'How to import contacts using CSV? ', 'email-subscribers' ); ?>&rarr;
+											<?php esc_html_e( 'How to import contacts using CSV?', 'email-subscribers' ); ?>&rarr;
 										</a>
 										</p>
 									</label>
@@ -179,7 +180,7 @@ class ES_Import_Subscribers {
 								<p class="es-api-import-status pt-4 text-sm font-medium text-gray-600 tracking-wide hidden">&nbsp;</p>			
 								<div class="clearfix clear mt-10 -mb-4 ">
 									<button id="es_mailchimp_verify_api_key" class="ig-es-primary-button px-2 py-1" data-callback="verify_api_key">
-										<?php echo esc_html__('Next', 'email-subscribers'); ?>
+										<?php echo esc_html__( 'Next', 'email-subscribers' ); ?>
 											&nbsp;
 										<svg style="display:none" class="es-import-loader mr-1 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
 										  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -191,7 +192,7 @@ class ES_Import_Subscribers {
 							</div>
 						</div>
 
-						<?php 
+						<?php
 							do_action( 'ig_es_subscriber_import_method_tab_content' );
 						?>
 
@@ -204,7 +205,7 @@ class ES_Import_Subscribers {
 								<div class="ml-6">
 									<label for="select_mailchimp_list">
 										<span class="block pr-4 text-sm font-medium text-gray-600 pb-1">
-											<?php echo esc_html_e('Select list', 'email-subscribers'); ?>
+											<?php echo esc_html_e( 'Select list', 'email-subscribers' ); ?>
 										</span>
 										<p class="italic text-xs font-normal text-gray-400 mt-2 leading-snug" id="apikey-info-text"><?php esc_html_e( 'Select all the lists that you want to import from MailChimp', 'email-subscribers' ); ?>
 										</p>
@@ -306,9 +307,9 @@ class ES_Import_Subscribers {
 							</div>
 							<div class="w-3/4 mb-6 mr-4 mt-4">
 								<select class="relative form-select shadow-sm border border-gray-400 sm:w-32 lg:w-48 ml-4" name="es_email_status" id="es_email_status">
-									<?php 
-									$statuses_dropdown 	= ES_Common::prepare_statuses_dropdown_options();
-									echo wp_kses( $statuses_dropdown , $allowedtags );
+									<?php
+									$statuses_dropdown = ES_Common::prepare_statuses_dropdown_options();
+									echo wp_kses( $statuses_dropdown, $allowedtags );
 									?>
 								</select>
 							</div>
@@ -338,9 +339,9 @@ class ES_Import_Subscribers {
 								?>
 								<div class="ml-4">
 									<select name="<?php echo esc_attr( $select_list_name ); ?>" id="list_id" class="relative shadow-sm border border-gray-400 sm:w-32 lg:w-48 <?php echo esc_attr( $select_list_class ); ?>" <?php echo esc_attr( $select_list_attr ); ?>>
-										<?php 
-										$lists_dropdown 	= ES_Common::prepare_list_dropdown_options();
-										echo wp_kses( $lists_dropdown , $allowedtags );
+										<?php
+										$lists_dropdown = ES_Common::prepare_list_dropdown_options();
+										echo wp_kses( $lists_dropdown, $allowedtags );
 										?>
 									</select>
 								</div>
@@ -468,7 +469,7 @@ class ES_Import_Subscribers {
 
 	/**
 	 * Ajax handler to insert import CSV data into temporary table.
-	 * 
+	 *
 	 * @since 4.6.6
 	 */
 	public function ajax_import_subscribers_upload_handler() {
@@ -499,10 +500,8 @@ class ES_Import_Subscribers {
 			remove_filter( 'ig_es_memory_limit', 'ig_es_increase_memory_limit' );
 		}
 
-		$importing_from = '';
-		if ( isset( $_FILES['async-upload'] ) ) {
-
-			$importing_from = 'csv';
+		$importing_from = ig_es_get_request_data( 'importing_from' );
+		if ( 'csv' === $importing_from && isset( $_FILES['async-upload'] ) ) {
 			if ( isset( $_FILES['async-upload']['tmp_name'] ) && is_uploaded_file( sanitize_text_field( $_FILES['async-upload']['tmp_name'] ) ) ) {
 				$tmp_file  = sanitize_text_field( $_FILES['async-upload']['tmp_name'] );
 				$raw_data  = file_get_contents( $tmp_file );
@@ -518,11 +517,18 @@ class ES_Import_Subscribers {
 				}
 
 				$data_contain_headers = true;
+				$phpmailer            = ES()->mailer->get_phpmailer();
 				if ( ! empty( $headers ) ) {
 					foreach ( $headers as $header ) {
-						if ( ! empty( $header ) && is_email( $header ) ) {
-							$data_contain_headers = false;
-							break;
+						if ( ! empty( $header ) ) {
+							// Convert special characters in the email domain name to ascii.
+							if ( is_callable( array( $phpmailer, 'punyencodeAddress' ) ) ) {
+								$header = $phpmailer->punyencodeAddress( $header );
+							}
+							if ( is_email( $header ) ) {
+								$data_contain_headers = false;
+								break;
+							}
 						}
 					}
 				}
@@ -536,10 +542,8 @@ class ES_Import_Subscribers {
 					$raw_data = mb_convert_encoding( $raw_data, 'UTF-8', mb_detect_encoding( $raw_data, 'UTF-8, ISO-8859-1', true ) );
 				}
 			}
-		} elseif ( isset( $_POST['selected_roles'] ) ) {
-			$importing_from = 'wordpress_users';
-
-			$roles       = ig_es_get_request_data( 'selected_roles' );
+		} elseif ( 'wordpress_users' === $importing_from ) {
+			$roles = ig_es_get_request_data( 'selected_roles' );
 
 			$users = $wpdb->get_results(
 				"SELECT u.user_email, IF(meta_role.meta_value = 'a:0:{}',NULL,meta_role.meta_value) AS '_role', meta_firstname.meta_value AS 'firstname', meta_lastname.meta_value AS 'lastname', u.display_name, u.user_nicename
@@ -550,63 +554,68 @@ class ES_Import_Subscribers {
 				 WHERE meta_role.user_id IS NOT NULL"
 			);
 
-			$raw_data = '';
-			$seperator = ';';
-			$data_contain_headers = false;
-			$headers = array(
-				__( 'Email', 'email-subscribers' ),
-				__( 'First Name', 'email-subscribers' ),
-				__( 'Last Name', 'email-subscribers' ),
-				__( 'Nick Name', 'email-subscribers' ),
-				__( 'Display Name', 'email-subscribers' ),
-			);
+			if ( ! empty( $users ) ) {
+				$raw_data             = '';
+				$seperator            = ';';
+				$data_contain_headers = false;
 
-			foreach ( $users as $user ) {
+				$headers = array(
+					__( 'Email', 'email-subscribers' ),
+					__( 'First Name', 'email-subscribers' ),
+					__( 'Last Name', 'email-subscribers' ),
+					__( 'Nick Name', 'email-subscribers' ),
+					__( 'Display Name', 'email-subscribers' ),
+				);
 
-				// User must have a role assigned.
-				if ( ! $user->_role ) {
-					continue;
-				}
+				foreach ( $users as $user ) {
 
-				// Role is set but not in the list
-				if ( $user->_role && ! array_intersect( array_keys( unserialize( $user->_role ) ), $roles ) ) {
-					continue;
-				}
-
-				$user_data = array();
-
-				foreach ( $user as $key => $data ) {
-					if ( '_role' === $key ) {
+					// User must have a role assigned.
+					if ( ! $user->_role ) {
 						continue;
 					}
 
-					if ( 'firstname' === $key && ! $data ) {
-						$data = $user->display_name;
+					// Role is set but not in the list
+					if ( ! empty( $roles ) && ! array_intersect( array_keys( unserialize( $user->_role ) ), $roles ) ) {
+						continue;
 					}
 
-					$user_data[] = $data;
-				}
+					$user_data = array();
 
-				$raw_data .= implode( ';', $user_data );
-				$raw_data .= "\n";
+					foreach ( $user as $key => $data ) {
+						if ( '_role' === $key ) {
+							continue;
+						}
+
+						if ( 'firstname' === $key && ! $data ) {
+							$data = $user->display_name;
+						}
+
+						$user_data[] = $data;
+					}
+
+					$raw_data .= implode( ';', $user_data );
+					$raw_data .= "\n";
+				}
+			}
+			if ( empty( $raw_data ) ) {
+				$response['message'] = __( 'We can\'t find any matching users. Please update your preferences and try again.', 'email-subscribers' );
 			}
 		}
 
 		if ( empty( $raw_data ) ) {
 			wp_send_json( $response );
 		}
-		
-		$response = $this->insert_into_temp_table( $raw_data, $seperator, $data_contain_headers, $headers, '', $importing_from );
+
+		$response                = self::insert_into_temp_table( $raw_data, $seperator, $data_contain_headers, $headers, '', $importing_from );
 		$response['success']     = true;
 		$response['memoryusage'] = size_format( memory_get_peak_usage( true ), 2 );
-		
 
 		wp_send_json( $response );
 	}
 
 	/**
 	 * Ajax handler to get import data from temporary table.
-	 * 
+	 *
 	 * @since 4.6.6
 	 */
 	public function ajax_get_import_data() {
@@ -621,13 +630,13 @@ class ES_Import_Subscribers {
 
 		$identifier = '';
 		if ( isset( $_POST['identifier'] ) ) {
-			$identifier =  sanitize_text_field( $_POST['identifier'] );
+			$identifier = sanitize_text_field( $_POST['identifier'] );
 		}
 
 		if ( ! empty( $identifier ) ) {
-			
+
 			$response['identifier'] = $identifier;
-			$response['data'] = get_option( 'ig_es_bulk_import' );
+			$response['data']       = get_option( 'ig_es_bulk_import' );
 			// get first and last entry
 			$entries = $wpdb->get_row(
 				$wpdb->prepare(
@@ -644,7 +653,7 @@ class ES_Import_Subscribers {
 			$data         = str_getcsv( $first[0], $response['data']['separator'], '"' );
 			$cols         = count( $data );
 			$contactcount = $response['data']['lines'];
-			$fields     = array(	
+			$fields       = array(
 				'email'      => __( 'Email', 'email-subscribers' ),
 				'first_name' => __( 'First Name', 'email-subscribers' ),
 				'last_name'  => __( 'Last Name', 'email-subscribers' ),
@@ -652,10 +661,12 @@ class ES_Import_Subscribers {
 				'last_first' => __( '(Last Name) (First Name)', 'email-subscribers' ),
 				'created_at' => __( 'Subscribed at', 'email-subscribers' ),
 			);
-			if ( ! empty( $response['data']['importing_from'] ) && 'wordpress_users' !== $response['data']['importing_from']  ) {
+			if ( ! empty( $response['data']['importing_from'] ) && 'wordpress_users' !== $response['data']['importing_from'] ) {
 				$fields['list_name'] = __( 'List Name', 'email-subscribers' );
-				$fields['status'] = __( 'Status', 'email-subscribers' );
+				$fields['status']    = __( 'Status', 'email-subscribers' );
 			}
+
+			$fields = apply_filters( 'es_import_show_more_fields_for_mapping', $fields );
 
 			$html      = '<div class="flex flex-row mb-6">
 			<div class="es-import-processing flex w-1/4">
@@ -671,28 +682,33 @@ class ES_Import_Subscribers {
 
 			</label>
 			</div>
-			</div>' ;
-			$html      .= '<div class="w-3/4 mx-4 border-b border-gray-200 shadow rounded-lg"><table class="w-full bg-white rounded-lg shadow overflow-hidden ">';
-			$html      .= '<thead><tr class="border-b border-gray-200 bg-gray-50 text-left text-sm leading-4 font-medium text-gray-500 tracking-wider"><th class="pl-3 py-4" style="width:20px;">#</th>';
-			$emailfield = false;
-			$headers = array();
+			</div>';
+			$html     .= '<div class="w-3/4 mx-4 border-b border-gray-200 shadow rounded-lg"><table class="w-full bg-white rounded-lg shadow overflow-hidden ">';
+			$html     .= '<thead><tr class="border-b border-gray-200 bg-gray-50 text-left text-sm leading-4 font-medium text-gray-500 tracking-wider"><th class="pl-3 py-4" style="width:20px;">#</th>';
+			$phpmailer = ES()->mailer->get_phpmailer();
+			$headers   = array();
 			if ( ! empty( $response['data']['headers'] ) ) {
 				$headers = $response['data']['headers'];
 			}
 			for ( $i = 0; $i < $cols; $i++ ) {
-				$is_email  = is_email( trim( $data[ $i ] ) );
-				$select  = '<select class="form-select font-normal text-gray-600 h-8 shadow-sm" name="mapping_order[]">';
-				$select .= '<option value="-1">' . esc_html__( 'Ignore column', 'email-subscribers' ) . '</option>';
+				$col_data = trim( $data[ $i ] );
+				// Convert special characters in the email domain name to ascii.
+				if ( is_callable( array( $phpmailer, 'punyencodeAddress' ) ) ) {
+					$col_data = $phpmailer->punyencodeAddress( $col_data );
+				}
+				$is_email = is_email( trim( $col_data ) );
+				$select   = '<select class="form-select font-normal text-gray-600 h-8 shadow-sm" name="mapping_order[]">';
+				$select  .= '<option value="-1">' . esc_html__( 'Ignore column', 'email-subscribers' ) . '</option>';
 				foreach ( $fields as $key => $value ) {
 					$is_selected = false;
 					if ( $is_email && 'email' === $key ) {
 						$is_selected = true;
-					} else if ( ! empty( $headers[ $i ] ) ) {
+					} elseif ( ! empty( $headers[ $i ] ) ) {
 						if ( strip_tags( $headers[ $i ] ) === $fields[ $key ] ) {
-							$is_selected = ( 'first_name' === $key ) || ( 'last_name'  === $key ) || ( 'list_name'  === $key && 'mailchimp-api' === $response['data']['importing_from'] ) || ( 'status'  === $key && 'mailchimp-api' === $response['data']['importing_from'] );
+							$is_selected = ( 'first_name' === $key ) || ( 'last_name' === $key ) || ( 'list_name' === $key && 'mailchimp-api' === $response['data']['importing_from'] ) || ( 'status' === $key && 'mailchimp-api' === $response['data']['importing_from'] );
 						}
 					}
-					$select     .= '<option value="' . $key . '" ' . ( $is_selected ? 'selected' : '' ) . '>' . $value . '</option>';
+					$select .= '<option value="' . $key . '" ' . ( $is_selected ? 'selected' : '' ) . '>' . $value . '</option>';
 				}
 				$select .= '</select>';
 				$html   .= '<th class="pl-3 py-4 font-medium">' . $select . '</th>';
@@ -707,7 +723,7 @@ class ES_Import_Subscribers {
 			}
 			$html .= '</thead><tbody>';
 			for ( $i = 0; $i < min( 3, $contactcount ); $i++ ) {
-				$data  = str_getcsv(  ( $first[ $i ] ), $response['data']['separator'], '"' );
+				$data  = str_getcsv( ( $first[ $i ] ), $response['data']['separator'], '"' );
 				$html .= '<tr class="border-b border-gray-200 text-left text-sm leading-4 text-gray-500 tracking-wide"><td class="pl-3">' . number_format_i18n( $i + 1 ) . '</td>';
 				foreach ( $data as $cell ) {
 					if ( ! empty( $cell ) && is_email( $cell ) ) {
@@ -738,7 +754,7 @@ class ES_Import_Subscribers {
 			$html .= '</div></div>';
 
 			$response['html']    = $html;
-			$response['success'] =  true;
+			$response['success'] = true;
 		}
 
 		wp_send_json( $response );
@@ -746,7 +762,7 @@ class ES_Import_Subscribers {
 
 	/**
 	 * Ajax handler to import subscirbers from temporary table
-	 * 
+	 *
 	 * @since 4.6.6
 	 */
 	public function ajax_do_import() {
@@ -754,6 +770,8 @@ class ES_Import_Subscribers {
 		check_ajax_referer( 'ig-es-admin-ajax-nonce', 'security' );
 
 		global $wpdb;
+
+		$phpmailer = ES()->mailer->get_phpmailer();
 
 		$memory_limit       = @ini_get( 'memory_limit' );
 		$max_execution_time = @ini_get( 'max_execution_time' );
@@ -780,17 +798,17 @@ class ES_Import_Subscribers {
 		if ( isset( $_POST['options'] ) ) {
 			$bulkdata = ig_es_get_data( $_POST, 'options', array() );
 		}
-		
-		$bulkdata      		= wp_parse_args( $bulkdata, get_option( 'ig_es_bulk_import' ) );
-		$erroremails   		= get_option( 'ig_es_bulk_import_errors', array() );
-		$order         		= isset( $bulkdata['mapping_order'] ) ? $bulkdata['mapping_order']: array();
-		$list_id       		= isset( $bulkdata['list_id'] ) ? $bulkdata['list_id']            : array();
-		$parts_at_once 		= 10;
-		$selected_status   	= $bulkdata['status'];
-		$error_codes   = array(
-			'invalid'   => __( 'Email address is invalid.', 'email-subscribers' ),
-			'empty'     => __( 'Email address is empty.', 'email-subscribers' ),
-			'duplicate' => __( 'Duplicate email in the CSV file. Only the first record imported.', 'email-subscribers' ),
+
+		$bulkdata        = wp_parse_args( $bulkdata, get_option( 'ig_es_bulk_import' ) );
+		$erroremails     = get_option( 'ig_es_bulk_import_errors', array() );
+		$order           = isset( $bulkdata['mapping_order'] ) ? $bulkdata['mapping_order'] : array();
+		$list_id         = isset( $bulkdata['list_id'] ) ? $bulkdata['list_id'] : array();
+		$parts_at_once   = 10;
+		$selected_status = $bulkdata['status'];
+
+		$error_codes = array(
+			'invalid' => __( 'Email address is invalid.', 'email-subscribers' ),
+			'empty'   => __( 'Email address is empty.', 'email-subscribers' ),
 		);
 
 		if ( ! empty( $list_id ) && ! is_array( $list_id ) ) {
@@ -800,7 +818,7 @@ class ES_Import_Subscribers {
 		if ( isset( $_POST['id'] ) ) {
 
 			$bulkdata['current'] = (int) sanitize_text_field( $_POST['id'] );
-			$raw_list_data = $wpdb->get_col(
+			$raw_list_data       = $wpdb->get_col(
 				$wpdb->prepare(
 					"SELECT data FROM {$wpdb->prefix}ig_temp_import 
 					WHERE identifier = %s ORDER BY ID ASC LIMIT %d, %d",
@@ -818,12 +836,12 @@ class ES_Import_Subscribers {
 				$processed_emails     = ! empty( $bulkdata['processed_emails'] ) ? $bulkdata['processed_emails'] : array();
 				$list_contact_data    = array();
 				$es_status_mapping    = array(
-					 __( 'Subscribed', 'email-subscribers' ) => 'subscribed',
-					 __( 'Unsubscribed', 'email-subscribers' ) => 'unsubscribed',
-					 __( 'Unconfirmed', 'email-subscribers' ) => 'unconfirmed',
-					 __( 'Hard Bounced', 'email-subscribers' ) => 'hard_bounced' ,
+					__( 'Subscribed', 'email-subscribers' )   => 'subscribed',
+					__( 'Unsubscribed', 'email-subscribers' ) => 'unsubscribed',
+					__( 'Unconfirmed', 'email-subscribers' )  => 'unconfirmed',
+					__( 'Hard Bounced', 'email-subscribers' ) => 'hard_bounced',
 				);
-				
+
 				foreach ( $raw_list_data as $raw_list ) {
 					$raw_list = unserialize( base64_decode( $raw_list ) );
 					// each entry
@@ -841,13 +859,23 @@ class ES_Import_Subscribers {
 								continue;
 							}
 							switch ( $order[ $col ] ) {
+								case 'email':
+									$insert['email'] = $d;
+									// Convert special characters in the email domain name to ascii.
+									if ( is_callable( array( $phpmailer, 'punyencodeAddress' ) ) ) {
+										$encoded_email = $phpmailer->punyencodeAddress( $insert['email'] );
+										if ( ! empty( $encoded_email ) ) {
+											$insert['email'] = $encoded_email;
+										}
+									}
+									break;
 								case 'first_last':
 									$name = explode( ' ', $d );
 									if ( ! empty( $name[0] ) ) {
 										$insert['first_name'] = $name[0];
 									}
 									if ( ! empty( $name[1] ) ) {
-										$insert['last_name']  = $name[1];
+										$insert['last_name'] = $name[1];
 									}
 									break;
 								case 'last_first':
@@ -856,12 +884,12 @@ class ES_Import_Subscribers {
 										$insert['first_name'] = $name[1];
 									}
 									if ( ! empty( $name[0] ) ) {
-										$insert['last_name']  = $name[0];
+										$insert['last_name'] = $name[0];
 									}
 									break;
 								case 'created_at':
 									if ( ! is_numeric( $d ) && ! empty( $d ) ) {
-										$d 				   	  = sanitize_text_field( $d );
+										$d                    = sanitize_text_field( $d );
 										$insert['created_at'] = gmdate( 'Y-m-d H:i:s', strtotime( $d ) - $gmt_offset );
 									}
 									break;
@@ -872,20 +900,20 @@ class ES_Import_Subscribers {
 									$insert[ $order[ $col ] ] = $d;
 							}
 						}
-						
+
 						if ( empty( $insert['email'] ) || ! is_email( $insert['email'] ) ) {
 							$error_data = array();
 							if ( empty( $insert['email'] ) ) {
-								$error_data['error_code'] = 'empty';
+								$error_data['cd'] = 'empty';
 							} elseif ( ! is_email( $insert['email'] ) ) {
-								$error_data['error_code'] = 'invalid';
+								$error_data['cd']    = 'invalid';
 								$error_data['email'] = $insert['email'];
 							}
 							if ( ! empty( $insert['first_name'] ) ) {
-								$error_data['first_name'] = $insert['first_name'];
+								$error_data['fn'] = $insert['first_name'];
 							}
 							if ( ! empty( $insert['last_name'] ) ) {
-								$error_data['last_name'] = $insert['last_name'];
+								$error_data['ln'] = $insert['last_name'];
 							}
 							$bulkdata['errors']++;
 							$erroremails[] = $error_data;
@@ -896,82 +924,66 @@ class ES_Import_Subscribers {
 						if ( ! in_array( $email, $current_batch_emails, true ) && ! in_array( $email, $processed_emails, true ) ) {
 							$first_name = isset( $insert['first_name'] ) ? ES_Common::handle_emoji_characters( sanitize_text_field( trim( $insert['first_name'] ) ) ) : '';
 							$last_name  = isset( $insert['last_name'] ) ? ES_Common::handle_emoji_characters( sanitize_text_field( trim( $insert['last_name'] ) ) ) : '';
-							$list_names  = isset( $insert['list_name'] ) ? sanitize_text_field( trim( $insert['list_name'] ) ) : '';
-							$created_at  = isset( $insert['created_at'] ) ? $insert['created_at'] : $current_date_time;
-							
-							if ( empty( $insert['list_name'] ) ) {
-								$list_names_arr = ES()->lists_db->get_lists_by_id( $list_id );
-								$list_names = implode( ',', array_column( $list_names_arr, 'name' ));
-							}
-
-							$status = 'unconfirmed';
-							$list_names = array_map('trim', explode(',', $list_names));
-
-							
-							if ( isset( $insert['status'] ) ) {
-								$map_status = strtolower( str_replace( ' ', '_', $insert['status'] ) );
-							}
-							
-							if ( isset( $insert['status'] ) && in_array( $map_status, $es_status_mapping )  ) {
-								$status = sanitize_text_field( trim( $map_status ) );
-							} elseif ( ! empty( $selected_status ) ) {
-								$status = $selected_status;
-							} 
-
-							if ( ! empty( $es_status_mapping[ $status ] ) ) {
-								$status = $es_status_mapping[ $status ];
-							}
-
-							foreach ( $list_names as $key => $list_name ) {
-								if ( ! empty( $list_name ) ) {
-									$list_contact_data[$list_name][$status][] = $email;
-								}
-							}
-
-							// If name empty, get the name from Email.
-							if ( empty( $first_name ) && empty( $last_name ) ) {
-								$name       = ES_Common::get_name_from_email( $email );
-								$names      = ES_Common::prepare_first_name_last_name( $name );
-								$first_name = sanitize_text_field( $names['first_name'] );
-								$last_name  = sanitize_text_field( $names['last_name'] );
-							}
+							$created_at = isset( $insert['created_at'] ) ? $insert['created_at'] : $current_date_time;
 
 							$guid = ES_Common::generate_guid();
 
-							$contacts_data[$email]['first_name'] = $first_name;
-							$contacts_data[$email]['last_name']  = $last_name;
-							$contacts_data[$email]['email']      = $email;
-							$contacts_data[$email]['source']     = 'import';
-							$contacts_data[$email]['status']     = 'verified';
-							$contacts_data[$email]['hash']       = $guid;
-							$contacts_data[$email]['created_at'] = $created_at;
+							$contact_data['first_name'] = $first_name;
+							$contact_data['last_name']  = $last_name;
+							$contact_data['email']      = $email;
+							$contact_data['source']     = 'import';
+							$contact_data['status']     = 'verified';
+							$contact_data['hash']       = $guid;
+							$contact_data['created_at'] = $created_at;
 
+							$additional_contacts_data = apply_filters( 'es_prepare_additional_contacts_data_for_import', array(), $insert );
+							
+							$contacts_data[$email] = array_merge( $contact_data, $additional_contacts_data );
 							$bulkdata['imported']++;
 						} else {
-							$error_data = array(
-								'email'      => $email,
-								'error_code' => 'duplicate',
-							);
-							if ( ! empty( $insert['first_name'] ) ) {
-								$error_data['first_name'] = $insert['first_name'];
-							}
-							if ( ! empty( $insert['last_name'] ) ) {
-								$error_data['last_name'] = $insert['last_name'];
-							}
-							$erroremails[] = $error_data;
-							$bulkdata['errors']++;
+							$bulkdata['duplicate_emails_count']++;
 						}
+
+						$list_names = isset( $insert['list_name'] ) ? sanitize_text_field( trim( $insert['list_name'] ) ) : '';
+						if ( empty( $insert['list_name'] ) ) {
+							$list_names_arr = ES()->lists_db->get_lists_by_id( $list_id );
+							$list_names     = implode( ',', array_column( $list_names_arr, 'name' ) );
+						}
+
+						$status     = 'unconfirmed';
+						$list_names = array_map( 'trim', explode( ',', $list_names ) );
+
+						if ( isset( $insert['status'] ) ) {
+							$map_status = strtolower( str_replace( ' ', '_', $insert['status'] ) );
+						}
+
+						if ( isset( $insert['status'] ) && in_array( $map_status, $es_status_mapping ) ) {
+							$status = sanitize_text_field( trim( $map_status ) );
+						} elseif ( ! empty( $selected_status ) ) {
+							$status = $selected_status;
+						}
+
+						if ( ! empty( $es_status_mapping[ $status ] ) ) {
+							$status = $es_status_mapping[ $status ];
+						}
+
+						foreach ( $list_names as $key => $list_name ) {
+							if ( ! empty( $list_name ) ) {
+								$list_contact_data[ $list_name ][ $status ][] = $email;
+							}
+						}
+
 						$current_batch_emails[] = $email;
 					}
 				}
-				
+
 				if ( count( $current_batch_emails ) > 0 ) {
 
 					$current_batch_emails = array_unique( $current_batch_emails );
 
 					$existing_contacts_email_id_map = ES()->contacts_db->get_email_id_map( $current_batch_emails );
 					if ( ! empty( $existing_contacts_email_id_map ) ) {
-						$contacts_data = array_diff_key( $contacts_data, $existing_contacts_email_id_map ); 
+						$contacts_data = array_diff_key( $contacts_data, $existing_contacts_email_id_map );
 					}
 
 					if ( ! empty( $contacts_data ) ) {
@@ -979,47 +991,54 @@ class ES_Import_Subscribers {
 					}
 
 					if ( ! empty( $list_contact_data ) ) {
-						foreach ($list_contact_data as $list_name => $list_data ) {
+						foreach ( $list_contact_data as $list_name => $list_data ) {
 							$list = ES()->lists_db->get_list_by_name( $list_name );
-					
+
 							if ( ! empty( $list ) ) {
 								$list_id = $list['id'];
 							} else {
 								$list_id = ES()->lists_db->add_list( $list_name );
-
 							}
 
-							foreach ($list_data as $status => $contact_emails) {
+							foreach ( $list_data as $status => $contact_emails ) {
 								$contact_id_date = ES()->contacts_db->get_contact_ids_created_at_date_by_emails( $contact_emails );
-								$contact_ids = array_keys( $contact_id_date );
+								$contact_ids     = array_keys( $contact_id_date );
 								if ( count( $contact_ids ) > 0 ) {
 									ES()->lists_contacts_db->remove_contacts_from_lists( $contact_ids, $list_id );
-									ES()->lists_contacts_db->do_import_contacts_into_list( $list_id, $contact_id_date, $status, 1, $created_at );
+									ES()->lists_contacts_db->do_import_contacts_into_list( $list_id, $contact_id_date, $status, 1 );
 								}
 							}
 						}
-					} 
+					}
 				}
 			}
 
-			$return['memoryusage'] = size_format( memory_get_peak_usage( true ), 2 );
-			$return['errors']      = isset( $bulkdata['errors'] ) ? $bulkdata['errors'] : 0;
-			$return['imported']    = ( $bulkdata['imported'] );
-			$return['total']       = ( $bulkdata['lines'] );
-			$return['f_errors']    = number_format_i18n( $bulkdata['errors'] );
-			$return['f_imported']  = number_format_i18n( $bulkdata['imported'] );
-			$return['f_total']     = number_format_i18n( $bulkdata['lines'] );
+			$return['memoryusage']            = size_format( memory_get_peak_usage( true ), 2 );
+			$return['errors']                 = isset( $bulkdata['errors'] ) ? $bulkdata['errors'] : 0;
+			$return['duplicate_emails_count'] = isset( $bulkdata['duplicate_emails_count'] ) ? $bulkdata['duplicate_emails_count'] : 0;
+			$return['imported']               = ( $bulkdata['imported'] );
+			$return['total']                  = ( $bulkdata['lines'] );
+			$return['f_errors']               = number_format_i18n( $bulkdata['errors'] );
+			$return['f_imported']             = number_format_i18n( $bulkdata['imported'] );
+			$return['f_total']                = number_format_i18n( $bulkdata['lines'] );
+			$return['f_duplicate_emails']     = number_format_i18n( $bulkdata['duplicate_emails_count'] );
 
 			$return['html'] = '';
 
-			if ( $bulkdata['imported'] + $bulkdata['errors'] >= $bulkdata['lines'] ) {
+			if ( ( $bulkdata['imported'] + $bulkdata['errors'] + $bulkdata['duplicate_emails_count'] ) >= $bulkdata['lines'] ) {
 				/* translators: 1. Total imported contacts 2. Total contacts */
-				$return['html'] .= '<p class="text-base text-gray-600 pt-2 pb-1.5">' . sprintf( esc_html__( '%1$s of %2$s contacts imported', 'email-subscribers' ), '<span class="font-medium">' . number_format_i18n( $bulkdata['imported'] ) . '</span>', '<span class="font-medium">' . number_format_i18n( $bulkdata['lines'] ) . '</span>' ) . '<p>';
-				
+				$return['html'] .= '<p class="text-base text-gray-600 pt-2 pb-1.5">' . sprintf( esc_html__( '%1$s of %2$s contacts imported.', 'email-subscribers' ), '<span class="font-medium">' . number_format_i18n( $bulkdata['imported'] ) . '</span>', '<span class="font-medium">' . number_format_i18n( $bulkdata['lines'] ) . '</span>' );
+
+				if ( $bulkdata['duplicate_emails_count'] ) {
+					$duplicate_email_string = _n( 'email', 'emails', $bulkdata['duplicate_emails_count'], 'email-subscribers' );
+					/* translators: 1. Duplicate emails count. 2. Email or emails string based on duplicate email count. */
+					$return['html'] .= sprintf( esc_html__( '%1$s duplicate %2$s found.', 'email-subscribers' ), '<span class="font-medium">' . number_format_i18n( $bulkdata['duplicate_emails_count'] ) . '</span>', $duplicate_email_string );
+				}
+				$return['html'] .= '</p>';
 				if ( $bulkdata['errors'] ) {
-					$i      			    = 0;
+					$i                      = 0;
 					$skipped_contact_string = _n( 'contact was', 'contacts were', $bulkdata['errors'], 'email-subscribers' );
-					
+
 					/* translators: %d Skipped emails count %s Skipped contacts string */
 					$table  = '<p class="text-sm text-gray-600 pt-2 pb-1.5">' . __( sprintf( 'The following %d %s skipped', $bulkdata['errors'], $skipped_contact_string ), 'email-subscribers' ) . ':</p>';
 					$table .= '<table class="w-full bg-white rounded-lg shadow overflow-hidden mt-1.5">';
@@ -1034,7 +1053,7 @@ class ES_Import_Subscribers {
 					if ( $last_name_column_choosen ) {
 						$table .= '<th class="pl-3 py-3 font-medium">' . esc_html__( 'Last Name', 'email-subscribers' ) . '</th>';
 					}
-					
+
 					$table .= '<th class="pl-3 py-3 font-medium">' . esc_html__( 'Email', 'email-subscribers' ) . '</th>';
 					$table .= '<th class="pl-3 pr-1 py-3 font-medium">' . esc_html__( 'Reason', 'email-subscribers' ) . '</th>';
 					$table .= '</tr></thead><tbody>';
@@ -1043,24 +1062,24 @@ class ES_Import_Subscribers {
 						$table .= '<td class="pl-4">' . ( ++$i ) . '</td>';
 						$email  = ! empty( $error_data['email'] ) ? $error_data['email'] : '-';
 						if ( $first_name_column_choosen ) {
-							$first_name = ! empty( $error_data['first_name'] ) ? $error_data['first_name'] : '-';
-							$table .= '<td class="pl-3 py-3">' . esc_html( $first_name ) . '</td>';
+							$first_name = ! empty( $error_data['fn'] ) ? $error_data['fn'] : '-';
+							$table     .= '<td class="pl-3 py-3">' . esc_html( $first_name ) . '</td>';
 						}
 						if ( $last_name_column_choosen ) {
-							$last_name = ! empty( $error_data['last_name'] ) ? $error_data['last_name'] : '-';
-							$table .= '<td class="pl-3 py-3">' . esc_html( $last_name ) . '</td>';
+							$last_name = ! empty( $error_data['ln'] ) ? $error_data['ln'] : '-';
+							$table    .= '<td class="pl-3 py-3">' . esc_html( $last_name ) . '</td>';
 						}
-						$error_code = ! empty( $error_data['error_code'] ) ? $error_data['error_code'] : '-';
-						$reason     = ! empty( $error_codes[$error_code] ) ? $error_codes[$error_code] : '-';
-						$table .= '<td class="pl-3 py-3">' . esc_html( $email ) . '</td><td class="pl-3 py-3">' . esc_html( $reason ) . '</td></tr>';
+						$error_code = ! empty( $error_data['cd'] ) ? $error_data['cd'] : '-';
+						$reason     = ! empty( $error_codes[ $error_code ] ) ? $error_codes[ $error_code ] : '-';
+						$table     .= '<td class="pl-3 py-3">' . esc_html( $email ) . '</td><td class="pl-3 py-3">' . esc_html( $reason ) . '</td></tr>';
 					}
 					$table          .= '</tbody></table>';
 					$return['html'] .= $table;
 				}
-				$this->do_cleanup();
+				do_action( 'ig_es_remove_import_data' );
 			} else {
 				// Add current batch emails into the processed email list
-				$processed_emails 			  = array_merge( $processed_emails, $current_batch_emails );
+				$processed_emails             = array_merge( $processed_emails, $current_batch_emails );
 				$bulkdata['processed_emails'] = $processed_emails;
 
 				update_option( 'ig_es_bulk_import', $bulkdata );
@@ -1073,50 +1092,33 @@ class ES_Import_Subscribers {
 	}
 
 	/**
-	 * Method to create temporary table if not already exists
-	 * 
+	 * Method to truncate temp import table and options used during import process
+	 *
+	 * @param string import identifier
+	 *
 	 * @since 4.6.6
+	 *
+	 * @since 4.7.5 Renamed the function, converted to static method
 	 */
-	public function maybe_create_temporary_import_table() {
+	public static function remove_import_data( $identifier = '' ) {
 
 		global $wpdb;
-		
-		require_once  ABSPATH . 'wp-admin/includes/upgrade.php';
-		
-		$charset_collate    = $wpdb->get_charset_collate();
-		$create_table_query = "CREATE TABLE IF NOT EXISTS {$wpdb->prefix}ig_temp_import (
-			ID bigint(20) NOT NULL AUTO_INCREMENT,
-			data longtext NOT NULL,
-			identifier char(13) NOT NULL,
-			PRIMARY KEY (ID)
-		) $charset_collate";
 
-		dbDelta( $create_table_query );
-	}
-
-	/**
-	 * Method to truncate table and options used during import process
-	 * 
-	 * @since 4.6.6
-	 */
-	public function do_cleanup( $identifier = '' ) {
-
-		global $wpdb;
+		// If identifier is empty that means, there isn't any importer running. We can safely delete the import data.
 		if ( empty( $identifier ) ) {
 			// Delete options used during import.
 			delete_option( 'ig_es_bulk_import' );
 			delete_option( 'ig_es_bulk_import_errors' );
 
-			// We are trancating table so that primary key is reset to 1 otherwise ID column's value will increase on every insert and at some point ID column's data type may not be able to accomodate its value resulting in insert to fail. 
+			// We are trancating table so that primary key is reset to 1 otherwise ID column's value will increase on every insert and at some point ID column's data type may not be able to accomodate its value resulting in insert to fail.
 			$wpdb->query( "TRUNCATE TABLE {$wpdb->prefix}ig_temp_import" );
 		}
 
-		
 	}
 
 	public function api() {
 
-		$mailchimp_apikey = ig_es_get_request_data('mailchimp_api_key');
+		$mailchimp_apikey = ig_es_get_request_data( 'mailchimp_api_key' );
 		if ( ! $this->api ) {
 			$this->api = new ES_Mailchimp_API( $mailchimp_apikey );
 		}
@@ -1139,11 +1141,11 @@ class ES_Import_Subscribers {
 				);
 				break;
 			case 'import_list':
-				$limit = ig_es_get_request_data('limit');
-				$offset = ig_es_get_request_data('offset');
-				$contact_status = ig_es_get_request_data('status');
-				$import_identifier = ig_es_get_request_data('identifier');
-				
+				$limit             = ig_es_get_request_data( 'limit' );
+				$offset            = ig_es_get_request_data( 'offset' );
+				$contact_status    = ig_es_get_request_data( 'status' );
+				$import_identifier = ig_es_get_request_data( 'identifier' );
+
 				if ( ! isset( $_POST['id'] ) ) {
 					wp_send_json_error(
 						array(
@@ -1152,11 +1154,11 @@ class ES_Import_Subscribers {
 					);
 				}
 
-				$limit  	= isset( $limit ) ? (int) $limit : 1000;
-				$offset 	= isset( $offset ) ? (int) $offset : 0;
-				$status 	= isset( $contact_status) ? (array) $contact_status : array( 'subscribed' );
+				$limit      = isset( $limit ) ? (int) $limit : 1000;
+				$offset     = isset( $offset ) ? (int) $offset : 0;
+				$status     = isset( $contact_status ) ? (array) $contact_status : array( 'subscribed' );
 				$identifier = isset( $import_identifier ) ? $import_identifier : '';
-				$list_id 	= ig_es_get_request_data( 'id' );
+				$list_id    = ig_es_get_request_data( 'id' );
 
 				$subscribers = $this->api()->members(
 					$list_id,
@@ -1167,28 +1169,26 @@ class ES_Import_Subscribers {
 					)
 				);
 
-				$list_name = ig_es_get_request_data('list_name');
+				$list_name = ig_es_get_request_data( 'list_name' );
 
-				$importing_from = 'mailchimp-api';
-				$raw_data = '';
-				$seperator = ';';
+				$importing_from       = 'mailchimp-api';
+				$raw_data             = '';
+				$seperator            = ';';
 				$data_contain_headers = false;
+
 				$headers = array(
 					__( 'Email', 'email-subscribers' ),
 					__( 'First Name', 'email-subscribers' ),
 					__( 'Last Name', 'email-subscribers' ),
 					__( 'Status', 'email-subscribers' ),
 					__( 'List Name', 'email-subscribers' ),
-
 				);
 
-				$raw_data = '';
 				$es_mailchimp_status_mapping = array(
-					'subscribed'	=> __( 'Subscribed', 'email-subscribers' ),
-					'unsubscribed' 	=> __( 'Unsubscribed', 'email-subscribers' ),
-					'pending'		=> __( 'Unconfirmed', 'email-subscribers' ),
-					'cleaned' 		=> __( 'Hard Bounced', 'email-subscribers' ),
-
+					'subscribed'   => __( 'Subscribed', 'email-subscribers' ),
+					'unsubscribed' => __( 'Unsubscribed', 'email-subscribers' ),
+					'pending'      => __( 'Unconfirmed', 'email-subscribers' ),
+					'cleaned'      => __( 'Hard Bounced', 'email-subscribers' ),
 				);
 				foreach ( $subscribers as $subscriber ) {
 					if ( ! $subscriber->email_address ) {
@@ -1197,7 +1197,7 @@ class ES_Import_Subscribers {
 					$user_data = array();
 
 					$list_name = ! empty( $list_name ) ? $list_name : 'Test';
-					$status = ! empty( $subscriber->status ) ? $subscriber->status : 'subscribed';
+					$status    = ! empty( $subscriber->status ) ? $subscriber->status : 'subscribed';
 					if ( ! empty( $es_mailchimp_status_mapping[ $status ] ) ) {
 						$status = $es_mailchimp_status_mapping[ $status ];
 					}
@@ -1216,16 +1216,16 @@ class ES_Import_Subscribers {
 				$response = array();
 
 				if ( ! empty( $raw_data ) ) {
-					$result = $this->insert_into_temp_table( $raw_data, $seperator, $data_contain_headers, $headers, $identifier, 'mailchimp-api'  );	
+					$result     = self::insert_into_temp_table( $raw_data, $seperator, $data_contain_headers, $headers, $identifier, 'mailchimp-api' );
 					$identifier = $result['identifier'];
 				}
 				$response = array(
-					'total' => $this->api()->get_total_items(),
-					'added' => count( $subscribers ),
+					'total'       => $this->api()->get_total_items(),
+					'added'       => count( $subscribers ),
 					'subscribers' => count( $subscribers ),
-					'identifier' => $identifier,
+					'identifier'  => $identifier,
 				);
-				
+
 				wp_send_json_success( $response );
 				break;
 			case 'verify_api_key':
@@ -1245,38 +1245,38 @@ class ES_Import_Subscribers {
 
 	}
 
-	public function insert_into_temp_table( $raw_data, $seperator = ',', $data_contain_headers = false, $headers = array(), $identifier = '', $importing_from = 'csv' ) {
+	public static function insert_into_temp_table( $raw_data, $seperator = ',', $data_contain_headers = false, $headers = array(), $identifier = '', $importing_from = 'csv' ) {
 		global $wpdb;
 		$raw_data = ( trim( str_replace( array( "\r", "\r\n", "\n\n" ), "\n", $raw_data ) ) );
-
 
 		if ( function_exists( 'mb_convert_encoding' ) ) {
 			$encoding = mb_detect_encoding( $raw_data, 'auto' );
 		} else {
 			$encoding = 'UTF-8';
 		}
-		
+
 		$lines = explode( "\n", $raw_data );
 
+		// If data itself contains headers(in case of CSV), then remove it.
 		if ( $data_contain_headers ) {
 			array_shift( $lines );
 		}
-		
+
 		$lines_count = count( $lines );
-		
+
 		$batch_size = min( 500, max( 200, round( count( $lines ) / 200 ) ) ); // Each entry in temporary import table will have this much of subscribers data
 		$parts      = array_chunk( $lines, $batch_size );
 		$partcount  = count( $parts );
 
-		$this->do_cleanup( $identifier );
+		do_action( 'ig_es_remove_import_data', $identifier );
 
-		$identifier = empty( $identifier ) ? uniqid() : $identifier;
+		$identifier             = empty( $identifier ) ? uniqid() : $identifier;
 		$response['identifier'] = $identifier;
 
 		for ( $i = 0; $i < $partcount; $i++ ) {
 
 			$part = $parts[ $i ];
-		
+
 			$new_value = base64_encode( serialize( $part ) );
 
 			$wpdb->query( $wpdb->prepare( "INSERT INTO {$wpdb->prefix}ig_temp_import (data, identifier) VALUES (%s, %s)", $new_value, $identifier ) );
@@ -1284,20 +1284,21 @@ class ES_Import_Subscribers {
 
 		$bulk_import_data = get_option( 'ig_es_bulk_import', array() );
 		if ( ! empty( $bulk_import_data ) ) {
-			$partcount += $bulk_import_data['parts'];
+			$partcount   += $bulk_import_data['parts'];
 			$lines_count += $bulk_import_data['lines'];
 		}
-		
+
 		$bulkimport = array(
-			'imported'        => 0,
-			'errors'          => 0,
-			'encoding'        => $encoding,
-			'parts'           => $partcount,
-			'lines'           => $lines_count,
-			'separator'       => $seperator,
-			'importing_from'  => $importing_from,
-			'data_contain_headers'  => $data_contain_headers,
-			'headers'  		=> $headers,
+			'imported'               => 0,
+			'errors'                 => 0,
+			'duplicate_emails_count' => 0,
+			'encoding'               => $encoding,
+			'parts'                  => $partcount,
+			'lines'                  => $lines_count,
+			'separator'              => $seperator,
+			'importing_from'         => $importing_from,
+			'data_contain_headers'   => $data_contain_headers,
+			'headers'                => $headers,
 		);
 
 		$response['success']     = true;

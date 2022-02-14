@@ -13,17 +13,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Abstract class for send email workflow action
- * 
+ *
  * @class ES_Action_Send_Email_Abstract
- * 
+ *
  * @since 4.5.3
  */
 abstract class ES_Action_Send_Email_Abstract extends ES_Workflow_Action {
 
 	/**
 	 * Load admin props.
-	 * 
-	 * @since 4.5.3 
+	 *
+	 * @since 4.5.3
 	 */
 	public function load_admin_details() {
 		$this->group = __( 'Email', 'email-subscribers' );
@@ -31,7 +31,7 @@ abstract class ES_Action_Send_Email_Abstract extends ES_Workflow_Action {
 
 	/**
 	 * Load fields.
-	 * 
+	 *
 	 * @since 4.5.3
 	 */
 	public function load_fields() {

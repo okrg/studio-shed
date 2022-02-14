@@ -64,6 +64,14 @@ class ES_Handle_Post_Notification {
 				$post_id = $post->ID;
 				if ( ! empty( $post_id ) ) {
 
+					
+					$is_post_notified = get_post_meta( $post_id, 'ig_es_is_post_notified', true );
+
+					//Return if post notification is already sent once.
+					if ( $is_post_notified ) {
+						return;
+					}
+
 					if ( $this->is_wp_5 && $this->is_rest_request ) {
 						$this->do_post_notification_via_wp_5_hook = true;
 						$this->do_post_notification_for           = $post_id;
@@ -83,11 +91,14 @@ class ES_Handle_Post_Notification {
 
 			if ( count( $notifications ) > 0 ) {
 				foreach ( $notifications as $notification ) {
-					$template_id = $notification['base_template_id'];
-					$template    = get_post( $template_id );    // to confirm if template exists in ES->Templates
-					if ( is_object( $template ) ) {
+					$notification_id      = $notification['id'];
+					$notification_body    = $notification['body'];
+					$notification_subject = $notification['name'];
+					if ( ! empty( $notification_subject ) && ! empty( $notification_body ) ) {
 						$list_id = $notification['list_ids'];
-						$list_id = explode( ',', $list_id );
+						if ( ! empty( $list_id ) ) {
+							$list_id = explode( ',', $list_id );
+						}
 
 						$post = get_post( $post_id );
 
@@ -100,11 +111,9 @@ class ES_Handle_Post_Notification {
 							*/
 
 							// Prepare subject
-							$post_subject = self::prepare_subject( $post, $template );
+							$post_subject = self::prepare_subject( $notification_subject, $post );
 
-							// Prepare body
-							$template_content = $template->post_content;
-							$post_content     = self::prepare_body( $template_content, $post_id, $template_id );
+							$post_content = self::prepare_body( $notification_body, $post_id, 0, $notification_id );
 
 							$guid = ES_Common::generate_guid( 6 );
 
@@ -114,7 +123,7 @@ class ES_Handle_Post_Notification {
 								'subject'     => $post_subject,
 								'body'        => $post_content,
 								'count'       => 0,
-								'status'      => 'In Queue',
+								'status'      => '',
 								'start_at'    => '',
 								'finish_at'   => '',
 								'created_at'  => ig_get_current_date_time(),
@@ -129,11 +138,14 @@ class ES_Handle_Post_Notification {
 
 							// Add entry into mailing queue table
 							$mailing_queue_id = ES_DB_Mailing_Queue::add_notification( $data );
-							
+
 							if ( $mailing_queue_id ) {
+
 								$mailing_queue_hash = $guid;
 								$campaign_id        = $notification['id'];
 								ES_DB_Sending_Queue::do_insert_from_contacts_table( $mailing_queue_id, $mailing_queue_hash, $campaign_id, $list_id );
+								
+								update_post_meta( $post_id, 'ig_es_is_post_notified', 1 );
 							}
 						}
 					}
@@ -142,16 +154,15 @@ class ES_Handle_Post_Notification {
 		}
 	}
 
-	public static function prepare_subject( $post, $template ) {
+	public static function prepare_subject( $notification_subject, $post ) {
 		// convert post subject here
 
-		$post_title     = $post->post_title;
-		$template_title = $template->post_title;
+		$post_title  = $post->post_title;
 
 		$blog_charset = get_option( 'blog_charset' );
 
 		$post_title   = html_entity_decode( $post_title, ENT_QUOTES, $blog_charset );
-		$post_subject = str_replace( '{{POSTTITLE}}', $post_title, $template_title );
+		$post_subject = str_replace( '{{POSTTITLE}}', $post_title, $notification_subject );
 
 		$post_link    = get_permalink( $post );
 		$post_subject = str_replace( '{{POSTLINK}}', $post_link, $post_subject );
@@ -161,13 +172,13 @@ class ES_Handle_Post_Notification {
 	}
 
 	public static function prepare_body( $es_templ_body, $post_id, $email_template_id ) {
-		$post                 = get_post( $post_id );
-		$post_key             = 'post';
+		$post     = get_post( $post_id );
+		$post_key = 'post';
 		// Making $post as global using $GLOBALS['post'] key. Can't use 'post' key directly into $GLOBALS since PHPCS throws global variable assignment warning for 'post'.
 		$GLOBALS[ $post_key ] = $post;
 
-		$post_date            = ES_Common::convert_date_to_wp_date( $post->post_modified );
-		$es_templ_body        = str_replace( '{{DATE}}', $post_date, $es_templ_body );
+		$post_date     = ES_Common::convert_date_to_wp_date( $post->post_modified );
+		$es_templ_body = str_replace( '{{DATE}}', $post_date, $es_templ_body );
 
 		$post_title    = get_the_title( $post );
 		$es_templ_body = str_replace( '{{POSTTITLE}}', $post_title, $es_templ_body );
@@ -176,6 +187,7 @@ class ES_Handle_Post_Notification {
 		// Size of {{POSTIMAGE}}
 		$post_thumbnail      = '';
 		$post_thumbnail_link = '';
+		$post_thumbnail_url  = '';
 		if ( ( function_exists( 'has_post_thumbnail' ) ) && ( has_post_thumbnail( $post_id ) ) ) {
 			$es_post_image_size = get_option( 'ig_es_post_image_size', 'full' );
 			switch ( $es_post_image_size ) {
@@ -196,8 +208,16 @@ class ES_Handle_Post_Notification {
 			$post_thumbnail_link = "<a href='" . $post_link . "' target='_blank'>" . $post_thumbnail . '</a>';
 		}
 
-		$es_templ_body = str_replace( '{{POSTIMAGE}}', $post_thumbnail_link, $es_templ_body );
+		$es_templ_body 		= str_replace( '{{POSTIMAGE}}', $post_thumbnail_link, $es_templ_body );
 
+		$post_thumbnail_id = get_post_thumbnail_id( $post_id );
+
+		if ( ! empty( $post_thumbnail_id ) ) {
+			$post_thumbnail_url = wp_get_attachment_url( $post_thumbnail_id );
+		}
+
+		$es_templ_body 		= str_replace( '{{POSTIMAGE-URL}}', $post_thumbnail_url, $es_templ_body );
+		
 		// Get post description
 		$post_description_length = 50;
 		$post_description        = $post->post_content;
@@ -215,7 +235,7 @@ class ES_Handle_Post_Notification {
 		$es_templ_body = str_replace( '{{POSTEXCERPT}}', $post_excerpt, $es_templ_body );
 
 		$more_tag_data = get_extended( $post->post_content );
-		
+
 		// Get text before the more(<!--more-->) tag.
 		$text_before_more_tag = $more_tag_data['main'];
 		$text_before_more_tag = strip_tags( strip_shortcodes( $text_before_more_tag ) );
@@ -231,7 +251,7 @@ class ES_Handle_Post_Notification {
 		if ( strpos( $es_templ_body, '{{POSTCATS}}' ) >= 0 ) {
 			$taxonomies = get_object_taxonomies( $post );
 			$post_cats  = array();
-			
+
 			if ( ! empty( $taxonomies ) ) {
 				foreach ( $taxonomies as $taxonomy ) {
 					$taxonomy_object = get_taxonomy( $taxonomy );
@@ -283,8 +303,16 @@ class ES_Handle_Post_Notification {
 		$post               = get_post( $post_id );
 		$template_id        = ES()->campaigns_db->get_template_id_by_campaign( $campaign_id );
 		$template           = get_post( $template_id );
-		$template_content   = $template->post_content;
-		$content['subject'] = self::prepare_subject( $post, $template );
+		$campaign           = ES()->campaigns_db->get( $campaign_id );
+		
+		$campaign_subject = $campaign['name'];
+		if ( ! empty( $campaign['body'] ) ) {
+			$template_content = $campaign['body'];
+		} else {
+			$template_content = $template->post_content;
+		}
+		
+		$content['subject'] = self::prepare_subject( $campaign_subject, $post );
 		$content['body']    = self::prepare_body( $template_content, $post_id, $template_id );
 
 		return $content;

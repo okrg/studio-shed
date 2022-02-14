@@ -15,7 +15,6 @@ class ES_Contacts_Table extends ES_List_Table {
 	 *
 	 * @since 4.0.0
 	 * @var array
-	 *
 	 */
 	public $contact_lists_statuses = array();
 
@@ -25,7 +24,6 @@ class ES_Contacts_Table extends ES_List_Table {
 	 * @since 4.2.1
 	 *
 	 * @var string
-	 *
 	 */
 	public static $option_per_page = 'es_contacts_per_page';
 
@@ -34,7 +32,6 @@ class ES_Contacts_Table extends ES_List_Table {
 	 *
 	 * @since 4.0.0
 	 * @var array
-	 *
 	 */
 	public $list_ids = array();
 
@@ -43,7 +40,6 @@ class ES_Contacts_Table extends ES_List_Table {
 	 *
 	 * @since 4.0.0
 	 * @var array
-	 *
 	 */
 	public $lists_id_name_map = array();
 
@@ -52,7 +48,6 @@ class ES_Contacts_Table extends ES_List_Table {
 	 *
 	 * @since 4.6.5
 	 * @var array
-	 *
 	 */
 	public $items_data = array();
 
@@ -116,7 +111,7 @@ class ES_Contacts_Table extends ES_List_Table {
 	 * Get the content of Audience main tab
 	 *
 	 * @param $active_tab
-	 * @param array $audience_main_tabs
+	 * @param array      $audience_main_tabs
 	 *
 	 * @return array
 	 *
@@ -125,7 +120,7 @@ class ES_Contacts_Table extends ES_List_Table {
 	public function get_audience_main_tabs( $active_tab, $audience_main_tabs = array() ) {
 
 		$audience_tab_main_navigation = array(
-			'new_contact' => array(
+			'new_contact'  => array(
 				'label'            => __( 'Add New Contact', 'email-subscribers' ),
 				'indicator_option' => '',
 				'indicator_label'  => '',
@@ -134,7 +129,7 @@ class ES_Contacts_Table extends ES_List_Table {
 				'url'              => add_query_arg( 'action', 'new', 'admin.php?page=es_subscribers' ),
 			),
 
-			'import' => array(
+			'import'       => array(
 				'label'            => __( 'Import Contacts', 'email-subscribers' ),
 				'indicator_option' => '',
 				'indicator_label'  => '',
@@ -375,14 +370,11 @@ class ES_Contacts_Table extends ES_List_Table {
 	 * @since 4.0.0
 	 */
 	public function save_contact( $id = 0 ) {
-		global $wpdb;
 
 		$first_name = '';
-		$action     = '';
 		$last_name  = '';
 		$email      = '';
 		$guid       = '';
-		$created_at = '';
 		$list_ids   = array();
 		$is_new     = true;
 
@@ -405,9 +397,9 @@ class ES_Contacts_Table extends ES_List_Table {
 				$email      = sanitize_email( ig_es_get_data( $contact, 'email' ) );
 				$guid       = ig_es_get_data( $contact, 'hash' );
 
-				$list_ids = ES()->lists_contacts_db->get_list_ids_by_contact( $id );
+				$contact_cf_data = apply_filters( 'es_prepare_cf_data_for_contact_array', $contact );
 
-				$nonce = esc_attr( ig_es_get_request_data( '_wpnonce' ) );
+				$list_ids = ES()->lists_contacts_db->get_list_ids_by_contact( $id );
 			}
 		}
 
@@ -439,6 +431,11 @@ class ES_Contacts_Table extends ES_List_Table {
 									'email'      => $email,
 								);
 
+								$contact = apply_filters( 'es_set_additional_contact_data', $contact, $contact_data );
+
+								//For submitted custom fields 
+								$contact_cf_data = apply_filters( 'es_prepare_cf_data_for_contact_array', $contact_data, true );
+
 								// Add contact.
 								$existing_contact_id = ES()->contacts_db->get_contact_id_by_email( $email );
 
@@ -459,32 +456,21 @@ class ES_Contacts_Table extends ES_List_Table {
 									}
 								}
 
-								/*
-								if ( $id ) {
-									ES()->contacts_db->update_contact( $id, $contact );
-								} else {
-									if ( ! $existing_contact_id ) {
-										$contact['source']     = 'admin';
-										$contact['status']     = 'verified';
-										$contact['hash']       = ES_Common::generate_guid();
-										$contact['created_at'] = ig_get_current_date_time();
-
-										$id = ES()->contacts_db->insert( $contact );
-
-									} else {
-										$message = __( 'Contact already exist.', 'email-subscribers' );
-										ES_Common::show_message( $message, 'error' );
-										$is_error = true;
-									}
-
-								}
-								*/
-
 								if ( ! $is_error ) {
 
 									$lists = ! empty( $lists ) ? $lists : array( 1 => 0 );
 
+									$existing_subscribed_lists = ES()->lists_contacts_db->get_list_ids_by_contact( $id, 'subscribed' );
 									ES()->lists_contacts_db->update_contact_lists( $id, $lists );
+									$updated_subscribed_lists = ES()->lists_contacts_db->get_list_ids_by_contact( $id, 'subscribed' );
+
+									// Lists whose status changed to unconfirmed or unsubscribed from subscribed.
+									$changed_lists = array_diff( $existing_subscribed_lists, $updated_subscribed_lists );
+
+									// Check if admin has updated status of any subscribed lists.
+									if ( ! $is_new && ! empty( $changed_lists ) ) {
+										do_action( 'ig_es_admin_contact_unsubscribe', $id, 0, 0, $changed_lists );
+									}
 
 									if ( $id ) {
 
@@ -497,20 +483,39 @@ class ES_Contacts_Table extends ES_List_Table {
 												$name      = ES_Common::prepare_name_from_first_name_last_name( $contact['first_name'], $contact['last_name'] );
 
 												$template_data = array(
-													'email'      => $contact['email'],
+													'email' => $contact['email'],
 													'contact_id' => $id,
-													'name'       => $name,
+													'name' => $name,
 													'first_name' => $contact['first_name'],
-													'last_name'  => $contact['last_name'],
-													'guid'       => $contact['hash'],
-													'list_name'  => $list_name,
+													'last_name' => $contact['last_name'],
+													'guid' => $contact['hash'],
+													'list_name' => $list_name,
 												);
 
 												// Send Welcome Email.
 												ES()->mailer->send_welcome_email( $contact['email'], $template_data );
 											}
 
-											$message = __( 'Contact added successfully!', 'email-subscribers' );
+											$contact_edit_url = menu_page_url( 'es_subscribers', false );
+											$contact_edit_url = add_query_arg(
+												array(
+													'subscriber' => $id,
+													'action'     => 'edit',
+												),
+												$contact_edit_url
+											);
+
+											/* translators: 1. Contact edit URL tag 2: Anchor close tag */
+											$message = sprintf( __( 'Contact added successfully. %1$sEdit contact%2$s.', 'email-subscribers' ), '<a href="' . esc_url( $contact_edit_url ) . '" class="text-indigo-600">', '</a>' );
+
+											// Reset form data
+											$first_name = '';
+											$last_name  = '';
+											$email      = '';
+											$lists	    = '';
+											$id         = 0;
+											
+											$contact_cf_data['custom_fields'] = array();
 										} else {
 											$message = __( 'Contact updated successfully!', 'email-subscribers' );
 										}
@@ -542,6 +547,9 @@ class ES_Contacts_Table extends ES_List_Table {
 			'guid'       => $guid,
 		);
 
+		if ( isset( $contact_cf_data['custom_fields'] ) ) {
+			$data = array_merge( $data, $contact_cf_data);
+		}
 		?>
 
 		<div class="max-w-full -mt-3 font-sans">
@@ -630,15 +638,18 @@ class ES_Contacts_Table extends ES_List_Table {
 			}
 
 			if ( ! empty( $filter_by_status ) ) {
-				if ( $where_clause_added ) {
-					$list_filter_sql .= $wpbd->prepare( ' AND status = %s', $filter_by_status );
+				$list_filter_sql .= ( $where_clause_added ) ? ' AND ' : ' WHERE';
+				if ( 'soft_bounced' === $filter_by_status ) {
+					$list_filter_sql .= $wpbd->prepare( ' bounce_status = %s', 1 );
+				} elseif ( 'hard_bounced' === $filter_by_status ) {
+					$list_filter_sql .= $wpbd->prepare( ' bounce_status = %s', 2 );
 				} else {
-					$list_filter_sql .= $wpbd->prepare( ' WHERE status = %s', $filter_by_status );
+					$list_filter_sql .= $wpbd->prepare( ' status = %s', $filter_by_status );
 				}
 			}
 
 			$filter_sql .= $list_filter_sql;
-			$query[]    = "id IN ( $filter_sql )";
+			$query[]     = "id IN ( $filter_sql )";
 		}
 
 		// Prepare search query
@@ -683,7 +694,7 @@ class ES_Contacts_Table extends ES_List_Table {
 			$sql .= $order_by_clause;
 			$sql .= " LIMIT {$offset}, {$per_page}";
 
-			$cache_key 		 = ES_Cache::generate_key( $sql );
+			$cache_key       = ES_Cache::generate_key( $sql );
 			$exists_in_cache = ES_Cache::is_exists( $cache_key, 'query' );
 
 			if ( ! $exists_in_cache ) {
@@ -693,8 +704,8 @@ class ES_Contacts_Table extends ES_List_Table {
 				$result = ES_Cache::get( $cache_key, 'query' );
 			}
 		} else {
-			
-			$cache_key 		 = ES_Cache::generate_key( $sql );
+
+			$cache_key       = ES_Cache::generate_key( $sql );
 			$exists_in_cache = ES_Cache::is_exists( $cache_key, 'query' );
 			if ( ! $exists_in_cache ) {
 				$result = $wpbd->get_var( $sql );
@@ -728,9 +739,7 @@ class ES_Contacts_Table extends ES_List_Table {
 		}
 
 		?>
-
-
-		<form method="post" action="<?php echo esc_attr( $action ); ?>" class="ml-5 mr-4 text-left pt-8 mt-2 item-center ">
+		<form id="es-admin-contact-form" method="post" action="<?php echo esc_attr( $action ); ?>" class="ml-5 mr-4 text-left pt-8 mt-2 item-center ">
 			<?php wp_nonce_field( 'ig-es-contact-nonce', 'ig_es_contact_nonce' ); ?>
 			<div class="flex flex-row border-b border-gray-100">
 				<div class="flex w-1/5">
@@ -789,7 +798,7 @@ class ES_Contacts_Table extends ES_List_Table {
 									<path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
 								</svg>
 							</div>
-							<input id="email" class="form-input block border-gray-400 w-full pl-10 pr-12 shadow-sm  focus:bg-gray-100 sm:text-sm sm:leading-5" id="email" name="contact_data[email]" value="<?php echo esc_attr( $email ); ?>" placeholder="<?php esc_html_e( 'Enter email', 'email-subscribers' ); ?>"/>
+							<input id="email" class="form-input block border-gray-400 w-full pl-10 pr-12 shadow-sm  focus:bg-gray-100 sm:text-sm sm:leading-5" type="email" name="contact_data[email]" value="<?php echo esc_attr( $email ); ?>" placeholder="<?php esc_html_e( 'Enter email', 'email-subscribers' ); ?>"/>
 						</div>
 					</div>
 				</div>
@@ -824,11 +833,13 @@ class ES_Contacts_Table extends ES_List_Table {
 				</div>
 			<?php } ?>
 
+			<?php do_action( 'es_show_additional_contacts_data', $data ); ?>
 			<div class="flex flex-row border-b border-gray-100">
 				<div class="flex w-1/5">
 					<div class="ml-4 pt-6">
 						<label for="status">
 							<span class="block ml-4 pt-1 pr-4 text-sm font-medium text-gray-600 pb-2"> <?php esc_html_e( 'List(s)', 'email-subscribers' ); ?></span></label>
+							<p class="italic text-xs text-gray-400 mt-2 ml-4 leading-snug pb-8"><?php esc_html_e( 'Contacts will be added into selected list(s)', 'email-subscribers' ); ?></p>
 					</div>
 				</div>
 				<div class="flex">
@@ -845,7 +856,7 @@ class ES_Contacts_Table extends ES_List_Table {
 
 			<div class="flex border-b border-gray-100">
 				<?php
-				$submit_button_text = $is_new ? __( 'Save Contact', 'email-subscribers' ) : __( 'Save Changes', 'email-subscribers' );
+				$submit_button_text = $is_new ? __( 'Add Contact', 'email-subscribers' ) : __( 'Save Changes', 'email-subscribers' );
 				?>
 				<div class="ml-4 mb-4 pt-6">
 					<input type="hidden" name="contact_data[created_at]" value="<?php echo esc_attr( $created ); ?>"/>
@@ -875,7 +886,7 @@ class ES_Contacts_Table extends ES_List_Table {
 	/**
 	 * Render a column when no column specific method exist.
 	 *
-	 * @param array $item
+	 * @param array  $item
 	 * @param string $column_name
 	 *
 	 * @return mixed
@@ -929,7 +940,7 @@ class ES_Contacts_Table extends ES_List_Table {
 
 				$selected = ! empty( $list_contact_status_map[ $list_id ] ) ? $list_contact_status_map[ $list_id ] : '';
 
-				$status_dropdown_html = '<select class="h-8 form-select w-40 mt-2 mr-8 shadow-sm border-gray-400 ig-es-statuses-dropdown shadow-sm  sm:text-sm sm:leading-5" name="contact_data[lists][' . esc_attr( $list_id ) . ']" >';
+				$status_dropdown_html  = '<select class="h-8 form-select w-40 mt-2 mr-8 shadow-sm border-gray-400 ig-es-statuses-dropdown shadow-sm  sm:text-sm sm:leading-5" name="contact_data[lists][' . esc_attr( $list_id ) . ']" >';
 				$status_dropdown_html .= ES_Common::prepare_statuses_dropdown_options( $selected );
 				$status_dropdown_html .= '</select>';
 
@@ -938,7 +949,7 @@ class ES_Contacts_Table extends ES_List_Table {
 					$status_span = '<span class="border-gray-400 focus:bg-gray-100 es_list_contact_status ' . $list_contact_status_map[ $list_id ] . '" title="' . ucwords( $list_contact_status_map[ $list_id ] ) . '">';
 				}
 
-				$list_name  = strlen( $list_name ) > 15 ? substr( $list_name, 0, 15 ) . '...' : $list_name;
+				$list_name   = strlen( $list_name ) > 15 ? substr( $list_name, 0, 15 ) . '...' : $list_name;
 				$lists_html .= "<td class='pr-1 pt-2 text-sm leading-5 font-normal text-gray-500'>$status_span$list_name</td><td>$status_dropdown_html</td>";
 
 				$i ++;
@@ -1000,21 +1011,28 @@ class ES_Contacts_Table extends ES_List_Table {
 	}
 
 	/**
-	 * Method for name column
+	 * Method for subscriber column
 	 *
 	 * @param array $item an array of DB data
 	 *
 	 * @return string
 	 *
-	 * @since 4.0.0
+	 * @since 4.8.3
 	 */
-	public function column_name( $item ) {
+	public function column_subscriber( $item ) {
 		$delete_nonce = wp_create_nonce( 'ig_es_delete_subscriber' );
 
-		$name  = ES_Common::prepare_name_from_first_name_last_name( $item['first_name'], $item['last_name'] );
+		$contact_id = $item['id'];
+		$name       = ES_Common::prepare_name_from_first_name_last_name( $item['first_name'], $item['last_name'] );
 
-		$title = '<strong class="pl-1">' . $name . '</strong>';		
-		$page = ig_es_get_request_data( 'page' );
+		$title = '';
+		if ( ! empty( $name ) ) {
+			$title = '<strong>' . $name . '</strong><br/>';	
+		}
+
+		$title .= $item['email'];
+		$title = apply_filters( 'ig_es_contact_column_subscriber', $title, $item );
+		$page   = ig_es_get_request_data( 'page' );
 
 		$actions = array(
 			'edit'   => '<a href="?page=' . esc_attr( $page ) . '&action=edit&subscriber=' . absint( $item['id'] ) . '&_wpnonce=' . $delete_nonce . '" class="text-indigo-600">' . esc_html__( 'Edit', 'email-subscribers' ) . '</a>',
@@ -1022,7 +1040,25 @@ class ES_Contacts_Table extends ES_List_Table {
 			'delete' => '<a href="?page=' . esc_attr( $page ) . '&action=delete&subscriber=' . absint( $item['id'] ) . '&_wpnonce=' . $delete_nonce . '" onclick="return checkDelete()">' . esc_html__( 'Delete', 'email-subscribers' ) . '</a>',
 		);
 
-		$actions['resend'] = '<a href="?page=' . esc_attr( $page ) . '&action=resend&subscriber=' . absint( $item['id'] ) . '&_wpnonce=' . $delete_nonce . '" class="text-indigo-600">' . esc_html__( 'Resend Confirmation', 'email-subscribers' ) . '</a>';
+		if ( isset( $this->contact_lists_statuses[ $contact_id ] ) ) {
+			$lists_statuses = $this->contact_lists_statuses[ $contact_id ];
+			
+			if ( ! empty( $lists_statuses ) ) {
+				
+				$has_unconfirmed_status = false;
+				foreach ( $lists_statuses as $list_status ) {
+					if ( 'unconfirmed' === $list_status ) {
+						$has_unconfirmed_status = true;
+						break;
+					}
+				}
+	
+				// Show resend confirmation email option only when contact has unconfirmed status in atleast one list.
+				if ( $has_unconfirmed_status ) {
+					$actions['resend'] = '<a href="?page=' . esc_attr( $page ) . '&action=resend&subscriber=' . absint( $item['id'] ) . '&_wpnonce=' . $delete_nonce . '" class="text-indigo-600">' . esc_html__( 'Resend Confirmation', 'email-subscribers' ) . '</a>';
+				}
+			}
+		}
 
 		return $title . $this->row_actions( $actions );
 	}
@@ -1037,12 +1073,11 @@ class ES_Contacts_Table extends ES_List_Table {
 	public function get_columns() {
 		$columns      = array(
 			'cb'   		 => '<input type="checkbox"/>',
-			'name'  	 => __( 'Name', 'email-subscribers' ),
-			'email' 	 => __( 'Email', 'email-subscribers' ),
+			'subscriber' => __( 'Contact', 'email-subscribers' ),
 			'lists' 	 => __( 'List(s)', 'email-subscribers' ),
 			'created_at' => __( 'Created', 'email-subscribers' )
 		);
-		
+
 		return $columns;
 	}
 
@@ -1079,7 +1114,9 @@ class ES_Contacts_Table extends ES_List_Table {
 			'bulk_status_update' => __( 'Change status', 'email-subscribers' ),
 		);
 
-		return $actions;
+		$bulk_actions = apply_filters( 'ig_es_contacts_bulk_action', $actions );
+
+		return $bulk_actions;
 	}
 
 	/**
@@ -1185,7 +1222,7 @@ class ES_Contacts_Table extends ES_List_Table {
 	 * @since 4.0.0
 	 */
 	public function prepare_lists_dropdown() {
-		$data = '<label for="bulk-action-selector-top" class="screen-reader-text">Select bulk action</label><select name="list_id" id="list_id" class="groupsselect" style="display: none">';
+		$data  = '<label for="bulk-action-selector-top" class="screen-reader-text">Select bulk action</label><select name="list_id" id="list_id" class="groupsselect" style="display: none">';
 		$data .= ES_Common::prepare_list_dropdown_options();
 		$data .= '</select>';
 
@@ -1199,7 +1236,7 @@ class ES_Contacts_Table extends ES_List_Table {
 	 * @since 4.0.0
 	 */
 	public function prepare_statuses_dropdown() {
-		$data = '<label for="bulk-action-selector-top" class="screen-reader-text">Select bulk action</label><select name="status_select" id="status_select" class="statusesselect" style="display:none;">';
+		$data  = '<label for="bulk-action-selector-top" class="screen-reader-text">Select bulk action</label><select name="status_select" id="status_select" class="statusesselect" style="display:none;">';
 		$data .= ES_Common::prepare_statuses_dropdown_options();
 		$data .= '</select>';
 
@@ -1215,8 +1252,10 @@ class ES_Contacts_Table extends ES_List_Table {
 	 */
 	public function process_bulk_action() {
 
+		$current_action = $this->current_action();
+
 		// Detect when a bulk action is being triggered...
-		if ( 'delete' === $this->current_action() ) {
+		if ( 'delete' === $current_action ) {
 
 			// In our file that handles the request, verify the nonce.
 			$nonce = esc_attr( ig_es_get_request_data( '_wpnonce' ) );
@@ -1235,7 +1274,7 @@ class ES_Contacts_Table extends ES_List_Table {
 			}
 		}
 
-		if ( 'resend' === $this->current_action() ) {
+		if ( 'resend' === $current_action ) {
 			// In our file that handles the request, verify the nonce.
 			$nonce = esc_attr( ig_es_get_request_data( '_wpnonce' ) );
 
@@ -1273,8 +1312,8 @@ class ES_Contacts_Table extends ES_List_Table {
 		$action  = ig_es_get_request_data( 'action' );
 		$action2 = ig_es_get_request_data( 'action2' );
 
-		$actions = array( 'bulk_delete', 'bulk_status_update', 'bulk_list_update', 'bulk_list_add' );
-		if ( in_array( $action, $actions ) || in_array( $action2, $actions ) ) {
+		$actions = array( 'bulk_delete', 'bulk_status_update', 'bulk_list_update', 'bulk_list_add', 'bulk_send_confirmation_email' );
+		if ( in_array( $action, $actions, true ) || in_array( $action2, $actions, true ) ) {
 
 			$subscriber_ids = ig_es_get_request_data( 'subscribers' );
 			if ( empty( $subscriber_ids ) ) {
@@ -1309,6 +1348,10 @@ class ES_Contacts_Table extends ES_List_Table {
 
 				// loop over the array of record IDs and delete them
 				$edited = ES()->lists_contacts_db->edit_subscriber_status( $subscriber_ids, $status );
+
+				if ( in_array( $status, array( 'unsubscribed', 'unconfirmed' ), true ) ) {
+					do_action( 'ig_es_admin_contact_unsubscribe', $subscriber_ids );
+				}
 
 				if ( $edited ) {
 					$message = __( 'Contact(s) status changed successfully!', 'email-subscribers' );
@@ -1358,6 +1401,8 @@ class ES_Contacts_Table extends ES_List_Table {
 
 				return;
 			}
+
+			do_action( 'ig_es_audience_screen_action_' . $current_action, $subscriber_ids );
 		}
 	}
 
@@ -1391,5 +1436,4 @@ class ES_Contacts_Table extends ES_List_Table {
 
 		$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->prefix}ig_contacts SET form_id = %d WHERE form_id = %d", 0, $form_id ) );
 	}
-
 }

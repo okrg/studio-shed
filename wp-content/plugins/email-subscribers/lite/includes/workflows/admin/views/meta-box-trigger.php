@@ -25,7 +25,7 @@ if ( ! ES()->is_starter() ) {
 			'ig_es_cf7_submitted'              => __( 'Contact Form 7 Submitted', 'email-subscribers' ),
 			'ig_es_wpforms_submitted'          => __( 'WP Form Submitted', 'email-subscribers' ),
 			'ig_es_ninja_forms_submitted'      => __( 'Ninja Form Submitted', 'email-subscribers' ),
-			'ig_es_gravity_forms_submitted'	   => __( 'Gravity Form Submitted', 'email-subscribers' ),
+			'ig_es_gravity_forms_submitted'    => __( 'Gravity Form Submitted', 'email-subscribers' ),
 			'ig_es_forminator_forms_submitted' => __( 'Forminator Form Submitted', 'email-subscribers' ),
 		),
 		'Order'   => array(
@@ -40,25 +40,25 @@ if ( ! ES()->is_starter() ) {
 
 if ( ! ES()->is_pro() ) {
 	$pro_trigger_list = array(
-		'Comment' => array(
+		'Comment'   => array(
 			'ig_es_wc_product_review_approved' => __( 'New Product Review Posted', 'email-subscribers' ),
 		),
-		'Order'   => array(
+		'Order'     => array(
 			'ig_es_wc_order_refunded' => __( 'WooCommerce Order Refunded', 'email-subscribers' ),
 		),
-		'Wishlists'	=> array(
+		'Wishlists' => array(
 			'ig_es_yith_wc_wishlist' => __( 'Wishlist Item On Sale (YITH Wishlists)', 'email-subscribers' ),
 		),
-		'Carts'	=> array(
-			'ig_es_wc_cart_abandoned' 					=> __( 'Cart Abandoned', 'email-subscribers' ),
-			'ig_es_wc_cart_abandoned_registered_users'	=> __( 'Cart Abandoned - Registered Users Only', 'email-subscribers' ),
-			'ig_es_wc_cart_abandoned_guests_users' 		=> __( 'Cart Abandoned - Guests Only', 'email-subscribers' ),
+		'Carts'     => array(
+			'ig_es_wc_cart_abandoned'                  => __( 'Cart Abandoned', 'email-subscribers' ),
+			'ig_es_wc_cart_abandoned_registered_users' => __( 'Cart Abandoned - Registered Users Only', 'email-subscribers' ),
+			'ig_es_wc_cart_abandoned_guests_users'     => __( 'Cart Abandoned - Guests Only', 'email-subscribers' ),
 		),
-		'User' => array(
+		'User'      => array(
 			'ig_es_user_role_changed' => __( 'User Role Changed', 'email-subscribers' ),
 		),
 	);
-	$trigger_list = array_merge_recursive( $trigger_list, $pro_trigger_list );
+	$trigger_list     = array_merge_recursive( $trigger_list, $pro_trigger_list );
 }
 ?>
 <table class="ig-es-table">
@@ -88,11 +88,11 @@ if ( ! ES()->is_pro() ) {
 					</optgroup>
 				<?php endforeach; ?>
 			</select>
-			<?php if ( $current_trigger && $current_trigger->get_description() ) : ?>
-				<div class="js-trigger-description"><?php echo wp_kses_post( $current_trigger->get_description_html() ); ?></div>
-			<?php else : ?>
-				<div class="js-trigger-description"></div>
-			<?php endif; ?>
+			<div class="js-trigger-description">
+				<?php if ( $current_trigger && $current_trigger->get_description() ) : ?>
+					<?php echo wp_kses_post( $current_trigger->get_description_html() ); ?>
+				<?php endif; ?>
+			</div>
 		</td>
 	</tr>
 

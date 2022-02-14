@@ -18,7 +18,6 @@ if ( ! class_exists( 'ES_DB_Links' ) ) {
 		 *
 		 * @since 4.2.4
 		 * @var string
-		 *
 		 */
 		public $table_name;
 		/**
@@ -26,7 +25,6 @@ if ( ! class_exists( 'ES_DB_Links' ) ) {
 		 *
 		 * @since 4.2.4
 		 * @var string
-		 *
 		 */
 		public $version;
 		/**
@@ -34,7 +32,6 @@ if ( ! class_exists( 'ES_DB_Links' ) ) {
 		 *
 		 * @since 4.2.4
 		 * @var string
-		 *
 		 */
 		public $primary_key;
 
@@ -131,9 +128,9 @@ if ( ! class_exists( 'ES_DB_Links' ) ) {
 		 * Check whether link exists in campaign
 		 *
 		 * @param $link
-		 * @param int $campaign_id
-		 * @param int $message_id
-		 * @param int $index
+		 * @param int  $campaign_id
+		 * @param int  $message_id
+		 * @param int  $index
 		 *
 		 * @return string|null
 		 *

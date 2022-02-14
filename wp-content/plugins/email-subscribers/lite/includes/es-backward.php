@@ -91,7 +91,7 @@ class es_cls_dbquery {
 				'email'      => $email,
 				'contact_id' => $contact_id,
 				'guid'       => $guid,
-				'list_name'  => $list_name
+				'list_name'  => $list_name,
 			);
 
 			if ( 1 == $optin_type ) {
@@ -105,7 +105,7 @@ class es_cls_dbquery {
 					'first_name' => $sub_data['first_name'],
 					'last_name'  => $sub_data['last_name'],
 					'email'      => $email,
-					'list_name'  => $list_name
+					'list_name'  => $list_name,
 				);
 
 				ES()->mailer->send_add_new_contact_notification_to_admins( $template_data );
@@ -114,7 +114,6 @@ class es_cls_dbquery {
 				// Send Confirmation mail
 				ES()->mailer->send_double_optin_email( $email, $data );
 			}
-
 		}
 	}
 

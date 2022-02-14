@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-$reports_data = ES_Reports_Data::get_dashboard_reports_data( true );
+$reports_data = ES_Reports_Data::get_dashboard_reports_data( 'es_dashboard', true );
 
 $active_contacts    = isset( $reports_data['total_contacts'] ) ? $reports_data['total_contacts'] : 0;
 $total_forms        = isset( $reports_data['total_forms'] ) ? $reports_data['total_forms'] : 0;
@@ -42,48 +42,57 @@ $icegram_pricing_url       = 'https://www.icegram.com/email-subscribers-pricing/
 $reports_url               = admin_url( 'admin.php?page=es_reports' );
 $templates_url             = admin_url( 'edit.php?post_type=es_template' );
 $settings_url              = admin_url( 'admin.php?page=es_settings' );
+$drag_and_drop_url         = admin_url( 'admin.php?page=es_drag_and_drop' );
 $facebook_url              = 'https://www.facebook.com/groups/2298909487017349/';
 
 $feature_blocks = array(
-	'form' => array(
-		'title'                 => __('Add a Subscription Form', 'email-subscribers'),
-		'desc'                  => __('Grow subscribers. Add a newsletter signup form to your site.', 'email-subscribers'),
-		'cta_text'              => __('Create', 'email-subscribers'),
-		'feature_url'           => $new_form_url,
-		'graphics_img'          => 'lite/admin/images/dashboard-subscriber-form.png',
-	), 
+	'editor'                => array(
+		'title'        => __( 'Try the new editor', 'email-subscribers' ),
+		'desc'         => __( 'Checkout and playaround the new drag and drop editor.', 'email-subscribers' ),
+		'cta_text'     => __( 'Try it', 'email-subscribers' ),
+		'feature_url'  => $drag_and_drop_url,
+		'graphics_img' => 'lite/admin/images/dashboard-editor.png',
+	),
 
-	'import_contacts' => array(
-		'title'                 => __('Import Contacts', 'email-subscribers'),
-		'desc'                  =>__('Coming from another email marketing system? Upload a CSV file to import subscribers.', 'email-subscribers'),
-		'cta_text'              => __('Import', 'email-subscribers'),
-		'feature_url'           => admin_url( 'admin.php?page=es_subscribers&action=import' ),
-		'graphics_img'          => 'lite/admin/images/dashboard-import-contacts.png',
+	'form'                => array(
+		'title'        => __( 'Add a Subscription Form', 'email-subscribers' ),
+		'desc'         => __( 'Grow subscribers. Add a newsletter signup form to your site.', 'email-subscribers' ),
+		'cta_text'     => __( 'Create', 'email-subscribers' ),
+		'feature_url'  => $new_form_url,
+		'graphics_img' => 'lite/admin/images/dashboard-subscriber-form.png',
+	),
+
+	'import_contacts'     => array(
+		'title'        => __( 'Import Contacts', 'email-subscribers' ),
+		'desc'         => __( 'Coming from another email marketing system? Upload a CSV file to import subscribers.', 'email-subscribers' ),
+		'cta_text'     => __( 'Import', 'email-subscribers' ),
+		'feature_url'  => admin_url( 'admin.php?page=es_subscribers&action=import' ),
+		'graphics_img' => 'lite/admin/images/dashboard-import-contacts.png',
 	),
 
 	'setup_email_sending' => array(
-		'title'                 => __('Configure Email Sending', 'email-subscribers'),
-		'desc'                  => __(' Essential for high email delivery and reaching the inbox. SMTP, email service providers... set it all up.', 'email-subscribers'),
-		'cta_text'              => __('Setup', 'email-subscribers'),
-		'feature_url'           => admin_url( 'admin.php?page=es_settings#tabs-email_sending' ),
-		'graphics_img'          => 'lite/admin/images/dashboard-configure-email-sending.png',
+		'title'        => __( 'Configure Email Sending', 'email-subscribers' ),
+		'desc'         => __( ' Essential for high email delivery and reaching the inbox. SMTP, email service providers... set it all up.', 'email-subscribers' ),
+		'cta_text'     => __( 'Setup', 'email-subscribers' ),
+		'feature_url'  => admin_url( 'admin.php?page=es_settings#tabs-email_sending' ),
+		'graphics_img' => 'lite/admin/images/dashboard-configure-email-sending.png',
 	),
 
-	'broadcast' => array(
-		'title'                 => __('Send a Newsletter', 'email-subscribers'),
-		'desc'                  => __('Broadcast a newsletter campaign to all or selected subscribers.', 'email-subscribers'),
-		'cta_text'              => __('Begin', 'email-subscribers'),
-		'feature_url'           => $new_broadcast_url,
-		'graphics_img'          => 'lite/admin/images/dashboard-send-newsletter.png',
+	'broadcast'           => array(
+		'title'        => __( 'Send a Newsletter', 'email-subscribers' ),
+		'desc'         => __( 'Broadcast a newsletter campaign to all or selected subscribers.', 'email-subscribers' ),
+		'cta_text'     => __( 'Begin', 'email-subscribers' ),
+		'feature_url'  => $new_broadcast_url,
+		'graphics_img' => 'lite/admin/images/dashboard-send-newsletter.png',
 	),
 
-	'autoresponder' => array(
-		'title'                 => __('Create an Auto-responder Sequence', 'email-subscribers'),
-		'desc'                  => __('Welcome emails, drip campaigns... Send automatic emails at regular intervals to engage readers.', 'email-subscribers'),
-		'cta_text'              => __('Start', 'email-subscribers'),
-		'feature_url'           => $new_sequence_url,
-		'graphics_img'          => 'lite/admin/images/dashboard-autoresponder-sequence.png',
-		'documentation_url'     => 'https://www.icegram.com/documentation/email-sequence/?utm_source=in_app&utm_medium=sequence&utm_campaign=es_doc_upsell', 
+	'autoresponder'       => array(
+		'title'             => __( 'Create an Auto-responder Sequence', 'email-subscribers' ),
+		'desc'              => __( 'Welcome emails, drip campaigns... Send automatic emails at regular intervals to engage readers.', 'email-subscribers' ),
+		'cta_text'          => __( 'Start', 'email-subscribers' ),
+		'feature_url'       => $new_sequence_url,
+		'graphics_img'      => 'lite/admin/images/dashboard-autoresponder-sequence.png',
+		'documentation_url' => 'https://www.icegram.com/documentation/email-sequence/?utm_source=in_app&utm_medium=sequence&utm_campaign=es_doc_upsell',
 	),
 );
 
@@ -113,7 +122,7 @@ $topics_indexes = array_rand( $topics, 3 );
 						<div>
 						  <span class="rounded-md shadow-sm">
 							<button type="button" class="w-full ig-es-primary-button">
-							  <?php echo esc_html__( 'Create', 'email-subscribers' ); ?>
+								<?php echo esc_html__( 'Create', 'email-subscribers' ); ?>
 							  <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20">
 								<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
 							  </svg>
@@ -128,12 +137,12 @@ $topics_indexes = array_rand( $topics, 3 );
 								<!-- Start-IG-Code -->
 							  <a href="<?php echo esc_url( $new_post_notification_url ); ?>" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"><?php echo esc_html__( 'New Post Notification', 'email-subscribers' ); ?></a>
 								<!-- End-IG-Code -->
-							  <?php if ( ES()->is_pro() ) { ?>
+								<?php if ( ES()->is_pro() ) { ?>
 								  <a href="<?php echo esc_url( $new_sequence_url ); ?>" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"><?php echo esc_html__( 'New Sequence', 'email-subscribers' ); ?></a>
-							  <?php } else { ?>
+								<?php } else { ?>
 								  <a href="<?php echo esc_url( $icegram_pricing_url ); ?>" target="_blank" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"><?php echo esc_html__( 'New Sequence', 'email-subscribers' ); ?>
 									  <span class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full"><?php echo esc_html__( 'Premium', 'email-subscribers' ); ?></span></a>
-							  <?php } ?>
+								<?php } ?>
 							</div>
 							<div class="border-t border-gray-100"></div>
 							<div class="py-1">
@@ -214,9 +223,9 @@ $topics_indexes = array_rand( $topics, 3 );
 
 									<div class="flex items-center px-2 py-2 md:justify-between">
 										<div class="text-sm leading-5 text-gray-900">
-											<?php 
+											<?php
 											echo wp_kses_post( $topics[ $index ]['title'] );
-											if ( ! empty( $topics[ $index ]['label'] ) ) { 
+											if ( ! empty( $topics[ $index ]['label'] ) ) {
 												?>
 												<span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full <?php echo esc_attr( $topics[ $index ]['label_class'] ); ?>"><?php echo esc_html( $topics[ $index ]['label'] ); ?></span>
 											<?php } ?>
@@ -254,8 +263,11 @@ $topics_indexes = array_rand( $topics, 3 );
 
 		<section class="my-16">
 			<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-			<?php foreach ( $feature_blocks as $feature => $data ) { ?>
-				<div class="relative p-6 bg-white rounded-lg shadow">
+			<?php 
+			foreach ( $feature_blocks as $feature => $data ) { 
+				$bg = ( 'editor' === $feature ) ? 'bg-teal-100' : 'bg-white';
+				?>
+				<div class="relative p-6 rounded-lg shadow <?php echo esc_attr( $bg ); ?>">
 					<h3 class="text-lg font-medium tracking-tight text-gray-900">
 						<?php echo esc_html( $data['title'] ); ?>
 					</h3>
@@ -268,7 +280,7 @@ $topics_indexes = array_rand( $topics, 3 );
 							<?php echo esc_html( $data['desc'] ); ?>
 						</p>
 
-						<?php 
+						<?php
 						$feature_url = $data['feature_url'];
 						if ( ! ES()->is_pro() && isset( $data['documentation_url'] ) ) {
 							$feature_url = $data['documentation_url'];
@@ -280,7 +292,7 @@ $topics_indexes = array_rand( $topics, 3 );
 						</a>
 					</div>
 				</div>
-				<?php 
+				<?php
 			}
 			?>
 			</div>
@@ -316,22 +328,22 @@ $topics_indexes = array_rand( $topics, 3 );
 			});
 
 			var labels = 
-			<?php 
+			<?php
 			if ( ! empty( $labels ) ) {
 				echo json_encode( $labels );
 			} else {
 				echo "''";
-			} 
+			}
 			?>
 			;
 
 			var values = 
-			<?php 
+			<?php
 			if ( ! empty( $values ) ) {
 				echo json_encode( $values );
 			} else {
 				echo "''";
-			} 
+			}
 			?>
 			;
 

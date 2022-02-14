@@ -26,6 +26,24 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class ES_Shortcode {
 
+	/**
+	 * Unique form identifier based on number of forms rendered on the page
+	 * 
+	 * @var string
+	 * 
+	 * @since 4.7.5
+	 */
+	public static $form_identifier;
+
+	/**
+	 * Variable to store form submission response
+	 *
+	 * @var array
+	 * 
+	 * @since 4.7.5
+	 */
+	public static $response = array();
+
 	public function __construct() {
 	}
 
@@ -59,8 +77,11 @@ class ES_Shortcode {
 	 */
 	public static function render_es_form( $atts ) {
 		ob_start();
-
-		$atts = shortcode_atts( array( 'id' => '' ), $atts, 'email-subscribers-form' );
+		
+		$atts = shortcode_atts( array( 
+			'id' => '',
+			'show-in-popup' => ''
+		), $atts, 'email-subscribers-form' );
 
 		$id = $atts['id'];
 
@@ -70,8 +91,8 @@ class ES_Shortcode {
 			if ( $form ) {
 
 				$form_data = ES_Forms_Table::get_form_data_from_body( $form );
-
-				self::render_form( $form_data );
+				$form_data['show-in-popup-attr'] = isset( $atts['show-in-popup'] ) ? sanitize_text_field( $atts['show-in-popup'] ) : '';
+				$form_html = self::render_form( $form_data );
 			}
 		}
 
@@ -127,6 +148,7 @@ class ES_Shortcode {
 		$email_label        = ! empty( $data['email_label'] ) ? $data['email_label'] : '';
 		$email_place_holder = ! empty( $data['email_place_holder'] ) ? $data['email_place_holder'] : '';
 		$button_label       = ! empty( $data['button_label'] ) ? $data['button_label'] : __( 'Subscribe', 'email-subscribers' );
+		$list_label         = ! empty( $data['list_label'] ) ? $data['list_label'] : __( 'Select list(s)', 'email-subscribers' );
 		$show_list          = ! empty( $data['list_visible'] ) ? $data['list_visible'] : false;
 		$list_ids           = ! empty( $data['lists'] ) ? $data['lists'] : array();
 		$form_id            = ! empty( $data['form_id'] ) ? $data['form_id'] : 0;
@@ -135,6 +157,10 @@ class ES_Shortcode {
 		$form_version       = ! empty( $data['form_version'] ) ? $data['form_version'] : '0.1';
 		$gdpr_consent       = ! empty( $data['gdpr_consent'] ) ? $data['gdpr_consent'] : 'no';
 		$gdpr_consent_text  = ! empty( $data['gdpr_consent_text'] ) ? $data['gdpr_consent_text'] : '';
+		$es_form_popup	    = isset( $data['show_in_popup'] ) ? $data['show_in_popup'] : 'no';
+		$es_popup_headline	= isset( $data['popup_headline'] ) ? $data['popup_headline'] : '';
+		$show_in_popup_attr	= isset( $data['show-in-popup-attr'] ) ? $data['show-in-popup-attr'] : '';
+		
 		$allowedtags 		= ig_es_allowed_html_tags_in_esc();
 
 		/**
@@ -152,12 +178,49 @@ class ES_Shortcode {
 			$name_label  = __( 'Name', 'email-subscribers' );
 		}
 
+		self::$form_identifier = self::generate_form_identifier( $form_id );
+
+		$submitted_name    = '';
+		$submitted_email   = '';
+		$message_class     = '';
+		$message_text      = '';
+		$selected_list_ids = array();
+
+		if ( self::is_posted() ) {
+			// self::$response is set by ES_Handle_Subscription::handle_subscription() when subscription form is posted
+			$response = ! empty( self::$response ) ? self::$response: array();
+			if ( ! empty( $response ) ) {
+				$message_class = ! empty( $response['status'] ) && 'SUCCESS' === $response['status'] ? 'success' : 'error';
+				$message_text  = ! empty( $response['message_text'] ) ? $response['message_text'] : '';
+			}
+
+			$submitted_name       = ig_es_get_post_data( 'esfpx_name' );
+			$submitted_email      = ig_es_get_post_data( 'esfpx_email' );
+			$selected_list_hashes = ig_es_get_post_data( 'esfpx_lists' );
+
+			if ( ! empty( $selected_list_hashes ) ) {
+				$selected_lists = ES()->lists_db->get_lists_by_hash( $selected_list_hashes );
+				if ( $selected_lists ) {
+					$selected_list_ids = array_column( $selected_lists, 'id' );
+				}
+			}
+		} else {
+			if ( is_user_logged_in() ) {
+				$prefill_form = apply_filters( 'ig_es_prefill_subscription_form', 'yes' );
+				if ( 'yes' === $prefill_form ) {
+					$current_user    = wp_get_current_user();
+					$submitted_email = $current_user->user_email;
+					$submitted_name  = $current_user->user_firstname . ' ' . $current_user->user_lastname;
+				}
+			}
+		}
+
 		//replace total contact
 		$total_contacts = ES()->contacts_db->count_active_contacts_by_list_id();
 		$desc           = str_replace( '{{TOTAL-CONTACTS}}', $total_contacts, $desc );
 
 		$current_page     = get_the_ID();
-		$current_page_url = get_the_permalink( get_the_ID() );
+		$current_page_url = get_the_permalink( $current_page );
 
 		$unique_id = uniqid();
 		$hp_style  = 'position:absolute;top:-99999px;' . ( is_rtl() ? 'right' : 'left' ) . ':-99999px;z-index:-99;';
@@ -173,7 +236,7 @@ class ES_Shortcode {
 					$name_label .= '*';
 				}
 			}
-			$name_html .= '<div class="es-field-wrap"><label>' . $name_label . '<br/><input type="text" name="name" class="ig_es_form_field_name"  placeholder="' . $name_place_holder . '" value="" ' ;
+			$name_html .= '<div class="es-field-wrap"><label>' . $name_label . '<br/><input type="text" name="esfpx_name" class="ig_es_form_field_name"  placeholder="' . $name_place_holder . '" value="' . $submitted_name . '" ' ;
 
 			/* Adding required="required" as attribute name, value pair because wp_kses will strip off the attribute if only 'required' attribute is provided. */
 			$name_html .= 'required' === $required ? 'required = "' . $required . '"' : '';
@@ -184,14 +247,14 @@ class ES_Shortcode {
 		if ( ! empty( $list_ids ) && $show_list ) {
 			$lists_id_name_map = ES()->lists_db->get_list_id_name_map();
 			$lists_id_hash_map = ES()->lists_db->get_list_id_hash_map( $list_ids );
-			$list_html         = self::prepare_lists_checkboxes( $lists_id_name_map, $list_ids, 1, array(), 0, 'lists[]', $lists_id_hash_map );
+			$list_html         = self::prepare_lists_checkboxes( $lists_id_name_map, $list_ids, 1, $selected_list_ids, $list_label, 0, 'esfpx_lists[]', $lists_id_hash_map );
 		} elseif ( ! empty( $list_ids ) && ! $show_list ) {
 			$list_html = '';
 			$lists     = ES()->lists_db->get_lists_by_id( $list_ids );
 			if ( ! empty( $lists ) ) {
 				foreach ( $lists as $list ) {
 					if ( ! empty( $list ) && ! empty( $list['hash'] ) ) {
-						$list_html .= '<input type="hidden" name="lists[]" value="' . $list['hash'] . '" />';
+						$list_html .= '<input type="hidden" name="esfpx_lists[]" value="' . $list['hash'] . '" />';
 					}
 				}
 			}
@@ -201,7 +264,7 @@ class ES_Shortcode {
 			if ( ! empty( $lists ) ) {
 				$list_hash = ! empty( $lists[0]['hash'] ) ? $lists[0]['hash'] : '';
 				if ( ! empty( $list_hash ) ) {
-					$list_html = '<input type="hidden" name="lists[]" value="' . $list_hash . '" />';
+					$list_html = '<input type="hidden" name="esfpx_lists[]" value="' . $list_hash . '" />';
 				}
 			}
 		} else {
@@ -217,67 +280,141 @@ class ES_Shortcode {
 			if ( ! empty( $lists ) ) {
 				$list_hash = ! empty( $lists[0]['hash'] ) ? $lists[0]['hash'] : '';
 				if ( ! empty( $list_hash ) ) {
-					$list_html = '<input type="hidden" name="lists[]" value="' . $list_hash . '" />';
+					$list_html = '<input type="hidden" name="esfpx_lists[]" value="' . $list_hash . '" />';
 				}
 			}
 		}
 
 		// Form html
-		$form_html = '<input type="hidden" name="form_id" value="' . $form_id . '" />';
+		$form_html = '<input type="hidden" name="esfpx_form_id" value="' . $form_id . '" />';
 
 		$email_html = '<div class="es-field-wrap"><label>';
 		if ( ! empty( $email_label ) ) {
 			$email_html .= $email_label . '*<br/>';
 		}
-		$email_html .= '<input class="es_required_field es_txt_email ig_es_form_field_email" type="email" name="email" value="" placeholder="' . $email_place_holder . '" required="required"/></label></div>';
+		$email_html .= '<input class="es_required_field es_txt_email ig_es_form_field_email" type="email" name="esfpx_email" value="' . $submitted_email . '" placeholder="' . $email_place_holder . '" required="required"/></label></div>';
+		
 
-		?>
+		$form_header_html = '<div class="emaillist" id="es_form_' . self::$form_identifier . '">';
+		$form_data_html = '';
+		$form_orig_html = '';
 
-		<div class="emaillist">
-			<form action="#" method="post" class="es_subscription_form es_shortcode_form" id="es_subscription_form_<?php echo esc_attr( $unique_id ); ?>" data-source="ig-es">
-				<?php if ( '' != $desc ) { ?>
-					<div class="es_caption"><?php echo esc_html( $desc ); ?></div>
-				<?php } ?>
+		$form_orig_html = $form_header_html;
+		// Don't show form if submission was successful.
+		if ( 'success' !== $message_class) {
+			$form_action_url = ES_Common::get_current_request_url();
+			
+			$form_header_html .= '<form action="' . $form_action_url . '#es_form_' . self::$form_identifier . '" method="post" class="es_subscription_form es_shortcode_form" id="es_subscription_form_' . $unique_id . '" data-source="ig-es">';
+				
+			if ( '' != $desc ) {
+				$form_header_html .= '<div class="es_caption">' . $desc . '</div>';
+			} 
+			
+			$form_data_html = '<input type="hidden" name="es" value="subscribe" />
+			<input type="hidden" name="esfpx_es_form_identifier" value="' . self::$form_identifier . '" />
+			<input type="hidden" name="esfpx_es_email_page" value="' . $current_page . '"/>
+			<input type="hidden" name="esfpx_es_email_page_url" value="' . $current_page_url . '"/>
+			<input type="hidden" name="esfpx_status" value="Unconfirmed"/>
+			<input type="hidden" name="esfpx_es-subscribe" id="es-subscribe-' . $unique_id . '" value="' . $nonce . '"/>
+			<label style="' . $hp_style . '"><input type="email" name="esfpx_es_hp_email" class="es_required_field" tabindex="-1" autocomplete="-1" value=""/></label>';
+
+			$form = array( $form_header_html, $name_html, $email_html, $list_html, $form_html, $form_data_html );
+			$form_orig_html = implode( '', $form );
+			$form_data_html = apply_filters( 'ig_es_after_form_fields', $form_orig_html, $data );
+
+			if ( 'yes' === $gdpr_consent ) { 
+				
+				$form_data_html .= '<label style="display: inline"><input type="checkbox" name="es_gdpr_consent" value="true" required="required"/>&nbsp;' . $gdpr_consent_text . '</label><br/>'; 
+			} elseif ( ( in_array( 'gdpr/gdpr.php', $active_plugins ) || array_key_exists( 'gdpr/gdpr.php', $active_plugins ) ) ) {
+				GDPR::consent_checkboxes();
+			}
+
+			
+			$form_data_html .= '<input type="submit" name="submit" class="es_subscription_form_submit es_submit_button es_textbox_button" id="es_subscription_form_submit_' . $unique_id . '" value="' . $button_label . '"/>'; 
+
+			$spinner_image_path = ES_PLUGIN_URL . 'lite/public/images/spinner.gif';
+
+
+			$form_data_html .= '<span class="es_spinner_image" id="spinner-image"><img src="' . $spinner_image_path . '" alt="Loading"/></span></form>';
+		
+		}
+		
+		$form_data_html .= '<span class="es_subscription_message ' . $message_class . '" id="es_subscription_message_' . $unique_id . '">' . $message_text . '</span></div>';
+
+		$form = $form_data_html;
+
+		$show_in_popup = false;
+	
+		if ( ! empty( $es_form_popup ) && 'yes' === $es_form_popup ) {
+			if ( empty( $show_in_popup_attr ) || 'yes' === $show_in_popup_attr ) {
+				$show_in_popup = true;
+			}
+		} 
+
+		if ( $show_in_popup ) {
+
+			if ( ! wp_style_is( 'ig-es-popup-frontend' ) ) {
+				wp_enqueue_style( 'ig-es-popup-frontend' );
+			}
+			
+			if ( ! wp_style_is( 'ig-es-popup-css' ) ) {
+				wp_enqueue_style( 'ig-es-popup-css' );
+			}
+
+			wp_enqueue_script( 'ig-es-pre-data' );
+	
+			?>
+			<script type="text/javascript">
+				if( typeof(window.icegram) === 'undefined'){
 				<?php
-					echo wp_kses( $name_html, $allowedtags );
-					echo wp_kses( $email_html, $allowedtags );
-					echo wp_kses( $list_html , $allowedtags );
-					echo wp_kses( $form_html , $allowedtags ); 
+				if ( ! wp_script_is( 'ig-es-popup-js' ) ) {
+					wp_enqueue_script( 'ig-es-popup-js' );
+				}		
 				?>
-
-				<input type="hidden" name="es_email_page" value="<?php echo esc_attr( $current_page ); ?>"/>
-				<input type="hidden" name="es_email_page_url" value="<?php echo esc_url( $current_page_url ); ?>"/>
-				<input type="hidden" name="status" value="Unconfirmed"/>
-				<input type="hidden" name="es-subscribe" id="es-subscribe" value="<?php echo esc_attr( $nonce ); ?>"/>
-				<label style="<?php echo esc_attr( $hp_style ); ?>"><input type="email" name="es_hp_email" class="es_required_field" tabindex="-1" autocomplete="-1" value=""/></label>
-				<?php
-
-				do_action( 'ig_es_after_form_fields', $data );
-
-				if ( 'yes' === $gdpr_consent ) { 
-					?>
-					<p><input type="checkbox" name="es_gdpr_consent" value="true" required/>&nbsp;<label style="display: inline"><?php echo wp_kses_post( $gdpr_consent_text ); ?></label></p>
-					<?php 
-				} elseif ( ( in_array( 'gdpr/gdpr.php', $active_plugins ) || array_key_exists( 'gdpr/gdpr.php', $active_plugins ) ) ) {
-					GDPR::consent_checkboxes();
 				}
+			</script>
+			
+			<script type="text/javascript">
+				jQuery( function () { 
+					var form_id = <?php echo esc_js($form_id); ?>;
+					
+					var es_message_id = "es" + form_id ;
+					var message = '<h3 style=\"text-align: center;\"><?php echo esc_js( $es_popup_headline ); ?></h3>';
+					
+					es_pre_data.ajax_url = '<?php echo esc_url(admin_url( 'admin-ajax.php' )); ?>';
+					es_pre_data.messages[0].form_html = <?php echo json_encode($form); ?>;
+					es_pre_data.messages[0].id = es_pre_data.messages[0].campaign_id = es_message_id;
+					es_pre_data.messages[0].label = <?php echo json_encode($button_label); ?>;
+					es_pre_data.messages[0].message = message;
+					
+					var es_data = es_pre_data;
+					
+					if( typeof(window.icegram) === 'undefined'){
+						window.icegram = new Icegram();
+						window.icegram.init( es_data );
+					} 
+					
+					jQuery( window ).on( "preinit.icegram", function( e, data ) {
+						var icegram_data = es_data['messages'].concat(data['messages']);
+						data.messages = icegram_data;
+					});
 
-				?>
-				<input type="submit" name="submit" class="es_subscription_form_submit es_submit_button es_textbox_button" id="es_subscription_form_submit_<?php echo esc_attr( $unique_id ); ?>" value="<?php echo esc_attr( $button_label ); ?>"/>
-
-				<?php $spinner_image_path = ES_PLUGIN_URL . 'lite/public/images/spinner.gif'; ?>
-
-				<span class="es_spinner_image" id="spinner-image"><img src="<?php echo esc_url( $spinner_image_path ); ?>" alt="Loading"/></span>
-
-			</form>
-			<span class="es_subscription_message" id="es_subscription_message_<?php echo esc_attr( $unique_id ); ?>"></span>
-		</div>
-
-		<?php
+				});
+			</script>
+			<?php
+			return $form; 
+			
+		} else {
+			add_filter( 'safe_style_css', 'ig_es_allowed_css_style' );
+			echo wp_kses( $form, $allowedtags );
+			
+		}
 	}
 
-	public static function prepare_lists_checkboxes( $lists, $list_ids = array(), $columns = 3, $selected_lists = array(), $contact_id = 0, $name = 'lists[]', $lists_id_hash_map = array() ) {
-		$lists_html = '<div><p><b class="font-medium text-gray-500 pb-2">' . __( 'Select list(s)', 'email-subscribers' ) . '*</b></p><table class="ig-es-form-list-selection"><tr>';
+	public static function prepare_lists_checkboxes( $lists, $list_ids = array(), $columns = 3, $selected_lists = array(), $list_label = '', $contact_id = 0, $name = 'lists[]', $lists_id_hash_map = array() ) {
+
+		$list_label = ! empty( $list_label ) ? $list_label : __( 'Select list(s)', 'email-subscribers' );
+		$lists_html = '<div><p><b class="font-medium text-gray-500 pb-2">' . $list_label . '*</b></p><table class="ig-es-form-list-selection"><tr>';
 		$i          = 0;
 
 		if ( ! empty( $contact_id ) ) {
@@ -316,6 +453,65 @@ class ES_Shortcode {
 		return $lists_html;
 	}
 
+	/**
+	 * Generate a unique form identifier based on number of forms already rendered on the page.
+	 * 
+	 * @return string $form_identifier
+	 * 
+	 * @since 4.7.5
+	 */
+	public static function generate_form_identifier( $form_id = 0 ) {
+		
+		static $form_count = 1;
+		
+		$form_identifier = '';
+
+		if ( in_the_loop() ) {
+			$page_id         = get_the_ID();
+			$form_identifier = sprintf( 'f%1$d-p%2$d-n%3$d',
+				$form_id,
+				$page_id,
+				$form_count
+			);
+		} else {
+			$form_identifier = sprintf( 'f%1$d-n%2$d',
+				$form_id,
+				$form_count
+			);
+		}
+
+		$form_count++;
+
+		return $form_identifier;
+	}
+
+	/**
+	 * Get form's identifier
+	 * 
+	 * @return string
+	 * 
+	 * @since 4.7.5
+	 */
+	public static function get_form_identifier() {
+		return self::$form_identifier;
+	}
+
+	/**
+	 * Return true if this form is the same one as currently posted.
+	 * 
+	 * @return boolean
+	 * 
+	 * @since 4.7.5
+	 */
+	public static function is_posted() {
+
+		$form_identifier = ig_es_get_request_data( 'esfpx_es_form_identifier' );
+		if ( empty( $form_identifier ) ) {
+			return false;
+		}
+
+		return self::get_form_identifier() === $form_identifier;
+	}
 }
 
 

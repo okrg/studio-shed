@@ -54,7 +54,6 @@ if ( ! function_exists( 'get_ig_logger' ) ) {
 	 * Get IG Logger
 	 *
 	 * @return IG_Logger|string|null
-	 *
 	 */
 	function get_ig_logger() {
 
@@ -138,7 +137,7 @@ if ( ! function_exists( 'ig_es_format_date_time' ) ) {
 	 */
 	function ig_es_format_date_time( $date ) {
 
-		$local_timestamp = ( '0000-00-00 00:00:00' !== $date && ! empty( $date ) )  ? ES_Common::convert_date_to_wp_date( get_date_from_gmt( $date )) : '<i class="dashicons dashicons-es dashicons-minus"></i>';
+		$local_timestamp = ( '0000-00-00 00:00:00' !== $date && ! empty( $date ) ) ? ES_Common::convert_date_to_wp_date( get_date_from_gmt( $date ) ) : '<i class="dashicons dashicons-es dashicons-minus"></i>';
 
 		return $local_timestamp;
 	}
@@ -200,17 +199,17 @@ if ( ! function_exists( 'ig_es_get_data' ) ) {
 	/**
 	 * Get data from array
 	 *
-	 * @param array $array
+	 * @param array  $array
 	 * @param string $var
 	 * @param string $default
-	 * @param bool $clean
+	 * @param bool   $clean
 	 *
 	 * @return array|string
 	 *
 	 * @since 4.1.15
 	 */
 	function ig_es_get_data( $array = array(), $var = '', $default = '', $clean = false ) {
-		
+
 		if ( ! empty( $var ) ) {
 			$value = isset( $array[ $var ] ) ? wp_unslash( $array[ $var ] ) : $default;
 		} else {
@@ -252,11 +251,11 @@ if ( ! function_exists( 'ig_es_get_post_data' ) ) {
 	 */
 
 	function ig_es_get_post_data( $var = '', $default = '', $clean = true ) {
-		
+
 		$nonce = ! empty( $_POST['es-nonce'] ) ? sanitize_text_field( $_POST['es-nonce'] ) : '';
-		
+
 		if ( wp_verify_nonce( $nonce, 'es-nonce' ) ) {
-			//TODO: Verify Nonce
+			// TODO: Verify Nonce
 			$nonce_verified = true;
 		}
 
@@ -278,7 +277,7 @@ if ( ! function_exists( 'ig_es_get_ip' ) ) {
 		if ( isset( $_SERVER['HTTP_CF_CONNECTING_IP'] ) ) {
 			$ip = sanitize_text_field( $_SERVER['HTTP_CF_CONNECTING_IP'] );
 		} elseif ( isset( $_SERVER['HTTP_X_REAL_IP'] ) ) {
-			$ip = sanitize_text_field(  $_SERVER['HTTP_X_REAL_IP'] );
+			$ip = sanitize_text_field( $_SERVER['HTTP_X_REAL_IP'] );
 		} elseif ( isset( $_SERVER['HTTP_CLIENT_IP'] ) ) {
 			$ip = sanitize_text_field( $_SERVER['HTTP_CLIENT_IP'] );
 		} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
@@ -412,7 +411,7 @@ if ( ! function_exists( 'ig_es_get_upcoming_weekly_datetime' ) ) {
 			3 => 'wednesday',
 			4 => 'thursday',
 			5 => 'friday',
-			6 => 'saturday'
+			6 => 'saturday',
 		);
 
 		// w is used since it returns day number considering Sunday as 0.
@@ -424,7 +423,7 @@ if ( ! function_exists( 'ig_es_get_upcoming_weekly_datetime' ) ) {
 			$current_hours   = (int) current_time( 'H' );
 			$current_minutes = (int) current_time( 'i' );
 			$current_seconds = (int) current_time( 's' );
-			
+
 			$current_time = $current_hours * HOUR_IN_SECONDS + $current_minutes * MINUTE_IN_SECONDS + $current_seconds;
 
 			// Check if campaign time has not yet passed then we can use today's date/time else use date/time when campaign day comes next time.
@@ -481,8 +480,8 @@ if ( ! function_exists( 'ig_es_get_next_future_schedule_date' ) ) {
 	 * @param $utc_start
 	 * @param $interval
 	 * @param $time_frame
-	 * @param array $weekdays
-	 * @param bool $in_future
+	 * @param array      $weekdays
+	 * @param bool       $in_future
 	 *
 	 * @return false|float|int
 	 *
@@ -532,28 +531,28 @@ if ( ! function_exists( 'ig_es_get_next_future_schedule_date' ) ) {
 					$time_frame       = 'day';
 					$next_date        = $now;
 					$interval         = 1;
-					$count 			  = 1;
+					$count            = 1;
 					$change_next_date = false;
 					break;
 				case 'daily':
 					$time_frame       = 'day';
 					$next_date        = ig_es_get_upcoming_daily_datetime( $time_of_day );
 					$interval         = 1;
-					$count			  = 1;
+					$count            = 1;
 					$change_next_date = false;
 					break;
 				case 'weekly':
 					$time_frame       = 'day';
 					$next_date        = ig_es_get_upcoming_weekly_datetime( $interval, $time_of_day );
-					$interval         = 1; 
-					$count			  = 1;
+					$interval         = 1;
+					$count            = 1;
 					$change_next_date = false;
 					break;
 				case 'monthly':
 					$time_frame       = 'day';
 					$next_date        = ig_es_get_upcoming_monthly_datetime( $interval, $time_of_day );
-					$interval         = 1; 
-					$count			  = 1;
+					$interval         = 1;
+					$count            = 1;
 					$change_next_date = false;
 					break;
 				default:
@@ -635,11 +634,11 @@ if ( ! function_exists( 'ig_es_array_insert_after' ) ) {
 if ( ! function_exists( 'ig_es_get_raw_human_interval' ) ) {
 	/**
 	 * Gets interval split by days, hours, minutes and seconds
-	 * 
+	 *
 	 * @param $interval_in_seconds
-	 * 
+	 *
 	 * @return array
-	 * 
+	 *
 	 * @since 4.4.9
 	 */
 	function ig_es_get_raw_human_interval( $interval_in_seconds = 0 ) {
@@ -673,11 +672,11 @@ if ( ! function_exists( 'ig_es_get_raw_human_interval' ) ) {
 if ( ! function_exists( 'ig_es_get_human_interval' ) ) {
 	/**
 	 * Gets interval in human readable format
-	 * 
+	 *
 	 * @param $interval_in_seconds
-	 * 
+	 *
 	 * @return string
-	 * 
+	 *
 	 * @since 4.4.9
 	 */
 	function ig_es_get_human_interval( $interval_in_seconds = 0 ) {
@@ -718,133 +717,139 @@ if ( ! function_exists( 'ig_es_allowed_html_tags_in_esc' ) ) {
 	 * @since 4.5.4
 	 */
 	function ig_es_allowed_html_tags_in_esc() {
-		$context_allowed_tags 	= wp_kses_allowed_html('post');
-		$custom_allowed_tags	= array(
-					'div' => array(
-						'x-data' => true,
-						'x-show' => true,
-					),		
-					'select' => array(
-						'class' 	=> true,
-						'name' 		=> true,
-						'id' 		=> true,
-						'style'		=> true,
-						'title'		=> true,
-						'role'		=> true,
-						'data-*'	=> true,
-						'tab-*'		=> true,
-						'multiple'	=> true,
-						'aria-*'	=> true,
-						'disabled'	=> true,
-					),
-					'optgroup' => array(
-						'label' => true,
-					),
-					'option' => array(
-						'class' 	=> true,
-						'value' 	=> true,
-						'selected'	=> true,
-						'name'		=> true,
-						'id'		=> true,
-						'style'		=> true,
-						'title'		=> true,
-						'data-*'	=> true,
-					),
-					'input' => array(
-						'class' 		=> true,
-						'name' 			=> true,
-						'type' 			=> true,
-						'value' 		=> true,
-						'id'  			=> true,
-						'checked'		=> true,
-						'disabled'		=> true,
-						'selected'		=> true,
-						'style'			=> true,
-						'required'		=> 'required',
-						'min'			=> true,
-						'max'			=> true,
-						'maxlength' 	=> true,
-						'size'			=> true,
-						'placeholder' 	=> true,
-						'autocomplete'	=> true,
-						'autocapitalize'=> true,
-						'autocorrect'	=> true,
-						'tabindex'		=> true,
-						'role'			=> true,
-						'aria-*'		=> true,
-						'data-*'		=> true,
-					),
-					'label' => array(
-						'class' 	=> true,
-						'name'		=> true,
-						'type' 		=> true,
-						'value' 	=> true,
-						'id'  		=> true,
-						'for'		=> true,
-						'style'		=> true,						
-					),
-					'form' => array(
-						'class' 	=> true,
-						'name'		=> true,
-						'value' 	=> true,
-						'id'  		=> true,
-						'style'		=> true,
-						'action'    => true,
-					),	
-					'svg' 	=> array(
-						'width'				=> true,
-						'height'			=> true,
-						'viewbox'			=> true,
-						'xmlns'				=> true,
-						'class'				=> true,
-						'stroke-*'			=> true,
-						'fill'				=> true,
-						'stroke'			=> true,
-					),
-					'path' 	=> array(
-						'd'					=> true,
-						'fill'				=> true,
-						'class'				=> true,
-						'fill-*'			=> true,
-						'clip-*'			=> true,
-						'stroke-linecap'	=> true,
-						'stroke-linejoin'	=> true,
-						'stroke-width'		=> true,
-						'fill-rule' 		=> true,
-					),
+		$context_allowed_tags = wp_kses_allowed_html( 'post' );
+		$custom_allowed_tags  = array(
+			'div'      => array(
+				'x-data' => true,
+				'x-show' => true,
+			),
+			'select'   => array(
+				'class'    => true,
+				'name'     => true,
+				'id'       => true,
+				'style'    => true,
+				'title'    => true,
+				'role'     => true,
+				'data-*'   => true,
+				'tab-*'    => true,
+				'multiple' => true,
+				'aria-*'   => true,
+				'disabled' => true,
+				'required' => 'required',
+			),
+			'optgroup' => array(
+				'label' => true,
+			),
+			'option'   => array(
+				'class'    => true,
+				'value'    => true,
+				'selected' => true,
+				'name'     => true,
+				'id'       => true,
+				'style'    => true,
+				'title'    => true,
+				'data-*'   => true,
+			),
+			'input'    => array(
+				'class'          => true,
+				'name'           => true,
+				'type'           => true,
+				'value'          => true,
+				'id'             => true,
+				'checked'        => true,
+				'disabled'       => true,
+				'selected'       => true,
+				'style'          => true,
+				'required'       => 'required',
+				'min'            => true,
+				'max'            => true,
+				'maxlength'      => true,
+				'size'           => true,
+				'placeholder'    => true,
+				'autocomplete'   => true,
+				'autocapitalize' => true,
+				'autocorrect'    => true,
+				'tabindex'       => true,
+				'role'           => true,
+				'aria-*'         => true,
+				'data-*'         => true,
+			),
+			'label'    => array(
+				'class' => true,
+				'name'  => true,
+				'type'  => true,
+				'value' => true,
+				'id'    => true,
+				'for'   => true,
+				'style' => true,
+			),
+			'form'     => array(
+				'class'  => true,
+				'name'   => true,
+				'value'  => true,
+				'id'     => true,
+				'style'  => true,
+				'action' => true,
+				'method' => true,
+				'data-*' => true,
+			),
+			'svg'      => array(
+				'width'    => true,
+				'height'   => true,
+				'viewbox'  => true,
+				'xmlns'    => true,
+				'class'    => true,
+				'stroke-*' => true,
+				'fill'     => true,
+				'stroke'   => true,
+			),
+			'path'     => array(
+				'd'               => true,
+				'fill'            => true,
+				'class'           => true,
+				'fill-*'          => true,
+				'clip-*'          => true,
+				'stroke-linecap'  => true,
+				'stroke-linejoin' => true,
+				'stroke-width'    => true,
+				'fill-rule'       => true,
+			),
 
-					'main' => array(
-						'align' 			=> true,
-						'dir'				=> true,
-						'lang' 				=> true,
-						'xml:lang' 			=> true,
-						'aria-*' 			=> true,
-						'class' 			=> true,
-						'id' 				=> true,
-						'style' 			=> true,
-						'title' 			=> true,
-						'role' 				=> true,
-						'data-*' 			=> true,
-					),
-					'textarea'	=> array(
-						'autocomplete' => true,
-					),
-					'style'	=> array(),
-					'link'	=> array(
-						'rel'	=> true,
-						'id'	=> true,
-						'href'	=> true,
-						'media'	=> true,
-					),
-					'a' => array(
-						'x-on:click' => true,
-					),
-					'polygon' => array(
-						'class'  => true,
-						'points' => true,
-					)
-				);	
-		$allowedtags 			= array_merge_recursive( $context_allowed_tags, $custom_allowed_tags );
+			'main'     => array(
+				'align'    => true,
+				'dir'      => true,
+				'lang'     => true,
+				'xml:lang' => true,
+				'aria-*'   => true,
+				'class'    => true,
+				'id'       => true,
+				'style'    => true,
+				'title'    => true,
+				'role'     => true,
+				'data-*'   => true,
+			),
+			'textarea' => array(
+				'autocomplete' => true,
+				'required'	   => 'required',
+				'placeholder'  => true,
+			),
+			'style'    => array(),
+			'link'     => array(
+				'rel'   => true,
+				'id'    => true,
+				'href'  => true,
+				'media' => true,
+			),
+			'a'        => array(
+				'x-on:click' => true,
+			),
+			'polygon'  => array(
+				'class'  => true,
+				'points' => true,
+			),
+		);
+
+		$allowedtags = array_merge_recursive( $context_allowed_tags, $custom_allowed_tags );
 
 		return $allowedtags;
 	}
@@ -855,7 +860,7 @@ if ( ! function_exists( 'ig_es_allowed_css_style' ) ) {
 	 * Allow CSS style in WP Kses
 	 *
 	 * @since 4.5.4
-	 * 
+	 *
 	 * @since 4.7.3 Returns empty array to whitelist all CSS properties.
 	 */
 	function ig_es_allowed_css_style( $default_allowed_attr ) {
@@ -864,7 +869,7 @@ if ( ! function_exists( 'ig_es_allowed_css_style' ) ) {
 }
 
 if ( ! function_exists( 'ig_es_increase_memory_limit' ) ) {
-	
+
 	/**
 	 * Return memory limit required for ES heavy operations
 	 *
@@ -874,19 +879,19 @@ if ( ! function_exists( 'ig_es_increase_memory_limit' ) ) {
 	 */
 	function ig_es_increase_memory_limit() {
 
-		return '256M';
+		return '512M';
 	}
 }
 
 if ( ! function_exists( 'ig_es_remove_utf8_bom' ) ) {
-	
+
 	/**
 	 * Remove UTF-8 BOM signature.
 	 *
 	 * @param string $string String to handle.
 	 *
 	 * @return string
-	 * 
+	 *
 	 * @since 4.5.4
 	 */
 	function ig_es_remove_utf8_bom( $string = '' ) {
@@ -902,19 +907,19 @@ if ( ! function_exists( 'ig_es_remove_utf8_bom' ) ) {
 }
 
 if ( ! function_exists( 'ig_es_covert_to_utf8_encoding' ) ) {
-	
+
 	/**
 	 * Function to convert existing string to its UTF-8 equivalent string.
 	 *
 	 * @param string $data String to handle.
-	 * @param bool $use_mb Flag to determine whether we should use mb_* functions while detecting and converting the encoding.
+	 * @param bool   $use_mb Flag to determine whether we should use mb_* functions while detecting and converting the encoding.
 	 *
 	 * @return string $data
-	 * 
+	 *
 	 * @since 4.5.6
 	 */
 	function ig_es_covert_to_utf8_encoding( $data = '', $use_mb = false ) {
-		
+
 		// Check if we can use mb_* functions.
 		if ( $use_mb ) {
 			// Detect character encoding. detecting order is 1.UTF-8 2. ISO-8859-1.
@@ -938,14 +943,14 @@ if ( ! function_exists( 'ig_es_covert_to_utf8_encoding' ) ) {
 if ( ! function_exists( 'ig_es_insert_widget_in_sidebar' ) ) {
 	/**
 	 * Insert a widget in a sidebar.
-	 * 
+	 *
 	 * @param string $widget_id   ID of the widget (search, recent-posts, etc.)
-	 * @param array $widget_data  Widget settings.
+	 * @param array  $widget_data  Widget settings.
 	 * @param string $sidebar     ID of the sidebar.
 	 * @param string $allow_duplicate Flag to check whether we should add widget even if added to the sidebar already.
-	 * 
+	 *
 	 * @return boolean
-	 * 
+	 *
 	 * @since 4.6.0
 	 */
 	function ig_es_insert_widget_in_sidebar( $widget_id, $widget_data, $sidebar, $allow_duplicate = false ) {
@@ -975,21 +980,20 @@ if ( ! function_exists( 'ig_es_insert_widget_in_sidebar' ) ) {
 		// Add new widget only if it already not added in the sidebar or duplicate widget is allowed.
 		if ( ! $widget_already_added || $allow_duplicate ) {
 			$next_key = $numeric_keys ? max( $numeric_keys ) + 1 : 1;
-			
+
 			// Add this widget to the sidebar
 			$sidebars_widgets[ $sidebar ][] = $widget_id . '-' . $next_key;
-		
+
 			// Add the new widget instance
 			$widget_instances[ $next_key ] = $widget_data;
-		
+
 			// Store updated sidebars, widgets and their instances
 			update_option( 'sidebars_widgets', $sidebars_widgets );
 			update_option( 'widget_' . $widget_id, $widget_instances );
 
 			return true;
 		}
-	
+
 		return false;
 	}
 }
-

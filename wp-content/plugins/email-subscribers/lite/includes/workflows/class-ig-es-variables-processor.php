@@ -182,6 +182,9 @@ class IG_ES_Variables_Processor {
 		   'LIST',
 		   'SITENAME',
 		   'SITEURL',
+		   'SUBJECT',
+		   'COUNT',
+		   'DATE',
 		));
 
 		return in_array( $variable, $excluded );

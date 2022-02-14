@@ -14,10 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 if ( ! class_exists( 'IG_ES_Premium_Services_UI' ) ) {
-	
+
 	/**
 	 * The premium services-ui specific functionality of the plugin.
-	 *
 	 */
 	class IG_ES_Premium_Services_UI {
 
@@ -27,7 +26,7 @@ if ( ! class_exists( 'IG_ES_Premium_Services_UI' ) ) {
 		 * @var Onboarding instance
 		 */
 		protected static $instance = null;
-		
+
 		/**
 		 * Initialize the class and set its properties.
 		 *
@@ -36,10 +35,10 @@ if ( ! class_exists( 'IG_ES_Premium_Services_UI' ) ) {
 		public function __construct() {
 			add_action( 'init', array( $this, 'init' ) );
 		}
-	
+
 		/**
 		 * Get class instance.
-		 * 
+		 *
 		 * @since 4.6.1
 		 */
 		public static function instance() {
@@ -50,17 +49,17 @@ if ( ! class_exists( 'IG_ES_Premium_Services_UI' ) ) {
 		}
 		/**
 		 * Method to hook required action/filters to show ui components used in premium services.
-		 * 
+		 *
 		 * @since 4.6.1
 		 */
 		public function init() {
 
 			// Add ui components only if trial is valid or user is a premium user.
 			if ( ES()->is_trial_valid() || ES()->is_premium() ) {
-				
+
 				// Add UI for CSS inliner only if service is valid.
 				if ( ES()->validate_service_request( array( 'css_inliner' ) ) ) {
-					add_action( 'ig_es_after_broadcast_left_pan_settings', array( &$this, 'add_custom_css_field' ) );
+					add_action( 'ig_es_after_campaign_left_pan_settings', array( &$this, 'add_custom_css_field' ) );
 					add_action( 'edit_form_after_editor', array( &$this, 'add_custom_css_block' ), 11, 2 );
 					add_action( 'save_post', array( &$this, 'update_template' ), 10, 2 );
 				}
@@ -69,34 +68,41 @@ if ( ! class_exists( 'IG_ES_Premium_Services_UI' ) ) {
 				if ( ES()->validate_service_request( array( 'spam_score_check' ) ) ) {
 					add_action( 'add_meta_boxes', array( &$this, 'add_metaboxes' ) );
 					add_action( 'ig_es_after_broadcast_right_pan_settings', array( &$this, 'add_check_spam_score_button' ) );
+					add_action( 'ig_es_after_campaign_right_pan_settings', array( &$this, 'add_check_spam_score_button' ) );
 				}
 
 				// Add UI for utm tracking only if service is valid.
 				if ( ES()->validate_service_request( array( 'utm_tracking' ) ) ) {
 					add_action( 'add_meta_boxes', array( &$this, 'register_utm_tracking_metabox' ) );
 					add_action( 'ig_es_save_template', array( &$this, 'save_utm_campaign' ), 10, 2 );
-					add_action( 'ig_es_after_broadcast_tracking_options_settings', array( &$this, 'add_broadcast_utm_tracking_option' ) );
-					add_filter( 'ig_es_registered_settings', array( &$this, 'add_utm_tracking_option_in_settings' ), 10, 2 );
+					add_action( 'ig_es_after_broadcast_tracking_options_settings', array( &$this, 'add_utm_tracking_option' ) );
+					add_action( 'ig_es_after_campaign_tracking_options_settings', array( &$this, 'add_utm_tracking_option' ) );
+					add_filter( 'ig_es_registered_settings', array( &$this, 'add_utm_tracking_option_in_settings' ) );
 				}
 			}
 		}
 
 		/**
-		 * Method to add custom CSS field in the broadcast screen
+		 * Method to add custom CSS field in the campaign screen
 		 *
-		 * @param array $broadcast_data
+		 * @param array $campaign_data
 		 * @return void
 		 */
-		public function add_custom_css_field( $broadcast_data ) {
-			$custom_css = ! empty( $broadcast_data['meta']['es_custom_css'] ) ? $broadcast_data['meta']['es_custom_css'] : '';
-			?>
-			<div class="w-full px-4 py-2">
-				<label for="email" class="block text-sm font-medium leading-5 text-gray-700"><?php echo esc_html__( 'Inline CSS', 'email-subscribers' ); ?></label>
-				<textarea class="mt-1 w-full h-10 border border-gray-300 rounded-md"  name="broadcast_data[meta][es_custom_css]"  id="inline_css"><?php echo esc_html( $custom_css ); ?></textarea>
-			</div>
-			<?php
+		public function add_custom_css_field( $campaign_data ) {
+			$editor_type = ! empty( $campaign_data['meta']['editor_type'] ) ? $campaign_data['meta']['editor_type'] : IG_ES_DRAG_AND_DROP_EDITOR;
+			if ( IG_ES_CLASSIC_EDITOR === $editor_type ) {
+				$custom_css            = ! empty( $campaign_data['meta']['es_custom_css'] ) ? $campaign_data['meta']['es_custom_css'] : '';
+				$campaign_type         = ! empty( $campaign_data['type'] ) ? $campaign_data['type'] : '';
+				$custom_css_field_name = 'campaign_data[meta][es_custom_css]';
+				?>
+				<div class="w-full px-4 py-2">
+					<label for="email" class="block text-sm font-medium leading-5 text-gray-700"><?php echo esc_html__( 'Inline CSS', 'email-subscribers' ); ?></label>
+					<textarea class="mt-1 w-full h-10 border border-gray-300 rounded-md"  name="<?php echo esc_attr( $custom_css_field_name ); ?>"  id="inline_css"><?php echo esc_html( $custom_css ); ?></textarea>
+				</div>
+				<?php
+			}
 		}
-		
+
 		/**
 		 * Add Custom CSS block for ES Template
 		 *
@@ -118,7 +124,7 @@ if ( ! class_exists( 'IG_ES_Premium_Services_UI' ) ) {
 			</p>
 			<?php
 		}
-		
+
 		/**
 		 * Hooked to save_post WordPress action
 		 * Update ES Template data
@@ -147,7 +153,7 @@ if ( ! class_exists( 'IG_ES_Premium_Services_UI' ) ) {
 			if ( 'es_template' != $post->post_type ) {
 				return;
 			}
-			
+
 			if ( ! empty( $_POST['_wpnonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ), 'update-post_' . $post_id ) ) {
 				// Get custom CSS code. Don't sanitize it since it removes CSS code.
 				$es_custom_css = ig_es_get_data( $_POST, 'es_custom_css', false, false );
@@ -163,19 +169,19 @@ if ( ! class_exists( 'IG_ES_Premium_Services_UI' ) ) {
 				do_action( 'ig_es_save_template', $post_id, $post_id );
 			}
 		}
-		
+
 		/**
 		 * Method to add metaboxes
-		 * 
+		 *
 		 * @since 4.6.1
 		 */
 		public function add_metaboxes() {
 			add_meta_box( 'es_spam', __( 'Get Spam Score', 'email-subscribers' ), array( &$this, 'add_spam_score_metabox' ), 'es_template', 'side', 'default' );
 		}
-		
+
 		/**
 		 * Method to add spam score metabox
-		 * 
+		 *
 		 * @since 4.6.1
 		 */
 		public function add_spam_score_metabox() {
@@ -193,14 +199,13 @@ if ( ! class_exists( 'IG_ES_Premium_Services_UI' ) ) {
 			</div>
 			<?php
 		}
-		
+
 		/**
 		 * Method to show left pan fields in broadcast summary section.
 		 *
 		 * @param array $broadcast_data Broadcast data
 		 *
 		 * @since 4.4.7
-		 *
 		 */
 		public function add_check_spam_score_button( $broadcast_data = array() ) {
 			?>
@@ -208,9 +213,11 @@ if ( ! class_exists( 'IG_ES_Premium_Services_UI' ) ) {
 				<span class="pt-3 text-sm font-medium leading-5 text-gray-700"><?php echo esc_html__( 'Get Spam Score', 'email-subscribers' ); ?> </span>
 				<button type="button" id="spam_score"
 						class="float-right es_spam rounded-md border text-indigo-600 border-indigo-500 text-sm leading-5 font-medium transition ease-in-out duration-150 select-none inline-flex justify-center hover:text-indigo-500 hover:border-indigo-600 hover:shadow-md focus:outline-none focus:shadow-outline-indigo focus:shadow-lg px-3 py-1">
-						<?php 
-						echo esc_html__( 'Check',
-						'email-subscribers' ); 
+						<?php
+						echo esc_html__(
+							'Check',
+							'email-subscribers'
+						);
 						?>
 				</button>
 				<img src="<?php echo esc_url( ES_PLUGIN_URL ); ?>lite/admin/images/spinner-2x.gif" class="es-loader-img inline-flex align-middle pl-2 h-5 w-7" style="display:none;"/>
@@ -250,11 +257,18 @@ if ( ! class_exists( 'IG_ES_Premium_Services_UI' ) ) {
 		 *
 		 * @return void
 		 */
-		public function add_broadcast_utm_tracking_option( $broadcast_data = array() ) {
-			$enable_utm_tracking  = ! empty( $broadcast_data['meta']['enable_utm_tracking'] ) ? $broadcast_data['meta']['enable_utm_tracking'] : get_option( 'ig_es_track_utm', 'no' );
+		public function add_utm_tracking_option( $campaign_data = array() ) {
+			$enable_utm_tracking = ! empty( $campaign_data['meta']['enable_utm_tracking'] ) ? $campaign_data['meta']['enable_utm_tracking'] : get_option( 'ig_es_track_utm', 'no' );
 
-			$campaign_name = ! empty( $broadcast_data['meta']['es_utm_campaign'] ) ? $broadcast_data['meta']['es_utm_campaign'] : '';
+			$campaign_name = ! empty( $campaign_data['meta']['es_utm_campaign'] ) ? $campaign_data['meta']['es_utm_campaign'] : '';
+			$campaign_type = ! empty( $campaign_data['type'] ) ? $campaign_data['type'] : '';
 
+			$field_prefix = '';
+			if ( in_array( $campaign_type, array( IG_CAMPAIGN_TYPE_POST_NOTIFICATION, IG_CAMPAIGN_TYPE_POST_DIGEST ), true ) ) {
+				$field_prefix = 'campaign_data';
+			} else {
+				$field_prefix = 'broadcast_data';
+			}
 			?>
 
 			<div class="flex mt-3 pb-1 w-full">
@@ -264,7 +278,7 @@ if ( ! class_exists( 'IG_ES_Premium_Services_UI' ) ) {
 				<div>
 					<label for="enable_utm_tracking" class=" inline-flex items-center cursor-pointer">
 							<span class="relative">
-								<input id="enable_utm_tracking" name="broadcast_data[meta][enable_utm_tracking]" type="checkbox" class="absolute es-check-toggle opacity-0 w-0 h-0" value="yes" <?php checked( $enable_utm_tracking, 'yes' ); ?>
+								<input id="enable_utm_tracking" name="<?php echo esc_attr( $field_prefix ); ?>[meta][enable_utm_tracking]" type="checkbox" class="absolute es-check-toggle opacity-0 w-0 h-0" value="yes" <?php checked( $enable_utm_tracking, 'yes' ); ?>
 								/>
 								<span class="es-mail-toggle-line block w-8 h-5 bg-gray-300 rounded-full shadow-inner"></span>
 								<span class="es-mail-toggle-dot absolute transition-all duration-300 ease-in-out block w-3 h-3 mt-1 ml-1 bg-white rounded-full shadow inset-y-0 left-0 focus-within:shadow-outline"></span>
@@ -273,31 +287,31 @@ if ( ! class_exists( 'IG_ES_Premium_Services_UI' ) ) {
 				</div>
 			</div>
 			<div class="py-1 ig_es_broadcast_campaign_name_wrapper <?php echo 'no' === $enable_utm_tracking ? esc_attr( 'hidden' ) : ''; ?>">
-				<input name="broadcast_data[meta][es_utm_campaign]" placeholder="<?php echo esc_html__( 'Campaign Name', 'email-subscribers' ); ?>" id="es_utm_campaign" class="form-input border-gray-400 text-sm relative rounded-md shadow-sm block w-2/4 sm:leading-5" value="<?php echo esc_attr( $campaign_name ); ?>">
+				<input name="<?php echo esc_attr( $field_prefix ); ?>[meta][es_utm_campaign]" placeholder="<?php echo esc_html__( 'Campaign Name', 'email-subscribers' ); ?>" id="es_utm_campaign" class="form-input border-gray-400 text-sm relative rounded-md shadow-sm block w-2/4 sm:leading-5" value="<?php echo esc_attr( $campaign_name ); ?>">
 			</div>
 			<?php
 		}
 
 		/**
 		 * Method to register UTM tracking side metabox on ES template page
-		 * 
+		 *
 		 * @since 4.6.2
 		 */
 		public function register_utm_tracking_metabox() {
-			$meta_box_title_for_utm    = __( 'Google Analytics link tracking', 'email-subscribers' );
+			$meta_box_title_for_utm = __( 'Google Analytics link tracking', 'email-subscribers' );
 			add_meta_box( 'es_utm', $meta_box_title_for_utm, array( &$this, 'add_utm_tracking_metabox' ), 'es_template', 'side', 'default' );
 		}
 
 		/**
 		 * Method to add UTM tracking metabox on ES template page
-		 * 
+		 *
 		 * @since 4.6.2
 		 */
 		public function add_utm_tracking_metabox() {
 			global $post;
 			$es_utm_campaign = get_post_meta( $post->ID, 'es_utm_campaign', true );
 			$es_utm_campaign = ! empty( $es_utm_campaign ) ? $es_utm_campaign : '';
-			$allowedtags 	 = ig_es_allowed_html_tags_in_esc();
+			$allowedtags     = ig_es_allowed_html_tags_in_esc();
 
 			add_filter( 'safe_style_css', 'ig_es_allowed_css_style' );
 			/* translators: 1: UTM parameters */
@@ -320,7 +334,7 @@ if ( ! class_exists( 'IG_ES_Premium_Services_UI' ) ) {
 		public function save_utm_campaign( $post_id, $post ) {
 
 			if ( ! empty( $_POST['_wpnonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ), 'update-post_' . $post_id ) ) {
-				
+
 				$es_utm_campaign = ig_es_get_data( $_POST, 'es_utm_campaign', false );
 				if ( false !== $es_utm_campaign ) {
 					update_post_meta( $post_id, 'es_utm_campaign', $es_utm_campaign );
@@ -330,23 +344,24 @@ if ( ! class_exists( 'IG_ES_Premium_Services_UI' ) ) {
 
 		/**
 		 * Method to add UTM tracking option in settings.
-		 * 
+		 *
 		 * @param array $fields Setting fields
-		 * 
+		 *
 		 * @return array $fields Setting fields
-		 * 
+		 *
 		 * @since 4.6.2
 		 */
 		public function add_utm_tracking_option_in_settings( $fields ) {
-			
+
 			// UTM tracking option
-			$track_utm        = array(
+			$track_utm = array(
 				'ig_es_track_utm' => array(
 					'id'      => 'ig_es_track_utm',
-					'name'    => __( 'UTM tracking', 'email-subscribers' ),
+					'name'    => __( 'Google Analytics UTM tracking', 'email-subscribers' ),
+					'info'    => __( 'Do you want to automatically add campaign tracking parameters in emails to track performance in Google Analytics? (We recommend keeping it enabled)', 'email-subscribers' ),
 					'type'    => 'checkbox',
-					'default' => 'no'
-				)
+					'default' => 'no',
+				),
 			);
 
 			$general_fields = $fields['general'];

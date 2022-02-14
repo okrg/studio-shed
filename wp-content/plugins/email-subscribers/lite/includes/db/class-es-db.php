@@ -16,7 +16,6 @@ abstract class ES_DB {
 	 *
 	 * @since 4.0.0
 	 * @var $table_name
-	 *
 	 */
 	public $table_name;
 
@@ -25,7 +24,6 @@ abstract class ES_DB {
 	 *
 	 * @since 4.0.0
 	 * @var $version
-	 *
 	 */
 	public $version;
 
@@ -34,7 +32,6 @@ abstract class ES_DB {
 	 *
 	 * @since 4.0.0
 	 * @var $primary_key
-	 *
 	 */
 	public $primary_key;
 
@@ -71,9 +68,9 @@ abstract class ES_DB {
 	/**
 	 * Retrieve a row by the primary key
 	 *
-	 * @param int $row_id
+	 * @param int    $row_id
 	 * @param string $output
-	 * @param false $use_cache
+	 * @param false  $use_cache
 	 *
 	 * @return false|mixed
 	 *
@@ -111,7 +108,7 @@ abstract class ES_DB {
 	 * @param $column
 	 * @param $row_id
 	 * @param string $output
-	 * @param false $use_cache
+	 * @param false  $use_cache
 	 *
 	 * @return false|mixed
 	 *
@@ -150,7 +147,7 @@ abstract class ES_DB {
 	 *
 	 * @param string $where
 	 * @param string $output
-	 * @param false $use_cache
+	 * @param false  $use_cache
 	 *
 	 * @return false|mixed
 	 *
@@ -166,7 +163,6 @@ abstract class ES_DB {
 		if ( ! empty( $where ) ) {
 			$query .= " WHERE $where";
 		}
-
 
 		if ( true === $use_cache ) {
 
@@ -204,8 +200,8 @@ abstract class ES_DB {
 	 * Retrieve a specific column's value by the primary key
 	 *
 	 * @param string $column
-	 * @param int $row_id
-	 * @param bool $use_cache
+	 * @param int    $row_id
+	 * @param bool   $use_cache
 	 *
 	 * @return null|string|array
 	 *
@@ -259,8 +255,8 @@ abstract class ES_DB {
 	 * @param string $column
 	 * @param string $column_where
 	 * @param string $column_value
-	 * @param bool $only_one
-	 * @param bool $use_cache
+	 * @param bool   $only_one
+	 * @param bool   $use_cache
 	 *
 	 * @return array|string|null
 	 *
@@ -318,7 +314,7 @@ abstract class ES_DB {
 	 *
 	 * @param string $column
 	 * @param string $where
-	 * @param bool $use_cache
+	 * @param bool   $use_cache
 	 *
 	 * @return array
 	 *
@@ -349,7 +345,6 @@ abstract class ES_DB {
 
 				$this->set_cache( $cache_key, $result );
 			}
-
 		} else {
 			$result = $wpbd->get_col( $query );
 		}
@@ -360,10 +355,10 @@ abstract class ES_DB {
 	/**
 	 * Select few columns based on condition
 	 *
-	 * @param array $columns
+	 * @param array  $columns
 	 * @param string $where
 	 * @param string $output
-	 * @param bool $use_cache
+	 * @param bool   $use_cache
 	 *
 	 * @return array|object|null
 	 *
@@ -450,7 +445,7 @@ abstract class ES_DB {
 	 * Update a specific row
 	 *
 	 * @param $row_id
-	 * @param array $data
+	 * @param array  $data
 	 * @param string $where
 	 *
 	 * @return bool
@@ -602,7 +597,7 @@ abstract class ES_DB {
 	 * Get total count
 	 *
 	 * @param string $where
-	 * @param bool $use_cache
+	 * @param bool   $use_cache
 	 *
 	 * @return string|null
 	 *
@@ -643,7 +638,7 @@ abstract class ES_DB {
 	 * Insert data into bulk
 	 *
 	 * @param array $values
-	 * @param int $length
+	 * @param int   $length
 	 *
 	 * @since 4.2.1
 	 *
@@ -705,9 +700,9 @@ abstract class ES_DB {
 				$fields_str      = '`' . implode( '`, `', $fields ) . '`';
 			}
 
-			$query = "INSERT INTO $this->table_name ({$fields_str}) VALUES ";
+			$query  = "INSERT INTO $this->table_name ({$fields_str}) VALUES ";
 			$query .= implode( ', ', $place_holders );
-			$sql   = $wpbd->prepare( $query, $final_values );
+			$sql    = $wpbd->prepare( $query, $final_values );
 
 			if ( ! $wpbd->query( $sql ) ) {
 				$error_flag = true;
@@ -731,16 +726,15 @@ abstract class ES_DB {
 	 * @param $values
 	 *
 	 * @return bool
-	 *
 	 */
 	public static function do_insert( $table_name, $fields, $place_holders, $values ) {
 		global $wpbd;
 
 		$fields_str = '`' . implode( '`, `', $fields ) . '`';
 
-		$query = "INSERT INTO $table_name ({$fields_str}) VALUES ";
+		$query  = "INSERT INTO $table_name ({$fields_str}) VALUES ";
 		$query .= implode( ', ', $place_holders );
-		$sql   = $wpbd->prepare( $query, $values );
+		$sql    = $wpbd->prepare( $query, $values );
 
 		if ( $wpbd->query( $sql ) ) {
 			return true;
@@ -814,7 +808,7 @@ abstract class ES_DB {
 
 		return array(
 			'data'           => $data,
-			'column_formats' => $column_formats
+			'column_formats' => $column_formats,
 		);
 
 	}

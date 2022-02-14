@@ -72,10 +72,10 @@ class ES_Widget extends WP_Widget {
 		<p>
 			<label for="widget-email-subscribers-2-es_group"><?php esc_html_e( 'Subscriber List' ); ?></label>
 			<select id="<?php echo esc_attr( $this->get_field_id( 'subscribers_group' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'subscribers_group' ) ); ?>" class="widefat" style="width:100%;">
-				<?php 
+				<?php
 					$lists_dropdown = ES_Common::prepare_list_dropdown_options( $subscribers_group );
-					$allowedtags 	= ig_es_allowed_html_tags_in_esc();
-					echo wp_kses( $lists_dropdown , $allowedtags );
+					$allowedtags    = ig_es_allowed_html_tags_in_esc();
+					echo wp_kses( $lists_dropdown, $allowedtags );
 				?>
 			</select>
 		</p>

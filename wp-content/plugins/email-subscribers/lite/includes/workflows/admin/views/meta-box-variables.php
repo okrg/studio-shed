@@ -1,11 +1,11 @@
 <?php
 /**
  * ES_Workflow object
- * 
+ *
  * @var ES_Workflow $workflow
  */
 
-if ( ! defined( 'ABSPATH' ) ) { 
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 

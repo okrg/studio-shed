@@ -1,12 +1,12 @@
 === Email Subscribers & Newsletters - Simple and Effective Email Marketing WordPress Plugin ===
-Contributors: icegram, niravmehta, sandhyam, storeapps, malayladu, Mansi Shah, kishanranawat, asmipatel
+Contributors: icegram, niravmehta, sandhyam, storeapps, malayladu, Mansi Shah, kishanranawat, asmipatel, shubhanshukandani
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BMFRMVXQ87JWA&source=url
 Author URI: https://www.icegram.com/
 Tags: email marketing, subscription, autoresponder, post notification, welcome email
 Requires at least: 3.9
-Tested up to: 5.7.2
+Tested up to: 5.9.0
 Requires PHP: 5.6
-Stable tag: 4.7.4
+Stable tag: 5.3.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses
 
@@ -310,11 +310,184 @@ Refer [here](https://www.icegram.com/documentation/es-faq/).
 
 == Upgrade Notice ==
 
-**4.7.4 (26.05.2021)**
-* Fix: Localization/internationalization issue
-* Update: Improved UI/IX
+= 5.3.2 =
+
+* New: Send emails using Sendinblue [PRO]
+* New: Send emails using Mailjet [PRO]
+* Fix: Secured Icegram from reflected XSS vulnerability [Thanks to WPScan team]
 
 == Changelog ==
+
+**5.3.2 (09.02.2022)**
+
+* New: Send emails using Sendinblue [PRO]
+* New: Send emails using Mailjet [PRO]
+* Fix: Secured Icegram from reflected XSS vulnerability [Thanks to WPScan team]
+
+**5.3.1 (01.02.2022)**
+
+* Fix: Media upload is not working
+
+**5.3.0 (01.02.2022)**
+
+* New: Added Drag and Drop editor in campaign section
+* Fix: Compatibility with Forminator version(1.15.9) [PRO]
+
+**5.2.0 (24.01.2022)**
+
+* Update: UI improvements for campaign section
+
+**5.1.0 (19.01.2022)**
+
+* New: Added support for popup in forms
+* New: Added more blocks for drag and drop email builder - Video and Custom Code [PRO]
+* Update: Added selection of form for Gravity Forms, Ninja Forms, and Contact form 7 workflow integration[PRO]
+* Fix: Pepipost support for swedish characters
+
+**5.0.9 (12.01.2022)**
+ 
+* New: Added blocks for drag and drop editor [PRO]
+
+
+**5.0.8 (06.01.2022)**
+
+* New: Option to add attachments to workflow emails [PRO]
+* Fix: {{UNSUBSCRIBE-LINK}} not working in welcome emails in few cases
+* Fix: PHP warning undefined index 'ig-es-tracking-campaign-id' during onboarding/update
+
+**5.0.7 (31.12.2021)**
+
+* Fix: Adding sequence is not working
+
+**5.0.6 (31.12.2021)**
+
+* New: Drag and Drop editor[Beta]
+* New: New workflow trigger for subscriber unsubscribed
+* Update: Stop post notification for post where notification is already sent
+
+**5.0.5 (15.12.2021)**
+
+* New: Date filter for reports
+* Update: Amazon SES support for bounce handling
+* Update: Support for Amazon SES throttling 
+* Fix: Small UI fixes
+
+**5.0.4 (08.12.2021)**
+
+* New: Added new sending option for sequence[PRO]
+* New: Support description in list
+* New: Option to customize "Select list" label for form
+
+**5.0.3 (02.12.2021)**
+
+* New: Send emails in customers timezone [PRO]
+* New: Tracking for workflows
+* Fix: UI fixes
+
+**5.0.2 (19.11.2021)**
+
+* Fix: Incorrect placeholder values in emails
+* Fix: Unable to send campaigns
+
+**5.0.1 (18.11.2021)**
+
+* Enhancement: Welcome and Confirmation email are now part of workflows
+* New: Preview email template in popup
+* Fix: Increase character limit in amazon SES
+* Fix: Prevent email sending while campaign is getting queued 
+
+**5.0.0 (10.11.2021)**
+
+* New: Campaign rule to filter on 'bounce status' of recipients while emails **[PRO]**
+* New: Campaign rule to filter on 'engagement score' of recipients while emails **[PRO]**
+
+**4.9.1 (02.11.2021)**
+
+* New: Added {{POSTIMAGE-URL}} keyword for Post Notification
+* Update: Action Scheduler Library to 3.3.0
+* Fix: Amazon SES batch sending issue **[PRO]**
+
+**4.9.0 (26.10.2021)**
+
+* New: Automatic bounce handling for list **[PRO]**
+
+**4.8.6 (21.10.2021)**
+
+* New: Prefill name and email fields in the subscription form for logged-in users
+
+**4.8.5 (14.10.2021)**
+
+* Update: Support for Amazon SES batch email API **[PRO]**
+* Fix: PHP warning while saving contact through admin side
+
+**4.8.4 (07.10.2021)**
+
+* New: Custom fields support for contacts **[PRO]**
+* New: Add custom fields in subscription forms **[PRO]**
+* New: Map custom fields while importing contacts **[PRO]**
+* Fix: Fixed video thumbnail issue with Jetpack plugin
+
+**4.8.3 (29.09.2021)**
+
+* New: Subscribers engagement score **[PRO]**
+
+**4.8.2 (22.09.2021)**
+
+* New: Elementor form integration with Email Subscribers and Newsletters
+
+**4.8.1 (15.09.2021)**
+
+* Fix: Duplicate emails in few cases
+* Update: Tested up to WordPress 5.8.1
+
+**4.8.0 (08.09.2021)**
+
+* New: Weekly summary email **[PRO]**
+* New: Campaign unsubscribe count **[PRO]**
+* Fix: Long SQL query killed while sending to large number of emails on WP Engine host
+* Fix: CSS conflict on WordPress admin dashboard page
+
+**4.7.9 (02.09.2021)**
+
+* New: Added 'Total sent' column on the Reports page
+* Update: UX improvements
+* Fix: Incorrect sent and opened dates on campaign report on some setup
+* Fix: Campaign report migration issue from Email Subscribers 3.5.16
+* Fix: Duplicate sequence emails **[PRO]**
+
+**4.7.8 (26.08.2021)**
+
+* New: Pause/resume ongoing campaigns **[PRO]**
+* New: Dashboard widget to review statistics in a glance
+* Update: Batch email API improvements **[PRO]**
+
+**4.7.7 (17.08.2021)**
+
+* Update: Tested up to WordPress 5.8
+* Update: Improved campaign reports performance
+* Update: Improved handling of emails having internationalized domain name during import
+* Fix: Newline characters when previewing campaign reports
+* Fix: Database error when subscribing to another list and name field isn't present in the subscription form
+
+**4.7.6 (17.07.2021)**
+
+* New: Bulk resend confirmation emails **[PRO]**
+* New: Run Workflows on existing orders **[PRO]**
+* New: Search contacts by email on the Reports page **[PRO]**
+* Fix: Incorrect form action URL when the subscription form is shown on the blog page
+* Fix: 'es_subbox' function not working
+
+**4.7.5.1 (16.06.2021)**
+
+* Fix: PHP warning for number_format on Manage List screen
+
+**4.7.5 (16.06.2021)**
+
+* New: Import subscribers from WooCommerce orders **[PRO]**
+* New: Added option to remove plugin data on plugin deletion
+* Update: Support for Peipost batch email API
+* Update: Support for Sparkpost batch email API **[PRO]**
+* Update: Removing JavaScript dependency for handling frontend subscriptions
 
 **4.7.4 (27.05.2021)**
 
@@ -358,7 +531,7 @@ Refer [here](https://www.icegram.com/documentation/es-faq/).
 **4.6.13 (17.03.2021)**
 
 * New: Campaign rules to filter recipients while sending sequence emails **[PRO]**
-* Update: Tested upto WordPress 5.7
+* Update: Tested up to WordPress 5.7
 * Fix: Invalid date and time for campaign reports activity table
 
 **4.6.12.1 (05.03.2021)**

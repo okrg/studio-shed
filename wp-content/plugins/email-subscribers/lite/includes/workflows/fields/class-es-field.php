@@ -26,6 +26,15 @@ abstract class ES_Field {
 	protected $title;
 
 	/**
+	 * Field id
+	 *
+	 * @since 5.0.8
+	 *
+	 * @var string
+	 */
+	protected $id;
+
+	/**
 	 * Field name
 	 *
 	 * @since 4.4.1
@@ -117,6 +126,20 @@ abstract class ES_Field {
 	}
 
 	/**
+	 * Set field id
+	 *
+	 * @since 5.0.8
+	 *
+	 * @param string $name Field name.
+	 *
+	 * @return $this
+	 */
+	public function set_id( $id ) {
+		$this->id = $id;
+		return $this;
+	}
+
+	/**
 	 * Set field name
 	 *
 	 * @since 4.4.1
@@ -156,6 +179,18 @@ abstract class ES_Field {
 	 */
 	public function get_title() {
 		return $this->title ? $this->title : '';
+	}
+
+	/**
+	 *
+	 * Get field id
+	 *
+	 * @since 5.0.8
+	 *
+	 * @return string
+	 */
+	public function get_id() {
+		return $this->id ? $this->id : '';
 	}
 
 	/**

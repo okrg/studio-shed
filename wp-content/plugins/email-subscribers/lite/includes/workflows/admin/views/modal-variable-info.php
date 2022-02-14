@@ -1,12 +1,12 @@
 <?php
 
-if ( ! defined( 'ABSPATH' ) ) { 
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 /**
  * IG_ES_Variable object
- * 
+ *
  * @var IG_ES_Variable $variable
  */
 
@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 					<tr class="ig-es-table__row ig-es-workflow-variables-parameter-row"
 						data-parameter-name="<?php echo esc_attr( $field->get_name() ); ?>"
-						<?php 
+						<?php
 						if ( isset( $field->meta['show'] ) ) :
 							?>
 							data-parameter-show="<?php echo esc_attr( $field->meta['show'] ); ?>"<?php endif; ?>
@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 						<td class="ig-es-table__col ig-es-table__col--label">
 							<strong><?php echo esc_html( $field->get_name() ); ?></strong>
-							<?php 
+							<?php
 							if ( $field->get_required() ) :
 								?>
 								<span class="ig-es-required-asterisk"></span><?php endif; ?>

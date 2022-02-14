@@ -4,7 +4,7 @@ class ES_Email_Delivery_Check extends ES_Services {
 
 	/**
 	 * Service command
-	 * 
+	 *
 	 * @var string
 	 *
 	 * @sinc 4.6.0
@@ -37,7 +37,7 @@ class ES_Email_Delivery_Check extends ES_Services {
 
 		$res = array();
 		if ( is_wp_error( $response ) ) {
-			$res['status']             = 'error';
+			$res['status'] = 'error';
 		} else {
 
 			if ( 'success' === $response['status'] && isset( $response['meta']['emailDelivered'] ) && true == $response['meta']['emailDelivered'] ) {
@@ -46,7 +46,6 @@ class ES_Email_Delivery_Check extends ES_Services {
 				$res['additional_message'] = __( ' The test email did not reach our test server. Did you get any test emails on your email? This could be a temporary problem, but it can also mean that emails are getting stuck on your server, or getting rejected by recipients.', 'email-subscribers' );
 				$res['status']             = 'error';
 			}
-
 		}
 
 		return $res;

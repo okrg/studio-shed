@@ -7,21 +7,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class ES_DB_Mailing_Queue {
 
-	public $table_name;
+	public static $table_name = IG_MAILING_QUEUE_TABLE;
 
-	public $version;
+	public static $primary_key = 'id';
 
-	public $primary_key;
-
-	public function __construct() {
-
-		global $wpdb;
-
-		$this->table_name  = IG_MAILING_QUEUE_TABLE;
-		$this->primary_key = 'id';
-		$this->version     = '1.0';
-
-	}
+	public static $version = '1.0';
 
 	/**
 	 * Get columns and formats
@@ -41,7 +31,7 @@ class ES_DB_Mailing_Queue {
 			'finish_at'   => '%s',
 			'created_at'  => '%s',
 			'updated_at'  => '%s',
-			'meta'        => '%s'
+			'meta'        => '%s',
 		);
 	}
 
@@ -57,7 +47,7 @@ class ES_DB_Mailing_Queue {
 			'finish_at'   => null,
 			'created_at'  => ig_get_current_date_time(),
 			'updated_at'  => null,
-			'meta'        => null
+			'meta'        => null,
 		);
 	}
 
@@ -71,7 +61,7 @@ class ES_DB_Mailing_Queue {
 			)
 		);
 
-		//TODO :: update start date
+		// TODO :: update start date
 
 		return $hash;
 
@@ -86,7 +76,7 @@ class ES_DB_Mailing_Queue {
 
 		$results = array();
 		if ( ! empty( $campaign_hash ) ) {
-			$results = $wpdb->get_results( 
+			$results = $wpdb->get_results(
 				$wpdb->prepare(
 					"SELECT * FROM {$wpdb->prefix}ig_mailing_queue WHERE hash = %s",
 					array( $campaign_hash )
@@ -95,7 +85,7 @@ class ES_DB_Mailing_Queue {
 			);
 		} else {
 			$current_time = ig_get_current_date_time();
-			$results 	  = $wpdb->get_results( 
+			$results      = $wpdb->get_results(
 				$wpdb->prepare(
 					"SELECT * FROM {$wpdb->prefix}ig_mailing_queue WHERE status IN ('Sending', 'In Queue') AND start_at <= %s ORDER BY start_at, id LIMIT 0, 1",
 					$current_time
@@ -106,7 +96,7 @@ class ES_DB_Mailing_Queue {
 
 		if ( count( $results ) > 0 ) {
 			$notification = array_shift( $results );
-			
+
 		}
 
 		return $notification;
@@ -115,9 +105,9 @@ class ES_DB_Mailing_Queue {
 
 	/**
 	 * Sync mailing queue content with campaign content
-	 * 
+	 *
 	 * @param array $notification
-	 * 
+	 *
 	 * @since 4.7.3
 	 */
 	public static function sync_content( $notification = array() ) {
@@ -130,24 +120,31 @@ class ES_DB_Mailing_Queue {
 				$filter  = 'ig_es_refresh_' . $meta['type'] . '_content';
 				$post_id = ! empty( $meta['post_id'] ) ? $meta['post_id'] : 0;
 				$content = array();
-				$content = apply_filters( $filter, $content, array( 'campaign_id' => $notification['campaign_id'], 'post_id' => $post_id ) );
-				
+				$content = apply_filters(
+					$filter,
+					$content,
+					array(
+						'campaign_id' => $notification['campaign_id'],
+						'post_id'     => $post_id,
+					)
+				);
+
 				// Update mailing queue with updated content data.
 				if ( ! empty( $content ) ) {
 					global $wpdb;
-					
+
 					$notification['subject'] = ! empty( $content['subject'] ) ? $content['subject'] : $notification['subject'];
 					$notification['body']    = ! empty( $content['body'] ) ? $content['body'] : $notification['body'];
 
-					$wpdb->query( 
-						$wpdb->prepare( 
-							"UPDATE {$wpdb->prefix}ig_mailing_queue SET subject = %s, body = %s  WHERE hash = %s", 
+					$wpdb->query(
+						$wpdb->prepare(
+							"UPDATE {$wpdb->prefix}ig_mailing_queue SET subject = %s, body = %s WHERE hash = %s",
 							array(
-								esc_sql( $notification['subject'] ),
-								esc_sql( $notification['body'] ),
+								$notification['subject'],
+								$notification['body'],
 								$notification['hash'],
 							)
-						)	
+						)
 					);
 				}
 			}
@@ -160,11 +157,11 @@ class ES_DB_Mailing_Queue {
 	public static function update_sent_status( $hash = '', $status = 'In Queue' ) {
 
 		global $wpdb;
-		
+
 		// If status is sent then add finish_at time as well.
 		if ( 'Sent' === $status ) {
 			$current_date_time = ig_get_current_date_time();
-			$return_id = $wpdb->query(
+			$return_id         = $wpdb->query(
 				$wpdb->prepare(
 					"UPDATE {$wpdb->prefix}ig_mailing_queue SET status = %s, finish_at = %s WHERE hash = %s",
 					$status,
@@ -174,7 +171,7 @@ class ES_DB_Mailing_Queue {
 			);
 		} elseif ( 'Sending' === $status ) {
 			$current_date_time = ig_get_current_date_time();
-			$return_id = $wpdb->query(
+			$return_id         = $wpdb->query(
 				$wpdb->prepare(
 					"UPDATE {$wpdb->prefix}ig_mailing_queue SET status = %s, start_at = %s WHERE hash = %s",
 					$status,
@@ -199,7 +196,7 @@ class ES_DB_Mailing_Queue {
 	public static function get_sent_email_count( $notification_hash ) {
 		global $wpdb;
 		$email_count = $wpdb->get_col(
-			$wpdb->prepare( 
+			$wpdb->prepare(
 				"SELECT count FROM {$wpdb->prefix}ig_mailing_queue WHERE hash = %s ",
 				array( $notification_hash )
 			)
@@ -213,12 +210,12 @@ class ES_DB_Mailing_Queue {
 		global $wpbd;
 
 		$notification = array();
-		$query 		  = $wpbd->prepare(
+		$query        = $wpbd->prepare(
 			"SELECT * FROM {$wpbd->prefix}ig_mailing_queue WHERE hash = %s",
 			$notification_hash
 		);
 
-		$cache_key 		 = ES_Cache::generate_key( $query );
+		$cache_key       = ES_Cache::generate_key( $query );
 		$exists_in_cache = ES_Cache::is_exists( $cache_key, 'query' );
 		if ( ! $exists_in_cache ) {
 			$results = $wpbd->get_results(
@@ -229,7 +226,7 @@ class ES_DB_Mailing_Queue {
 		} else {
 			$results = ES_Cache::get( $cache_key, 'query' );
 		}
-		
+
 		if ( count( $results ) > 0 ) {
 			$notification = array_shift( $results );
 		}
@@ -242,8 +239,8 @@ class ES_DB_Mailing_Queue {
 
 		$notification = array();
 		$query        = $wpbd->prepare( "SELECT * FROM {$wpbd->prefix}ig_mailing_queue WHERE campaign_id = %d", $campaign_id );
-		
-		$cache_key 		 = ES_Cache::generate_key( $query );
+
+		$cache_key       = ES_Cache::generate_key( $query );
 		$exists_in_cache = ES_Cache::is_exists( $cache_key, 'query' );
 		if ( ! $exists_in_cache ) {
 			$results = $wpbd->get_results(
@@ -267,7 +264,7 @@ class ES_DB_Mailing_Queue {
 
 		if ( ! empty( $per_page ) && ! empty( $page_number ) ) {
 			$start_limit = ( $page_number - 1 ) * $per_page;
-			$result      = $wpdb->get_results( 
+			$result      = $wpdb->get_results(
 				$wpdb->prepare(
 					"SELECT * FROM {$wpdb->prefix}ig_mailing_queue ORDER BY created_at DESC LIMIT %d, %d",
 					$start_limit,
@@ -276,7 +273,7 @@ class ES_DB_Mailing_Queue {
 				ARRAY_A
 			);
 		} else {
-			$result = $wpdb->get_results( 
+			$result = $wpdb->get_results(
 				$wpdb->prepare(
 					"SELECT * FROM {$wpdb->prefix}ig_mailing_queue ORDER BY created_at DESC "
 				),
@@ -303,12 +300,31 @@ class ES_DB_Mailing_Queue {
 	public static function delete_notifications( $ids ) {
 		global $wpbd;
 
-		$ids = esc_sql( $ids );
+		$ids_count        = count( $ids );
+		$ids_placeholders = array_fill( 0, $ids_count, '%d' );
 
-		$ids = implode( ',', array_map( 'absint', $ids ) );
+		$campaign_query_args = array(
+			IG_ES_CAMPAIGN_STATUS_IN_ACTIVE, // First arguement for $wpbd->prepare
+		);
+		$campaign_query_args = array_merge( $campaign_query_args, $ids ); // Merge ids with other $wpbd->prepare arguements
 
+		// Update related broadcast campaign status to draft.
 		$wpbd->query(
-			"DELETE FROM {$wpbd->prefix}ig_mailing_queue WHERE id IN($ids)"
+			$wpbd->prepare(
+				"UPDATE `{$wpbd->prefix}ig_campaigns` SET `status`= %d WHERE 
+				id IN( SELECT `campaign_id` FROM `{$wpbd->prefix}ig_mailing_queue` WHERE 
+					id IN( " . implode( ',', $ids_placeholders ) . " ) 
+				) AND type = 'newsletter';",
+				$campaign_query_args
+			)
+		);
+
+		// Delete notification.
+		$wpbd->query(
+			$wpbd->prepare(
+				"DELETE FROM `{$wpbd->prefix}ig_mailing_queue` WHERE id IN( " . implode( ',', $ids_placeholders ) . ' );',
+				$ids
+			)
 		);
 	}
 
@@ -350,7 +366,7 @@ class ES_DB_Mailing_Queue {
 		global $wpdb;
 
 		$query   = 'SELECT id, start_at, hash FROM ' . IG_MAILING_QUEUE_TABLE;
-		$results = $wpdb->get_results( 
+		$results = $wpdb->get_results(
 			$wpdb->prepare(
 				"SELECT id, start_at, hash FROM {$wpdb->prefix}ig_mailing_queue WHERE %d",
 				1
@@ -368,11 +384,11 @@ class ES_DB_Mailing_Queue {
 		return $details;
 	}
 
-	public static function get_email_by_id( $mailing_queue_id ) {
+	public static function get_mailing_queue_by_id( $mailing_queue_id ) {
 		global $wpdb;
 
 		$report  = array();
-		$results = $wpdb->get_results( 
+		$results = $wpdb->get_results(
 			$wpdb->prepare(
 				"SELECT * FROM {$wpdb->prefix}ig_mailing_queue WHERE id = %s",
 				$mailing_queue_id
@@ -389,7 +405,7 @@ class ES_DB_Mailing_Queue {
 
 	/**
 	 * Get recent campaigns data
-	 * 
+	 *
 	 * @param int $count
 	 *
 	 * @return array|object|null
@@ -403,7 +419,7 @@ class ES_DB_Mailing_Queue {
 			$count = 5;
 		}
 
-		return $wpdb->get_results( 
+		return $wpdb->get_results(
 			$wpdb->prepare(
 				"SELECT id, hash, campaign_id, subject, start_at, status, finish_at FROM {$wpdb->prefix}ig_mailing_queue order by created_at DESC LIMIT 0, %d",
 				$count
@@ -491,25 +507,72 @@ class ES_DB_Mailing_Queue {
 
 	/**
 	 * Method to update subscribers count in mailing queue table.
-	 * 
+	 *
 	 * @param string $hash Mailing queue hash.
-	 * @param int $count Subscribers count.
-	 * 
+	 * @param int    $count Subscribers count.
+	 *
 	 * @since 4.6.3
-	 */ 
-	public static function update_subscribers_count( $hash = '', $count = 0 ) {
+	 */
+	public static function update_mailing_queue( $mailing_queue_id = 0, $data = array() ) {
 
-		global $wpdb;
-		
-		if ( empty( $hash ) ) {
+		if ( empty( $mailing_queue_id ) ) {
 			return;
 		}
-		
+
+		global $wpdb;
+
+		// Row ID must be positive integer
+		$mailing_queue_id = absint( $mailing_queue_id );
+
+		if ( empty( $mailing_queue_id ) ) {
+			return false;
+		}
+
+		if ( empty( $where ) ) {
+			$where = self::$primary_key;
+		}
+
+		// Initialise column format array
+		$column_formats = self::get_columns();
+
+		// Force fields to lower case
+		$data = array_change_key_case( $data );
+
+		// White list columns
+		$data = array_intersect_key( $data, $column_formats );
+
+		// Reorder $column_formats to match the order of columns given in $data
+		$data_keys      = array_keys( $data );
+		$column_formats = array_merge( array_flip( $data_keys ), $column_formats );
+
+		if ( false === $wpdb->update( self::$table_name, $data, array( $where => $mailing_queue_id ), $column_formats ) ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Decrease subscribers count by given amount.
+	 *
+	 * @param int $mailing_queue_id Mailing queue id.
+	 * @param int $decrease_by Subscribers count.
+	 *
+	 * @since 4.7.6
+	 */
+	public static function decrease_subscribers_count( $mailing_queue_id, $decrease_by = 0 ) {
+
+		global $wpdb;
+
+		if ( empty( $mailing_queue_id ) || empty( $decrease_by ) ) {
+			return;
+		}
+
 		$wpdb->query(
 			$wpdb->prepare(
-				"UPDATE {$wpdb->prefix}ig_mailing_queue SET count = %d WHERE hash = %s",
-				$count,
-				$hash
+				"UPDATE {$wpdb->prefix}ig_mailing_queue SET count = count - %d WHERE id = %d",
+				$decrease_by,
+				$mailing_queue_id
 			)
 		);
 	}

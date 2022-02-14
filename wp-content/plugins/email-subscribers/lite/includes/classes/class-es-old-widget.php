@@ -22,7 +22,7 @@ class ES_Old_Widget extends WP_Widget {
 		echo wp_kses_post( $args['before_widget'] );
 
 		if ( ! empty( $title ) ) {
-			echo wp_kses_post( sprintf( '%s %s %s', $args['before_title'] , $title , $args['after_title']) );
+			echo wp_kses_post( sprintf( '%s %s %s', $args['before_title'], $title, $args['after_title'] ) );
 		}
 
 		$display_name      = isset( $instance['es_name'] ) ? esc_attr( $instance['es_name'] ) : '';
@@ -96,10 +96,10 @@ class ES_Old_Widget extends WP_Widget {
 					foreach ( $groups as $group ) {
 						?>
 						<option value="<?php echo esc_attr( stripslashes( $group ) ); ?>" 
-												  <?php 
+												  <?php
 													if ( stripslashes( $es_group ) == $group ) {
 														echo 'selected="selected"';
-													} 
+													}
 													?>
 						>
 							<?php echo esc_html( stripslashes( $group ) ); ?>

@@ -10,6 +10,14 @@ if ( ! class_exists( 'WP_List_Table' ) ) {
 }
 
 class ES_Campaigns_Table extends ES_List_Table {
+
+	/**
+	 * Class instance.
+	 *
+	 * @var ES_Campaigns_Table $instance
+	 */
+	public static $instance;
+
 	/**
 	 * Number of campaigns to be shown on the page
 	 *
@@ -43,8 +51,24 @@ class ES_Campaigns_Table extends ES_List_Table {
 
 		$this->db = new ES_DB_Campaigns();
 
-		add_action( 'ig_es_campaign_deleted', array( $this, 'delete_child_campaigns' ), 10, 1 );
+		$this->init();
+	}
 
+	public function init() {
+		add_action( 'admin_footer', array( $this, 'add_editor_choice_popup' ) );
+	}
+
+	/**
+	 * Get class instance.
+	 *
+	 * @since 4.7.8
+	 */
+	public static function get_instance() {
+		if ( ! isset( self::$instance ) ) {
+			self::$instance = new self();
+		}
+
+		return self::$instance;
 	}
 
 	/**
@@ -66,25 +90,6 @@ class ES_Campaigns_Table extends ES_List_Table {
 	}
 
 	/**
-	 * Delete all child campaigns based on $parent_campaign_id
-	 *
-	 * @param int $parent_campaign_id
-	 *
-	 * @since 4.3.4
-	 */
-	public function delete_child_campaigns( $parent_campaign_id = 0 ) {
-
-		if ( 0 != $parent_campaign_id ) {
-
-			$child_campaign_ids = $this->db->get_campaigns_by_parent_id( $parent_campaign_id );
-
-			// Delete All Child Campaigns
-			$this->db->delete_campaigns( $child_campaign_ids );
-		}
-	}
-
-
-	/**
 	 * Render Campaigns table
 	 *
 	 * @since 4.0
@@ -92,16 +97,30 @@ class ES_Campaigns_Table extends ES_List_Table {
 	public function render() {
 		$action = ig_es_get_request_data( 'action' );
 		global $ig_es_tracker;
+		$message      = '';
+		$message_type = '';
 		?>
 		<div class="wrap pt-4 font-sans">
-		<?php 
+		<?php
 		if ( 'broadcast_created' === $action ) {
 
 			// Trigger feedback popup for broadcast creation.
 			do_action( 'ig_es_broadcast_created' );
+			$message      = __( 'Broadcast created successfully.', 'email-subscribers' );
+			$message_type = 'success';
+		} elseif ( 'campaign_created' === $action ) {
+			$message      = __( 'Campaign created successfully.', 'email-subscribers' );
+			$message_type = 'success';
+		} elseif ( 'campaign_scheduled' === $action ) {
+			$message      = __( 'Campaign scheduled successfully.', 'email-subscribers' );
+			$message_type = 'success';
+		} elseif ( 'campaign_updated' === $action ) {
+			$message      = __( 'Campaign updated successfully.', 'email-subscribers' );
+			$message_type = 'success';
+		}
 
-			$message = __( 'Broadcast created successfully.', 'email-subscribers' );
-			ES_Common::show_message( $message, 'success' );
+		if ( ! empty( $message ) ) {
+			ES_Common::show_message( $message, $message_type );
 		}
 		?>
 		<div class="flex">
@@ -111,11 +130,11 @@ class ES_Campaigns_Table extends ES_List_Table {
 			</div>
 			<div class="mt-1">
 			<!-- Start-IG-Code -->
-			<a href="admin.php?page=es_notifications&action=new" class="ig-es-title-button ml-2 align-middle"><?php esc_html_e( 'Create Post Notification', 'email-subscribers' ); ?></a>
+			<a href="admin.php?page=es_notifications&action=new" class="ig-es-create-campaign ig-es-title-button ml-2 align-middle"><?php esc_html_e( 'Create Post Notification', 'email-subscribers' ); ?></a>
 			<!-- End-IG-Code -->
-			<a href="admin.php?page=es_newsletters" class="ig-es-title-button ml-2 align-middle"><?php esc_html_e( 'Send Broadcast', 'email-subscribers' ); ?></a>
+			<a href="admin.php?page=es_newsletters" class="ig-es-create-campaign ig-es-title-button ml-2 align-middle"><?php esc_html_e( 'Send Broadcast', 'email-subscribers' ); ?></a>
 			
-				<?php 
+				<?php
 				do_action( 'ig_es_after_campaign_type_buttons' );
 
 				// Start-IG-Code.
@@ -124,15 +143,16 @@ class ES_Campaigns_Table extends ES_List_Table {
 				if ( in_array( $icegram_plugin, $active_plugins ) ) {
 					$redirect_url = admin_url( 'post-new.php?post_type=ig_campaign' );
 					?>
-					<a href="<?php echo esc_url( $redirect_url ); ?>" class="ig-es-link-button px-3 py-1 ml-2 align-middle"><?php esc_html_e( 'Onsite Campaigns', 'email-subscribers' ); ?></a>
+					<!-- <a href="<?php echo esc_url( $redirect_url ); ?>" class="ig-es-link-button px-3 py-1 ml-2 align-middle"><?php esc_html_e( 'Onsite Campaigns', 'email-subscribers' ); ?></a> -->
 				<?php } else { ?>
-					<a href="admin.php?page=go_to_icegram&action=create_campaign" class="ig-es-link-button px-3 py-1 ml-2 align-middle"><?php esc_html_e( 'Onsite Campaigns', 'email-subscribers' ); ?></a>
+					<!-- <a href="admin.php?page=go_to_icegram&action=create_campaign" class="ig-es-link-button px-3 py-1 ml-2 align-middle"><?php esc_html_e( 'Onsite Campaigns', 'email-subscribers' ); ?></a> -->
 					<?php
 				}
 				// End-IG-Code.
 				?>
 
 				<a href="edit.php?post_type=es_template" class="ig-es-imp-button px-3 py-1 ml-2 align-middle"><?php esc_html_e( 'Manage Templates', 'email-subscribers' ); ?></a>
+				<a href="admin.php?page=es_drag_and_drop" class="ig-es-link-button px-3 py-1 ml-2 align-middle"><?php esc_html_e( 'Try New Editor', 'email-subscribers' ); ?></a>
 
 
 			</div>
@@ -197,11 +217,12 @@ class ES_Campaigns_Table extends ES_List_Table {
 			$sql = 'SELECT * FROM ' . IG_CAMPAIGNS_TABLE;
 		}
 
-		$args             = array(); 
-		$query 			  = array();
+		$args             = array();
+		$query            = array();
 		$add_where_clause = true;
 
 		$query[] = "( deleted_at IS NULL OR deleted_at = '0000-00-00 00:00:00' )";
+		$query[] = " type != 'workflow_email'";
 
 		if ( ! empty( $search ) ) {
 			$query[] = ' name LIKE %s ';
@@ -325,25 +346,10 @@ class ES_Campaigns_Table extends ES_List_Table {
 
 					return ES_Common::prepare_list_name_by_ids( $list_ids );
 				} else {
-					$type = isset( $item['type'] ) ? $item['type'] : '';
+					$type     = isset( $item['type'] ) ? $item['type'] : '';
 					$list_ids = array();
-					if ( 'newsletter' === $type && ! empty( $item['meta'] ) ) {
-						$campaign_meta = maybe_unserialize( $item['meta'] );
-						$conditions    = isset( $campaign_meta['list_conditions'] ) ? $campaign_meta['list_conditions']: array();
-						if ( ! empty( $conditions ) ) {
-							foreach ( $conditions as $i => $condition_group ) {
-								if ( ! empty( $condition_group ) ) {
-									foreach ( $condition_group as $j => $condition ) {
-										$condition_field = isset ( $condition['field'] ) ? $condition['field'] : '';
-										if ( '_lists__in' === $condition_field ) {
-											if ( ! empty( $condition['value'] ) && is_array( $condition['value'] ) ) {
-												$list_ids = array_merge( $list_ids, $condition['value'] );
-											}
-										}
-									}
-								}
-							}
-						}
+					if ( ! empty( $item['meta'] ) ) {
+						$list_ids = ES()->campaigns_db->get_list_ids( $item );
 					}
 					if ( $list_ids ) {
 						return ES_Common::prepare_list_name_by_ids( $list_ids );
@@ -366,7 +372,7 @@ class ES_Campaigns_Table extends ES_List_Table {
 					$categories = ES_Common::convert_categories_string_to_array( $item[ $column_name ], false );
 					if ( strpos( $item[ $column_name ], '{a}All{a}' ) ) {
 						$categories = __( 'All', 'email-subscribers' );
-					} else if ( strpos( $item[ $column_name ], '{a}None{a}' ) ) {
+					} elseif ( strpos( $item[ $column_name ], '{a}None{a}' ) ) {
 						$categories = __( 'None', 'email-subscribers' );
 					} else {
 						$categories = trim( trim( implode( ', ', $categories ) ), ',' );
@@ -429,15 +435,19 @@ class ES_Campaigns_Table extends ES_List_Table {
 
 			$slug = ( in_array( $item['type'], array( 'post_notification', 'post_digest' ) ) ) ? esc_attr( 'es_notifications' ) : 'es_' . $item['type'];
 
-			$actions ['edit'] = '<a href="?page=' . esc_attr( $slug ) . '&action=edit&list=' . absint( $item['id'] ) . '&_wpnonce=' . $nonce . '" class="text-indigo-600">' . esc_html__( 'Edit', 'email-subscribers' ) . '</a>';
+			if ( 'workflow' === $type ) {
+				$actions ['edit'] = '<a href="?page=es_workflows&action=edit&id=' . absint( $item['parent_id'] ) . '&_wpnonce=' . $nonce . '" class="text-indigo-600">' . esc_html__( 'Edit', 'email-subscribers' ) . '</a>';
+			} else {
+				$actions ['edit'] = '<a href="?page=' . esc_attr( $slug ) . '&action=edit&list=' . absint( $item['id'] ) . '&_wpnonce=' . $nonce . '" class="text-indigo-600">' . esc_html__( 'Edit', 'email-subscribers' ) . '</a>';
+			}
 
-			if ( in_array( $type, array( 'post_notification', 'post_digest' ) ) ) {
+			if ( in_array( $type, array( 'post_notification', 'post_digest' ), true ) ) {
 				// Add reports link if there are any reports related to the post notification.
 				if ( ! empty( $report ) ) {
 
 					$actions['report'] = '<a href="?page=' . esc_attr( 'es_reports' ) . '&campaign_id=' . esc_attr( $item['id'] ) . '" class="text-indigo-600">' . esc_html__( 'Report', 'email-subscribers' ) . '</a>';
 				}
-			} elseif ( 'sequence' === $type ) {
+			} elseif ( in_array( $type, array( 'sequence', 'workflow' ), true ) ) {
 
 				$actions['report'] = '<a href="?page=' . esc_attr( 'es_reports' ) . '&campaign_id=' . esc_attr( $item['id'] ) . '" class="text-indigo-600">' . esc_html__( 'Report', 'email-subscribers' ) . '</a>';
 			}
@@ -448,8 +458,10 @@ class ES_Campaigns_Table extends ES_List_Table {
 			$status = $item['status'];
 
 			$broadcast_allowed_edit_statuses = array(
-				IG_ES_CAMPAIGN_STATUS_IN_ACTIVE,
-				IG_ES_CAMPAIGN_STATUS_SCHEDULED,
+				IG_ES_CAMPAIGN_STATUS_IN_ACTIVE, // Draft status.
+				IG_ES_CAMPAIGN_STATUS_SCHEDULED, // Scheduled status.
+				IG_ES_CAMPAIGN_STATUS_QUEUED, // Sending status.
+				IG_ES_CAMPAIGN_STATUS_PAUSED, // Paused status.
 			);
 
 			if ( in_array( $status, $broadcast_allowed_edit_statuses ) ) {
@@ -462,6 +474,7 @@ class ES_Campaigns_Table extends ES_List_Table {
 				IG_ES_CAMPAIGN_STATUS_QUEUED,
 				IG_ES_CAMPAIGN_STATUS_ACTIVE,
 				IG_ES_CAMPAIGN_STATUS_FINISHED,
+				IG_ES_CAMPAIGN_STATUS_PAUSED,
 			);
 
 			if ( in_array( $status, $broadcast_allowed_report_statuses ) && ! empty( $report ) ) {
@@ -469,8 +482,6 @@ class ES_Campaigns_Table extends ES_List_Table {
 
 				$actions['report'] = '<a href="?page=' . esc_attr( 'es_reports' ) . '&action=view&list=' . $report['hash'] . '&_wpnonce=" ' . $es_nonce . '" class="text-indigo-600">' . esc_html__( 'Report', 'email-subscribers' ) . '</a>';
 			}
-
-			
 		}
 
 		$campaign_type = array( 'post_notification', 'post_digest' );
@@ -478,7 +489,9 @@ class ES_Campaigns_Table extends ES_List_Table {
 			$actions = apply_filters( 'ig_es_campaign_actions', $actions, $item );
 		}
 
-		$actions['delete'] = '<a href="?page=' . esc_attr( 'es_campaigns' ) . '&action=delete&list=' . absint( $item['id'] ) . '&_wpnonce=' . $nonce . '" onclick="return checkDelete()">' . esc_html__( 'Delete', 'email-subscribers' ) . '</a>';
+		if ( 'workflow' !== $item['type'] ) {
+			$actions['delete'] = '<a href="?page=' . esc_attr( 'es_campaigns' ) . '&action=delete&list=' . absint( $item['id'] ) . '&_wpnonce=' . $nonce . '" onclick="return checkDelete()">' . esc_html__( 'Delete', 'email-subscribers' ) . '</a>';
+		}
 
 		$title .= $this->row_actions( $actions );
 
@@ -510,9 +523,11 @@ class ES_Campaigns_Table extends ES_List_Table {
 			<label for="<?php echo esc_attr( 'ig-es-campaign-status-toggle-' . $campaign_id ); ?>" class="ig-es-campaign-status-toggle-label inline-flex items-center cursor-pointer">
 				<span class="relative">
 					<input id="<?php echo esc_attr( 'ig-es-campaign-status-toggle-' . $campaign_id ); ?>" type="checkbox" class="absolute es-check-toggle opacity-0 w-0 h-0" name="<?php echo esc_attr( 'ig-es-campaign-status-toggle-' . $campaign_id ); ?>" value="<?php echo esc_attr( $campaign_id ); ?>" 
-										  <?php 
-											checked( IG_ES_CAMPAIGN_STATUS_ACTIVE,
-											$campaign_status ); 
+										  <?php
+											checked(
+												IG_ES_CAMPAIGN_STATUS_ACTIVE,
+												$campaign_status
+											);
 											?>
 						>
 					<span class="es-mail-toggle-line"></span>
@@ -554,10 +569,12 @@ class ES_Campaigns_Table extends ES_List_Table {
 
 				case IG_ES_CAMPAIGN_STATUS_IN_ACTIVE:
 					?>
-					<svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24" class="ml-2 h-6 w-6 text-indigo-600">
-						<title><?php echo esc_html__( 'Draft', 'email-subscribers' ); ?></title>
-						<path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-					</svg>
+					<a href="?page=es_newsletters&action=edit&list=<?php echo esc_attr( $campaign_id ); ?>">
+						<svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24" class="ml-2 h-6 w-6 text-indigo-600">
+							<title><?php echo esc_html__( 'Draft', 'email-subscribers' ); ?></title>
+							<path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+						</svg>
+					</a>
 					<?php
 					break;
 
@@ -572,19 +589,18 @@ class ES_Campaigns_Table extends ES_List_Table {
 
 				case IG_ES_CAMPAIGN_STATUS_QUEUED:
 					?>
-					<svg class="flex-shrink-0 ml-2 h-6 w-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+					<svg class="flex-shrink-0 h-6 w-6 text-yellow-400 inline" fill="currentColor" viewBox="0 0 20 20">
 						<title><?php echo esc_html__( 'Sending', 'email-subscribers' ); ?></title>
 						<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd"/>
-					</svg>
 					</svg>
 					<?php
 					break;
 
 				case IG_ES_CAMPAIGN_STATUS_PAUSED:
 					?>
-					<svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24" class="ml-2 h-6 w-6 text-blue-400">
+					<svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-6 w-6 inline text-gray-500" viewBox="0 0 20 20" fill="currentColor">
 						<title><?php echo esc_html__( 'Paused', 'email-subscribers' ); ?></title>
-						<path d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+						<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
 					</svg>
 					<?php
 					break;
@@ -601,6 +617,7 @@ class ES_Campaigns_Table extends ES_List_Table {
 		}
 		?>
 		<?php
+		do_action( 'ig_es_campaign_column_status', $item );
 	}
 
 	/**
@@ -663,7 +680,7 @@ class ES_Campaigns_Table extends ES_List_Table {
 	 * @since 4.0.0
 	 * @since 4.3.4 Added esc_attr()
 	 */
-	public function search_box( $text = '', $input_id = '' ) { 
+	public function search_box( $text = '', $input_id = '' ) {
 		?>
 		<p class="search-box">
 			<label class="screen-reader-text" for="<?php echo esc_attr( $input_id ); ?>"><?php echo esc_attr( $text ); ?>:</label>
@@ -673,24 +690,24 @@ class ES_Campaigns_Table extends ES_List_Table {
 		<p class="search-box search-group-box box-ma10">
 			<?php $filter_by_status = ig_es_get_request_data( 'filter_by_campaign_status' ); ?>
 			<select name="filter_by_campaign_status" id="ig_es_filter_campaign_status_by_type">
-				<?php 
-				$allowedtags 			= ig_es_allowed_html_tags_in_esc();
+				<?php
+				$allowedtags = ig_es_allowed_html_tags_in_esc();
 				add_filter( 'safe_style_css', 'ig_es_allowed_css_style' );
-				$campaign_types = ES_Common::prepare_campaign_statuses_dropdown_options( $filter_by_status, __( 'All Statuses', 'email-subscribers' ) ); 
-				echo wp_kses( $campaign_types , $allowedtags ); 
+				$campaign_types = ES_Common::prepare_campaign_statuses_dropdown_options( $filter_by_status, __( 'All Statuses', 'email-subscribers' ) );
+				echo wp_kses( $campaign_types, $allowedtags );
 				?>
 			</select>
 		</p>
 		<p class="search-box search-group-box box-ma10">
 			<?php $filter_by_campaign_type = ig_es_get_request_data( 'filter_by_campaign_type' ); ?>
 			<select name="filter_by_campaign_type" id="ig_es_filter_campaign_type">
-				<?php 
+				<?php
 				$campaign_statuses = ES_Common::prepare_campaign_type_dropdown_options( $filter_by_campaign_type, __( 'All Type', 'email-subscribers' ) );
-				echo wp_kses( $campaign_statuses , $allowedtags ); 
+				echo wp_kses( $campaign_statuses, $allowedtags );
 				?>
 			</select>
 		</p>
-		<?php 
+		<?php
 	}
 
 	/**
@@ -767,6 +784,68 @@ class ES_Campaigns_Table extends ES_List_Table {
 				ES_Common::show_message( $message, 'error' );
 			}
 		}
+	}
+
+	/*
+	* Display the preview of the email content
+	*/
+	public function add_editor_choice_popup() {
+		?>
+		<div class="hidden" id="ig-es-campaign-editor-type-popup">
+			<div class="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full" style="background-color: rgba(0,0,0,.5);">
+				<div class="absolute h-auto p-4 ml-16 mr-4 text-left bg-white rounded shadow-xl z-80 md:max-w-5xl md:p-3 lg:p-4">
+					<div class="py-2 px-4">
+						<div class="flex border-b border-gray-200 pb-2">
+							<h3 class="text-2xl text-center w-11/12">
+								<?php echo esc_html__( 'Create Campaign', 'email-subscribers' ); ?>
+							</h3>
+							<button id="close-campaign-editor-type-popup" class="text-sm font-medium tracking-wide text-gray-700 select-none no-outline focus:outline-none focus:shadow-outline-red hover:border-red-400 active:shadow-lg">
+								<svg class="h-5 w-5 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+								</svg>
+							</button>
+						</div>
+					</div>
+					<div class="mx-4 my-2 list-decimal">
+						<div class="mx-auto flex justify-center pt-2">
+							<label class="inline-flex items-center cursor-pointer mr-3 h-22 w-50">
+								<div class="px-3 py-1 border border-gray-200 rounded-lg shadow-md es-mailer-logo es-importer-logo h-18 bg-white">
+									<a href="#" class="campaign-editor-type-choice" data-editor-type="<?php echo esc_attr( IG_ES_DRAG_AND_DROP_EDITOR ); ?>">
+										<div class="border-0 es-logo-wrapper">
+											<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+											<path fill-rule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 01-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 110-2h4a1 1 0 011 1v4a1 1 0 11-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12zm-9 7a1 1 0 112 0v1.586l2.293-2.293a1 1 0 011.414 1.414L6.414 15H8a1 1 0 110 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 110-2h1.586l-2.293-2.293a1 1 0 011.414-1.414L15 13.586V12a1 1 0 011-1z" clip-rule="evenodd" />
+											</svg>
+										</div>
+										<p class="mb-2 text-sm inline-block font-medium text-gray-600">
+											<?php 
+												echo esc_html__( 'Create using new Drag & Drop Editor', 'email-subscribers');
+											?>
+										</p>
+									</a>
+								</div>
+							</label>
+							<label class="inline-flex items-center cursor-pointer mr-3 h-22 w-50">
+								<div class="px-3 py-1 border border-gray-200 rounded-lg shadow-md es-mailer-logo es-importer-logo h-18 bg-white">
+									<a href="#" class="campaign-editor-type-choice" data-editor-type="<?php echo esc_attr( IG_ES_CLASSIC_EDITOR ); ?>">
+										<div class="border-0 es-logo-wrapper">
+											<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+											</svg>
+										</div>
+										<p class="mb-2 text-sm inline-block font-medium text-gray-600">
+										<?php 
+											echo esc_html__( 'Create using Classic Editor', 'email-subscribers');
+										?>
+										</p>
+									</a>
+								</div>
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php
 	}
 
 }

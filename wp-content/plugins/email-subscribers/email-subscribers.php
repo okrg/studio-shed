@@ -3,13 +3,13 @@
  * Plugin Name: Email Subscribers & Newsletters
  * Plugin URI: https://www.icegram.com/
  * Description: Add subscription forms on website, send HTML newsletters & automatically notify subscribers about new blog posts once it is published.
- * Version: 4.7.4
+ * Version: 5.3.2
  * Author: Icegram
  * Author URI: https://www.icegram.com/
  * Requires at least: 3.9
- * Tested up to: 5.7.2
+ * Tested up to: 5.9.0
  * WC requires at least: 3.6.0
- * WC tested up to: 5.2.2
+ * WC tested up to: 5.5.1
  * ES WOO: 7120515:9f4c7f8bb491260ef19edf9699db73e6
  * Requires PHP: 5.6
  * Text Domain: email-subscribers
@@ -28,7 +28,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Minimum PHP version required for Email Subscribers
  *
  * @since 4.4.1
- * 
+ *
  * @since 4.4.3 Added if not already defined() check.
  */
 if ( ! defined( 'IG_ES_MIN_PHP_VER' ) ) {
@@ -44,7 +44,6 @@ if ( ! function_exists( 'ig_es_fail_php_version_notice' ) ) {
 	 *
 	 * @return void
 	 * @since 4.4.1
-	 *
 	 */
 	function ig_es_fail_php_version_notice() {
 		/* translators: %s: PHP version */
@@ -71,6 +70,13 @@ if ( ! defined( 'IG_ES_FEEDBACK_TRACKER_VERSION' ) ) {
 	define( 'IG_ES_FEEDBACK_TRACKER_VERSION', '1.2.5' );
 }
 
+if ( ! defined( 'IG_ES_TRACKER_VERSION' ) ) {
+	define( 'IG_ES_TRACKER_VERSION', '1.2.6' );
+}
+
+if ( ! defined( 'IG_ES_PLUGIN_USAGE_TRACKER_VERSION' ) ) {
+	define( 'IG_ES_PLUGIN_USAGE_TRACKER_VERSION', '1.0.0' );
+}
 
 global $ig_es_tracker;
 
@@ -91,7 +97,7 @@ global $wp_version;
  * It might be defined from older version of ES
  */
 require plugin_dir_path( __FILE__ ) . 'lite/includes/feedback/class-ig-tracker.php';
-$ig_es_tracker = 'IG_Tracker_V_' . str_replace( '.', '_', IG_ES_FEEDBACK_TRACKER_VERSION );
+$ig_es_tracker = 'IG_Tracker_V_' . str_replace( '.', '_', IG_ES_TRACKER_VERSION );
 
 if ( ! function_exists( 'ig_es_show_upgrade_pro_notice' ) ) {
 	/**
@@ -104,10 +110,14 @@ if ( ! function_exists( 'ig_es_show_upgrade_pro_notice' ) ) {
 		?>
 		<div class="notice notice-error">
 			<p>
-			<?php 
-			/* translators: %s: Link to Email Subscribers Premium upgrade */
-			echo wp_kses_post( sprintf( __( 'You are using older version of <strong>Email Subscribers Premium</strong> plugin. It won\'t work because it needs plugin to be updated. Please update %s plugin.', 'email-subscribers' ),
-					'<a href="' . esc_url( $url ) . '" target="_blank">' . __( 'Email Subscribers Premium', 'email-subscribers' ) . '</a>' ) );
+			<?php
+			echo wp_kses_post(
+				sprintf(
+					/* translators: %s: Link to Email Subscribers Premium upgrade */
+					__( 'You are using older version of <strong>Email Subscribers Premium</strong> plugin. It won\'t work because it needs plugin to be updated. Please update %s plugin.', 'email-subscribers' ),
+					'<a href="' . esc_url( $url ) . '" target="_blank">' . __( 'Email Subscribers Premium', 'email-subscribers' ) . '</a>'
+				)
+			);
 			?>
 					</p>
 		</div>
@@ -151,7 +161,7 @@ if ( 'premium' === $ig_es_plan ) {
 	 * - If It's installed & It's >= 4.3.0 => return
 	 */
 
-	//- If It's installed & It's < 4.3.0 => Show Upgrade Notice
+	// - If It's installed & It's < 4.3.0 => Show Upgrade Notice
 	$all_plugins = $ig_es_tracker::get_plugins( 'all', true );
 
 	$es_pro_plugin         = 'email-subscribers-premium/email-subscribers-premium.php';
@@ -169,7 +179,6 @@ if ( 'premium' === $ig_es_plan ) {
 			if ( is_admin() ) {
 				add_action( 'admin_head', 'ig_es_show_upgrade_pro_notice', PHP_INT_MAX );
 			}
-
 		} elseif ( $is_pro_active && version_compare( $es_pro_plugin_version, 4.3, '>=' ) ) {
 			return;
 		}
@@ -178,7 +187,7 @@ if ( 'premium' === $ig_es_plan ) {
 /* ***************************** Initial Compatibility Work (End) ******************* */
 
 if ( ! defined( 'ES_PLUGIN_VERSION' ) ) {
-	define( 'ES_PLUGIN_VERSION', '4.7.4' );
+	define( 'ES_PLUGIN_VERSION', '5.3.2' );
 }
 
 // Plugin Folder Path.
@@ -237,17 +246,17 @@ if ( ! function_exists( 'activate_email_subscribers' ) ) {
 	/**
 	 * The code that runs during plugin activation.
 	 * This action is documented in includes/class-email-subscribers-activator.php
-	 * 
+	 *
 	 * @param bool $network_wide Is plugin being activated on a network.
 	 */
 	function activate_email_subscribers( $network_wide ) {
 
 		global $wpdb;
-		
+
 		require_once ES_PLUGIN_DIR . 'lite/includes/class-email-subscribers-activator.php';
 
 		if ( is_multisite() && $network_wide ) {
-			
+
 			// Get all active blogs in the network and activate plugin on each one
 			$blog_ids = $wpdb->get_col( $wpdb->prepare( "SELECT blog_id FROM $wpdb->blogs WHERE deleted = %d", 0 ) );
 			foreach ( $blog_ids as $blog_id ) {
@@ -264,18 +273,17 @@ if ( ! function_exists( 'deactivate_email_subscribers' ) ) {
 	/**
 	 * The code that runs during plugin deactivation.
 	 * This action is documented in includes/class-email-subscribers-deactivator.php
-	 * 
+	 *
 	 * @param bool $network_wide Is plugin being activated on a network.
-	 * 
 	 */
 	function deactivate_email_subscribers( $network_wide ) {
 
 		require_once ES_PLUGIN_DIR . 'lite/includes/class-email-subscribers-deactivator.php';
 
 		if ( is_multisite() && $network_wide ) {
-			
+
 			global $wpdb;
-			
+
 			// Get all active blogs in the network.
 			$blog_ids = $wpdb->get_col( $wpdb->prepare( "SELECT blog_id FROM $wpdb->blogs WHERE deleted = %d", 0 ) );
 			foreach ( $blog_ids as $blog_id ) {
@@ -295,9 +303,9 @@ if ( ! function_exists( 'ig_es_may_activate_on_blog' ) ) {
 
 	/**
 	 * Function to handle new blog(site) creation/activation in WP Multisite
-	 * 
+	 *
 	 * @param  int $blog_id Blog ID of new site.
-	 * 
+	 *
 	 * @since  4.4.2
 	 */
 	function ig_es_may_activate_on_blog( $blog_id ) {
@@ -325,9 +333,9 @@ if ( ! function_exists( 'ig_es_activate_on_blog' ) ) {
 
 	/**
 	 * Function to trigger Email Subscribers' activation code for individual site/blog in a network.
-	 * 
+	 *
 	 * @param  int $blog_id Blog ID of newly created site/blog.
-	 * 
+	 *
 	 * @since  4.4.2
 	 */
 	function ig_es_activate_on_blog( $blog_id ) {
@@ -342,9 +350,9 @@ if ( ! function_exists( 'ig_es_trigger_deactivation_in_multisite' ) ) {
 
 	/**
 	 * Function to trigger Email Subscribers' deactivation code for individual site in a network.
-	 * 
+	 *
 	 * @param  int $blog_id Blog ID of newly created site/blog.
-	 * 
+	 *
 	 * @since  4.4.2
 	 */
 	function ig_es_trigger_deactivation_in_multisite( $blog_id ) {
@@ -373,7 +381,7 @@ add_action( 'admin_init', 'email_subscribers_redirect' );
 
 if ( ! function_exists( 'email_subscribers_redirect' ) ) {
 	function email_subscribers_redirect() {
-		
+
 		// Check if it is multisite and the current user is in the network administrative interface. e.g. `/wp-admin/network/`
 		if ( is_multisite() && is_network_admin() ) {
 			return;
@@ -396,14 +404,15 @@ if ( ! function_exists( 'es_subbox' ) ) {
 	 */
 	function es_subbox( $namefield = null, $desc = null, $group = null ) {
 
-		$allowedtags 			= ig_es_allowed_html_tags_in_esc();
-		$atts 					= array(
+		$allowedtags            = ig_es_allowed_html_tags_in_esc();
+		$atts                   = array(
 			'namefield' => $namefield,
 			'desc'      => $desc,
-			'group'     => $group
+			'group'     => $group,
 		);
 		$subscription_shortcode = ES_Shortcode::render_es_subscription_shortcode( $atts );
-		echo wp_kses( $subscription_shortcode , $allowedtags ); 
+		add_filter( 'safe_style_css', 'ig_es_allowed_css_style' );
+		echo wp_kses( $subscription_shortcode, $allowedtags );
 	}
 }
 
@@ -414,7 +423,7 @@ if ( ! function_exists( 'es_subbox' ) ) {
 require ES_PLUGIN_DIR . 'lite/includes/class-email-subscribers.php';
 
 if ( ! function_exists( 'ES' ) ) {
-	
+
 	/**
 	 * Email Subscribers instance
 	 *
