@@ -160,6 +160,9 @@
                 <li class="menu-item">
                     <a href="/customer-reviews/">Customer Reviews</a>
                 </li>
+                <li class="menu-item">
+                    <a href="/terms-and-conditions/">Terms &amp; Conditions</a>
+                </li>
             </ul>
 			</div>
 			<div class="col-sm-6 col-md-2">
@@ -225,7 +228,7 @@
 
 			</div>
                 <div class="col-sm-12 copyfooter">
-                <div class="copyright">&copy; 2021 - <a href="/privacy/">Privacy</a> - <a href="/terms-and-conditions/">Terms of Use</a></div>
+                <div class="copyright">&copy; 2022 - <a href="/privacy/">Privacy Policy</a></div>
                 </div>
 			</div>
 		</div>
