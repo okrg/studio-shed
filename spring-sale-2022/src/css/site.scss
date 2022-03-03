@@ -227,7 +227,7 @@ header#hero {
       left: 0;
       width: 100%;
       height: 500px;
-      background-image: url(../img/summer-hero-bg.jpg);
+      background-image: url(../img/spring-hero-bg.jpg);
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center center;
@@ -257,14 +257,14 @@ header#hero {
   }
   .cta {
     z-index: 3;
-    background-image: url(../img/summer-2021-promo.png);
+    background-image: url(../img/header-cta.png);
     background-repeat: no-repeat;
     background-size: contain;    
     background-position: center bottom;
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;  
     height: 100%;
-    left: 10%;
+    left: auto;
+    right:  auto;
     bottom: 10%;
     width: 80%;
    @include md {
@@ -273,13 +273,13 @@ header#hero {
     height: 330px;
     padding-bottom: 40px;
     bottom: 10%;
-    left: 25%;
+    left: 10%;
     width: 50%;
     }
     @include lg {
     
-    left: 20%;
-    width: 60%;
+    left: 10%;
+    width: 50%;
     }
     a {
       display: flex;
@@ -299,12 +299,15 @@ header#hero {
 section#intro {
 
   h4 {
-
+    font-size:  36px;
     color: #e35d00;
+  }
+  h5 {
+    font-size:  28px;    
   }
   p {
     margin: 0 auto;
-    max-width: 720px;
+    line-height: 200%;
   }
 }
 section#quick-ship {
