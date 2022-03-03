@@ -2,10 +2,7 @@
   <div class="qs-intro">
   <div class="product-headline text-uppercase">DIY Quick-Ship Models</div>
   
-  /*
-  <div class="promo-headline">Additional 5% Off – Order by March 21st!</div>
-  */
-  
+  <div class="promo-headline">Additional 5% Off – Order by March 21st!</div>  
   <div class="product-headline">Our Most Popular Models. Faster Turnaround.</div>
   <p>These models are the best of our Signature Series. Our most popular designs, delivered to your door in weeks. Choose the perfect size, colors, and options for your perfect home office, studio, or backyard retreat. Specially priced for DIY installation only with <u>standard shipping included</u>.</p>
 
