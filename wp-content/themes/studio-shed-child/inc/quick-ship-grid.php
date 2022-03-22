@@ -2,7 +2,7 @@
   <div class="qs-intro">
   <div class="product-headline text-uppercase">DIY Quick-Ship Models</div>
   
-  <div class="promo-headline">Additional 5% Off – Order by March 21st!</div>  
+  <!--<div class="promo-headline">Additional 5% Off – Order by March 21st!</div>-->
   <div class="product-headline">Our Most Popular Models. Faster Turnaround.</div>
   <p>These models are the best of our Signature Series. Our most popular designs, delivered to your door in weeks. Choose the perfect size, colors, and options for your perfect home office, studio, or backyard retreat. Specially priced for DIY installation only with <u>standard shipping included</u>.</p>
 
@@ -19,9 +19,9 @@
       </header>
       <footer>
         <a href="/product/pagoda/">
-          <div class="qs-price">$19,409*</div>
+          <div class="qs-price">$20,430*</div>
           <div class="qs-original">$22,206</div>
-          <div class="qs-savings">Save $2,798</div>
+          <div class="qs-savings">Save $1,776</div>
           <img src="/wp-content/themes/studio-shed-child/img/qs-pagoda.png">
         </a>
       </footer>
@@ -35,9 +35,9 @@
       </header>
       <footer>
         <a href="/product/boreas/">
-            <div class="qs-price">$19,016*</div>
+            <div class="qs-price">$20,017*</div>
             <div class="qs-original">$21,758</div>
-            <div class="qs-savings">Save $2,742</div>
+            <div class="qs-savings">Save $1,741</div>
             <img src="/wp-content/themes/studio-shed-child/img/qs-boreas.png">
         </a>
       </footer>
@@ -51,9 +51,9 @@
       </header>
       <footer>
         <a href="/product/solitude/">
-            <div class="qs-price">$21,455*</div>
+            <div class="qs-price">$22,584*</div>
             <div class="qs-original">$24,548</div>
-            <div class="qs-savings">Save $3,093</div>
+            <div class="qs-savings">Save $1,964</div>
             <img src="/wp-content/themes/studio-shed-child/img/qs-solitude.png">
         </a>
       </footer>
@@ -67,9 +67,9 @@
       </header>
       <footer>
         <a href="/product/telluride/">
-            <div class="qs-price">$22,609*</div>
+            <div class="qs-price">$23,799*</div>
             <div class="qs-original">$25,868</div>
-            <div class="qs-savings">Save $3,259</div>
+            <div class="qs-savings">Save $2,069</div>
             <img src="/wp-content/themes/studio-shed-child/img/qs-telluride.png">
         </a>
       </footer>
