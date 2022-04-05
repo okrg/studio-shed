@@ -51,7 +51,7 @@
 				this.win.jQuery(this.win.document).ajaxSuccess($.proxy(this, 'onAjaxSuccess'));
 			},
 			onAjaxSuccess: function( e, xhr, args, res ) {
-				if (args.data && ~args.data.indexOf('action=ls_save_slider') && '{"status":"ok"}' === res) {
+				if (args.data && ~args.data.indexOf('action=ls_publish_slider') && '{"status":"ok"}' === res) {
 					this.reload = true;
 				}
 			},

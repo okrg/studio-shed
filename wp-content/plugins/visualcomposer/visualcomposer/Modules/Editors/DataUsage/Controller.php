@@ -10,6 +10,7 @@ if (!defined('ABSPATH')) {
 
 use VisualComposer\Framework\Illuminate\Support\Module;
 use VisualComposer\Framework\Container;
+use VisualComposer\Helpers\License;
 use VisualComposer\Helpers\Options;
 use VisualComposer\Helpers\Request;
 use VisualComposer\Helpers\Traits\EventsFilters;
@@ -61,7 +62,7 @@ class Controller extends Container implements Module
     }
 
     // NOTE: If you change anything in the data, you also need to change the information table here visualcomposer/resources/views/settings/fields/dataCollectionTable.php
-    protected function sendUsageData()
+    protected function sendUsageData(License $licenseHelper)
     {
         // @codingStandardsIgnoreLine
         global $wp_version;
@@ -78,7 +79,7 @@ class Controller extends Container implements Module
             $updatedPostsList = $optionsHelper->get('updatedPostsList');
             if ($updatedPostsList && is_array($updatedPostsList)) {
                 foreach ($updatedPostsList as $postId) {
-                    $hashedId = $this->getHashedKey($postId);
+                    $hashedId = $licenseHelper->getHashedKey($postId);
                     $editorUsage = get_post_meta($postId, '_' . VCV_PREFIX . 'editorUsage', true);
                     $elementUsage = get_post_meta($postId, '_' . VCV_PREFIX . 'elementDiffs', true);
                     $templateUsage = get_post_meta($postId, '_' . VCV_PREFIX . 'templates', true);
@@ -109,7 +110,7 @@ class Controller extends Container implements Module
                 $data = [
                     'vcv-send-usage-statistics' => 'sendUsageStatistics',
                     'vcv-statistics' => $usageStats,
-                    'vcv-hashed-url' => $this->getHashedKey(get_site_url()),
+                    'vcv-hashed-url' => $licenseHelper->getHashedKey(get_site_url()),
                 ];
                 $json = json_encode($data);
                 $zip = zlib_encode($json, ZLIB_ENCODING_DEFLATE);
@@ -163,25 +164,23 @@ class Controller extends Container implements Module
      */
     protected function addDataCollectionVariables($variables, $payload)
     {
-        if (isset($payload['sourceId'])) {
-            $optionsHelper = vchelper('Options');
-            $isEnabled = $optionsHelper->get('settings-itemdatacollection-enabled', null);
-            // Have at least 10 initial usages
-            $initialUsages = (int)$optionsHelper->get('initialEditorUsage');
-            // @codingStandardsIgnoreLine
-            $dataCollectionPopupOk = $initialUsages >= 10;
+        $optionsHelper = vchelper('Options');
+        $isEnabled = $optionsHelper->get('settings-itemdatacollection-enabled', null);
+        // Have at least 10 initial usages
+        $initialUsages = (int)$optionsHelper->get('initialEditorUsage');
+        // @codingStandardsIgnoreLine
+        $dataCollectionPopupOk = $initialUsages >= 10;
 
-            $variables[] = [
-                'key' => 'VCV_SHOW_DATA_COLLECTION_POPUP',
-                'value' => is_null($isEnabled) && $dataCollectionPopupOk,
-                'type' => 'constant',
-            ];
-            $variables[] = [
-                'key' => 'VCV_DATA_COLLECTION_ENABLED',
-                'value' => $isEnabled,
-                'type' => 'variable',
-            ];
-        }
+        $variables[] = [
+            'key' => 'VCV_SHOW_DATA_COLLECTION_POPUP',
+            'value' => is_null($isEnabled) && $dataCollectionPopupOk,
+            'type' => 'constant',
+        ];
+        $variables[] = [
+            'key' => 'vcvIsDataCollectionEnabled',
+            'value' => $isEnabled,
+            'type' => 'variable',
+        ];
 
         return $variables;
     }
@@ -209,10 +208,10 @@ class Controller extends Container implements Module
         return ['status' => true];
     }
 
-    protected function saveUsageStats($response, $payload)
+    protected function saveUsageStats($response, $payload, License $licenseHelper)
     {
         $sourceId = $payload['sourceId'];
-        $hashedId = $this->getHashedKey($sourceId);
+        $hashedId = $licenseHelper->getHashedKey($sourceId);
         $elements = $payload['elements'];
         $licenseType = $payload['licenseType'];
         $date = time();
@@ -257,7 +256,7 @@ class Controller extends Container implements Module
         $elements = json_decode($elements, true);
         if ($elements) {
             foreach ($elements as $key => $value) {
-                $elements[$key]['pageId'] = $this->getHashedKey($elements[$key]['pageId']);
+                $elements[$key]['pageId'] = $licenseHelper->getHashedKey($elements[$key]['pageId']);
                 $elements[$key]['date'] = $date;
             }
         }
@@ -328,10 +327,10 @@ class Controller extends Container implements Module
         return $newElements;
     }
 
-    protected function saveTemplateUsage($response, $payload)
+    protected function saveTemplateUsage($response, $payload, License $licenseHelper)
     {
         $sourceId = $payload['sourceId'];
-        $hashedId = $this->getHashedKey($sourceId);
+        $hashedId = $licenseHelper->getHashedKey($sourceId);
         $id = $payload['templateId'];
         $editorTemplatesHelper = vchelper('EditorTemplates');
         $optionsHelper = vchelper('Options');
@@ -363,13 +362,13 @@ class Controller extends Container implements Module
         return false;
     }
 
-    protected function saveTeaserDownload($response, $payload)
+    protected function saveTeaserDownload($response, $payload, License $licenseHelper)
     {
         $sourceId = $payload['sourceId'];
         if (!$sourceId) {
             $hashedId = 'dashboard';
         } else {
-            $hashedId = $this->getHashedKey($sourceId);
+            $hashedId = $licenseHelper->getHashedKey($sourceId);
         }
         $teaser = isset($payload['template']) ? $payload['template'] : $payload['element'];
         $optionsHelper = vchelper('Options');
@@ -431,17 +430,5 @@ class Controller extends Container implements Module
         $optionsHelper->set('downloadedContent', $downloadedContent);
 
         return false;
-    }
-
-    /**
-     * Get hashed key
-     *
-     * @param $key
-     *
-     * @return false|string
-     */
-    protected function getHashedKey($key)
-    {
-        return substr(md5(wp_salt() . $key), 2, 12);
     }
 }

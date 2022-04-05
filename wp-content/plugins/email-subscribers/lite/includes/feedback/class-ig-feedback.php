@@ -852,7 +852,6 @@ if ( ! class_exists( 'IG_Feedback_V_1_2_5' ) ) {
 					}
 				]).then(response => {
 
-					console.log(response);
 					if (response.hasOwnProperty('value')) {
 
 						Swal.fire({

@@ -2376,10 +2376,6 @@ button#close-campaign-preview-popup {
     display: none;
 }
 
-#edit-campaign-form-container.drag-and-drop .ig-es-campaign-templates-wrapper {
-    display: none;
-}
-
 #edit-campaign-form-container #ig-es-dnd-builder .es-top-bar {
     position: relative;
 }
@@ -2405,4 +2401,5 @@ button#close-campaign-preview-popup {
     -webkit-box-shadow: none;
     box-shadow: none;
 }
+
 /** New Campaign UI CSS - END **/

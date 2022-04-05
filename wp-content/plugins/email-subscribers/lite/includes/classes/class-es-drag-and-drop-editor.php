@@ -22,19 +22,29 @@ class ES_Drag_And_Drop_Editor {
 			
 			$current_page = ig_es_get_request_data( 'page' );
 
-			if ( 'es_drag_and_drop' === $current_page ) {
-				$is_dnd_editor_page = true;
-			} else {
-				$edit_campaign_pages = array(
-					'es_notifications',
-					'es_newsletters',
-				);
-		
-				$is_edit_campaign_page = in_array( $current_page, $edit_campaign_pages, true );
-		
-				if ( $is_edit_campaign_page ) {
-					$editor_type        = ig_es_get_request_data( 'editor-type' );
+			$edit_campaign_pages = array(
+				'es_notifications',
+				'es_newsletters',
+			);
+	
+			$is_edit_campaign_page = in_array( $current_page, $edit_campaign_pages, true );
+	
+			if ( $is_edit_campaign_page ) {
+				$editor_type = ig_es_get_request_data( 'editor-type' );
+				if ( ! empty( $editor_type ) ) {
 					$is_dnd_editor_page = IG_ES_DRAG_AND_DROP_EDITOR === $editor_type;
+				} else {
+					$campaign_id = ig_es_get_request_data( 'list' );
+					if ( ! empty( $campaign_id ) ) {
+						$campaign = new ES_Campaign( $campaign_id );
+						if ( $campaign->exists ) {
+							$campaign_data = (array) $campaign;
+							if ( ! empty( $campaign_data['meta']['editor_type'] ) ) {
+								$editor_type        = $campaign_data['meta']['editor_type'];
+								$is_dnd_editor_page = IG_ES_DRAG_AND_DROP_EDITOR === $editor_type;
+							}
+						}
+					}
 				}
 			}
 		}
@@ -69,21 +79,6 @@ class ES_Drag_And_Drop_Editor {
 		
 		//wp_enqueue_style( 'es_editor_css', 'http://localhost:9000/main.css', array(), time(), 'all' );
 		wp_enqueue_style( 'es_editor_css', ES_PLUGIN_URL . 'lite/admin/css/editor.css', array(), ES_PLUGIN_VERSION, 'all' );
-	}
-
-	public function es_draganddrop_callback() {
-		?>
-		<div class="mt-6 mr-6 p-2 rounded-lg border-dashed border bg-white">
-			<div class="text-xl leading-relaxed ">
-				<?php esc_html_e('How to use this?', 'email-subscribers'); ?>
-			</div>
-			<div class="text-sm">
-				<?php esc_html_e('Create the content by dragging elements displayed on the right. After you are done click on "Export HTML" ', 'email-subscribers'); ?><span title="Export HTML " class="fa fa-download"></span>
-				<?php esc_html_e(' to get your html content. Use it while sending campaigns.', 'email-subscribers'); ?>
-			</div>
-		</div>
-		<div id="ig-es-dnd-builder"></div>
-	   <?php
 	}
 
 	public function show_editor( $editor_args = array() ) {

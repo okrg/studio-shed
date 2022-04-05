@@ -423,110 +423,106 @@ class ES_Contacts_Table extends ES_List_Table {
 							$first_name = ig_es_get_data( $contact_data, 'first_name', '', true );
 							$last_name  = ig_es_get_data( $contact_data, 'last_name', '', true );
 
-							if ( ! empty( $first_name ) ) {
+							
+							$contact = array(
+								'first_name' => $first_name,
+								'last_name'  => $last_name,
+								'email'      => $email,
+							);
 
-								$contact = array(
-									'first_name' => $first_name,
-									'last_name'  => $last_name,
-									'email'      => $email,
-								);
+							$contact = apply_filters( 'es_set_additional_contact_data', $contact, $contact_data );
 
-								$contact = apply_filters( 'es_set_additional_contact_data', $contact, $contact_data );
+							//For submitted custom fields 
+							$contact_cf_data = apply_filters( 'es_prepare_cf_data_for_contact_array', $contact_data, true );
 
-								//For submitted custom fields 
-								$contact_cf_data = apply_filters( 'es_prepare_cf_data_for_contact_array', $contact_data, true );
+							// Add contact.
+							$existing_contact_id = ES()->contacts_db->get_contact_id_by_email( $email );
 
-								// Add contact.
-								$existing_contact_id = ES()->contacts_db->get_contact_id_by_email( $email );
-
-								if ( $existing_contact_id && ( $existing_contact_id != $id ) ) {
-									$message = __( 'Contact already exist.', 'email-subscribers' );
-									ES_Common::show_message( $message, 'error' );
-									$is_error = true;
+							if ( $existing_contact_id && ( $existing_contact_id != $id ) ) {
+								$message = __( 'Contact already exist.', 'email-subscribers' );
+								ES_Common::show_message( $message, 'error' );
+								$is_error = true;
+							} else {
+								if ( $id ) {
+									ES()->contacts_db->update_contact( $id, $contact );
 								} else {
-									if ( $id ) {
-										ES()->contacts_db->update_contact( $id, $contact );
-									} else {
-										$contact['source']     = 'admin';
-										$contact['status']     = 'verified';
-										$contact['hash']       = ES_Common::generate_guid();
-										$contact['created_at'] = ig_get_current_date_time();
+									$contact['source']     = 'admin';
+									$contact['status']     = 'verified';
+									$contact['hash']       = ES_Common::generate_guid();
+									$contact['created_at'] = ig_get_current_date_time();
 
-										$id = ES()->contacts_db->insert( $contact );
-									}
+									$id = ES()->contacts_db->insert( $contact );
+								}
+							}
+
+							if ( ! $is_error ) {
+
+								$lists = ! empty( $lists ) ? $lists : array( 1 => 0 );
+
+								$existing_subscribed_lists = ES()->lists_contacts_db->get_list_ids_by_contact( $id, 'subscribed' );
+								ES()->lists_contacts_db->update_contact_lists( $id, $lists );
+								$updated_subscribed_lists = ES()->lists_contacts_db->get_list_ids_by_contact( $id, 'subscribed' );
+
+								// Lists whose status changed to unconfirmed or unsubscribed from subscribed.
+								$changed_lists = array_diff( $existing_subscribed_lists, $updated_subscribed_lists );
+
+								// Check if admin has updated status of any subscribed lists.
+								if ( ! $is_new && ! empty( $changed_lists ) ) {
+									do_action( 'ig_es_admin_contact_unsubscribe', $id, 0, 0, $changed_lists );
 								}
 
-								if ( ! $is_error ) {
+								if ( $id ) {
 
-									$lists = ! empty( $lists ) ? $lists : array( 1 => 0 );
+									if ( $is_new ) {
 
-									$existing_subscribed_lists = ES()->lists_contacts_db->get_list_ids_by_contact( $id, 'subscribed' );
-									ES()->lists_contacts_db->update_contact_lists( $id, $lists );
-									$updated_subscribed_lists = ES()->lists_contacts_db->get_list_ids_by_contact( $id, 'subscribed' );
+										if ( ! empty( $contact_data['send_welcome_email'] ) ) {
 
-									// Lists whose status changed to unconfirmed or unsubscribed from subscribed.
-									$changed_lists = array_diff( $existing_subscribed_lists, $updated_subscribed_lists );
+											// Get comma(,) separated list name based on ids.
+											$list_name = ES_Common::prepare_list_name_by_ids( $list_ids );
+											$name      = ES_Common::prepare_name_from_first_name_last_name( $contact['first_name'], $contact['last_name'] );
 
-									// Check if admin has updated status of any subscribed lists.
-									if ( ! $is_new && ! empty( $changed_lists ) ) {
-										do_action( 'ig_es_admin_contact_unsubscribe', $id, 0, 0, $changed_lists );
-									}
-
-									if ( $id ) {
-
-										if ( $is_new ) {
-
-											if ( ! empty( $contact_data['send_welcome_email'] ) ) {
-
-												// Get comma(,) separated list name based on ids.
-												$list_name = ES_Common::prepare_list_name_by_ids( $list_ids );
-												$name      = ES_Common::prepare_name_from_first_name_last_name( $contact['first_name'], $contact['last_name'] );
-
-												$template_data = array(
-													'email' => $contact['email'],
-													'contact_id' => $id,
-													'name' => $name,
-													'first_name' => $contact['first_name'],
-													'last_name' => $contact['last_name'],
-													'guid' => $contact['hash'],
-													'list_name' => $list_name,
-												);
-
-												// Send Welcome Email.
-												ES()->mailer->send_welcome_email( $contact['email'], $template_data );
-											}
-
-											$contact_edit_url = menu_page_url( 'es_subscribers', false );
-											$contact_edit_url = add_query_arg(
-												array(
-													'subscriber' => $id,
-													'action'     => 'edit',
-												),
-												$contact_edit_url
+											$template_data = array(
+												'email' => $contact['email'],
+												'contact_id' => $id,
+												'name' => $name,
+												'first_name' => $contact['first_name'],
+												'last_name' => $contact['last_name'],
+												'guid' => $contact['hash'],
+												'list_name' => $list_name,
 											);
 
-											/* translators: 1. Contact edit URL tag 2: Anchor close tag */
-											$message = sprintf( __( 'Contact added successfully. %1$sEdit contact%2$s.', 'email-subscribers' ), '<a href="' . esc_url( $contact_edit_url ) . '" class="text-indigo-600">', '</a>' );
-
-											// Reset form data
-											$first_name = '';
-											$last_name  = '';
-											$email      = '';
-											$lists	    = '';
-											$id         = 0;
-											
-											$contact_cf_data['custom_fields'] = array();
-										} else {
-											$message = __( 'Contact updated successfully!', 'email-subscribers' );
+											// Send Welcome Email.
+											ES()->mailer->send_welcome_email( $contact['email'], $template_data );
 										}
 
-										ES_Common::show_message( $message, 'success' );
+										$contact_edit_url = menu_page_url( 'es_subscribers', false );
+										$contact_edit_url = add_query_arg(
+											array(
+												'subscriber' => $id,
+												'action'     => 'edit',
+											),
+											$contact_edit_url
+										);
+
+										/* translators: 1. Contact edit URL tag 2: Anchor close tag */
+										$message = sprintf( __( 'Contact added successfully. %1$sEdit contact%2$s.', 'email-subscribers' ), '<a href="' . esc_url( $contact_edit_url ) . '" class="text-indigo-600">', '</a>' );
+
+										// Reset form data
+										$first_name = '';
+										$last_name  = '';
+										$email      = '';
+										$lists	    = '';
+										$id         = 0;
+										
+										$contact_cf_data['custom_fields'] = array();
+									} else {
+										$message = __( 'Contact updated successfully!', 'email-subscribers' );
 									}
+
+									ES_Common::show_message( $message, 'success' );
 								}
-							} else {
-								$message = __( 'Please enter first name', 'email-subscribers' );
-								ES_Common::show_message( $message, 'error' );
 							}
+								
 						} else {
 							$message = __( 'Please select list', 'email-subscribers' );
 							ES_Common::show_message( $message, 'error' );
@@ -1142,7 +1138,7 @@ class ES_Contacts_Table extends ES_List_Table {
 				<?php
 				$allowedtags = ig_es_allowed_html_tags_in_esc();
 				add_filter( 'safe_style_css', 'ig_es_allowed_css_style' );
-				$status_types = ES_Common::prepare_statuses_dropdown_options( $filter_by_status, __( 'All Statuses', 'email-subscribers' ) );
+				$status_types = ES_Common::prepare_statuses_dropdown_options( $filter_by_status, __( 'All Statuses', 'email-subscribers' ), 'audience_listing_page' );
 				echo wp_kses( $status_types, $allowedtags );
 				?>
 			</select>

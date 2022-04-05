@@ -2,10 +2,10 @@
 /*
 	* LayerSlider Add-On: Origami Slide Transition
 	*
-	* (c) 2011-2021 George Krupa, John Gera & Kreatura Media
+	* (c) 2011-2022 George Krupa, John Gera & Kreatura Media
 	*
-	* LayerSlider home:		https://layerslider.kreaturamedia.com/
-	* Licensing:			https://layerslider.kreaturamedia.com/licensing/
+	* LayerSlider home:		https://layerslider.com/
+	* Licensing:			https://layerslider.com/licensing/
 */
 
 
@@ -101,7 +101,7 @@
 	bottom: 0;
 }
 
-.ls-light,
+.ls-origami-tile .ls-light,
 .ls-origami-image-holder {
 	width: 100%;
 	height: 100%;
@@ -111,7 +111,7 @@
 	overflow: hidden;
 }
 
-.ls-light {
+.ls-origami-tile .ls-light {
 	z-index: 1;
 }
 
@@ -124,10 +124,10 @@
 	z-index: 2;
 }
 
-.ls-white {
+.ls-origami-tile .ls-white {
 	background: white;
 }
 
-.ls-black {
+.ls-origami-tile .ls-black {
 	background: black;
 }

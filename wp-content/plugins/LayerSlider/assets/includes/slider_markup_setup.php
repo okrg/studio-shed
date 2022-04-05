@@ -3,7 +3,7 @@
 // Prevent direct file access
 defined( 'LS_ROOT_FILE' ) || exit;
 
-$slider = array();
+$slider = [];
 
 // Filter to override the defaults
 if(has_filter('layerslider_override_defaults')) {
@@ -65,15 +65,6 @@ if( ! empty( $slides['properties']['props']['globalBGImageId'] ) ) {
 	$slides['properties']['attrs']['globalBGImage'] = $tempSrc;
 }
 
-// Get YourLogo image by attachment ID (if any)
-
-if( ! empty( $slides['properties']['props']['yourlogoId'] ) ) {
-	$tempSrc = wp_get_attachment_image_src( $slides['properties']['props']['yourlogoId'], 'full' );
-	$tempSrc = apply_filters('layerslider_init_props_image', $tempSrc[0]);
-
-	$slides['properties']['attrs']['yourLogo'] = $tempSrc;
-}
-
 
 // Old and without type
 if( empty($slides['properties']['attrs']['sliderVersion']) && empty($slides['properties']['attrs']['type']) ) {
@@ -101,19 +92,13 @@ if(isset($slides['layers']) && is_array($slides['layers'])) {
 	foreach($slides['layers'] as $slidekey => $slide) {
 
 		// 6.6.1: Fix PHP undef notice
-		$slide['properties'] = ! empty( $slide['properties'] ) ? $slide['properties'] : array();
+		$slide['properties'] = ! empty( $slide['properties'] ) ? $slide['properties'] : [];
 
 		$slider['slides'][$slidekey] = apply_filters('ls_parse_defaults', $lsDefaults['slides'], $slide['properties']);
 
 		if(isset($slide['sublayers']) && is_array($slide['sublayers'])) {
 
 			foreach($slide['sublayers'] as $layerkey => $layer) {
-
-				// Ensure that magic quotes will not mess with JSON data
-				if(function_exists('get_magic_quotes_gpc') && @get_magic_quotes_gpc()) {
-					$layer['styles'] = stripslashes($layer['styles']);
-					$layer['transition'] = stripslashes($layer['transition']);
-				}
 
 				if( ! empty( $layer['transition'] ) ) {
 					$layer = array_merge($layer, json_decode(stripslashes($layer['transition']), true));
@@ -127,7 +112,7 @@ if(isset($slides['layers']) && is_array($slides['layers'])) {
 						$layerStyles = json_decode(stripslashes($layer['styles']), true);
 					}
 
-					$layer['styles'] = ! empty( $layerStyles ) ? $layerStyles : array();
+					$layer['styles'] = ! empty( $layerStyles ) ? $layerStyles : [];
 				}
 
 				if( ! empty( $layer['top'] ) ) {
@@ -142,12 +127,38 @@ if(isset($slides['layers']) && is_array($slides['layers'])) {
 					$layer['styles']['white-space'] = 'normal';
 				}
 
+				if( ! empty( $layer['layerBackground'] ) && empty( $layer['styles']['background-repeat'] ) ) {
+					if(
+						empty( $slides['properties']['attrs']['sliderVersion'] ) ||
+						version_compare( $slides['properties']['attrs']['sliderVersion'], '7.0.0', '<' )
+					) {
+						$layer['styles']['background-repeat'] = 'repeat';
+					}
+				}
 
 
-				// Marker for Font Awesome
-				if( empty( $lsFonts['font-awesome'] ) && ! empty( $layer['html'] ) ) {
-					if( strpos( $layer['html'], 'fa fa-') !== false ) {
-						$lsFonts['font-awesome'] = 'font-awesome';
+				// Marker for Font Awesome 4
+				if( empty( $lsFonts['font-awesome-4'] ) && ( ! empty( $layer['html'] ) || ! empty( $layer['icon'] ) ) ) {
+
+					if( ! empty( $layer['html'] ) && strpos( $layer['html'], 'fa fa-') !== false ) {
+						$lsFonts['font-awesome-4'] = 'font-awesome-4';
+					}
+
+					if( ! empty( $layer['icon'] ) && strpos( $layer['icon'], 'fa fa-') !== false ) {
+						$lsFonts['font-awesome-4'] = 'font-awesome-4';
+					}
+				}
+
+				// Marker for Font Awesome 5
+				if( empty( $lsFonts['font-awesome-5'] ) && ! empty( $layer['html'] ) ) {
+					if( strpos( $layer['html'], 'fas fa-') !== false ||
+						strpos( $layer['html'], 'far fa-') !== false ||
+						strpos( $layer['html'], 'fal fa-') !== false ||
+						strpos( $layer['html'], 'fad fa-') !== false ||
+						strpos( $layer['html'], 'fab fa-') !== false
+
+					 ) {
+						$lsFonts['font-awesome-5'] = 'font-awesome-5';
 					}
 				}
 
@@ -167,7 +178,7 @@ if(isset($slides['layers']) && is_array($slides['layers'])) {
 					unset( $layer['styles'][$key] );
 				}
 
-				if( isset($layer['styles']['opacity']) && $layer['styles']['opacity'] === '1') {
+				if( isset($layer['styles']['opacity']) && $layer['styles']['opacity'] == '1') {
 					unset($layer['styles']['opacity']);
 				}
 

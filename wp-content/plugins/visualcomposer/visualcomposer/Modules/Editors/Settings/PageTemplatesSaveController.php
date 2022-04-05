@@ -10,7 +10,6 @@ if (!defined('ABSPATH')) {
 
 use VisualComposer\Framework\Container;
 use VisualComposer\Framework\Illuminate\Support\Module;
-use VisualComposer\Helpers\Frontend;
 use VisualComposer\Helpers\Request;
 use VisualComposer\Helpers\Traits\EventsFilters;
 use VisualComposer\Helpers\Traits\WpFiltersActions;
@@ -37,22 +36,17 @@ class PageTemplatesSaveController extends Container implements Module
     /**
      * @param $response
      * @param $payload
-     * @param \VisualComposer\Helpers\Request $requestHelper
      * @param \VisualComposer\Helpers\Frontend $frontendHelper
      *
      * @return mixed
      */
-    protected function setPageTemplate($response, $payload, Request $requestHelper, Frontend $frontendHelper)
+    protected function setPageTemplate($response, $payload, Request $requestHelper)
     {
         if ($requestHelper->exists('vcv-page-template')) {
             $sourceId = $payload['sourceId'];
             $post = get_post($sourceId);
-            if ($frontendHelper->isPreview()) {
-                $preview = wp_get_post_autosave($sourceId);
-                if (is_object($preview)) {
-                    $post = $preview;
-                }
-            }
+            $post = vchelper('Preview')->updateSourcePostWithPreviewPost($post);
+
             $pageTemplateData = $requestHelper->input('vcv-page-template');
             if (is_array($pageTemplateData)) {
                 $value = $pageTemplateData['value'];
@@ -62,7 +56,9 @@ class PageTemplatesSaveController extends Container implements Module
                     update_metadata('post', $post->ID, '_vcv-page-template', $value);
                     update_metadata('post', $post->ID, '_vcv-page-template-type', $type);
                     update_metadata('post', $post->ID, '_vcv-page-template-stretch', $stretchedContent);
-                    if ($type === 'theme') {
+                    $isLayoutTheme = $type === 'vc-custom-layout' && strpos($value, 'theme:') !== false;
+                    if ($type === 'theme' || $isLayoutTheme) {
+                        $value = str_replace('theme:', '', $value);
                         // @codingStandardsIgnoreLine
                         $post->page_template = $value === 'default' ? '' : $value;
                         update_metadata('post', $post->ID, '_wp_page_template', $value === 'default' ? '' : $value);

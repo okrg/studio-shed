@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to the OptinMonster plugin will be documented in this file.
 
+### 2.6.11 - 2022-02-15
+* Fixed an issue where inline campaigns were not being output on the front-end of the site.
+
 ### 2.6.10 - 2022-01-28
 * Updated email providers in the onboarding wizard.
 * Added support for Gutenberg's blocks.json when registering our Campaign Selector block.

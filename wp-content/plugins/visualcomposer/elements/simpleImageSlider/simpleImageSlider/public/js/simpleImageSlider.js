@@ -1,5 +1,8 @@
 (function ($) {
   function initSlider (slider) {
+    if (slider.length === 0) {
+      return
+    }
     const dots = slider.parent().find('.vce-simple-image-slider-dots')
     const prevArrow = slider.find('.vce-simple-image-slider-prev-arrow') || ''
     const nextArrow = slider.find('.vce-simple-image-slider-next-arrow') || ''
@@ -36,7 +39,9 @@
   }
 
   window.vcv.on('ready', () => {
-    initialize()
+    window.setTimeout(() => {
+      initialize()
+    }, 50)
   })
 
   window.vcv.on('reInit', (action, id = '') => {

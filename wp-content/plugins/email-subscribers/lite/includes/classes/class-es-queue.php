@@ -622,6 +622,9 @@ if ( ! class_exists( 'ES_Queue' ) ) {
 								if ( 'optin_confirmation' === $notification_type ) {
 									$merge_tags['contact_id'] = $contact_id;
 									ES()->mailer->send_double_optin_email( $email, $merge_tags );
+								} elseif ( 'optin_welcome_email' === $notification_type ) {
+									$merge_tags['contact_id'] = $contact_id;
+									ES()->mailer->send_welcome_email( $email, $merge_tags );
 								} else {
 									// Enable unsubscribe link and tracking pixel
 									ES()->mailer->add_unsubscribe_link = true;

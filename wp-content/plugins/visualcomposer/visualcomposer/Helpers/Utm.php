@@ -50,12 +50,13 @@ class Utm implements Helper
             'wpdashboard-news-blog' => 'https://visualcomposer.com/blog/?utm_source=' . $source . '&utm_medium=wpdashboard&utm_campaign=info&utm_content=blog-text',
             'wpdashboard-news-blog-post' => '?utm_source=' . $source . '&utm_medium=wpdashboard&utm_campaign=info&utm_content=post-title-text',
             'wpdashboard-news-gopremium' => 'https://visualcomposer.com/premium/?utm_source=' . $source . '&utm_medium=wpdashboard&utm_campaign=gopremium&utm_content=go-premium-text',
+            'wpdashboard-news-help' => 'https://help.visualcomposer.com/?utm_source=' . $source . '&utm_medium=wpdashboard&utm_campaign=info&utm_content=help-text',
 
             // Getting Started
             'gettingstarted' => 'https://visualcomposer.com/premium/?utm_source=' . $source . '&utm_medium=gettingstarted&utm_campaign=gopremium&utm_content=go-premium-text',
 
             // VC Dashboard Direct URLs
-            'vcdashboard-help' => 'https://visualcomposer.com/help/?utm_source=' . $source . '&utm_medium=vcdashboard&utm_campaign=info&utm_content=help-menu',
+            'vcdashboard-help' => 'https://help.visualcomposer.com/?utm_source=' . $source . '&utm_medium=vcdashboard&utm_campaign=info&utm_content=help-menu',
             'vcdashboard-myvc' => rtrim($myVc, '\//')
                 . '/?utm_source=' . $source . '&utm_medium=vcdashboard&utm_campaign=info&utm_content=my-visual-composer-menu',
             'vcdashboard-go-premium' => 'https://visualcomposer.com/premium/?utm_source=' . $source . '&utm_medium=vcdashboard&utm_campaign=gopremium&utm_content=go-premium-menu',
@@ -66,8 +67,8 @@ class Utm implements Helper
             // wpplugins
             'wpplugins' => 'https://visualcomposer.com/premium/?utm_source=' . $source . '&utm_medium=wpplugins&utm_campaign=gopremium&utm_content=go-premium-text',
             // Plugin Row Meta (changelog/more details) Direct URLS
-            'wpplugins-meta-help-center' => 'https://visualcomposer.com/help/?utm_source=' . $source . '&utm_medium=wpplugins&utm_campaign=info&utm_content=help-center-text',
-            'wpplugins-meta-api' => 'https://visualcomposer.com/help/api/?utm_source=' . $source . '&utm_medium=wpplugins&utm_campaign=info&utm_content=api-text',
+            'wpplugins-meta-help-center' => 'https://help.visualcomposer.com/?utm_source=' . $source . '&utm_medium=wpplugins&utm_campaign=info&utm_content=help-center-text',
+            'wpplugins-meta-api' => 'https://dev.visualcomposer.com/?utm_source=' . $source . '&utm_medium=wpplugins&utm_campaign=info&utm_content=api-text',
             'wpplugins-meta-premium-support' => rtrim($myVc, '\//') . '/' . $supportLinkSlug . '/?utm_source=' . $source . '&utm_medium=wpplugins&utm_campaign=info&utm_content=premium-support-text',
 
             // Premium Promo Popup direct URL
@@ -111,6 +112,20 @@ class Utm implements Helper
 
             // Created with badge button
             'created-with-badge-button' => 'https://visualcomposer.com/?utm_source=' . $source . '&utm_medium=vcbadge&utm_campaign=info&utm_content=createdwith-text&utm_term="' . $activeTheme . '"',
+
+            // Hub Terms Box Button
+            'hub-terms-box-button' => 'https://visualcomposer.com/cloud-access-terms/confirmation/?utm_source=' . $source . '&utm_medium={medium}&utm_campaign=get-free-license&utm_content=button',
+
+            // License activation renewal
+            'license-activation-renewal' => 'https://my.visualcomposer.com/licenses/?utm_source=' . $source . '&utm_medium=activatepremium&utm_campaign=renewal&utm_content=license-renewal-text',
+
+            // License activation upgrade
+            'license-activation-upgrade' => 'https://my.visualcomposer.com/licenses/?utm_source=' . $source . '&utm_medium=activatepremium&utm_campaign=upgrade&utm_content=license-upgrade-text',
+
+            // License activation purchase new
+            'license-activation-purchase' => 'https://visualcomposer.com/premium/?utm_source=' . $source . '&utm_medium=activatepremium&utm_campaign=gopremium&utm_content=no-license-found-text',
+
+            'vcdashboard-font-manager-feedback' => 'https://my.visualcomposer.com/support/?utm_source=' . $source . '&utm_medium=fontmanager-vcdashboard&utm_campaign=info&utm_content=share-your-feedback-font-manager-text'
         ];
 
         return $utm;
@@ -126,5 +141,17 @@ class Utm implements Helper
 
         // Default fallback (note: it is error-state)
         return $all['editor-gopremium-popup-button'];
+    }
+
+    /**
+     * Get activation url with UTM
+     *
+     * @param $urmSlug
+     *
+     * @return string
+     */
+    public function getActivationUrl($urmSlug)
+    {
+        return set_url_scheme(admin_url('admin.php?page=vcv-activate-license&vcv-ref=' . $urmSlug));
     }
 }

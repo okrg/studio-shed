@@ -1,4 +1,12 @@
 <?php
+require 'vendor/autoload.php';
+use NetSuite\NetSuiteService;
+use NetSuite\Classes\Customer;
+use NetSuite\Classes\RecordRef;
+use NetSuite\Classes\AddRequest;
+use NetSuite\Classes\CustomFieldList;
+use NetSuite\Classes\StringCustomFieldRef;
+use NetSuite\Classes\SelectCustomFieldRef;
 
 // Ajax view more
 function more_post_ajax() {
@@ -512,6 +520,82 @@ function ss_post_contact_us( $entry, $form ) {
     $request = new WP_Http();
     $response = $request->post( $post_url, array( 'body' => $body ) );
     GFCommon::log_debug( 'gform_after_submission: response => ' . print_r( $response, true ) );
+
+
+
+
+
+    $config = [
+        // required -------------------------------------
+        "endpoint"       => "2021_1",
+        "host"           => "https://6967950.suitetalk.api.netsuite.com",
+        "account"        => "6967950",
+        "consumerKey"    => "2c2603dc8ad2d14b93e15bf621957692f4febeae5b94da4785f5781371c96139",
+        "consumerSecret" => "e365f59ecd0b61a247dbb1b7243da57d7470c85dc1dc4c270880995c4de47e8a",
+        "token"          => "df9694db4de4e12f037d27db569db13be42d968e4cbd7d4a381c894e51a39ebc",
+        "tokenSecret"    => "13d04e88f2459de3b05985d66d2b30247e880ec0d7d6cd3ea5f7667586007ce5",    
+        "signatureAlgorithm" => 'sha256', // Defaults to 'sha256'
+        "logging"  => false    
+    ];
+    $service = new NetSuiteService($config);
+
+    $ns_customer = new Customer();
+    $ns_customer->firstName = $name[0];
+    $ns_customer->lastName = $name[1];
+    $ns_customer->isPerson = true;
+    $ns_customer->taxitem = 'AVATAX';
+    $ns_customer->phone = rgar( $entry, '4' );
+    $ns_customer->email = rgar( $entry, '2' );
+    $ns_customer->comments = rgar( $entry, '5' );
+
+    $entityStatus = new RecordRef();
+    $entityStatus->internalId = 6;
+    $entityStatus->recordType = "customerStatus";
+
+    $ns_customer->entityStatus = $entityStatus;
+
+    $customFields = new CustomFieldList();
+
+    $visitorid = new StringCustomFieldRef();
+    $visitorid->scriptId = 'custentity_ss_visitorid';
+    $visitorid->value = rgar( $entry, '10' );
+
+    $gclid = new StringCustomFieldRef();
+    $gclid->scriptId = 'custentity_ss_gclid';
+    $gclid->value = rgar( $entry, '9' );
+
+    $utm_source = new StringCustomFieldRef();
+    $utm_source->scriptId = 'custentity_ss_utm_source';
+    $utm_source->value = rgar( $entry, '6' ); 
+
+    $utm_medium = new StringCustomFieldRef();
+    $utm_medium->scriptId = 'custentity_ss_utm_medium';
+    $utm_medium->value = rgar( $entry, '7' );
+
+    $utm_campaign = new StringCustomFieldRef();
+    $utm_campaign->scriptId = 'custentity_ss_utm_campaign';
+    $utm_campaign->value = rgar( $entry, '8' );
+
+
+    $customFields->customField[] = $visitorid;
+    $customFields->customField[] = $gclid;
+    $customFields->customField[] = $utm_source;
+    $customFields->customField[] = $utm_medium;
+    $customFields->customField[] = $utm_campaign;
+    $ns_customer->customFieldList = $customFields;
+
+    $request = new AddRequest();
+    $request->record = $ns_customer;
+    $addResponse = $service->add($request);
+
+    if (!$addResponse->writeResponse->status->isSuccess) {
+        $ns_response = "ADD ERROR";
+    } else {
+        $ns_response = "ADD SUCCESS, id " . $addResponse->writeResponse->baseRef->internalId;
+    }
+
+    GFCommon::log_debug( 'gform_after_submission: ns_response => ' . print_r( $ns_response, true ) );
+
 }
 
 
@@ -594,6 +678,77 @@ function ss_post_consultation( $entry, $form ) {
     $request = new WP_Http();
     $response = $request->post( $post_url, array( 'body' => $body ) );
     GFCommon::log_debug( 'gform_after_submission: response => ' . print_r( $response, true ) );
+
+
+$config = [
+        // required -------------------------------------
+        "endpoint"       => "2021_1",
+        "host"           => "https://6967950.suitetalk.api.netsuite.com",
+        "account"        => "6967950",
+        "consumerKey"    => "2c2603dc8ad2d14b93e15bf621957692f4febeae5b94da4785f5781371c96139",
+        "consumerSecret" => "e365f59ecd0b61a247dbb1b7243da57d7470c85dc1dc4c270880995c4de47e8a",
+        "token"          => "df9694db4de4e12f037d27db569db13be42d968e4cbd7d4a381c894e51a39ebc",
+        "tokenSecret"    => "13d04e88f2459de3b05985d66d2b30247e880ec0d7d6cd3ea5f7667586007ce5",    
+        "signatureAlgorithm" => 'sha256', // Defaults to 'sha256'
+        "logging"  => false    
+    ];
+    $service = new NetSuiteService($config);
+    $ns_customer = new Customer();
+    $ns_customer->firstName = rgar( $entry, '25' );
+    $ns_customer->lastName = rgar( $entry, '26' );
+    $ns_customer->isPerson = true;
+    $ns_customer->taxitem = 'AVATAX';
+    $ns_customer->phone = rgar( $entry, '4' );
+    $ns_customer->email = rgar( $entry, '9' );
+    $ns_customer->comments = 'Intended Use: ' . rgar( $entry, '28' ) . ';   ' .'Expected Timeline: ' . rgar( $entry, '30' ) . ';   ' . 'Possible Budget: ' . rgar( $entry, '31' ) . ';   ' .'Additional Comments: ' . rgar( $entry, '8' );
+
+    $entityStatus = new RecordRef();
+    $entityStatus->internalId = 6;
+    $entityStatus->recordType = "customerStatus";
+    $ns_customer->entityStatus = $entityStatus;
+
+    $customFields = new CustomFieldList();
+
+    $visitorid = new StringCustomFieldRef();
+    $visitorid->scriptId = 'custentity_ss_visitorid';
+    $visitorid->value = rgar( $entry, '21' );
+
+    $gclid = new StringCustomFieldRef();
+    $gclid->scriptId = 'custentity_ss_gclid';
+    $gclid->value = rgar( $entry, '20' );
+
+    $utm_source = new StringCustomFieldRef();
+    $utm_source->scriptId = 'custentity_ss_utm_source';
+    $utm_source->value = rgar( $entry, '22' ); 
+
+    $utm_medium = new StringCustomFieldRef();
+    $utm_medium->scriptId = 'custentity_ss_utm_medium';
+    $utm_medium->value = rgar( $entry, '23' );
+
+    $utm_campaign = new StringCustomFieldRef();
+    $utm_campaign->scriptId = 'custentity_ss_utm_campaign';
+    $utm_campaign->value = rgar( $entry, '19' );
+    
+    $customFields->customField[] = $visitorid;
+    $customFields->customField[] = $gclid;
+    $customFields->customField[] = $utm_source;
+    $customFields->customField[] = $utm_medium;
+    $customFields->customField[] = $utm_campaign;
+    $ns_customer->customFieldList = $customFields;
+
+    $request = new AddRequest();
+    $request->record = $ns_customer;
+    $addResponse = $service->add($request);
+
+    if (!$addResponse->writeResponse->status->isSuccess) {
+        $ns_response = "ADD ERROR";
+    } else {
+        $ns_response = "ADD SUCCESS, id " . $addResponse->writeResponse->baseRef->internalId;
+    }
+
+    GFCommon::log_debug( 'gform_after_submission: ns_response => ' . print_r( $ns_response, true ) );
+
+
 }
 
 

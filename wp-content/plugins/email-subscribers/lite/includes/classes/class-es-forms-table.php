@@ -297,10 +297,10 @@ class ES_Forms_Table extends ES_List_Table {
 		$form_data['list_label']         = ! empty( $data['list_label'] ) ? $data['list_label'] : '';
 		$form_data['lists']              = ! empty( $data['lists'] ) ? $data['lists'] : array();
 		$form_data['af_id']              = ! empty( $data['af_id'] ) ? $data['af_id'] : 0;
-		$form_data['desc']               = ! empty( $data['desc'] ) ? sanitize_text_field( $data['desc'] ) : '';
+		$form_data['desc']               = ! empty( $data['desc'] ) ? wp_kses_post( trim( wp_unslash( $data['desc'] ) ) ) : '';
 		$form_data['captcha']            = ES_Common::get_captcha_setting( 0, $data );
 		$form_data['show_in_popup']      = ! empty( $data['show_in_popup'] ) ? $data['show_in_popup'] : 'no';
-		$form_data['popup_headline']			 = ! empty( $data['popup_headline'] ) ? $data['popup_headline'] : '';
+		$form_data['popup_headline']     = ! empty( $data['popup_headline'] ) ? $data['popup_headline'] : '';
 
 		$lists = ES()->lists_db->get_list_id_name_map();
 		$nonce = wp_create_nonce( 'es_form' );
@@ -661,7 +661,7 @@ class ES_Forms_Table extends ES_List_Table {
 
 		$form_data          = array();
 		$name               = ! empty( $data['name'] ) ? sanitize_text_field( $data['name'] ) : '';
-		$desc               = ! empty( $data['desc'] ) ? sanitize_text_field( $data['desc'] ) : '';
+		$desc               = ! empty( $data['desc'] ) ? wp_kses_post( trim( wp_unslash( $data['desc'] ) ) ) : '';
 		$email_label        = ! empty( $data['email_label'] ) ? sanitize_text_field( $data['email_label'] ) : '';
 		$email_place_holder = ! empty( $data['email_place_holder'] ) ? sanitize_text_field( $data['email_place_holder'] ) : '';
 		$name_label         = ! empty( $data['name_label'] ) ? sanitize_text_field( $data['name_label'] ) : '';
@@ -727,7 +727,7 @@ class ES_Forms_Table extends ES_List_Table {
 		$form_body = apply_filters( 'es_add_custom_fields_data_in_form_body', $body, $data );
 
 		$submit_button_position = count( $form_body ) + 1;
-		$submit_data = array(
+		$submit_data            = array(
 			array(
 				'type'     => 'submit',
 				'name'     => 'submit',
@@ -742,7 +742,7 @@ class ES_Forms_Table extends ES_List_Table {
 			),
 		);
 
-		$body = array_merge( $form_body, $submit_data );
+		$body     = array_merge( $form_body, $submit_data );
 		$settings = array(
 			'lists'        => $list_ids,
 			'desc'         => $desc,
@@ -784,7 +784,7 @@ class ES_Forms_Table extends ES_List_Table {
 
 		$gdpr_consent      = 'no';
 		$gdpr_consent_text = '';
-		$es_form_popup = ! empty( $settings_data['es_form_popup']['show_in_popup'] ) ? $settings_data['es_form_popup']['show_in_popup'] : 'no';
+		$es_form_popup     = ! empty( $settings_data['es_form_popup']['show_in_popup'] ) ? $settings_data['es_form_popup']['show_in_popup'] : 'no';
 		$es_popup_headline = ! empty( $settings_data['es_form_popup']['popup_headline'] ) ? $settings_data['es_form_popup']['popup_headline'] : '';
 
 		$captcha = ES_Common::get_captcha_setting( $id, $settings_data );

@@ -92,10 +92,11 @@ class Update implements Helper
         $updatePosts = $optionsHelper->get('hubAction:updatePosts', []);
         $canUpdate = [];
 
+        $accessUserCapabilitiesHelper = vchelper('AccessUserCapabilities');
         foreach ($updatePosts as $updatePost) {
             $post = get_post($updatePost);
             // @codingStandardsIgnoreLine
-            if ($post && $post->post_status !== 'trash') {
+            if ($post && $post->post_status !== 'trash' && $accessUserCapabilitiesHelper->canEdit($post->ID)) {
                 $canUpdate[] = $updatePost;
             }
         }
@@ -136,12 +137,12 @@ class Update implements Helper
         ];
         $variables[] = [
             'key' => 'VCV_UPDATE_WP_BUNDLE_URL',
-            'value' => $urlHelper->to('public/dist/wp.bundle.js') . '?v=' . VCV_VERSION,
+            'value' => get_site_url(null, 'index.php?vcv-script=wp'),
             'type' => 'constant',
         ];
         $variables[] = [
             'key' => 'VCV_UPDATE_VENDOR_URL',
-            'value' => $urlHelper->to('public/dist/vendor.bundle.js') . '?v=' . VCV_VERSION,
+            'value' => get_site_url(null, 'index.php?vcv-script=vendor'),
             'type' => 'constant',
         ];
         $variables[] = [

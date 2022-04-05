@@ -524,6 +524,10 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 				define( 'IG_CAMPAIGN_TYPE_SEQUENCE_MESSAGE', 'sequence_message' );
 			}
 
+			if ( ! defined( 'IG_CAMPAIGN_TYPE_WORKFLOW' ) ) {
+				define( 'IG_CAMPAIGN_TYPE_WORKFLOW', 'workflow' );
+			}
+
 			if ( ! defined( 'IG_CAMPAIGN_TYPE_WORKFLOW_EMAIL' ) ) {
 				define( 'IG_CAMPAIGN_TYPE_WORKFLOW_EMAIL', 'workflow_email' );
 			}
@@ -748,7 +752,6 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 				'lite/includes/classes/class-es-contacts-table.php',
 				'lite/includes/classes/class-es-post-notifications.php',
 				'lite/includes/classes/class-es-campaign.php',
-				'lite/includes/classes/class-es-campaign-admin.php',
 				'lite/includes/classes/class-es-templates-table.php',
 				'lite/includes/classes/class-es-campaigns-table.php',
 				'lite/includes/classes/class-es-drag-and-drop-editor.php',
@@ -896,6 +899,7 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 				'lite/includes/workflows/actions/class-es-action-update-contact.php',
 				'lite/includes/workflows/actions/class-es-action-send-email.php',
 				'lite/includes/workflows/class-es-workflow-actions.php',
+				'lite/includes/workflows/class-es-workflow-action-preview.php',
 
 				// Workflow Query
 				'lite/includes/workflows/class-es-workflow-query.php',
@@ -923,6 +927,8 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 
 				// Campaign Rules
 				'lite/admin/class-ig-es-campaign-rules.php',
+				'lite/admin/class-es-campaign-admin.php',
+				'lite/admin/class-es-gallery.php',
 
 				'starter/starter-class-email-subscribers.php',
 				'pro/pro-class-email-subscribers.php',
@@ -1248,8 +1254,7 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 				"{$prefix}_page_es_sequence",
 				"{$prefix}_page_es_custom_fields",
 				"{$prefix}_page_es_templates",
-				"{$prefix}_page_es_drag_and_drop"
-
+				"{$prefix}_page_es_gallery",
 			);
 
 			$screens = apply_filters( 'ig_es_admin_screens', $screens );

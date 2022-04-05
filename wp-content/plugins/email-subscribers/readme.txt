@@ -4,9 +4,9 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Author URI: https://www.icegram.com/
 Tags: email marketing, subscription, autoresponder, post notification, welcome email
 Requires at least: 3.9
-Tested up to: 5.9.0
+Tested up to: 5.9.1
 Requires PHP: 5.6
-Stable tag: 5.3.2
+Stable tag: 5.3.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses
 
@@ -310,19 +310,50 @@ Refer [here](https://www.icegram.com/documentation/es-faq/).
 
 == Upgrade Notice ==
 
-= 5.3.2 =
+= 5.3.7 =
 
-* New: Send emails using Sendinblue [PRO]
-* New: Send emails using Mailjet [PRO]
-* Fix: Secured Icegram from reflected XSS vulnerability [Thanks to WPScan team]
+* New: Added preview for workflow emails
+* Fix: Duplicate drafts were getting created for campaigns in some cases
+* Fix: Custom post type were not getting saved in post notification campaigns
+* Fix: Encoding issues with pepipost email sending
 
 == Changelog ==
+
+**5.3.7 (16.03.2022)**
+
+* New: Added preview for workflow emails
+* Fix: Duplicate drafts were getting created for campaigns in some cases
+* Fix: Custom post type were not getting saved in post notification campaigns
+* Fix: Encoding issues with pepipost email sending
+
+**5.3.6 (09.03.2022)**
+
+* New: Added support for fallback value for NAME and FIRSTNAME keywords
+* Fix: PHP warning on custom post type page
+* Fix: Welcome email issue with Rainmaker integration
+
+**5.3.5 (02.03.2022)**
+
+* New: Added ajax option for submission of forms
+* Fix: HTML Tags getting escaped from the form description
+* Update: Added support for two new regions(AF South 1 and EU South 1) in Amazon SES [PRO]
+
+**5.3.4 (24.02.2022)**
+
+* New: Integration of WooCommerce coupon in workflows [PRO] 
+
+**5.3.3 (17.02.2022)**
+
+* New: Added template gallery for campaigns
+* New: Added {{POSTAUTHORAVATAR}} and {{POSTAUTHORAVATARLINK-ONLY}} keywords for Post Notification
+* New: Added option to send welcome/ confirmation email after importing of contacts
+* Fix: Improved security related to nonce validations [Thanks to WP team]
 
 **5.3.2 (09.02.2022)**
 
 * New: Send emails using Sendinblue [PRO]
 * New: Send emails using Mailjet [PRO]
-* Fix: Secured Icegram from reflected XSS vulnerability [Thanks to WPScan team]
+* Fix: Secured Email Subscribers from reflected XSS vulnerability [Thanks to WPScan team]
 
 **5.3.1 (01.02.2022)**
 

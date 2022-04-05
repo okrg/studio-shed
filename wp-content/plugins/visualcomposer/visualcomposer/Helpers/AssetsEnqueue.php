@@ -15,6 +15,8 @@ class AssetsEnqueue extends Container implements Helper
 {
     protected $sourcesList = [];
 
+    protected $doneList = [];
+
     public function addToEnqueueList($sourceId)
     {
         $this->sourcesList[] = $sourceId;
@@ -112,5 +114,31 @@ class AssetsEnqueue extends Container implements Helper
         ];
 
         return $response;
+    }
+
+    public function enqueuePageSettingsCss($sourceId)
+    {
+        if (!empty($this->doneList[ $sourceId ])) {
+            return;
+        }
+
+        $previewHelper = vchelper('Preview');
+        $previewId = $previewHelper->getPreviewId($sourceId);
+        if ($previewId) {
+            $sourceId = $previewId;
+        }
+
+        $styles = get_post_meta(
+            $sourceId,
+            '_' . VCV_PREFIX . 'pageDesignOptionsCompiledCss',
+            true
+        );
+        if (!empty($styles)) {
+            // Output inline via native API
+            wp_register_style('vcv:assets:pageDesignOptions:' . $sourceId, false);
+            wp_enqueue_style('vcv:assets:pageDesignOptions:' . $sourceId);
+            wp_add_inline_style('vcv:assets:pageDesignOptions:' . $sourceId, vcfilter('vcv:assets:enqueuePageSettingsCss:styles', $styles, ['sourceId' => $sourceId]));
+        }
+        $this->doneList[ $sourceId ] = true;
     }
 }

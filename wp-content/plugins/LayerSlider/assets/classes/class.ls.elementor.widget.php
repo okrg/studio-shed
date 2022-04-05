@@ -51,20 +51,20 @@ class LS_Elementor_Widget extends Widget_Base {
 		$this->add_control( 'slider-library', [
 			'type' 	=> Controls_Manager::RAW_HTML,
 			'raw' 	=>
-				'<label class="elementor-control-title">' . __( 'Choose Slider', 'LayerSlider' ) . '</label>' .
+				'<label class="elementor-control-title">' . __( 'Choose Project', 'LayerSlider' ) . '</label>' .
 				'<br><br>' .
 				'<button type="button" class="elementor-button elementor-button-default" onclick="LS_Widget.chooseSlider()">' .
-					'<i class="fa fa-folder-open"></i>' . __( 'Open Slider Library', 'LayerSlider' ) .
+					'<i class="fa fa-folder-open"></i>' . __( 'Open Project Library', 'LayerSlider' ) .
 				'</button>',
 		] );
 
 		$this->add_control( 'sliderbuilder', [
 			'type' 		=> Controls_Manager::RAW_HTML,
 			'raw' 		=>
-				'<label class="elementor-control-title">' . __( 'Edit Slider', 'LayerSlider' ) . '</label>' .
+				'<label class="elementor-control-title">' . __( 'Edit Project', 'LayerSlider' ) . '</label>' .
 				'<br><br>' .
 				'<button type="button" class="elementor-button elementor-button-default" onclick="LS_Widget.openEditor()">' .
-					'<i class="fa fa-external-link-square"></i>' . __( 'Open Slider Builder', 'LayerSlider' ) .
+					'<i class="fa fa-external-link-square"></i>' . __( 'Open Project Editor', 'LayerSlider' ) .
 				'</button>',
 			'separator' => 'before',
 			'condition' => [
@@ -78,7 +78,7 @@ class LS_Elementor_Widget extends Widget_Base {
 		// ------------ OVERRIDES SECTION ------------
 		$this->start_controls_section( 'overrides_section', [
 			'classes' 	=> 'ls-overrides',
-			'label' 	=> __( 'Override Slider Settings', 'LayerSlider' ),
+			'label' 	=> __( 'Override Project Settings', 'LayerSlider' ),
 			'tab' 		=> Controls_Manager::TAB_CONTENT,
 			'condition' => [
 				'identifier!' 	=> '',

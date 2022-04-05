@@ -11,6 +11,7 @@ if (!defined('ABSPATH')) {
 use VisualComposer\Framework\Container;
 use VisualComposer\Framework\Illuminate\Support\Module;
 use VisualComposer\Helpers\Access\CurrentUser;
+use VisualComposer\Helpers\Options;
 use VisualComposer\Helpers\Request;
 use VisualComposer\Helpers\Traits\WpFiltersActions;
 use VisualComposer\Modules\Settings\Traits\SubMenu;
@@ -39,10 +40,14 @@ class RoleManager extends Container implements Module
         $this->wpAddAction(
             'admin_menu',
             'addPage',
-            9
+            20
         );
 
         $this->addFilter('vcv:ajax:settings:roles:save:adminNonce', 'saveRoles');
+        $this->addFilter('vcv:wp:dashboard:variables', 'addVariables');
+        $this->addFilter('vcv:helper:access:role:defaultCapabilities', 'addDefaultCapability');
+        $this->wpAddFilter('role_has_cap', 'checkPresetUpdate');
+
 
         // Default Fallback for rendering parts in role-manager page
         $this->addFilter(
@@ -60,6 +65,8 @@ class RoleManager extends Container implements Module
         );
 
         $this->wpAddFilter('user_has_cap', 'addRoleManagerCaps');
+
+        $this->addFilter('vcv:render:settings:roleManager:rolePreset', 'changeRolePreset');
     }
 
     protected function addRoleManagerCaps($allcaps, $caps, $args, $user)
@@ -84,7 +91,7 @@ class RoleManager extends Container implements Module
         $page = [
             'slug' => $this->slug,
             'title' => __('Role Manager', 'visualcomposer'),
-            'description' => __('Manage WordPress user role access rights for all Visual Composer features. Select predefined configurations or customize access rights for any user role.', 'visualcomposer'),
+            'description' => __('Use these settings to control which Visual Composer features each user role can access. These changes doesn\'t affect default WordPress capabilities.', 'visualcomposer'),
             'layout' => 'dashboard-tab-content-standalone',
             'capability' => 'manage_options',
             'iconClass' => 'vcv-ui-icon-dashboard-lock',
@@ -92,6 +99,7 @@ class RoleManager extends Container implements Module
             'premiumTitle' => __('PREMIUM ROLE MANAGER', 'visualcomposer'),
             'premiumDescription' => __('Control feature access for certain user roles. Lock functionality, restrict elements, and more.', 'visualcomposer'),
             'premiumUrl' => vchelper('Utm')->get('vcdashboard-teaser-rolemanager'),
+            'activationUrl' => vchelper('Utm')->getActivationUrl('rolemanager-vcdashboard'),
             'premiumActionBundle' => 'roleManager',
         ];
         $this->addSubmenuPage($page, false);
@@ -152,6 +160,10 @@ class RoleManager extends Container implements Module
             foreach ($roleCapabilities as $roleKey => $partData) {
                 $this->updatePartsLoop($roleAccessHelper, $partData, $roleKey);
             }
+            $rolePresets = (array)$requestHelper->input('vcv-settings-role-preset');
+            $optionsHelper = vchelper('Options');
+            $optionsHelper->set('role-presets', $rolePresets);
+
             echo 'OK!';
             exit;
         }
@@ -191,5 +203,70 @@ class RoleManager extends Container implements Module
                 $this->updatePart($partData, $part, $roleAccessHelper, $roleKey);
             }
         }
+    }
+
+    protected function addVariables($variables, $payload)
+    {
+        $variables[] = [
+            'key' => 'VCV_DEFAULT_CAPABILITIES',
+            'type' => 'constant',
+            'value' => vchelper('AccessUserCapabilities')->getDefaultCapabilities(),
+        ];
+
+        return $variables;
+    }
+
+    protected function addDefaultCapability($defaultCapabilities)
+    {
+        $defaultCapabilities['custom'] = [];
+
+        return $defaultCapabilities;
+    }
+
+    protected function checkPresetUpdate($capabilities, $cap, $name)
+    {
+        if (strpos($cap, 'vcv_access_rules__')) {
+            // check if role using preset
+            $optionsHelper = vchelper('Options');
+            $rolePresets = $optionsHelper->get('role-presets', []);
+            $presetValue = isset($rolePresets[$name]) ? $rolePresets[$name] : 'custom';
+            // if custom DO NOTHING
+            if ($presetValue !== 'custom') {
+                $userCapabilitiesHelper = vchelper('AccessUserCapabilities');
+                $presetCapabilities = $userCapabilitiesHelper->getDefaultCapabilities();
+                $rolePresetCapabilities = isset($presetCapabilities[$presetValue]) ? $presetCapabilities[$presetValue] : [];
+                $capabilities = array_merge($capabilities, $rolePresetCapabilities);
+            }
+        }
+
+        return $capabilities;
+    }
+
+
+    /**
+     * For some user roles we need remove all capabilities.
+     *
+     * @param string $rolePresetValue
+     * @param array $payload
+     *
+     * @return string
+     */
+    protected function changeRolePreset($rolePresetValue, $payload, Options $optionsHelper)
+    {
+        $savedPresets = $optionsHelper->get('role-presets', false);
+        if ($savedPresets && array_search($payload['role'], $savedPresets)) {
+            return $rolePresetValue;
+        }
+
+        $roleList = [
+            'author',
+            'contributor',
+        ];
+
+        if (in_array($payload['role'], $roleList) && $rolePresetValue === '') {
+            $rolePresetValue = 'subscriber';
+        }
+
+        return $rolePresetValue;
     }
 }

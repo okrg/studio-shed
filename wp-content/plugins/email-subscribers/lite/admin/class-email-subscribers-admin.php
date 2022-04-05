@@ -183,6 +183,8 @@ class Email_Subscribers_Admin {
 				'no_action_selected_message'      => __( 'Please select an action that this workflow should perform before saving the workflow.', 'email-subscribers' ),
 				'trigger_change_message'          => __( 'Changing the trigger will remove existing actions. Do you want to proceed anyway?.', 'email-subscribers' ),
 				'placeholder_copied_message'      => __( 'Copied!', 'email-subscribers' ),
+				'keyword_field_is_required'       => __( '{{field_name}} field is required!', 'email-subscribers' ),
+				'required_field_is_empty'         => __( 'Required field is empty!', 'email-subscribers' ),
 				'delete_confirmation_message'     => __( 'Are you sure?', 'email-subscribers' ),
 
 				// Import subscribers messages.
@@ -264,7 +266,7 @@ class Email_Subscribers_Admin {
 		?>
 		<script type="text/javascript">
 			jQuery(document).ready(function () {
-				var removeSubmenu = ['ig-es-broadcast', 'ig-es-lists', 'ig-es-post-notifications', 'ig-es-sequence', 'ig-es-custom-fields','ig-es-drag-and-drop'];
+				var removeSubmenu = ['ig-es-broadcast', 'ig-es-lists', 'ig-es-post-notifications', 'ig-es-sequence', 'ig-es-custom-fields','ig-es-drag-and-drop', 'ig-es-gallery-submenu'];
 				jQuery.each(removeSubmenu, function (key, id) {
 					jQuery("#" + id).parent('a').parent('li').hide();
 				});
@@ -322,8 +324,8 @@ class Email_Subscribers_Admin {
 
 		}
 
-		if ( in_array( 'drag_drop_editor', $accessible_sub_menus ) ) {
-			add_submenu_page( 'es_dashboard', __( 'Drag and Drop Editor', 'email-subscribers' ), '<span id="ig-es-drag-and-drop">' . __( 'Drag and Drop Editor', 'email-subscribers' ) . '</span>', 'edit_posts', 'es_drag_and_drop', array( $this, 'load_drag_and_drop' ) );
+		if ( in_array( 'gallery', $accessible_sub_menus ) ) {
+			add_submenu_page( 'es_dashboard', __( 'Gallery', 'email-subscribers' ), '<span id="ig-es-gallery-submenu">' . __( 'Gallery', 'email-subscribers' ) . '</span>', 'edit_posts', 'es_gallery', array( $this, 'load_gallery' ) );
 		}
 
 		if ( in_array( 'workflows', $accessible_sub_menus ) ) {
@@ -508,6 +510,11 @@ class Email_Subscribers_Admin {
 		$campaign_admin = ES_Campaign_Admin::get_instance();
 		$campaign_admin->setup_campaign();
 		$campaign_admin->render();
+	}
+
+	public function load_gallery() {
+		$gallery = ES_Gallery::get_instance();
+		$gallery->render();
 	}
 
 	/**
@@ -1560,10 +1567,12 @@ class Email_Subscribers_Admin {
 				$es_template_body = ES_Common::es_process_template_body( $es_template_body, $template_id );
 			}
 
-			$es_template_body = str_replace( '{{NAME}}', $username, $es_template_body );
-			$es_template_body = str_replace( '{{EMAIL}}', $useremail, $es_template_body );
-			$es_template_body = str_replace( '{{FIRSTNAME}}', $first_name, $es_template_body );
-			$es_template_body = str_replace( '{{LASTNAME}}', $last_name, $es_template_body );
+			$es_template_body = ES_Common::replace_keywords_with_fallback( $es_template_body, array(
+				'FIRSTNAME' => $first_name,
+				'NAME'      => $username,
+				'LASTNAME'  => $last_name,
+				'EMAIL'     => $useremail
+			) );
 			$allowedtags      = ig_es_allowed_html_tags_in_esc();
 			add_filter( 'safe_style_css', 'ig_es_allowed_css_style' );
 

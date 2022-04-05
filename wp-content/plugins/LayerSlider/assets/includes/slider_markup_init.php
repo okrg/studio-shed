@@ -23,6 +23,7 @@ if( !empty($slides['properties']['attrs']['type']) && $slides['properties']['att
 	$lsPlugins[] = 'popup';
 }
 
+
 if( ! empty( $lsPlugins ) ) {
 	$lsPlugins = array_unique( $lsPlugins );
 	sort( $lsPlugins );
@@ -33,7 +34,7 @@ if( get_option('ls_suppress_debug_info', false ) ) {
 	$init[] = 'hideWelcomeMessage: true';
 }
 
-$callbacks = array();
+$callbacks = [];
 
 if( ! empty( $slides['callbacks'] ) && is_array( $slides['callbacks'] ) ) {
 	foreach( $slides['callbacks'] as $event => $function ) {
@@ -44,5 +45,13 @@ if( ! empty( $slides['callbacks'] ) && is_array( $slides['callbacks'] ) ) {
 $separator = apply_filters( 'layerslider_init_props_separator', ', ');
 $initObj = implode( $separator, $init );
 $eventsObj = ! empty( $callbacks ) ? ', {'.implode( $separator, $callbacks ).'}' : '';
+
+if( ! empty( $slides['properties']['props']['loadOrder'] ) ) {
+	$loadOrder = $slides['properties']['props']['loadOrder'];
+
+	$lsInit[] = 'window._layerSlidersOrder = window._layerSlidersOrder || [];';
+	$lsInit[] = 'window._layerSlidersOrder['.$loadOrder.'] = window._layerSlidersOrder['.$loadOrder.'] || [];';
+	$lsInit[] = 'window._layerSlidersOrder['.$loadOrder.'].push( \'#'.$sliderID.'\' );';
+}
 
 $lsInit[] = 'jQuery(function() { _initLayerSlider( \'#'.$sliderID.'\', {'.$initObj.'}'.$eventsObj.'); });';

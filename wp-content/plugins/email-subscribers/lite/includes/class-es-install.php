@@ -970,6 +970,7 @@ if ( ! class_exists( 'ES_Install' ) ) {
 				'ig_es_disable_wp_cron'                           => array( 'default' => 'no' ),
 				'ig_es_enable_sending_mails_in_customer_timezone' => array( 'default' => 'no' ),
 				'ig_es_track_email_opens'                         => array( 'default' => 'yes' ),
+				'ig_es_enable_ajax_form_submission'               => array( 'default' => 'no' ),
 				'ig_es_show_opt_in_consent'                       => array( 'default' => 'yes' ),
 				'ig_es_opt_in_consent_text'                       => array( 'default' => 'Subscribe to our email updates as well.' ),
 				'ig_es_installed_on'                              => array(

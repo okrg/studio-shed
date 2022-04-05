@@ -15,6 +15,10 @@ $wp_meta_boxes = [];
 if (empty($current_screen)) {
     set_current_screen();
 }
+global $current_screen;
+if (empty($current_screen->id)) {
+    $current_screen->id = $sourceId;
+}
 // @codingStandardsIgnoreEnd
 $typenow = get_post_type();
 /**
@@ -30,7 +34,7 @@ wp_enqueue_media();
     <link rel="profile" href="http://gmpg.org/xfn/11" />
     <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1, user-scalable=0" />
-    <title><?php echo sprintf(__('Frontend editor: %s', 'visualcomposer'), get_the_title()); ?></title>
+    <title><?php echo sprintf(__('Visual Composer: %s', 'visualcomposer'), get_the_title()); ?></title>
     <link rel="stylesheet"
             href="//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,greek,greek-ext,cyrillic-ext,latin-ext,cyrillic">
     <?php
@@ -105,9 +109,12 @@ if (is_array($extraOutput)) {
         </div>
     </div>
     <div class="vcv-layout-overlay"></div>
+
 </div>
+
 <?php
 vcevent('vcv:frontend:render:footer', ['sourceId' => $sourceId]);
+
 wp_print_footer_scripts();
 do_action('admin_footer', '');
 do_action('admin_print_footer_scripts-' . $hookSuffix);

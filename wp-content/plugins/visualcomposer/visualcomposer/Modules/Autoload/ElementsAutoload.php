@@ -27,7 +27,10 @@ class ElementsAutoload extends Autoload implements Module
             function () use ($init) {
                 if ($init) {
                     $components = $this->getComponents();
-                    $this->doComponents($components);
+                    $success = $this->doComponents($components);
+                    if (!$success) {
+                        vchelper('Options')->deleteTransient('elements:autoload:all');
+                    }
                 }
             },
             11
@@ -36,7 +39,10 @@ class ElementsAutoload extends Autoload implements Module
             'vcv:hub:elements:autoload',
             function ($element) {
                 $components = $this->getSingleComponent($element);
-                $this->doComponents($components);
+                $success = $this->doComponents($components);
+                if (!$success) {
+                    vchelper('Options')->deleteTransient('elements:autoload:all');
+                }
             }
         );
     }
@@ -51,12 +57,18 @@ class ElementsAutoload extends Autoload implements Module
             'helpers' => [],
             'modules' => [],
         ];
+        $optionsHelper = vchelper('Options');
+        $allCached = \VcvEnv::get('VCV_DEBUG') ? [] : $optionsHelper->getTransient('elements:autoload:all');
 
+        if (!empty($allCached)) {
+            return $allCached;
+        }
         foreach ($hubHelper->getElements() as $key => $element) {
             if (isset($element['elementRealPath'])) {
                 $all = array_merge_recursive($all, $this->getSingleComponent($element));
             }
         }
+        $optionsHelper->setTransient('elements:autoload:all', $all, DAY_IN_SECONDS);
 
         return $all;
     }

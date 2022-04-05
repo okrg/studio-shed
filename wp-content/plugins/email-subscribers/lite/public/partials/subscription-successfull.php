@@ -5,27 +5,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-	$es_page_request = ig_es_get_request_data('es');
-	$main_message    = '';
+$es_page_request = ig_es_get_request_data('es');
+$main_message    = '';
+
 if ( 'optin' === $es_page_request ) {
 	$main_message = __('Subscription confirmed !', 'email-subscribers');
 } elseif ( 'unsubscribe' === $es_page_request ) {
 	$main_message = __('Unsubscription confirmed !', 'email-subscribers');  
 }
-	$site_name 			= get_option( 'blogname' );
-	$noerror   			= true;
-	$home_url  			= home_url( '/' );
+
+$site_name = get_option( 'blogname' );
+$noerror   = true;
+$home_url  = home_url( '/' );
 ?>
-	<html>
+<!DOCTYPE html>
+	<html <?php language_attributes(); ?>>
 	  <head>
-			<title><?php echo esc_html( $site_name ); ?></title>
-			<meta http-equiv="refresh" content="10; url=<?php echo esc_url( $home_url ); ?>" charset="<?php echo esc_attr( get_option( 'blog_charset' ) ); ?>"/>
-			<?php do_action( 'es_message_head' ); ?>
-			<?php
-				wp_register_style( 'tailwind', ES_PLUGIN_URL . 'lite/admin/dist/main.css', array(), $this->version, 'all' );
-				$es_wp_styles = wp_styles();
-				$es_wp_styles->do_item( 'tailwind' );
-			?>
+		<meta charset="<?php bloginfo( 'charset' ); ?>">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title><?php echo esc_html( $site_name ); ?></title>
+		<meta http-equiv="refresh" content="10; url=<?php echo esc_url( $home_url ); ?>" charset="<?php echo esc_attr( get_option( 'blog_charset' ) ); ?>"/>
+		<?php do_action( 'es_message_head' ); ?>
+		<?php
+			wp_register_style( 'tailwind', ES_PLUGIN_URL . 'lite/admin/dist/main.css', array(), $this->version, 'all' );
+			$es_wp_styles = wp_styles();
+			$es_wp_styles->do_item( 'tailwind' );
+		?>
 	  </head>
 	  <body class="min-h-screen mt-16 px-4 pt-10 pb-12 mx-auto max-w-7xl bg-gray-200 sm:px-6 lg:px-8">
 			<section class="bg-indigo-600 py-12 px-12 text-white shadow-md sm:rounded-lg mx-auto sm:w-2/3 xl:w-7/12">

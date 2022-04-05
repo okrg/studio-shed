@@ -29,6 +29,114 @@ class ES_Common {
 		return $convert_template;
 	}
 
+
+	/**
+	 * Callback to replace keywords
+	 * @param $keyword
+	 * @param $search_and_replace
+	 *
+	 * @return mixed|string
+	 */
+	public static function callback_replace_keywords( $keyword, $search_and_replace ) {
+		if ( strstr( $keyword, '|' ) ) {
+			list( $variable_name, $variable_params ) = explode( '|', $keyword, 2 );
+		} else {
+			$variable_name   = $keyword;
+			$variable_params = '';
+		}
+		$variable_name = trim( $variable_name );
+
+		//If there is no key found in replaceable array, then return the keyword
+		if ( ! isset( $search_and_replace[ $variable_name ] ) ) {
+			return '{{' . $keyword . '}}';
+		}
+
+		$replace_with          = $search_and_replace[ $variable_name ];
+		$replace_with_fallback = '';
+
+		//Extract fallback content from the keyword
+		$variable   = new IG_ES_Workflow_Variable_Parser();
+		$parameters = $variable->parse_parameters_from_string( trim( $variable_params ) );
+		if ( is_array( $parameters ) && ! empty( $parameters ) ) {
+			if ( isset( $parameters['fallback'] ) && ! empty( $parameters['fallback'] ) ) {
+				$replace_with_fallback = self::un_quote($parameters['fallback']);
+			}
+		}
+
+		//If replaceable value is contain fallback keyword, then return the replaceable value with fallback value
+		if ( strstr( $replace_with, '%%fallback%%' ) ) {
+			return str_replace( '%%fallback%%', $replace_with_fallback, $replace_with );
+		}
+
+		//If replaceable value is not empty, then return the replaceable value
+		if ( ! empty( $replace_with ) ) {
+			return $replace_with;
+		}
+
+		// return fallback value
+		return $replace_with_fallback;
+	}
+
+	/**
+	 * Decode the html quotes
+	 * @param $string
+	 *
+	 * @return string
+	 */
+	public static function decode_html_quotes( $string ) {
+		$entities_dictionary = [
+			'&#145;'  => "'", // Opening single quote
+			'&#146;'  => "'", // Closing single quote
+			'&#147;'  => '"', // Closing double quote
+			'&#148;'  => '"', // Opening double quote
+			'&#8216;' => "'", // Closing single quote
+			'&#8217;' => "'", // Opening single quote
+			'&#8218;' => "'", // Single low quote
+			'&#8220;' => '"', // Closing double quote
+			'&#8221;' => '"', // Opening double quote
+			'&#8222;' => '"', // Double low quote
+		];
+
+		// Decode decimal entities
+		$string = str_replace( array_keys( $entities_dictionary ), array_values( $entities_dictionary ), $string );
+
+		return html_entity_decode( $string, ENT_QUOTES | ENT_HTML5, 'UTF-8' );
+	}
+
+	/**
+	 * Remove quotes from string
+	 * 
+	 * @param $string
+	 *
+	 * @return string
+	 */
+	public static function un_quote( $string ) {
+		$string = self::decode_html_quotes( $string );
+
+		return trim( trim( $string ), "'" );
+	}
+
+	/**
+	 * Parse keywords
+	 *
+	 * @since 5.3.5
+	 * @return false|void
+	 */
+	public static function replace_keywords_with_fallback( $content, $search_and_replace ) {
+		if ( empty( $content ) || empty( $search_and_replace ) ) {
+			return $content;
+		}
+		$replacer = new IG_ES_Replace_Helper( $content, 'ES_Common::callback_replace_keywords', 'variables', $search_and_replace );
+
+		$processed_content = $replacer->process();
+
+		if ( $processed_content ) {
+			return $processed_content;
+		}
+
+		return $content;
+	}
+
 	/**
 	 * Process template body
 	 *
@@ -199,12 +307,13 @@ class ES_Common {
 	 * Get Statuses key name map
 	 *
 	 * @param bool $reverse
+	 * @param string $page
 	 *
 	 * @return array
 	 *
 	 * @since 4.0.0
 	 */
-	public static function get_statuses_key_name_map( $reverse = false ) {
+	public static function get_statuses_key_name_map( $reverse = false, $page = '') {
 
 		$statuses = array(
 			'subscribed'   => __( 'Subscribed', 'email-subscribers' ),
@@ -212,7 +321,7 @@ class ES_Common {
 			'unsubscribed' => __( 'Unsubscribed', 'email-subscribers' ),
 		);
 
-		$statuses = apply_filters( 'ig_es_get_statuses_key_name_map', $statuses );
+		$statuses = apply_filters( 'ig_es_get_statuses_key_name_map', $statuses, $page );
 		if ( $reverse ) {
 			$statuses = array_flip( $statuses );
 		}
@@ -230,7 +339,7 @@ class ES_Common {
 	 *
 	 * @since 4.0.0
 	 */
-	public static function prepare_statuses_dropdown_options( $selected = '', $default_label = '' ) {
+	public static function prepare_statuses_dropdown_options( $selected = '', $default_label = '', $page = '' ) {
 
 		if ( empty( $default_label ) ) {
 			$default_label = __( 'Select Status', 'email-subscribers' );
@@ -238,7 +347,7 @@ class ES_Common {
 
 		$default_status[0] = $default_label;
 
-		$statuses = self::get_statuses_key_name_map();
+		$statuses = self::get_statuses_key_name_map(false, $page);
 		$statuses = array_merge( $default_status, $statuses );
 
 		$dropdown = '';
@@ -453,7 +562,7 @@ class ES_Common {
 	 *
 	 * @since 4.0.0
 	 */
-	public static function get_templates( $type = 'newsletter', $editor_type = IG_ES_DRAG_AND_DROP_EDITOR ) {
+	public static function get_templates( $type = '', $editor_type = '' ) {
 
 		$es_args = array(
 			'posts_per_page'   => - 1,
@@ -462,19 +571,20 @@ class ES_Common {
 			'order'            => 'DESC',
 			'post_status'      => 'publish',
 			'suppress_filters' => true,
-			'meta_query'       => array(
-				array(
-					'key'     => 'es_template_type',
-					'value'   => $type,
-					'compare' => '=',
-				),
-			),
 		);
 
-		if ( ! empty( $editor_type ) && IG_ES_DRAG_AND_DROP_EDITOR === $editor_type ) {
+		if ( ! empty( $type ) ) {
+			$es_args['meta_query'][] = array(
+				'key'     => 'es_template_type',
+				'value'   => $type,
+				'compare' => '=',
+			);
+		}
+
+		if ( ! empty( $editor_type ) ) {
 			$es_args['meta_query'][] = array(
 				array(
-					'key'     => 'es_template_type',
+					'key'     => 'es_editor_type',
 					'value'   => $editor_type,
 					'compare' => '=',
 				),
@@ -563,7 +673,7 @@ class ES_Common {
 				} else {
 					$checked = '';
 				}
-				$custom_post_type_html .= '<tr><td style="padding-top:4px;padding-bottom:4px;padding-right:10px;"><span class="block pr-4 text-sm font-medium text-gray-600 pb-2"><input type="checkbox" ' . esc_attr( $checked ) . ' value="{T}' . esc_html( $post_type ) . '{T}" id="es_note_cat[]" class="es_custom_post_type form-checkbox" name="campaign_data[es_note_cat][]">' . esc_html( $post_type ) . '</td></tr>';
+				$custom_post_type_html .= '<tr><td style="padding-top:4px;padding-bottom:4px;padding-right:10px;"><span class="block pr-4 text-sm font-medium text-gray-600 pb-2"><input type="checkbox" ' . esc_attr( $checked ) . ' value="{T}' . esc_html( $post_type ) . '{T}" class="es_custom_post_type form-checkbox" name="campaign_data[es_note_cpt][]">' . esc_html( $post_type ) . '</td></tr>';
 			}
 		} else {
 			$custom_post_type_html = '<tr><span class="block pr-4 text-sm font-normal text-gray-600 pb-2">' . __( 'No Custom Post Types Available', 'email-subscribers' ) . '</tr>';
@@ -1519,7 +1629,8 @@ class ES_Common {
 				'settings',
 				'ig_redirect',
 				'custom_fields',
-				'drag_drop_editor'
+				'drag_drop_editor',
+				'gallery',
 			);
 
 			return $sub_menus;

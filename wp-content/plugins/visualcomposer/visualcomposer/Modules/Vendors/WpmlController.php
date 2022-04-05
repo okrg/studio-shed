@@ -44,7 +44,7 @@ class WpmlController extends Container implements Module
             if (class_exists('\SitePress')) {
                 /** @see \VisualComposer\Modules\Vendors\WpmlController::disableGutenberg */
                 $this->wpAddAction(
-                    'admin_init',
+                    'current_screen',
                     'disableGutenberg',
                     11
                 );
@@ -97,6 +97,7 @@ class WpmlController extends Container implements Module
     {
         if (isset($package['contents'])) {
             $fields = $package['contents'];
+
             foreach ($fields as $fieldKey => $field) {
                 if ($fieldKey === 'field-vcv-pageContent-0') {
                     // Make the magic
@@ -130,11 +131,10 @@ class WpmlController extends Container implements Module
                             ];
                         }
                     }
-                }
-
-                // Remove 'body' as it not needed
-                if ($fieldKey === 'body') {
-                    unset($package['contents'][ $fieldKey ]);
+                    // Remove 'body' as it not needed
+                    if ($fieldKey === 'body') {
+                        unset($package['contents'][ $fieldKey ]);
+                    }
                 }
             }
         }

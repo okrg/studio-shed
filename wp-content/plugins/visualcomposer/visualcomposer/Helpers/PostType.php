@@ -42,10 +42,11 @@ class PostType implements Helper
      */
     public function queryGroupByMetaKey($query, $metaKey, $skipEmpty = false)
     {
+        // TODO: causes a lot memory usage, need to optimize
+        // TODO: VC-1904 performance improvements change to pagination(via ajax)
         $posts = get_posts($query);
         $results = [];
         foreach ($posts as $post) {
-            $currentUserAccessHelper = vchelper('AccessCurrentUser');
             $metaValue = get_post_meta($post->ID, $metaKey, true);
             // @codingStandardsIgnoreLine
             if ($metaValue) {
@@ -198,6 +199,9 @@ class PostType implements Helper
             && post_type_exists($queryPost->post_type)
         ) {
             $post = $queryPost;
+            if ($post->post_title == __('Auto Draft')) {
+                $post->post_title = sprintf('%s #%s', __('Visual Composer', 'visualcomposer'), $post->ID);
+            }
             setup_postdata($post);
             /** @var \WP_Query $wp_query */
             $wp_query->queried_object = $post;
@@ -344,5 +348,23 @@ class PostType implements Helper
         }
 
         return $label;
+    }
+
+    /**
+     * Post status list for 404 page.
+     *
+     * @return array
+     */
+    public function getPage404StatusList()
+    {
+        return [
+            'publish',
+            'unpublish',
+            'draft',
+            'pending',
+            'auto-draft',
+            'private',
+            'future',
+        ];
     }
 }

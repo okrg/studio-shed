@@ -1066,7 +1066,7 @@ class ES_DB_Contacts extends ES_DB {
 	 * @param $data
 	 * @param string $type
 	 *
-	 * @return array
+	 * @return int
 	 *
 	 * @since 4.6.3
 	 */
@@ -1086,6 +1086,8 @@ class ES_DB_Contacts extends ES_DB {
 				$data = apply_filters( 'ig_es_get_country_based_on_ip', $data );
 			}
 		}
-		return parent::insert( $data, $type );
+		$contact_id = parent::insert( $data, $type );
+		do_action( 'ig_es_new_contact_inserted', $contact_id );
+		return $contact_id;
 	}
 }

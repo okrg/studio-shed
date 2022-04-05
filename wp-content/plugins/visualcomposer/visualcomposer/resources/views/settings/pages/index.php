@@ -10,34 +10,39 @@ if (!defined('ABSPATH')) {
 ?>
 <?php if ($slug === 'vcv-headers-footers' || $slug === 'vcv-custom-page-templates') { ?>
     <style>
-        .vcv-settings-tab-content,
-        .vcv-headers-footers_headers-footers-all-site,
-        .vcv-headers-footers_headers-footers-separate-post-types {
-            visibility: hidden;
-        }
+      .vcv-settings-tab-content,
+      .vcv-headers-footers_headers-footers-all-site,
+      .vcv-headers-footers_headers-footers-separate-post-types {
+        visibility: hidden;
+      }
 
-        .vcv-table-loader-wrapper {
-            position: relative;
-            display: flex;
-            justify-content: center;
-        }
+      .vcv-table-loader-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+      }
 
-        .vcv-table-loader {
-            height: 16px;
-            width: 16px;
-            margin-top: 40px;
-            transform: translate(-50%, -50%);
-            animation: vcv-ui-wp-spinner-animation 1.08s linear infinite;
-        }
+      .vcv-table-loader {
+        height: 16px;
+        width: 16px;
+        margin-top: 40px;
+        transform: translate(-50%, -50%);
+        animation: vcv-ui-wp-spinner-animation .7s linear infinite;
+      }
 
-        @keyframes vcv-ui-wp-spinner-animation {
-            from {
-                transform: translate(-50%, -50%) rotate(0deg);
-            }
-            to {
-                transform: translate(-50%, -50%) rotate(360deg);
-            }
+      @keyframes vcv-ui-wp-spinner-animation {
+        from {
+          transform: translate(-50%, -50%) rotate(0deg);
         }
+        to {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+
+      .vcv-dashboard-accordion-item .vcv-no-title.vcv-hidden {
+          visibility: hidden;
+          height: 0;
+      }
     </style>
     <div class="vcv-table-loader-wrapper">
         <div class="vcv-table-loader">
@@ -59,15 +64,29 @@ if (!defined('ABSPATH')) {
 ); ?>"
         method="post"
         data-vcv-ui-element="settings-tab-<?php echo esc_attr($slug); ?>"
-        class="vcv-settings-tab-content vcv-settings-tab-content-active">
+        class="vcv-settings-tab-content vcv-settings-tab-content--active">
     <?php
 
     $sectionsRegistry = vchelper('SettingsSectionsRegistry');
     $orderedSections = $sectionsRegistry->getHiearchy($sectionsRegistry->findBySlug($slug));
 
     $viewsHelper = vchelper('Views');
-    foreach ($orderedSections as $section) {
-        $viewsHelper->doNestedSection($section, $slug);
+    if (!empty($orderedSections)) {
+        $useAccordion = false;
+        ob_start();
+        foreach ($orderedSections as $section) {
+            $useAccordion = $viewsHelper->doNestedSection($section, $slug) || $useAccordion;
+        }
+        $content = ob_get_clean();
+        if ($useAccordion) {
+            echo '<div class="vcv-dashboard-accordion">';
+            echo $content;
+            echo '</div>';
+        } else {
+            echo '<div class="vcv-dashboard-standard">';
+            echo $content;
+            echo '</div>';
+        }
     }
 
     $submitButtonAttributes = [
@@ -94,3 +113,19 @@ if (!defined('ABSPATH')) {
 
     <input type="hidden" name="vcv-page-slug" value="<?php echo $slug; ?>" />
 </form>
+
+
+<script>
+  (function () {
+    // global event listener (from youmightnotneedjquery)
+    document.addEventListener('click', function (e) {
+      // loop parent nodes from the target to the delegation node
+      for (let target = e.target; target && target !== this; target = target.parentNode) {
+        if (target.matches('.vcv-dashboard-accordion-item-heading')) {
+          target.parentElement.classList.toggle('vcv-dashboard-accordion-item--active')
+          break;
+        }
+      }
+    }, false);
+  })()
+</script>

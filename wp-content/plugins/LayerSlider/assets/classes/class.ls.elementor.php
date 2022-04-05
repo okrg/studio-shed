@@ -32,27 +32,27 @@ final class LS_Elementor {
 		wp_enqueue_style(
 			'ls-elementor',
 			LS_ROOT_URL.'/static/admin/css/elementor.css',
-			array( 'elementor-editor' ),
+			[ 'elementor-editor' ],
 			LS_PLUGIN_VERSION
 		);
 
 		wp_enqueue_script(
 			'ls-elementor-backend',
 			LS_ROOT_URL.'/static/admin/js/elementor-backend.js',
-			array( 'kreatura-modal-window' ),
+			[ 'kreatura-modal-window' ],
 			LS_PLUGIN_VERSION,
 			true
 		);
 
 		wp_localize_script(
 			'ls-elementor-backend',
-			'LS_Widget', array(
+			'LS_Widget', [
 				'editorUrl'	=> admin_url( 'admin.php?page=layerslider&action=edit&id=' ),
-				'i18n'		=> array(
+				'i18n'		=> [
 					'modalTitle' => __('Quick Edit LayerSlider', 'LayerSlider'),
 					'ChangesYouMadeMayNotBeSaved' => __( 'Changes you made may not be saved. Are you sure you want to continue?', 'LayerSlider' ),
-				),
-			)
+				],
+			]
 		);
 	}
 
@@ -99,16 +99,16 @@ final class LS_Elementor {
 		}
 
 		// Register widget scripts
-		add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'widget_scripts' ) );
+		add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'widget_scripts' ] );
 
 		// Register widgets
-		add_action( 'elementor/widgets/widgets_registered', array( $this, 'register_widgets' ) );
+		add_action( 'elementor/widgets/widgets_registered', [ $this, 'register_widgets' ] );
 	}
 
 
 	private function __construct() {
 
-		add_action( 'plugins_loaded', array( $this, 'init' ) );
+		add_action( 'plugins_loaded', [ $this, 'init' ] );
 	}
 }
 

@@ -33,7 +33,6 @@ include LS_ROOT_PATH.'/wp/hooks.php';
 include LS_ROOT_PATH.'/wp/widgets.php';
 include LS_ROOT_PATH.'/includes/slider_utils.php';
 include LS_ROOT_PATH.'/wp/shortcodes.php';
-include LS_ROOT_PATH.'/classes/class.ls.modulemanager.php';
 include LS_ROOT_PATH.'/classes/class.ls.posts.php';
 include LS_ROOT_PATH.'/classes/class.ls.sliders.php';
 include LS_ROOT_PATH.'/classes/class.ls.sources.php';
@@ -46,16 +45,24 @@ if( get_option('ls_elementor_widget', true ) ) {
 // Back-end only
 if( is_admin() ) {
 
+	include LS_ROOT_PATH.'/classes/class.ls.remotedata.php';
+	LS_RemoteData::init();
+
+	include LS_ROOT_PATH.'/classes/class.ls.filesystem.php';
+	include LS_ROOT_PATH.'/helpers/admin.ui.tools.php';
+	include LS_ROOT_PATH.'/classes/class.ls.notifications.php';
+	include LS_ROOT_PATH.'/classes/class.ls.modulemanager.php';
+	include LS_ROOT_PATH.'/classes/class.ls.revisions.php';
 	include LS_ROOT_PATH.'/wp/actions.php';
 	include LS_ROOT_PATH.'/wp/activation.php';
 	include LS_ROOT_PATH.'/wp/notices.php';
-	include LS_ROOT_PATH.'/classes/class.ls.revisions.php';
 
 	if( get_option('ls_tinymce_helper', true ) ) {
 		include LS_ROOT_PATH.'/wp/tinymce.php';
 	}
 
 	LS_Revisions::init();
+	LS_Notifications::init();
 }
 
 if( ! class_exists('KM_PluginUpdatesV3') ) {
@@ -74,9 +81,8 @@ LS_Sources::addSkins(LS_ROOT_PATH.'/static/layerslider/skins/');
 LS_Popups::init();
 
 
-// Setup auto updates. This class also has additional features for
-// non-activated sites such as fetching update info.
-$GLOBALS['LS_AutoUpdate'] = new KM_PluginUpdatesV3( array(
+// Set up auto-updates
+$GLOBALS['LS_AutoUpdate'] = new KM_PluginUpdatesV3([
 	'name' 			=> 'LayerSlider WP',
 	'repoUrl' 		=> LS_REPO_BASE_URL,
 	'root' 			=> LS_ROOT_FILE,
@@ -86,7 +92,7 @@ $GLOBALS['LS_AutoUpdate'] = new KM_PluginUpdatesV3( array(
 	'authKey' 		=> 'layerslider-authorized-site',
 	'channelKey' 	=> 'layerslider-release-channel',
 	'activationKey' => 'layerslider-activation-id'
-));
+]);
 
 
 // Load locales
@@ -132,7 +138,6 @@ add_action('after_setup_theme', function() {
 // Sets up LayerSlider as theme-bundled version by
 // disabling certain features and hiding premium notices.
 function layerslider_set_as_theme() {
-
 	LS_Config::setAsTheme();
 }
 

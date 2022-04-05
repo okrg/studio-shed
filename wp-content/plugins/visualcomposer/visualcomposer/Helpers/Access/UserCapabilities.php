@@ -12,6 +12,8 @@ use VisualComposer\Framework\Illuminate\Support\Helper;
 
 class UserCapabilities implements Helper
 {
+    protected static $prefixedCapabilities = [];
+
     public function canEdit($sourceId)
     {
         $post = get_post($sourceId);
@@ -51,7 +53,7 @@ class UserCapabilities implements Helper
         $hasAccess = $currentUserAccessHelper->part('post_types')->getCapRule('edit_' . $postType);
 
         // Override hasAccess for VCWB post types
-        if (in_array($postType, ['vcv_headers', 'vcv_footers', 'vcv_sidebars', 'vcv_archives', 'vcv_layouts'])) {
+        if (in_array($postType, ['vcv_headers', 'vcv_footers', 'vcv_sidebars', 'vcv_layouts'])) {
             $hasAccess = $currentUserAccessHelper->part('dashboard')->can('addon_theme_builder', false)->get();
         } elseif (in_array($postType, ['vcv_templates'])) {
             $hasAccess = $currentUserAccessHelper->part('dashboard')->can('addon_global_templates', false)->get();
@@ -60,5 +62,66 @@ class UserCapabilities implements Helper
         }
 
         return $hasAccess;
+    }
+
+    public function getPrefixedCapabilities()
+    {
+        if (!empty(self::$prefixedCapabilities)) {
+            return self::$prefixedCapabilities;
+        }
+        $defaultCapabilities = $this->getDefaultCapabilities();
+        $prefixedCapabilities = [];
+        foreach ($defaultCapabilities as $role => $parts) {
+            $prefixedCapabilities[$role] = [];
+            foreach ($parts as $part => $capabilities) {
+                foreach ($capabilities as $capability) {
+                    $prefixedCapabilities[$role][] = 'vcv_access_rules__' . $part . '_' . $capability;
+                }
+            }
+        }
+
+        self::$prefixedCapabilities = $prefixedCapabilities;
+
+        return self::$prefixedCapabilities;
+    }
+
+    public function getDefaultCapabilities()
+    {
+        $defaultCapabilities = [
+            'administrator' => [],
+            'senior_editor' => [
+                'post_types' => [
+                    'edit_post',
+                    'edit_page'
+                ],
+            ],
+            'editor' => [
+                'post_types' => [
+                    'edit_post',
+                    'edit_page'
+                ],
+            ],
+            'content_manager' => [
+                'post_types' => [
+                    'edit_post',
+                    'edit_page'
+                ],
+            ],
+            'author' => [
+                'post_types' => [
+                    'edit_post'
+                ],
+            ],
+            'contributor' => [
+                'post_types' => [
+                    'edit_post'
+                ],
+            ],
+            'subscriber' => [],
+        ];
+
+        $defaultCapabilities = vcfilter('vcv:helper:access:role:defaultCapabilities', $defaultCapabilities);
+
+        return $defaultCapabilities;
     }
 }

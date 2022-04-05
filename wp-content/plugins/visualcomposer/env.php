@@ -16,7 +16,7 @@ if (!VcvEnv::has('VCV_ENV_EXTENSION_DOWNLOAD')) {
 if (!VcvEnv::has('VCV_HUB_URL')) {
     VcvEnv::set(
         'VCV_HUB_URL',
-        'https://gateway.my.visualcomposer.com'
+        'https://my.visualcomposer.com'
     );
 }
 
@@ -37,14 +37,14 @@ if (!VcvEnv::has('VCV_HUB_LICENSES_URL')) {
 if (!VcvEnv::has('VCV_TOKEN_URL')) {
     VcvEnv::set(
         'VCV_TOKEN_URL',
-        'https://gateway.my.visualcomposer.com/authorization-token'
+        'https://my.visualcomposer.com/authorization-token'
     );
 }
 
 if (!VcvEnv::has('VCV_THEME_TOKEN_URL')) {
     VcvEnv::set(
         'VCV_THEME_TOKEN_URL',
-        'https://gateway.my.visualcomposer.com/theme-authorization-token'
+        'https://my.visualcomposer.com/theme-authorization-token'
     );
 }
 
@@ -55,7 +55,7 @@ if (!VcvEnv::has('VCV_API_URL')) {
 if (!VcvEnv::has('VCV_ACTIVATE_LICENSE_URL')) {
     VcvEnv::set(
         'VCV_ACTIVATE_LICENSE_URL',
-        'https://gateway.my.visualcomposer.com/?edd_action=activate_license&item_name=Visual%20Composer'
+        'https://my.visualcomposer.com/?edd_action=activate_license&item_name=Visual%20Composer'
     );
 }
 
@@ -121,14 +121,6 @@ if (!VcvEnv::has('VCV_JS_THEME_EDITOR')) {
     VcvEnv::set('VCV_JS_THEME_EDITOR', false); // SEE the devAddons/themeEditor/themeEditor/src/*.js files
 }
 
-if (!VcvEnv::has('VCV_JS_ARCHIVE_TEMPLATE')) {
-    VcvEnv::set('VCV_JS_ARCHIVE_TEMPLATE', false);
-}
-
-if (!VcvEnv::has('VCV_IS_ARCHIVE_TEMPLATE')) {
-    VcvEnv::set('VCV_IS_ARCHIVE_TEMPLATE', false);
-}
-
 if (!VcvEnv::has('VCV_JS_SAVE_ZIP')) {
     VcvEnv::set('VCV_JS_SAVE_ZIP', true);
 }
@@ -158,4 +150,12 @@ if (!VcvEnv::has('VCV_FT_INSIGHTS')) {
 
 if (!VcvEnv::has('VCV_FT_DYNAMIC_ARCHIVE_FIELDS')) {
     VcvEnv::set('VCV_FT_DYNAMIC_ARCHIVE_FIELDS', true);
+}
+
+if (!VcvEnv::has('VCV_FT_UPDATE_NOTIFICATION') && !VcvEnv::has('VCV_DEBUG')) {
+    VcvEnv::set('VCV_FT_UPDATE_NOTIFICATION', true);
+}
+
+if (!VcvEnv::has('VCV_FT_THEME_BUILDER_LAYOUTS')) {
+    VcvEnv::set('VCV_FT_THEME_BUILDER_LAYOUTS', true);
 }

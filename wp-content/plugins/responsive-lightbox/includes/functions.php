@@ -76,7 +76,7 @@ function rl_get_gallery_images( $gallery_id, $args ) {
 	if ( did_action( 'init' ) )
 		return Responsive_Lightbox()->galleries->get_gallery_images( $gallery_id, $args );
 	else
-		return array();
+		return [];
 }
 
 /**

@@ -42,17 +42,9 @@ $icegram_pricing_url       = 'https://www.icegram.com/email-subscribers-pricing/
 $reports_url               = admin_url( 'admin.php?page=es_reports' );
 $templates_url             = admin_url( 'edit.php?post_type=es_template' );
 $settings_url              = admin_url( 'admin.php?page=es_settings' );
-$drag_and_drop_url         = admin_url( 'admin.php?page=es_drag_and_drop' );
 $facebook_url              = 'https://www.facebook.com/groups/2298909487017349/';
 
 $feature_blocks = array(
-	'editor'                => array(
-		'title'        => __( 'Try the new editor', 'email-subscribers' ),
-		'desc'         => __( 'Checkout and playaround the new drag and drop editor.', 'email-subscribers' ),
-		'cta_text'     => __( 'Try it', 'email-subscribers' ),
-		'feature_url'  => $drag_and_drop_url,
-		'graphics_img' => 'lite/admin/images/dashboard-editor.png',
-	),
 
 	'form'                => array(
 		'title'        => __( 'Add a Subscription Form', 'email-subscribers' ),

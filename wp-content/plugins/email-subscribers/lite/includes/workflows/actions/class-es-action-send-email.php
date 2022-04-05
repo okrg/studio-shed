@@ -66,7 +66,24 @@ if ( ! class_exists( 'ES_Action_Send_Email' ) ) {
 			$this->add_field( $tracking_campaign_id );
 
 		}
-	
+
+		/**
+		 * Create content for showing preview
+		 * @return mixed|null
+		 */
+		public function load_preview() {
+			$email_content = $this->get_option( 'ig-es-email-content', true, true );
+			$email_content = wpautop( $email_content );
+			$current_user  = wp_get_current_user();
+
+			return ES_Common::replace_keywords_with_fallback( $email_content, array(
+				'EMAIL'     => $current_user->user_email,
+				'NAME'      => $current_user->display_name,
+				'FIRSTNAME' => $current_user->first_name,
+				'LASTNAME'  => $current_user->last_name,
+			) );
+		}
+
 		/**
 		 * Called when an action should be run
 		 *
@@ -110,7 +127,7 @@ if ( ! class_exists( 'ES_Action_Send_Email' ) ) {
 								$recipients[$index] = str_replace( '{{EMAIL}}', $data['email'], $recipient_email );
 							}
 							
-							// If source is 'es, it means it is ES subscriber, replace {{EMAIL}}, {{NAME}} placeholders with subscriber's email, name
+							// If source is 'es, it means it is from ES subscriber form, replace {{EMAIL}}, {{NAME}} placeholders with subscriber's email, name
 							// If we don't replace it here then for workflow configured to be sent to admins, {{EMAIL}}, {{NAME}} gets replaced with admin email and names which is not desired for subscriber based workflows.
 							if ( 'es' === $data['source'] ) {
 								$subject = str_replace( '{{EMAIL}}', $data['email'], $subject );

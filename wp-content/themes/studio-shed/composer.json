@@ -1,0 +1,5 @@
+{
+    "require": {
+        "ryanwinchester/netsuite-php": "^2021.2"
+    }
+}

@@ -10,7 +10,7 @@ defined( 'LS_ROOT_FILE' ) || exit;
  * @package LS_ImportUtil
  * @since 5.0.3
  * @author John Gera
- * @copyright Copyright (c) 2021  John Gera, George Krupa, and Kreatura Media Kft.
+ * @copyright Copyright (c) 2022  John Gera, George Krupa, and Kreatura Media Kft.
  */
 
 class LS_ImportUtil {
@@ -23,16 +23,12 @@ class LS_ImportUtil {
 	public $lastImportId;
 
 
-	// The managed ZipArchieve instance.
-	private $zip;
-
-
 	// Target folders
 	private $uploadsDir, $targetDir, $targetURL, $tmpDir;
 
 
 	// Imported images
-	private $imported = array();
+	private $imported = [];
 
 
 	// Accepts $_FILES
@@ -40,93 +36,100 @@ class LS_ImportUtil {
 
 		// Attempt to workaround memory limit & execution time issues
 		@ini_set( 'max_execution_time', 0 );
-		@ini_set( 'memory_limit', '256M' );
+		@ini_set( 'memory_limit', apply_filters( 'admin_memory_limit', WP_MAX_MEMORY_LIMIT ) );
 
-		if(empty($name)) {
+		if( empty( $name ) ) {
 			$name = $archive;
 		}
 
-		// TODO: check file extension to support old import method
-		$type = wp_check_filetype(basename($name), array(
+		// Get uploads folder
+		$uploads = wp_upload_dir();
+
+		// Check if /uploads dir is writable
+		if( ! is_writable( $uploads['basedir'] ) ) {
+			return false;
+		}
+
+		// Get target folders
+		$this->uploadsDir 	= $uploads['basedir'];
+		$this->targetDir 	= $uploads['basedir'].'/layerslider/projects';
+		$this->targetURL 	= $uploads['baseurl'].'/layerslider/projects';
+		$this->tmpDir 		= $uploads['basedir'].'/layerslider/tmp';
+
+		$type = wp_check_filetype( basename( $name ), [
 			'zip' => 'application/zip',
 			'json' => 'application/json'
-		));
+		]);
 
 		// Check for ZIP
-		if(!empty($type['ext']) && $type['ext'] == 'zip') {
-			if(class_exists('ZipArchive')) {
+		if( ! empty( $type['ext'] ) && $type['ext'] == 'zip') {
 
-				// Remove previous uploads (if any)
-				$this->cleanup();
 
-				// Extract ZIP
-				$this->zip = new ZipArchive;
-				if($this->zip->open($archive)) {
-					if($this->unpack($archive)) {
+			// Remove previous uploads (if any)
+			$this->cleanup();
 
-						// Uploaded folders
-						$folders = glob($this->tmpDir.'/*', GLOB_ONLYDIR);
+			// Extract ZIP
+			if( $this->unpack( $archive) ) {
 
-						$groupId = NULL;
-						if( ! empty( $groupName ) && count( $folders ) > 1 ) {
-							$groupId = LS_Sliders::addGroup( $groupName );
-						}
+				// Uploaded folders
+				$folders = glob( $this->tmpDir.'/*', GLOB_ONLYDIR );
 
-						foreach( $folders as $key => $dir) {
+				$groupId = NULL;
+				if( ! empty( $groupName ) && count( $folders ) > 1 ) {
+					$groupId = LS_Sliders::addGroup( $groupName );
+				}
 
-							$this->imported = array();
+				foreach( $folders as $key => $dir) {
 
-							if(!isset($_POST['skip_images'])) {
-								$this->uploadMedia($dir);
-							}
+					$this->imported = [];
 
-							if(file_exists($dir.'/settings.json')) {
-								$this->lastImportId = $this->addSlider($dir.'/settings.json', $groupId);
-							}
-						}
-
-						// Finishing up
-						$this->cleanup();
-						return true;
+					if( ! isset( $_POST['skip_images'] ) ) {
+						$this->uploadMedia( $dir );
 					}
 
-					// Close ZIP
-					$this->zip->close();
+					if( file_exists($dir.'/settings.json') ) {
+						$this->lastImportId = $this->addSlider($dir.'/settings.json', $groupId);
+					}
 				}
-			} else {
-				wp_redirect( admin_url( 'admin.php?page=layerslider&error=1&message=exportZipError') );
-				exit;
+
+				// Finishing up
+				$this->cleanup();
+				return true;
 			}
 
 
+
 		// Check for JSON
-		} elseif(!empty($type['ext']) && $type['ext'] == 'json') {
+		} elseif( ! empty( $type['ext'] ) && $type['ext'] == 'json') {
 
 			// Get decoded file data
-			$data = file_get_contents($archive);
-			if($decoded = base64_decode($data, true)) {
-				if(!$parsed = json_decode($decoded, true)) {
-					$parsed = unserialize($decoded);
+			$data = file_get_contents( $archive );
+			if( $decoded = base64_decode( $data, true ) ) {
+				if( ! $parsed = json_decode( $decoded, true ) ) {
+					$parsed = unserialize( $decoded );
 				}
 
 			// Since v5.1.1
 			} else {
-				$parsed = array(json_decode($data, true));
+				$parsed = [ json_decode( $data, true ) ];
 			}
 
 			// Iterate over imported sliders
-			if(is_array($parsed)) {
+			if( is_array( $parsed ) ) {
 
 				// Import sliders
-				foreach($parsed as $item) {
+				foreach( $parsed as $item ) {
 
 					// Increment the slider counter
 					$this->sliderCount++;
 
 					// Fix for export issue in v4.6.4
-					if(is_string($item)) { $item = json_decode($item, true); }
+					if( is_string( $item ) ) { $item = json_decode($item, true); }
 
-					$this->lastImportId = LS_Sliders::add($item['properties']['title'], $item);
+					$this->lastImportId = LS_Sliders::add(
+						$item['properties']['title'],
+						$item
+					);
 				}
 			}
 		}
@@ -137,28 +140,10 @@ class LS_ImportUtil {
 
 
 
-	public function unpack($archive) {
+	public function unpack( $archive ) {
 
-		// Get uploads folder
-		$uploads = wp_upload_dir();
-
-		// Check if /uploads dir is writable
-		if(is_writable($uploads['basedir'])) {
-
-			// Get target folders
-			$this->uploadsDir 	= $uploads['basedir'];
-			$this->targetDir 	= $targetDir = $uploads['basedir'].'/layerslider';
-			$this->targetURL 	= $uploads['baseurl'].'/layerslider';
-			$this->tmpDir 		= $tmpDir = $uploads['basedir'].'/layerslider/tmp';
-
-			// Create necessary folders under /uploads
-			if( ! file_exists( $targetDir ) ) { mkdir($targetDir, 0755); }
-			if( ! file_exists( $targetDir ) ) { mkdir($targetDir, 0755); }
-
-			// Unpack archive
-			if($this->zip->extractTo($tmpDir)) {
-				return true;
-			}
+		if( LS_FileSystem::createUploadDirs() ) {
+			return LS_FileSystem::unzip( $archive, $this->tmpDir );
 		}
 
 		return false;
@@ -170,7 +155,7 @@ class LS_ImportUtil {
 	public function uploadMedia($dir = null) {
 
 		// Check provided data
-		if(empty($dir) || !is_string($dir) || !file_exists($dir.'/uploads')) {
+		if( empty( $dir ) || ! is_string( $dir ) || ! file_exists( $dir.'/uploads' ) ) {
 			return false;
 		}
 
@@ -190,7 +175,7 @@ class LS_ImportUtil {
 
 			// Validate media
 			$filetype = wp_check_filetype($fileName, null);
-			if(!empty($filetype['ext']) && $filetype['ext'] != 'php') {
+			if( ! empty( $filetype['ext'] ) && $filetype['ext'] != 'php' ) {
 
 				// New upload
 				if( ! $attach_id = $this->attachIDForURL( $targetURL, $targetFile ) ) {
@@ -199,48 +184,36 @@ class LS_ImportUtil {
 					rename($filePath, $targetFile);
 
 					// Upload to media library
-					$attachment = array(
+					$attachment = [
 						'guid' => $targetFile,
 						'post_mime_type' => $filetype['type'],
 						'post_title' => preg_replace( '/\.[^.]+$/', '', $fileName),
 						'post_content' => '',
 						'post_status' => 'inherit'
-					);
+					];
 
 					$attach_id = wp_insert_attachment($attachment, $targetFile, 37);
 					if($attach_data = wp_generate_attachment_metadata($attach_id, $targetFile)) {
 						wp_update_attachment_metadata($attach_id, $attach_data);
 					}
 
-					$this->imported[$fileName] = array(
+					$this->imported[$fileName] = [
 						'id' => $attach_id,
 						'url' => $this->targetURL.'/'.basename($dir).'/'.$fileName
-					);
+					];
 
 				// Already uploaded
 				} else {
 
-					$this->imported[$fileName] = array(
+					$this->imported[$fileName] = [
 						'id' => $attach_id,
 						'url' => $targetURL
-					);
+					];
 				}
 			}
 		}
 
 		return true;
-	}
-
-
-
-	public function deleteDir($dir) {
-		if(!file_exists($dir)) return true;
-		if(!is_dir($dir)) return unlink($dir);
-		foreach(scandir($dir) as $item) {
-			if($item == '.' || $item == '..') continue;
-			if(!$this->deleteDir($dir.DIRECTORY_SEPARATOR.$item)) return false;
-		}
-		return rmdir($dir);
 	}
 
 
@@ -257,9 +230,16 @@ class LS_ImportUtil {
 		$slug = !empty($data['properties']['slug']) ? $data['properties']['slug'] : '';
 
 		// Import Google Fonts used in slider
-		if( isset( $data['googlefonts'] ) ) {
-			$this->addGoogleFonts( $data );
-			unset( $data['googlefonts'] );
+		if( empty( $data['googlefonts'] ) || ! is_array( $data['googlefonts'] ) ) {
+			$data['googlefonts'] = [];
+		}
+
+		foreach( $data['googlefonts'] as $fontIndex => $font ) {
+			$fontParam = explode(':', $font['param'] );
+			$font = urldecode( $fontParam[0] );
+			$font = str_replace(['+', '"', "'"], [' ', '', ''], $font);
+
+			$data['googlefonts'][ $fontIndex ] = [ 'param' => $font ];
 		}
 
 		// Slider Preview
@@ -272,11 +252,6 @@ class LS_ImportUtil {
 		if(!empty($data['properties']['backgroundimage'])) {
 			$data['properties']['backgroundimageId'] = $this->attachIDForImage($data['properties']['backgroundimage']);
 			$data['properties']['backgroundimage'] = $this->attachURLForImage($data['properties']['backgroundimage']);
-		}
-
-		if(!empty($data['properties']['yourlogo'])) {
-			$data['properties']['yourlogoId'] = $this->attachIDForImage($data['properties']['yourlogo']);
-			$data['properties']['yourlogo'] = $this->attachURLForImage($data['properties']['yourlogo']);
 		}
 
 
@@ -320,67 +295,10 @@ class LS_ImportUtil {
 	}
 
 
-
+	// DEPRECATED: Should not be used
+	// It does nothing. It's only here as a compatibility measure.
 	public function addGoogleFonts( $data ) {
 
-		// Get current Google Fonts
-		$googleFonts = get_option('ls-google-fonts', array());
-		$fontNames = array();
-
-
-		// Gather used font names
-		foreach( $googleFonts as $item ) {
-			$font = explode(':', $item['param']);
-			$fontNames[ $font[0] ] = $item;
-		}
-
-		// Merge google fonts
-		foreach( $data['googlefonts'] as $font ) {
-
-			// If no font-weight is specified, default to regular 400
-			// since Google Fonts do exactly this as well.
-			if( strpos(trim($font['param']), ':') === false ) {
-				$font['param'] .= ':regular';
-			}
-
-			list($family, $weights) = explode(':', $font['param']);
-
-			// New font, just add
-			if( ! isset($fontNames[$family]) ) {
-				$fontNames[$family] = $font;
-
-			// Existing font, merge variants
-			} else {
-
-				$w = array();
-
-				foreach( explode(',', $weights) as $weight ) {
-					$w[$weight] = true;
-				}
-
-				// If no font-weight is specified, default to regular 400
-				// since Google Fonts do exactly this as well.
-				if( strpos(trim($fontNames[ $family ]['param']), ':') === false ) {
-					$fontNames[ $family ]['param'] .= ':regular';
-				}
-
-				list($family, $weights) = explode(':', $fontNames[ $family ]['param']);
-				foreach( explode(',', $weights) as $weight ) {
-					$w[$weight] = true;
-				}
-
-				$fontNames[ $family ] = $font;
-				$fontNames[ $family ]['param'] = $family .':'. implode(',', array_keys($w));
-			}
-		}
-
-		// Update Google Fonts
-		$googleFonts = array();
-		foreach( $fontNames as $font ) {
-			$googleFonts[] = $font;
-		}
-
-		update_option('ls-google-fonts', $googleFonts);
 	}
 
 
@@ -395,7 +313,7 @@ class LS_ImportUtil {
 	}
 
 
-	public function attachIDForImage($file = '') {
+	public function attachIDForImage( $file = '' ) {
 
 		if( isset($this->imported[ basename($file) ]) ) {
 			return $this->imported[ basename($file) ]['id'];
@@ -429,7 +347,7 @@ class LS_ImportUtil {
 	}
 
 	public function cleanup() {
-		$this->deleteDir($this->tmpDir);
+		LS_FileSystem::emptyDir( $this->tmpDir );
 	}
 }
 ?>

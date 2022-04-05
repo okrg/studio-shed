@@ -232,6 +232,8 @@ class ES_Handle_Post_Notification {
 
 		// Get post excerpt
 		$post_excerpt  = get_the_excerpt( $post );
+		$post_excerpt  = wpautop( $post_excerpt );
+		$post_excerpt  = wptexturize( $post_excerpt );
 		$es_templ_body = str_replace( '{{POSTEXCERPT}}', $post_excerpt, $es_templ_body );
 
 		$more_tag_data = get_extended( $post->post_content );
@@ -242,10 +244,14 @@ class ES_Handle_Post_Notification {
 		$es_templ_body        = str_replace( '{{POSTMORETAG}}', $text_before_more_tag, $es_templ_body );
 
 		// get post author
-		$post_author_id = $post->post_author;
-		$post_author    = get_the_author_meta( 'display_name', $post_author_id );
-		$es_templ_body  = str_replace( '{{POSTAUTHOR}}', $post_author, $es_templ_body );
-		$es_templ_body  = str_replace( '{{POSTLINK-ONLY}}', $post_link, $es_templ_body );
+		$post_author_id         = $post->post_author;
+		$post_author            = get_the_author_meta( 'display_name', $post_author_id );
+		$post_author_avatar_url = get_avatar_url( $post_author_id );
+		$author_avatar          = '<img src="' . esc_attr( $post_author_avatar_url ) . '" alt="' . esc_attr( $post_author ) . '" width="auto" height="auto" />';
+		$es_templ_body          = str_replace( '{{POSTAUTHOR}}', $post_author, $es_templ_body );
+		$es_templ_body          = str_replace( '{{POSTLINK-ONLY}}', $post_link, $es_templ_body );
+		$es_templ_body          = str_replace( '{{POSTAUTHORAVATAR}}', $author_avatar, $es_templ_body );
+		$es_templ_body          = str_replace( '{{POSTAUTHORAVATARLINK-ONLY}}', $post_author_avatar_url, $es_templ_body );
 
 		// Check if template has {{POSTCATS}} placeholder.
 		if ( strpos( $es_templ_body, '{{POSTCATS}}' ) >= 0 ) {

@@ -128,6 +128,13 @@ class Groups implements Helper
                 ],
                 'elements' => [],
             ],
+            'Theme Builder' => [
+                'title' => 'Theme Builder',
+                'categories' => [
+                    'Theme Builder',
+                ],
+                'elements' => [],
+            ],
             'Social' => [
                 'title' => 'Social',
                 'categories' => [

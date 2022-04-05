@@ -26,7 +26,10 @@ class AddonsAutoload extends Autoload implements Module
         $this->app = $app;
         if ($init) {
             $components = $this->getComponents();
-            $this->doComponents($components);
+            $success = $this->doComponents($components);
+            if (!$success) {
+                vchelper('Options')->deleteTransient('addons:autoload:all');
+            }
         }
 
         $this->addEvent(
@@ -40,7 +43,10 @@ class AddonsAutoload extends Autoload implements Module
                 if (is_array($phpFiles) && !empty($phpFiles)) {
                     $components = $this->getSingleComponent($phpFiles);
                 }
-                $this->doComponents($components);
+                $success = $this->doComponents($components);
+                if (!$success) {
+                    vchelper('Options')->deleteTransient('addons:autoload:all');
+                }
             }
         );
     }
@@ -55,13 +61,19 @@ class AddonsAutoload extends Autoload implements Module
             'helpers' => [],
             'modules' => [],
         ];
+        $optionsHelper = vchelper('Options');
+        $allCached = \VcvEnv::get('VCV_DEBUG') ? [] : $optionsHelper->getTransient('addons:autoload:all');
 
+        if (!empty($allCached)) {
+            return $allCached;
+        }
         foreach ($hubHelper->getAddons(true) as $key => $addon) {
             $phpFiles = $hubHelper->getAddonPhpFiles($key, $addon);
             if (is_array($phpFiles) && !empty($phpFiles)) {
                 $all = array_merge_recursive($all, $this->getSingleComponent($phpFiles));
             }
         }
+        $optionsHelper->setTransient('addons:autoload:all', $all, DAY_IN_SECONDS);
 
         return $all;
     }

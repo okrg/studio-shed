@@ -4,8 +4,8 @@ Tags: woocommerce, coupons, auto apply, quantity, discount
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires at least: 4.6
-Tested up to: 5.8
-Stable tag: 2.1.5
+Tested up to: 5.9
+Stable tag: 2.1.12
 
 Apply WooCommerce Coupons automatically with a simple, fast and lightweight plugin.
 
@@ -33,6 +33,11 @@ Apply WooCommerce Coupons automatically with a simple, fast and lightweight plug
 4. Troubleshooting mode
 
 == Changelog ==
+= 2.1.12 = * WC tested up 6.3
+= 2.1.11 = * WP tested up to: 5.9, WC 6.2
+= 2.1.9 = * WC tested up to: 6.1
+= 2.1.7 = * Delete removed coupon cache when coupon no longer qualifies. Cache a coupon when manually removed and still valid.
+= 2.1.6 = * Improved checks for cart page
 = 2.1.5 = * WC tested up to: 5.9
 = 2.1.3 = * WC tested up to: 5.7
 = 2.1.2 = * Removed sessions for compatibility with block editors. Added caching via wac_sess().
@@ -89,7 +94,7 @@ Apply WooCommerce Coupons automatically with a simple, fast and lightweight plug
 This plugin works with an unlimited number of coupons.
 
 = Why isn't my coupon auto-applying? =
-The coupon will apply only when conditions are met.  This includes conditions in the WooCommerce coupon settings under Usage Restriction and Usage Limits.  For instance, the coupon expiration date (if set) must be in the future.
+The coupon will apply only when conditions are met.  This includes conditions in the WooCommerce coupon settings under Usage Restriction and Usage Limits.  For instance, the coupon expiration date (if set) must be in the future. If a previously auto-applied coupon is manually removed from the cart, it will not auto apply again unless another coupon has been added and removed.
 
 = How can I troubleshoot my coupons? =
 To troubleshoot, you must be logged in as an administrator.  Visit the cart page and add /?troubleshoot to the URL in the address bar.  This will list all auto-apply coupons and the status.

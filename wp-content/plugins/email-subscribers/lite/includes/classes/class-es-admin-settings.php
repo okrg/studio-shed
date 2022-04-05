@@ -47,6 +47,7 @@ class ES_Admin_Settings {
 
 				$options['ig_es_disable_wp_cron']                           = isset( $options['ig_es_disable_wp_cron'] ) ? $options['ig_es_disable_wp_cron'] : 'no';
 				$options['ig_es_track_email_opens']                         = isset( $options['ig_es_track_email_opens'] ) ? $options['ig_es_track_email_opens'] : 'no';
+				$options['ig_es_enable_ajax_form_submission']               = isset( $options['ig_es_enable_ajax_form_submission'] ) ? $options['ig_es_enable_ajax_form_submission'] : 'no';
 				$options['ig_es_enable_welcome_email']                      = isset( $options['ig_es_enable_welcome_email'] ) ? $options['ig_es_enable_welcome_email'] : 'no';
 				$options['ig_es_notify_admin']                              = isset( $options['ig_es_notify_admin'] ) ? $options['ig_es_notify_admin'] : 'no';
 				$options['ig_es_enable_cron_admin_email']                   = isset( $options['ig_es_enable_cron_admin_email'] ) ? $options['ig_es_enable_cron_admin_email'] : 'no';
@@ -68,6 +69,7 @@ class ES_Admin_Settings {
 					'ig_es_optin_type',
 					'ig_es_post_image_size',
 					'ig_es_track_email_opens',
+					'ig_es_enable_ajax_form_submission',
 					'ig_es_enable_welcome_email',
 					'ig_es_welcome_email_subject',
 					'ig_es_confirmation_mail_subject',
@@ -248,6 +250,14 @@ class ES_Admin_Settings {
 				'default' => 'full',
 			),
 			// End-IG-Code.
+
+			'ig_es_enable_ajax_form_submission'     => array(
+				'id'      => 'ig_es_enable_ajax_form_submission',
+				'name'    => __( 'Enable AJAX subscription form submission', 'email-subscribers' ),
+				'info'    => __( 'Enabling this will let users to submit their subscription form without page reload using AJAX call.', 'email-subscribers' ),
+				'type'    => 'checkbox',
+				'default' => 'no',
+			),
 
 			'ig_es_track_email_opens'               => array(
 				'id'      => 'ig_es_track_email_opens',

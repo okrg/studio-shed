@@ -52,14 +52,71 @@ if( ! empty( $embed['className'] ) ) {
 	$customClasses .= ' '.$embed['className'];
 }
 
-$useSrcset = true;
-if( isset($slides['properties']['attrs']['useSrcset']) && $slides['properties']['attrs']['useSrcset'] === false ) {
-	$useSrcset = false;
+
+// Use srcset
+$useSrcset = (bool) get_option('ls_use_srcset', true );
+if( isset( $slides['properties']['attrs']['useSrcset'] ) ) {
+
+	if( is_bool( $slides['properties']['attrs']['useSrcset'] ) ) {
+		$useSrcset = $slides['properties']['attrs']['useSrcset'];
+
+	} elseif( $slides['properties']['attrs']['useSrcset'] === 'enabled' ||
+			  $slides['properties']['attrs']['useSrcset'] === '1' ) {
+		$useSrcset = true;
+
+	} elseif( $slides['properties']['attrs']['useSrcset'] === 'disabled') {
+		$useSrcset = false;
+	}
 }
 
-$enhancedLazyLoad = false;
-if( ! empty( $slides['properties']['props']['enhancedLazyLoad'] ) ) {
-	$enhancedLazyLoad = true;
+$slides['properties']['attrs']['useSrcset'] = $useSrcset;
+
+
+// Enhanced lazy load
+$enhancedLazyLoad = (bool) get_option('ls_enhanced_lazy_load', false );
+if( isset( $slides['properties']['props']['enhancedLazyLoad'] ) ) {
+
+	if( is_bool( $slides['properties']['props']['enhancedLazyLoad'] ) ) {
+		$enhancedLazyLoad = $slides['properties']['props']['enhancedLazyLoad'];
+
+	} elseif( $slides['properties']['props']['enhancedLazyLoad'] === 'enabled' ||
+			  $slides['properties']['props']['enhancedLazyLoad'] === '1') {
+		$enhancedLazyLoad = true;
+
+	} elseif( $slides['properties']['props']['enhancedLazyLoad'] === 'disabled') {
+		$enhancedLazyLoad = false;
+	}
+}
+
+$slides['properties']['props']['enhancedLazyLoad'] = $enhancedLazyLoad;
+
+
+// Project-level Google Fonts
+if( get_option('layerslider-google-fonts-enabled', true ) ) {
+
+	$slides = ls_merge_google_fonts( $slides );
+
+	// Load Google Fonts from Project
+	if( ! empty( $slides['googlefonts'] ) && is_array( $slides['googlefonts'] ) ) {
+		$fontFragments = [];
+		foreach( $slides['googlefonts'] as $font ) {
+
+			$fontName = explode( ':' , $font['param'] );
+			$fontName = urldecode( $fontName[0] );
+
+			// Prevent loading fonts that are already loaded from other sliders
+			if( ! in_array( $fontName, $GLOBALS['lsLoadedFonts'] ) ) {
+				$fontFragments[] = urlencode( $fontName ).':100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i';
+				$GLOBALS['lsLoadedFonts'][] = $fontName;
+			}
+		}
+
+		if( ! empty( $fontFragments ) ) {
+			$fontsURL = implode('%7C', $fontFragments);
+
+			$lsContainer[] = '<link href="https://fonts.googleapis.com/css?family='.$fontsURL.'" rel="stylesheet">';
+		}
+	}
 }
 
 // Start of slider container
@@ -70,7 +127,18 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 	foreach($slider['slides'] as $slidekey => $slide) {
 
 		// Skip this slide?
-		if(!empty($slide['props']['skip'])) { continue; }
+		if( ! empty( $slide['props']['skip'] ) ) {
+			continue;
+		}
+
+		// Schedule start
+		if( ! empty( $slide['props']['schedule_start'] ) && (int) $slide['props']['schedule_start'] > time() ) {
+			continue;
+		}
+
+		if( ! empty( $slide['props']['schedule_end'] ) && (int) $slide['props']['schedule_end'] < time() ) {
+			continue;
+		}
 
 		// Get slide attributes
 		$slideId = !empty($slide['props']['id']) ? ' id="'.$slide['props']['id'].'"' : '';
@@ -90,12 +158,12 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 
 		// Post content
 		//if( !isset($slide['props']['post_content']) || $slide['props']['post_content']) {
-			$queryArgs = array(
+			$queryArgs = [
 				'post_status' => 'publish',
 				'limit' => 1,
 				'posts_per_page' => 1,
 				'suppress_filters' => false
-			);
+			];
 
 
 			if(isset($slide['props']['post_offset'])) {
@@ -122,11 +190,11 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 				$queryArgs['tag__in'] = $slides['properties']['props']['post_tags']; }
 
 			if(!empty($slides['properties']['props']['post_taxonomy']) && !empty($slides['properties']['props']['post_tax_terms'])) {
-				$queryArgs['tax_query'][] = array(
+				$queryArgs['tax_query'][] = [
 					'taxonomy' => $slides['properties']['props']['post_taxonomy'],
 					'field' => 'id',
 					'terms' => $slides['properties']['props']['post_tax_terms']
-				);
+				];
 			}
 
 			$postContent = LS_Posts::find($queryArgs);
@@ -142,14 +210,14 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 			$alt = '';
 
 			if( ! empty($slide['props']['backgroundId'])) {
-				$lsBG = ls_get_markup_image( $slide['props']['backgroundId'], array('class' => 'ls-bg') );
+				$lsBG = ls_get_markup_image( $slide['props']['backgroundId'], ['class' => 'ls-bg'] );
 
 			} elseif($slide['props']['background'] == '[image-url]') {
 				$src = $postContent->getWithFormat($slide['props']['background']);
 
 				if(is_object($postContent->post)) {
 					$attchID = get_post_thumbnail_id($postContent->post->ID);
-					$lsBG = ls_get_markup_image( $attchID, array('class' => 'ls-bg') );
+					$lsBG = ls_get_markup_image( $attchID, ['class' => 'ls-bg'] );
 				}
 			} else {
 				$src = do_shortcode($slide['props']['background']);
@@ -157,6 +225,7 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 			}
 
 			if( ! empty( $lsBG ) ) {
+
 
 				if( ! $useSrcset ) {
 					$lsBG = preg_replace('/srcset="[^\"]*"/', '', $lsBG);
@@ -180,7 +249,7 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 
 				$lsTN = '';
 				if( ! empty($slide['props']['thumbnailId']) ) {
-					$lsTN = ls_get_markup_image( $slide['props']['thumbnailId'], array('class' => 'ls-tn') );
+					$lsTN = ls_get_markup_image( $slide['props']['thumbnailId'], ['class' => 'ls-tn'] );
 				}
 
 				if( ! empty( $lsTN ) && ! $useSrcset ) {
@@ -201,21 +270,26 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 		if(!empty($slide['layers']) && is_array($slide['layers'])) {
 			foreach($slide['layers'] as $layerkey => $layer) {
 
+				$svgIB = false;
+
 				// Skip this slide?
 				if(!empty($layer['props']['skip'])) { continue; }
 
 				unset($layerAttributes);
 				unset($innerAttributes);
-				$layerAttributes = array('style' => '', 'class' => 'ls-l');
-				$innerAttributes = array('style' => '', 'class' => '');
+				$layerAttributes = ['style' => '', 'class' => 'ls-l'];
+				$innerAttributes = ['style' => '', 'class' => ''];
 
 				if( empty( $layer['props']['url'] ) ) {
 					$innerAttributes =& $layerAttributes;
 				}
 
 				if( empty( $layer['props']['styles'] ) ) {
-					$layer['props']['styles'] = array();
+					$layer['props']['styles'] = [];
 				}
+
+				// Trim and normalize HTML
+				$layer['props']['html'] = ! empty( $layer['props']['html'] ) ? trim( $layer['props']['html'] ) : '';
 
 				// WPML support
 				if( has_filter( 'wpml_translate_single_string' ) ) {
@@ -254,67 +328,152 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 				}
 
 				// Get layer type
+				$layer['props']['type'] = !empty($layer['props']['type']) ? $layer['props']['type'] : '';
 				$layer['props']['media'] = !empty($layer['props']['media']) ? $layer['props']['media'] : '';
 
-				if( ! empty( $layer['props']['media'] ) ) {
-					switch( $layer['props']['media'] ) {
-						case 'img':
-							$layer['props']['type'] = 'img';
-							break;
+				// v7.0.0: Normalize HTML element tag for old versions
+				if( empty( $layer['props']['htmlTag'] ) ) {
 
-						case 'button':
-						case 'icon':
-							$layer['props']['type'] = 'span';
-							break;
+					$layer['props']['htmlTag'] = ! empty( $layer['props']['type'] ) ? $layer['props']['type'] : 'ls-layer';
 
-						case 'html':
-						case 'media':
-							$layer['props']['type'] = 'div';
-							break;
+					if( ! empty( $layer['props']['media'] ) ) {
+						switch( $layer['props']['media'] ) {
+							case 'img':
+								$layer['props']['htmlTag'] = 'img';
+								break;
 
-						case 'post':
-							$layer['props']['type'] = 'div';
-							break;
+							case 'button':
+							case 'icon':
+								$layer['props']['htmlTag'] = 'span';
+								break;
+
+							case 'html':
+							case 'media':
+								$layer['props']['htmlTag'] = 'div';
+								break;
+
+							case 'post':
+								$layer['props']['htmlTag'] = 'div';
+								break;
+						}
 					}
 				}
 
-				// v6.6.7: Ensure default value for the 'type' key if it's
-				// somehow missing.
-				if( empty( $layer['props']['type'] ) ) {
-					$layer['props']['type'] = 'div';
-				}
 
 				// Post layer
-				if(!empty($layer['props']['media']) && $layer['props']['media'] == 'post') {
+				if( $layer['props']['media'] === 'post' ) {
 					$layer['props']['post_text_length'] = !empty($layer['props']['post_text_length']) ? $layer['props']['post_text_length'] : 0;
 					$layer['props']['html'] = $postContent->getWithFormat($layer['props']['html'], $layer['props']['post_text_length']);
 					$layer['props']['html'] = do_shortcode($layer['props']['html']);
 				}
 
-				// Skip image layer without src
-				if($layer['props']['type'] == 'img' && empty($layer['props']['image'])) { continue; }
+				// Should wrap layer? Test for a single HTML element
+				$wrapLayer = true;
+				if( $layer['props']['media'] === 'post' && ! empty( $layer['props']['html'] ) ) {
 
-				// Create layer
-				$first = substr($layer['props']['html'], 0, 1);
-				$last = substr($layer['props']['html'], strlen($layer['props']['html'])-1, 1);
+					$firstChar = substr( $layer['props']['html'], 0, 1 );
+					$lastChar = substr( $layer['props']['html'], strlen( $layer['props']['html'] ) - 1, 1 );
+
+					if( $firstChar === '<' && $lastChar === '>') {
+
+						try {
+							$layerHTML = LayerSlider\DOM::newDocumentHTML( $layer['props']['html'] );
+							if( $layerHTML->length === 1 ) {
+								$wrapLayer = false;
+							}
+
+						} catch( Exception $e ) {
+
+						}
+					}
+				}
+
+				// Skip image layer without src
+				if( ( $layer['props']['type'] === 'img' || $layer['props']['media'] === 'img' ) && empty($layer['props']['image'])) { continue; }
+
+				// Convert line breaks
+				if( ! empty( $layer['props']['htmlLineBreak'] ) ) {
+
+					if( $layer['props']['htmlLineBreak'] === 'enabled' ) {
+						$layer['props']['html'] = nl2br( $layer['props']['html'] );
+					}
+
+					if( $layer['props']['htmlLineBreak'] === 'auto' ) {
+						if( in_array( $layer['props']['media'], ['text', 'button', 'post'] ) ) {
+							$layer['props']['html'] = nl2br( $layer['props']['html'] );
+						}
+					}
+				}
+
+				// Handle attached icon
+				if( ! empty( $layer['props']['icon'] ) && in_array( $layer['props']['media'], ['text', 'button', 'post', 'html'] ) ) {
+
+					$iconHTML = $layer['props']['icon'];
+					$icon;
+
+					if( ! empty( $layer['props']['html'] ) ) {
+						$svgIB = true;
+					}
+
+					try {
+						$icon = LayerSlider\DOM::newDocumentHTML( $layer['props']['icon'] );
+					} catch( Exception $e ) {}
+
+					$layer['props']['iconPlacement'] = ! empty( $layer['props']['iconPlacement'] ) ? $layer['props']['iconPlacement'] : '';
+
+					// Icon Color & Icon Gap
+					if( $icon ) {
+
+						$iconCSS = [];
+
+						if( ! empty( $layer['props']['iconColor'] ) ) {
+							$iconCSS[ 'color' ] = $layer['props']['iconColor'];
+						}
+
+						if( ! empty( $layer['props']['iconGap'] ) ) {
+
+							if( $layer['props']['iconPlacement'] === 'left' ) {
+								$iconCSS[ 'margin-right' ] = $layer['props']['iconGap'].'em';
+							} else {
+								$iconCSS[ 'margin-left' ] = $layer['props']['iconGap'].'em';
+							}
+						}
+
+						if( ! empty( $layer['props']['iconSize'] ) ) {
+							$iconCSS[ 'font-size' ] = $layer['props']['iconSize'].'em';
+						}
+
+						if( ! empty( $layer['props']['iconVerticalAdjustment'] ) ) {
+							$iconCSS[ 'transform' ] = 'translateY( '.$layer['props']['iconVerticalAdjustment'].'em )';
+						}
+
+						$icon->attr('style', ls_array_to_attr( $iconCSS ) );
+						$iconHTML = $icon;
+					}
+
+					// Content & Icon Placement
+					$layer['props']['html'] = ( $layer['props']['iconPlacement'] === 'left' ) ? $iconHTML.$layer['props']['html'] : $layer['props']['html'].$iconHTML;
+				}
 
 				// Image layer
 				$layerIMG = false;
-				if($layer['props']['type'] == 'img') {
+				if( $layer['props']['type'] === 'img' || $layer['props']['media'] === 'img' ) {
+
 					if( ! empty($layer['props']['imageId'])) {
-						$layerIMG = ls_get_markup_image( (int)$layer['props']['imageId'], array('class' => 'ls-l') );
+						$layerIMG = ls_get_markup_image( (int)$layer['props']['imageId'], ['class' => 'ls-l'] );
 
 					} elseif($layer['props']['image'] == '[image-url]') {
 
 						if(is_object($postContent->post)) {
 							$attchID = get_post_thumbnail_id($postContent->post->ID);
-							$layerIMG = ls_get_markup_image( $attchID, array('class' => 'ls-l') );
+							$layerIMG = ls_get_markup_image( $attchID, ['class' => 'ls-l'] );
 						} else {
-							$innerAttributes['src'] = $postContent->getWithFormat($layer['props']['image']);
+							$layerIMG = '<img src="'.$postContent->getWithFormat($layer['props']['image']).'">';
 						}
 
-					} else {
-						$innerAttributes['src'] = $layer['props']['image'];
+					} elseif( ! empty( $layer['props']['image'] ) ) {
+
+						$layerIMG = '<img src="'.$layer['props']['image'].'">';
 
 						if(!empty($layer['props']['alt'])) {
 						$innerAttributes['alt'] = $layer['props']['alt']; }
@@ -322,23 +481,27 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 					}
 				}
 
-				if($layer['props']['media'] == 'post' && ($first == '<' && $last == '>')) {
-					$type = $layer['props']['html'];
-				} else {
 
-					if( ! empty( $layerIMG ) && ! $useSrcset ) {
-						$layerIMG = preg_replace('/srcset="[^\"]*"/', '', $layerIMG);
-						$layerIMG = preg_replace('/sizes="[^\"]*"/', '', $layerIMG);
-					}
-
-					if( ! empty( $layerIMG ) && $enhancedLazyLoad ) {
-						$layerIMG = str_replace(' src="', ' data-src="', $layerIMG);
-						$layerIMG = str_replace(' srcset="', ' data-srcset="', $layerIMG);
-					}
-
-					$type = ! empty($layerIMG) ? $layerIMG : '<'.$layer['props']['type'].'>';
+				if( ! empty( $layerIMG ) && ! $useSrcset ) {
+					$layerIMG = preg_replace('/srcset="[^\"]*"/', '', $layerIMG);
+					$layerIMG = preg_replace('/sizes="[^\"]*"/', '', $layerIMG);
 				}
 
+				if( ! empty( $layerIMG ) && $enhancedLazyLoad ) {
+					$layerIMG = str_replace(' src="', ' data-src="', $layerIMG);
+					$layerIMG = str_replace(' srcset="', ' data-srcset="', $layerIMG);
+				}
+
+				// Layer element type & wrapping
+				if( ! empty( $layerIMG ) ) {
+					$type = $layerIMG;
+
+				} elseif( ! $wrapLayer ) {
+					$type = $layer['props']['html'];
+
+				} else {
+					$type = '<'.$layer['props']['htmlTag'].'>';
+				}
 
 				// Linked layer
 				if( ! empty( $layer['props']['url'] ) ) {
@@ -372,9 +535,6 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 						$layer['props']['url'] = $postContent->getWithFormat('[post-url]');
 					}
 
-					// Apply shortcodes
-					$layer['props']['url'] = do_shortcode( $layer['props']['url'] );
-
 					$layerAttributes['href'] = ! empty( $layer['props']['url'] ) ? do_shortcode( $layer['props']['url'] ) : '#';
 
 					if(!empty($layer['props']['target'])) {
@@ -384,7 +544,13 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 					$inner = $el->append($type)->children();
 
 				} else {
-					$el = $inner = LayerSlider\DOM::newDocumentHTML($type)->children();
+
+					if( ! $wrapLayer ) {
+						$el = $inner = LayerSlider\DOM::newDocumentHTML($type);
+					} else {
+						$el = $inner = LayerSlider\DOM::newDocumentHTML($type)->children();
+					}
+
 				}
 
 				// HTML attributes
@@ -431,17 +597,28 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 						$layerBG = $postContent->getWithFormat( $layer['props']['layerBackground'] );
 
 					} else {
-						$layerBG = do_shortcode( $slide['props']['layerBackground'] );
+						$layerBG = do_shortcode( $layer['props']['layerBackground'] );
 					}
 
 					$layer['props']['styles']['background-image'] = 'url("'.$layerBG.'")';
+				}
+
+				if( ! empty( $layer['props']['styles']['background-color'] ) && strstr( $layer['props']['styles']['background-color'], 'gradient' ) ) {
+
+					if( empty( $layer['props']['styles']['background-image'] ) ) {
+						$layer['props']['styles']['background'] = $layer['props']['styles']['background-color'];
+					} else {
+						$layer['props']['styles']['background-image'] .= ', ' . $layer['props']['styles']['background-color'];
+					}
+
+					unset( $layer['props']['styles']['background-color'] );
 				}
 
 
 				$innerAttributes['style'] .= ls_array_to_attr($layer['props']['styles'], 'css');
 
 				// Text / HTML layer
-				if($layer['props']['media'] != 'post' || ($first != '<' && $last != '>')) {
+				if( $wrapLayer ) {
 					$inner->html(do_shortcode(__(stripslashes($layer['props']['html']))));
 				}
 
@@ -486,6 +663,18 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 							$inner->attr( $key, $val );
 						}
 					}
+				}
+
+				if( ! empty( $layer['props']['actions'] ) ) {
+					$el->attr('data-ls-actions', json_encode( $layer['props']['actions']) );
+				}
+
+				if( $svgIB ) {
+					$inner->addClass('ls-ib-icon');
+				}
+
+				if( ! empty( $layer['props']['media'] ) ) {
+					$inner->addClass('ls-'.$layer['props']['media'].'-layer');
 				}
 
 				$lsMarkup[] = $el;

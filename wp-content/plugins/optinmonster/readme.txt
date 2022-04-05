@@ -2,9 +2,9 @@
 Contributors: optinmonster, griffinjt, smub
 Tags: popup, popups, optin, conversion, marketing, newsletter, popup builder, popup maker, email marketing, exit popup, ecommerce, woocommerce, lightbox
 Requires at least: 4.7.0
-Tested up to: 5.8
+Tested up to: 5.9
 Requires PHP: 5.3
-Stable tag: 2.6.10
+Stable tag: 2.6.11
 License: GNU General Public License v2.0 or later
 
 Create popups, opt-in forms, & floating bars to get more email newsletter subscribers, leads, and increase sales conversion - #1 marketing popup builder plugin.
@@ -457,6 +457,9 @@ Syed Balkhi
 == Changelog ==
 
 **Most Recent Changes:**
+
+= 2.6.11 =
+* Fixed an issue where inline campaigns were not being output on the front-end of the site.
 
 = 2.6.10 =
 * Updated email providers in the onboarding wizard.

@@ -9,28 +9,34 @@
 
 
 /*
-    Plugin Name:  LayerSlider WP
-     Plugin URI:  https://layerslider.kreaturamedia.com
-        Version:  6.11.8
+        Plugin Name:  LayerSlider
+         Plugin URI:  https://layerslider.com/
+            Version:  7.1.3
 
-    Description:  LayerSlider is a premium multi-purpose content creation and animation platform. Easily create sliders, image galleries, slideshows with mind-blowing effects, popups, landing pages, animated page blocks, or even a full website. LayerSlider empowers millions of active websites on a daily basis with stunning visuals and eye-catching effects.
+        Description:  LayerSlider is a premium multi-purpose content creation and animation platform. Easily create sliders, image galleries, slideshows with mind-blowing effects, popups, landing pages, animated page blocks, or even a full website. LayerSlider empowers millions of active websites on a daily basis with stunning visuals and eye-catching effects.
 
-         Author:  Kreatura Media
-     Author URI:  https://kreaturamedia.com
+             Author:  Kreatura Media
+         Author URI:  https://kreaturamedia.com
 
-        License:  Kreatura License
-    License URI:  https://layerslider.kreaturamedia.com/licensing/
+            License:  Kreatura License
+        License URI:  https://layerslider.com/licensing/
 
-    Text Domain:  LayerSlider
-    Domain Path:  /assets/locales
+        Text Domain:  LayerSlider
+        Domain Path:  /assets/locales
+
+       Requires PHP:  5.4
+  Requires at least:  4.4
+
 */
 
 
 // Prevent direct file access
 defined( 'ABSPATH' ) || exit;
 
-define( 'LS_MINIMUM_PHP_VERSION', '5.3' );
-define( 'LS_MINIMUM_WP_VERSION',  '3.5' );
+define( 'LS_LICENSE_ID', '');
+
+define( 'LS_MINIMUM_PHP_VERSION', '5.4' );
+define( 'LS_MINIMUM_WP_VERSION',  '4.4' );
 
 $php_version = phpversion();
 $wp_version  = get_bloginfo('version');
@@ -53,8 +59,8 @@ if( defined('LS_PLUGIN_VERSION') || isset( $GLOBALS['lsPluginPath'] ) ) {
 
 	define( 'LS_ROOT_FILE', __FILE__ );
 
-	define( 'LS_PLUGIN_VERSION', '6.11.8' );
-	define( 'LS_DB_VERSION', '6.9.0' );
+	define( 'LS_PLUGIN_VERSION', '7.1.3' );
+	define( 'LS_DB_VERSION', '7.0.0' );
 
 	require __DIR__.'/assets/init.php';
 }
@@ -85,7 +91,7 @@ if( ! function_exists( 'ls_server_requirements_notice' ) ) {
 
 			<p><b>Alternatively, if you’ve previously purchased LayerSlider, you can log in to <a href="https://account.kreaturamedia.com/" target="_blank">Your Account</a> and download & install an older release that supported this version of PHP. However, we strongly recommend to use this only as a temporary measure.</b></p>
 
-			<p><small style="font-size: 13px; color: #666;">This message will automatically be dismissed once the issue has been resolved. After that, look for the <b>LayerSlider WP</b> sidebar menu item to get started using the plugin. You can also disable LayerSlider under the Plugins screen to hide this message. However, we strongly discourage choosing to look away as your site will remain in a vulnerable state and you will experience more and more issues with themes and plugins if you don’t take the necessary steps.</small></p>
+			<p><small style="font-size: 13px; color: #666;">This message will automatically be dismissed once the issue has been resolved. After that, look for the <b>LayerSlider</b> sidebar menu item to get started using the plugin. You can also disable LayerSlider under the Plugins screen to hide this message. However, we strongly discourage choosing to look away as your site will remain in a vulnerable state and you will experience more and more issues with themes and plugins if you don’t take the necessary steps.</small></p>
 		</div>
 
 <?php } }
@@ -99,7 +105,7 @@ if( ! function_exists( 'ls_wordpress_requirements_notice' ) ) {
 
 			<p><b>Alternatively, if you’ve previously purchased LayerSlider, you can log in to <a href="https://account.kreaturamedia.com/" target="_blank">Your Account</a> and download & install an older release that supported this version of WordPress. However, we strongly recommend to use this only as a temporary measure.</b></p>
 
-			<p><small style="font-size: 13px; color: #666;">This message will automatically be dismissed once the issue has been resolved. After that, look for the <b>LayerSlider WP</b> sidebar menu item to get started using the plugin. You can also disable LayerSlider under the Plugins screen to hide this message. However, we strongly discourage choosing to look away as your site will remain in a vulnerable state and you will experience more and more issues with themes and plugins if you don’t take the necessary steps.</small></p>
+			<p><small style="font-size: 13px; color: #666;">This message will automatically be dismissed once the issue has been resolved. After that, look for the <b>LayerSlider</b> sidebar menu item to get started using the plugin. You can also disable LayerSlider under the Plugins screen to hide this message. However, we strongly discourage choosing to look away as your site will remain in a vulnerable state and you will experience more and more issues with themes and plugins if you don’t take the necessary steps.</small></p>
 		</div>
 
 <?php } }

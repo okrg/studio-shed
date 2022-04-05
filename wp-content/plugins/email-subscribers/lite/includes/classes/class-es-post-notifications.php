@@ -10,10 +10,7 @@ class ES_Post_Notifications_Table {
 	public static $instance;
 
 	public function __construct() {
-		add_action( 'ig_es_' . IG_CAMPAIGN_TYPE_POST_NOTIFICATION . '_content_settings', array( $this, 'show_post_notification_content_settings' ) );
-		add_action( 'ig_es_' . IG_CAMPAIGN_TYPE_POST_DIGEST . '_content_settings', array( $this, 'show_post_notification_content_settings' ) );
-		add_action( 'ig_es_show_' . IG_CAMPAIGN_TYPE_POST_NOTIFICATION . '_campaign_summary_action_buttons', array( $this, 'show_summary_actions_buttons' ) );
-		add_action( 'ig_es_show_' . IG_CAMPAIGN_TYPE_POST_DIGEST . '_campaign_summary_action_buttons', array( $this, 'show_summary_actions_buttons' ) );
+		$this->init();
 	}
 
 	public static function get_instance() {
@@ -22,6 +19,19 @@ class ES_Post_Notifications_Table {
 		}
 
 		return self::$instance;
+	}
+
+	public function init() {
+		$this->register_hooks();
+	}
+
+	public function register_hooks() {
+		add_action( 'ig_es_' . IG_CAMPAIGN_TYPE_POST_NOTIFICATION . '_content_settings', array( $this, 'show_post_notification_content_settings' ) );
+		add_action( 'ig_es_' . IG_CAMPAIGN_TYPE_POST_DIGEST . '_content_settings', array( $this, 'show_post_notification_content_settings' ) );
+		add_action( 'ig_es_show_' . IG_CAMPAIGN_TYPE_POST_NOTIFICATION . '_campaign_summary_action_buttons', array( $this, 'show_summary_actions_buttons' ) );
+		add_action( 'ig_es_show_' . IG_CAMPAIGN_TYPE_POST_DIGEST . '_campaign_summary_action_buttons', array( $this, 'show_summary_actions_buttons' ) );
+		add_action( 'ig_es_' . IG_CAMPAIGN_TYPE_POST_NOTIFICATION . '_default_subject', array( $this, 'get_post_notification_default_subject' ), 10, 2 );
+		add_action( 'ig_es_' . IG_CAMPAIGN_TYPE_POST_NOTIFICATION . '_default_content', array( $this, 'get_post_notification_default_content' ), 10, 2 );
 	}
 
 	public function es_notifications_callback() {
@@ -602,6 +612,79 @@ class ES_Post_Notifications_Table {
 		if ( IG_ES_DRAG_AND_DROP_EDITOR === $editor_type ) {
 			do_action( 'ig_es_show_' . $campaign_type . '_fields', $campaign_data );
 		}
+	}
+
+	/**
+	 * Get default subject for post notification campaign
+	 * 
+	 * @param string $subject
+	 * @return string $subject
+	 * 
+	 * @since 5.3.2
+	 */
+	public function get_post_notification_default_subject( $subject, $campaign_data ) {
+		if ( empty( $subject ) ) {
+			$subject = __( 'New Post Published - {{POSTTITLE}}', 'email-subscribers' );
+		}
+		return $subject;
+	}
+
+	public function get_post_notification_default_content( $content, $campaign_data ) {
+		
+		if ( empty( $content ) ) {
+			$editor_type   = ! empty( $campaign_data['meta']['editor_type'] ) ? $campaign_data['meta']['editor_type'] : IG_ES_DRAG_AND_DROP_EDITOR;
+			$is_dnd_editor = IG_ES_DRAG_AND_DROP_EDITOR === $editor_type;
+
+			if ( $is_dnd_editor ) {
+				$content = $this->get_dnd_editor_default_content();
+			} else {
+				$content = $this->get_classic_editor_default_content();
+			}
+		}
+
+		return $content;
+	}
+
+	public function get_classic_editor_default_content() {
+		$default_content  = __( 'Hello {{NAME}},', 'email-subscribers' ) . "\r\n\r\n";
+		$default_content .= __( 'We have published a new blog article on our website', 'email-subscribers' ) . " : {{POSTTITLE}}\r\n";
+		$default_content .= "{{POSTIMAGE}}\r\n\r\n";
+		$default_content .= __( 'You can view it from this link', 'email-subscribers' ) . " : {{POSTLINK}}\r\n\r\n";
+		$default_content .= __( 'Thanks & Regards', 'email-subscribers' ) . ",\r\n";
+		$default_content .= __( 'Admin', 'email-subscribers' ) . "\r\n\r\n";
+		$default_content .= __( 'You received this email because in the past you have provided us your email address : {{EMAIL}} to receive notifications when new updates are posted.', 'email-subscribers' );
+		return $default_content;
+	}
+
+	public function get_dnd_editor_default_content() {
+
+		$default_content = '<mjml>
+			<mj-body>
+				<mj-section background-color="#FFFFFF">
+					<mj-column width="100%">
+						<mj-image src="https://webstockreview.net/images/sample-png-images-14.png" height="70px"
+								width="140px"/>
+					</mj-column>
+				</mj-section>
+				<mj-section background-color="#FFFFFF">
+					<mj-column width="100%">
+						<mj-text line-height="26px">' . __( 'Hello {{NAME}},', 'email-subscribers' ) . '</mj-text>
+						<mj-text line-height="26px">' . __( 'We have published a new blog article on our website', 'email-subscribers' ) . ' : {{POSTTITLE}}</mj-text>
+						<mj-text line-height="26px">{{POSTIMAGE}}</mj-text>
+						<mj-text line-height="26px">' . __( 'You can view it from this link', 'email-subscribers' ) . ' : {{POSTLINK}}</mj-text>
+					</mj-column>
+				</mj-section>
+				<mj-section background-color="#f3f3f3">
+					<mj-column width="100%">
+						<mj-text align="center" line-height="26px">@2022,' . __( 'Your Brand Name', 'email-subscribers' ) . '.</mj-text>
+						<mj-text align="center" line-height="26px">' . __( 'You received this email because in the past you have provided us your email address : {{EMAIL}} to receive notifications when new updates are posted.', 'email-subscribers' ) . __( 'If you wish to unsubscribe from our newsletter, click', 'email-subscribers' ) . ' <a data-gjs-type="link" href="{{UNSUBSCRIBE-LINK}}" >' . __( 'here', 'email-subscribers' ) . '</a>
+						</mj-text>
+					</mj-column>
+				</mj-section>
+			</mj-body>
+		</mjml> ';
+
+		return $default_content;
 	}
 
 }

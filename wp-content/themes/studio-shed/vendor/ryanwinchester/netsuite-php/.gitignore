@@ -1,0 +1,9 @@
+# Directories
+/.idea
+/play
+/vendor
+
+# Files
+.DS_Store
+composer.lock
+*.bat

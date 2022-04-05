@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Email Subscribers & Newsletters plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Email Subscribers & Newsletters 5.3.2\n"
+"Project-Id-Version: Email Subscribers & Newsletters 5.3.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/email-subscribers\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-02-08T12:28:49+01:00\n"
+"POT-Creation-Date: 2022-03-16T08:16:56+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: email-subscribers\n"
@@ -29,7 +29,7 @@ msgstr ""
 
 #. Author of the plugin
 #: lite/admin/partials/help.php:28
-#: lite/includes/class-email-subscribers.php:1593
+#: lite/includes/class-email-subscribers.php:1598
 msgid "Icegram"
 msgstr ""
 
@@ -80,7 +80,7 @@ msgid "Please add a campaign subject before saving."
 msgstr ""
 
 #: lite/admin/class-email-subscribers-admin.php:176
-#: pro/pro-class-email-subscribers.php:570
+#: pro/pro-class-email-subscribers.php:594
 msgid "Please add email body."
 msgstr ""
 
@@ -113,114 +113,122 @@ msgid "Copied!"
 msgstr ""
 
 #: lite/admin/class-email-subscribers-admin.php:186
+msgid "{{field_name}} field is required!"
+msgstr ""
+
+#: lite/admin/class-email-subscribers-admin.php:187
+msgid "Required field is empty!"
+msgstr ""
+
+#: lite/admin/class-email-subscribers-admin.php:188
 msgid "Are you sure?"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:189
+#: lite/admin/class-email-subscribers-admin.php:191
 msgid "Please select the status for the importing contacts!"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:190
+#: lite/admin/class-email-subscribers-admin.php:192
 msgid "Please select a list for importing contacts!"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:191
+#: lite/admin/class-email-subscribers-admin.php:193
 msgid "Please select the email address column!"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:192
+#: lite/admin/class-email-subscribers-admin.php:194
 msgid "Preparing Data"
 msgstr ""
 
 #. translators: %s: Upload progress
-#: lite/admin/class-email-subscribers-admin.php:194
+#: lite/admin/class-email-subscribers-admin.php:196
 msgid "Uploading...%s"
 msgstr ""
 
 #. translators: %s: Import progress
-#: lite/admin/class-email-subscribers-admin.php:196
+#: lite/admin/class-email-subscribers-admin.php:198
 msgid "Importing contacts...%s"
 msgstr ""
 
 #. translators: %s: Import failed svg icon
-#: lite/admin/class-email-subscribers-admin.php:198
+#: lite/admin/class-email-subscribers-admin.php:200
 msgid "Import failed! %s"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:199
+#: lite/admin/class-email-subscribers-admin.php:201
 msgid "Please do not close this window until it completes..."
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:200
+#: lite/admin/class-email-subscribers-admin.php:202
 msgid "Preparing Import..."
 msgstr ""
 
 #. translators: 1. Imported contacts count 2. Total contacts count 3. Failed to import count 4. Memory usage
-#: lite/admin/class-email-subscribers-admin.php:202
+#: lite/admin/class-email-subscribers-admin.php:204
 msgid "Currently %1$s of %2$s imported with %3$s errors. %4$s %5$s memory usage"
 msgstr ""
 
 #. translators: 1 Duplicate found email message
-#: lite/admin/class-email-subscribers-admin.php:204
+#: lite/admin/class-email-subscribers-admin.php:206
 msgid "%1$s duplicate emails found."
 msgstr ""
 
 #. translators: %s: Time left in minutes
-#: lite/admin/class-email-subscribers-admin.php:206
+#: lite/admin/class-email-subscribers-admin.php:208
 msgid "Estimate time left: %s minutes"
 msgstr ""
 
 #. translators: %s: Next attempt delaly time
-#: lite/admin/class-email-subscribers-admin.php:208
+#: lite/admin/class-email-subscribers-admin.php:210
 msgid "Continues in %s seconds"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:209
+#: lite/admin/class-email-subscribers-admin.php:211
 msgid "There was a problem during importing contacts. Please check the error logs for more information!"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:210
+#: lite/admin/class-email-subscribers-admin.php:212
 msgid "Do you really like to import these contacts?"
 msgstr ""
 
 #. translators: %s: Process complete svg icon
-#: lite/admin/class-email-subscribers-admin.php:212
+#: lite/admin/class-email-subscribers-admin.php:214
 msgid "Import complete! %s"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:213
+#: lite/admin/class-email-subscribers-admin.php:215
 msgid "You are currently importing subscribers! If you leave the page all pending subscribers don't get imported!"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:214
+#: lite/admin/class-email-subscribers-admin.php:216
 msgid "API is valid. Fetching lists..."
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:215
+#: lite/admin/class-email-subscribers-admin.php:217
 msgid "Fetching contacts from MailChimp...Please do not close this window"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:293
-#: lite/admin/partials/dashboard.php:109
+#: lite/admin/class-email-subscribers-admin.php:295
+#: lite/admin/partials/dashboard.php:101
 msgid "Dashboard"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:298
-#: lite/admin/partials/dashboard.php:116
+#: lite/admin/class-email-subscribers-admin.php:300
+#: lite/admin/partials/dashboard.php:108
 #: lite/includes/classes/class-es-contacts-table.php:214
 #: lite/includes/pro-features.php:186
 #: starter/starter-class-email-subscribers.php:648
 msgid "Audience"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:302
+#: lite/admin/class-email-subscribers-admin.php:304
 #: lite/includes/classes/class-es-forms-table.php:466
 #: lite/includes/classes/class-es-lists-table.php:34
 #: lite/includes/classes/class-es-lists-table.php:88
 msgid "Lists"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:308
+#: lite/admin/class-email-subscribers-admin.php:310
 #: lite/includes/classes/class-es-form-widget.php:76
 #: lite/includes/classes/class-es-forms-table.php:39
 #: lite/includes/classes/class-es-forms-table.php:40
@@ -230,9 +238,10 @@ msgstr ""
 msgid "Forms"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:314
-#: lite/includes/classes/class-es-campaign-admin.php:285
-#: lite/includes/classes/class-es-campaigns-table.php:128
+#: lite/admin/class-email-subscribers-admin.php:316
+#: lite/admin/class-es-campaign-admin.php:276
+#: lite/admin/partials/gallery.php:10
+#: lite/includes/classes/class-es-campaigns-table.php:124
 #: lite/includes/classes/class-es-newsletters.php:234
 #: lite/includes/classes/class-es-newsletters.php:240
 #: lite/includes/pro-features.php:188
@@ -241,45 +250,47 @@ msgstr ""
 msgid "Campaigns"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:318
+#: lite/admin/class-email-subscribers-admin.php:320
 msgid "Post Notifications"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:320
-#: lite/includes/classes/class-es-campaign-admin.php:256
-#: lite/includes/classes/class-es-campaigns-table.php:362
+#: lite/admin/class-email-subscribers-admin.php:322
+#: lite/admin/class-es-campaign-admin.php:249
+#: lite/includes/classes/class-es-campaigns-table.php:357
 #: lite/includes/classes/class-es-newsletters.php:249
 #: lite/includes/classes/class-es-reports-data.php:360
 #: lite/includes/classes/class-es-reports-table.php:161
-#: lite/includes/classes/class-es-templates-table.php:185
+#: lite/includes/classes/class-es-templates-table.php:187
 #: lite/includes/pro-features.php:1224
-#: lite/public/class-email-subscribers-public.php:476
+#: lite/public/class-email-subscribers-public.php:487
 #: pro/classes/class-es-pro-reports-data.php:77
 msgid "Broadcast"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:321
+#: lite/admin/class-email-subscribers-admin.php:323
 #: lite/includes/classes/class-es-newsletters.php:426
 #: lite/includes/classes/class-es-reports-table.php:551
-#: lite/includes/classes/class-es-templates-table.php:147
+#: lite/includes/classes/class-es-templates-table.php:149
+#: lite/admin/dist/main.js:1
+#: lite/admin/js/src/views/GalleryItemPreview.js:16
 msgid "Template Preview"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:326
-msgid "Drag and Drop Editor"
+#: lite/admin/class-email-subscribers-admin.php:328
+msgid "Gallery"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:332
+#: lite/admin/class-email-subscribers-admin.php:334
 #: lite/includes/pro-features.php:191
-#: lite/includes/workflows/admin/class-es-workflow-admin-edit.php:261
+#: lite/includes/workflows/admin/class-es-workflow-admin-edit.php:325
 #: lite/includes/workflows/class-es-workflows-table.php:53
 #: lite/includes/workflows/class-es-workflows-table.php:169
 #: starter/starter-class-email-subscribers.php:653
 msgid "Workflows"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:341
-#: lite/admin/partials/dashboard.php:247
+#: lite/admin/class-email-subscribers-admin.php:343
+#: lite/admin/partials/dashboard.php:239
 #: lite/includes/classes/class-es-campaign-report.php:17
 #: lite/includes/classes/class-es-reports-table.php:17
 #: lite/includes/classes/class-es-reports-table.php:55
@@ -292,28 +303,28 @@ msgstr ""
 msgid "Reports"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:345
-#: lite/admin/partials/dashboard.php:255
-#: lite/includes/classes/class-es-admin-settings.php:131
+#: lite/admin/class-email-subscribers-admin.php:347
+#: lite/admin/partials/dashboard.php:247
+#: lite/includes/classes/class-es-admin-settings.php:133
 msgid "Settings"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:350
+#: lite/admin/class-email-subscribers-admin.php:352
 msgid "Go To Icegram"
 msgstr ""
 
 #. translators: 1. WordPress URL 2. Email Subscribers version 3. Icegram site URL
-#: lite/admin/class-email-subscribers-admin.php:911
+#: lite/admin/class-email-subscribers-admin.php:918
 msgid "<span id=\"footer-thankyou\">Thank you for creating with <a href=\"%1$s\" target=\"_blank\">WordPress</a> | Email Subscribers <b>%2$s</b>. Developed by team <a href=\"%3$s\" target=\"_blank\">Icegram</a></span>"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:939
+#: lite/admin/class-email-subscribers-admin.php:946
 msgid "Something went wrong"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:1320
+#: lite/admin/class-email-subscribers-admin.php:1327
 #: lite/includes/class-email-subscribers-activator.php:61
-#: lite/includes/class-email-subscribers.php:1590
+#: lite/includes/class-email-subscribers.php:1595
 #: lite/includes/classes/class-es-form-widget.php:11
 #: lite/includes/classes/class-es-old-widget.php:13
 #: lite/includes/classes/class-es-old-widget.php:15
@@ -322,49 +333,49 @@ msgstr ""
 msgid "Email Subscribers"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:1362
+#: lite/admin/class-email-subscribers-admin.php:1369
 msgid "Last 30 days"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:1371
-#: lite/includes/class-es-common.php:210
+#: lite/admin/class-email-subscribers-admin.php:1378
+#: lite/includes/class-es-common.php:319
 #: lite/includes/classes/class-es-contacts-table.php:327
-#: lite/includes/classes/class-es-import-subscribers.php:839
-#: lite/includes/classes/class-es-import-subscribers.php:1188
+#: lite/includes/classes/class-es-import-subscribers.php:865
+#: lite/includes/classes/class-es-import-subscribers.php:1350
 #: lite/includes/classes/class-es-lists-table.php:639
 msgid "Subscribed"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:1379
-#: lite/includes/class-es-common.php:212
+#: lite/admin/class-email-subscribers-admin.php:1386
+#: lite/includes/class-es-common.php:321
 #: lite/includes/classes/class-es-contacts-table.php:335
-#: lite/includes/classes/class-es-import-subscribers.php:840
-#: lite/includes/classes/class-es-import-subscribers.php:1189
+#: lite/includes/classes/class-es-import-subscribers.php:866
+#: lite/includes/classes/class-es-import-subscribers.php:1351
 #: lite/includes/classes/class-es-lists-table.php:640
 #: pro/classes/class-es-pro-reports-data.php:283
 msgid "Unsubscribed"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:1387
+#: lite/admin/class-email-subscribers-admin.php:1394
 #: lite/includes/pro-features.php:1256
 msgid "Avg Open Rate"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:1395
-#: lite/admin/partials/dashboard.php:202
+#: lite/admin/class-email-subscribers-admin.php:1402
+#: lite/admin/partials/dashboard.php:194
 msgid "Messages Sent"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:1406
+#: lite/admin/class-email-subscribers-admin.php:1413
 msgid "Last Campaign"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:1442
+#: lite/admin/class-email-subscribers-admin.php:1449
 msgid "Sent to"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:1454
-#: lite/admin/partials/dashboard.php:186
+#: lite/admin/class-email-subscribers-admin.php:1461
+#: lite/admin/partials/dashboard.php:178
 #: lite/includes/pro-features.php:1336
 #: lite/includes/pro-features.php:1374
 #: pro/classes/class-es-pro-reports-data.php:321
@@ -375,16 +386,178 @@ msgstr ""
 msgid "Opens"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:1468
+#: lite/admin/class-email-subscribers-admin.php:1475
 msgid "No campaigns sent yet"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:1476
+#: lite/admin/class-email-subscribers-admin.php:1483
 msgid "Latest Blog Posts from Icegram"
 msgstr ""
 
-#: lite/admin/class-email-subscribers-admin.php:1578
+#: lite/admin/class-email-subscribers-admin.php:1587
 msgid "Please publish it or save it as a draft."
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:189
+msgid "Sorry, you are not allowed to add/edit campaign."
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:209
+msgid "Please add a campaign subject."
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:245
+#: lite/admin/class-es-campaign-admin.php:287
+msgid "Post notification"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:247
+#: lite/admin/class-es-campaign-admin.php:287
+msgid "Post digest"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:294
+#: lite/includes/classes/class-es-newsletters.php:255
+#: pro/pro-class-sequences.php:408
+msgid "Content"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:297
+#: lite/includes/classes/class-es-newsletters.php:258
+msgid "Summary"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:309
+#: lite/includes/classes/class-es-newsletters.php:413
+#: lite/includes/classes/class-es-newsletters.php:441
+#: lite/includes/classes/class-es-reports-table.php:263
+#: lite/includes/workflows/admin/views/action.php:28
+#: pro/classes/class-es-pro-sequence-report.php:273
+msgid "Preview"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:325
+#: lite/includes/classes/class-es-import-subscribers.php:185
+#: lite/includes/classes/class-es-import-subscribers.php:283
+#: lite/includes/classes/class-es-newsletters.php:269
+msgid "Next"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:336
+#: lite/includes/classes/class-es-newsletters.php:283
+msgid "Previous"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:343
+#: lite/includes/classes/class-es-newsletters.php:296
+#: lite/includes/classes/class-es-post-notifications.php:546
+#: lite/includes/workflows/admin/class-es-workflow-admin-edit.php:385
+#: lite/includes/workflows/admin/views/meta-box-save.php:68
+msgid "Save"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:363
+#: lite/includes/classes/class-es-newsletters.php:350
+#: lite/includes/classes/class-es-reports-table.php:279
+#: pro/classes/class-es-pro-sequence-report.php:299
+msgid "Subject"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:369
+#: lite/includes/classes/class-es-newsletters.php:367
+msgid "Message"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:427
+msgid "Campaign Preview"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:432
+#: lite/includes/workflows/admin/views/meta-box-actions.php:92
+msgid "Preview in browser"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:450
+#: lite/includes/classes/class-es-newsletters.php:427
+#: lite/includes/classes/class-es-reports-table.php:552
+#: lite/includes/classes/class-es-templates-table.php:150
+#: lite/includes/workflows/admin/views/meta-box-actions.php:111
+#: lite/admin/dist/main.js:1
+#: lite/admin/js/src/views/GalleryItemPreview.js:29
+msgid "There could be a slight variation on how your customer will view the email content."
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:499
+#: lite/includes/classes/class-es-newsletters.php:462
+msgid "Email Content Preview"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:522
+msgid "Sender details"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:531
+#: lite/includes/classes/class-es-newsletters.php:354
+msgid "From Name"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:540
+#: lite/includes/classes/class-es-newsletters.php:358
+msgid "From Email"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:548
+#: lite/includes/classes/class-es-newsletters.php:362
+msgid "Reply To"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:560
+#: lite/includes/classes/class-es-newsletters.php:403
+msgid "Total recipients:"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:574
+#: lite/includes/classes/class-es-newsletters.php:490
+msgid "Open tracking"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:642
+msgid "Save as template"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:645
+msgid "Template saved succesfully."
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:646
+#: lite/includes/classes/class-es-newsletters.php:445
+#: pro/classes/class-es-campaign-admin-pro.php:103
+msgid "Something went wrong. Please try again later"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:1145
+#: lite/admin/class-es-campaign-admin.php:1165
+#: lite/admin/class-es-campaign-admin.php:1174
+#: lite/includes/classes/class-es-templates-table.php:56
+#: lite/includes/classes/class-es-templates-table.php:67
+#: lite/includes/classes/class-es-templates-table.php:73
+#: lite/includes/classes/class-es-templates-table.php:78
+msgid "Available Keywords"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:1165
+#: lite/includes/classes/class-es-templates-table.php:73
+msgid "for Broadcast:"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:1174
+#: lite/includes/classes/class-es-templates-table.php:78
+msgid "for Post Digest:"
+msgstr ""
+
+#: lite/admin/class-es-campaign-admin.php:1178
+#: lite/includes/classes/class-es-templates-table.php:79
+msgid "Any keywords related Post Notification"
 msgstr ""
 
 #: lite/admin/class-ig-es-campaign-rules.php:185
@@ -415,7 +588,8 @@ msgid "Campaign Rules"
 msgstr ""
 
 #: lite/admin/class-ig-es-campaign-rules.php:224
-#: lite/includes/classes/class-es-post-notifications.php:535
+#: lite/includes/classes/class-es-post-notifications.php:545
+#: lite/includes/workflows/admin/views/meta-box-actions.php:122
 msgid "Loading..."
 msgstr ""
 
@@ -424,7 +598,7 @@ msgid "Save Rules"
 msgstr ""
 
 #: lite/admin/class-ig-es-campaign-rules.php:227
-#: lite/includes/classes/class-es-post-notifications.php:538
+#: lite/includes/classes/class-es-post-notifications.php:548
 msgid "Close panel"
 msgstr ""
 
@@ -489,22 +663,22 @@ msgid "is in List"
 msgstr ""
 
 #: lite/admin/class-ig-es-campaign-rules.php:630
-#: lite/includes/classes/class-es-admin-settings.php:211
+#: lite/includes/classes/class-es-admin-settings.php:213
 #: lite/includes/classes/class-es-campaign-report.php:189
-#: lite/includes/classes/class-es-contacts-table.php:789
+#: lite/includes/classes/class-es-contacts-table.php:785
 #: lite/includes/classes/class-es-export-subscribers.php:339
 #: lite/includes/classes/class-es-forms-table.php:399
-#: lite/includes/classes/class-es-import-subscribers.php:563
-#: lite/includes/classes/class-es-import-subscribers.php:657
-#: lite/includes/classes/class-es-import-subscribers.php:1057
-#: lite/includes/classes/class-es-import-subscribers.php:1180
+#: lite/includes/classes/class-es-import-subscribers.php:587
+#: lite/includes/classes/class-es-import-subscribers.php:681
+#: lite/includes/classes/class-es-import-subscribers.php:1096
+#: lite/includes/classes/class-es-import-subscribers.php:1342
 #: lite/includes/compatibilities/elementor/actions/class-es-ig-form-action.php:143
 #: lite/includes/pro-features.php:1583
 #: lite/includes/workflows/actions/abstracts/class-ig-es-action-send-email-abstract.php:29
 #: lite/includes/workflows/actions/class-es-action-send-email.php:31
 #: lite/public/partials/class-es-shortcode.php:177
 #: pro/classes/class-es-pro-campaign-rules.php:35
-#: pro/pro-class-email-subscribers.php:2229
+#: pro/pro-class-email-subscribers.php:2259
 msgid "Email"
 msgstr ""
 
@@ -636,13 +810,13 @@ msgstr ""
 
 #: lite/admin/class-ig-es-campaign-rules.php:797
 #: pro/classes/class-es-pro-bounce-handler.php:84
-#: pro/classes/class-es-pro-bounce-handler.php:241
+#: pro/classes/class-es-pro-bounce-handler.php:242
 msgid "Hard bounced"
 msgstr ""
 
 #: lite/admin/class-ig-es-campaign-rules.php:799
 #: pro/classes/class-es-pro-bounce-handler.php:83
-#: pro/classes/class-es-pro-bounce-handler.php:239
+#: pro/classes/class-es-pro-bounce-handler.php:240
 msgid "Soft bounced"
 msgstr ""
 
@@ -698,146 +872,139 @@ msgid "Seems like your server is not setup correctly to send emails. Please conf
 msgstr ""
 
 #: lite/admin/class-ig-es-onboarding.php:1163
+#: lite/includes/classes/class-es-post-notifications.php:627
 msgid "New Post Published - {{POSTTITLE}}"
 msgstr ""
 
 #: lite/admin/partials/dashboard.php:50
-msgid "Try the new editor"
-msgstr ""
-
-#: lite/admin/partials/dashboard.php:51
-msgid "Checkout and playaround the new drag and drop editor."
-msgstr ""
-
-#: lite/admin/partials/dashboard.php:52
-msgid "Try it"
-msgstr ""
-
-#: lite/admin/partials/dashboard.php:58
 msgid "Add a Subscription Form"
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:59
+#: lite/admin/partials/dashboard.php:51
 msgid "Grow subscribers. Add a newsletter signup form to your site."
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:60
-#: lite/admin/partials/dashboard.php:125
+#: lite/admin/partials/dashboard.php:52
+#: lite/admin/partials/dashboard.php:117
 msgid "Create"
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:66
+#: lite/admin/partials/dashboard.php:58
 #: lite/includes/classes/class-es-contacts-table.php:133
-#: lite/includes/classes/class-es-import-subscribers.php:391
+#: lite/includes/classes/class-es-import-subscribers.php:415
 msgid "Import Contacts"
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:67
+#: lite/admin/partials/dashboard.php:59
 msgid "Coming from another email marketing system? Upload a CSV file to import subscribers."
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:68
-#: lite/includes/classes/class-es-import-subscribers.php:354
+#: lite/admin/partials/dashboard.php:60
+#: lite/includes/classes/class-es-import-subscribers.php:378
 msgid "Import"
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:74
+#: lite/admin/partials/dashboard.php:66
 msgid "Configure Email Sending"
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:75
+#: lite/admin/partials/dashboard.php:67
 msgid " Essential for high email delivery and reaching the inbox. SMTP, email service providers... set it all up."
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:76
+#: lite/admin/partials/dashboard.php:68
 msgid "Setup"
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:82
+#: lite/admin/partials/dashboard.php:74
 msgid "Send a Newsletter"
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:83
+#: lite/admin/partials/dashboard.php:75
 msgid "Broadcast a newsletter campaign to all or selected subscribers."
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:84
+#: lite/admin/partials/dashboard.php:76
 msgid "Begin"
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:90
+#: lite/admin/partials/dashboard.php:82
 msgid "Create an Auto-responder Sequence"
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:91
+#: lite/admin/partials/dashboard.php:83
 msgid "Welcome emails, drip campaigns... Send automatic emails at regular intervals to engage readers."
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:92
+#: lite/admin/partials/dashboard.php:84
 msgid "Start"
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:136
+#: lite/admin/partials/dashboard.php:128
 msgid "New Broadcast"
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:138
+#: lite/admin/partials/dashboard.php:130
 msgid "New Post Notification"
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:141
-#: lite/admin/partials/dashboard.php:143
+#: lite/admin/partials/dashboard.php:133
+#: lite/admin/partials/dashboard.php:135
 #: pro/pro-class-sequences.php:48
 msgid "New Sequence"
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:144
+#: lite/admin/partials/dashboard.php:136
 msgid "Premium"
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:149
+#: lite/admin/partials/dashboard.php:141
 msgid "New Template"
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:153
+#: lite/admin/partials/dashboard.php:145
 msgid "New Form"
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:154
+#: lite/admin/partials/dashboard.php:146
 msgid "New List"
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:155
+#: lite/admin/partials/dashboard.php:147
 msgid "New Contact"
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:170
+#: lite/admin/partials/dashboard.php:162
 msgid " active contacts"
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:178
+#: lite/admin/partials/dashboard.php:170
 #: lite/includes/classes/class-es-contacts-table.php:320
 msgid "Last 60 days"
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:194
+#: lite/admin/partials/dashboard.php:186
 msgid " Avg Open Rate"
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:210
+#: lite/admin/partials/dashboard.php:202
 #: lite/includes/pro-features.php:1272
 msgid "Avg Click Rate"
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:245
+#: lite/admin/partials/dashboard.php:237
 msgid "Jump to: "
 msgstr ""
 
-#: lite/admin/partials/dashboard.php:251
+#: lite/admin/partials/dashboard.php:243
 #: lite/includes/class-email-subscribers-activator.php:49
 #: lite/includes/class-email-subscribers-activator.php:50
 #: lite/includes/class-email-subscribers-activator.php:55
 msgid "Templates"
+msgstr ""
+
+#: lite/admin/partials/gallery.php:16
+msgid "Gallery items"
 msgstr ""
 
 #: lite/admin/partials/help.php:30
@@ -906,10 +1073,10 @@ msgstr ""
 
 #: lite/admin/partials/help.php:237
 #: lite/includes/classes/class-es-campaign-report.php:190
-#: lite/includes/classes/class-es-campaigns-table.php:636
+#: lite/includes/classes/class-es-campaigns-table.php:631
 #: lite/includes/classes/class-es-export-subscribers.php:341
-#: lite/includes/classes/class-es-import-subscribers.php:666
-#: lite/includes/classes/class-es-import-subscribers.php:1183
+#: lite/includes/classes/class-es-import-subscribers.php:690
+#: lite/includes/classes/class-es-import-subscribers.php:1345
 #: lite/includes/classes/class-es-reports-table.php:281
 #: lite/includes/workflows/class-es-workflows-table.php:338
 #: pro/classes/class-es-pro-sequence-report.php:301
@@ -917,10 +1084,10 @@ msgid "Status"
 msgstr ""
 
 #: lite/admin/partials/help.php:239
-#: lite/includes/class-es-common.php:429
-#: lite/includes/class-es-common.php:1806
-#: lite/includes/class-es-common.php:2257
-#: lite/includes/classes/class-es-campaigns-table.php:314
+#: lite/includes/class-es-common.php:538
+#: lite/includes/class-es-common.php:1917
+#: lite/includes/class-es-common.php:2368
+#: lite/includes/classes/class-es-campaigns-table.php:309
 #: lite/includes/workflows/admin/views/meta-box-save.php:28
 #: pro/classes/class-es-pro-reports-data.php:193
 #: pro/classes/class-es-pro-sequence-report.php:239
@@ -928,8 +1095,8 @@ msgid "Active"
 msgstr ""
 
 #: lite/admin/partials/help.php:241
-#: lite/includes/class-es-common.php:430
-#: lite/includes/class-es-common.php:2262
+#: lite/includes/class-es-common.php:539
+#: lite/includes/class-es-common.php:2373
 #: lite/includes/workflows/admin/views/meta-box-save.php:27
 #: pro/classes/class-es-pro-reports-data.php:198
 #: pro/classes/class-es-pro-sequence-report.php:239
@@ -945,7 +1112,7 @@ msgid "Install"
 msgstr ""
 
 #: lite/admin/partials/help.php:259
-#: lite/includes/classes/class-es-post-notifications.php:491
+#: lite/includes/classes/class-es-post-notifications.php:501
 #: lite/includes/workflows/class-es-workflows-table.php:365
 msgid "Activate"
 msgstr ""
@@ -1223,181 +1390,181 @@ msgid "OK, I Got it!"
 msgstr ""
 
 #. translators: 1: Error message 2: File name  3: Line number
-#: lite/includes/class-email-subscribers.php:1340
+#: lite/includes/class-email-subscribers.php:1345
 msgid "%1$s in %2$s on line %3$s"
 msgstr ""
 
-#: lite/includes/class-email-subscribers.php:1603
+#: lite/includes/class-email-subscribers.php:1608
 msgid "Icegram WC"
 msgstr ""
 
 #. translators: %1$s - constant that was used
-#: lite/includes/class-email-subscribers.php:2054
+#: lite/includes/class-email-subscribers.php:2059
 msgid "Value was set using constant %1$s"
 msgstr ""
 
-#: lite/includes/class-es-common.php:211
+#: lite/includes/class-es-common.php:320
 #: lite/includes/classes/class-es-contacts-table.php:343
-#: lite/includes/classes/class-es-import-subscribers.php:841
-#: lite/includes/classes/class-es-import-subscribers.php:1190
+#: lite/includes/classes/class-es-import-subscribers.php:867
+#: lite/includes/classes/class-es-import-subscribers.php:1352
 #: lite/includes/classes/class-es-lists-table.php:641
 msgid "Unconfirmed"
 msgstr ""
 
-#: lite/includes/class-es-common.php:236
-#: lite/includes/classes/class-es-import-subscribers.php:236
+#: lite/includes/class-es-common.php:345
+#: lite/includes/classes/class-es-import-subscribers.php:238
 msgid "Select Status"
 msgstr ""
 
-#: lite/includes/class-es-common.php:386
+#: lite/includes/class-es-common.php:495
 msgid "Select Template"
 msgstr ""
 
-#: lite/includes/class-es-common.php:510
+#: lite/includes/class-es-common.php:620
 msgid "Select Categories"
 msgstr ""
 
-#: lite/includes/class-es-common.php:525
+#: lite/includes/class-es-common.php:635
 msgid "All Categories (Also include all categories which will create later)"
 msgstr ""
 
-#: lite/includes/class-es-common.php:531
+#: lite/includes/class-es-common.php:641
 msgid "None (Don't include post from any category)"
 msgstr ""
 
-#: lite/includes/class-es-common.php:569
+#: lite/includes/class-es-common.php:679
 msgid "No Custom Post Types Available"
 msgstr ""
 
-#: lite/includes/class-es-common.php:585
+#: lite/includes/class-es-common.php:695
 msgid "Single Opt-In"
 msgstr ""
 
-#: lite/includes/class-es-common.php:586
+#: lite/includes/class-es-common.php:696
 msgid "Double Opt-In"
 msgstr ""
 
-#: lite/includes/class-es-common.php:600
-#: pro/pro-class-post-digest.php:158
+#: lite/includes/class-es-common.php:710
+#: pro/pro-class-post-digest.php:139
 msgid "Monday"
 msgstr ""
 
-#: lite/includes/class-es-common.php:601
-#: pro/pro-class-post-digest.php:159
+#: lite/includes/class-es-common.php:711
+#: pro/pro-class-post-digest.php:140
 msgid "Tuesday"
 msgstr ""
 
-#: lite/includes/class-es-common.php:602
-#: pro/pro-class-post-digest.php:160
+#: lite/includes/class-es-common.php:712
+#: pro/pro-class-post-digest.php:141
 msgid "Wednesday"
 msgstr ""
 
-#: lite/includes/class-es-common.php:603
-#: pro/pro-class-post-digest.php:161
+#: lite/includes/class-es-common.php:713
+#: pro/pro-class-post-digest.php:142
 msgid "Thursday"
 msgstr ""
 
-#: lite/includes/class-es-common.php:604
-#: pro/pro-class-post-digest.php:162
+#: lite/includes/class-es-common.php:714
+#: pro/pro-class-post-digest.php:143
 msgid "Friday"
 msgstr ""
 
-#: lite/includes/class-es-common.php:605
-#: pro/pro-class-post-digest.php:163
+#: lite/includes/class-es-common.php:715
+#: pro/pro-class-post-digest.php:144
 msgid "Saturday"
 msgstr ""
 
-#: lite/includes/class-es-common.php:606
-#: pro/pro-class-post-digest.php:157
+#: lite/includes/class-es-common.php:716
+#: pro/pro-class-post-digest.php:138
 msgid "Sunday"
 msgstr ""
 
-#: lite/includes/class-es-common.php:642
+#: lite/includes/class-es-common.php:752
 msgid "Full Size"
 msgstr ""
 
-#: lite/includes/class-es-common.php:643
+#: lite/includes/class-es-common.php:753
 msgid "Medium Size"
 msgstr ""
 
-#: lite/includes/class-es-common.php:644
-#: lite/includes/classes/class-es-templates-table.php:166
+#: lite/includes/class-es-common.php:754
+#: lite/includes/classes/class-es-templates-table.php:168
 msgid "Thumbnail"
 msgstr ""
 
-#: lite/includes/class-es-common.php:1563
+#: lite/includes/class-es-common.php:1674
 msgid "Top 10 Tips on How to Build an Email List"
 msgstr ""
 
-#: lite/includes/class-es-common.php:1567
+#: lite/includes/class-es-common.php:1678
 #: pro/templates/email/es-admin-subscription-summary.php:174
 msgid "Why are Your Email Unsubscribes Increasing and How to Fix Them?"
 msgstr ""
 
-#: lite/includes/class-es-common.php:1571
+#: lite/includes/class-es-common.php:1682
 msgid "Balance Email Marketing and Social Media Marketing"
 msgstr ""
 
-#: lite/includes/class-es-common.php:1575
+#: lite/includes/class-es-common.php:1686
 msgid "Use social proof to grow blog traffic through email"
 msgstr ""
 
-#: lite/includes/class-es-common.php:1579
+#: lite/includes/class-es-common.php:1690
 msgid "5 Simple Tricks to Improve Email Marketing Campaign Results"
 msgstr ""
 
-#: lite/includes/class-es-common.php:1588
+#: lite/includes/class-es-common.php:1699
 #: lite/includes/pro-features.php:176
 msgid "Email Subscribers PRO"
 msgstr ""
 
-#: lite/includes/class-es-common.php:1590
+#: lite/includes/class-es-common.php:1701
 msgid "Lifetime"
 msgstr ""
 
-#: lite/includes/class-es-common.php:1594
+#: lite/includes/class-es-common.php:1705
 msgid "<b>Email Subscribers Secret Club</b>"
 msgstr ""
 
-#: lite/includes/class-es-common.php:1596
+#: lite/includes/class-es-common.php:1707
 #: lite/includes/feedback.php:123
 msgid "Join Now"
 msgstr ""
 
-#: lite/includes/class-es-common.php:1774
+#: lite/includes/class-es-common.php:1885
 msgid "All Types"
 msgstr ""
 
-#: lite/includes/class-es-common.php:1802
-#: lite/includes/classes/class-es-campaigns-table.php:574
+#: lite/includes/class-es-common.php:1913
+#: lite/includes/classes/class-es-campaigns-table.php:569
 msgid "Draft"
 msgstr ""
 
-#: lite/includes/class-es-common.php:1803
-#: lite/includes/class-es-common.php:2248
+#: lite/includes/class-es-common.php:1914
+#: lite/includes/class-es-common.php:2359
 #: lite/includes/classes/class-es-campaign-report.php:237
-#: lite/includes/classes/class-es-campaigns-table.php:555
-#: lite/includes/classes/class-es-campaigns-table.php:593
+#: lite/includes/classes/class-es-campaigns-table.php:550
+#: lite/includes/classes/class-es-campaigns-table.php:588
 #: lite/includes/classes/class-es-reports-table.php:200
 #: lite/includes/classes/class-es-reports-table.php:590
 #: pro/classes/class-es-pro-reports-data.php:186
 msgid "Sending"
 msgstr ""
 
-#: lite/includes/class-es-common.php:1804
-#: lite/includes/classes/class-es-campaigns-table.php:315
-#: lite/includes/classes/class-es-campaigns-table.php:548
-#: lite/includes/classes/class-es-campaigns-table.php:584
+#: lite/includes/class-es-common.php:1915
+#: lite/includes/classes/class-es-campaigns-table.php:310
+#: lite/includes/classes/class-es-campaigns-table.php:543
+#: lite/includes/classes/class-es-campaigns-table.php:579
 #: lite/includes/classes/class-es-reports-table.php:216
 #: lite/includes/workflows/admin/views/meta-box-timing.php:36
 msgid "Scheduled"
 msgstr ""
 
-#: lite/includes/class-es-common.php:1805
-#: lite/includes/class-es-common.php:2228
+#: lite/includes/class-es-common.php:1916
+#: lite/includes/class-es-common.php:2339
 #: lite/includes/classes/class-es-campaign-report.php:221
-#: lite/includes/classes/class-es-campaigns-table.php:562
-#: lite/includes/classes/class-es-campaigns-table.php:611
+#: lite/includes/classes/class-es-campaigns-table.php:557
+#: lite/includes/classes/class-es-campaigns-table.php:606
 #: lite/includes/classes/class-es-reports-table.php:191
 #: lite/includes/pro-features.php:1217
 #: lite/includes/pro-features.php:1264
@@ -1406,23 +1573,23 @@ msgstr ""
 msgid "Sent"
 msgstr ""
 
-#: lite/includes/class-es-common.php:1830
-#: lite/includes/classes/class-es-campaigns-table.php:696
-#: lite/includes/classes/class-es-contacts-table.php:1145
+#: lite/includes/class-es-common.php:1941
+#: lite/includes/classes/class-es-campaigns-table.php:691
+#: lite/includes/classes/class-es-contacts-table.php:1141
 msgid "All Statuses"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2042
+#: lite/includes/class-es-common.php:2153
 msgid "Upgrade"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2078
+#: lite/includes/class-es-common.php:2189
 #: lite/includes/classes/class-es-reports-table.php:592
 #: pro/classes/class-es-pro-reports-data.php:878
 msgid "All Status"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2238
+#: lite/includes/class-es-common.php:2349
 #: lite/includes/classes/class-es-campaign-report.php:229
 #: lite/includes/classes/class-es-reports-table.php:589
 #: pro/classes/class-es-pro-reports-data.php:178
@@ -1430,41 +1597,41 @@ msgstr ""
 msgid "In Queue"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2283
+#: lite/includes/class-es-common.php:2394
 msgid "Select field type"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2286
+#: lite/includes/class-es-common.php:2397
 msgid "Text"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2287
+#: lite/includes/class-es-common.php:2398
 msgid "TextArea"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2288
+#: lite/includes/class-es-common.php:2399
 msgid "Dropdown"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2289
+#: lite/includes/class-es-common.php:2400
 msgid "Radio"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2290
+#: lite/includes/class-es-common.php:2401
 #: lite/includes/workflows/fields/class-es-number.php:48
 msgid "Number"
 msgstr ""
 
-#: lite/includes/class-es-common.php:2291
+#: lite/includes/class-es-common.php:2402
 #: lite/includes/pro-features.php:1132
 #: lite/includes/workflows/admin/views/meta-box-timing.php:82
 #: lite/includes/workflows/fields/class-es-date.php:31
-#: pro/classes/class-es-campaign-admin-pro.php:195
-#: pro/pro-class-email-subscribers.php:830
+#: pro/classes/class-es-campaign-admin-pro.php:196
+#: pro/pro-class-email-subscribers.php:858
 msgid "Date"
 msgstr ""
 
-#: lite/includes/class-es-install.php:980
+#: lite/includes/class-es-install.php:981
 #: lite/includes/upgrade/es-update-functions.php:752
 msgid "Your subscription was successful! Kindly check your mailbox and confirm your subscription. If you don't see the email within a few minutes, check the spam/junk folder."
 msgstr ""
@@ -1473,29 +1640,29 @@ msgstr ""
 msgid "You do not have permission to update settings"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:143
+#: lite/includes/classes/class-es-admin-settings.php:145
 msgid "General"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:147
+#: lite/includes/classes/class-es-admin-settings.php:149
 msgid "Notifications"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:151
+#: lite/includes/classes/class-es-admin-settings.php:153
 msgid "Email Sending"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:155
+#: lite/includes/classes/class-es-admin-settings.php:157
 msgid "Security"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:198
+#: lite/includes/classes/class-es-admin-settings.php:200
 msgid "Sender"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:202
-#: lite/includes/classes/class-es-admin-settings.php:205
-#: lite/includes/classes/class-es-campaigns-table.php:631
+#: lite/includes/classes/class-es-admin-settings.php:204
+#: lite/includes/classes/class-es-admin-settings.php:207
+#: lite/includes/classes/class-es-campaigns-table.php:626
 #: lite/includes/classes/class-es-forms-table.php:416
 #: lite/includes/classes/class-es-forms-table.php:984
 #: lite/includes/classes/class-es-lists-table.php:637
@@ -1504,436 +1671,296 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:203
+#: lite/includes/classes/class-es-admin-settings.php:205
 msgid "The \"from\" name people will see when they receive emails."
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:212
+#: lite/includes/classes/class-es-admin-settings.php:214
 msgid "The \"from\" email address for all emails."
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:214
+#: lite/includes/classes/class-es-admin-settings.php:216
 msgid "Email Address"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:222
+#: lite/includes/classes/class-es-admin-settings.php:224
 msgid "Admin emails"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:223
+#: lite/includes/classes/class-es-admin-settings.php:225
 msgid "Who should be notified about system events like \"someone subscribed\", \"campaign sent\" etc?"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:225
+#: lite/includes/classes/class-es-admin-settings.php:227
 msgid "You can enter multiple email addresses - separate them with comma"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:231
+#: lite/includes/classes/class-es-admin-settings.php:233
 msgid "Opt-in type"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:233
+#: lite/includes/classes/class-es-admin-settings.php:235
 msgid "Single = confirm subscribers as they subscribe.<br> Double = send a confirmation email and require clicking on a link to confirm subscription."
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:242
+#: lite/includes/classes/class-es-admin-settings.php:244
 msgid "Image size"
 msgstr ""
 
 #. translators: %s: Keyword
-#: lite/includes/classes/class-es-admin-settings.php:247
+#: lite/includes/classes/class-es-admin-settings.php:249
 msgid "%s keyword will use this image size. Use full size only if your template design needs it. Thumbnail should work well otherwise."
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:254
+#: lite/includes/classes/class-es-admin-settings.php:256
+msgid "Enable AJAX subscription form submission"
+msgstr ""
+
+#: lite/includes/classes/class-es-admin-settings.php:257
+msgid "Enabling this will let users to submit their subscription form without page reload using AJAX call."
+msgstr ""
+
+#: lite/includes/classes/class-es-admin-settings.php:264
 msgid "Track opens"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:255
+#: lite/includes/classes/class-es-admin-settings.php:265
 msgid "Do you want to track when people view your emails? (We recommend keeping it enabled)"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:267
+#: lite/includes/classes/class-es-admin-settings.php:277
 msgid "Subscription success message"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:268
+#: lite/includes/classes/class-es-admin-settings.php:278
 msgid "This message will show when a visitor successfully subscribes using the form."
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:279
+#: lite/includes/classes/class-es-admin-settings.php:289
 msgid "Unsubscribe text in email footer:"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:280
+#: lite/includes/classes/class-es-admin-settings.php:290
 msgid "All emails will include this text in the footer so people can unsubscribe if they want."
 msgstr ""
 
 #. translators: %s: List of Keywords
-#: lite/includes/classes/class-es-admin-settings.php:282
+#: lite/includes/classes/class-es-admin-settings.php:292
 msgid "Use %s keyword to add unsubscribe link."
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:287
+#: lite/includes/classes/class-es-admin-settings.php:297
 msgid "Double opt-in subscription messages:"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:288
+#: lite/includes/classes/class-es-admin-settings.php:298
 msgid "Page and messages to show when people click on the link in a subscription confirmation email."
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:295
+#: lite/includes/classes/class-es-admin-settings.php:305
 msgid "You have been subscribed successfully!"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:297
+#: lite/includes/classes/class-es-admin-settings.php:307
 msgid "Message on successful subscription"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:298
+#: lite/includes/classes/class-es-admin-settings.php:308
 msgid "Show this message if contact is successfully subscribed from double opt-in (confirmation) email"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:306
+#: lite/includes/classes/class-es-admin-settings.php:316
 msgid "Oops.. Your request couldn't be completed. This email address seems to be already subscribed / blocked."
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:308
+#: lite/includes/classes/class-es-admin-settings.php:318
 msgid "Message when subscription fails"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:309
+#: lite/includes/classes/class-es-admin-settings.php:319
 msgid "Show this message if any error occured after clicking confirmation link from double opt-in (confirmation) email."
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:317
+#: lite/includes/classes/class-es-admin-settings.php:327
 msgid "Unsubscribe messages"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:318
+#: lite/includes/classes/class-es-admin-settings.php:328
 msgid "Page and messages to show when people click on the unsubscribe link in an email's footer."
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:326
+#: lite/includes/classes/class-es-admin-settings.php:336
 msgid "Thank You, You have been successfully unsubscribed. You will no longer hear from us."
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:328
+#: lite/includes/classes/class-es-admin-settings.php:338
 msgid "Message on unsubscribe success"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:329
+#: lite/includes/classes/class-es-admin-settings.php:339
 msgid "Once contact clicks on unsubscribe link, he/she will be redirected to a page where this message will be shown."
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:337
+#: lite/includes/classes/class-es-admin-settings.php:347
 msgid "Oops.. There was some technical error. Please try again later or contact us."
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:339
+#: lite/includes/classes/class-es-admin-settings.php:349
 msgid "Message when unsubscribe fails"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:340
+#: lite/includes/classes/class-es-admin-settings.php:350
 msgid "Show this message if any error occured after clicking on unsubscribe link."
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:348
+#: lite/includes/classes/class-es-admin-settings.php:358
 msgid "Share Icegram"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:357
+#: lite/includes/classes/class-es-admin-settings.php:367
 msgid "Delete plugin data on uninstall"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:358
+#: lite/includes/classes/class-es-admin-settings.php:368
 msgid "Be careful with this! When enabled, it will remove all lists, campaigns and other data if you uninstall the plugin."
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:381
+#: lite/includes/classes/class-es-admin-settings.php:391
 msgid " We will take care of it. You don't need to visit this URL manually."
 msgstr ""
 
 #. translators: %s: Link to Icegram documentation
-#: lite/includes/classes/class-es-admin-settings.php:384
+#: lite/includes/classes/class-es-admin-settings.php:394
 msgid "You need to visit this URL to send email notifications. Know <a href='%s' target='_blank'>how to run this in background</a>"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:387
+#: lite/includes/classes/class-es-admin-settings.php:397
 msgid "How to configure Email Sending"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:399
+#: lite/includes/classes/class-es-admin-settings.php:409
 msgid "Cron URL"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:408
+#: lite/includes/classes/class-es-admin-settings.php:418
 msgid "Disable Wordpress Cron"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:409
+#: lite/includes/classes/class-es-admin-settings.php:419
 msgid "Enable this option if you do not want Email Subscribers to use WP Cron to send emails."
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:414
+#: lite/includes/classes/class-es-admin-settings.php:424
 msgid "Send emails at most every"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:417
+#: lite/includes/classes/class-es-admin-settings.php:427
 msgid "Optional if a real cron service is used"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:427
+#: lite/includes/classes/class-es-admin-settings.php:437
 msgid "Maximum emails to send in an hour"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:428
+#: lite/includes/classes/class-es-admin-settings.php:438
 msgid "Total emails your host can send in an hour."
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:437
+#: lite/includes/classes/class-es-admin-settings.php:447
 msgid "Maximum emails to send at once"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:438
+#: lite/includes/classes/class-es-admin-settings.php:448
 msgid "Maximum emails you want to send on every cron request."
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:449
+#: lite/includes/classes/class-es-admin-settings.php:459
 msgid "Send test email"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:450
+#: lite/includes/classes/class-es-admin-settings.php:460
 msgid "Enter email address to send test email."
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:458
+#: lite/includes/classes/class-es-admin-settings.php:468
 msgid "Select Mailer"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:470
-#: lite/includes/classes/class-es-admin-settings.php:816
+#: lite/includes/classes/class-es-admin-settings.php:480
+#: lite/includes/classes/class-es-admin-settings.php:826
 msgid "Pepipost API key"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:487
+#: lite/includes/classes/class-es-admin-settings.php:497
 msgid "Select a mailer to send mail"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:497
+#: lite/includes/classes/class-es-admin-settings.php:507
 msgid "Blocked domain(s)"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:499
+#: lite/includes/classes/class-es-admin-settings.php:509
 msgid "Seeing spam signups from particular domains? Enter domains names (one per line) that you want to block here."
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:711
+#: lite/includes/classes/class-es-admin-settings.php:721
 msgid "Save Settings"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:815
+#: lite/includes/classes/class-es-admin-settings.php:825
 msgid "Signup for Pepipost"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:816
+#: lite/includes/classes/class-es-admin-settings.php:826
 msgid "How to find"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:817
+#: lite/includes/classes/class-es-admin-settings.php:827
 msgid "Why to choose Pepipost"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:841
+#: lite/includes/classes/class-es-admin-settings.php:851
 msgid "Cron Info"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:908
+#: lite/includes/classes/class-es-admin-settings.php:918
 msgid "Event"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:909
+#: lite/includes/classes/class-es-admin-settings.php:919
 msgid "Interval"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:910
+#: lite/includes/classes/class-es-admin-settings.php:920
 msgid "Next Execution"
 msgstr ""
 
 #. translators: %s: Next scheduled time
-#: lite/includes/classes/class-es-admin-settings.php:956
+#: lite/includes/classes/class-es-admin-settings.php:966
 msgid "In %s"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:991
+#: lite/includes/classes/class-es-admin-settings.php:1001
 msgid "Plugin usage tracking"
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:994
+#: lite/includes/classes/class-es-admin-settings.php:1004
 msgid "Help us to improve Email Subscribers by opting in to share non-sensitive plugin usage data."
 msgstr ""
 
-#: lite/includes/classes/class-es-admin-settings.php:1025
+#: lite/includes/classes/class-es-admin-settings.php:1035
 msgid "Now you can control all your notifications through workflows."
 msgstr ""
 
 #. translators: 1. Anchor start tag 2. Anchor end tag
-#: lite/includes/classes/class-es-admin-settings.php:1028
+#: lite/includes/classes/class-es-admin-settings.php:1038
 msgid "Click %1$shere%2$s to go to workflows."
 msgstr ""
 
-#: lite/includes/classes/class-es-campaign-admin.php:190
-msgid "Sorry, you are not allowed to add/edit campaign."
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:210
-msgid "Please add a campaign subject."
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:250
-#: lite/includes/classes/class-es-campaign-admin.php:292
-msgid "Post notification"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:253
-#: lite/includes/classes/class-es-campaign-admin.php:292
-msgid "Post digest"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:299
-#: lite/includes/classes/class-es-newsletters.php:255
-#: pro/pro-class-sequences.php:408
-msgid "Content"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:302
-#: lite/includes/classes/class-es-newsletters.php:258
-msgid "Summary"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:314
-#: lite/includes/classes/class-es-newsletters.php:413
-#: lite/includes/classes/class-es-newsletters.php:441
-#: lite/includes/classes/class-es-reports-table.php:263
-#: pro/classes/class-es-pro-sequence-report.php:273
-msgid "Preview"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:330
-#: lite/includes/classes/class-es-import-subscribers.php:183
-#: lite/includes/classes/class-es-import-subscribers.php:281
-#: lite/includes/classes/class-es-newsletters.php:269
-msgid "Next"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:341
-#: lite/includes/classes/class-es-newsletters.php:283
-msgid "Previous"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:348
-#: lite/includes/classes/class-es-newsletters.php:296
-#: lite/includes/classes/class-es-post-notifications.php:536
-#: lite/includes/workflows/admin/class-es-workflow-admin-edit.php:321
-#: lite/includes/workflows/admin/views/meta-box-save.php:68
-msgid "Save"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:368
-#: lite/includes/classes/class-es-newsletters.php:350
-#: lite/includes/classes/class-es-reports-table.php:279
-#: pro/classes/class-es-pro-sequence-report.php:299
-msgid "Subject"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:374
-#: lite/includes/classes/class-es-newsletters.php:367
-msgid "Message"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:420
-#: lite/includes/classes/class-es-newsletters.php:387
-msgid "Design template"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:438
-msgid "Campaign Preview"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:443
-msgid "Preview in browser"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:461
-#: lite/includes/classes/class-es-newsletters.php:427
-#: lite/includes/classes/class-es-reports-table.php:552
-#: lite/includes/classes/class-es-templates-table.php:148
-msgid "There could be a slight variation on how your customer will view the email content."
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:510
-#: lite/includes/classes/class-es-newsletters.php:462
-msgid "Email Content Preview"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:533
-msgid "Sender details"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:542
-#: lite/includes/classes/class-es-newsletters.php:354
-msgid "From Name"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:551
-#: lite/includes/classes/class-es-newsletters.php:358
-msgid "From Email"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:559
-#: lite/includes/classes/class-es-newsletters.php:362
-msgid "Reply To"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:571
-#: lite/includes/classes/class-es-newsletters.php:403
-msgid "Total recipients:"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:585
-#: lite/includes/classes/class-es-newsletters.php:490
-msgid "Open tracking"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:1084
-#: lite/includes/classes/class-es-campaign-admin.php:1090
-#: lite/includes/classes/class-es-campaign-admin.php:1095
-#: lite/includes/classes/class-es-templates-table.php:54
-#: lite/includes/classes/class-es-templates-table.php:65
-#: lite/includes/classes/class-es-templates-table.php:71
-#: lite/includes/classes/class-es-templates-table.php:76
-msgid "Available Keywords"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:1090
-#: lite/includes/classes/class-es-templates-table.php:71
-msgid "for Broadcast:"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:1095
-#: lite/includes/classes/class-es-templates-table.php:76
-msgid "for Post Digest:"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaign-admin.php:1096
-#: lite/includes/classes/class-es-templates-table.php:77
-msgid "Any keywords related Post Notification"
-msgstr ""
-
 #: lite/includes/classes/class-es-campaign-report.php:16
-#: lite/includes/classes/class-es-campaigns-table.php:448
-#: lite/includes/classes/class-es-campaigns-table.php:452
-#: lite/includes/classes/class-es-campaigns-table.php:483
+#: lite/includes/classes/class-es-campaigns-table.php:443
+#: lite/includes/classes/class-es-campaigns-table.php:447
+#: lite/includes/classes/class-es-campaigns-table.php:478
 #: lite/includes/classes/class-es-reports-table.php:16
 #: lite/includes/pro-features.php:1209
 #: pro/classes/class-es-pro-reports-data.php:154
@@ -1977,105 +2004,101 @@ msgstr ""
 msgid "Campaign"
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:83
+#: lite/includes/classes/class-es-campaigns-table.php:79
 msgid "Number of campaigns per page"
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:109
+#: lite/includes/classes/class-es-campaigns-table.php:105
 msgid "Broadcast created successfully."
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:112
+#: lite/includes/classes/class-es-campaigns-table.php:108
 msgid "Campaign created successfully."
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:115
+#: lite/includes/classes/class-es-campaigns-table.php:111
 msgid "Campaign scheduled successfully."
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:118
+#: lite/includes/classes/class-es-campaigns-table.php:114
 msgid "Campaign updated successfully."
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:133
+#: lite/includes/classes/class-es-campaigns-table.php:129
 msgid "Create Post Notification"
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:135
+#: lite/includes/classes/class-es-campaigns-table.php:131
 msgid "Send Broadcast"
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:146
-#: lite/includes/classes/class-es-campaigns-table.php:148
+#: lite/includes/classes/class-es-campaigns-table.php:142
+#: lite/includes/classes/class-es-campaigns-table.php:144
 msgid "Onsite Campaigns"
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:154
-#: lite/includes/classes/class-es-post-notifications.php:319
+#: lite/includes/classes/class-es-campaigns-table.php:150
+#: lite/includes/classes/class-es-post-notifications.php:329
 msgid "Manage Templates"
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:155
-msgid "Try New Editor"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaigns-table.php:192
+#: lite/includes/classes/class-es-campaigns-table.php:187
 msgid "Notification Added Successfully!"
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:298
+#: lite/includes/classes/class-es-campaigns-table.php:293
 msgid "No Campaigns Found."
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:313
+#: lite/includes/classes/class-es-campaigns-table.php:308
 msgid "In Active"
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:316
+#: lite/includes/classes/class-es-campaigns-table.php:311
 msgid "Queued"
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:317
-#: lite/includes/classes/class-es-campaigns-table.php:602
+#: lite/includes/classes/class-es-campaigns-table.php:312
+#: lite/includes/classes/class-es-campaigns-table.php:597
 #: lite/includes/classes/class-es-reports-table.php:208
 msgid "Paused"
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:318
+#: lite/includes/classes/class-es-campaigns-table.php:313
 msgid "Finished"
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:374
+#: lite/includes/classes/class-es-campaigns-table.php:369
 msgid "All"
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:376
+#: lite/includes/classes/class-es-campaigns-table.php:371
 #: starter/starter-class-email-subscribers.php:391
 msgid "None"
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:439
-#: lite/includes/classes/class-es-campaigns-table.php:441
-#: lite/includes/classes/class-es-campaigns-table.php:469
-#: lite/includes/classes/class-es-contacts-table.php:1038
+#: lite/includes/classes/class-es-campaigns-table.php:434
+#: lite/includes/classes/class-es-campaigns-table.php:436
+#: lite/includes/classes/class-es-campaigns-table.php:464
+#: lite/includes/classes/class-es-contacts-table.php:1034
 #: lite/includes/classes/class-es-forms-table.php:967
 #: lite/includes/classes/class-es-lists-table.php:616
-#: lite/includes/workflows/admin/views/action.php:28
+#: lite/includes/workflows/admin/views/action.php:29
 #: lite/includes/workflows/class-es-workflows-table.php:305
 #: pro/classes/class-es-pro-custom-fields-table.php:564
 msgid "Edit"
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:493
-#: lite/includes/classes/class-es-contacts-table.php:1040
-#: lite/includes/classes/class-es-contacts-table.php:1111
+#: lite/includes/classes/class-es-campaigns-table.php:488
+#: lite/includes/classes/class-es-contacts-table.php:1036
+#: lite/includes/classes/class-es-contacts-table.php:1107
 #: lite/includes/classes/class-es-forms-table.php:969
 #: lite/includes/classes/class-es-forms-table.php:1015
 #: lite/includes/classes/class-es-lists-table.php:618
 #: lite/includes/classes/class-es-lists-table.php:671
 #: lite/includes/classes/class-es-reports-table.php:262
 #: lite/includes/classes/class-es-reports-table.php:356
-#: lite/includes/workflows/admin/views/action.php:29
+#: lite/includes/workflows/admin/views/action.php:30
 #: lite/includes/workflows/admin/views/meta-box-save.php:45
 #: lite/includes/workflows/class-es-workflows-table.php:306
 #: lite/includes/workflows/class-es-workflows-table.php:367
@@ -2083,7 +2106,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:632
+#: lite/includes/classes/class-es-campaigns-table.php:627
 #: lite/includes/classes/class-es-reports-table.php:280
 #: pro/classes/class-es-pro-custom-fields-table.php:393
 #: pro/classes/class-es-pro-custom-fields-table.php:458
@@ -2091,61 +2114,49 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:633
-#: lite/includes/classes/class-es-contacts-table.php:841
-#: lite/includes/classes/class-es-contacts-table.php:1077
+#: lite/includes/classes/class-es-campaigns-table.php:628
+#: lite/includes/classes/class-es-contacts-table.php:837
+#: lite/includes/classes/class-es-contacts-table.php:1073
 msgid "List(s)"
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:634
+#: lite/includes/classes/class-es-campaigns-table.php:629
 msgid "Categories"
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:635
-#: lite/includes/classes/class-es-contacts-table.php:1078
+#: lite/includes/classes/class-es-campaigns-table.php:630
+#: lite/includes/classes/class-es-contacts-table.php:1074
 #: lite/includes/classes/class-es-forms-table.php:987
 msgid "Created"
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:688
+#: lite/includes/classes/class-es-campaigns-table.php:683
 msgid "Search Campaigns"
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:705
+#: lite/includes/classes/class-es-campaigns-table.php:700
 #: lite/includes/classes/class-es-reports-table.php:601
 msgid "All Type"
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:753
+#: lite/includes/classes/class-es-campaigns-table.php:748
 msgid "You are not allowed to delete campaign."
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:758
+#: lite/includes/classes/class-es-campaigns-table.php:753
 msgid "Campaign deleted successfully!"
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:779
+#: lite/includes/classes/class-es-campaigns-table.php:774
 msgid "Campaign(s) deleted successfully!"
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:783
+#: lite/includes/classes/class-es-campaigns-table.php:778
 msgid "Please select campaign(s) to delete."
 msgstr ""
 
-#: lite/includes/classes/class-es-campaigns-table.php:800
-msgid "Create Campaign"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaigns-table.php:821
-msgid "Create using new Drag & Drop Editor"
-msgstr ""
-
-#: lite/includes/classes/class-es-campaigns-table.php:837
-msgid "Create using Classic Editor"
-msgstr ""
-
 #: lite/includes/classes/class-es-contacts-table.php:70
-#: lite/includes/classes/class-es-contacts-table.php:1076
+#: lite/includes/classes/class-es-contacts-table.php:1072
 #: lite/includes/workflows/actions/class-es-action-delete-contact.php:31
 #: lite/includes/workflows/actions/class-es-action-update-contact.php:31
 msgid "Contact"
@@ -2192,167 +2203,163 @@ msgstr ""
 #: lite/includes/classes/class-es-contacts-table.php:389
 #: lite/includes/classes/class-es-forms-table.php:98
 #: lite/includes/classes/class-es-lists-table.php:91
-#: lite/includes/classes/class-es-post-notifications.php:317
+#: lite/includes/classes/class-es-post-notifications.php:327
 #: lite/includes/workflows/class-es-workflows-table.php:174
 #: pro/classes/class-es-pro-custom-fields-table.php:95
 msgid "Add New"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:443
+#: lite/includes/classes/class-es-contacts-table.php:442
 msgid "Contact already exist."
 msgstr ""
 
 #. translators: 1. Contact edit URL tag 2: Anchor close tag
-#: lite/includes/classes/class-es-contacts-table.php:509
+#: lite/includes/classes/class-es-contacts-table.php:508
 msgid "Contact added successfully. %1$sEdit contact%2$s."
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:520
+#: lite/includes/classes/class-es-contacts-table.php:519
 msgid "Contact updated successfully!"
 msgstr ""
 
 #: lite/includes/classes/class-es-contacts-table.php:527
-msgid "Please enter first name"
-msgstr ""
-
-#: lite/includes/classes/class-es-contacts-table.php:531
 #: lite/includes/classes/class-es-export-subscribers.php:36
 #: lite/includes/classes/class-es-lists-table.php:772
 msgid "Please select list"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:535
+#: lite/includes/classes/class-es-contacts-table.php:531
 msgid "Please enter valid email address"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:562
+#: lite/includes/classes/class-es-contacts-table.php:558
 #: lite/includes/classes/class-es-export-subscribers.php:157
 #: lite/includes/classes/class-es-handle-sync-wp-user.php:216
-#: lite/includes/classes/class-es-import-subscribers.php:385
+#: lite/includes/classes/class-es-import-subscribers.php:409
 #: lite/includes/classes/class-es-lists-table.php:83
 #: lite/includes/classes/class-es-lists-table.php:288
 msgid "Audience "
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:738
+#: lite/includes/classes/class-es-contacts-table.php:734
 msgid "No list found"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:747
+#: lite/includes/classes/class-es-contacts-table.php:743
 msgid "First name"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:759
+#: lite/includes/classes/class-es-contacts-table.php:755
 msgid "Enter first name"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:769
+#: lite/includes/classes/class-es-contacts-table.php:765
 msgid "Last name"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:780
+#: lite/includes/classes/class-es-contacts-table.php:776
 msgid "Enter last name"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:801
+#: lite/includes/classes/class-es-contacts-table.php:797
 msgid "Enter email"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:811
+#: lite/includes/classes/class-es-contacts-table.php:807
 msgid "Send welcome email?"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:842
+#: lite/includes/classes/class-es-contacts-table.php:838
 #: lite/includes/classes/class-es-forms-table.php:467
 msgid "Contacts will be added into selected list(s)"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:859
+#: lite/includes/classes/class-es-contacts-table.php:855
 msgid "Add Contact"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:859
+#: lite/includes/classes/class-es-contacts-table.php:855
 #: lite/includes/classes/class-es-forms-table.php:616
 #: lite/includes/classes/class-es-lists-table.php:384
-#: lite/includes/classes/class-es-post-notifications.php:441
+#: lite/includes/classes/class-es-post-notifications.php:451
 #: pro/classes/class-es-pro-custom-fields-table.php:426
 msgid "Save Changes"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:866
+#: lite/includes/classes/class-es-contacts-table.php:862
 #: lite/includes/classes/class-es-forms-table.php:620
 #: lite/includes/classes/class-es-lists-table.php:388
-#: lite/includes/classes/class-es-post-notifications.php:444
+#: lite/includes/classes/class-es-post-notifications.php:454
 #: pro/classes/class-es-pro-custom-fields-table.php:431
 msgid "Cancel"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:882
+#: lite/includes/classes/class-es-contacts-table.php:878
 msgid "No contacts avaliable."
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:1058
+#: lite/includes/classes/class-es-contacts-table.php:1054
 msgid "Resend Confirmation"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:1112
+#: lite/includes/classes/class-es-contacts-table.php:1108
 #: pro/workflows/actions/class-es-action-move-to-list.php:29
 msgid "Move to list"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:1113
+#: lite/includes/classes/class-es-contacts-table.php:1109
 #: lite/includes/workflows/actions/class-es-action-add-to-list.php:30
 msgid "Add to list"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:1114
+#: lite/includes/classes/class-es-contacts-table.php:1110
 msgid "Change status"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:1137
+#: lite/includes/classes/class-es-contacts-table.php:1133
 msgid "Search Contacts"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:1154
+#: lite/includes/classes/class-es-contacts-table.php:1150
 msgid "All Lists"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:1269
-#: lite/includes/classes/class-es-contacts-table.php:1332
+#: lite/includes/classes/class-es-contacts-table.php:1265
+#: lite/includes/classes/class-es-contacts-table.php:1328
 msgid "Contact(s) deleted successfully!"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:1282
+#: lite/includes/classes/class-es-contacts-table.php:1278
 msgid "You do not have a permission to resend email confirmation"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:1294
+#: lite/includes/classes/class-es-contacts-table.php:1290
 msgid "Confirmation email sent successfully!"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:1320
+#: lite/includes/classes/class-es-contacts-table.php:1316
 msgid "Please select subscribers to update."
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:1343
+#: lite/includes/classes/class-es-contacts-table.php:1339
 msgid "Please select status."
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:1357
+#: lite/includes/classes/class-es-contacts-table.php:1353
 msgid "Contact(s) status changed successfully!"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:1368
-#: lite/includes/classes/class-es-contacts-table.php:1389
-#: lite/includes/classes/class-es-post-notifications.php:62
+#: lite/includes/classes/class-es-contacts-table.php:1364
+#: lite/includes/classes/class-es-contacts-table.php:1385
+#: lite/includes/classes/class-es-post-notifications.php:72
 msgid "Please select list."
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:1377
+#: lite/includes/classes/class-es-contacts-table.php:1373
 msgid "Contact(s) moved to list successfully!"
 msgstr ""
 
-#: lite/includes/classes/class-es-contacts-table.php:1398
+#: lite/includes/classes/class-es-contacts-table.php:1394
 msgid "Contact(s) added to list successfully!"
 msgstr ""
 
@@ -2426,18 +2433,6 @@ msgstr ""
 msgid "Cron lock enabled. Please try after sometime."
 msgstr ""
 
-#: lite/includes/classes/class-es-drag-and-drop-editor.php:78
-msgid "How to use this?"
-msgstr ""
-
-#: lite/includes/classes/class-es-drag-and-drop-editor.php:81
-msgid "Create the content by dragging elements displayed on the right. After you are done click on \"Export HTML\" "
-msgstr ""
-
-#: lite/includes/classes/class-es-drag-and-drop-editor.php:82
-msgid " to get your html content. Use it while sending campaigns."
-msgstr ""
-
 #: lite/includes/classes/class-es-export-subscribers.php:48
 msgid "No data available"
 msgstr ""
@@ -2473,20 +2468,20 @@ msgid "Export the Subscribers"
 msgstr ""
 
 #: lite/includes/classes/class-es-export-subscribers.php:337
-#: lite/includes/classes/class-es-import-subscribers.php:564
-#: lite/includes/classes/class-es-import-subscribers.php:658
-#: lite/includes/classes/class-es-import-subscribers.php:1049
-#: lite/includes/classes/class-es-import-subscribers.php:1181
-#: pro/pro-class-email-subscribers.php:2230
+#: lite/includes/classes/class-es-import-subscribers.php:588
+#: lite/includes/classes/class-es-import-subscribers.php:682
+#: lite/includes/classes/class-es-import-subscribers.php:1088
+#: lite/includes/classes/class-es-import-subscribers.php:1343
+#: pro/pro-class-email-subscribers.php:2260
 msgid "First Name"
 msgstr ""
 
 #: lite/includes/classes/class-es-export-subscribers.php:338
-#: lite/includes/classes/class-es-import-subscribers.php:565
-#: lite/includes/classes/class-es-import-subscribers.php:659
-#: lite/includes/classes/class-es-import-subscribers.php:1054
-#: lite/includes/classes/class-es-import-subscribers.php:1182
-#: pro/pro-class-email-subscribers.php:2231
+#: lite/includes/classes/class-es-import-subscribers.php:589
+#: lite/includes/classes/class-es-import-subscribers.php:683
+#: lite/includes/classes/class-es-import-subscribers.php:1093
+#: lite/includes/classes/class-es-import-subscribers.php:1344
+#: pro/pro-class-email-subscribers.php:2261
 msgid "Last Name"
 msgstr ""
 
@@ -2513,7 +2508,7 @@ msgstr ""
 
 #: lite/includes/classes/class-es-form-widget.php:43
 #: lite/public/partials/class-es-shortcode.php:151
-#: lite/public/partials/class-es-shortcode.php:416
+#: lite/public/partials/class-es-shortcode.php:418
 msgid "Select list(s)"
 msgstr ""
 
@@ -2724,59 +2719,59 @@ msgstr ""
 msgid "No Forms avaliable."
 msgstr ""
 
-#: lite/includes/classes/class-es-handle-subscription.php:571
+#: lite/includes/classes/class-es-handle-subscription.php:590
 #: lite/public/class-email-subscribers-public.php:112
 msgid "Please enter email address"
 msgstr ""
 
-#: lite/includes/classes/class-es-handle-subscription.php:572
+#: lite/includes/classes/class-es-handle-subscription.php:591
 #: lite/public/class-email-subscribers-public.php:113
 msgid "You need to wait for sometime before subscribing again"
 msgstr ""
 
-#: lite/includes/classes/class-es-handle-subscription.php:573
+#: lite/includes/classes/class-es-handle-subscription.php:592
 #: lite/includes/upgrade/es-update-functions.php:752
 #: lite/public/class-email-subscribers-public.php:114
 msgid "Successfully Subscribed."
 msgstr ""
 
-#: lite/includes/classes/class-es-handle-subscription.php:574
+#: lite/includes/classes/class-es-handle-subscription.php:593
 #: lite/public/class-email-subscribers-public.php:116
 msgid "Email Address already exists!"
 msgstr ""
 
-#: lite/includes/classes/class-es-handle-subscription.php:575
+#: lite/includes/classes/class-es-handle-subscription.php:594
 #: lite/public/class-email-subscribers-public.php:117
 msgid "Oops.. Unexpected error occurred."
 msgstr ""
 
-#: lite/includes/classes/class-es-handle-subscription.php:576
+#: lite/includes/classes/class-es-handle-subscription.php:595
 #: lite/public/class-email-subscribers-public.php:118
 msgid "Invalid email address"
 msgstr ""
 
-#: lite/includes/classes/class-es-handle-subscription.php:577
+#: lite/includes/classes/class-es-handle-subscription.php:596
 msgid "Invalid name"
 msgstr ""
 
-#: lite/includes/classes/class-es-handle-subscription.php:578
+#: lite/includes/classes/class-es-handle-subscription.php:597
 #: lite/public/class-email-subscribers-public.php:119
 msgid "Please try after some time"
 msgstr ""
 
-#: lite/includes/classes/class-es-handle-subscription.php:579
+#: lite/includes/classes/class-es-handle-subscription.php:598
 msgid "Oops...unable to add subscriber"
 msgstr ""
 
-#: lite/includes/classes/class-es-handle-subscription.php:580
+#: lite/includes/classes/class-es-handle-subscription.php:599
 msgid "You do not have permission to add subscriber"
 msgstr ""
 
-#: lite/includes/classes/class-es-handle-subscription.php:581
+#: lite/includes/classes/class-es-handle-subscription.php:600
 msgid "Please select the list"
 msgstr ""
 
-#: lite/includes/classes/class-es-handle-subscription.php:582
+#: lite/includes/classes/class-es-handle-subscription.php:601
 msgid "Invalid Captcha"
 msgstr ""
 
@@ -2839,177 +2834,181 @@ msgstr ""
 msgid "Keep growing. Get everything you need to target, measure, re-target, behavior rules, personalize, split test, segment, automate and optimize."
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:92
+#: lite/includes/classes/class-es-import-subscribers.php:94
 msgid "Import from CSV"
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:103
+#: lite/includes/classes/class-es-import-subscribers.php:105
 msgid "Import from MailChimp"
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:120
+#: lite/includes/classes/class-es-import-subscribers.php:122
 msgid "Select CSV file"
 msgstr ""
 
 #. translators: %s: Max upload size
-#: lite/includes/classes/class-es-import-subscribers.php:125
+#: lite/includes/classes/class-es-import-subscribers.php:127
 msgid "File size should be less than %s"
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:129
+#: lite/includes/classes/class-es-import-subscribers.php:131
 msgid "Check CSV structure"
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:130
+#: lite/includes/classes/class-es-import-subscribers.php:132
 msgid "from here"
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:134
+#: lite/includes/classes/class-es-import-subscribers.php:136
 msgid "How to import contacts using CSV?"
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:147
+#: lite/includes/classes/class-es-import-subscribers.php:149
 msgid "Drop your CSV here"
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:148
+#: lite/includes/classes/class-es-import-subscribers.php:150
 msgctxt "Uploader: Drop files here - or - Select Files"
 msgid "or"
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:149
+#: lite/includes/classes/class-es-import-subscribers.php:151
 msgid "Select File"
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:165
+#: lite/includes/classes/class-es-import-subscribers.php:167
 msgid "Enter your API Key"
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:167
+#: lite/includes/classes/class-es-import-subscribers.php:169
 msgid "You need your API key from Mailchimp to import your data."
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:170
+#: lite/includes/classes/class-es-import-subscribers.php:172
 msgid "Click here to get it."
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:208
-#: lite/includes/classes/class-es-import-subscribers.php:323
-#: lite/includes/classes/class-es-post-notifications.php:357
+#: lite/includes/classes/class-es-import-subscribers.php:210
+#: lite/includes/classes/class-es-import-subscribers.php:325
+#: lite/includes/classes/class-es-post-notifications.php:367
 msgid "Select list"
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:210
+#: lite/includes/classes/class-es-import-subscribers.php:212
 msgid "Select all the lists that you want to import from MailChimp"
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:237
+#: lite/includes/classes/class-es-import-subscribers.php:239
 msgid "Select the status of the contacts that you want to import from MailChimp"
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:249
+#: lite/includes/classes/class-es-import-subscribers.php:251
 msgid "Import with status \"subscribed\""
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:257
+#: lite/includes/classes/class-es-import-subscribers.php:259
 msgid "Import with status \"pending\""
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:265
+#: lite/includes/classes/class-es-import-subscribers.php:267
 msgid "Import with status \"unsubscribed\""
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:273
+#: lite/includes/classes/class-es-import-subscribers.php:275
 msgid "Import with status \"cleaned\""
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:304
+#: lite/includes/classes/class-es-import-subscribers.php:306
 msgid "Select status"
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:566
+#: lite/includes/classes/class-es-import-subscribers.php:359
+msgid "Send Confirmation/Welcome emails for this import?"
+msgstr ""
+
+#: lite/includes/classes/class-es-import-subscribers.php:590
 msgid "Nick Name"
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:567
+#: lite/includes/classes/class-es-import-subscribers.php:591
 msgid "Display Name"
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:601
+#: lite/includes/classes/class-es-import-subscribers.php:625
 msgid "We can't find any matching users. Please update your preferences and try again."
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:660
+#: lite/includes/classes/class-es-import-subscribers.php:684
 msgid "(First Name) (Last Name)"
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:661
+#: lite/includes/classes/class-es-import-subscribers.php:685
 msgid "(Last Name) (First Name)"
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:662
+#: lite/includes/classes/class-es-import-subscribers.php:686
 msgid "Subscribed at"
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:665
-#: lite/includes/classes/class-es-import-subscribers.php:1184
+#: lite/includes/classes/class-es-import-subscribers.php:689
+#: lite/includes/classes/class-es-import-subscribers.php:1346
 msgid "List Name"
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:676
+#: lite/includes/classes/class-es-import-subscribers.php:700
 msgid "Select columns for mapping"
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:679
+#: lite/includes/classes/class-es-import-subscribers.php:703
 msgid "Define which column represents which field"
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:701
+#: lite/includes/classes/class-es-import-subscribers.php:725
 msgid "Ignore column"
 msgstr ""
 
 #. translators: %s: Hidden contacts count
-#: lite/includes/classes/class-es-import-subscribers.php:740
+#: lite/includes/classes/class-es-import-subscribers.php:764
 msgid "%s contacts are hidden"
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:810
+#: lite/includes/classes/class-es-import-subscribers.php:836
 msgid "Email address is invalid."
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:811
+#: lite/includes/classes/class-es-import-subscribers.php:837
 msgid "Email address is empty."
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:842
-#: lite/includes/classes/class-es-import-subscribers.php:1191
-#: pro/classes/class-es-pro-bounce-handler.php:117
+#: lite/includes/classes/class-es-import-subscribers.php:868
+#: lite/includes/classes/class-es-import-subscribers.php:1353
+#: pro/classes/class-es-pro-bounce-handler.php:118
 msgid "Hard Bounced"
 msgstr ""
 
 #. translators: 1. Total imported contacts 2. Total contacts
-#: lite/includes/classes/class-es-import-subscribers.php:1030
+#: lite/includes/classes/class-es-import-subscribers.php:1069
 msgid "%1$s of %2$s contacts imported."
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:1033
+#: lite/includes/classes/class-es-import-subscribers.php:1072
 msgid "email"
 msgid_plural "emails"
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: 1. Duplicate emails count. 2. Email or emails string based on duplicate email count.
-#: lite/includes/classes/class-es-import-subscribers.php:1035
+#: lite/includes/classes/class-es-import-subscribers.php:1074
 msgid "%1$s duplicate %2$s found."
 msgstr ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:1040
+#: lite/includes/classes/class-es-import-subscribers.php:1079
 msgid "contact was"
 msgid_plural "contacts were"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lite/includes/classes/class-es-import-subscribers.php:1058
+#: lite/includes/classes/class-es-import-subscribers.php:1097
 msgid "Reason"
 msgstr ""
 
@@ -3126,7 +3125,7 @@ msgid "If you find this plugin useful, please consider giving us %1$s5 stars rev
 msgstr ""
 
 #. translators: 1. Subscriber email 2. Blog name
-#: lite/includes/classes/class-es-mailer.php:1759
+#: lite/includes/classes/class-es-mailer.php:1761
 msgid "Unsubscribe %1$s from %2$s"
 msgstr ""
 
@@ -3159,15 +3158,19 @@ msgid "Save Draft"
 msgstr ""
 
 #: lite/includes/classes/class-es-newsletters.php:317
-#: lite/includes/classes/class-es-newsletters.php:929
+#: lite/includes/classes/class-es-newsletters.php:931
 msgid "Schedule"
 msgstr ""
 
 #: lite/includes/classes/class-es-newsletters.php:321
-#: lite/includes/classes/class-es-newsletters.php:933
+#: lite/includes/classes/class-es-newsletters.php:935
 #: lite/includes/feedback.php:55
 #: lite/includes/feedback.php:82
 msgid "Send"
+msgstr ""
+
+#: lite/includes/classes/class-es-newsletters.php:387
+msgid "Design template"
 msgstr ""
 
 #: lite/includes/classes/class-es-newsletters.php:416
@@ -3176,19 +3179,14 @@ msgstr ""
 
 #: lite/includes/classes/class-es-newsletters.php:431
 #: lite/includes/classes/class-es-reports-table.php:556
-#: lite/includes/classes/class-es-templates-table.php:152
+#: lite/includes/classes/class-es-templates-table.php:154
 #: lite/includes/premium-services-ui/class-ig-es-premium-services-ui.php:243
 msgid "Close"
 msgstr ""
 
 #: lite/includes/classes/class-es-newsletters.php:444
-#: pro/classes/class-es-campaign-admin-pro.php:99
+#: pro/classes/class-es-campaign-admin-pro.php:100
 msgid "Email sent successfully "
-msgstr ""
-
-#: lite/includes/classes/class-es-newsletters.php:445
-#: pro/classes/class-es-campaign-admin-pro.php:102
-msgid "Something went wrong. Please try again later"
 msgstr ""
 
 #: lite/includes/classes/class-es-old-widget.php:75
@@ -3215,105 +3213,146 @@ msgstr ""
 msgid "Subscriber Group"
 msgstr ""
 
-#: lite/includes/classes/class-es-post-notifications.php:70
+#: lite/includes/classes/class-es-post-notifications.php:80
 msgid "Please select categories."
 msgstr ""
 
-#: lite/includes/classes/class-es-post-notifications.php:92
-#: lite/includes/classes/class-es-post-notifications.php:231
+#: lite/includes/classes/class-es-post-notifications.php:102
+#: lite/includes/classes/class-es-post-notifications.php:241
 msgid "Please select template."
 msgstr ""
 
 #. translators: %s: Campaign Type
-#: lite/includes/classes/class-es-post-notifications.php:101
+#: lite/includes/classes/class-es-post-notifications.php:111
 msgid "%s added successfully!"
 msgstr ""
 
-#: lite/includes/classes/class-es-post-notifications.php:104
+#: lite/includes/classes/class-es-post-notifications.php:114
 msgid "Sorry, you are not allowed to add post notification."
 msgstr ""
 
-#: lite/includes/classes/class-es-post-notifications.php:239
+#: lite/includes/classes/class-es-post-notifications.php:249
 msgid "Please select Categories."
 msgstr ""
 
 #. translators: %s: Campaign type
-#: lite/includes/classes/class-es-post-notifications.php:250
+#: lite/includes/classes/class-es-post-notifications.php:260
 msgid "%s updated successfully!"
 msgstr ""
 
-#: lite/includes/classes/class-es-post-notifications.php:253
+#: lite/includes/classes/class-es-post-notifications.php:263
 msgid "Sorry, you are not allowed to update post notification."
 msgstr ""
 
-#: lite/includes/classes/class-es-post-notifications.php:280
+#: lite/includes/classes/class-es-post-notifications.php:290
 msgid " New Post Notification"
 msgstr ""
 
-#: lite/includes/classes/class-es-post-notifications.php:283
+#: lite/includes/classes/class-es-post-notifications.php:293
 msgid " Edit Post Notification"
 msgstr ""
 
-#: lite/includes/classes/class-es-post-notifications.php:305
+#: lite/includes/classes/class-es-post-notifications.php:315
 #: pro/pro-class-sequences.php:79
 msgid "Campaigns "
 msgstr ""
 
-#: lite/includes/classes/class-es-post-notifications.php:336
+#: lite/includes/classes/class-es-post-notifications.php:346
 msgid "Enable/Disable campaign"
 msgstr ""
 
-#: lite/includes/classes/class-es-post-notifications.php:358
+#: lite/includes/classes/class-es-post-notifications.php:368
 msgid "Contacts from the selected list will be notified about new post notification."
 msgstr ""
 
-#: lite/includes/classes/class-es-post-notifications.php:381
+#: lite/includes/classes/class-es-post-notifications.php:391
 msgid "Select template"
 msgstr ""
 
-#: lite/includes/classes/class-es-post-notifications.php:382
+#: lite/includes/classes/class-es-post-notifications.php:392
 msgid "Content of the selected template will be sent out as post notification."
 msgstr ""
 
-#: lite/includes/classes/class-es-post-notifications.php:400
-#: lite/includes/classes/class-es-post-notifications.php:571
+#: lite/includes/classes/class-es-post-notifications.php:410
+#: lite/includes/classes/class-es-post-notifications.php:581
 msgid "Select post category"
 msgstr ""
 
-#: lite/includes/classes/class-es-post-notifications.php:401
+#: lite/includes/classes/class-es-post-notifications.php:411
 msgid "Notification will be sent out when any post from selected categories will be published."
 msgstr ""
 
-#: lite/includes/classes/class-es-post-notifications.php:417
-#: lite/includes/classes/class-es-post-notifications.php:587
+#: lite/includes/classes/class-es-post-notifications.php:427
+#: lite/includes/classes/class-es-post-notifications.php:597
 msgid "Select custom post type(s)"
 msgstr ""
 
-#: lite/includes/classes/class-es-post-notifications.php:418
+#: lite/includes/classes/class-es-post-notifications.php:428
 msgid "(Optional) Select custom post type for which you want to send notification."
 msgstr ""
 
-#: lite/includes/classes/class-es-post-notifications.php:441
+#: lite/includes/classes/class-es-post-notifications.php:451
 msgid "Save Campaign"
 msgstr ""
 
-#: lite/includes/classes/class-es-post-notifications.php:512
+#: lite/includes/classes/class-es-post-notifications.php:522
 msgid "Change posts settings"
 msgstr ""
 
-#: lite/includes/classes/class-es-post-notifications.php:531
+#: lite/includes/classes/class-es-post-notifications.php:541
 msgid "Posts Settings"
+msgstr ""
+
+#: lite/includes/classes/class-es-post-notifications.php:649
+#: lite/includes/classes/class-es-post-notifications.php:671
+msgid "Hello {{NAME}},"
+msgstr ""
+
+#: lite/includes/classes/class-es-post-notifications.php:650
+#: lite/includes/classes/class-es-post-notifications.php:672
+msgid "We have published a new blog article on our website"
+msgstr ""
+
+#: lite/includes/classes/class-es-post-notifications.php:652
+#: lite/includes/classes/class-es-post-notifications.php:674
+msgid "You can view it from this link"
+msgstr ""
+
+#: lite/includes/classes/class-es-post-notifications.php:653
+msgid "Thanks & Regards"
+msgstr ""
+
+#: lite/includes/classes/class-es-post-notifications.php:654
+#: lite/includes/workflows/triggers/class-es-trigger-campaign-sent.php:32
+msgid "Admin"
+msgstr ""
+
+#: lite/includes/classes/class-es-post-notifications.php:655
+#: lite/includes/classes/class-es-post-notifications.php:680
+msgid "You received this email because in the past you have provided us your email address : {{EMAIL}} to receive notifications when new updates are posted."
+msgstr ""
+
+#: lite/includes/classes/class-es-post-notifications.php:679
+msgid "Your Brand Name"
+msgstr ""
+
+#: lite/includes/classes/class-es-post-notifications.php:680
+msgid "If you wish to unsubscribe from our newsletter, click"
+msgstr ""
+
+#: lite/includes/classes/class-es-post-notifications.php:680
+msgid "here"
 msgstr ""
 
 #: lite/includes/classes/class-es-reports-data.php:362
 #: lite/includes/classes/class-es-reports-table.php:157
-#: lite/public/class-email-subscribers-public.php:479
+#: lite/public/class-email-subscribers-public.php:490
 #: pro/classes/class-es-pro-reports-data.php:73
 msgid "Post Notification"
 msgstr ""
 
 #: lite/includes/classes/class-es-reports-data.php:364
-#: pro/pro-class-post-digest.php:39
+#: pro/pro-class-post-digest.php:36
 msgid "Post Digest"
 msgstr ""
 
@@ -3380,31 +3419,32 @@ msgstr ""
 msgid "All Dates"
 msgstr ""
 
-#: lite/includes/classes/class-es-templates-table.php:38
+#: lite/includes/classes/class-es-templates-table.php:40
 msgid "Select template type"
 msgstr ""
 
-#: lite/includes/classes/class-es-templates-table.php:122
+#: lite/includes/classes/class-es-templates-table.php:124
 msgid "Preview template"
 msgstr ""
 
-#: lite/includes/classes/class-es-templates-table.php:165
+#: lite/includes/classes/class-es-templates-table.php:167
 msgid "Template type"
 msgstr ""
 
 #. translators: 1: Page 2: Duplicate action 3: Campaign id 4: Wp nonce
-#: lite/includes/classes/class-es-templates-table.php:203
-#: pro/pro-class-email-subscribers.php:1553
+#: lite/includes/classes/class-es-templates-table.php:209
+#: pro/pro-class-email-subscribers.php:1583
 msgid "Duplicate"
 msgstr ""
 
-#: lite/includes/classes/class-es-templates-table.php:227
-#: lite/includes/db/class-es-db-campaigns.php:741
-#: lite/includes/db/class-es-db-campaigns.php:744
+#: lite/includes/classes/class-es-templates-table.php:237
+#: lite/includes/db/class-es-db-campaigns.php:745
+#: lite/includes/db/class-es-db-campaigns.php:748
 msgid "Copy"
 msgstr ""
 
 #: lite/includes/classes/class-es-tools.php:78
+#: lite/includes/workflows/admin/class-es-workflow-admin-edit.php:96
 msgid "Email has been sent. Please check your inbox"
 msgstr ""
 
@@ -3645,12 +3685,12 @@ msgid "Access Control"
 msgstr ""
 
 #: lite/includes/pro-features.php:278
-#: pro/pro-class-email-subscribers.php:916
+#: pro/pro-class-email-subscribers.php:944
 msgid "Track clicks"
 msgstr ""
 
 #: lite/includes/pro-features.php:279
-#: pro/pro-class-email-subscribers.php:917
+#: pro/pro-class-email-subscribers.php:945
 msgid "Do you want to track when people click links in your emails? (We recommend keeping it enabled)"
 msgstr ""
 
@@ -3702,7 +3742,7 @@ msgid "Opt-in consent text"
 msgstr ""
 
 #: lite/includes/pro-features.php:348
-#: pro/pro-class-email-subscribers.php:940
+#: pro/pro-class-email-subscribers.php:968
 msgid "Weekly summary"
 msgstr ""
 
@@ -3750,7 +3790,7 @@ msgid "Prevent bot signups even further. Set default captcha option for new subs
 msgstr ""
 
 #: lite/includes/pro-features.php:428
-#: pro/pro-class-email-subscribers.php:925
+#: pro/pro-class-email-subscribers.php:953
 msgid "Track IP address"
 msgstr ""
 
@@ -3959,7 +3999,7 @@ msgid "Get a gatekeeper like %1$sCaptcha%2$s and prevent bot signups from your s
 msgstr ""
 
 #: lite/includes/pro-features.php:903
-#: starter/starter-class-email-subscribers.php:1230
+#: starter/starter-class-email-subscribers.php:1243
 msgid "Show a captcha to protect from bot signups."
 msgstr ""
 
@@ -3981,7 +4021,7 @@ msgstr ""
 
 #: lite/includes/pro-features.php:959
 #: lite/includes/pro-features.php:1011
-#: pro/pro-class-post-digest.php:76
+#: pro/pro-class-post-digest.php:57
 msgid "Is a post digest?"
 msgstr ""
 
@@ -3994,7 +4034,7 @@ msgid "Schedules at"
 msgstr ""
 
 #: lite/includes/pro-features.php:981
-#: pro/pro-class-post-digest.php:127
+#: pro/pro-class-post-digest.php:108
 msgid "When to send?"
 msgstr ""
 
@@ -4012,7 +4052,7 @@ msgid "Reduce the possibility to land in spam with PRO"
 msgstr ""
 
 #: lite/includes/pro-features.php:1068
-#: pro/classes/class-es-campaign-admin-pro.php:122
+#: pro/classes/class-es-campaign-admin-pro.php:123
 msgid "Link tracking"
 msgstr ""
 
@@ -4021,27 +4061,27 @@ msgid "Get spam score"
 msgstr ""
 
 #: lite/includes/pro-features.php:1122
-#: pro/classes/class-es-campaign-admin-pro.php:170
-#: pro/pro-class-email-subscribers.php:811
+#: pro/classes/class-es-campaign-admin-pro.php:171
+#: pro/pro-class-email-subscribers.php:839
 msgid "Send options"
 msgstr ""
 
 #: lite/includes/pro-features.php:1125
-#: pro/classes/class-es-campaign-admin-pro.php:181
-#: pro/pro-class-email-subscribers.php:816
+#: pro/classes/class-es-campaign-admin-pro.php:182
+#: pro/pro-class-email-subscribers.php:844
 msgid "Schedule for later"
 msgstr ""
 
 #: lite/includes/pro-features.php:1141
 #: lite/includes/workflows/fields/class-es-time.php:64
-#: pro/classes/class-es-campaign-admin-pro.php:209
-#: pro/pro-class-email-subscribers.php:844
+#: pro/classes/class-es-campaign-admin-pro.php:210
+#: pro/pro-class-email-subscribers.php:872
 msgid "Time"
 msgstr ""
 
 #: lite/includes/pro-features.php:1151
-#: pro/classes/class-es-campaign-admin-pro.php:224
-#: pro/pro-class-email-subscribers.php:859
+#: pro/classes/class-es-campaign-admin-pro.php:225
+#: pro/pro-class-email-subscribers.php:887
 msgid "Local Time: "
 msgstr ""
 
@@ -4166,12 +4206,12 @@ msgid "Mobile"
 msgstr ""
 
 #: lite/includes/pro-features.php:1690
-#: pro/pro-class-email-subscribers.php:1775
+#: pro/pro-class-email-subscribers.php:1805
 msgid "Add Attachments"
 msgstr ""
 
 #: lite/includes/pro-features.php:1720
-#: pro/pro-class-email-subscribers.php:1902
+#: pro/pro-class-email-subscribers.php:1932
 msgid "Import existing WordPress users"
 msgstr ""
 
@@ -4305,36 +4345,36 @@ msgstr ""
 msgid "Variable not found."
 msgstr ""
 
-#: lite/includes/workflows/admin/class-es-workflow-admin-edit.php:249
+#: lite/includes/workflows/admin/class-es-workflow-admin-edit.php:313
 msgid " Add New Workflow"
 msgstr ""
 
-#: lite/includes/workflows/admin/class-es-workflow-admin-edit.php:251
+#: lite/includes/workflows/admin/class-es-workflow-admin-edit.php:315
 msgid " Edit Workflow"
 msgstr ""
 
-#: lite/includes/workflows/admin/class-es-workflow-admin-edit.php:288
+#: lite/includes/workflows/admin/class-es-workflow-admin-edit.php:352
 msgid "Add title"
 msgstr ""
 
-#: lite/includes/workflows/admin/class-es-workflow-admin-edit.php:319
+#: lite/includes/workflows/admin/class-es-workflow-admin-edit.php:383
 #: lite/includes/workflows/admin/views/meta-box-trigger.php:68
 msgid "Trigger"
 msgstr ""
 
-#: lite/includes/workflows/admin/class-es-workflow-admin-edit.php:320
+#: lite/includes/workflows/admin/class-es-workflow-admin-edit.php:384
 msgid "Actions"
 msgstr ""
 
-#: lite/includes/workflows/admin/class-es-workflow-admin-edit.php:322
+#: lite/includes/workflows/admin/class-es-workflow-admin-edit.php:386
 msgid "Placeholders"
 msgstr ""
 
-#: lite/includes/workflows/admin/views/action.php:31
+#: lite/includes/workflows/admin/views/action.php:32
 msgid "New Action"
 msgstr ""
 
-#: lite/includes/workflows/admin/views/action.php:38
+#: lite/includes/workflows/admin/views/action.php:39
 msgid "Action"
 msgstr ""
 
@@ -4345,6 +4385,10 @@ msgstr ""
 
 #: lite/includes/workflows/admin/views/meta-box-actions.php:76
 msgid "+ Add action"
+msgstr ""
+
+#: lite/includes/workflows/admin/views/meta-box-actions.php:87
+msgid "Email Preview"
 msgstr ""
 
 #: lite/includes/workflows/admin/views/meta-box-options.php:23
@@ -4490,7 +4534,7 @@ msgstr ""
 msgid "[Select]"
 msgstr ""
 
-#: lite/includes/workflows/admin/views/meta-box-variables.php:46
+#: lite/includes/workflows/admin/views/meta-box-variables.php:50
 msgid "Sorry, no placeholder tags are available for this trigger"
 msgstr ""
 
@@ -4523,6 +4567,22 @@ msgstr ""
 msgid "%s ago"
 msgstr ""
 
+#: lite/includes/workflows/class-es-workflow-action-preview.php:46
+msgid "Action Preview"
+msgstr ""
+
+#: lite/includes/workflows/class-es-workflow-action-preview.php:90
+msgid "A valid \"Order items\" must exist to generate the preview."
+msgstr ""
+
+#: lite/includes/workflows/class-es-workflow-action-preview.php:194
+msgid "A valid \"Product\" must exist to generate the preview."
+msgstr ""
+
+#: lite/includes/workflows/class-es-workflow-action-preview.php:221
+msgid "A valid \"Order\" must exist to generate the preview."
+msgstr ""
+
 #. translators: 1. Customer first name 2. Customer last name
 #. translators: 1. Guest first name 2. Guest last name
 #: lite/includes/workflows/class-es-workflow-data-layer.php:201
@@ -4532,11 +4592,11 @@ msgctxt "full name"
 msgid "%1$s %2$s"
 msgstr ""
 
-#: lite/includes/workflows/class-es-workflow.php:1008
+#: lite/includes/workflows/class-es-workflow.php:1024
 msgid "Missing action_name key in array."
 msgstr ""
 
-#: lite/includes/workflows/class-es-workflow.php:1014
+#: lite/includes/workflows/class-es-workflow.php:1030
 msgid "Could not retrieve the action."
 msgstr ""
 
@@ -4660,7 +4720,7 @@ msgid "Send welcome email when someone subscribes"
 msgstr ""
 
 #: lite/includes/workflows/db/class-es-db-workflows.php:593
-#: pro/pro-class-email-subscribers.php:2629
+#: pro/pro-class-email-subscribers.php:2659
 msgid "Send confirmation email"
 msgstr ""
 
@@ -4711,10 +4771,6 @@ msgstr ""
 
 #: lite/includes/workflows/triggers/class-es-trigger-campaign-sent.php:31
 msgid "Fires when a campaign is sent successfully."
-msgstr ""
-
-#: lite/includes/workflows/triggers/class-es-trigger-campaign-sent.php:32
-msgid "Admin"
 msgstr ""
 
 #: lite/includes/workflows/triggers/class-es-trigger-user-deleted.php:30
@@ -4790,22 +4846,24 @@ msgstr ""
 msgid "Sorry, we couldn't find you. Please contact admin."
 msgstr ""
 
-#: lite/public/class-email-subscribers-public.php:440
-#: starter/starter-class-email-subscribers.php:906
-msgid "is subscribed to our mailing list(s)."
-msgstr ""
-
-#: lite/public/class-email-subscribers-public.php:448
-msgid "Unsubscribe from all list(s)"
+#: lite/public/class-email-subscribers-public.php:367
+#: lite/public/class-email-subscribers-public.php:464
+#: starter/starter-class-email-subscribers.php:805
+#: starter/starter-class-email-subscribers.php:941
+msgid "Unsubscribe"
 msgstr ""
 
 #: lite/public/class-email-subscribers-public.php:449
-msgid "You will be unsubscribed from receiving all future emails sent from us."
+#: starter/starter-class-email-subscribers.php:917
+msgid "is subscribed to our mailing list(s)."
 msgstr ""
 
-#: lite/public/class-email-subscribers-public.php:455
-#: starter/starter-class-email-subscribers.php:930
-msgid "Unsubscribe"
+#: lite/public/class-email-subscribers-public.php:457
+msgid "Unsubscribe from all list(s)"
+msgstr ""
+
+#: lite/public/class-email-subscribers-public.php:458
+msgid "You will be unsubscribed from receiving all future emails sent from us."
 msgstr ""
 
 #: lite/public/partials/cron-message.php:33
@@ -4817,32 +4875,32 @@ msgid "Total Emails In Queue"
 msgstr ""
 
 #: lite/public/partials/cron-message.php:43
-#: pro/classes/class-es-campaign-admin-pro.php:175
-#: pro/pro-class-email-subscribers.php:870
+#: pro/classes/class-es-campaign-admin-pro.php:176
+#: pro/pro-class-email-subscribers.php:898
 msgid "Send Now"
 msgstr ""
 
-#: lite/public/partials/subscription-successfull.php:11
+#: lite/public/partials/subscription-successfull.php:12
 msgid "Subscription confirmed !"
 msgstr ""
 
-#: lite/public/partials/subscription-successfull.php:13
+#: lite/public/partials/subscription-successfull.php:14
 msgid "Unsubscription confirmed !"
 msgstr ""
 
-#: lite/public/partials/subscription-successfull.php:51
+#: lite/public/partials/subscription-successfull.php:56
 msgid "Powered by"
 msgstr ""
 
-#: lite/public/partials/subscription-successfull.php:57
+#: lite/public/partials/subscription-successfull.php:62
 msgid "Want to Engage, Inspire and Convert Your Website Visitors ?"
 msgstr ""
 
-#: lite/public/partials/subscription-successfull.php:60
+#: lite/public/partials/subscription-successfull.php:65
 msgid "The most loved WordPress plugins for lead capture, call to action and email marketing."
 msgstr ""
 
-#: lite/public/partials/subscription-successfull.php:62
+#: lite/public/partials/subscription-successfull.php:67
 msgid " Take a look here"
 msgstr ""
 
@@ -4850,11 +4908,11 @@ msgstr ""
 msgid "Free!"
 msgstr ""
 
-#: pro/classes/class-es-campaign-admin-pro.php:84
+#: pro/classes/class-es-campaign-admin-pro.php:85
 msgid "Email address to receive preview email for testing"
 msgstr ""
 
-#: pro/classes/class-es-campaign-admin-pro.php:89
+#: pro/classes/class-es-campaign-admin-pro.php:90
 msgid "Send email"
 msgstr ""
 
@@ -4866,39 +4924,39 @@ msgstr ""
 msgid "Bounce status"
 msgstr ""
 
-#: pro/classes/class-es-pro-bounce-handler.php:116
+#: pro/classes/class-es-pro-bounce-handler.php:117
 msgid "Soft Bounced"
 msgstr ""
 
-#: pro/classes/class-es-pro-bounce-handler.php:141
+#: pro/classes/class-es-pro-bounce-handler.php:142
 msgid "Mailjet Bounce notification URL"
 msgstr ""
 
-#: pro/classes/class-es-pro-bounce-handler.php:149
+#: pro/classes/class-es-pro-bounce-handler.php:150
 msgid "Sendinblue Bounce notification URL"
 msgstr ""
 
-#: pro/classes/class-es-pro-bounce-handler.php:156
+#: pro/classes/class-es-pro-bounce-handler.php:157
 msgid "Amazon SES Bounce notification URL"
 msgstr ""
 
-#: pro/classes/class-es-pro-bounce-handler.php:163
+#: pro/classes/class-es-pro-bounce-handler.php:164
 msgid "PostMark Bounce WebHook URL"
 msgstr ""
 
-#: pro/classes/class-es-pro-bounce-handler.php:170
+#: pro/classes/class-es-pro-bounce-handler.php:171
 msgid "SparkPost Bounce WebHook URL"
 msgstr ""
 
-#: pro/classes/class-es-pro-bounce-handler.php:177
+#: pro/classes/class-es-pro-bounce-handler.php:178
 msgid "MailGun Bounce WebHook URL"
 msgstr ""
 
-#: pro/classes/class-es-pro-bounce-handler.php:184
+#: pro/classes/class-es-pro-bounce-handler.php:185
 msgid "SendGrid Bounce WebHook URL"
 msgstr ""
 
-#: pro/classes/class-es-pro-bounce-handler.php:191
+#: pro/classes/class-es-pro-bounce-handler.php:192
 msgid "PepiPost Bounce WebHook URL"
 msgstr ""
 
@@ -4916,7 +4974,7 @@ msgstr ""
 
 #: pro/classes/class-es-pro-custom-fields-table.php:40
 #: pro/classes/class-es-pro-custom-fields-table.php:92
-#: pro/pro-class-email-subscribers.php:411
+#: pro/pro-class-email-subscribers.php:435
 msgid "Custom Fields"
 msgstr ""
 
@@ -4999,7 +5057,7 @@ msgid "Recipient(s): "
 msgstr ""
 
 #: pro/classes/class-es-pro-reports-data.php:261
-#: pro/pro-class-email-subscribers.php:1286
+#: pro/pro-class-email-subscribers.php:1314
 msgid "Clicked"
 msgstr ""
 
@@ -5130,6 +5188,10 @@ msgstr ""
 msgid "Please share the reason"
 msgstr ""
 
+#: pro/classes/coupon/class-ig-es-coupon.php:99
+msgid "Generated by Email subscribers and Newsletters"
+msgstr ""
+
 #: pro/mailers/aws-ses/class-es-amazon-ses-mailer.php:117
 #: pro/mailers/aws-ses/class-es-amazon-ses-mailer.php:340
 msgid "Access Key ID is empty."
@@ -5174,44 +5236,52 @@ msgid "EU (Frankfurt)"
 msgstr ""
 
 #: pro/mailers/aws-ses/class-es-amazon-ses-mailer.php:421
-msgid "Asia Pacific (Mumbai)"
+msgid "EU (Milan)"
 msgstr ""
 
 #: pro/mailers/aws-ses/class-es-amazon-ses-mailer.php:422
-msgid "Asia Pacific (Tokyo)"
+msgid "Asia Pacific (Mumbai)"
 msgstr ""
 
 #: pro/mailers/aws-ses/class-es-amazon-ses-mailer.php:423
-msgid "Asia Pacific (Seoul)"
+msgid "Asia Pacific (Tokyo)"
 msgstr ""
 
 #: pro/mailers/aws-ses/class-es-amazon-ses-mailer.php:424
-msgid "Asia Pacific (Singapore)"
+msgid "Asia Pacific (Seoul)"
 msgstr ""
 
 #: pro/mailers/aws-ses/class-es-amazon-ses-mailer.php:425
-msgid "Asia Pacific (Sydney)"
+msgid "Asia Pacific (Singapore)"
 msgstr ""
 
 #: pro/mailers/aws-ses/class-es-amazon-ses-mailer.php:426
-msgid "Canada (Central)"
+msgid "Asia Pacific (Sydney)"
 msgstr ""
 
 #: pro/mailers/aws-ses/class-es-amazon-ses-mailer.php:427
+msgid "Canada (Central)"
+msgstr ""
+
+#: pro/mailers/aws-ses/class-es-amazon-ses-mailer.php:428
 msgid "South America (São Paulo)"
 msgstr ""
 
-#: pro/mailers/aws-ses/php-aws-ses/SimpleEmailService.php:623
+#: pro/mailers/aws-ses/class-es-amazon-ses-mailer.php:429
+msgid "Africa (Cape Town)"
+msgstr ""
+
+#: pro/mailers/aws-ses/php-aws-ses/SimpleEmailService.php:625
 msgid "Encountered an error, but no description given"
 msgstr ""
 
 #. translators: 1. Error type 2. Error code 3. Error message 4. Request Id
-#: pro/mailers/aws-ses/php-aws-ses/SimpleEmailService.php:629
+#: pro/mailers/aws-ses/php-aws-ses/SimpleEmailService.php:631
 msgid "%1$s - %2$s <br/>%3$s <br/>Request Id: %4$s"
 msgstr ""
 
 #. translators: %s: Error message.
-#: pro/mailers/aws-ses/php-aws-ses/SimpleEmailService.php:633
+#: pro/mailers/aws-ses/php-aws-ses/SimpleEmailService.php:635
 msgid "Encountered an error: %s"
 msgstr ""
 
@@ -5228,12 +5298,12 @@ msgstr ""
 msgid "Region is empty"
 msgstr ""
 
-#: pro/mailers/class-es-mailgun-mailer.php:585
+#: pro/mailers/class-es-mailgun-mailer.php:586
 #: pro/mailers/class-es-postmark-mailer.php:316
-#: pro/mailers/class-es-sendgrid-mailer.php:352
-#: pro/mailers/class-es-sendgrid-mailer.php:692
-#: pro/mailers/class-es-sendinblue-mailer.php:425
-#: pro/mailers/class-es-sparkpost-mailer.php:351
+#: pro/mailers/class-es-sendgrid-mailer.php:353
+#: pro/mailers/class-es-sendgrid-mailer.php:693
+#: pro/mailers/class-es-sendinblue-mailer.php:443
+#: pro/mailers/class-es-sparkpost-mailer.php:360
 msgid "An unknown error has occured. Please try again later."
 msgstr ""
 
@@ -5241,7 +5311,7 @@ msgstr ""
 msgid "Public key or Private key is empty."
 msgstr ""
 
-#: pro/mailers/class-es-mailjet-mailer.php:429
+#: pro/mailers/class-es-mailjet-mailer.php:447
 msgid "An unknown error has occurred. Please try again later."
 msgstr ""
 
@@ -5251,7 +5321,7 @@ msgid "API token is empty."
 msgstr ""
 
 #: pro/mailers/class-es-sendgrid-mailer.php:123
-#: pro/mailers/class-es-sendgrid-mailer.php:302
+#: pro/mailers/class-es-sendgrid-mailer.php:303
 #: pro/mailers/class-es-sparkpost-mailer.php:113
 msgid "API key is empty."
 msgstr ""
@@ -5268,280 +5338,280 @@ msgstr ""
 msgid "Lost"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:206
+#: pro/pro-class-email-subscribers.php:228
 msgid "Your cart has been restored."
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:209
+#: pro/pro-class-email-subscribers.php:231
 msgid "Your cart could not be restored, it may have expired."
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:404
-#: pro/pro-class-post-digest.php:36
+#: pro/pro-class-email-subscribers.php:428
+#: pro/pro-class-post-digest.php:33
 msgid "Sequence"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:569
+#: pro/pro-class-email-subscribers.php:593
 msgid "Please enter an email address."
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:571
+#: pro/pro-class-email-subscribers.php:595
 msgid "Add Attachment"
 msgstr ""
 
 #. translators: %s: Attachmen max file size.
-#: pro/pro-class-email-subscribers.php:573
+#: pro/pro-class-email-subscribers.php:597
 msgid "Please attach a file having size lower than %s."
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:574
+#: pro/pro-class-email-subscribers.php:598
 msgid "Are you sure you want to delete this?"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:575
-#: pro/pro-class-email-subscribers.php:2112
+#: pro/pro-class-email-subscribers.php:599
+#: pro/pro-class-email-subscribers.php:2142
 msgid "Checking your orders..."
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:577
+#: pro/pro-class-email-subscribers.php:601
 #: pro/pro-class-sequences.php:544
 msgid "Send immediately"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:578
+#: pro/pro-class-email-subscribers.php:602
 msgid "Send after"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:579
+#: pro/pro-class-email-subscribers.php:603
 #: pro/pro-class-sequences.php:460
 msgid "hour(s)"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:580
+#: pro/pro-class-email-subscribers.php:604
 #: pro/pro-class-sequences.php:461
 msgid "day(s)"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:581
+#: pro/pro-class-email-subscribers.php:605
 #: pro/pro-class-sequences.php:462
 msgid "week(s)"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:706
+#: pro/pro-class-email-subscribers.php:734
 msgid "Clean My List"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:707
+#: pro/pro-class-email-subscribers.php:735
 msgid "List cleanup is in progress..."
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:708
+#: pro/pro-class-email-subscribers.php:736
 msgid "List cleanup completed successfully."
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:726
+#: pro/pro-class-email-subscribers.php:754
 msgid "Email status"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:727
+#: pro/pro-class-email-subscribers.php:755
 msgid "Last opened at"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:881
+#: pro/pro-class-email-subscribers.php:909
 msgid "Select page"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:894
+#: pro/pro-class-email-subscribers.php:922
 msgid "Subscriber will be redirected to selected page (by default, homepage) once they click on unsubscribe link from the email."
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:907
+#: pro/pro-class-email-subscribers.php:935
 msgid "Subscriber will be redirected to selected page (by default, homepage) once they click on email confirmation link from the double opt-in (confirmation) email."
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:945
+#: pro/pro-class-email-subscribers.php:973
 msgid "Enable?"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:952
+#: pro/pro-class-email-subscribers.php:980
 msgid "When our automated weekly email should be sent out?"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:961
+#: pro/pro-class-email-subscribers.php:989
 msgid "In which time we need to send our weekly summary?"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:987
+#: pro/pro-class-email-subscribers.php:1015
 msgid "Access Key ID"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:1000
+#: pro/pro-class-email-subscribers.php:1028
 msgid "Secret Access Key"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:1014
+#: pro/pro-class-email-subscribers.php:1042
 msgid "Closest Region"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:1016
+#: pro/pro-class-email-subscribers.php:1044
 msgid "To decrease network latency between your site and Amazon SES and speed up email sending, select the Amazon SES API region which is closest to where your website is hosted."
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:1043
+#: pro/pro-class-email-subscribers.php:1071
 msgid "Private API Key"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:1057
+#: pro/pro-class-email-subscribers.php:1085
 msgid "Domain Name"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:1068
-#: pro/pro-class-email-subscribers.php:1143
+#: pro/pro-class-email-subscribers.php:1096
+#: pro/pro-class-email-subscribers.php:1171
 msgid "United States"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:1069
-#: pro/pro-class-email-subscribers.php:1144
+#: pro/pro-class-email-subscribers.php:1097
+#: pro/pro-class-email-subscribers.php:1172
 msgid "Europe"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:1075
-#: pro/pro-class-email-subscribers.php:1150
+#: pro/pro-class-email-subscribers.php:1103
+#: pro/pro-class-email-subscribers.php:1178
 msgid "Region"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:1079
+#: pro/pro-class-email-subscribers.php:1107
 msgid "mailgun.com"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:1105
-#: pro/pro-class-email-subscribers.php:1132
+#: pro/pro-class-email-subscribers.php:1133
+#: pro/pro-class-email-subscribers.php:1160
 msgid "API Key"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:1152
+#: pro/pro-class-email-subscribers.php:1180
 msgid "Define which endpoint you want to use for sending messages. If you are operating under EU laws, you may be required to use EU region."
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:1177
+#: pro/pro-class-email-subscribers.php:1205
 msgid "API token"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:1205
+#: pro/pro-class-email-subscribers.php:1233
 msgid "API key"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:1234
+#: pro/pro-class-email-subscribers.php:1262
 msgid "Public key"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:1248
+#: pro/pro-class-email-subscribers.php:1276
 msgid "Private key"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:1575
+#: pro/pro-class-email-subscribers.php:1605
 msgid "You are not allowed to duplicate campaign."
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:1590
+#: pro/pro-class-email-subscribers.php:1620
 msgid "Campaign duplicated !"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:1921
+#: pro/pro-class-email-subscribers.php:1951
 msgid "Import WordPress users with following roles"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:1979
-#: pro/pro-class-email-subscribers.php:2119
+#: pro/pro-class-email-subscribers.php:2009
+#: pro/pro-class-email-subscribers.php:2149
 msgid "Proceed "
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:2021
+#: pro/pro-class-email-subscribers.php:2051
 msgid "Import from WooCommerce orders"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:2046
+#: pro/pro-class-email-subscribers.php:2076
 msgid "Select order statuses"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:2100
+#: pro/pro-class-email-subscribers.php:2130
 msgid "Orders should contain these products"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:2106
+#: pro/pro-class-email-subscribers.php:2136
 msgid "Search products..."
 msgstr ""
 
 #. translators: 1. Processed orders count. 2. Total orders count. 3. Matched orders count.
-#: pro/pro-class-email-subscribers.php:2338
+#: pro/pro-class-email-subscribers.php:2368
 msgid "Currently %1$s of %2$s orders checked. Found %3$s matching orders."
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:2349
+#: pro/pro-class-email-subscribers.php:2379
 msgid "We can't find any matching orders in your store."
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:2362
+#: pro/pro-class-email-subscribers.php:2392
 msgid "Total Opened"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:2415
+#: pro/pro-class-email-subscribers.php:2445
 msgid "How to configure Mailgun to send emails in the Email Subscribers plugin?"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:2447
+#: pro/pro-class-email-subscribers.php:2477
 msgid "How to configure SendGrid to send emails in the Email Subscribers plugin?"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:2479
+#: pro/pro-class-email-subscribers.php:2509
 msgid "How to configure Sparkpost to send emails in the Email Subscribers plugin?"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:2511
+#: pro/pro-class-email-subscribers.php:2541
 msgid "How to configure Amazon SES to send emails in the Email Subscribers plugin?"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:2543
+#: pro/pro-class-email-subscribers.php:2573
 msgid "How to configure Postmark to send emails in the Email Subscribers plugin?"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:2575
+#: pro/pro-class-email-subscribers.php:2605
 msgid "How to configure Sendinblue to send emails in the Email Subscribers plugin?"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:2607
+#: pro/pro-class-email-subscribers.php:2637
 msgid "How to configure Mailjet to send emails in the Email Subscribers plugin?"
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:2644
+#: pro/pro-class-email-subscribers.php:2674
 msgid "Confirmation emails queued successfully and will be sent shortly."
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:2652
+#: pro/pro-class-email-subscribers.php:2682
 msgid "No contacts found. May be they are already queued or there isn't any unconfirmed contact in your selection."
 msgstr ""
 
-#: pro/pro-class-email-subscribers.php:2655
+#: pro/pro-class-email-subscribers.php:2685
 msgid "Failed to queue confirmation emails. Please try again later."
 msgstr ""
 
-#: pro/pro-class-post-digest.php:109
+#: pro/pro-class-post-digest.php:90
 msgid "Number of posts"
 msgstr ""
 
-#: pro/pro-class-post-digest.php:151
+#: pro/pro-class-post-digest.php:132
 msgid "Once a day at..."
 msgstr ""
 
-#: pro/pro-class-post-digest.php:152
+#: pro/pro-class-post-digest.php:133
 msgid "Weekly on..."
 msgstr ""
 
-#: pro/pro-class-post-digest.php:153
+#: pro/pro-class-post-digest.php:134
 msgid "Monthly on the..."
 msgstr ""
 
-#: pro/pro-class-post-digest.php:154
+#: pro/pro-class-post-digest.php:135
 msgid "Immediately"
 msgstr ""
 
@@ -5796,6 +5866,30 @@ msgstr ""
 msgid "Displays the total cost of the cart."
 msgstr ""
 
+#: pro/workflows/variables/coupon-generate-unique-coupon.php:17
+msgid "Generates a unique WooCommerce coupon based on a template coupon"
+msgstr ""
+
+#: pro/workflows/variables/coupon-generate-unique-coupon.php:22
+msgid "Name of the coupon that will cloned. NOTE: Don't delete the coupon code in WooCommerce dashboard"
+msgstr ""
+
+#: pro/workflows/variables/coupon-generate-unique-coupon.php:25
+msgid "Search coupon template"
+msgstr ""
+
+#: pro/workflows/variables/coupon-generate-unique-coupon.php:31
+msgid "The number of days the coupon will be valid for. Leave this field blank or put '0' to generate a coupon without an expiry date."
+msgstr ""
+
+#: pro/workflows/variables/coupon-generate-unique-coupon.php:33
+msgid "The prefix for the coupon code. To remove the prefix, leave this field blank."
+msgstr ""
+
+#: pro/workflows/variables/coupon-generate-unique-coupon.php:35
+msgid "The number of times the generated coupon can be used. Leave this field blank or put '0' for an unlimited number of coupon usage."
+msgstr ""
+
 #: pro/workflows/variables/customer-address-line-1.php:17
 msgid "Displays the first line of the customer's address."
 msgstr ""
@@ -6013,31 +6107,31 @@ msgstr ""
 msgid "Allow user to select list(s) while unsubscribe"
 msgstr ""
 
-#: starter/starter-class-email-subscribers.php:811
+#: starter/starter-class-email-subscribers.php:820
 msgid "Please select a list to unsubscribe"
 msgstr ""
 
-#: starter/starter-class-email-subscribers.php:915
+#: starter/starter-class-email-subscribers.php:926
 msgid "Unsubscribe from below mailing list(s)"
 msgstr ""
 
-#: starter/starter-class-email-subscribers.php:916
+#: starter/starter-class-email-subscribers.php:927
 msgid "Unsubscribe from all the lists"
 msgstr ""
 
-#: starter/starter-class-email-subscribers.php:1325
+#: starter/starter-class-email-subscribers.php:1338
 msgid "Pause"
 msgstr ""
 
-#: starter/starter-class-email-subscribers.php:1333
+#: starter/starter-class-email-subscribers.php:1346
 msgid "Resume"
 msgstr ""
 
-#: starter/starter-class-email-subscribers.php:1357
+#: starter/starter-class-email-subscribers.php:1370
 msgid "Pause campaign"
 msgstr ""
 
-#: starter/starter-class-email-subscribers.php:1366
+#: starter/starter-class-email-subscribers.php:1379
 msgid "Resume campaign"
 msgstr ""
 
@@ -6113,7 +6207,7 @@ msgstr ""
 #. translators: %s: WPForms form ID.
 #: starter/workflows/triggers/class-es-trigger-cf7-submitted.php:57
 #: starter/workflows/triggers/class-es-trigger-forminator-forms-submitted.php:62
-#: starter/workflows/triggers/class-es-trigger-forminator-forms-submitted.php:85
+#: starter/workflows/triggers/class-es-trigger-forminator-forms-submitted.php:86
 #: starter/workflows/triggers/class-es-trigger-gravity-forms-submitted.php:53
 #: starter/workflows/triggers/class-es-trigger-ninja-forms-submitted.php:56
 #: starter/workflows/triggers/class-es-trigger-wpforms-submitted.php:61
@@ -6121,7 +6215,7 @@ msgid "(ID: %s)"
 msgstr ""
 
 #: starter/workflows/triggers/class-es-trigger-cf7-submitted.php:65
-#: starter/workflows/triggers/class-es-trigger-forminator-forms-submitted.php:102
+#: starter/workflows/triggers/class-es-trigger-forminator-forms-submitted.php:103
 #: starter/workflows/triggers/class-es-trigger-gravity-forms-submitted.php:60
 #: starter/workflows/triggers/class-es-trigger-wpforms-submitted.php:69
 msgid "Select Form"
@@ -6148,7 +6242,7 @@ msgstr ""
 msgid "Fires whenever someone fill Forminator Plugin's form."
 msgstr ""
 
-#: starter/workflows/triggers/class-es-trigger-forminator-forms-submitted.php:104
+#: starter/workflows/triggers/class-es-trigger-forminator-forms-submitted.php:105
 msgid "Supported Form Types: Custom, Contact, Quote Request, Newsletter, Registration Forms"
 msgstr ""
 
@@ -6368,4 +6462,34 @@ msgstr ""
 
 #: starter/workflows/variables/wc-order-view-url.php:17
 msgid "Displays a URL to view the order in the user account area."
+msgstr ""
+
+#: lite/admin/dist/main.js:1
+#: lite/admin/js/src/views/Loader.js:4
+msgid "Loading"
+msgstr ""
+
+#: lite/admin/dist/main.js:1
+#: lite/admin/js/src/views/GalleryItem.js:20
+msgid "Use this"
+msgstr ""
+
+#: lite/admin/dist/main.js:1
+#: lite/admin/js/src/views/EditorChoicePopup.js:18
+msgid "Create Campaign"
+msgstr ""
+
+#: lite/admin/dist/main.js:1
+#: lite/admin/js/src/views/EditorChoicePopup.js:40
+msgid "Create using new Drag & Drop Editor"
+msgstr ""
+
+#: lite/admin/dist/main.js:1
+#: lite/admin/js/src/views/EditorChoicePopup.js:54
+msgid "Create using Classic Editor"
+msgstr ""
+
+#: lite/admin/dist/main.js:1
+#: lite/admin/js/src/views/GalleryItemsPage.js:49
+msgid "Create from scratch"
 msgstr ""

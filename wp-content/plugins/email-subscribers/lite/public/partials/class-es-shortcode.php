@@ -302,9 +302,11 @@ class ES_Shortcode {
 		$form_orig_html = $form_header_html;
 		// Don't show form if submission was successful.
 		if ( 'success' !== $message_class) {
-			$form_action_url = ES_Common::get_current_request_url();
-			
-			$form_header_html .= '<form action="' . $form_action_url . '#es_form_' . self::$form_identifier . '" method="post" class="es_subscription_form es_shortcode_form" id="es_subscription_form_' . $unique_id . '" data-source="ig-es">';
+			$form_action_url             = ES_Common::get_current_request_url();
+			$enable_ajax_form_submission = get_option( 'ig_es_enable_ajax_form_submission', 'no' );
+			$extra_form_class            = ( 'yes' == $enable_ajax_form_submission ) ? ' es_ajax_subscription_form' : '';
+
+			$form_header_html .= '<form action="' . $form_action_url . '#es_form_' . self::$form_identifier . '" method="post" class="es_subscription_form es_shortcode_form ' . esc_attr( $extra_form_class ) . '" id="es_subscription_form_' . $unique_id . '" data-source="ig-es" >';
 				
 			if ( '' != $desc ) {
 				$form_header_html .= '<div class="es_caption">' . $desc . '</div>';
@@ -420,6 +422,8 @@ class ES_Shortcode {
 		if ( ! empty( $contact_id ) ) {
 			$list_contact_status_map = ES()->lists_contacts_db->get_list_contact_status_map( $contact_id );
 		}
+
+		$lists = apply_filters( 'ig_es_lists', $lists );
 
 		foreach ( $lists as $list_id => $list_name ) {
 			if ( 0 != $i && 0 === ( $i % $columns ) ) {

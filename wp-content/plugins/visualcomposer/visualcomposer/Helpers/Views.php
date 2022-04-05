@@ -73,7 +73,17 @@ class Views extends container implements Helper
     public function doNestedSection($section, $slug)
     {
         $class = isset($section['vcv-args']['class']) ? ' ' . esc_attr($section['vcv-args']['class']) : '';
+        $hideTitle = isset($section['vcv-args']['hideTitle']) ? $section['vcv-args']['hideTitle'] : false;
 
+        if (isset($section['type']) && $section['type'] === 'accordion') {
+            // create accordion wrapper for child content
+            echo '<div class="vcv-dashboard-accordion-item">';
+            echo '<div class="vcv-dashboard-accordion-item-heading">
+                <span class="vcv-dashboard-accordion-item-heading-text">' . esc_html($section['title']) . '</span>
+                </div>';
+            echo '<div class="vcv-dashboard-accordion-item-content">';
+            echo isset($section['description']) ? ('<p class="description">' . esc_html($section['description']) . '</p>') : '';
+        }
         echo sprintf(
             '<div class="%s-section %s_%s%s">',
             esc_attr($slug),
@@ -81,9 +91,14 @@ class Views extends container implements Helper
             esc_attr($section['slug']),
             $class
         );
-        if ($section['title']) {
+        echo '<div class="vcv-dashboard-accordion-item-title">';
+        if ($section['title'] && !$hideTitle) {
             echo "<h2>{$section['title']}</h2>\n";
         }
+        if (isset($section['headerFooterCallback'])) {
+            call_user_func($section['headerFooterCallback'], $section);
+        }
+        echo '</div>';
 
         if ($section['callback']) {
             call_user_func($section['callback'], $section);
@@ -104,6 +119,11 @@ class Views extends container implements Helper
             echo '</div>';
         }
         echo '</div>';
+        if (isset($section['type']) && $section['type'] === 'accordion') {
+            echo '</div></div>'; // close section item and section content
+        }
+
+        return isset($section['type']) && $section['type'] === 'accordion';
     }
 
     public function doNestedFields($fields)
@@ -123,7 +143,15 @@ class Views extends container implements Helper
                     echo '<th scope="row"><label for="' . esc_attr($field['args']['label_for']) . '">' . $field['title']
                         . '</label></th>';
                 } else {
-                    echo '<th scope="row">' . $field['title'] . '</th>';
+                    echo '<th scope="row">';
+                    echo $field['title'];
+                    echo isset($field['help']) ? '<span class="vcv-help-tooltip-container">
+                        <span class="vcv-help-tooltip-icon"></span>
+                        <span class="vcv-help-tooltip">
+                        ' . $field['help'] . '
+                        </span>
+                      </span>' : '';
+                    echo '</th>';
                 }
             }
 

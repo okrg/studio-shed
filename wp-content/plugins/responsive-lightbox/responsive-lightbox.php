@@ -2,7 +2,7 @@
 /*
 Plugin Name: Responsive Lightbox & Gallery
 Description: Responsive Lightbox & Gallery allows users to create galleries and view larger versions of images, galleries and videos in a lightbox (overlay) effect optimized for mobile devices.
-Version: 2.3.3
+Version: 2.3.5
 Author: dFactory
 Author URI: http://www.dfactory.eu/
 Plugin URI: http://www.dfactory.eu/plugins/responsive-lightbox/
@@ -12,7 +12,7 @@ Text Domain: responsive-lightbox
 Domain Path: /languages
 
 Responsive Lightbox & Gallery
-Copyright (C) 2013-2021, Digital Factory - info@digitalfactory.pl
+Copyright (C) 2013-2022, Digital Factory - info@digitalfactory.pl
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -43,7 +43,7 @@ include_once( RESPONSIVE_LIGHTBOX_PATH . 'includes' . DIRECTORY_SEPARATOR . 'fun
  * Responsive Lightbox class.
  *
  * @class Responsive_Lightbox
- * @version	2.3.3
+ * @version	2.3.5
  */
 class Responsive_Lightbox {
 
@@ -200,7 +200,6 @@ class Responsive_Lightbox {
 			'active'			=> true,
 			'media_taxonomy'	=> 'rl_media_folder',
 			'media_tags'		=> false,
-			// 'jstree_style'		=> 'default',
 			'jstree_wholerow'	=> true,
 			'show_in_menu'		=> false,
 			'folders_removal'	=> true
@@ -305,7 +304,7 @@ class Responsive_Lightbox {
 			'origin_left'		=> true,
 			'origin_top'		=> true
 		),
-		'version' => '2.3.3',
+		'version' => '2.3.5',
 		'activation_date' => ''
 	);
 	public $options = array();
@@ -332,7 +331,7 @@ class Responsive_Lightbox {
 	private static $_instance;
 
 	/**
-	 * Constructor.
+	 * Class constructor.
 	 *
 	 * @return void
 	 */
@@ -1463,8 +1462,8 @@ class Responsive_Lightbox {
 					'public'				=> true,
 					'hierarchical'			=> false,
 					'labels'				=> array(
-						'name'				=> _x( 'Tags', 'taxonomy general name', 'responsive-lightbox' ),
-						'singular_name'		=> _x( 'Tag', 'taxonomy singular name', 'responsive-lightbox' ),
+						'name'				=> _x( 'Media Tags', 'taxonomy general name', 'responsive-lightbox' ),
+						'singular_name'		=> _x( 'Media Tag', 'taxonomy singular name', 'responsive-lightbox' ),
 						'search_items'		=> __( 'Search Tags', 'responsive-lightbox' ),
 						'all_items'			=> __( 'All Tags', 'responsive-lightbox' ),
 						'edit_item'			=> __( 'Edit Tag', 'responsive-lightbox' ),
@@ -1544,8 +1543,8 @@ class Responsive_Lightbox {
 				'public'				=> true,
 				'hierarchical'			=> true,
 				'labels'				=> array(
-					'name'				=> _x( 'Folders', 'taxonomy general name', 'responsive-lightbox' ),
-					'singular_name'		=> _x( 'Folder', 'taxonomy singular name', 'responsive-lightbox' ),
+					'name'				=> _x( 'Media Folders', 'taxonomy general name', 'responsive-lightbox' ),
+					'singular_name'		=> _x( 'Media Folder', 'taxonomy singular name', 'responsive-lightbox' ),
 					'search_items'		=> __( 'Search Folders', 'responsive-lightbox' ),
 					'all_items'			=> __( 'All Files', 'responsive-lightbox' ),
 					'parent_item'		=> __( 'Parent Folder', 'responsive-lightbox' ),
@@ -1601,7 +1600,7 @@ class Responsive_Lightbox {
 
 			wp_enqueue_script( 'responsive-lightbox-admin-select2', RESPONSIVE_LIGHTBOX_URL . '/assets/select2/select2.full' . ( ! ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '.min' : '' ) . '.js', array( 'jquery' ), $this->defaults['version'] );
 
-			wp_enqueue_script( 'responsive-lightbox-admin-galleries', RESPONSIVE_LIGHTBOX_URL . '/js/admin-galleries.js', array( 'jquery', 'underscore', 'wp-color-picker' ), $this->defaults['version'] );
+			wp_enqueue_script( 'responsive-lightbox-admin-galleries', RESPONSIVE_LIGHTBOX_URL . '/js/admin-galleries.js', array( 'jquery', 'underscore', 'wp-color-picker', 'jquery-ui-sortable' ), $this->defaults['version'] );
 
 			wp_localize_script(
 				'responsive-lightbox-admin-galleries',
@@ -1610,10 +1609,13 @@ class Responsive_Lightbox {
 					'mediaItemTemplate'	=> $this->galleries->get_media_item_template( $this->galleries->fields['images']['media']['attachments']['preview'] ),
 					'textSelectImages'	=> __( 'Select images', 'responsive-lightbox' ),
 					'textUseImages'		=> __( 'Use these images', 'responsive-lightbox' ),
+					'clearSelection'	=> __( 'Clear selected images', 'responsive-lightbox' ),
+					'selectedImages'	=> __( 'Selected images', 'responsive-lightbox' ),
 					'editTitle'			=> __( 'Edit attachment', 'responsive-lightbox' ),
 					'buttonEditFile'	=> __( 'Save attachment', 'responsive-lightbox' ),
 					'nonce'				=> wp_create_nonce( 'rl-gallery' ),
-					'post_id'			=> get_the_ID()
+					'post_id'			=> get_the_ID(),
+					'thumbnail'			=> wp_get_attachment_image_src( $this->galleries->maybe_generate_thumbnail(), 'thumbnail', false )
 				)
 			);
 
@@ -2089,6 +2091,8 @@ class Responsive_Lightbox {
 
 			$args['ajaxurl'] = admin_url( 'admin-ajax.php' );
 			$args['nonce'] = wp_create_nonce( 'rl_nonce' );
+			$args['preview'] = ( isset( $_GET['rl_gallery_revision_id'], $_GET['preview'] ) && $_GET['preview'] === 'true' ) ? 'true' : 'false';
+			$args['postId'] = (int) get_the_ID();
 
 			// enqueue scripts
 			if ( $scripts && is_array( $scripts ) ) {

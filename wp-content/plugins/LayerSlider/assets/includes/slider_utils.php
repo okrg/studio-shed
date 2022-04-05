@@ -10,7 +10,7 @@ function layerslider_builder_convert_numbers(&$item, $key) {
 }
 
 function ls_ordinal_number($number) {
-    $ends = array('th','st','nd','rd','th','th','th','th','th','th');
+    $ends = ['th','st','nd','rd','th','th','th','th','th','th'];
     $mod100 = $number % 100;
     return $number . ($mod100 >= 11 && $mod100 <= 13 ? 'th' :  $ends[$number % 10]);
 }
@@ -18,7 +18,7 @@ function ls_ordinal_number($number) {
 
 function layerslider_check_unit($str, $key = '') {
 
-	if(strstr($str, 'px') == false && strstr($str, '%') == false) {
+	if(strstr($str, 'px') == false && strstr($str, '%') == false && strstr($str, 'em') == false) {
 		if( $key !== 'z-index' && $key !== 'font-weight' && $key !== 'opacity') {
 			return $str.'px';
 		}

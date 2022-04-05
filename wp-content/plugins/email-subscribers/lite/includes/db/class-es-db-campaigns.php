@@ -721,6 +721,10 @@ class ES_DB_Campaigns extends ES_DB {
 			$wpbd->query( $wpbd->prepare( "UPDATE {$wpbd->prefix}ig_campaigns SET status = %d WHERE parent_id IN({$id_str})", $status ) );
 		}
 
+		if ( $updated ) {
+			do_action( 'ig_es_after_campaign_status_updated', $campaign_ids, $status );
+		}
+
 		return $updated;
 
 	}

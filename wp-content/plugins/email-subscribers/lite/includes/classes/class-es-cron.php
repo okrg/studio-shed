@@ -580,7 +580,7 @@ class ES_Cron {
 		$es_request = ig_es_get_request_data( 'es' );
 
 		// It's not a cron request . Say Goodbye!
-		if ( 'get_info' !== $es_request ) {
+		if ('get_info' !== $es_request ) {
 			return;
 		}
 

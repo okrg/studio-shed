@@ -127,13 +127,10 @@ class OMAPI_Blocks {
 			);
 		}
 
-		register_block_type(
-			$block_type,
-			$attributes,
-			array(
-				'render_callback' => array( $this, 'get_output' ),
-			)
-		);
+		// Add the `render_callback` to the attributes.
+		$attributes['render_callback'] = array( $this, 'get_output' );
+
+		register_block_type( $block_type, $attributes );
 	}
 
 	/**

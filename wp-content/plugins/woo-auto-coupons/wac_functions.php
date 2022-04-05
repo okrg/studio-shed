@@ -3,17 +3,17 @@
 Plugin Name: Auto Coupons for WooCommerce
 Description: Apply WooCommerce Coupons automatically.
 Author: Richard Lerma Design & Development
-Version: 2.1.5
+Version: 2.1.12
 Text Domain: r1cm
 Author URI: https://richardlerma.com/plugins/
 Copyright: (c) 2019-2020 - richardlerma.com - All Rights Reserved
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 WC requires at least: 3.5.0
-WC tested up to: 5.9
+WC tested up to: 6.3
 */
 
-global $wac_version; $wac_version='2.1.5';
+global $wac_version; $wac_version='2.1.12';
 if(!defined('ABSPATH')) exit;
 
 function wac_error() {file_put_contents(dirname(__file__).'/install_log.txt', ob_get_contents());}
@@ -87,6 +87,7 @@ function wac_in_like($n,$h) {
 
 // Path Comparison
 function wac_is_path($pages) {
+  if(function_exists('is_cart')) if(stripos($pages,'/cart')!==false) if(is_cart()) return true;
   $page=strtolower($_SERVER['REQUEST_URI']);
   return wac_in_like($page,$pages);
 }
@@ -174,7 +175,11 @@ function wac_apply_coupons() {
     $wc_max_ntf=$wc_qty_ntf[1];
     
     if($c->individual=='yes') $individual_use='[Individual Use]';
-    if($user_removed_coupon==strtolower($coupon_code)) {$valid=0; if($trb>0) $reason.=" Manually removed from the cart."; else continue;}
+    if($user_removed_coupon==strtolower($coupon_code)) {
+      $valid=wac_is_coupon_valid($coupon_code);
+      if($valid>0) {if($trb>0) $reason.=" Manually removed from the cart."; else continue;}
+      if($valid<1) wac_cache_coupon(); // uncache coupon if invalid
+    }
     if(!empty($auto_apply_indv)) {$valid=0; if($trb>0) $reason.=" Individual use coupon [$auto_apply_indv] has already been applied."; else continue;}
     if($c->exp>0) {$valid=0; if($trb>0) $reason.=" Expired {$c->exp_date}."; else continue;}
     if(!empty($c->product_ids) && $qty_in_cart<1 && empty($coupon)) {$valid=0; if($trb>0) $reason.=' No qualifying cart items.'; else continue;}

@@ -111,6 +111,8 @@ class License extends Container implements Helper
         if ($token !== 'free-token') {
             // License is upgraded: fire check for update
             $optionsHelper->deleteTransient('lastBundleUpdate');
+            $optionsHelper->deleteTransient('elements:autoload:all');
+            $optionsHelper->deleteTransient('addons:autoload:all');
             vcevent('vcv:hub:checkForUpdate', ['token' => $token]);
             wp_redirect(admin_url('admin.php?page=' . $redirectTo));
             exit;
@@ -142,15 +144,22 @@ class License extends Container implements Helper
     public function licenseErrorCodes($errorCode)
     {
         $message = '';
+        $utmHelper = vchelper('Utm');
         switch ($errorCode) {
             case 'expired':
             case 1:
-                $message = __('Visual Composer Website Builder license has expired.', 'visualcomposer');
+                $message = sprintf(
+                    __('Your license key has been expired. <a class="vcv-activation-box-link" href="%s" target="_blank" rel="noopener noreferrer">Renew</a> your license and continue to enjoy Premium features.', 'visualcomposer'),
+                    $utmHelper->get('license-activation-renewal')
+                );
                 break;
             case 'missing':
             case 'item_name_mismatch':
             case 2:
-                $message = __('Couldn\'t find a valid Visual Composer Website Builder license.', 'visualcomposer');
+                $message = sprintf(
+                    __('No such license found. Make sure it is correct or buy a new one <a class="vcv-activation-box-link" href="%s" target="_blank" rel="noopener noreferrer">here</a>.', 'visualcomposer'),
+                    $utmHelper->get('license-activation-purchase')
+                );
                 break;
             case 'invalid':
             case 'site_inactive':
@@ -172,7 +181,10 @@ class License extends Container implements Helper
                 $message = __('Activation failed, try again.', 'visualcomposer');
                 break;
             case 'no_activations_left':
-                $message = __('The license key has reached the activation limit.', 'visualcomposer');
+                $message = sprintf(
+                    __('This license key has reached its activation limit. <a class="vcv-activation-box-link" href="%s" target="_blank" rel="noopener noreferrer">Upgrade</a> it by paying only the difference.', 'visualcomposer'),
+                    $utmHelper->get('license-activation-upgrade')
+                );
                 break;
             case 'purchase_key_already_exist':
                 $message = __(
@@ -201,5 +213,17 @@ class License extends Container implements Helper
         $agreeHubTerms = $optionHelper->get('agreeHubTerms', false);
 
         return $agreeHubTerms || $this->getType() === 'free';
+    }
+
+    /**
+     * Get hashed key
+     *
+     * @param string $key
+     *
+     * @return false|string
+     */
+    public function getHashedKey($key)
+    {
+        return substr(md5(wp_salt() . $key), 2, 12);
     }
 }

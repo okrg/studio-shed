@@ -51,6 +51,8 @@ class Controller extends Container implements Module
 
         // In case if Trashed template removed
         $this->wpAddAction('before_delete_post', 'deleteTemplateData');
+
+        $this->wpAddFilter('save_post_vcv_templates', 'clearCache');
     }
 
     /**
@@ -90,6 +92,8 @@ class Controller extends Container implements Module
      */
     protected function allTemplatesAsync($response, EditorTemplates $editorTemplatesHelper)
     {
+        // TODO: Optimize, use pagination via ajax don't "all" output instantly
+        // TODO: consider preload only 5 templates, the rest only via ajax/pagination VC-1904
         if (!vcIsBadResponse($response)) {
             $templates = $editorTemplatesHelper->all();
             $response['templates'] = $templates;
@@ -247,11 +251,11 @@ class Controller extends Container implements Module
      */
     protected function saveTemplateId($sourceId)
     {
-        if ($sourceId === 'template') {
+        if (in_array($sourceId, ['template', 'customBlock'])) {
             /** @see \VisualComposer\Modules\Editors\Templates\Controller::create */
             $type = vcfilter(
                 'vcv:editorTemplates:template:type',
-                'custom',
+                $sourceId === 'template' ? 'custom' : 'customBlock',
                 [
                     'sourceId' => $sourceId,
                 ]
@@ -266,7 +270,8 @@ class Controller extends Container implements Module
                 return [
                     'status' => true,
                     'sourceId' => $templateId,
-                    'accessCheck' => false, // we already checked for access: skip ->canEdit check in DataAjax/Controller
+                    'accessCheck' => false,
+                    // we already checked for access: skip ->canEdit check in DataAjax/Controller
                 ];
             }
 
@@ -291,5 +296,10 @@ class Controller extends Container implements Module
         }
 
         return $response;
+    }
+
+    protected function clearCache()
+    {
+        wp_cache_delete('vcv:helpers:templates:all', 'vcwb');
     }
 }

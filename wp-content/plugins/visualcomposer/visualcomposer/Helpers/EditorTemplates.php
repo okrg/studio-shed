@@ -16,68 +16,98 @@ use VisualComposer\Framework\Illuminate\Support\Helper;
  */
 class EditorTemplates implements Helper
 {
+    protected function queryTemplates()
+    {
+        // We cannot use get_posts because of high memory usage (>100mb on 60 templates)
+        // Problems: multilingual translations are not filtered, but 3rd party can use filters if they wish so
+        // Additionally: we load just all templates now.
+        global $wpdb;
+        $results = $wpdb->get_results(
+            "select a.ID as `id`, a.post_title as `name`, b.meta_key, b.meta_value
+from {$wpdb->posts} a
+left join {$wpdb->postmeta} b on b.post_id = a.ID
+where a.post_type = 'vcv_templates' and a.post_status in ('draft', 'publish')
+and b.meta_key in ('_vcv-type', '_vcv-thumbnail', '_vcv-preview', '_vcv-description', '_vcv-bundle')
+order by a.post_modified desc
+;",
+            ARRAY_A
+        );
+
+        return $results;
+    }
+
+    protected function queryCustomTemplates()
+    {
+        global $wpdb;
+
+        return $wpdb->get_results(
+            "
+                    SELECT a.ID as `id`, a.post_title as `name`, b.meta_key, b.meta_value
+                    FROM {$wpdb->posts} as a
+                    LEFT JOIN {$wpdb->postmeta} as b on b.post_id = a.ID
+                    WHERE a.post_type = 'vcv_templates' and a.post_status in ('publish')
+                    AND b.meta_key in ('_vcv-type') AND b.meta_value LIKE 'custom%'
+                    OR b.meta_key
+                    ORDER BY a.post_modified ASC   
+            ",
+            ARRAY_A
+        );
+    }
+
     /**
      * @return array
      */
     public function all()
     {
-        $args = [
-            'posts_per_page' => '-1',
-            'post_type' => 'vcv_templates',
-            'order' => 'asc',
-        ];
-
-        $templatesGroups = vchelper('PostType')->queryGroupByMetaKey(
-            $args,
-            '_' . VCV_PREFIX . 'type'
-        );
-        $dataHelper = vchelper('Data');
-        $outputTemplates = [];
-        if (!empty($templatesGroups)) {
-            foreach ($templatesGroups as $groupKey => $templates) {
-                $groupTemplates = [];
-                foreach ($templates as $key => $template) {
-                    /** @var $template \WP_Post */
-                    $meta = get_post_meta($template->ID, VCV_PREFIX . 'pageContent', true);
-                    $templateElements = [];
-                    if (!vcvenv('VCV_FT_TEMPLATE_DATA_ASYNC')) {
-                        $templateElements = $this->getTemplateElements($meta, $template);
-                    }
-                    $groupTemplates = $this->processTemplateElements($templateElements, $template, $groupTemplates);
-                }
-                if (!empty($groupTemplates)) {
-                    if (empty($groupKey)) {
-                        $groupKey = 'custom';
-                    }
-                    if (isset($outputTemplates[ $groupKey ]) && isset($outputTemplates[ $groupKey ]['name'])) {
-                        $outputTemplates[ $groupKey ]['templates'] = $dataHelper->arrayDeepUnique(
-                            array_merge($outputTemplates[ $groupKey ]['templates'], $groupTemplates)
-                        );
-                    } else {
-                        $outputTemplates[ $groupKey ] = [
-                            'name' => $this->getGroupName($groupKey),
-                            'type' => $groupKey,
-                            'templates' => $groupTemplates,
-                        ];
-                    }
-                }
-            }
+        $cache = wp_cache_get('vcv:helpers:templates:all', 'vcwb');
+        if (!empty($cache)) {
+            return $cache;
         }
 
-        return $outputTemplates;
+        $templates = $this->queryTemplates();
+        $groupedResults = $this->groupQueryTemplates($templates);
+        wp_cache_set('vcv:helpers:templates:all', $groupedResults, 'vcwb', 3600);
+
+        return $groupedResults;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCustomTemplates()
+    {
+        $cache = wp_cache_get('vcv:helpers:templates:all:custom', 'vcwb');
+        if (!empty($cache)) {
+            return $cache;
+        }
+
+        $templates = $this->queryCustomTemplates();
+        $groupedResults = $this->groupQueryTemplates($templates);
+        wp_cache_set('vcv:helpers:templates:all:custom', $groupedResults, 'vcwb', 3600);
+
+        return $groupedResults;
     }
 
     public function getGroupName($key)
     {
         $name = '';
         switch ($key) {
+            case 'customHeader':
+                $name = __('My Headers Templates', 'visualcomposer');
+                break;
             case '':
             case 'custom':
                 $name = __('My Templates', 'visualcomposer');
                 break;
+            case 'customBlock':
+                $name = __('My Blocks', 'visualcomposer');
+                break;
             case 'hub':
             case 'predefined':
                 $name = __('Hub Templates', 'visualcomposer');
+                break;
+            case 'customFooter':
+                $name = __('My Footers Templates', 'visualcomposer');
                 break;
         }
 
@@ -137,7 +167,8 @@ class EditorTemplates implements Helper
                 'name' => $template->post_title,
                 'bundle' => $bundle,
                 'id' => (string)$template->ID,
-                'usageCount' => isset($usageCount[ 'template/' . $template->ID ]) ? $usageCount[ 'template/' . $template->ID ] : 0
+                'usageCount' => isset($usageCount[ 'template/' . $template->ID ]) ? $usageCount[ 'template/'
+                . $template->ID ] : 0,
             ];
             if (!vcvenv('VCV_FT_TEMPLATE_DATA_ASYNC')) {
                 $data['data'] = $templateElements;
@@ -181,40 +212,38 @@ class EditorTemplates implements Helper
         return $templateElements;
     }
 
+    /**
+     * @return array
+     */
     public function getCustomTemplateOptions()
     {
-        $templateGroups = $this->all();
         $options = [];
         $options[] = [
             'label' => __('Select a template', 'visualcomposer'),
             'value' => '',
         ];
 
-        if (!empty($templateGroups) && isset($templateGroups['custom']) && isset($templateGroups['custom']['name'])) {
-            $dataHelper = vchelper('Data');
-            $groupData = $templateGroups['custom'];
-            $name = $groupData['name'];
-            $templateNames = $dataHelper->arrayColumn($groupData['templates'], 'name');
-            $templateIds = $dataHelper->arrayColumn($groupData['templates'], 'id');
-
-            $options[] = [
-                'group' => [
-                    'label' => $name,
-                    'values' => array_map(
-                        function ($templateName, $templateId) {
-                            return [
-                                'label' => $templateName,
-                                'value' => $templateId,
-                            ];
-                        },
-                        $templateNames,
-                        $templateIds
-                    ),
-                ],
-            ];
+        $customTemplates = $this->getCustomTemplates();
+        if (!empty($customTemplates)) {
+            foreach ($customTemplates as $templates) {
+                $options[] = [
+                    'group' => [
+                        'label' => $this->getGroupName($templates['type']),
+                        'values' => array_map(
+                            function ($template) {
+                                return [
+                                    'label' => $template['name'],
+                                    'value' => (int)$template['id'],
+                                ];
+                            },
+                            $templates['templates']
+                        ),
+                    ],
+                ];
+            }
         }
 
-        return $options;
+        return vcfilter('vcv:helpers:templates:getCustomTemplates', $options);
     }
 
     public function create($type = 'custom')
@@ -255,5 +284,60 @@ class EditorTemplates implements Helper
         }
 
         return false;
+    }
+
+    /**
+     * @param array $templates
+     *
+     * @return array
+     */
+    protected function groupQueryTemplates(array $templates)
+    {
+        $usageCount = vchelper('Options')->get('usageCount', []);
+        // Merge JOIN results
+        $result = [];
+        foreach ($templates as $post) {
+            if (!isset($result[ $post['id'] ])) {
+                $result[ $post['id'] ] = $post;
+                $result[ $post['id'] ]['type'] = 'custom'; // default type
+                $usageCount = isset($usageCount[ 'template/' . $post['id'] ]) ? $usageCount[ 'template/' . $post['id'] ] : 0;
+                $result[ $post['id'] ]['usageCount'] = $usageCount;
+            }
+            if (isset($post['meta_key']) && $post['meta_key'] === '_vcv-type') {
+                $result[ $post['id'] ]['type'] = $post['meta_value'];
+            }
+            if (isset($post['meta_key']) && $post['meta_key'] === '_vcv-thumbnail') {
+                $result[ $post['id'] ]['thumbnail'] = $post['meta_value'];
+            }
+            if (isset($post['meta_key']) && $post['meta_key'] === '_vcv-preview') {
+                $result[ $post['id'] ]['preview'] = $post['meta_value'];
+            }
+            if (isset($post['meta_key']) && $post['meta_key'] === '_vcv-description') {
+                $result[ $post['id'] ]['description'] = $post['meta_value'];
+            }
+            if (isset($post['meta_key']) && $post['meta_key'] === '_vcv-bundle') {
+                $result[ $post['id'] ]['bundle'] = $post['meta_value'];
+            }
+        }
+
+        // Group by Type
+        $groupedResults = [];
+        foreach ($result as $post) {
+            $type = $post['type'];
+            // @codingStandardsIgnoreLine
+            if (!isset($groupedResults[ $type ])) {
+                $groupedResults[ $type ] = [];
+                $groupedResults[ $type ]['type'] = $type;
+                $groupedResults[ $type ]['name'] = $this->getGroupName($type);
+                $groupedResults[ $type ]['templates'] = [];
+            }
+            // Remove unneeded values
+            unset($post['meta_key'], $post['meta_value']);
+
+            // Append to result
+            $groupedResults[ $type ]['templates'][] = $post;
+        }
+
+        return $groupedResults;
     }
 }

@@ -365,7 +365,7 @@ class ES_DB_Workflows extends ES_DB {
 			$updated = $wpbd->query( $wpbd->prepare( "UPDATE {$wpbd->prefix}ig_workflows SET status = %d WHERE id IN ($workflow_ids_str)", $status ) );
 		}
 
-		do_action( 'ig_es_workflow_status_changed', $workflow_ids );
+		do_action( 'ig_es_workflow_status_changed', $workflow_ids, $status );
 
 		return $updated;
 
@@ -726,13 +726,13 @@ class ES_DB_Workflows extends ES_DB {
 	 * @return int $campaign_id ID of campaign used for tracking workflow emails.
 	 */
 	public function get_workflow_parent_campaign_id( $workflow_id ) {
-		$campaign_id = 0;
-		$parent_id   = $workflow_id;
-		$campaigns   = ES()->campaigns_db->get_campaign_by_parent_id( $parent_id );
 
-		if ( ! empty( $campaigns ) ) {
-			$campaign    = array_shift( $campaigns );
-			$campaign_id = $campaign['id'];
+		$campaign_id   = 0;
+		$parent_id     = $workflow_id;
+		$campaigns_ids = ES()->campaigns_db->get_campaigns_by_parent_id( $parent_id );
+
+		if ( ! empty( $campaigns_ids ) ) {
+			$campaign_id = $campaigns_ids[0];
 		}
 
 		return $campaign_id;
@@ -747,10 +747,10 @@ class ES_DB_Workflows extends ES_DB {
 	 *
 	 * @return int $tracking_campaign_id Created tracking campaign ID.
 	 */
-	public function create_parent_workflow_campaign( $workflow_id, $workflow_title ) {
-		$campaign_name   = ! empty( $workflow_title ) ? $workflow_title : '';
+	public function create_parent_workflow_campaign( $workflow_id, $workflow_data ) {
+		$campaign_name   = ! empty( $workflow_data['title'] ) ? $workflow_data['title'] : '';
 		$campaign_slug   = ! empty( $campaign_name ) ? sanitize_title( $campaign_name ) : '';
-		$campaign_type   = 'workflow';
+		$campaign_type   = IG_CAMPAIGN_TYPE_WORKFLOW;
 		$campaign_status = 1;
 		$parent_id       = $workflow_id;
 		$parent_type     = 'workflow';
@@ -765,6 +765,36 @@ class ES_DB_Workflows extends ES_DB {
 		);
 
 		$campaign_id = ES()->campaigns_db->save_campaign( $campaing_data );
+
+		return $campaign_id;
+	}
+
+	/**
+	 * Create parent campaign for workflow
+	 *
+	 * @since 4.5.3
+	 *
+	 * @param string $workflow_title Wordkfow title
+	 *
+	 * @return int $tracking_campaign_id Created tracking campaign ID.
+	 */
+	public function update_parent_workflow_campaign( $parent_campaign_id, $workflow_data ) {
+		
+		if ( empty( $parent_campaign_id ) ) {
+			return;
+		}
+
+		$campaign_name   = ! empty( $workflow_data['title'] ) ? $workflow_data['title'] : '';
+		$campaign_slug   = ! empty( $campaign_name ) ? sanitize_title( $campaign_name ) : '';
+		$campaign_status = $workflow_data['status'];
+
+		$campaing_data = array(
+			'name'        => $campaign_name,
+			'slug'        => $campaign_slug,
+			'status'      => $campaign_status,
+		);
+
+		$campaign_id = ES()->campaigns_db->save_campaign( $campaing_data, $parent_campaign_id );
 
 		return $campaign_id;
 	}

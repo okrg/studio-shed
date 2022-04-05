@@ -144,13 +144,33 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 		 */
 		public function __construct( $from_rainmaker = false ) {
 			if ( defined( 'DOING_AJAX' ) && ( true === DOING_AJAX ) ) {
-				add_action( 'wp_ajax_es_add_subscriber', array( $this, 'process_request' ), 10 );
-				add_action( 'wp_ajax_nopriv_es_add_subscriber', array( $this, 'process_request' ), 10 );
+				add_action( 'wp_ajax_es_add_subscriber', array( $this, 'process_ajax_request' ), 10 );
+				add_action( 'wp_ajax_nopriv_es_add_subscriber', array( $this, 'process_ajax_request' ), 10 );
 			}
 
 			$this->from_rainmaker = $from_rainmaker;
 
 			$this->handle_subscription();
+		}
+
+		/**
+		 * Process form submission via ajax call
+		 */
+		public function process_ajax_request() {
+			$es_subscribe = ! empty( $_POST['esfpx_es-subscribe'] ) ? sanitize_text_field( wp_unslash( $_POST['esfpx_es-subscribe'] ) ) : '';
+
+			if ( ! empty( $es_subscribe ) && wp_verify_nonce( $es_subscribe, 'es-subscribe' ) ) {
+				$nonce_verified = true;
+			}
+
+			if ( ! empty( $es_subscribe ) ) {
+				defined( 'IG_ES_RETURN_HANDLE_RESPONSE' ) || define( 'IG_ES_RETURN_HANDLE_RESPONSE', true );
+				$response = $this->process_request( wp_unslash( $_POST ) );
+			} else {
+				$response = array( 'status' => 'ERROR', 'message' => 'es_unexpected_error_notice', );
+			}
+			$response = $this->do_response( $response );
+			wp_send_json( $response );
 		}
 
 		/**
@@ -176,7 +196,6 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 			$es_subscribe = ! empty( $_POST['esfpx_es-subscribe'] ) ? sanitize_text_field( wp_unslash( $_POST['esfpx_es-subscribe'] ) ) : '';
 
 			if ( ! empty( $es_subscribe ) && wp_verify_nonce( $es_subscribe, 'es-subscribe' ) ) {
-				// TODO: Verify Nonce
 				$nonce_verified = true;
 			}
 

@@ -1132,10 +1132,12 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 			$subscribe_link   = $this->get_subscribe_link( $link_data );
 			$unsubscribe_link = $this->get_unsubscribe_link( $link_data );
 
-			$content = str_replace( '{{NAME}}', $name, $content );
-			$content = str_replace( '{{FIRSTNAME}}', $first_name, $content );
-			$content = str_replace( '{{LASTNAME}}', $last_name, $content );
-			$content = str_replace( '{{EMAIL}}', $email, $content );
+			$content = ES_Common::replace_keywords_with_fallback( $content, array(
+				'FIRSTNAME' => $first_name,
+				'NAME'      => $name,
+				'LASTNAME'  => $last_name,
+				'EMAIL'     => $email
+			) );
 
 			// TODO: This is a quick workaround to handle <a href="{{LINK}}?utm_source=abc" >
 			// TODO: Implement some good solution

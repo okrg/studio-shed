@@ -2,7 +2,7 @@
 Contributors: gravityview
 Tags: gravityforms, gravity forms, anti-spam, antispam, spam, spam-blocker, spambot, spammer, add-ons, honeypot
 Requires at least: 3.0.1
-Tested up to: 5.8.2
+Tested up to: 5.9
 Stable tag: trunk
 Requires PHP: 5.2.6
 License: GPLv2 or later
@@ -97,6 +97,10 @@ First, **de-activate and re-activate the plugin**. Then let us know on the suppo
 
 == Changelog ==
 
+= 1.2.1 on February 16, 2022 =
+
+* Improved: Don't check for spam on the Gravity Forms Preview page
+* Tested with WordPress 5.9
 
 = 1.2 & 1.2.0.1 on December 10, 2021 =
 

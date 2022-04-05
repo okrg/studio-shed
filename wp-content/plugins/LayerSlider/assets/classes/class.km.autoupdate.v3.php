@@ -12,7 +12,7 @@ defined( 'LS_ROOT_FILE' ) || exit;
  * @package KM_Updates
  * @since 4.6.3
  * @author John Gera
- * @copyright Copyright (c) 2021  John Gera, George Krupa, and Kreatura Media Kft.
+ * @copyright Copyright (c) 2022  John Gera, George Krupa, and Kreatura Media Kft.
  */
 
 
@@ -56,7 +56,7 @@ class KM_UpdatesV3 {
 	 * @param array $config Config for setting up auto updates
 	 * @return void
 	 */
-	public function __construct($config = array()) {
+	public function __construct( $config = [] ) {
 
 		// Get and check params
 		extract($config, EXTR_SKIP);
@@ -68,18 +68,18 @@ class KM_UpdatesV3 {
 		if( ! defined('WPLANG')) { define('WPLANG', ''); }
 
 		// Build config
-		$this->config = array_merge( $config, array(
+		$this->config = array_merge( $config, [
 
 			'slug' 			=> basename( dirname( $config['root'] ) ),
 			'base' 			=> plugin_basename( $config['root'] ),
 			'channel' 		=> get_option( $config['channelKey'], 'stable' ),
 			'license' 		=> get_option( $config['codeKey'], '' ),
 			'activation_id' => get_option( $config['activationKey'], '' ),
-			'domain' 		=> $_SERVER['SERVER_NAME'],
+			'domain' 		=> ! empty( $_SERVER['SERVER_NAME'] ) ? $_SERVER['SERVER_NAME'] : '',
 			'siteurl' 		=> esc_url( site_url() ),
 			'option' 		=> strtolower( basename( dirname( $config['root'] ) ) ) . '_update_info',
 			'locale' 		=> get_locale()
-		));
+		] );
 	}
 
 
@@ -102,7 +102,7 @@ class KM_UpdatesV3 {
 		}
 
 		if(!isset($transient->response)) {
-			$transient->response = array();
+			$transient->response = [];
 		}
 
 
@@ -171,8 +171,8 @@ class KM_UpdatesV3 {
 				( isset( $skin->plugin_info ) && $skin->plugin_info['Name'] === $this->config['name'] ) ) {
 
 				return new WP_Error('ls_update_error', sprintf(
-					__('License activation is required to receive updates. Please read our %sonline documentation%s to learn more.', 'LayerSlider'),
-					'<a href="https://layerslider.kreaturamedia.com/documentation/#activation" target="_blank">',
+					__('License registration is required to receive updates. Please read our %sonline documentation%s to learn more.', 'LayerSlider'),
+					'<a href="https://layerslider.com/documentation/#activation" target="_blank">',
 					'</a>')
 				);
 			}
@@ -195,11 +195,11 @@ class KM_UpdatesV3 {
 	 */
 	public function update_message( $plugin_data, $response ) {
 
-		// Provide license activation warning on non-activated sites
+		// Provide license registration warning on non-activated sites
 		if( ! LS_Config::isActivatedSite() && empty( $response->package ) ) {
 			echo ' ';
-			printf(__('License activation is required in order to receive updates for LayerSlider. %sPurchase a license%s or %sread the documentation%s to learn more. %sGot LayerSlider in a theme?%s', 'installer'),
-							'<a href="'.LS_Config::get('purchase_url').'" target="_blank">', '</a>', '<a href="https://layerslider.kreaturamedia.com/documentation/#activation" target="_blank">', '</a>', '<a href="https://layerslider.kreaturamedia.com/documentation/#activation-bundles" target="_blank">', '</a>');
+			printf(__('License registration is required in order to receive updates for LayerSlider. %sPurchase a license%s or %sread the documentation%s to learn more. %sGot LayerSlider in a theme?%s', 'installer'),
+							'<a href="'.LS_Config::get('purchase_url').'" target="_blank">', '</a>', '<a href="https://layerslider.com/documentation/#activation" target="_blank">', '</a>', '<a href="https://layerslider.com/documentation/#activation-bundles" target="_blank">', '</a>');
 		}
 	}
 
@@ -269,9 +269,13 @@ class KM_UpdatesV3 {
 
 
 			// Store version number of the latest release
-			// to notify unauthorized site owners
 			if( ! empty( $this->data->_latest_version ) ) {
 				update_option('ls-latest-version', $this->data->_latest_version);
+			}
+
+			// Store release date of the latest version
+			if( ! empty( $this->data->basic->released ) ) {
+				update_option('ls-latest-version-date', $this->data->basic->released );
 			}
 
 
@@ -289,12 +293,6 @@ class KM_UpdatesV3 {
 				}
 			}
 
-			// "Important message" notice
-			if( ! empty( $this->data->_important_notice ) ) {
-				update_option( 'ls-important-notice', $this->data->_important_notice );
-			} else {
-				delete_option( 'ls-important-notice' );
-			}
 
 			if( ! empty( $this->data->full->p_url ) ) {
 				update_option('ls-p-url', $this->data->full->p_url );
@@ -322,11 +320,11 @@ class KM_UpdatesV3 {
 		if(empty($url)) { return false; }
 
 		// Build request
-		$request = wp_remote_post($url, array(
+		$request = wp_remote_post( $url, [
 			'method' => 'POST',
 			'timeout' => 60,
 			'user-agent' => 'WordPress/'.$GLOBALS['wp_version'].'; '.get_bloginfo('url'),
-			'body' => array(
+			'body' => [
 				'slug' 			=> $this->config['slug'],
 				'base' 			=> $this->config['base'],
 				'version' 		=> $this->config['version'],
@@ -338,8 +336,8 @@ class KM_UpdatesV3 {
 				'siteurl' 		=> $this->config['siteurl'],
 				'locale' 		=> $this->config['locale'],
 				'api_version' 	=> self::API_VERSION
-			)
-		));
+			]
+		]);
 
 		return wp_remote_retrieve_body($request);
 	}
@@ -363,13 +361,13 @@ class KM_UpdatesV3 {
 		// ERR: Unexpected error
 		if( empty( $json ) ) {
 
-			die( json_encode( array(
-				'message' => 'An unexpected error occurred. Please try again later. If this error persist, it’s most likely a web server configuration issue. Please contact your web host and ask them to allow external connection to the following domain: repository.kreaturamedia.com. If you need further assistance in resolving this issue, please visit layerslider.kreaturamedia.com/help/',
-				'errCode' => 'ERR_UNEXPECTED_ERROR')
-			) );
+			die( json_encode( [
+				'message' => 'An unexpected error occurred. Please try again later. If this error persist, it’s most likely a web server configuration issue. Please contact your web host and ask them to allow external connection to the following domain: repository.kreaturamedia.com. If you need further assistance in resolving this issue, please visit https://layerslider.com/help/',
+				'errCode' => 'ERR_UNEXPECTED_ERROR'
+			] ) );
 		}
 
-		return array( $response, $json );
+		return [ $response, $json ];
 	}
 
 
@@ -379,35 +377,41 @@ class KM_UpdatesV3 {
 	 *
 	 * @since 4.6.3
 	 * @access public
-	 * @return string JSON string of authorization status data
+	 * @return mixed JSON string or array of authorization status data
 	 */
-	public function handleActivation() {
+	public function handleActivation( $licenseKey = '', $properties = [] ) {
+
+		if( empty( $properties['skipRefererCheck'] ) ) {
+			check_ajax_referer('ls_authorize_site');
+		}
+
+		if( empty( $licenseKey ) ) {
+			$licenseKey = $_POST['purchase_code'];
+		}
 
 		// Required informations
-		if( empty( $_POST['purchase_code'] ) || empty( $_POST['channel'] ) ) {
-			die( json_encode( array(
+		if( empty( $licenseKey ) ) {
+			die( json_encode( [
 				'message' => 'Please enter your license key.',
 				'errCode' => 'ERR_INVALID_DATA_RECEIVED'
-			) ) );
+			] ) );
 		}
 
 		// Re-validation
 		if(get_option('layerslider-validated', null) === '1' && !empty($this->config['license']) && get_option('layerslider-authorized-site', null) === null) {
-			$_POST['purchase_code'] = $this->config['license'];
+			$licenseKey = $this->config['license'];
 		}
 
-		// Save release channel
-		update_option($this->config['channelKey'], $_POST['channel']);
-
-		// Only update release channel?
+		// Updating already registered license
 		if( LS_Config::isActivatedSite() ) {
-			if( strpos($_POST['purchase_code'], '●') === 0 || $this->config['license'] == $_POST['purchase_code']) {
-				die(json_encode(array('message' => __('Your settings were successfully saved.', 'LayerSlider'))));
+
+			if( ! empty( $this->config['license'] ) && 0 === strpos( $licenseKey, '⦁' )  ) {
+				$licenseKey = $this->config['license'];
 			}
 		}
 
 		// Validate purchase
-		$this->config['license'] = $_POST['purchase_code'];
+		$this->config['license'] = $licenseKey;
 		$data = $this->sendApiRequest( $this->config['repoUrl'].'authorize/' );
 		list( $response, $json ) = $this->parseApiResponse( $data );
 
@@ -419,11 +423,13 @@ class KM_UpdatesV3 {
 
 		// Successful authorization
 		} else {
-			$json->code = base64_encode( $_POST['purchase_code'] );
+			$json->code = base64_encode( $json->license_key );
 			update_option( $this->config['authKey'], 1 );
-			update_option( $this->config['codeKey'], $_POST['purchase_code'] );
+			update_option( $this->config['codeKey'], $json->license_key );
 			update_option( $this->config['activationKey'], $json->activation_id );
 
+			$this->config['license'] = $json->license_key;
+			$this->config['activation_id'] = $json->activation_id;
 
 			// v6.1.5: Make sure to empty the stored update data from cache,
 			// so we can avoid issues caused by outdated and potentially
@@ -444,6 +450,10 @@ class KM_UpdatesV3 {
 			layerslider_delete_caches();
 		}
 
+
+		if( ! empty( $properties['returnData'] ) ) {
+			return $json;
+		}
 
 		die( json_encode( $json ) );
 	}
@@ -468,10 +478,88 @@ class KM_UpdatesV3 {
 		delete_option( $this->config['authKey'] );
 		delete_option( $this->config['activationKey'] );
 
+		delete_option( 'ls-auto-activation-date' );
+
 		// v6.6.3: Empty slider caches (if any) to re-enable displaying the premium
 		// notice above sliders on the front-end after deactivation.
 		layerslider_delete_caches();
 
 		die($response);
 	}
+
+	/**
+	 * Saves the auto-update release channel.
+	 *
+	 * @since 7.0.0
+	 * @access public
+	 * @return string JSON string of status data
+	 */
+	public function setReleaseChannel() {
+
+		check_ajax_referer('ls_set_release_channel');
+
+		if( empty( $_GET['channel'] ) ) {
+			$_GET['channel'] = 'stable';
+		}
+
+		$channel = ( $_GET['channel'] === 'beta' ) ? 'beta' : 'stable';
+
+		$this->config['channel'] = $channel;
+		update_option( $this->config['channelKey'], $channel );
+
+		die( json_encode( [
+			'success' => true,
+			'channel' => $channel
+		] ) );
+	}
+
+
+	/**
+	 * Attempts to automatically perform license registration with bundled
+	 * license identifier. Saves a flag in wp_options on failure to avoid
+	 * infinite attempts.
+	 *
+	 * @since 4.6.3
+	 * @access public
+	 * @return void
+	 */
+	public function attemptAutoActivation() {
+
+		// Bail out if there's no bundled license identifier
+		if( ! defined('LS_LICENSE_ID') || empty( LS_LICENSE_ID ) ) {
+			return false;
+		}
+
+		// Bail out if it's an activated site already
+		if( LS_Config::isActivatedSite() ) {
+			$this->disableAutoActivation();
+			return false;
+		}
+
+		// Bail out if the auto-activation feature is disabled
+		if( get_option('ls-disable-auto-activation', false ) ) {
+			return false;
+		}
+
+		// Immediately disable auto activation feature, no matter the outcome,
+		// to prevent subsequent execution that could lead issues down the line.
+		$this->disableAutoActivation();
+
+		// Attempt auto activation
+		$data = $this->handleActivation( LS_LICENSE_ID, [
+			'returnData' => true,
+			'skipRefererCheck' => true
+		]);
+
+		// Success
+		if( empty( $data->errCode ) ) {
+			update_option( 'ls-auto-activation-date', time() );
+		}
+
+	}
+
+	private function disableAutoActivation() {
+		update_option('ls-disable-auto-activation', true );
+	}
 }
+

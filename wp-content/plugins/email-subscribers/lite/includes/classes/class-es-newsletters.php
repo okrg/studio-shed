@@ -672,10 +672,12 @@ class ES_Newsletters {
 			$es_template_body = $template_data['content'];
 
 			$es_template_body = ES_Common::es_process_template_body( $es_template_body, $template_id, $campaign_id );
-			$es_template_body = str_replace( '{{NAME}}', $username, $es_template_body );
-			$es_template_body = str_replace( '{{EMAIL}}', $useremail, $es_template_body );
-			$es_template_body = str_replace( '{{FIRSTNAME}}', $first_name, $es_template_body );
-			$es_template_body = str_replace( '{{LASTNAME}}', $last_name, $es_template_body );
+			$es_template_body = ES_Common::replace_keywords_with_fallback( $es_template_body, array(
+				'FIRSTNAME' => $first_name,
+				'NAME'      => $username,
+				'LASTNAME'  => $last_name,
+				'EMAIL'     => $useremail
+			) );
 
 			// If there are blocks in this content, we shouldn't run wpautop() on it.
 			$priority = has_filter( 'the_content', 'wpautop' );

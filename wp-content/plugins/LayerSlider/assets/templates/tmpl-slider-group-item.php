@@ -5,11 +5,16 @@
 			<div class="items">
 
 			</div>
-		</div>
-		<div class="info">
-			<div class="name">
-				<?php _e('Unnamed Group', 'LayerSlider') ?>
+
+			<div class="info">
+				<div class="name">
+					<?= lsGetSVGIcon('th-large') ?>
+					<ls-span>
+						<?= __('Unnamed Group', 'LayerSlider') ?>
+					</ls-span>
+				</div>
 			</div>
+
 		</div>
 	</div>
 	<div class="ls-hidden">

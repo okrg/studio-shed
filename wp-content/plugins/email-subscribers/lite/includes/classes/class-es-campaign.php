@@ -213,11 +213,16 @@ if ( ! class_exists( 'ES_Campaign' ) ) {
 				return false;
 			}
 	
-
-			$_campaign = ES()->campaigns_db->get( $campaign_id, 'object' );
+			$_campaign = wp_cache_get( $campaign_id, 'ig_es_campaign' );
 
 			if ( ! $_campaign ) {
-				return false;
+				$_campaign = ES()->campaigns_db->get( $campaign_id, 'object' );
+				
+				if ( ! $_campaign ) {
+					return false;
+				}
+
+				wp_cache_add( $campaign_id, $_campaign, 'ig_es_campaign' );
 			}
 	
 			return new ES_Campaign( $_campaign );
