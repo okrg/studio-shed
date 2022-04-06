@@ -289,7 +289,7 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 											</h2>
 										</div>
 										<div class="flex pt-4 md:-mr-8 lg:-mr-16 xl:mr-0 md:ml-8 lg:ml-16 xl:ml-20">
-											<ul id="progressbar" class="overflow-hidden">
+											<ul class="ig-es-tabs overflow-hidden">
 												<li id="campaign_content_menu" class="relative float-left px-1 pb-2 text-center list-none cursor-pointer active ">
 													<span class="mt-1 text-base font-medium tracking-wide text-gray-400 active"><?php echo esc_html__( 'Content', 'email-subscribers' ); ?></span>
 												</li>

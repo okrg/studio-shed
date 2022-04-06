@@ -1,9 +1,14 @@
 import '../css/style.css';
 import GalleryItemsPage from './src/views/GalleryItemsPage';
 
-global.__ = wp.i18n.__;
-global._x = wp.i18n._x;
-global.sprintf = wp.i18n.sprintf;
+if ( 'undefined' !== typeof wp.i18n ) {
+    global.__ = wp.i18n.__;
+} else {
+    // Create a dummy fallback function incase i18n library isn't available.
+    global.__ = ( text, textDomain ) => {
+        return text;
+    }
+}
 
 const campaignGalleryItemsWrapper = document.querySelector('#ig-es-campaign-gallery-items-wrapper');
 

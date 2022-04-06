@@ -288,8 +288,9 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 					$layer['props']['styles'] = [];
 				}
 
-				// Trim and normalize HTML
 				$layer['props']['html'] = ! empty( $layer['props']['html'] ) ? trim( $layer['props']['html'] ) : '';
+				$layer['props']['type'] = !empty($layer['props']['type']) ? $layer['props']['type'] : '';
+				$layer['props']['media'] = !empty($layer['props']['media']) ? $layer['props']['media'] : '';
 
 				// WPML support
 				if( has_filter( 'wpml_translate_single_string' ) ) {
@@ -326,10 +327,6 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 						}
 					}
 				}
-
-				// Get layer type
-				$layer['props']['type'] = !empty($layer['props']['type']) ? $layer['props']['type'] : '';
-				$layer['props']['media'] = !empty($layer['props']['media']) ? $layer['props']['media'] : '';
 
 				// v7.0.0: Normalize HTML element tag for old versions
 				if( empty( $layer['props']['htmlTag'] ) ) {

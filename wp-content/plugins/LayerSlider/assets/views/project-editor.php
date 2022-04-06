@@ -156,7 +156,7 @@
 
 	include LS_ROOT_PATH . '/includes/ls_global.php';
 
-	// Load project-spefici Google Fonts
+	// Load project-specific Google Fonts
 	if( $googleFontsEnabled && ! empty( $slider['googlefonts'] ) && is_array( $slider['googlefonts'] ) ) {
 		$fontFragments = [];
 		foreach( $slider['googlefonts'] as $font ) {
@@ -6849,7 +6849,7 @@ overflow: hidden;', 'LayerSlider') ?>"></textarea>
 <lse-tt class="tt-slide-transition-sample lse-theme-light" id="lse-slide-transition-sample">
 </lse-tt>
 <lse-tt class="tt-advanced">
-	<?= __('This feature requires license registration. Click on the padlock to learn more.', 'LayerSlider') ?>
+	<?= __('Advanced Option', 'LayerSlider') ?>
 </lse-tt>
 <lse-tt class="tt-premium lse-premium">
 	<?= __('This feature requires license registration. Click on the padlock to learn more.', 'LayerSlider') ?>

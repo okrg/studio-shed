@@ -81,11 +81,15 @@ class ES_Workflow_Admin_Edit {
 		$subject = ig_es_get_request_data( 'subject', '' );
 		$content = ig_es_get_request_data( 'content', '', false );
 		$trigger = ig_es_get_request_data( 'trigger', '' );
+		$template = ig_es_get_request_data( 'template', '' );
+		$heading  = ig_es_get_request_data( 'heading', '' );
 
 		$content = ES_Workflow_Action_Preview::get_preview( $trigger, array(
 			'action_name'                => 'ig_es_send_email',
 			'ig-es-send-to'              => '',
 			'ig-es-email-subject'        => $subject,
+			'ig-es-email-template'       => $template,
+			'ig-es-email-heading'        => $heading,
 			'ig-es-email-content'        => $content,
 			'ig-es-tracking-campaign-id' => ''
 		) );
@@ -110,11 +114,15 @@ class ES_Workflow_Admin_Edit {
 		$trigger  = ig_es_get_request_data( 'trigger' );
 		$content  = ig_es_get_request_data( 'content', '', false );
 		$subject  = ig_es_get_request_data( 'subject', '' );
+		$template = ig_es_get_request_data( 'template', '' );
+		$heading  = ig_es_get_request_data( 'heading', '' );
 
 		$response['preview_html'] = ES_Workflow_Action_Preview::get_preview( $trigger, array(
 			'action_name'                => 'ig_es_send_email',
 			'ig-es-send-to'              => '',
 			'ig-es-email-subject'        => $subject,
+			'ig-es-email-template'       => $template,
+			'ig-es-email-heading'        => $heading,
 			'ig-es-email-content'        => $content,
 			'ig-es-tracking-campaign-id' => ''
 		) );
@@ -857,5 +865,28 @@ class ES_Workflow_Admin_Edit {
 	 */
 	public static function extract_array_option_value( $option, $posted, $default = array() ) {
 		return isset( $posted['workflow_options'][ $option ] ) ? ES_Clean::recursive( $posted['workflow_options'][ $option ] ) : $default;
+	}
+
+	/**
+	 * Method to get admin edit url of a workflow
+	 *
+	 * @param int $workflow_id
+	 * @return string  $edit_url Workflow edit URL
+	 * 
+	 * @since 5.3.8
+	 */
+	public static function get_admin_edit_url( $workflow_id ) {
+
+		$edit_url = admin_url( 'admin.php?page=es_workflows' );
+
+		$edit_url = add_query_arg(
+			array(
+				'id'     => $workflow_id,
+				'action' => 'edit',
+			),
+			$edit_url
+		);
+
+		return $edit_url;
 	}
 }

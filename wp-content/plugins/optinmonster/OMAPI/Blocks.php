@@ -109,28 +109,24 @@ class OMAPI_Blocks {
 	 */
 	public function register_blocks() {
 		$use_blocks_json = version_compare( $GLOBALS['wp_version'], '5.8', '>=' );
-		$attributes      = array();
-		$block_type      = $use_blocks_json
-			? plugin_dir_path( OMAPI_FILE ) . 'assets/js/'
-			: 'optinmonster/campaign-selector';
+		$block_type      = plugin_dir_path( OMAPI_FILE ) . 'assets/js/';
+		$args            = array(
+			'render_callback' => array( $this, 'get_output' ),
+		);
 
 		if ( ! $use_blocks_json ) {
-			$attributes = array(
-				'attributes' => array(
-					'slug'        => array(
-						'type' => 'string',
-					),
-					'followrules' => array(
-						'type' => 'boolean',
-					),
+			$block_type         = 'optinmonster/campaign-selector';
+			$args['attributes'] = array(
+				'slug'        => array(
+					'type' => 'string',
+				),
+				'followrules' => array(
+					'type' => 'boolean',
 				),
 			);
 		}
 
-		// Add the `render_callback` to the attributes.
-		$attributes['render_callback'] = array( $this, 'get_output' );
-
-		register_block_type( $block_type, $attributes );
+		register_block_type( $block_type, $args );
 	}
 
 	/**

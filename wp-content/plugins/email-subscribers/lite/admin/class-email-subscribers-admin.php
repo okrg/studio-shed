@@ -216,7 +216,7 @@ class Email_Subscribers_Admin {
 				'api_verification_success'        => esc_html__( 'API is valid. Fetching lists...', 'email-subscribers' ),
 				'mailchimp_notice_nowindow_close' => esc_html__( 'Fetching contacts from MailChimp...Please do not close this window', 'email-subscribers' ),
 			),
-			'is_pro'    => ES()->is_pro(),
+			'is_pro'    => ES()->is_pro() ? true : false,
 		);
 
 		wp_localize_script( $this->email_subscribers, 'ig_es_js_data', $ig_es_js_data );

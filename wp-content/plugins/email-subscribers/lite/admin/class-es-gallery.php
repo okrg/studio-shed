@@ -61,7 +61,11 @@ if ( ! class_exists( 'ES_Gallery' ) ) {
 					'post_digest_campaign_type'       => esc_attr( IG_CAMPAIGN_TYPE_POST_DIGEST ),
 				);
 
-				wp_register_script( 'ig-es-main-js', plugins_url( '/dist/main.js', __FILE__ ), array(), '2.0.4', true );
+				if ( ! wp_script_is( 'wp-i18n' ) ) {
+					wp_enqueue_script( 'wp-i18n' );
+				}
+
+				wp_register_script( 'ig-es-main-js', plugins_url( '/dist/main.js', __FILE__ ), array( 'mithril' ), '2.0.4', true );
 				wp_enqueue_script( 'ig-es-main-js' );
 
 				wp_localize_script( 'ig-es-main-js', 'ig_es_main_js_data', $main_js_data );
@@ -169,7 +173,8 @@ if ( ! class_exists( 'ES_Gallery' ) ) {
 					$gallery_item['ID'] = $campaign_template->ID;
 					$gallery_item['title'] = $campaign_template->post_title;
 					$gallery_item['type'] = get_post_meta( $campaign_template->ID, 'es_template_type', true );
-					$categories[] = !empty($gallery_item['type']) ? str_replace('_', ' ', $gallery_item['type']) : IG_CAMPAIGN_TYPE_NEWSLETTER;
+					$gallery_item['editor_type'] = !empty($editor_type) ? $editor_type : IG_ES_CLASSIC_EDITOR;
+					$categories[] = !empty($gallery_item['type']) ?  $gallery_item['type'] : IG_CAMPAIGN_TYPE_NEWSLETTER;
 					$categories[] = !empty($editor_type) ? $editor_type : IG_ES_CLASSIC_EDITOR;
 					$gallery_item['categories'] = $categories;
 					$thumbnail_url = ( ! empty( $campaign_template->ID ) ) ? get_the_post_thumbnail_url(

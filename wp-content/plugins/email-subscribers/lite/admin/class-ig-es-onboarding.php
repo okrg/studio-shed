@@ -625,6 +625,7 @@ if ( ! class_exists( 'IG_ES_Onboarding' ) ) {
 					$workflow_meta                = array();
 					$workflow_meta['when_to_run'] = 'immediately';
 					$workflow_status              = $workflow['status'];
+					$workflow_type                = isset( $workflow['type'] ) ? $workflow['type'] : IG_ES_WORKFLOW_TYPE_USER;
 	
 					$workflow_actions = $workflow['actions'];
 	
@@ -636,6 +637,7 @@ if ( ! class_exists( 'IG_ES_Onboarding' ) ) {
 						'meta'         => maybe_serialize( $workflow_meta ),
 						'priority'     => 0,
 						'status'       => $workflow_status,
+						'type'		   => $workflow_type,
 					);
 	
 					$workflow_id = ES()->workflows_db->insert_workflow( $workflow_data );

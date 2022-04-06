@@ -855,6 +855,18 @@ if ( ! function_exists( 'ig_es_allowed_html_tags_in_esc' ) ) {
 	}
 }
 
+if ( ! function_exists( 'ig_es_get_strip_excluded_tags' ) ) {
+	/**
+	 * Get HTML tags which should be excleded from stripping when calling strip_tags function.
+	 *
+	 * @since 5.3.8
+	 */
+	function ig_es_get_strip_excluded_tags() {
+		$excluded_tags = array( '<style>', '<p>', '<em>', '<span>', '<b>', '<strong>', '<i>', '<a>', '<ul>', '<ol>', '<li>', '<br>', '<br/>', '<blockquote>', '<header>', '<footer>' );
+		return apply_filters( 'ig_es_strip_excluded_tags', $excluded_tags ) ;
+	}
+}
+
 if ( ! function_exists( 'ig_es_allowed_css_style' ) ) {
 	/**
 	 * Allow CSS style in WP Kses

@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to the OptinMonster plugin will be documented in this file.
 
+### 2.6.12 - 2022-03-23
+* Improved support for ecommerce display rule targeting.
+* Improved goal support during onboarding.
+* Added new links to quickly create campaigns from the dashboard.
+* Improve display of new campaigns by prioritizing Featured templates.
+
 ### 2.6.11 - 2022-02-15
 * Fixed an issue where inline campaigns were not being output on the front-end of the site.
 

@@ -6,7 +6,7 @@ Tags: email marketing, subscription, autoresponder, post notification, welcome e
 Requires at least: 3.9
 Tested up to: 5.9.1
 Requires PHP: 5.6
-Stable tag: 5.3.7
+Stable tag: 5.3.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses
 
@@ -310,14 +310,24 @@ Refer [here](https://www.icegram.com/documentation/es-faq/).
 
 == Upgrade Notice ==
 
-= 5.3.7 =
+= 5.3.9 =
 
-* New: Added preview for workflow emails
-* Fix: Duplicate drafts were getting created for campaigns in some cases
-* Fix: Custom post type were not getting saved in post notification campaigns
-* Fix: Encoding issues with pepipost email sending
+* New: Added WooCommerce email template support in workflows
+* Fix: Template gallery not working with WordPress v4.9 and lower
 
 == Changelog ==
+
+**5.3.9 (30.03.2022)**
+
+* New: Added WooCommerce email template support in workflows
+* Fix: Template gallery not working with WordPress v4.9 and lower
+
+**5.3.8 (24.03.2022)**
+
+* New: Added predefined workflows
+* New: Email template gallery improvements
+* Fix: Sequence were not getting sent on time in some cases
+* Fix: Styling was not properly getting applied to the post excerpt in campaigns
 
 **5.3.7 (16.03.2022)**
 

@@ -166,8 +166,15 @@ class ES_DB_Workflows extends ES_DB {
 		}
 
 		if ( isset( $query_args['type'] ) ) {
-			$query[] = ' type = %d ';
-			$args[]  = $query_args['type'];
+			if ( is_numeric( $query_args['type'] ) ) {
+				$query[] = ' type = %d ';
+				$args[]  = $query_args['type'];
+			} elseif ( is_array( $query_args['type'] ) && count( $query_args['type'] ) > 0 ) {
+				$type_count        = count( $query_args['type'] );
+				$type_placeholders = array_fill( 0, $type_count, '%d' );
+				$query[]           = ' type IN( ' . implode( ',', $type_placeholders ) . ' )';
+				$args              = array_merge( $args, $query_args['type'] );
+			}
 		}
 
 		$query = apply_filters( 'ig_es_workflow_list_where_caluse', $query );
@@ -311,6 +318,8 @@ class ES_DB_Workflows extends ES_DB {
 	 */
 	public function delete_workflows( $ids = array() ) {
 
+		global $wpbd;
+
 		if ( ! is_array( $ids ) ) {
 			$ids = array( absint( $ids ) );
 		}
@@ -318,14 +327,19 @@ class ES_DB_Workflows extends ES_DB {
 		if ( is_array( $ids ) && count( $ids ) > 0 ) {
 
 			foreach ( $ids as $id ) {
-				$this->delete( absint( $id ) );
+				$id    = absint( $id );
+				$where = $wpbd->prepare( "$this->primary_key = %d AND type != %d", $id, IG_ES_WORKFLOW_TYPE_SYSTEM );
 
-				/**
-				 * Take necessary cleanup steps using this hook
-				 *
-				 * @since 4.4.1
-				 */
-				do_action( 'ig_es_workflow_deleted', $id );
+				$workflow_deleted = $this->delete_by_condition( $where );
+
+				if ( $workflow_deleted ) {
+					/**
+					 * Take necessary cleanup steps using this hook
+					 *
+					 * @since 4.4.1
+					 */
+					do_action( 'ig_es_workflow_deleted', $id );
+				}
 			}
 
 			return true;
@@ -587,6 +601,7 @@ class ES_DB_Workflows extends ES_DB {
 					),
 				),
 				'status' => ES()->mailer->can_send_welcome_email() ? 1 : 0,
+				'type'   => IG_ES_WORKFLOW_TYPE_SYSTEM,
 			),
 			array(
 				'trigger_name' => 'ig_es_user_unconfirmed',
@@ -600,6 +615,7 @@ class ES_DB_Workflows extends ES_DB {
 					)
 				),
 				'status' => 1,
+				'type'   => IG_ES_WORKFLOW_TYPE_SYSTEM,
 			),
 			array(
 				'trigger_name' => 'ig_es_user_subscribed',
@@ -613,6 +629,7 @@ class ES_DB_Workflows extends ES_DB {
 					),
 				),
 				'status' => ES()->mailer->can_send_add_new_contact_notification() ? 1 : 0,
+				'type'   => IG_ES_WORKFLOW_TYPE_SYSTEM,
 			),
 			array(
 				'trigger_name' => 'ig_es_campaign_sent',
@@ -626,6 +643,7 @@ class ES_DB_Workflows extends ES_DB {
 					),
 				),
 				'status' => ES()->mailer->can_send_cron_admin_email() ? 1 : 0,
+				'type'   => IG_ES_WORKFLOW_TYPE_SYSTEM,
 			),
 		);
 

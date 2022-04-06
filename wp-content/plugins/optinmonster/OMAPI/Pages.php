@@ -171,12 +171,13 @@ class OMAPI_Pages {
 			);
 
 			// If user upgradeable, add an upgrade link to menu.
-			$level = $this->base->can_upgrade();
-			if ( $level ) {
+			$level   = $this->base->get_level();
+			$upgrade = $this->base->can_upgrade();
+			if ( $upgrade || '' === $level ) {
 				$this->pages['optin-monster-upgrade'] = array(
 					'name'     => 'vbp_pro' === $level
-						? __( 'Upgrade to Growth', 'optin-monster-api' )
-						: __( 'Upgrade to Pro', 'optin-monster-api' ),
+						? '<span class="om-menu-highlight">' . __( 'Upgrade to Growth', 'optin-monster-api' ) . '</span>'
+						: '<span class="om-menu-highlight">' . __( 'Upgrade to Pro', 'optin-monster-api' ) . '</span>',
 					'redirect' => esc_url_raw( OMAPI_Urls::upgrade( 'pluginMenu' ) ),
 					'callback' => '__return_null',
 				);

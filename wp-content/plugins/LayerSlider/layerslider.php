@@ -11,7 +11,7 @@
 /*
         Plugin Name:  LayerSlider
          Plugin URI:  https://layerslider.com/
-            Version:  7.1.3
+            Version:  7.1.4
 
         Description:  LayerSlider is a premium multi-purpose content creation and animation platform. Easily create sliders, image galleries, slideshows with mind-blowing effects, popups, landing pages, animated page blocks, or even a full website. LayerSlider empowers millions of active websites on a daily basis with stunning visuals and eye-catching effects.
 
@@ -59,7 +59,7 @@ if( defined('LS_PLUGIN_VERSION') || isset( $GLOBALS['lsPluginPath'] ) ) {
 
 	define( 'LS_ROOT_FILE', __FILE__ );
 
-	define( 'LS_PLUGIN_VERSION', '7.1.3' );
+	define( 'LS_PLUGIN_VERSION', '7.1.4' );
 	define( 'LS_DB_VERSION', '7.0.0' );
 
 	require __DIR__.'/assets/init.php';

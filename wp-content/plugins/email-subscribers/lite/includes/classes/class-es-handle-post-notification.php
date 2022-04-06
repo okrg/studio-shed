@@ -240,7 +240,8 @@ class ES_Handle_Post_Notification {
 
 		// Get text before the more(<!--more-->) tag.
 		$text_before_more_tag = $more_tag_data['main'];
-		$text_before_more_tag = strip_tags( strip_shortcodes( $text_before_more_tag ) );
+		$strip_excluded_tags  = ig_es_get_strip_excluded_tags();
+		$text_before_more_tag = strip_tags( strip_shortcodes( $text_before_more_tag ), implode( '', $strip_excluded_tags ) );
 		$es_templ_body        = str_replace( '{{POSTMORETAG}}', $text_before_more_tag, $es_templ_body );
 
 		// get post author
@@ -300,7 +301,7 @@ class ES_Handle_Post_Notification {
 			$es_templ_body = ES_Common::es_process_template_body( $es_templ_body, $email_template_id );
 		}
 
-		return $es_templ_body;
+		return apply_filters( 'ig_es_post_notification_body', $es_templ_body, $post_id );
 	}
 
 	public static function refresh_post_content( $content, $args ) {

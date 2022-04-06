@@ -293,6 +293,10 @@ if ( ! class_exists( 'ES_Install' ) ) {
 				'ig_es_migrate_post_campaigns_list_settings_into_campaign_rules',
 				'ig_es_update_510_db_version',
 			),
+			'5.3.8'  => array(
+				'ig_es_mark_system_workflows',
+				'ig_es_update_538_db_version',
+			),
 		);
 
 		/**

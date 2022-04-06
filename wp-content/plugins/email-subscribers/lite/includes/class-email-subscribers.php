@@ -626,6 +626,14 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 				define( 'IG_ES_WORKFLOW_STATUS_ACTIVE', 1 );
 			}
 
+			if ( ! defined( 'IG_ES_WORKFLOW_TYPE_USER' ) ) {
+				define( 'IG_ES_WORKFLOW_TYPE_USER', 0 );
+			}
+
+			if ( ! defined( 'IG_ES_WORKFLOW_TYPE_SYSTEM' ) ) {
+				define( 'IG_ES_WORKFLOW_TYPE_SYSTEM', 1 );
+			}
+
 			if ( ! defined( 'IG_ES_TRIAL_PERIOD_IN_DAYS' ) ) {
 				define( 'IG_ES_TRIAL_PERIOD_IN_DAYS', 14 );
 			}
@@ -827,6 +835,8 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 				'lite/includes/workflows/db/class-es-db-workflows.php',
 				'lite/includes/workflows/db/class-es-db-workflows-queue.php',
 				'lite/includes/workflows/class-es-workflows-table.php',
+				'lite/includes/workflows/class-es-workflow-gallery.php',
+				
 				// Workflow Abstracts
 				'lite/includes/workflows/abstracts/class-es-workflow-registry.php',
 				'lite/includes/workflows/abstracts/class-es-workflow-trigger.php',
