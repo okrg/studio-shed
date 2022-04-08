@@ -754,6 +754,7 @@ if($ns_count == 0) {
     $ns_customer->lastName = rgar( $entry, '26' );
     $ns_customer->isPerson = true;
     $ns_customer->taxitem = 'AVATAX';
+    $ns_customer->leadsource = 'Free Consult';
     $ns_customer->phone = rgar( $entry, '4' );
     $ns_customer->email = rgar( $entry, '9' );
     $ns_customer->comments = 'Intended Use: ' . rgar( $entry, '28' ) . ';   ' .'Expected Timeline: ' . rgar( $entry, '30' ) . ';   ' . 'Possible Budget: ' . rgar( $entry, '31' ) . ';   ' .'Additional Comments: ' . rgar( $entry, '8' );
@@ -763,10 +764,7 @@ if($ns_count == 0) {
     $entityStatus->recordType = "customerStatus";
     $ns_customer->entityStatus = $entityStatus;
 
-    $source = new RecordRef();
-    $source->internalId = 89;
-    $source->recordType = "source";
-    $ns_customer->leadsource = $source;
+
 
     $customFields = new CustomFieldList();
 
