@@ -573,8 +573,7 @@ if($ns_count == 0) {
     $ns_customer->firstName = $name[0];
     $ns_customer->lastName = $name[1];
     $ns_customer->isPerson = true;
-    $ns_customer->taxitem = 'AVATAX';
-    //$ns_customer->leadsource = 'Free Consult';
+    $ns_customer->taxitem = 'AVATAX';    
     $ns_customer->phone = rgar( $entry, '4' );
     $ns_customer->email = rgar( $entry, '2' );
     $ns_customer->comments = rgar( $entry, '5' );
@@ -582,8 +581,13 @@ if($ns_count == 0) {
     $entityStatus = new RecordRef();
     $entityStatus->internalId = 6;
     $entityStatus->recordType = "customerStatus";
-
     $ns_customer->entityStatus = $entityStatus;
+
+    $source = new RecordRef();
+    $source->internalId = 62;
+    $source->recordType = "source";
+    $ns_customer->leadSource = $source;
+
 
     $customFields = new CustomFieldList();
 
