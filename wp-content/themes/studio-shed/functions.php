@@ -2,6 +2,13 @@
 require 'vendor/autoload.php';
 use NetSuite\NetSuiteService;
 use NetSuite\Classes\Customer;
+use NetSuite\Classes\CustomerSearch;
+use NetSuite\Classes\CustomerSearchBasic;
+use NetSuite\Classes\SearchRecord;
+use NetSuite\Classes\SearchRequest;
+use NetSuite\Classes\SearchRecordBasic;
+use NetSuite\Classes\SearchStringField;
+use NetSuite\Classes\SearchStringFieldOperator;
 use NetSuite\Classes\RecordRef;
 use NetSuite\Classes\AddRequest;
 use NetSuite\Classes\CustomFieldList;
@@ -539,11 +546,35 @@ function ss_post_contact_us( $entry, $form ) {
     ];
     $service = new NetSuiteService($config);
 
+
+//check if lead already exists in NS 
+$ns_count = 0;
+$service->setSearchPreferences(false, 20);
+$searchField = new SearchStringField();
+$searchField->operator = "is";
+$searchField->searchValue = rgar( $entry, '2' );
+
+$search = new CustomerSearchBasic();
+$search->email = $searchField;
+
+$request = new SearchRequest();
+$request->searchRecord = $search;
+
+$searchResponse = $service->search($request);
+
+if ($searchResponse->searchResult->status->isSuccess) {        
+  $result = $searchResponse->searchResult;
+  $ns_count = $result->totalRecords;  
+}
+
+if($ns_count == 0) {
+
     $ns_customer = new Customer();
     $ns_customer->firstName = $name[0];
     $ns_customer->lastName = $name[1];
     $ns_customer->isPerson = true;
     $ns_customer->taxitem = 'AVATAX';
+    //$ns_customer->leadsource = 'Free Consult';
     $ns_customer->phone = rgar( $entry, '4' );
     $ns_customer->email = rgar( $entry, '2' );
     $ns_customer->comments = rgar( $entry, '5' );
@@ -595,6 +626,7 @@ function ss_post_contact_us( $entry, $form ) {
     }
 
     GFCommon::log_debug( 'gform_after_submission: ns_response => ' . print_r( $ns_response, true ) );
+    }
 
 }
 
@@ -693,6 +725,30 @@ $config = [
         "logging"  => false    
     ];
     $service = new NetSuiteService($config);
+
+
+//check if lead already exists in NS 
+$ns_count = 0;
+$service->setSearchPreferences(false, 20);
+$searchField = new SearchStringField();
+$searchField->operator = "is";
+$searchField->searchValue = rgar( $entry, '2' );
+
+$search = new CustomerSearchBasic();
+$search->email = $searchField;
+
+$request = new SearchRequest();
+$request->searchRecord = $search;
+
+$searchResponse = $service->search($request);
+
+if ($searchResponse->searchResult->status->isSuccess) {        
+  $result = $searchResponse->searchResult;
+  $ns_count = $result->totalRecords;  
+}
+
+if($ns_count == 0) {
+
     $ns_customer = new Customer();
     $ns_customer->firstName = rgar( $entry, '25' );
     $ns_customer->lastName = rgar( $entry, '26' );
@@ -747,7 +803,7 @@ $config = [
     }
 
     GFCommon::log_debug( 'gform_after_submission: ns_response => ' . print_r( $ns_response, true ) );
-
+    }
 
 }
 
