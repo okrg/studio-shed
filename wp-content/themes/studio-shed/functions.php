@@ -732,7 +732,7 @@ $ns_count = 0;
 $service->setSearchPreferences(false, 20);
 $searchField = new SearchStringField();
 $searchField->operator = "is";
-$searchField->searchValue = rgar( $entry, '2' );
+$searchField->searchValue = rgar( $entry, '9' );
 
 $search = new CustomerSearchBasic();
 $search->email = $searchField;
@@ -762,6 +762,11 @@ if($ns_count == 0) {
     $entityStatus->internalId = 6;
     $entityStatus->recordType = "customerStatus";
     $ns_customer->entityStatus = $entityStatus;
+
+    $source = new RecordRef();
+    $source->internalId = 89;
+    $source->recordType = "source";
+    $ns_customer->leadsource = $source;
 
     $customFields = new CustomFieldList();
 
