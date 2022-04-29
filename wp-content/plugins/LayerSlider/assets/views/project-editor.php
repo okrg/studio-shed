@@ -297,12 +297,12 @@
 				 			<a class="lse-button" id="lse-brand" href="<?= admin_url('admin.php?page=layerslider') ?>">L<span class="lse-wide">ayer</span>S<span class="lse-wide">lider</span><span class="lse-highlight">7</span></a>
 							<lse-submenu>
 
-								<?php if( ! $lsActivated ) : ?>
+								<!-- <?php if( ! $lsActivated ) : ?>
 								<a class="lse-button lse-bg-unregistered lse-premium-menu-button">
 									<?= lsGetSVGIcon('lock') ?>
 									<lse-text><?= __('Unregistered', 'LayerSlider') ?></lse-text>
 								</a>
-								<?php endif ?>
+								<?php endif ?> -->
 								<a class="lse-button" href="<?= admin_url('admin.php?page=layerslider') ?>">
 									<?= lsGetSVGIcon('layer-group') ?>
 									<lse-text>
@@ -838,6 +838,10 @@
 											<kbd>
 												<kbd>&#9003;</kbd>
 											</kbd>
+										</lse-tt>
+
+										<lse-tt class="tt-layer-unregistered lse-premium">
+											<?= __('This layer uses a premium feature, which requires license registration to use it on front-end pages.', 'LayerSlider') ?>
 										</lse-tt>
 
 										<lse-sidebar-section-body class="lse-mv-0">
@@ -2730,10 +2734,11 @@
 																	</lse-text>
 																</lse-ib>
 																<lse-ib>
-																	<lse-fe-wrapper class="lse-smart-help lse-color-input" data-smart-help="textColor" data-smart-help-title="<?= __('Text Color', 'LayerSlider') ?>" data-smart-load="lse-color-picker">
+																	<lse-fe-wrapper class="lse-smart-help lse-color-input" data-smart-help="textColor" data-smart-help-title="<?= __('Color', 'LayerSlider') ?>" data-smart-load="lse-color-picker">
 																		<?php lsGetInput( $lsDefaults['layers']['color'], null, [
 																			'type' => 'text',
-																			'class' => 'lse-style-prop'
+																			'class' => 'lse-style-prop',
+																			'data-shape-color' => '1'
 																		] ) ?>
 																		<?= lsGetSVGIcon('times', null, [
 																			'class' => 'lse-remove lse-it-0'
@@ -3266,7 +3271,7 @@
 																</lse-ib>
 																<lse-ib>
 																	<lse-fe-wrapper class="lse-image-input lse-has-contextmenu" data-contextmenu-selector="#lse-context-menu-image-input">
-																		<lse-image-input class="lse-media-upload lse-bulk-upload lse-layer-background-image" data-prop="layerBackground"  data-search-name="<?= __('Background Image', 'LayerSlider') ?>"></lse-image-input>
+																		<lse-image-input class="lse-media-upload lse-layer-background-image" data-prop="layerBackground"  data-search-name="<?= __('Background Image', 'LayerSlider') ?>"></lse-image-input>
 																		<?= lsGetSVGIcon('ellipsis-v', null, [
 																			'class' => 'lse-options lse-has-left-contextmenu',
 																			'data-contextmenu-selector' => '#lse-context-menu-image-input'
@@ -4395,11 +4400,11 @@ overflow: hidden;', 'LayerSlider') ?>"></textarea>
 																	</lse-text>
 																</lse-ib>
 																<lse-ib>
-																	<lse-fe-wrapper class="lse-select">
-																		<?php lsGetInput( $lsDefaults['layers']['textStartAtIn'], null, [
-																			'class' => 'lse-transition-prop lse-start-at-calc lse-undomanager-merge'
-																		]) ?>
+																	<?php lsGetInput( $lsDefaults['layers']['textStartAtIn'], null, [
+																		'class' => 'lse-transition-prop lse-start-at-calc lse-undomanager-merge'
+																	]) ?>
 
+																	<lse-fe-wrapper class="lse-select lse-smart-help" data-smart-help="startwhen" data-smart-help-title="<?= __('Start When', 'LayerSlider') ?>">
 																		<?php lsGetSelect( $lsDefaults['layers']['textStartAtInTiming'], null, [
 																			'class' => 'lse-transition-prop lse-start-at-timing'
 																		]) ?>
@@ -4418,9 +4423,11 @@ overflow: hidden;', 'LayerSlider') ?>"></textarea>
 																			'class' => 'lse-transition-prop lse-start-at-operator'
 																		]) ?>
 																	</lse-fe-wrapper>
+																	<lse-fe-wrapper class="lse-smart-help" data-smart-help="startwhenmodifier" data-smart-help-title="<?= __('Start When Modifier', 'LayerSlider') ?>" data-smart-operations>
 																		<?php lsGetInput( $lsDefaults['layers']['textStartAtInValue'], null, [
 																			'class' => 'lse-transition-prop lse-start-at-value'
 																		]) ?>
+																	</lse-fe-wrapper>
 																	<lse-unit>ms</lse-unit>
 																</lse-ib>
 															</lse-col>
@@ -4724,10 +4731,10 @@ overflow: hidden;', 'LayerSlider') ?>"></textarea>
 																	</lse-text>
 																</lse-ib>
 																<lse-ib>
-																	<lse-fe-wrapper class="lse-select">
-																		<?php lsGetInput( $lsDefaults['layers']['loopStartAt'], null, [
-																			'class' => 'lse-transition-prop lse-start-at-calc lse-undomanager-merge'
-																		]) ?>
+																	<?php lsGetInput( $lsDefaults['layers']['loopStartAt'], null, [
+																		'class' => 'lse-transition-prop lse-start-at-calc lse-undomanager-merge'
+																	]) ?>
+																	<lse-fe-wrapper class="lse-select lse-smart-help" data-smart-help="startwhen" data-smart-help-title="<?= __('Start When', 'LayerSlider') ?>">
 																		<?php lsGetSelect( $lsDefaults['layers']['loopStartAtTiming'], null, [
 																			'class' => 'lse-transition-prop lse-start-at-timing'
 																		]) ?>
@@ -4747,9 +4754,11 @@ overflow: hidden;', 'LayerSlider') ?>"></textarea>
 																		]) ?>
 																	</lse-fe-wrapper>
 
-																	<?php lsGetInput( $lsDefaults['layers']['loopStartAtValue'], null, [
-																		'class' => 'lse-transition-prop lse-start-at-value'
-																	]) ?>
+																	<lse-fe-wrapper class="lse-smart-help" data-smart-help="startwhenmodifier" data-smart-help-title="<?= __('Start When Modifier', 'LayerSlider') ?>" data-smart-operations>
+																		<?php lsGetInput( $lsDefaults['layers']['loopStartAtValue'], null, [
+																			'class' => 'lse-transition-prop lse-start-at-value'
+																		]) ?>
+																	</lse-fe-wrapper>
 																	<lse-unit>ms</lse-unit>
 																</lse-ib>
 															</lse-col>
@@ -4805,7 +4814,7 @@ overflow: hidden;', 'LayerSlider') ?>"></textarea>
 																	</lse-text>
 																</lse-ib>
 																<lse-ib>
-																	<lse-fe-wrapper class="lse-smart-help" data-smart-help="loopwait" data-smart-help-title="<?= __('Loop Wait', 'LayerSlider') ?>">
+																	<lse-fe-wrapper class="lse-smart-help" data-smart-operations data-smart-help="loopwait" data-smart-help-title="<?= __('Loop Wait', 'LayerSlider') ?>">
 																		<?php lsGetInput( $lsDefaults['layers']['loopWait'], null, [
 																			'class' => 'lse-transition-prop'
 																		]) ?>
@@ -5103,10 +5112,10 @@ overflow: hidden;', 'LayerSlider') ?>"></textarea>
 																	</lse-text>
 																</lse-ib>
 																<lse-ib>
-																	<lse-fe-wrapper class="lse-select">
-																		<?php lsGetInput( $lsDefaults['layers']['textStartAtOut'], null, [
-																			'class' => 'lse-transition-prop lse-start-at-calc lse-undomanager-merge'
-																		]) ?>
+																	<?php lsGetInput( $lsDefaults['layers']['textStartAtOut'], null, [
+																		'class' => 'lse-transition-prop lse-start-at-calc lse-undomanager-merge'
+																	]) ?>
+																	<lse-fe-wrapper class="lse-select lse-smart-help" data-smart-help="startwhen" data-smart-help-title="<?= __('Start When', 'LayerSlider') ?>">
 																		<?php lsGetSelect( $lsDefaults['layers']['textStartAtOutTiming'], null, [
 																			'class' => 'lse-transition-prop lse-start-at-timing'
 																		]) ?>
@@ -5125,9 +5134,11 @@ overflow: hidden;', 'LayerSlider') ?>"></textarea>
 																			'class' => 'lse-transition-prop lse-start-at-operator'
 																		]) ?>
 																	</lse-fe-wrapper>
-																	<?php lsGetInput( $lsDefaults['layers']['textStartAtOutValue'], null, [
-																		'class' => 'lse-transition-prop lse-start-at-value'
-																	]) ?>
+																	<lse-fe-wrapper class="lse-smart-help" data-smart-help="startwhenmodifier" data-smart-help-title="<?= __('Start When Modifier', 'LayerSlider') ?>" data-smart-operations>
+																		<?php lsGetInput( $lsDefaults['layers']['textStartAtOutValue'], null, [
+																			'class' => 'lse-transition-prop lse-start-at-value'
+																		]) ?>
+																	</lse-fe-wrapper>
 																	<lse-unit>ms</lse-unit>
 																</lse-ib>
 															</lse-col>
@@ -5451,10 +5462,10 @@ overflow: hidden;', 'LayerSlider') ?>"></textarea>
 																	</lse-text>
 																</lse-ib>
 																<lse-ib>
-																	<lse-fe-wrapper class="lse-select">
-																		<?php lsGetInput( $lsDefaults['layers']['transitionOutStartAt'], null, [
-																			'class' => 'lse-transition-prop lse-start-at-calc lse-undomanager-merge'
-																		]) ?>
+																	<?php lsGetInput( $lsDefaults['layers']['transitionOutStartAt'], null, [
+																		'class' => 'lse-transition-prop lse-start-at-calc lse-undomanager-merge'
+																	]) ?>
+																	<lse-fe-wrapper class="lse-select lse-smart-help" data-smart-help="startwhen" data-smart-help-title="<?= __('Start When', 'LayerSlider') ?>">
 																		<?php lsGetSelect( $lsDefaults['layers']['transitionOutStartAtTiming'], null, [
 																			'class' => 'lse-transition-prop lse-start-at-timing'
 																		]) ?>
@@ -5473,10 +5484,12 @@ overflow: hidden;', 'LayerSlider') ?>"></textarea>
 																			'class' => 'lse-transition-prop lse-start-at-operator'
 																		]) ?>
 																	</lse-fe-wrapper>
+																	<lse-fe-wrapper class="lse-smart-help" data-smart-help="startwhenmodifier" data-smart-help-title="<?= __('Start When Modifier', 'LayerSlider') ?>" data-smart-operations>
 																		<?php lsGetInput( $lsDefaults['layers']['transitionOutStartAtValue'], null, [
 																			'class' => 'lse-transition-prop lse-start-at-value'
 																		]) ?>
-																		<lse-unit>ms</lse-unit>
+																	</lse-fe-wrapper>
+																	<lse-unit>ms</lse-unit>
 																</lse-ib>
 															</lse-col>
 															<lse-separator></lse-separator>

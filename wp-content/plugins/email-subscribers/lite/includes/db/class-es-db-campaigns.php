@@ -681,6 +681,7 @@ class ES_DB_Campaigns extends ES_DB {
 			}
 
 			$campaigns = $this->get_by_conditions( $where, ARRAY_A );
+			$campaigns = apply_filters( 'ig_es_campaigns_for_post', $campaigns, $post_id );
 		}
 
 		return $campaigns;

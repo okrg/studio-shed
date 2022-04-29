@@ -134,6 +134,11 @@ function layerslider_update_scripts( $oldVersion, $currentVersion ) {
 		ls_empty_3rd_party_caches();
 	}
 
+	// Update remote data such as the quick release log
+	// displayed on LayerSlider's main screen to make sure
+	// the new version already has an entry there.
+	LS_RemoteData::update();
+
 	// Trigger 'layerslider_updated' action
 	// hook, so 3rd parties can run their own
 	// updates scripts (if any).

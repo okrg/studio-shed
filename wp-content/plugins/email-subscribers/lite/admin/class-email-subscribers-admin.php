@@ -256,7 +256,7 @@ class Email_Subscribers_Admin {
 		wp_enqueue_script( $this->email_subscribers . '-timepicker' );
 
 		if ( ! empty( $get_page ) && 'es_dashboard' === $get_page || 'es_reports' === $get_page ) {
-			wp_enqueue_script( 'frappe-js', 'https://unpkg.com/frappe-charts@1.5.2/dist/frappe-charts.min.iife.js', array( 'jquery' ), $this->version, false );
+			wp_enqueue_script( 'frappe-js', plugin_dir_url( __FILE__ ) . 'js/frappe-charts.min.iife.js', array( 'jquery' ), '1.5.2', false );
 		}
 
 	}
@@ -1229,7 +1229,7 @@ class Email_Subscribers_Admin {
 	public function ig_es_send_additional_data_for_tracking() {
 
 		// Send data only if user had opted for trial or user is on a premium plan.
-		$is_plan_valid      = ES()->is_trial() || ES()->is_premium();
+		$is_plan_valid      = ES()->trial->is_trial() || ES()->is_premium();
 
 		// Check if the data is already sent once
 		$can_send_data      = get_option( 'ig_es_send_additional_data_for_tracking', 'yes' );

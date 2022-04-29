@@ -245,14 +245,14 @@
 					<ls-button-text><?= __('Projects', 'LayerSlider') ?></ls-button-text>
 				</ls-button>
 
-				<ls-button class="ls-show-activation-box">
-					<?= lsGetSVGIcon('key') ?>
-					<ls-button-text><?= __('License', 'LayerSlider') ?></ls-button-text>
-				</ls-button>
-
 				<ls-button data-scroll="#ls--box-twitter-feed">
 					<?= lsGetSVGIcon('newspaper') ?>
 					<ls-button-text><?= __('News', 'LayerSlider') ?></ls-button-text>
+				</ls-button>
+
+				<ls-button class="ls-show-activation-box">
+					<?= lsGetSVGIcon('key') ?>
+					<ls-button-text><?= __('License', 'LayerSlider') ?></ls-button-text>
 				</ls-button>
 
 				<a class="ls-button ls-menu-help-button" href="https://layerslider.com/help/" target="blank">
@@ -720,97 +720,107 @@
 	<ls-section id="ls--admin-boxes" class="ls--form-control <?= $validity ? 'ls--registered' : 'ls--not-registered' ?>">
 		<ls-grid>
 			<ls-row class="ls--flex-stretch">
+
 				<ls-col class="ls--col1-2">
-					<ls-box id="ls--box-support" class="ls--fex ls--column ls--flex-stretch">
-						<ls-box-inner>
-							<ls-h2 class="ls--green">
-								<?= __('Help & Support', 'LayerSlider') ?>
-							</ls-h2>
-							<ls-ul class="ls--list-with-icons">
-								<ls-li>
-									<?= lsGetSVGIcon('book') ?>
-									<ls-strong><?= __('Read the documentation', 'LayerSlider') ?></ls-strong>
-									<ls-small><?= __('Get started with using LayerSlider.', 'LayerSlider') ?></ls-small>
-								</ls-li>
-								<ls-li>
-									<?= lsGetSVGIcon('life-ring') ?>
-									<ls-strong><?= __('Browse the FAQs', 'LayerSlider') ?></ls-strong>
-									<ls-small><?= __('Find answers for common questions.', 'LayerSlider') ?></ls-small>
-								</ls-li>
-								<ls-li class="ls--disable-if-not-registered">
-									<ls-span class="ls--show-if-registered">
-										<?= lsGetSVGIcon('users') ?>
-									</ls-span>
-									<ls-span class="ls--show-if-not-registered">
-										<?= lsGetSVGIcon('lock') ?>
-									</ls-span>
-									<ls-strong><?= __('Direct Support', 'LayerSlider') ?>
-										<a class="ls-show-activation-box ls--button ls--small ls--bg-gray ls--show-if-not-registered">
-											<?= __('Unlock Now', 'LayerSlider') ?>
-										</a>
-									</ls-strong>
-									<ls-small><?= __('Get in touch with our Support Team.', 'LayerSlider') ?></ls-small>
-								</ls-li>
-							</ls-ul>
-							<ls-p class="ls--mt-7 ls--mb-4">
-									<a class="ls--button ls--bg-green ls--large" href="https://layerslider.com/help/" target="_blank"><?= __('Open Help Center', 'LayerSlider') ?></a>
-							</ls-p>
-						</ls-box-inner>
-					</ls-box>
-				</ls-col>
-				<ls-col class="ls--col1-2">
-					<ls-box id="ls--box-social-media">
+					<ls-box id="ls--box-twitter-feed">
 						<ls-box-inner>
 							<ls-h2 class="ls--lightgray">
-								<?= __('Connect With LayerSlider', 'LayerSlider') ?>
+								<?= __('Latest News', 'LayerSlider') ?>
 							</ls-h2>
-							<ls-p>
-								<?= __('Follow us on Social Media and get notified about the latest product updates, sales, deals, and participate in giveaways and other programs.', 'LayerSlider') ?>
-							</ls-p>
-							<ls-grid class="ls--v-1 ls--h-1">
-								<ls-row class="ls--flex-stretch">
-									<ls-col class="ls--col1-2">
-										<a class="ls--social-twitter" href="https://twitter.com/kreaturamedia/" target="_blank">
-											<?= lsGetSVGIcon('twitter', 'brands') ?>
-											<ls-strong>
-												Twitter
-											</ls-strong>
-										</a>
-									</ls-col>
-									<ls-col class="ls--col1-2">
-										<a class="ls--social-facebook" href="https://www.facebook.com/kreaturamedia/" target="_blank">
-											<?= lsGetSVGIcon('facebook-f', 'brands') ?>
-											<ls-strong>
-												Facebook
-											</ls-strong>
-										</a>
-									</ls-col>
-									<ls-col class="ls--col1-2">
-										<a class="ls--social-youtube" href="https://www.youtube.com/user/kreaturamedia/" target="_blank">
-											<?= lsGetSVGIcon('youtube', 'brands') ?>
-											<ls-strong>
-												YouTube
-											</ls-strong>
-										</a>
-									</ls-col>
-									<ls-col class="ls--col1-2">
-										<a class="ls--social-instagram" href="https://instagram.com/layersliderwp/" target="_blank">
-											<?= lsGetSVGIcon('instagram', 'brands') ?>
-											<ls-strong>
-												Instagram
-											</ls-strong>
-										</a>
-									</ls-col>
-								</ls-row>
-							</ls-grid>
+							<ls-wrapper>
+								<ls-div>
+									<a class="twitter-timeline" data-chrome="nofooter noborders transparent" href="https://twitter.com/kreaturamedia?ref_src=twsrc%5Etfw">Tweets by kreaturamedia</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+								</ls-div>
+							</ls-wrapper>
+						</ls-box-inner>
+					</ls-box>
+				</ls-col>
+				<ls-col class="ls--col1-2">
+					<ls-box id="ls--box-updates">
+						<ls-box-inner>
+							<ls-h2 class="ls--red">
+								<?= __('Plugin Updates', 'LayerSlider') ?>
+								<ls-span class="ls--float-right">
+									<a class="ls--button ls--bg-white ls--red ls--border-red ls--medium" href="<?= wp_nonce_url( admin_url('admin.php?page=layerslider&action=check_updates'), 'check_updates' ) ?>">
+										<ls-span>
+											<?= __('Re-Check', 'LayerSlider') ?>
+										</ls-span>
+										<?= lsGetSVGIcon('sync-alt', false, ['id' => 'ls--check-for-updates']) ?>
+									</a>
+								</ls-span>
+							</ls-h2>
+							<ls-box id="ls--update-settings" class="ls--bg-red">
+								<ls-ul class="ls--list-with-icons">
+									<ls-li>
+										<?= lsGetSVGIcon('box-open') ?>
+										<ls-span><?= __('Installed Version:', 'LayerSlider') ?> <ls-strong><?= LS_PLUGIN_VERSION ?></ls-strong></ls-span>
+									</ls-li>
+									<ls-li>
+										<?= lsGetSVGIcon('cloud-download-alt') ?>
+										<ls-grid class="ls--v-0 ls--h-0">
+											<ls-row>
+												<ls-col class="ls--col2-3">
+													<ls-span><?= __('Available Version: ', 'LayerSlider') ?> <ls-strong><?= LS_RemoteData::getAvailableVersion() ?></ls-strong>
+													</ls-span>
+												</ls-col>
+
+												<ls-col class="ls--col1-3">
+													<?php if( ! empty( $GLOBALS['LS_hasPluginUpdate'] ) ): ?>
+													<a class="ls--show-if-registered ls-install-plugin-update ls--float-right ls--button ls--small ls--red ls--bg-white ls--ml-1"><?= __('Install Now', 'LayerSlider') ?></a>
+													<?php endif ?>
+												</ls-col>
+											</ls-row>
+										</ls-grid>
+									</ls-li>
+									<ls-li>
+										<?= lsGetSVGIcon('directions') ?>
+										<form method="get" id="ls--release-channel">
+											<ls-grid class="ls--v-0 ls--h-0">
+												<ls-row>
+													<ls-col class="ls--col2-3">
+														<ls-span>
+															<?php wp_nonce_field( 'ls_set_release_channel' ); ?>
+															<input type="hidden" name="action" value="ls_set_release_channel">
+															<?= __('Release Channel', 'LayerSlider') ?>
+														</ls-span>
+													</ls-col>
+													<ls-col class="ls--col1-3">
+														<ls-select-wrapper>
+															<select class="ls--small" name="channel">
+																<option value="stable"<?= ( $channel === 'stable' ) ? 'selected' : '' ?>><?= __('Stable', 'LayerSlider') ?></option>
+																<option value="beta"<?= ( $channel === 'beta' ) ? 'selected' : '' ?>><?= __('Beta', 'LayerSlider') ?></option>
+																</select>
+															<ls-select-arrow></ls-select-arrow>
+														</ls-select-wrapper>
+													</ls-col>
+												</ls-row>
+											</ls-grid>
+										</form>
+
+									</ls-li>
+								</ls-ul>
+							</ls-box>
+							<?php if( empty( LS_RemoteData::get('release-log') ) ) : ?>
+							<ls-p><?= sprintf(__('Couldn’t display the release log. Please check %sSystem Status%s for potential errors.', 'LayerSlider'), '<a href="'.admin_url('admin.php?page=layerslider&section=system-status').'">', '</a>' ) ?></ls-p>
+							<?php endif ?>
+							<ls-ul id="ls--release-log">
+
+								<?php if( ! empty( LS_RemoteData::get('release-log') ) ) : ?>
+								<?= LS_RemoteData::get('release-log') ?>
+
+								<ls-div class="ls--text-center ls--bottom-gradient">
+									<a target="_blank" href="https://layerslider.com/release-log/" class="ls--button ls--bg-lightgray ls--white">
+										<?= __('Show More', 'LayerSlider') ?>
+									</a>
+								</ls-div>
+								<?php endif ?>
+
+							</ls-ul>
 						</ls-box-inner>
 					</ls-box>
 				</ls-col>
 
-<!-- 				<ls-col class="<?= ( !empty( $sliders ) || $userFilters ) ? 'ls--flex-order-first' : '' ?>">
- -->
-
- 				<ls-col class="ls--flex-order-first">
+				<ls-col>
 
 					<ls-box id="ls--box-license" class="ls--bg-cover ls--no-overflow">
 
@@ -1019,6 +1029,97 @@
 					</ls-box>
 
 				</ls-col>
+
+				<ls-col class="ls--col1-2">
+					<ls-box id="ls--box-support" class="ls--fex ls--column ls--flex-stretch">
+						<ls-box-inner>
+							<ls-h2 class="ls--green">
+								<?= __('Help & Support', 'LayerSlider') ?>
+							</ls-h2>
+							<ls-ul class="ls--list-with-icons">
+								<ls-li>
+									<?= lsGetSVGIcon('book') ?>
+									<ls-strong><?= __('Read the documentation', 'LayerSlider') ?></ls-strong>
+									<ls-small><?= __('Get started with using LayerSlider.', 'LayerSlider') ?></ls-small>
+								</ls-li>
+								<ls-li>
+									<?= lsGetSVGIcon('life-ring') ?>
+									<ls-strong><?= __('Browse the FAQs', 'LayerSlider') ?></ls-strong>
+									<ls-small><?= __('Find answers for common questions.', 'LayerSlider') ?></ls-small>
+								</ls-li>
+								<ls-li class="ls--disable-if-not-registered">
+									<ls-span class="ls--show-if-registered">
+										<?= lsGetSVGIcon('users') ?>
+									</ls-span>
+									<ls-span class="ls--show-if-not-registered">
+										<?= lsGetSVGIcon('lock') ?>
+									</ls-span>
+									<ls-strong><?= __('Direct Support', 'LayerSlider') ?>
+										<a class="ls-show-activation-box ls--button ls--small ls--bg-gray ls--show-if-not-registered">
+											<?= __('Unlock Now', 'LayerSlider') ?>
+										</a>
+									</ls-strong>
+									<ls-small><?= __('Get in touch with our Support Team.', 'LayerSlider') ?></ls-small>
+								</ls-li>
+							</ls-ul>
+							<ls-p class="ls--mt-7 ls--mb-4">
+									<a class="ls--button ls--bg-green ls--large" href="https://layerslider.com/help/" target="_blank"><?= __('Open Help Center', 'LayerSlider') ?></a>
+							</ls-p>
+						</ls-box-inner>
+					</ls-box>
+				</ls-col>
+				<ls-col class="ls--col1-2">
+					<ls-box id="ls--box-social-media">
+						<ls-box-inner>
+							<ls-h2 class="ls--lightgray">
+								<?= __('Connect With LayerSlider', 'LayerSlider') ?>
+							</ls-h2>
+							<ls-p>
+								<?= __('Follow us on Social Media and get notified about the latest product updates, sales, deals, and participate in giveaways and other programs.', 'LayerSlider') ?>
+							</ls-p>
+							<ls-grid class="ls--v-1 ls--h-1">
+								<ls-row class="ls--flex-stretch">
+									<ls-col class="ls--col1-2">
+										<a class="ls--social-twitter" href="https://twitter.com/kreaturamedia/" target="_blank">
+											<?= lsGetSVGIcon('twitter', 'brands') ?>
+											<ls-strong>
+												Twitter
+											</ls-strong>
+										</a>
+									</ls-col>
+									<ls-col class="ls--col1-2">
+										<a class="ls--social-facebook" href="https://www.facebook.com/kreaturamedia/" target="_blank">
+											<?= lsGetSVGIcon('facebook-f', 'brands') ?>
+											<ls-strong>
+												Facebook
+											</ls-strong>
+										</a>
+									</ls-col>
+									<ls-col class="ls--col1-2">
+										<a class="ls--social-youtube" href="https://www.youtube.com/user/kreaturamedia/" target="_blank">
+											<?= lsGetSVGIcon('youtube', 'brands') ?>
+											<ls-strong>
+												YouTube
+											</ls-strong>
+										</a>
+									</ls-col>
+									<ls-col class="ls--col1-2">
+										<a class="ls--social-instagram" href="https://instagram.com/layersliderwp/" target="_blank">
+											<?= lsGetSVGIcon('instagram', 'brands') ?>
+											<ls-strong>
+												Instagram
+											</ls-strong>
+										</a>
+									</ls-col>
+								</ls-row>
+							</ls-grid>
+						</ls-box-inner>
+					</ls-box>
+				</ls-col>
+
+<!-- 				<ls-col class="<?= ( !empty( $sliders ) || $userFilters ) ? 'ls--flex-order-first' : '' ?>">
+ -->
+
  				<ls-col>
 					<ls-box id="ls--box-newsletter">
 						<ls-box-inner>
@@ -1061,104 +1162,6 @@
 									</ls-col>
 								</ls-row>
 							</ls-grid>
-						</ls-box-inner>
-					</ls-box>
-				</ls-col>
- 				<ls-col class="ls--col1-2">
-					<ls-box id="ls--box-twitter-feed">
-						<ls-box-inner>
-							<ls-h2 class="ls--lightgray">
-								<?= __('Latest News', 'LayerSlider') ?>
-							</ls-h2>
-							<ls-wrapper>
-								<ls-div>
-									<a class="twitter-timeline" data-chrome="nofooter noborders transparent" href="https://twitter.com/kreaturamedia?ref_src=twsrc%5Etfw">Tweets by kreaturamedia</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-								</ls-div>
-							</ls-wrapper>
-						</ls-box-inner>
-					</ls-box>
-				</ls-col>
-				<ls-col class="ls--col1-2">
-					<ls-box id="ls--box-updates">
-						<ls-box-inner>
-							<ls-h2 class="ls--red">
-								<?= __('Plugin Updates', 'LayerSlider') ?>
-								<ls-span class="ls--float-right">
-									<a class="ls--button ls--bg-white ls--red ls--border-red ls--medium" href="<?= wp_nonce_url( admin_url('admin.php?page=layerslider&action=check_updates'), 'check_updates' ) ?>">
-										<ls-span>
-											<?= __('Re-Check', 'LayerSlider') ?>
-										</ls-span>
-										<?= lsGetSVGIcon('sync-alt', false, ['id' => 'ls--check-for-updates']) ?>
-									</a>
-								</ls-span>
-							</ls-h2>
-							<ls-box id="ls--update-settings" class="ls--bg-red">
-								<ls-ul class="ls--list-with-icons">
-									<ls-li>
-										<?= lsGetSVGIcon('box-open') ?>
-										<ls-span><?= __('Installed Version:', 'LayerSlider') ?> <ls-strong><?= LS_PLUGIN_VERSION ?></ls-strong></ls-span>
-									</ls-li>
-									<ls-li>
-										<?= lsGetSVGIcon('cloud-download-alt') ?>
-										<ls-grid class="ls--v-0 ls--h-0">
-											<ls-row>
-												<ls-col class="ls--col2-3">
-													<ls-span><?= __('Available Version: ', 'LayerSlider') ?> <ls-strong><?= LS_RemoteData::getAvailableVersion() ?></ls-strong>
-													</ls-span>
-												</ls-col>
-
-												<ls-col class="ls--col1-3">
-													<?php if( ! empty( $GLOBALS['LS_hasPluginUpdate'] ) ): ?>
-													<a class="ls--show-if-registered ls-install-plugin-update ls--float-right ls--button ls--small ls--red ls--bg-white ls--ml-1"><?= __('Install Now', 'LayerSlider') ?></a>
-													<?php endif ?>
-												</ls-col>
-											</ls-row>
-										</ls-grid>
-									</ls-li>
-									<ls-li>
-										<?= lsGetSVGIcon('directions') ?>
-										<form method="get" id="ls--release-channel">
-											<ls-grid class="ls--v-0 ls--h-0">
-												<ls-row>
-													<ls-col class="ls--col2-3">
-														<ls-span>
-															<?php wp_nonce_field( 'ls_set_release_channel' ); ?>
-															<input type="hidden" name="action" value="ls_set_release_channel">
-															<?= __('Release Channel', 'LayerSlider') ?>
-														</ls-span>
-													</ls-col>
-													<ls-col class="ls--col1-3">
-														<ls-select-wrapper>
-															<select class="ls--small" name="channel">
-																<option value="stable"<?= ( $channel === 'stable' ) ? 'selected' : '' ?>><?= __('Stable', 'LayerSlider') ?></option>
-																<option value="beta"<?= ( $channel === 'beta' ) ? 'selected' : '' ?>><?= __('Beta', 'LayerSlider') ?></option>
-																</select>
-															<ls-select-arrow></ls-select-arrow>
-														</ls-select-wrapper>
-													</ls-col>
-												</ls-row>
-											</ls-grid>
-										</form>
-
-									</ls-li>
-								</ls-ul>
-							</ls-box>
-							<?php if( empty( LS_RemoteData::get('release-log') ) ) : ?>
-							<ls-p><?= sprintf(__('Couldn’t display the release log. Please check %sSystem Status%s for potential errors.', 'LayerSlider'), '<a href="'.admin_url('admin.php?page=layerslider&section=system-status').'">', '</a>' ) ?></ls-p>
-							<?php endif ?>
-							<ls-ul id="ls--release-log">
-
-								<?php if( ! empty( LS_RemoteData::get('release-log') ) ) : ?>
-								<?= LS_RemoteData::get('release-log') ?>
-
-								<ls-div class="ls--text-center ls--bottom-gradient">
-									<a target="_blank" href="https://layerslider.com/release-log/" class="ls--button ls--bg-lightgray ls--white">
-										<?= __('Show More', 'LayerSlider') ?>
-									</a>
-								</ls-div>
-								<?php endif ?>
-
-							</ls-ul>
 						</ls-box-inner>
 					</ls-box>
 				</ls-col>

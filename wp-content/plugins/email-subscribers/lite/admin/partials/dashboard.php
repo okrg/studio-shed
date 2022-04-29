@@ -1,5 +1,6 @@
 <?php
 // Exit if accessed directly
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -32,8 +33,8 @@ if ( ! empty( $contacts_growth ) ) {
 
 $audience_url              = admin_url( 'admin.php?page=es_subscribers' );
 $new_contact_url           = admin_url( 'admin.php?page=es_subscribers&action=new' );
-$new_broadcast_url         = admin_url( 'admin.php?page=es_newsletters' );
-$new_post_notification_url = admin_url( 'admin.php?page=es_notifications&action=new' );
+$new_broadcast_url         = admin_url( 'admin.php?page=es_gallery&campaign-type=newsletter' );
+$new_post_notification_url = admin_url( 'admin.php?page=es_gallery&campaign-type=post_notification' );
 $new_sequence_url          = admin_url( 'admin.php?page=es_sequence&action=new' );
 $new_form_url              = admin_url( 'admin.php?page=es_forms&action=new' );
 $new_list_url              = admin_url( 'admin.php?page=es_lists&action=new' );
@@ -87,6 +88,51 @@ $feature_blocks = array(
 		'documentation_url' => 'https://www.icegram.com/documentation/email-sequence/?utm_source=in_app&utm_medium=sequence&utm_campaign=es_doc_upsell',
 	),
 );
+
+$trial_block      = array();
+$show_trial_optin =  ! ES()->trial->is_trial() && ! ES()->is_premium();
+if ( $show_trial_optin ) {
+	$trial_period_in_days = ES()->trial->get_trial_period( 'in_days' );
+	
+	$trial_block = array(
+		'trial-optin' => array(
+			'title'        => __( 'Try Email Subscribers Premium', 'email-subscribers' ),
+			/* translators: %d: Trial period in days */
+			'desc'         => sprintf( __( 'Start your %d days free trial to get automatic email sending, advance spam protection and more.', 'email-subscribers' ), $trial_period_in_days),
+			'cta_text'     => __( 'Start trial', 'email-subscribers' ),
+			'feature_url'  => '',
+		),
+	);
+} elseif ( ! ES()->is_premium() && ES()->trial->is_trial() && ES()->trial->is_trial_valid() ) {
+	$trial_period_in_days        = ES()->trial->get_trial_period( 'in_days' );
+	$trial_expiry_date           = ES()->trial->get_trial_expiry_date();
+	$formatted_trial_expiry_date = ig_es_format_date_time( $trial_expiry_date );
+
+	$trial_block = array(
+		'trial-active' => array(
+			/* translators: %d: Trial period in days */
+			'title'        => sprintf( __( 'Your free %d days trial is on', 'email-subscribers' ), $trial_period_in_days ),
+			/* translators: %s: Number of days remaining in trial */
+			'desc'         => sprintf( __( 'Hope you are enjoying the premium features of Email Subscribers. It will expire on %s. You can anytime upgrade it to Pro.', 'email-subscribers' ), $formatted_trial_expiry_date ),
+			'cta_text'     => __( 'Upgrade to Pro', 'email-subscribers' ),
+			'feature_url'  => 'https://www.icegram.com/email-subscribers-pricing/?utm_source=in_app&utm_medium=upsell&utm_campaign=es_upsell',
+		),
+	);
+} elseif ( ! ES()->is_premium() && ES()->trial->is_trial() && ES()->trial->is_trial_expired() ) {
+	$trial_period_in_days = ES()->trial->get_trial_period( 'in_days' );
+
+	$trial_block = array(
+		'trial-expired' => array(
+			/* translators: %d: Trial period in days */
+			'title'        => sprintf( __( 'Your %d days trial is expired', 'email-subscribers' ), $trial_period_in_days ),
+			'desc'         => __( 'Upgrade now to continue uninterrupted use of premium features like automatic email sending and more.', 'email-subscribers' ),
+			'cta_text'     => __( 'Upgrade to Pro', 'email-subscribers' ),
+			'feature_url'  => 'https://www.icegram.com/email-subscribers-pricing/?utm_source=in_app&utm_medium=upsell&utm_campaign=es_upsell',
+		),
+	);
+}
+
+$feature_blocks = array_merge( $trial_block, $feature_blocks );
 
 $topics = ES_Common::get_useful_articles();
 
@@ -257,17 +303,24 @@ $topics_indexes = array_rand( $topics, 3 );
 			<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
 			<?php 
 			foreach ( $feature_blocks as $feature => $data ) { 
-				$bg = ( 'editor' === $feature ) ? 'bg-teal-100' : 'bg-white';
+				$is_trial_block = strpos( $feature, 'trial' ) !== false;
+				$bg = $is_trial_block ? 'bg-teal-100' : 'bg-white';
 				?>
-				<div class="relative p-6 rounded-lg shadow <?php echo esc_attr( $bg ); ?>">
+				<div id="ig-es-<?php echo esc_attr( $feature ); ?>-block" class="relative p-6 rounded-lg shadow <?php echo esc_attr( $bg ); ?>">
 					<h3 class="text-lg font-medium tracking-tight text-gray-900">
 						<?php echo esc_html( $data['title'] ); ?>
 					</h3>
-					<img
-					class="absolute bottom-0 right-0 w-24 -mr-3"
-					src= "<?php echo esc_url( ES_PLUGIN_URL . $data['graphics_img'] ); ?>"
-					/>
-					<div class="" style="width: calc(100% - 4rem)">
+					<?php
+					if ( ! empty( $data['graphics_img'] ) ) {
+						?>
+						<img
+						class="absolute bottom-0 right-0 w-24 -mr-3"
+						src= "<?php echo esc_url( ES_PLUGIN_URL . $data['graphics_img'] ); ?>"
+						/>
+						<?php
+					}
+					?>
+					<div class="block-description" style="width: calc(100% - 4rem)">
 						<p class="pt-3 xl:pr-3 2xl:pr-0 text-sm text-gray-500">
 							<?php echo esc_html( $data['desc'] ); ?>
 						</p>
@@ -279,7 +332,7 @@ $topics_indexes = array_rand( $topics, 3 );
 						}
 						?>
 
-						<a href="<?php echo esc_url( $feature_url ); ?>" target="_blank" class="es_primary_link">
+						<a id="ig-es-<?php echo esc_attr( $feature ); ?>-cta" href="<?php echo esc_url( $feature_url ); ?>" target="_blank" class="es_primary_link">
 							<?php echo esc_html( $data['cta_text'] ); ?> &rarr;
 						</a>
 					</div>
@@ -299,7 +352,11 @@ $topics_indexes = array_rand( $topics, 3 );
 
 	</main>
 </div>
-
+<?php
+if ( $show_trial_optin ) {
+	include_once 'trial-optin-form.php';
+}
+?>
 <script type="text/javascript">
 
 	(function ($) {

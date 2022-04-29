@@ -201,6 +201,10 @@ $l10n_ls = [
 			'title' => __('Video poster', 'LayerSlider'),
 			'icon' 	=> lsGetSVGIcon('photo-video')
 		],
+		'MODIFY_SHAPE' 	=> [
+			'title' => __('Modify Shape', 'LayerSlider'),
+			'icon' 	=> lsGetSVGIcon('shapes')
+		]
 	],
 
 	// Slider Builder
@@ -275,6 +279,7 @@ $l10n_ls = [
 
 	'SBInsertShapeTitle' 		=> __('Insert Shape', 'LayerSlider'),
 	'SBModifyShapeTitle' 		=> __('Modify Shape', 'LayerSlider'),
+	'SBShapeOptionsTitle' 		=> _x('%s Options', 'Shape Options (e.g. Wave Options, etc.)', 'LayerSlider'),
 
 	'SBRevisionsLoading' 		=> __('Loading, please wait...', 'LayerSlider'),
 

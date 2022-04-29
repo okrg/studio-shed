@@ -4,9 +4,9 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Author URI: https://www.icegram.com/
 Tags: email marketing, subscription, autoresponder, post notification, welcome email
 Requires at least: 3.9
-Tested up to: 5.9.1
+Tested up to: 5.9.3
 Requires PHP: 5.6
-Stable tag: 5.3.9
+Stable tag: 5.3.13
 License: GPLv3
 License URI: http://www.gnu.org/licenses
 
@@ -310,12 +310,34 @@ Refer [here](https://www.icegram.com/documentation/es-faq/).
 
 == Upgrade Notice ==
 
-= 5.3.9 =
+= 5.3.13 =
 
-* New: Added WooCommerce email template support in workflows
-* Fix: Template gallery not working with WordPress v4.9 and lower
+* New: Support for categories for custom post type
+* New: Added preview for sequence emails
 
 == Changelog ==
+
+**5.3.13 (27.04.2022)**
+
+* New: Support for categories for custom post type
+* New: Added preview for sequence emails
+
+**5.3.12 (21.04.2022)**
+
+* Fix: Incorrect name when registering through Ultimate Member plugin
+* Fix: Broadcast send now not working on sites having timezone before UTC
+* Fix: Security related issues [Thanks to WP team]
+
+**5.3.11 (12.04.2022)**
+
+* New: Now ES forms can be added to remote sites/pages via HTML code
+* Fix: Workflows are not getting saved in some cases
+* Fix: Security related issues [Thanks to WP team]
+
+**5.3.10 (07.04.2022)**
+
+* Fix: Security related issues [Thanks to WP team]
+* Enhancement: Small UI improvements
 
 **5.3.9 (30.03.2022)**
 

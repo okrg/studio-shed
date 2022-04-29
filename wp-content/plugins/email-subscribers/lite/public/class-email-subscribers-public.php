@@ -104,7 +104,7 @@ class Email_Subscribers_Public {
 
 		wp_enqueue_script( $this->email_subscribers, plugin_dir_url( __FILE__ ) . 'js/email-subscribers-public.js', array( 'jquery' ), $this->version, true );
 		wp_register_script( 'ig-es-pre-data', plugin_dir_url( __FILE__ ) . 'js/icegram_messages_data.js', array(), $this->version, false );
-		wp_register_script( 'ig-es-popup-js', plugin_dir_url( __FILE__ ) . 'js/icegram.js', array( 'jquery' ), $this->version, false );
+		wp_register_script( 'ig-es-popup-js', plugin_dir_url( __FILE__ ) . 'js/icegram.js', array( 'jquery', 'ig-es-pre-data' ), $this->version, false );
 				
 		$es_data = array(
 

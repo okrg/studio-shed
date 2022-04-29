@@ -130,7 +130,9 @@ class ES_Forms_Table extends ES_List_Table {
 									?>
 								</form>
 							</div>
-
+							<?php
+								do_action('ig_es_render_after_form_table');
+							?>
 						</div>
 					</div>
 					<br class="clear">
@@ -368,7 +370,7 @@ class ES_Forms_Table extends ES_List_Table {
 									<div class="flex flex-row border-b border-gray-100">
 										<div class="flex w-1/5">
 											<div class="ml-4 pt-6">
-												<label for="tag-link"><span class="block pt-1 ml-4 pr-4 text-sm font-medium text-gray-600 pb-2"><?php esc_html_e( 'Description', 'email-subscribers' ); ?></span></label>	
+												<label for="tag-link"><span class="block pt-1 ml-4 pr-4 text-sm font-medium text-gray-600 pb-2"><?php esc_html_e( 'Description', 'email-subscribers' ); ?></span></label>
 											</div>
 										</div>
 										<div class="flex ">
@@ -405,7 +407,7 @@ class ES_Forms_Table extends ES_List_Table {
 														<td class="pr-6 pb-8">
 															<input type="checkbox" class="form-checkbox opacity-0" name="form_data[email_required]" value="yes" disabled="disabled" checked="checked"></td>
 
-															<td class="pr-6 pb-8">	
+															<td class="pr-6 pb-8">
 																<input class="form-input block border-gray-400 w-5/6 pr-12 h-8 shadow-sm  focus:bg-gray-100 sm:text-sm sm:leading-5" name="form_data[email_label]" value="<?php echo esc_attr( $form_data['email_label'] ); ?>">
 															</td>
 															<td class="pr-6 pb-8">
@@ -416,7 +418,7 @@ class ES_Forms_Table extends ES_List_Table {
 															<td class="pr-6 pb-8"><b class="text-gray-500 text-sm font-normal pb-2"><?php esc_html_e( 'Name', 'email-subscribers' ); ?></b></td>
 
 															<td class="pr-6 pb-8">
-																<input type="checkbox" class="form-checkbox es_visible" name="form_data[name_visible]" value="yes" 
+																<input type="checkbox" class="form-checkbox es_visible" name="form_data[name_visible]" value="yes"
 																<?php
 																if ( 'yes' === $form_data['name_visible'] ) {
 																	echo 'checked="checked"';
@@ -425,7 +427,7 @@ class ES_Forms_Table extends ES_List_Table {
 																/>
 															</td>
 															<td class="pr-6 pb-8">
-																<input type="checkbox" class="form-checkbox es_required" name="form_data[name_required]" value="yes" 
+																<input type="checkbox" class="form-checkbox es_required" name="form_data[name_required]" value="yes"
 																<?php
 																if ( 'yes' === $form_data['name_required'] ) {
 																	echo 'checked="checked"';
@@ -433,14 +435,14 @@ class ES_Forms_Table extends ES_List_Table {
 																?>
 																/>
 															</td>
-															<td class="pr-6 pb-8"><input class="es_name_label form-input block border-gray-400 w-5/6 pr-12 h-8 shadow-sm  focus:bg-gray-100 sm:text-sm sm:leading-5" name="form_data[name_label]" value="<?php echo esc_attr( $form_data['name_label'] ); ?>" 
+															<td class="pr-6 pb-8"><input class="es_name_label form-input block border-gray-400 w-5/6 pr-12 h-8 shadow-sm  focus:bg-gray-100 sm:text-sm sm:leading-5" name="form_data[name_label]" value="<?php echo esc_attr( $form_data['name_label'] ); ?>"
 																<?php
 																if ( 'yes' === $form_data['name_required'] ) {
 																	echo 'disabled=disabled';
 																}
 																?>
 																></td>
-																<td class="pr-6 pb-8"><input class="es_name_label form-input block border-gray-400 w-5/6 pr-12 h-8 shadow-sm  focus:bg-gray-100 sm:text-sm sm:leading-5" name="form_data[name_place_holder]" value="<?php echo esc_attr( $form_data['name_place_holder'] ); ?>" 
+																<td class="pr-6 pb-8"><input class="es_name_label form-input block border-gray-400 w-5/6 pr-12 h-8 shadow-sm  focus:bg-gray-100 sm:text-sm sm:leading-5" name="form_data[name_place_holder]" value="<?php echo esc_attr( $form_data['name_place_holder'] ); ?>"
 																	<?php
 																	if ( 'yes' === $form_data['name_required'] ) {
 																		echo 'disabled=disabled';
@@ -500,7 +502,7 @@ class ES_Forms_Table extends ES_List_Table {
 														<div class="ml-16 mb-4 mr-4 mt-12">
 															<label for="es_allow_contact" class=" inline-flex items-center cursor-pointer">
 																<span class="relative">
-																	<input id="es_allow_contact" type="checkbox" class=" absolute es-check-toggle opacity-0 w-0 h-0" name="form_data[list_visible]" value="yes" 
+																	<input id="es_allow_contact" type="checkbox" class=" absolute es-check-toggle opacity-0 w-0 h-0" name="form_data[list_visible]" value="yes"
 																	<?php
 																	if ( 'yes' === $form_data['list_visible'] ) {
 																		echo 'checked="checked"';
@@ -510,7 +512,7 @@ class ES_Forms_Table extends ES_List_Table {
 																	/>
 
 																	<span class="es-mail-toggle-line"></span>
-																	<span class="es-mail-toggle-dot"></span>	
+																	<span class="es-mail-toggle-dot"></span>
 																</span>
 
 															</label>
@@ -522,7 +524,7 @@ class ES_Forms_Table extends ES_List_Table {
 												</div>
 
 
-												<?php do_action( 'ig_es_add_additional_options', $form_data ); ?>
+												<?php do_action( 'ig_es_add_additional_options', $form_data, $data ); ?>
 
 
 												<div class="flex flex-row border-b border-gray-100">
@@ -539,7 +541,7 @@ class ES_Forms_Table extends ES_List_Table {
 																	<td>
 																		<label for="gdpr_consent" class=" inline-flex items-center cursor-pointer">
 																			<span class="relative">
-																				<input id="gdpr_consent" type="checkbox" class="absolute es-check-toggle opacity-0 w-0 h-0" name="form_data[gdpr_consent]" value="yes" 
+																				<input id="gdpr_consent" type="checkbox" class="absolute es-check-toggle opacity-0 w-0 h-0" name="form_data[gdpr_consent]" value="yes"
 																				<?php
 																				if ( 'yes' === $form_data['gdpr_consent'] ) {
 																					echo 'checked="checked"';
@@ -548,7 +550,7 @@ class ES_Forms_Table extends ES_List_Table {
 																				/>
 
 																				<span class="es-mail-toggle-line"></span>
-																				<span class="es-mail-toggle-dot"></span>		
+																				<span class="es-mail-toggle-dot"></span>
 																			</span>
 																		</label>
 																	</td>
@@ -574,7 +576,7 @@ class ES_Forms_Table extends ES_List_Table {
 														<div class="ml-16 mb-3 mr-4 mt-6">
 															<label for="show_in_popup" class="inline-flex items-center cursor-pointer">
 																<span class="relative">
-																	<input id="show_in_popup" type="checkbox" class=" absolute es-check-toggle opacity-0 w-0 h-0" name="form_data[show_in_popup]" value="yes" 
+																	<input id="show_in_popup" type="checkbox" class=" absolute es-check-toggle opacity-0 w-0 h-0" name="form_data[show_in_popup]" value="yes"
 																	<?php
 																	if ( 'yes' === $form_data['show_in_popup'] ) {
 																		echo 'checked="checked"';
@@ -584,7 +586,7 @@ class ES_Forms_Table extends ES_List_Table {
 																	/>
 
 																	<span class="es-mail-toggle-line"></span>
-																	<span class="es-mail-toggle-dot"></span>	
+																	<span class="es-mail-toggle-dot"></span>
 																</span>
 
 															</label>
@@ -601,15 +603,15 @@ class ES_Forms_Table extends ES_List_Table {
 																</tr>
 															</table>
 															<p class="italic text-xs text-gray-400 leading-snug pt-2">
-																<?php 
+																<?php
 																/* translators: %s: Form attribute */
-																echo sprintf( esc_html__( 'To disable it at a specific instance of a form add this attribute %s in the form\'s shortcode', 'email-subscribers'), '<code class="text-gray-500"><em><strong>show-in-popup="no"</em></strong></code>' ); 
+																echo sprintf( esc_html__( 'To disable it at a specific instance of a form add this attribute %s in the form\'s shortcode', 'email-subscribers'), '<code class="text-gray-500"><em><strong>show-in-popup="no"</em></strong></code>' );
 																?>
 															</p>
 														</div>
 													</div>
 												</div>
-													
+
 												<input type="hidden" name="form_data[af_id]" value="<?php echo esc_attr( $form_data['af_id'] ); ?>"/>
 												<input type="hidden" name="submitted" value="submitted"/>
 												<?php
@@ -759,6 +761,8 @@ class ES_Forms_Table extends ES_List_Table {
 
 		);
 
+		$settings = apply_filters( 'ig_es_form_settings', $settings, $data );
+
 		$form_data['name']       = $name;
 		$form_data['body']       = maybe_serialize( $body );
 		$form_data['settings']   = maybe_serialize( $settings );
@@ -827,7 +831,7 @@ class ES_Forms_Table extends ES_List_Table {
 				$form_data['custom_fields'][] = $d;
 			}
 		}
-		return $form_data;
+		return apply_filters('ig_es_form_fields_data', $form_data, $settings_data, $body_data);
 	}
 
 	/**
@@ -968,6 +972,7 @@ class ES_Forms_Table extends ES_List_Table {
 
 			'delete' => '<a href="?page=' . esc_attr( $page ) . '&action=delete&form=' . absint( $item['id'] ) . '&_wpnonce=' . $list_nonce . '" onclick="return checkDelete()">' . esc_html__( 'Delete', 'email-subscribers' ) . '</a>',
 		);
+		$actions = apply_filters('ig_es_form_table_row_actions', $actions, $item);
 
 		return $title . $this->row_actions( $actions );
 	}

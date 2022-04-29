@@ -1195,9 +1195,9 @@
 			jQuery('#enable_utm_tracking').on('change', function() {
 				let enable_utm_tracking = jQuery(this).prop('checked') ? 'yes' : 'no';
 				if( 'yes' === enable_utm_tracking ) {
-					jQuery('.ig_es_broadcast_campaign_name_wrapper').removeClass('hidden');
+					jQuery('.ig_es_utm_campaign_name_wrapper').removeClass('hidden');
 				} else {
-					jQuery('.ig_es_broadcast_campaign_name_wrapper').addClass('hidden');
+					jQuery('.ig_es_utm_campaign_name_wrapper').addClass('hidden');
 				}
 			});
 			
@@ -2596,6 +2596,7 @@
 				    }
 
 				}
+
 		});
 
 		function ig_es_uc_first(string){
@@ -2766,8 +2767,6 @@
 })(jQuery);
 
 
-
-
 function checkDelete() {
 	return confirm( ig_es_js_data.i18n_data.delete_confirmation_message );
 }
@@ -2935,6 +2934,7 @@ jQuery.fn.extend({
 
 				// Get placeholder label from the first option.
 				placeholder_label = jQuery(first_option_elem).text();
+				placeholder_label = placeholder_label.trim();
 	
 				// Remove it from option to avoid being shown and allowing users to select it as an option in Select2's options panel. 
 				jQuery(first_option_elem).remove();

@@ -1055,77 +1055,6 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 		}
 
 		/**
-		 * Method to get if user has opted for trial or not.
-		 *
-		 * @return bool
-		 *
-		 * @since 4.6.0
-		 */
-		public function is_trial() {
-			$is_trial = get_option( 'ig_es_is_trial', '' );
-			if ( 'yes' === $is_trial ) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-
-		/**
-		 * Get trial start date
-		 *
-		 * @return false|mixed|void
-		 *
-		 * @since 4.6.6
-		 */
-		public function get_trial_start_date() {
-			return get_option( 'ig_es_trial_started_at', '' );
-		}
-
-		/**
-		 * Method to get if trial has expired or not.
-		 *
-		 * @return bool
-		 *
-		 * @since 4.6.1
-		 */
-		public function is_trial_expired() {
-			$is_trial_expired = false;
-			$is_trial         = get_option( 'ig_es_is_trial', '' );
-
-			if ( 'yes' === $is_trial ) {
-				$trial_started_at = get_option( 'ig_es_trial_started_at' );
-				if ( ! empty( $trial_started_at ) ) {
-
-					// Get current timestamp.
-					$current_time = time();
-
-					// Get the timestamp when trial will expire.
-					$trial_expires_at = $trial_started_at + ES()->trial->get_trial_period();
-
-					// Check if current time is greater than expiry time.
-					if ( $current_time > $trial_expires_at ) {
-						$is_trial_expired = true;
-					}
-				}
-			}
-
-			return $is_trial_expired;
-		}
-
-		/**
-		 * Method to check if trial is valid.
-		 *
-		 * @return bool $is_trial_valid Is trial valid
-		 *
-		 * @since 4.6.1
-		 */
-		public function is_trial_valid() {
-
-			// Check if user has opted for trial and it has not yet expired.
-			return $this->is_trial() && ! $this->is_trial_expired();
-		}
-
-		/**
 		 * Method to validate a premium service request
 		 *
 		 * @param array $service Request
@@ -1138,7 +1067,7 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 			$is_request_valid = false;
 
 			// Check if trial is still valid.
-			if ( $this->is_trial_valid() ) {
+			if ( ES()->trial->is_trial_valid() ) {
 				$is_request_valid = true;
 			} elseif ( $this->is_premium() ) {
 				$es_services = apply_filters( 'ig_es_services', array() );
@@ -1444,7 +1373,7 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 				}
 
 				$plugin_file_path   = ES_PLUGIN_DIR . 'email-subscribers.php';
-				$allowed_by_default = ES()->is_premium() || ES()->is_trial();
+				$allowed_by_default = ES()->is_premium() || ES()->trial->is_trial();
 
 				if ( strpos( ES_PLUGIN_DIR, 'email-subscribers-premium' ) ) {
 					$plugin_file_path = ES_PLUGIN_DIR . 'email-subscribers-premium.php';
@@ -1457,7 +1386,6 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 				// End-IG-Code.
 
 				add_action( 'admin_init', array( self::$instance, 'add_admin_notice' ) );
-				add_action( 'admin_init', array( self::$instance, 'check_trial_optin_consent' ) );
 				add_filter( 'ig_es_service_request_data', array( self::$instance, 'add_service_authentication_data' ) );
 				add_filter( 'ig_es_plan', array( self::$instance, 'add_trial_plan' ) );
 
@@ -1496,7 +1424,7 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 		 */
 		public function add_trial_plan( $plan = '' ) {
 
-			if ( $this->is_trial_valid() ) {
+			if ( ES()->trial->is_trial_valid() ) {
 				$plan = 'trial';
 			}
 
@@ -1537,7 +1465,7 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 				$request_data['plan'] = $es_plan;
 			}
 
-			if ( $this->is_trial() ) {
+			if ( ES()->trial->is_trial() ) {
 
 				$trial_started_at = get_option( 'ig_es_trial_started_at' );
 				$site_url         = site_url();
@@ -1547,48 +1475,6 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 			}
 
 			return $request_data;
-		}
-
-		/**
-		 * Method to check if user has given optin consent.
-		 *
-		 * @since 4.6.1
-		 */
-		public function check_trial_optin_consent() {
-
-			// Check optin consent only if not already trial or premium.
-			if ( ! ( $this->is_trial() || $this->is_premium() ) ) {
-				$trial_consent = ig_es_get_request_data( 'ig_es_trial_consent', '' );
-				if ( ! empty( $trial_consent ) ) {
-					if ( current_user_can( 'manage_options' ) && check_admin_referer( 'ig_es_trial_consent' ) ) {
-						$this->add_trial_data( $trial_consent );
-						update_option( 'ig_es_trial_consent', $trial_consent, false );
-						ES_Admin_Notices::remove_notice( 'trial_consent' );
-						$referer = wp_get_referer();
-						wp_safe_redirect( $referer );
-					}
-				}
-			}
-		}
-
-		/**
-		 * Method to add trial related data.
-		 *
-		 * @param string $is_trial.
-		 *
-		 * @return int $trial_started_at
-		 *
-		 * @since 4.6.1
-		 */
-		public function add_trial_data( $is_trial = '', $trial_started_at = 0 ) {
-
-			$is_trial = ! empty( $is_trial ) ? $is_trial : 'yes';
-			update_option( 'ig_es_is_trial', $is_trial, false );
-
-			if ( 'yes' === $is_trial ) {
-				$trial_started_at = ! empty( $trial_started_at ) ? $trial_started_at : time();
-				update_option( 'ig_es_trial_started_at', $trial_started_at, false );
-			}
 		}
 
 		/**
@@ -2101,6 +1987,18 @@ if ( ! class_exists( 'Email_Subscribers' ) ) {
 			}
 
 			return $is_offer_period;
+		}
+
+		/**
+		 * Method to get ES trial list hash
+		 *
+		 * @return string $es_optin_list_hash Get hash for Trial list
+		 *
+		 * @since 5.3.12
+		 */
+		public function get_es_optin_list_hash() {
+			$es_optin_list_hash = 'bc4f8995201a';
+			return $es_optin_list_hash;
 		}
 	}
 }

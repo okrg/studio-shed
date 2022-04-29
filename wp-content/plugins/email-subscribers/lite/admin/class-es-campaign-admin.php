@@ -643,7 +643,7 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 				</button>
 				<img class="es-loader inline-flex align-middle pl-2 h-5 w-7" src="<?php echo esc_url( ES_PLUGIN_URL ); ?>lite/admin/images/spinner-2x.gif" style="display:none;"/>
 				<span class="es-saved-success es-icon" style="display:none;"><?php esc_html_e( 'Template saved succesfully.', 'email-subscribers' ); ?></span>
-				<br/><span class="es-saved-error es-icon" style="display:none;"><?php esc_html_e( 'Something went wrong. Please try again later', 'email-subscribers' ); ?></span>
+				<br/><span class="es-saved-error es-icon" style="display:none;"><?php esc_html_e( 'Something went wrong. Please try again later.', 'email-subscribers' ); ?></span>
 			</div>
 			<?php
 		}

@@ -233,6 +233,10 @@ div#post-body-content .meta-box-sortables .row-blog p.submit input#submit {
 	height: auto;
 }
 
+body.rtl div#post-body-content {
+    float: right;
+}
+
 .blog-content {
 	width: 100%;
 }
@@ -1795,6 +1799,16 @@ body.email-subscribers_page_es_campaigns .column-status .dashicons[title="Finish
 	background: url('../images/premium-icon.svg');
 }
 
+.trial-icon {
+	display: inline-block;
+	vertical-align: middle;
+	color: #319795;
+  	width: 20px;
+  	height: 21px;
+  	padding-top: 0.25rem;
+	background: url('../images/trial-icon.svg');
+}
+
 #ig-es-trial-to-premium-notice p {
     line-height: 2em;
 }
@@ -2028,27 +2042,32 @@ body.email-subscribers_page_es_campaigns .column-status .dashicons[title="Finish
     max-width: 60%;
 }
 
-.ig-es-conditions-value-fields .select2-container--default .select2-selection--multiple .select2-selection__choice {
+.ig-es-conditions-value-fields .select2-container--default .select2-selection--multiple .select2-selection__choice,
+.es-post-type-categories .select2-container--default .select2-selection--multiple .select2-selection__choice {
     margin-bottom: 0;
 	margin-top: 4px;
 }
 
-.ig-es-conditions-value-fields .select2-container .select2-search--inline {
+.ig-es-conditions-value-fields .select2-container .select2-search--inline,
+.es-post-type-categories .select2-container .select2-search--inline {
     margin-bottom: 0;
 }
 
 .ig-es-conditions-value-fields .select2-container:not(.select2-container--focus) .select2-search--inline:not(:only-child),
-.ig-es-post-notification-form .select2-container:not(.select2-container--focus) .select2-search--inline:not(:only-child) {
+.ig-es-post-notification-form .select2-container:not(.select2-container--focus) .select2-search--inline:not(:only-child),
+.es-post-type-categories .select2-container:not(.select2-container--focus) .select2-search--inline:not(:only-child) {
 	display: none;
 }
 
-.ig-es-conditions-value-fields .select2-container .select2-search--inline .select2-search__field {
+.ig-es-conditions-value-fields .select2-container .select2-search--inline .select2-search__field,
+.es-post-type-categories .select2-container .select2-search--inline .select2-search__field  {
     margin-top: 0;
     min-height: 20px;
     height: 24px;
 }
 
-.ig-es-conditions-value-fields .select2-container .select2-selection--multiple {
+.ig-es-conditions-value-fields .select2-container .select2-selection--multiple,
+.es-post-type-categories .select2-container .select2-selection--multiple {
     min-height: 30px;
 }
 
@@ -2418,3 +2437,18 @@ button#close-campaign-preview-popup {
 	margin-bottom: 0;
 }
 /** Workflow Gallery CSS - END **/
+
+/** Trial CSS - START **/
+#ig-es-trial-expired-block .block-description,
+#ig-es-trial-optin-block .block-description,
+#ig-es-trial-active-block .block-description {
+	width: auto!important;
+}
+/** Trial CSS - END **/
+
+/** Onboarding CSS - START **/
+#es-trial-optin-section.disabled {
+	color: #8b8f95;
+    pointer-events: none;
+}
+/** Onboarding CSS - END */

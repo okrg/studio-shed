@@ -820,7 +820,7 @@ class ES_Import_Subscribers {
 
 		$bulkdata = array();
 		if ( isset( $_POST['options'] ) ) {
-			$bulkdata = ig_es_get_data( $_POST, 'options', array() );
+			$bulkdata = ig_es_get_data( $_POST, 'options', array(), true );
 		}
 
 		$bulkdata                    = wp_parse_args( $bulkdata, get_option( 'ig_es_bulk_import' ) );

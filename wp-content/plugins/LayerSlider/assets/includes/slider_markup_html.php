@@ -272,7 +272,7 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 
 				$svgIB = false;
 
-				// Skip this slide?
+				// Skip this layer?
 				if(!empty($layer['props']['skip'])) { continue; }
 
 				unset($layerAttributes);
@@ -291,6 +291,17 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 				$layer['props']['html'] = ! empty( $layer['props']['html'] ) ? trim( $layer['props']['html'] ) : '';
 				$layer['props']['type'] = !empty($layer['props']['type']) ? $layer['props']['type'] : '';
 				$layer['props']['media'] = !empty($layer['props']['media']) ? $layer['props']['media'] : '';
+
+				// Premium layer content checks
+				if( ! $GLOBALS['lsIsActivatedSite'] ) {
+					if( $layer['props']['media'] === 'shape' ) {
+						continue;
+					}
+
+					if( $layer['props']['media'] === 'icon' && ! empty( $layer['props']['html'] ) && strpos( $layer['props']['html'], '<svg' ) !== false ) {
+						continue;
+					}
+				}
 
 				// WPML support
 				if( has_filter( 'wpml_translate_single_string' ) ) {
@@ -405,51 +416,55 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 				// Handle attached icon
 				if( ! empty( $layer['props']['icon'] ) && in_array( $layer['props']['media'], ['text', 'button', 'post', 'html'] ) ) {
 
-					$iconHTML = $layer['props']['icon'];
-					$icon;
+					// Premium content check
+					if( $GLOBALS['lsIsActivatedSite'] || strpos( $layer['props']['icon'], '<svg' ) === false ) {
 
-					if( ! empty( $layer['props']['html'] ) ) {
-						$svgIB = true;
-					}
+						$iconHTML = $layer['props']['icon'];
+						$icon;
 
-					try {
-						$icon = LayerSlider\DOM::newDocumentHTML( $layer['props']['icon'] );
-					} catch( Exception $e ) {}
-
-					$layer['props']['iconPlacement'] = ! empty( $layer['props']['iconPlacement'] ) ? $layer['props']['iconPlacement'] : '';
-
-					// Icon Color & Icon Gap
-					if( $icon ) {
-
-						$iconCSS = [];
-
-						if( ! empty( $layer['props']['iconColor'] ) ) {
-							$iconCSS[ 'color' ] = $layer['props']['iconColor'];
+						if( ! empty( $layer['props']['html'] ) ) {
+							$svgIB = true;
 						}
 
-						if( ! empty( $layer['props']['iconGap'] ) ) {
+						try {
+							$icon = LayerSlider\DOM::newDocumentHTML( $layer['props']['icon'] );
+						} catch( Exception $e ) {}
 
-							if( $layer['props']['iconPlacement'] === 'left' ) {
-								$iconCSS[ 'margin-right' ] = $layer['props']['iconGap'].'em';
-							} else {
-								$iconCSS[ 'margin-left' ] = $layer['props']['iconGap'].'em';
+						$layer['props']['iconPlacement'] = ! empty( $layer['props']['iconPlacement'] ) ? $layer['props']['iconPlacement'] : '';
+
+						// Icon Color & Icon Gap
+						if( $icon ) {
+
+							$iconCSS = [];
+
+							if( ! empty( $layer['props']['iconColor'] ) ) {
+								$iconCSS[ 'color' ] = $layer['props']['iconColor'];
 							}
+
+							if( ! empty( $layer['props']['iconGap'] ) ) {
+
+								if( $layer['props']['iconPlacement'] === 'left' ) {
+									$iconCSS[ 'margin-right' ] = $layer['props']['iconGap'].'em';
+								} else {
+									$iconCSS[ 'margin-left' ] = $layer['props']['iconGap'].'em';
+								}
+							}
+
+							if( ! empty( $layer['props']['iconSize'] ) ) {
+								$iconCSS[ 'font-size' ] = $layer['props']['iconSize'].'em';
+							}
+
+							if( ! empty( $layer['props']['iconVerticalAdjustment'] ) ) {
+								$iconCSS[ 'transform' ] = 'translateY( '.$layer['props']['iconVerticalAdjustment'].'em )';
+							}
+
+							$icon->attr('style', ls_array_to_attr( $iconCSS ) );
+							$iconHTML = $icon;
 						}
 
-						if( ! empty( $layer['props']['iconSize'] ) ) {
-							$iconCSS[ 'font-size' ] = $layer['props']['iconSize'].'em';
-						}
-
-						if( ! empty( $layer['props']['iconVerticalAdjustment'] ) ) {
-							$iconCSS[ 'transform' ] = 'translateY( '.$layer['props']['iconVerticalAdjustment'].'em )';
-						}
-
-						$icon->attr('style', ls_array_to_attr( $iconCSS ) );
-						$iconHTML = $icon;
+						// Content & Icon Placement
+						$layer['props']['html'] = ( $layer['props']['iconPlacement'] === 'left' ) ? $iconHTML.$layer['props']['html'] : $layer['props']['html'].$iconHTML;
 					}
-
-					// Content & Icon Placement
-					$layer['props']['html'] = ( $layer['props']['iconPlacement'] === 'left' ) ? $iconHTML.$layer['props']['html'] : $layer['props']['html'].$iconHTML;
 				}
 
 				// Image layer

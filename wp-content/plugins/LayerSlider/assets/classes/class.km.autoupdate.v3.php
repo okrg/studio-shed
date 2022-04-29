@@ -448,6 +448,12 @@ class KM_UpdatesV3 {
 			// v6.6.3: Empty slider caches (if any) to immediately hide the premium
 			// notice displayed above sliders on the front-end after activation.
 			layerslider_delete_caches();
+
+			// v7.2.0: Empty page caches (if any) to immediately refresh embedded projects
+			// on front-end pages and render license dependent features & content.
+			if( get_option('ls_clear_3rd_party_caches', true ) ) {
+				ls_empty_3rd_party_caches();
+			}
 		}
 
 

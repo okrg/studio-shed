@@ -1877,3 +1877,34 @@ function ig_es_update_538_db_version() {
 }
 
 /* --------------------- ES 5.3.8(End)--------------------------- */
+
+/* --------------------- ES 5.4.0(Start)--------------------------- */
+
+/**
+ * Add reference_site column in contacts table
+ *
+ * @since 5.4.0
+ */
+function ig_es_update_540_alter_contacts_table() {
+	global $wpdb;
+
+	$cols = $wpdb->get_col( "SHOW COLUMNS FROM {$wpdb->prefix}ig_contacts" );
+
+	if ( ! in_array( 'reference_site', $cols, true ) ) {
+		$wpdb->query(
+			"ALTER TABLE {$wpdb->prefix}ig_contacts ADD `reference_site` VARCHAR(255) NULL DEFAULT NULL AFTER `ip_address`"
+		);
+
+	}
+}
+
+/**
+ * Update DB version
+ *
+ * @since 5.4.0
+ */
+function ig_es_update_540_db_version() {
+	ES_Install::update_db_version( '5.4.0' );
+}
+
+/* --------------------- ES 5.4.0(End)--------------------------- */

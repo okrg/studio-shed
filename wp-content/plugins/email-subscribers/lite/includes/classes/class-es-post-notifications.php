@@ -569,12 +569,22 @@ class ES_Post_Notifications_Table {
 		}
 	}
 
+	/**
+	 * Show post notification related fields
+	 * 
+	 * Post categories etc.
+	 * 
+	 * @since 5.1.0
+	 * 
+	 * @param array $campaign_data
+	 */
 	public function show_post_notification_fields( $campaign_data ) {
-		$categories  = isset( $campaign_data['categories'] ) ? $campaign_data['categories'] : '';
-		$cat         = ES_Common::convert_categories_string_to_array( $categories, true );
-		$allowedtags = ig_es_allowed_html_tags_in_esc();
+		// We are storing both post categories and CPTs in one column 'categories'.
+		$categories    = isset( $campaign_data['categories'] ) ? $campaign_data['categories'] : '';
+		$cat_cpts      = ES_Common::convert_categories_string_to_array( $categories, true );
+		$allowedtags   = ig_es_allowed_html_tags_in_esc();
 		$campaign_type = ! empty( $campaign_data['type'] ) ? $campaign_data['type'] : '';
-		$editor_type = ! empty( $campaign_data['meta']['editor_type'] ) ? $campaign_data['meta']['editor_type'] : IG_ES_DRAG_AND_DROP_EDITOR;
+		$editor_type   = ! empty( $campaign_data['meta']['editor_type'] ) ? $campaign_data['meta']['editor_type'] : IG_ES_DRAG_AND_DROP_EDITOR;
 		?>
 		<div class="ig-es-campaign-categories-wrapper block mx-4 border-b border-gray-200 pt-4 pb-4">
 			<div scope="row" class="pb-1 text-left">
@@ -584,7 +594,7 @@ class ES_Post_Notifications_Table {
 				<table border="0" cellspacing="0" class="pt-3">
 					<tbody>
 					<?php
-					$categories_lists = ES_Common::prepare_categories_html( $cat );
+					$categories_lists = ES_Common::prepare_categories_html( $cat_cpts );
 					echo wp_kses( $categories_lists, $allowedtags );
 					?>
 					</tbody>
@@ -597,12 +607,62 @@ class ES_Post_Notifications_Table {
 								<?php esc_html_e( 'Select custom post type(s)', 'email-subscribers' ); ?></span>
 				</label>
 			</div>
-			<div class="">
+			<div class="ig-es-cpt-filters">
 				<table border="0" cellspacing="0">
 					<tbody>
 					<?php
-					$custom_post_type_list = ES_Common::prepare_custom_post_type_checkbox( $cat );
-					echo wp_kses( $custom_post_type_list, $allowedtags );
+					$selected_post_types = array();
+					if ( ! empty( $cat_cpts ) ) {
+						foreach ( $cat_cpts as $cat_cpt ) {
+							// CPTs are stored in the 'categories' column with {T} prefix/suffix.
+							$is_post_type = strpos( $cat_cpt, '{T}' ) !== false;
+							if ( $is_post_type ) {
+								$selected_post_types[] = str_replace( '{T}', '', $cat_cpt );
+							}
+						}
+					}
+					$custom_post_types = ES_Common::get_custom_post_types();
+					if ( ! empty( $custom_post_types ) ) {
+						foreach ( $custom_post_types as $post_type ) {
+							$is_cpt_selected = in_array( $post_type, $selected_post_types, true );
+							if ( $is_cpt_selected ) {
+								$checked = 'checked="checked"';
+							} else {
+								$checked = '';
+							}
+							$post_type_object = get_post_type_object( $post_type );
+							$post_type__name  = $post_type_object->labels->singular_name;
+							?>
+							<tr class="es-post-types-row<?php echo $is_cpt_selected ? ' checked' : ''; ?>">
+								<td style="padding-top:4px;padding-bottom:4px;padding-right:10px;">
+									<span class="block pr-4 text-sm font-medium text-gray-600 pb-2">
+										<input 
+											type="checkbox" 
+											id="es_custom_post_type_<?php echo esc_attr( $post_type ); ?>" name="campaign_data[es_note_cpt][]" 
+											value="<?php echo '{T}' . esc_html( $post_type ) . '{T}'; ?>" 
+											<?php echo esc_attr( $checked ); ?>
+											class="es_custom_post_type form-checkbox" 
+											>
+										<label for="es_custom_post_type_<?php echo esc_attr( $post_type ); ?>">
+											<?php echo esc_html( $post_type__name ); ?>
+										</label>
+									</span>
+									<?php
+										do_action( 'ig_es_after_post_type_checkbox', $post_type, $campaign_data );
+									?>
+								</td>
+							</tr>
+							<?php
+						}
+					} else {
+						?>
+						<tr>
+							<span class="block pr-4 text-sm font-normal text-gray-600 pb-2">
+								<?php echo esc_html__( 'No Custom Post Types Available', 'email-subscribers' ); ?>
+							</span>
+						</tr>
+						<?php
+					}
 					?>
 					</tbody>
 				</table>

@@ -46,7 +46,7 @@ eval("module.exports = \".vce-google-fonts-heading {\\n  &--font-family-$selecto
   \********************************************************************************************/
 /***/ (function(module) {
 
-eval("module.exports = \".vce-google-fonts-heading {\\n  &--color-$selector {\\n    .vce-google-fonts-heading-inner {\\n      @if $color != false {\\n        color: $color !important;\\n      }\\n    }\\n  }\\n  &--gradient-$selector {\\n    .vce-google-fonts-heading-inner {\\n      @if $gradientStart != false {\\n        background-image: linear-gradient($(gradientAngle)deg, $gradientStart, $gradientEnd);\\n        background-clip: text;\\n        -webkit-background-clip: text;\\n        color: transparent !important;\\n      }\\n    }\\n  }\\n}\\n\"\n\n//# sourceURL=webpack:///./googleFontsHeading/cssMixins/textColor.pcss?../../node_modules/raw-loader/index.js");
+eval("module.exports = \".vce-google-fonts-heading {\\n  &--color-$selector {\\n    .vce-google-fonts-heading-inner {\\n      @if $color != false {\\n        color: $color !important;\\n      }\\n    }\\n  }\\n  &--gradient-$selector {\\n    .vce-google-fonts-heading-inner {\\n      @if $gradientStart != false {\\n        background-image: linear-gradient($(gradientAngle)deg, $gradientStart, $gradientEnd);\\n        background-clip: text;\\n        -webkit-background-clip: text;\\n        color: transparent !important;\\n        caret-color: $gradientStart;\\n      }\\n    }\\n  }\\n}\\n\"\n\n//# sourceURL=webpack:///./googleFontsHeading/cssMixins/textColor.pcss?../../node_modules/raw-loader/index.js");
 
 /***/ }),
 

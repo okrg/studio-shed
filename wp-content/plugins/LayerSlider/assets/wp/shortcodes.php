@@ -370,6 +370,7 @@ class LS_Shortcode {
 			}
 
 			$GLOBALS['lsPremiumNotice'] = [];
+			$GLOBALS['lsIsActivatedSite'] = LS_Config::isActivatedSite();
 
 			// Temporarily disable using the loading="lazy"
 			// attribute based on the plugin advanced settings

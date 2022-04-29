@@ -855,6 +855,8 @@ if ( ! function_exists( 'ig_es_allowed_html_tags_in_esc' ) ) {
 	}
 }
 
+add_filter( 'ig_es_escape_allowed_tags', 'ig_es_allowed_html_tags_in_esc' );
+
 if ( ! function_exists( 'ig_es_get_strip_excluded_tags' ) ) {
 	/**
 	 * Get HTML tags which should be excleded from stripping when calling strip_tags function.

@@ -56,7 +56,7 @@ class ES_Admin_Settings {
 				$options['ig_es_run_cron_time']                             = isset( $options['ig_es_run_cron_time'] ) ? $options['ig_es_run_cron_time'] : '4pm';
 				// Start-IG-Code.
 				// Show option to enable/disable tracking if user isn't a premium user and trial is not valid i.e. has expired.
-				if ( ! ES()->is_premium() && ! ES()->is_trial_valid() ) {
+				if ( ! ES()->is_premium() && ! ES()->trial->is_trial_valid() ) {
 					$options['ig_es_allow_tracking'] = isset( $options['ig_es_allow_tracking'] ) ? $options['ig_es_allow_tracking'] : 'no';
 				}
 				$options['ig_es_powered_by'] = isset( $options['ig_es_powered_by'] ) ? $options['ig_es_powered_by'] : 'no';
@@ -358,7 +358,7 @@ class ES_Admin_Settings {
 				'name'    => __( 'Share Icegram', 'email-subscribers' ),
 				'info'    => __( 'Show "Powered By" link in the unsubscription form' ),
 				'type'    => 'checkbox',
-				'default' => 'yes',
+				'default' => 'no',
 			),
 			// End-IG-Code.
 
@@ -387,7 +387,7 @@ class ES_Admin_Settings {
 
 		$cron_url_setting_desc = '';
 
-		if ( ES()->is_trial_valid() || ES()->is_premium() ) {
+		if ( ES()->trial->is_trial_valid() || ES()->is_premium() ) {
 			$cron_url_setting_desc = '<span class="es-send-success es-icon"></span>' . esc_html__( ' We will take care of it. You don\'t need to visit this URL manually.', 'email-subscribers' );
 		} else {
 			/* translators: %s: Link to Icegram documentation */
@@ -993,7 +993,7 @@ class ES_Admin_Settings {
 	public function show_usage_tracking_optin_setting( $es_settings ) {
 
 		// Show option to enable/disable tracking if user isn't a premium user and trial is not valid i.e. has expired.
-		if ( ! ES()->is_premium() && ! ES()->is_trial_valid() ) {
+		if ( ! ES()->is_premium() && ! ES()->trial->is_trial_valid() ) {
 
 			$allow_tracking = array(
 				'ig_es_allow_tracking' => array(

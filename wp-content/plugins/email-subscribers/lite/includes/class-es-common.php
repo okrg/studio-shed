@@ -668,7 +668,7 @@ class ES_Common {
 			$custom_post_type_html = '';
 			foreach ( $post_types as $post_type ) {
 				$post_type_search = '{T}' . $post_type . '{T}';
-				if ( is_array( $custom_post_types ) && in_array( $post_type_search, $custom_post_types ) ) {
+				if ( is_array( $custom_post_types ) && in_array( $post_type_search, $custom_post_types, true ) ) {
 					$checked = "checked='checked'";
 				} else {
 					$checked = '';
@@ -680,6 +680,73 @@ class ES_Common {
 		}
 
 		return $custom_post_type_html;
+	}
+
+	/**
+	 * Get list of registered custom post types
+	 * 
+	 * @since 5.4.0
+	 * 
+	 * @return array $custom_post_types List of custom post types
+	 */
+	public static function get_custom_post_types() {
+
+		$args = array(
+			'public'              => true,
+			'exclude_from_search' => false,
+			'_builtin'            => false,
+		);
+
+		$custom_post_types = get_post_types( $args );
+
+		return $custom_post_types;
+	}
+
+	/**
+	 * Get categories for given post types
+	 * 
+	 * @since 5.3.13
+	 * 
+	 * @param array $post_type Post type
+	 * 
+	 * @return array $post_type_categories List of categories for given post types
+	 */
+	public static function get_post_type_categories( $post_type ) {
+
+		$taxonomies = get_object_taxonomies( $post_type, 'objects' );
+		if ( empty( $taxonomies ) ) {
+			return array();
+		}
+
+		$post_type_categories = array();
+		
+		foreach ( $taxonomies as $taxonomy_slug => $taxonomy ) {
+			$is_category_taxonomy = $taxonomy->hierarchical;
+			if ( ! $is_category_taxonomy ) {
+				continue;
+			}
+			$categories = get_categories(
+				array(
+					'hide_empty' => false,
+					'taxonomy'   => $taxonomy_slug,
+					'type'       => $post_type,
+					'orderby'    => 'id',
+				)
+			);
+
+			if ( empty( $categories ) ) {
+				continue;
+			}
+			
+			$taxonomy_categories = array();
+			foreach ( $categories as $category ) {
+				$taxonomy_categories[ $category->term_id ] = $category->name;
+			}
+
+			$post_type_categories[ $taxonomy_slug ] = $taxonomy_categories;
+		}
+
+		return $post_type_categories;
 	}
 
 	/**
@@ -1491,9 +1558,9 @@ class ES_Common {
 			'installed_on'             => get_option( 'ig_es_installed_on', '' ),
 			'is_premium'               => ES()->is_premium() ? 'yes' : 'no',
 			'plan'                     => ES()->get_plan(),
-			'is_trial'                 => ES()->is_trial() ? 'yes' : 'no',
-			'is_trial_expired'         => ES()->is_trial_expired() ? 'yes' : 'no',
-			'trial_start_at'           => ES()->get_trial_start_date(),
+			'is_trial'                 => ES()->trial->is_trial() ? 'yes' : 'no',
+			'is_trial_expired'         => ES()->trial->is_trial_expired() ? 'yes' : 'no',
+			'trial_start_at'           => ES()->trial->get_trial_start_date(),
 			'total_contacts'           => $total_contacts,
 			'total_lists'              => $total_lists,
 			'total_forms'              => $total_forms,

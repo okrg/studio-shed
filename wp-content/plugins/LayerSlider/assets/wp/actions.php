@@ -266,6 +266,7 @@ add_action('init', function() {
 });
 
 function ls_force_update_check() {
+	LS_RemoteData::update();
 	delete_site_transient('update_plugins');
 	wp_redirect( admin_url( 'update-core.php' ) );
 	exit;

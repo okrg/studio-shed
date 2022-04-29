@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit04c8b4781a33af2ad34f0a2e634e545c
+class ComposerStaticInit501f38a9b18e9a9ee6ed04c25bbaad16
 {
     public static $prefixLengthsPsr4 = array (
         'V' => 
@@ -219,6 +219,7 @@ class ComposerStaticInit04c8b4781a33af2ad34f0a2e634e545c
         'VisualComposer\\Modules\\Hub\\Templates\\TemplatesUpdater' => __DIR__ . '/../..' . '/visualcomposer/Modules/Hub/Templates/TemplatesUpdater.php',
         'VisualComposer\\Modules\\Hub\\Traits\\Action' => __DIR__ . '/../..' . '/visualcomposer/Modules/Hub/Traits/Action.php',
         'VisualComposer\\Modules\\Hub\\UpdateController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Hub/UpdateController.php',
+        'VisualComposer\\Modules\\Import\\ImportController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Import/ImportController.php',
         'VisualComposer\\Modules\\Internationalization\\Locale' => __DIR__ . '/../..' . '/visualcomposer/Modules/Internationalization/Locale.php',
         'VisualComposer\\Modules\\License\\ActivationRedirectController' => __DIR__ . '/../..' . '/visualcomposer/Modules/License/ActivationRedirectController.php',
         'VisualComposer\\Modules\\License\\DeactivationController' => __DIR__ . '/../..' . '/visualcomposer/Modules/License/DeactivationController.php',
@@ -281,6 +282,7 @@ class ComposerStaticInit04c8b4781a33af2ad34f0a2e634e545c
         'VisualComposer\\Modules\\Vendors\\MetaSliderController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/MetaSliderController.php',
         'VisualComposer\\Modules\\Vendors\\NextGen' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/NextGen.php',
         'VisualComposer\\Modules\\Vendors\\NinjaFormsController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/NinjaFormsController.php',
+        'VisualComposer\\Modules\\Vendors\\OneUserAvatar' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/OneUserAvatar.php',
         'VisualComposer\\Modules\\Vendors\\PluginsController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/PluginsController.php',
         'VisualComposer\\Modules\\Vendors\\RevSliderController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/RevSliderController.php',
         'VisualComposer\\Modules\\Vendors\\Themes\\GeneratePressController' => __DIR__ . '/../..' . '/visualcomposer/Modules/Vendors/Themes/GeneratePressController.php',
@@ -301,9 +303,9 @@ class ComposerStaticInit04c8b4781a33af2ad34f0a2e634e545c
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit04c8b4781a33af2ad34f0a2e634e545c::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit04c8b4781a33af2ad34f0a2e634e545c::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit04c8b4781a33af2ad34f0a2e634e545c::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit501f38a9b18e9a9ee6ed04c25bbaad16::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit501f38a9b18e9a9ee6ed04c25bbaad16::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit501f38a9b18e9a9ee6ed04c25bbaad16::$classMap;
 
         }, null, ClassLoader::class);
     }

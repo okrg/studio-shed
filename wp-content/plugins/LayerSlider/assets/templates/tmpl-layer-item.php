@@ -30,6 +30,12 @@
 				'class' => 'lse-remove-layer',
 				'data-tt' => '.tt-layer-remove'
 			]) ?>
+
+			<?= lsGetSVGIcon('exclamation-triangle', false, [
+				'class' => 'lse-unregistered-layer',
+				'data-tt' => '.tt-layer-unregistered'
+			]) ?>
+
 		</lse-b>
 	</lse-li>
 </script>

@@ -280,8 +280,10 @@ if ( ! class_exists( 'ES_Pepipost_Mailer' ) ) {
 		 * @since 4.7.5
 		 */
 		public function set_content( $content ) {
-
-			$content = utf8_encode( $content );
+			
+			if ( function_exists( 'mb_convert_encoding' ) ) {
+				$content = mb_convert_encoding( $content, 'UTF-8', mb_detect_encoding( $content, 'UTF-8, ISO-8859-1', true ) );
+			}
 
 			$this->set_body_param(
 				array(

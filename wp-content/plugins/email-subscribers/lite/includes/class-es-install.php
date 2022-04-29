@@ -297,6 +297,10 @@ if ( ! class_exists( 'ES_Install' ) ) {
 				'ig_es_mark_system_workflows',
 				'ig_es_update_538_db_version',
 			),
+			'5.4.0'  => array(
+				'ig_es_update_540_alter_contacts_table',
+				'ig_es_update_540_db_version',
+			),
 		);
 
 		/**
@@ -1088,6 +1092,7 @@ if ( ! class_exists( 'ES_Install' ) ) {
 				`timezone` varchar(255) NULL DEFAULT NULL,
 				`form_id` int(10) NOT NULL DEFAULT '0',
 				`status` varchar(10) DEFAULT NULL,
+				`reference_site` varchar(255) NULL DEFAULT NULL, 
 				`unsubscribed` tinyint(1) NOT NULL DEFAULT '0',
 				`hash` varchar(50) DEFAULT NULL,
 				`engagement_score` float DEFAULT NULL,

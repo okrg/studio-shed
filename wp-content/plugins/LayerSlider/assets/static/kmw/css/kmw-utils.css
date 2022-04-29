@@ -176,6 +176,15 @@ kmw-icon {
 	padding-right: 10px;
 }
 
+kmw-icon.kmw-icon-auto-width svg {
+	width: auto !important;
+	margin: 0 auto;
+}
+
+kmw-icon.kmw-icon-auto-height {
+	height: auto !important;
+}
+
 kmw-icon svg {
 	display: block;
 	width: 100%;

@@ -23,11 +23,6 @@ jQuery(document).ready(function() {
 			let add_gdpr_consent         = jQuery('#ig_es_add_gdpr_consent').is(':checked') ? 'yes': 'no';
 			let enable_double_optin      = jQuery('#ig_es_enable_double_optin').is(':checked') ? 'yes': 'no';
 
-			let is_trial = '';
-			if (jQuery('#es_free_trial_preference').length > 0) {
-				is_trial = jQuery('#es_free_trial_preference').is(':checked') ? 'yes': 'no';
-			}
-
 			let allow_tracking = '';
 			if (jQuery('#es_allow_tracking').length > 0) {
 				allow_tracking = jQuery('#es_allow_tracking').is(':checked') ? 'yes': 'no';
@@ -45,7 +40,6 @@ jQuery(document).ready(function() {
 					es_from_name: es_from_name,
 					es_from_email: es_from_email,
 					create_post_notification: create_post_notification,
-					is_trial: is_trial,
 					allow_tracking: allow_tracking,
 					add_gdpr_consent: add_gdpr_consent,
 					enable_double_optin: enable_double_optin,
@@ -210,7 +204,7 @@ jQuery(document).ready(function() {
 				}
 			}, time_increament);
 		},
-		finishing_onboarding: function() {
+		complete_onboarding: function() {
 			let name = jQuery('#ig-es-onboarding-final-steps-form #ig-es-sign-up-name').val();
 			let email = jQuery('#ig-es-onboarding-final-steps-form #ig-es-sign-up-email').val();
 			if ( '' !== name || '' !== email ) {
@@ -219,26 +213,36 @@ jQuery(document).ready(function() {
 					return;
 				}
 			}
-			let list        = jQuery('#ig-es-onboarding-final-steps-form #sign-up-list').val();
+			
 			let form_source = jQuery('#ig-es-onboarding-final-steps-form #sign-up-form-source').val();
-			let is_trial    = '';
-			if (jQuery('#ig-es-onboarding-final-steps-form #es_free_pro_trial').length > 0) {
-				is_trial = jQuery('#ig-es-onboarding-final-steps-form #es_free_pro_trial').is(':checked') ? 'yes': 'no';
+
+			let data = {
+				name: name,
+				email: email,
+				form_source: form_source,
+				action: 'ig_es_handle_request',
+				request:'complete_onboarding',
+				security: ig_es_js_data.security,
 			}
-			let btn_elem = jQuery(this);
+
+			if ( '' !== email ) {
+				let signup_list = jQuery('#ig-es-onboarding-final-steps-form #sign-up-list').val();
+				data.list = signup_list;
+				
+				let is_trial = jQuery('#ig-es-onboarding-final-steps-form #es-trial-list').length > 0 ? 'yes' : 'no';
+				if ( 'yes' === is_trial ) {
+					let trial_list = jQuery('#ig-es-onboarding-final-steps-form #es-trial-list').val();
+					data.is_trial  = is_trial;
+					data.list      = trial_list;
+				}
+			}
+
+			let btn_elem = jQuery('#ig-es-complete-onboarding');
+			
 			jQuery.ajax({
 				type: 'POST',
 				url: ajaxurl,
-				data: {
-					action: 'ig_es_handle_request',
-					request: 'finishing_onboarding',
-					name: name,
-					email: email,
-					list: list,
-					form_source: form_source,
-					is_trial: is_trial,
-					security: ig_es_js_data.security
-				},
+				data: data,
 				dataType: 'json',
 				beforeSend: function() {
 					jQuery(btn_elem).addClass('cursor-wait').attr('disabled', true);
@@ -260,6 +264,16 @@ jQuery(document).ready(function() {
 					ig_es_handle_onboard_task_error( '', data, status, xhr );
 				}
 			});
+		},
+		start_trial: function() {
+			jQuery('#ig-es-onboarding-final-steps-form #es-trial-optin').attr('checked', true);
+			jQuery('#es-trial-popup-message').fadeOut('slow');
+			onboarding_functions.complete_onboarding();
+		},
+		skip_trial: function() {
+			jQuery('#es-trial-optin-section').remove();
+			jQuery('#es-trial-popup-message').fadeOut('slow');
+			onboarding_functions.complete_onboarding();
 		},
 		update_onboarding_step: function( step = 1 ) {
 			var params = {
@@ -300,7 +314,7 @@ jQuery(document).ready(function() {
 			jQuery("#es-send-email-form")[0].reportValidity();
 		}	
 	});
-	jQuery('#ig-es-finish-onboarding-process').on( 'click', onboarding_functions.finishing_onboarding );
+	jQuery('#ig-es-complete-onboarding').on( 'click', onboarding_functions.complete_onboarding );
 
 	// Variable to hold order of onboarding tasks to be performed.
 	let onboarding_functions_queue = [
@@ -312,7 +326,6 @@ jQuery(document).ready(function() {
 	];
 
 	jQuery('#es_create_post_notification').show();
-	jQuery('#es_free_trial_option').hide();
 	jQuery('#es_post_notification_preference').click(function() {
     	if( jQuery(this).is(':checked')) {
        		jQuery('#ig-es-onboard-create_default_post_notification').show();
@@ -321,20 +334,29 @@ jQuery(document).ready(function() {
    		}
 	});
 
-	jQuery(document).on('click', '#es-delivery-error-button', function() {
-		//jQuery('body').css({'overflow':''});
-		jQuery('.active').fadeOut('fast').removeClass('active');
-		jQuery('.sp.es-delivery-check').addClass('active');
+	jQuery('#ig-es-onboarding-final-steps-form #ig-es-sign-up-email').change(function() {
+		let sign_up_email        = jQuery(this).val();
+		let disable_trial_optin  = false;
+		if( '' !== sign_up_email ) {
+			let form_valid = jQuery("#ig-es-onboarding-final-steps-form")[0].checkValidity();
+			if ( ! form_valid ) {
+				disable_trial_optin = true;
+			}
+		} else {
+			disable_trial_optin = true;
+		}
+
+		if ( disable_trial_optin ) {
+			jQuery('#es-trial-optin-section').addClass('disabled');
+		} else {
+			jQuery('#es-trial-optin-section').removeClass('disabled');
+		}
 	});
 
-	jQuery('#es_free_trial_preference').click(function() {
-    	if( jQuery(this).is(':checked')) {
-       		jQuery('#es_free_trial_option').hide();
-			jQuery('#ig-es-onboard-check_test_email_on_server,#ig-es-onboard-evaluate_email_delivery').show();
-		} else {
-       		jQuery('#es_free_trial_option').show();
-			jQuery('#ig-es-onboard-check_test_email_on_server,#ig-es-onboard-evaluate_email_delivery').hide();
-		}
+	jQuery(document).on('click', '#es-delivery-error-button', function() {
+		//jQuery('body').css({'overflow':''});
+		jQuery('.es-popup-message').fadeOut('fast');
+		jQuery('.es-delivery-check').addClass('active');
 	});
 
 	jQuery(document).on('click', '#es_delivery_check_processed', function() {
@@ -382,12 +404,23 @@ jQuery(document).ready(function() {
 		if ( '' === error_message ) {
 			return;
 		}
-		
-		jQuery('#ig-es-email-delivery-error-message').text( additional_message );
-		jQuery('.active').removeClass('active');
-		jQuery('.es-receive-error .ig-es-onboarding-error').html(error_message);
-		jQuery('.sp.es-receive-error').fadeIn('slow').addClass('active');
-		//jQuery('body').css({'overflow':'hidden','height':'100%'});
+
+		ig_es_show_onboarding_popup( 'error', error_message, additional_message );
+	}
+
+	let ig_es_show_onboarding_popup = function( message_type, message, additional_message = '' ) {
+		if ( message_type === '' || '' === message ) {
+			return;
+		}
+
+		let message_classes = '';
+		if( 'error' === message_type ) {
+			message_classes = 'bg-red-50';
+		}
+
+		jQuery('.es-popup-message .message').removeClass('bg-red-50').addClass(message_classes).html(message);
+		jQuery('.additional-message').text( additional_message );
+		jQuery('.es-popup-message').removeClass('error info warning').addClass(message_type).fadeIn('slow');
 	}
 	
 	let ig_es_handle_onboard_task_response = function( task, response, show_error_as = 'inline' ) {
@@ -488,22 +521,6 @@ jQuery(document).ready(function() {
 		// Return if it is not in the onboarding functions list.
 		if( ! onboarding_functions.hasOwnProperty( current_task ) || 'function' !== typeof onboarding_functions[current_task] ) {
 			return;
-		}
-		let is_trial = '';
-		if (jQuery('#es_free_trial_preference').length > 0) {
-			is_trial = jQuery('#es_free_trial_preference').is(':checked') ? 'yes': 'no';
-			// Remove check_test_email_on_server and evaluate_email_delivery task if has not opted for trial
-			if( 'no' === is_trial ) {
-				let check_test_email_on_server_task_index = onboarding_functions_queue.indexOf( 'check_test_email_on_server' );
-				if( check_test_email_on_server_task_index > -1 ) {
-					onboarding_functions_queue.splice( check_test_email_on_server_task_index, 1 );
-				}
-
-				let evaluate_email_delivery_task_index = onboarding_functions_queue.indexOf( 'evaluate_email_delivery' );
-				if( evaluate_email_delivery_task_index > -1 ) {
-					onboarding_functions_queue.splice( evaluate_email_delivery_task_index, 1 );
-				}
-			}
 		}
 		let current_task_index = onboarding_functions_queue.indexOf(current_task);
 		if( current_task_index > -1 ) {

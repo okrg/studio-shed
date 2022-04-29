@@ -65,7 +65,6 @@ if ( ! class_exists( 'ES_Action_Send_Email' ) ) {
 				$email_heading_field->set_name( 'ig-es-email-heading' );
 				$email_heading_field->set_title( __( 'Email heading', 'email-subscribers' ) );
 				$email_heading_field->set_description( __( 'Enter text to be shown in email header area.', 'email-subscribers' ) );
-				$email_heading_field->set_required();
 
 				$email_template = $this->get_option( 'ig-es-email-template', false );
 

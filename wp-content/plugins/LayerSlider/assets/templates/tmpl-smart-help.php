@@ -742,7 +742,15 @@
 
 	<div data-smart-help="startat">
 		<?= __('Sets the start time of the selected transition with the given amount of milliseconds. A second equals to 1000 milliseconds.', 'LayerSlider') ?>
+	</div>
 
+	<div data-smart-help="startwhen">
+		<?= __('The starting time of this transition. Choose from one of the pre-defined options to use relative timing, which then can also be shifted with custom operations below.', 'LayerSlider') ?>
+	</div>
+	<div data-smart-help="startwhenmodifier">
+		<?= __('Shifts the above selected starting time by performing a custom operation.', 'LayerSlider') ?>
+		<br><br>
+		<?= __('For example, "- 1000" will advance the animation by playing it 1 second (1000 milliseconds) earlier.', 'LayerSlider') ?>
 	</div>
 
 

@@ -3,23 +3,26 @@
 // Prevent direct file access
 defined( 'LS_ROOT_FILE' ) || exit;
 
-// Remove ALL notices from the Slider Builder
-if( ! empty( $_GET['page'] ) && false !== strpos( $_GET['page'], 'layerslider' ) ) {
-	if(
-		( ! empty( $_GET['action'] ) && $_GET['action'] === 'edit' ) ||
-		( ! empty( $_GET['section'] ) &&  $_GET['section'] === 'about' )
-	) {
-		add_action('in_admin_header', function () {
-			remove_all_actions('admin_notices');
-			remove_all_actions('all_admin_notices');
-		}, 1000 );
-	}
-}
-
 
 add_action('admin_init', function() {
 
+	// Remove ALL notices from the Slider Builder
+	if( ! empty( $_GET['page'] ) && false !== strpos( $_GET['page'], 'layerslider' ) ) {
+
+		add_action('in_admin_header', function () {
+			remove_all_actions('admin_notices');
+			remove_all_actions('all_admin_notices');
+
+			if( empty( $_GET['action'] ) || $_GET['action'] !== 'edit' ) {
+				add_action('admin_notices', 'layerslider_important_notice');
+			}
+
+		}, 1000 );
+	}
+
+
 	add_action('admin_notices', 'layerslider_important_notice');
+
 
 	if( ! LS_Config::isActivatedSite() ) {
 		add_action('after_plugin_row_'.LS_PLUGIN_BASE, 'layerslider_plugins_screen_notice', 10, 3 );

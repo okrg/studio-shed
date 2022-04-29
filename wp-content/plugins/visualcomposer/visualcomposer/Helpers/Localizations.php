@@ -69,7 +69,7 @@ class Localizations extends Container implements Helper
             'tabletPortrait' => __('Tablet Portrait', 'visualcomposer'),
             'mobileLandscape' => __('Mobile Landscape', 'visualcomposer'),
             'mobilePortrait' => __('Mobile Portrait', 'visualcomposer'),
-            'settings' => __('Settings', 'visualcomposer'),
+            'options' => __('Options', 'visualcomposer'),
             'update' => __('Update', 'visualcomposer'),
             'menu' => __('Menu', 'visualcomposer'),
             'viewPage' => __('View Page', 'visualcomposer'),
@@ -1310,8 +1310,8 @@ class Localizations extends Container implements Helper
                 'Insights',
                 'visualcomposer'
             ),
-            'onPageSettings' => __(
-                'On-Page Settings',
+            'onPageOptions' => __(
+                'On-Page Options',
                 'visualcomposer'
             ),
             'publishingOptions' => __(
@@ -1355,9 +1355,9 @@ class Localizations extends Container implements Helper
                 . '&utm_medium=editor&utm_campaign=info&utm_content=help-guide" target="_blank" rel="noopener noreferrer">Visual Composer Hub</a> in-built cloud library to download additional elements, templates, addons, stock images, and more.',
                 'visualcomposer'
             ),
-            'changeSettingsOfYourPageOrPost' => __(
+            'changeOptionsOfYourPageOrPost' => __(
                 'Change <a href="https://help.visualcomposer.com/docs/getting-started/dashboard-settings/?utm_source=' . $source
-                . '&utm_medium=editor&utm_campaign=info&utm_content=help-guide" target="_blank" rel="noopener noreferrer">settings of your page or post</a>, modify the layout, control popups, add custom CSS, and Javascript.',
+                . '&utm_medium=editor&utm_campaign=info&utm_content=help-guide" target="_blank" rel="noopener noreferrer">options of your page or post</a>, modify the layout, control popups, add custom CSS, and JavaScript.',
                 'visualcomposer'
             ),
             'previewSaveAndPublish' => __(
@@ -1472,7 +1472,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'pageSettings' => __(
-                'Page Settings',
+                'Page Options',
                 'visualcomposer'
             ),
             'pageDesignOptionsDescription' => __(
@@ -1992,6 +1992,46 @@ class Localizations extends Container implements Helper
             ),
             'elseDescription' => __(
                 'I am creating a site for my friend or family',
+                'visualcomposer'
+            ),
+            'course1' => __(
+                'How to create a new page',
+                'visualcomposer'
+            ),
+            'courseDuration1' => __(
+                '1:57',
+                'visualcomposer'
+            ),
+            'course2' => __(
+                'Add elements to your page',
+                'visualcomposer'
+            ),
+            'courseDuration2' => __(
+                '2:36',
+                'visualcomposer'
+            ),
+            'course3' => __(
+                'Learn quick actions',
+                'visualcomposer'
+            ),
+            'courseDuration3' => __(
+                '1:08',
+                'visualcomposer'
+            ),
+            'courseButtonText' => __(
+                'View full course (4 videos)',
+                'visualcomposer'
+            ),
+            'addColumnBefore' => __(
+                'Add column before',
+                'visualcomposer'
+            ),
+            'addColumnAfter' => __(
+                'Add column after',
+                'visualcomposer'
+            ),
+            'rowMargin' => __(
+                'Row margin',
                 'visualcomposer'
             ),
         ];

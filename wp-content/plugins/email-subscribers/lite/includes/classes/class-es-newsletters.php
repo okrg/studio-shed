@@ -850,7 +850,7 @@ class ES_Newsletters {
 
 		if ( 'schedule_now' === $scheduling_option ) {
 			// Get time without GMT offset, as we are adding later on.
-			$schedule_str = current_time( 'timestamp', false );
+			$schedule_str = time();
 		}
 
 		if ( ! empty( $schedule_str ) ) {
