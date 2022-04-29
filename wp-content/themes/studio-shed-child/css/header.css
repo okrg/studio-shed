@@ -673,3 +673,7 @@ body.woocommerce-checkout h3 label{
   margin-top: 0;
   margin-bottom: 0;
 }
+
+form.woocommerce-checkout #order_review .input-checkbox {
+    position: relative;
+}
