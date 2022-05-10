@@ -4,7 +4,7 @@
   
   <!--<div class="promo-headline">Additional 5% Off – Order by March 21st!</div>-->
   <div class="product-headline">Our Most Popular Models. Faster Turnaround.</div>
-  <p>These models are the best of our Signature Series. Our most popular designs, delivered to your door in weeks. Choose the perfect size, colors, and options for your perfect home office, studio, or backyard retreat. Specially priced for DIY installation only with <u>standard shipping included</u>.</p>
+  <p>These models are the best of our Signature Series. Our most popular designs, delivered to your door in 3-4 weeks from time of order. Choose the perfect size, colors, and options for your perfect home office, studio, or backyard retreat. Specially priced for DIY installation only with <u>standard shipping included</u>.</p>
 
 
   </div>
@@ -78,6 +78,6 @@
 
 
   <div class="qs-disclaimer">* Everyday discount applied. Not eligible for additional promos.</div>
-  <div class="qs-disclaimer">NOTE: Due to the current high demand, turnaround time is typically 6-8 weeks in most markets.</div>
+  <div class="qs-disclaimer">NOTE:  Delivered to your door in 3-4 weeks. Pricing good when shipped in 60 days from time of order.</div>
 
 </div>
