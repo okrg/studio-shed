@@ -866,7 +866,7 @@ if( function_exists('acf_add_options_page') ) {
 }
 // for new homepage template
 //add_filter( 'gform_init_scripts_footer', '__return_true' );
-add_filter( 'gform_force_hooks_js_output', '__return_true' );
+//add_filter( 'gform_force_hooks_js_output', '__return_true' );
 
 add_filter( 'gform_cdata_open', 'wrap_gform_cdata_open', 1 );
 function wrap_gform_cdata_open( $content = '' ) {
