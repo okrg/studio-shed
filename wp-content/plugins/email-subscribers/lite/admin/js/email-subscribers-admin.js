@@ -1019,7 +1019,7 @@
 				});
 			});
 
-			$('.wp-campaign-body-editor, #edit-es-campaign-body,textarea[name="campaign_data[body]"],#ig_es_campaign_subject').on('change',function(event){
+			$('#edit-campaign-form-container').on('change','.wp-campaign-body-editor, #edit-es-campaign-body,textarea[name="campaign_data[body]"],#ig_es_campaign_subject',function(event){
 
 				ig_es_sync_wp_editor_content();
 

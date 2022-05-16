@@ -114,6 +114,7 @@ class ES_DB_Contacts extends ES_DB {
 			'country_code'	 	=> '',
 			'form_id'        	=> 0,
 			'status'         	=> 'verified',
+			'reference_site'    => '',
 			'unsubscribed'   	=> 0,
 			'hash'           	=> '',
 			'engagement_score' 	=> 4,
@@ -125,6 +126,7 @@ class ES_DB_Contacts extends ES_DB {
 			'is_webmail'     	=> 0,
 			'is_deliverable' 	=> 1,
 			'is_sendsafely'  	=> 1,
+			'timezone'			=> '',
 			'meta'           	=> '',
 		);
 
@@ -1060,7 +1062,6 @@ class ES_DB_Contacts extends ES_DB {
 
 	}
 
-
 	/**
 	 * Insert IP along with subscriber data
 	 *
@@ -1090,5 +1091,11 @@ class ES_DB_Contacts extends ES_DB {
 		$contact_id = parent::insert( $data, $type );
 		do_action( 'ig_es_new_contact_inserted', $contact_id );
 		return $contact_id;
+	}
+
+	public function get_last_contact_id() {
+		global $wpdb;
+		$last_contact_id = $wpdb->get_var( "SELECT id FROM {$wpdb->prefix}ig_contacts ORDER BY id DESC LIMIT 0, 1" );
+		return $last_contact_id;
 	}
 }

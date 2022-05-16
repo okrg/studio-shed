@@ -309,6 +309,7 @@ registerBlockType( 'kreatura/layerslider', {
 				el( Button, {
 					isDefault: true,
 					isLarge: true,
+					variant: 'primary',
 					onClick: function() {
 
 						LS_SliderLibrary.open({

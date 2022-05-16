@@ -338,6 +338,7 @@ class IG_ES_Subscribers_Query {
 
 		$joins[]  = "LEFT JOIN {$wpbd->prefix}ig_lists_contacts AS lists_subscribers ON subscribers.id = lists_subscribers.contact_id";
 		$wheres[] = "AND lists_subscribers.status IN( 'subscribed', 'confirmed' )";
+		$wheres[] = "AND subscribers.status IN( 'verified' )";
 
 		if ( ! is_bool( $this->args['lists'] ) ) {
 			// unassigned members if NULL

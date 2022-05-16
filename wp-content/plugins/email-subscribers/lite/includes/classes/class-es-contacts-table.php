@@ -442,12 +442,16 @@ class ES_Contacts_Table extends ES_List_Table {
 								$message = __( 'Contact already exist.', 'email-subscribers' );
 								ES_Common::show_message( $message, 'error' );
 								$is_error = true;
+							} elseif ( ! empty( $contact['status'] ) && 'ERROR' === $contact['status'] ) {
+								$message = ES_Handle_Subscription::get_messages( $contact['message'] );
+								ES_Common::show_message( $message, 'error' );
+								$is_error = true;
 							} else {
 								if ( $id ) {
 									ES()->contacts_db->update_contact( $id, $contact );
 								} else {
 									$contact['source']     = 'admin';
-									$contact['status']     = 'verified';
+									$contact['status']     = ! empty( $contact['status'] ) ? $contact['status'] : 'verified';
 									$contact['hash']       = ES_Common::generate_guid();
 									$contact['created_at'] = ig_get_current_date_time();
 

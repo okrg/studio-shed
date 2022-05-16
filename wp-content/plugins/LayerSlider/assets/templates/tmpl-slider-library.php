@@ -50,7 +50,7 @@ if( ! empty($sliders) ) {
 								?>
 								<div class="slider-item"
 									data-id="<?= $item['id'] ?>"
-									data-slug="<?= $item['slug'] ?>"
+									data-slug="<?= htmlentities( $item['slug'] ) ?>"
 									data-name="<?= apply_filters('ls_slider_title', stripslashes($item['name']), 40) ?>"
 									data-previewurl="<?=  ! empty( $preview ) ? $preview : LS_ROOT_URL . '/static/admin/img/blank.gif' ?>"
 									data-slidecount="<?= ! empty( $item['data']['layers'] ) ? count( $item['data']['layers'] ) : 0 ?>"
@@ -84,7 +84,7 @@ if( ! empty($sliders) ) {
 		} else { ?>
 			<div class="slider-item"
 				data-id="<?= $item['id'] ?>"
-				data-slug="<?= $item['slug'] ?>"
+				data-slug="<?= htmlentities( $item['slug'] ) ?>"
 				data-name="<?= apply_filters('ls_slider_title', stripslashes($item['name']), 40) ?>"
 				data-previewurl="<?=  ! empty( $preview ) ? $preview : LS_ROOT_URL . '/static/admin/img/blank.gif' ?>"
 				data-slidecount="<?= ! empty( $item['data']['layers'] ) ? count( $item['data']['layers'] ) : 0 ?>"

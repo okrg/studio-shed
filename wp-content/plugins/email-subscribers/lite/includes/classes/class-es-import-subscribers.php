@@ -843,7 +843,9 @@ class ES_Import_Subscribers {
 
 		if ( isset( $_POST['id'] ) ) {
 			set_transient( 'ig_es_contact_import_is_running', 'yes' );
-			$bulkdata['current'] = (int) sanitize_text_field( $_POST['id'] );
+			$batch_id            = (int) sanitize_text_field( $_POST['id'] );
+			$bulkdata['current'] = $batch_id;
+			
 			$raw_list_data       = $wpdb->get_col(
 				$wpdb->prepare(
 					"SELECT data FROM {$wpdb->prefix}ig_temp_import 
@@ -868,6 +870,10 @@ class ES_Import_Subscribers {
 					__( 'Hard Bounced', 'email-subscribers' ) => 'hard_bounced',
 				);
 
+				$is_starting_import = 0 === $batch_id;
+				if ( $is_starting_import ) {
+					do_action( 'ig_es_before_bulk_contact_import' );
+				}
 				foreach ( $raw_list_data as $raw_list ) {
 					$raw_list = unserialize( base64_decode( $raw_list ) );
 					// each entry

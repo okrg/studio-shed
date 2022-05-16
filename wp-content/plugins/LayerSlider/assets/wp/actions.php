@@ -628,7 +628,7 @@ function ls_get_slider_details( ) {
 
 	die( json_encode([
 		'id' => $slider['id'],
-		'slug' => $slider['slug'],
+		'slug' => htmlentities( $slider['slug'] ),
 		'name' => apply_filters('ls_slider_title', stripslashes( $slider['name'] ), 40 ),
 		'previewurl' => ! empty( $preview ) ? $preview : LS_ROOT_URL . '/static/admin/img/blank.gif',
 		'slidecount' => ! empty( $slider['data']['layers'] ) ? count( $slider['data']['layers'] ) : 0,
@@ -644,12 +644,14 @@ function ls_get_mce_sliders() {
 	$sliders = LS_Sliders::find( [ 'limit' => 200 ] );
 
 	foreach($sliders as $key => $item) {
-		$sliders[$key]['preview'] = apply_filters('ls_preview_for_slider', $item );
-		$sliders[$key]['name'] = ! empty($item['name']) ? htmlspecialchars(stripslashes($item['name'])) : 'Unnamed';
+		$sliders[ $key ]['preview'] = apply_filters('ls_preview_for_slider', $item );
+		$sliders[ $key ]['name'] 	= apply_filters('ls_slider_title', stripslashes( $item['name'] ), 40);
+		$sliders[ $key ]['slug'] 	= ! empty( $item['slug'] ) ? htmlentities( $item['slug'] ) : '';
+
 
 		// Prevent outputting the unnecessarily large slider data object that
 		// in some cases also causes server issues with the large request data.
-		$sliders[$key]['data'] = null;
+		$sliders[ $key ]['data'] 	= null;
 	}
 
 	die( json_encode( $sliders ) );

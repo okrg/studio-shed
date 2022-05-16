@@ -461,7 +461,7 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 			$message                  = isset( $response['message'] ) ? $response['message'] : '';
 			$response['message_text'] = '';
 			if ( ! empty( $message ) ) {
-				$response['message_text'] = $this->get_messages( $message );
+				$response['message_text'] = self::get_messages( $message );
 			}
 
 			return $response;
@@ -578,10 +578,16 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 			}
 
 			$rev_email = strrev( $email );
-			foreach ( $domains as $item ) {
-				$item = trim( $item );
-				if ( strpos( $rev_email, strrev( $item ) ) === 0 ) {
-					return true;
+			foreach ( $domains as $domain ) {
+				$domain = trim( $domain );
+				if ( strpos( $rev_email, strrev( $domain ) ) === 0 ) {
+					$email_parts = explode( '@', $email );
+					if ( ! empty( $email_parts[1] ) ) {
+						$email_domain = $email_parts[1];
+						if ( $email_domain === $domain ) {
+							return true;
+						}
+					}
 				}
 			}
 
@@ -597,7 +603,7 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 		 *
 		 * @since 4.0.0
 		 */
-		public function get_messages( $message ) {
+		public static function get_messages( $message ) {
 			$ig_es_form_submission_success_message = get_option( 'ig_es_form_submission_success_message' );
 			$messages                              = array(
 				'es_empty_email_notice'       => __( 'Please enter email address', 'email-subscribers' ),

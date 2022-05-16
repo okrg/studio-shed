@@ -313,6 +313,13 @@ class Email_Subscribers_Public {
 
 		$contact_data = wp_parse_args( $contact_data, $default_data );
 
+		$contact_data = apply_filters( 'ig_es_add_subscriber_data', $contact_data );
+
+		// Return if contact status has an error.
+		if ( ! empty( $contact_data['status'] ) && 'ERROR' === $contact_data['status'] ) {
+			return;
+		}
+
 		$contact = ES()->contacts_db->is_contact_exist_in_list( $email, $list_id );
 
 		if ( empty( $contact['contact_id'] ) ) {

@@ -3929,7 +3929,9 @@ $lsDefaults = [
 			'keys' => 'position',
 			'options' => [
 				'' => __('Sides of the project', 'LayerSlider'),
-				'fixed' => __('Sides of the screen', 'LayerSlider')
+				'fixed' => __('Sides of the screen', 'LayerSlider'),
+				'fixedx' => __('Sides of the screen horizontally', 'LayerSlider'),
+				'fixedy' => __('Sides of the screen vertically', 'LayerSlider')
 			]
 		],
 

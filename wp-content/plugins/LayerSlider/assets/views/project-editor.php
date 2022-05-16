@@ -2644,7 +2644,7 @@
 															<lse-col class="lse-full">
 																<lse-ib>
 																	<lse-text>
-																		<?= __('Align position from', 'LayerSlider') ?>
+																		<?= __('Align positions from', 'LayerSlider') ?>
 																	</lse-text>
 																</lse-ib>
 																<lse-ib>
@@ -3739,7 +3739,13 @@ overflow: hidden;', 'LayerSlider') ?>"></textarea>
 														<lse-li><?= __('Ending Transition', 'LayerSlider') ?></lse-li>
 														<lse-li><?= __('Hover Transition', 'LayerSlider') ?></lse-li>
 														<lse-li><?= __('Parallax Transition', 'LayerSlider') ?></lse-li>
-													</lse-ul>
+<!-- 														<lse-li>
+															<?= __('Scroll Transition', 'LayerSlider') ?>
+															<lse-badge>
+																NEW
+															</lse-badge>
+														</lse-li>
+ -->													</lse-ul>
 												</lse-smart-dropdown-inner>
 											</lse-smart-dropdown>
 										</lse-sidebar-content-nav>

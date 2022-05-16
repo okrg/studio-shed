@@ -19,6 +19,8 @@ function ls_register_mce_buttons($buttons) {
 
 function ls_register_mce_js($plugins) {
 
+	ls_enqueue_slider_library();
+
 	$plugins['layerslider_button'] = LS_ROOT_URL.'/static/admin/js/ls-tinymce-button.js';
 	return $plugins;
 }
