@@ -35,11 +35,6 @@ function discount_for_deposit( WC_Cart $cart ){
 }
 
 
-add_filter( 'gform_force_hooks_js_output', '__return_true' );
-add_filter('gform_init_scripts_footer', '__return_true');
-
-
-
 
 add_filter( 'gform_pre_send_email', function ( $email, $message_format ) {
   if ( $message_format != 'html' ) {

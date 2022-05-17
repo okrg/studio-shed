@@ -116,7 +116,7 @@
                         <div class="box">
                           <a href="/summit-series/">SUMMIT/ADUs SERIES</a>
                           <p class="intro">252-1000 SQFT</p>
-                          <p class="time">Popular size from $37,793</p>
+                          <p class="time">Popular size from $38,727</p>
                           <span class="icomoon icon-chevron-right"></span>
                         </div>
                         <a href="/summit-series/" class="ps-as"></a>
@@ -138,8 +138,8 @@
                       <div class="col-lg-7">
                         <div class="box">
                           <a href="/products/signature-series/">SIGNATURE SERIES</a>
-                          <p class="intro">64-240 SQFT</p>
-                          <p class="time">Popular size from $13,910</p>
+                          <p class="intro">96-200 SQFT</p>
+                          <p class="time">Popular size from $13,861</p>
                           <span class="icomoon icon-chevron-right"></span>
                         </div>
                         <a href="/products/signature-series/" class="ps-as"></a>
@@ -154,8 +154,8 @@
                       <div class="col-lg-7">
                         <div class="box">
                           <a href="/products/portland-series/">PORTLAND SERIES</a>
-                          <p class="intro">96-256 SQFT</p>
-                          <p class="time">Popular size from $18,590</p>
+                          <p class="intro">120-192 SQFT</p>
+                          <p class="time">Popular size from $19,520</p>
                           <span class="icomoon icon-chevron-right"></span>
                         </div>
                         <a href="/products/portland-series/" class="ps-as"></a>
@@ -170,8 +170,9 @@
                       <div class="col-lg-7">
                         <div class="box">
                           <a href="/diy-quick-ship-models/">DIY Quick-ship Models</a>
+                          <div><small><strong>In Stock &amp; Ready to Ship</strong></small></div>
                           <p class="intro">120 SQFT</p>
-                          <p class="time">Starting at $19,295<br>SHIPPING INCLUDED</p>
+                          <p class="time">Starting at $20,430<br>SHIPPING INCLUDED</p>
                           <span class="icomoon icon-chevron-right"></span>
                         </div>
                         <a href="/diy-quick-ship-models/" class="ps-as"></a>
@@ -217,7 +218,7 @@
                   <div class="box" item-id="item-1">
                     <a href="/summit-series/">SUMMIT/ADUs SERIES</a>
                     <p class="intro">252-1000 SQFT</p>
-                    <p class="time">Popular size from $37,793</p>
+                    <p class="time">Popular size from $38,727</p>
                     <span class="icomoon icon-chevron-right"></span>
                   </div>
                 </div>
@@ -241,8 +242,8 @@
                 <div class="col-lg-7">
                   <div class="box" item-id="item-2">
                     <a href="/products/signature-series/">SIGNATURE SERIES</a>
-                    <p class="intro">64-240 SQFT</p>
-                    <p class="time">Popular size from $13,910</p>
+                    <p class="intro">96-200 SQFT</p>
+                    <p class="time">Popular size from $13,861</p>
                     <span class="icomoon icon-chevron-right"></span>
                   </div>
                 </div>
@@ -258,8 +259,8 @@
                 <div class="col-lg-7">
                   <div class="box" item-id="item-3">
                     <a href="/products/portland-series/">PORTLAND SERIES</a>
-                    <p class="intro">96-256 SQFT</p>
-                    <p class="time">Popular size from $18,590</p>
+                    <p class="intro">120-192 SQFT</p>
+                    <p class="time">Popular size from $19,520</p>
                     <span class="icomoon icon-chevron-right"></span>
                   </div>
                 </div>
@@ -269,6 +270,7 @@
         </li>
         <li>
           <a href="">DIY QUICK-SHIP</a>
+          <div><small><strong>In Stock &amp; Ready to Ship</strong></small></div>
           <div class="nav-item-arrows d-lg-none">
             <i class="icomoon icon-plus2" aria-hidden="true"></i>
           </div>
@@ -284,7 +286,7 @@
                   <div class="box" item-id="item-4">
                     <a href="/diy-quick-ship-models/">POPULAR MODELS</a>
                     <p class="intro">120 SQFT</p>
-                    <p class="time">Starting at $19,295<br>SHIPPING INCLUDED</p>
+                    <p class="time">Starting at $20,430<br>SHIPPING INCLUDED</p>
                     <span class="icomoon icon-chevron-right"></span>
                   </div>
                 </div>
@@ -355,6 +357,7 @@
           <div class="content-model-right" style="width: 100%">
             <div class="featured" style="background: url('/wp-content/uploads/2021/06/10x12-Solitude-lap_gray-menu.jpg');">
               <div class="description">
+                <div style="text-align: center;font-size:20px;"><strong>In Stock &amp; Ready to Ship</strong></div>
                 <p>Our most popular designs, delivered to your door in weeks. Choose the perfect size, colors, and options for your perfect home office, studio, or backyard retreat. Specially priced for DIY installation only with standard shipping included.</p>
                 <div class="featured-shed-btns">
                   <div class="row">

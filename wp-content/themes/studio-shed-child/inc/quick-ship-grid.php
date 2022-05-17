@@ -4,7 +4,7 @@
   
   <!--<div class="promo-headline">Additional 5% Off – Order by March 21st!</div>-->
   <div class="product-headline">Our Most Popular Models. Faster Turnaround.</div>
-  <p>These models are the best of our Signature Series. Our most popular designs, delivered to your door in 3-4 weeks from time of order. Choose the perfect size, colors, and options for your perfect home office, studio, or backyard retreat. Specially priced for DIY installation only with <u>standard shipping included</u>.</p>
+  <p>These models are the best of our Signature Series. Our most popular designs, delivered to your door in 3-4 weeks from time of order. Choose the perfect size, colors, and options for your perfect home office, studio, or backyard retreat. Specially priced for DIY installation only with <u>standard shipping included</u>. Permit Plan Set not available. For permitted units, please order through the <a href="https://www.studio-shed.com/design-center/#configurator-landing-headline">Design Center</a> including the plan set option.</p>
 
 
   </div>
