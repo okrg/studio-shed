@@ -169,8 +169,8 @@
                       </div>
                       <div class="col-lg-7">
                         <div class="box">
-                          <a href="/diy-quick-ship-models/">DIY Quick-ship Models</a>
-                          <div><small><strong>In Stock &amp; Ready to Ship</strong></small></div>
+                          <a href="/diy-quick-ship-models/">DIY Quick-ship Models <small><strong>In Stock &amp; Ready to Ship</strong></small></a>
+                          
                           <p class="intro">120 SQFT</p>
                           <p class="time">Starting at $20,430<br>SHIPPING INCLUDED</p>
                           <span class="icomoon icon-chevron-right"></span>
@@ -269,8 +269,8 @@
           </ul>
         </li>
         <li>
-          <a href="">DIY QUICK-SHIP</a>
-          <div><small><strong>In Stock &amp; Ready to Ship</strong></small></div>
+          <a href="">DIY QUICK-SHIP <small><strong>In Stock &amp; Ready to Ship</strong></small></a>
+          
           <div class="nav-item-arrows d-lg-none">
             <i class="icomoon icon-plus2" aria-hidden="true"></i>
           </div>
@@ -357,8 +357,8 @@
           <div class="content-model-right" style="width: 100%">
             <div class="featured" style="background: url('/wp-content/uploads/2021/06/10x12-Solitude-lap_gray-menu.jpg');">
               <div class="description">
-                <div style="text-align: center;font-size:20px;"><strong>In Stock &amp; Ready to Ship</strong></div>
-                <p>Our most popular designs, delivered to your door in weeks. Choose the perfect size, colors, and options for your perfect home office, studio, or backyard retreat. Specially priced for DIY installation only with standard shipping included.</p>
+                
+                <p><span style="font-size:24px;"><strong>In Stock &amp; Ready to Ship</strong></span><br>Our most popular designs, delivered to your door in weeks. Choose the perfect size, colors, and options for your perfect home office, studio, or backyard retreat. Specially priced for DIY installation only with standard shipping included.</p>
                 <div class="featured-shed-btns">
                   <div class="row">
                     <div class="col-lg-12">
