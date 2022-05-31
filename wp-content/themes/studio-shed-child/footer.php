@@ -33,7 +33,7 @@
                 <a href="/design-center/" class="vce-button--style-basic button" title="Build and price your Studio Shed design" style="float: none;">Build &amp; Price</a>
 			</div>
             <div class="col-sm-3 col-md-2" style="vertical-align: top;">
-                <img src="https://dev-studio-shed.pantheonsite.io/wp-content/uploads/2021/07/ss-virtual-showroom-footer-thumb.jpg" alt="Image of Studio Shed virtual tour">
+                <img src="/wp-content/uploads/2021/07/ss-virtual-showroom-banner-scaled.jpg" alt="Image of Studio Shed virtual tour">
             </div>
             <div class="col-sm-9 col-md-4" style="vertical-align: top;">
 

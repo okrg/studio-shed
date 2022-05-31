@@ -413,6 +413,7 @@ class OMAPI_Pages {
 					'partnerId'       => OMAPI_Partners::get_id(),
 					'partnerUrl'      => OMAPI_Partners::has_partner_url(),
 					'showReview'      => $this->base->review->should_show_review(),
+					'timezone'        => wp_timezone_string(),
 				)
 			);
 

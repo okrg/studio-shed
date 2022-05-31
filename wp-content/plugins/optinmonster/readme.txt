@@ -2,9 +2,9 @@
 Contributors: optinmonster, griffinjt, smub
 Tags: popup, popups, optin, conversion, marketing, newsletter, popup builder, popup maker, email marketing, exit popup, ecommerce, woocommerce, lightbox
 Requires at least: 4.7.0
-Tested up to: 5.9.2
+Tested up to: 5.9.3
 Requires PHP: 5.3
-Stable tag: 2.6.12
+Stable tag: 2.7.0
 License: GNU General Public License v2.0 or later
 
 🤩 Make popups & optin forms to get more email newsletter subscribers, leads, and sales - #1 most popular popup builder plugin! 🚀
@@ -458,6 +458,13 @@ Syed Balkhi
 
 **Most Recent Changes:**
 
+= Popup Builder 2.7.0 =
+* Introduce revenue attribution support for EDD and WooCommerce, and add revenue attribution settings
+* Format dates for subscriber information according to the WordPress site timezone
+* Fixed some broken template image icon urls
+* Fix broken utm_medium query args for some urls
+* Javascript package updates
+
 = Popup Builder v2.6.12 =
 * Improved support for ecommerce display rule targeting.
 * Improved goal support during onboarding.
@@ -481,9 +488,5 @@ Syed Balkhi
 * Fixed some output settings not working properly for shortcodes.
 * Address some confusion by updating shortcode output to have the `followrules` attribute on by default for new shortcodes, or to use the `optin-monster-inline` shortcode.
 * Fixed display of redundant errors in the OptinMonster settings pages.
-
-= Popup Builder v2.6.7 =
-* Fix issue with Visual Composer when monsterlinks are not available to site.
-* Fix issue with tooltip not showing for Site Settings integration default setting.
 
 **[View entire popup builder changelog](https://plugins.svn.wordpress.org/optinmonster/trunk/CHANGELOG.md)**

@@ -1,5 +1,7 @@
 <?php
 
+add_filter( 'gform_force_hooks_js_output', '__return_true' );
+
 function better_search_replace_cap_override() {
     return 'manage_options';
 }

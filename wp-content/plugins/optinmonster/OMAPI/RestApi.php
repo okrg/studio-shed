@@ -361,6 +361,16 @@ class OMAPI_RestApi {
 				'callback'            => array( $this, 'get_guides' ),
 			)
 		);
+
+		register_rest_route(
+			$this->namespace,
+			'account/sync',
+			array(
+				'methods'             => 'POST',
+				'permission_callback' => array( $this, 'logged_in_or_has_api_key' ),
+				'callback'            => array( $this, 'sync_account' ),
+			)
+		);
 	}
 
 	/**
@@ -908,7 +918,7 @@ class OMAPI_RestApi {
 	}
 
 	/**
-	 * Maybe allow api-key authenticted user to see notifications.
+	 * Maybe allow api-key authenticated user to see notifications.
 	 *
 	 * @since  2.0.0
 	 *
@@ -1823,5 +1833,30 @@ class OMAPI_RestApi {
 		} catch ( Exception $e ) {
 			return $this->exception_to_response( $e );
 		}
+	}
+
+	/**
+	 * Triggering refreshing/syncing of account settings.
+	 *
+	 * Route: POST omapp/v1/account/sync
+	 *
+	 * @since 2.6.13
+	 *
+	 * @param WP_REST_Request $request The REST Request.
+	 * @return WP_REST_Response The API Response
+	 */
+	public function sync_account( $request ) {
+		$data = OMAPI_Api::fetch_me_cached( true );
+		if ( is_wp_error( $data ) ) {
+			return new WP_REST_Response(
+				array( 'message' => esc_html__( 'Sync failed!', 'optin-monster-api' ) ),
+				400
+			);
+		}
+
+		return new WP_REST_Response(
+			array( 'message' => esc_html__( 'Sync succeeded!', 'optin-monster-api' ) ),
+			200
+		);
 	}
 }

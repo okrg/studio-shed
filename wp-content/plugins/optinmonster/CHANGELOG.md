@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to the OptinMonster plugin will be documented in this file.
 
+### 2.7.0 - 2022-05-17
+* Introduce revenue attribution support for EDD and WooCommerce, and add revenue attribution settings
+* Format dates for subscriber information according to the WordPress site timezone
+* Fixed some broken template image icon urls
+* Fix broken utm_medium query args for some urls
+* Javascript package updates
+
 ### 2.6.12 - 2022-03-23
 * Improved support for ecommerce display rule targeting.
 * Improved goal support during onboarding.
