@@ -222,7 +222,7 @@
 
 			</div>
                 <div class="col-sm-12 copyfooter">
-                <div class="copyright">&copy; 2021 - <a href="/privacy/">Privacy</a> - <a href="/terms-and-conditions/">Terms of Use</a></div>
+                <div class="copyright">&copy; 2022 &mdash; <a href="/privacy/">Privacy</a> &mdash; <a href="/terms-and-conditions/">Terms of Use</a></div>
                 </div>
 			</div>
 		</div>
