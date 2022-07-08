@@ -228,22 +228,7 @@
 		</div>
 	</div>
 </footer>
-<div id="myModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title g-title text-uppercase">Like What You See?</h4>
-            </div>
-            <div class="modal-body">
-                <p>Get updates, new products, and special offers sent directly to you</p>
-                <div class="newletter">
-                    <?php dynamic_sidebar('contact-popup'); ?>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <!-- <div class="nav-fixed-footer">
     <div class="col-fixed">

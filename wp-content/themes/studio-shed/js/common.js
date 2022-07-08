@@ -97,7 +97,7 @@ jQuery(document).ready(function() {
     console.log(sessionStorage.getItem("someVarName"));
     if(sessionStorage.getItem("someVarName") == 1111){
       setTimeout(function() {
-        jQuery('#button-modal').click();
+        //jQuery('#button-modal').click();
       }, 5000);
     }
     // if (username!="11") {
@@ -109,10 +109,10 @@ jQuery(document).ready(function() {
     //   }, 1000);
     // }
   }
-  checkCookie();
-  jQuery('#myModal .close').on('click',function(){
-    sessionStorage.setItem("someVarName", 11111);
-  });
+  //checkCookie();
+  //jQuery('#myModal .close').on('click',function(){
+//    sessionStorage.setItem("someVarName", 11111);
+//  });
   /*-----button sologan-------*/
   height_sologan();
   setTimeout(function(){
