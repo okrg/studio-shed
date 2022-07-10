@@ -13,9 +13,14 @@
 					<li class="check-li">See exclusive discounts and other special offers.</li>
 					</ul>
 			</div>
-			<div class="col-sm-12 col-md-6">
-				<?php gravity_form( '18', $display_title = false, $display_description = false, $display_inactive = false, $field_values = null, $ajax = false, $tabindex, $echo = true );
-				?>
+			<div class="col-sm-12 col-md-6">                
+                <script>
+                  hbspt.forms.create({
+                    region: "na1",
+                    portalId: "22119690",
+                    formId: "e158e038-8b4d-4302-8063-4604bc4faa47"
+                  });
+                </script>
 			</div>
 		</div>
 		</div>
