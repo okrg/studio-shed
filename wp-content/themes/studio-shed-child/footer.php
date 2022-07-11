@@ -12,6 +12,7 @@
 					<li class="check-li">Find local events and opportunities to see our products in person.</li>
 					<li class="check-li">See exclusive discounts and other special offers.</li>
 					</ul>
+                    <p>&nbsp;</p>
 			</div>
 			<div class="col-sm-12 col-md-6">                
                 <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
