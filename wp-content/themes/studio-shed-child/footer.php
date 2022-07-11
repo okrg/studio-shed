@@ -14,6 +14,7 @@
 					</ul>
 			</div>
 			<div class="col-sm-12 col-md-6">                
+                <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
                 <script>
                   hbspt.forms.create({
                     region: "na1",
