@@ -2,9 +2,9 @@
   <div class="qs-intro">
   <div class="product-headline text-uppercase">DIY Quick-Ship Models</div>
   
-  <!--<div class="promo-headline">Additional 5% Off – Order by March 21st!</div>-->
+  <div class="promo-headline">Additional 15% Off – Order by July 25th</div>
   <div class="product-headline">Our Most Popular Models. Faster Turnaround.</div>
-  <p>These models are the best of our Signature Series. Our most popular designs, delivered to your door in 3-4 weeks from time of order. Choose the perfect size, colors, and options for your perfect home office, studio, or backyard retreat. Specially priced for DIY installation only with <u>standard shipping included</u>. Permit Plan Set not available. For permitted units, please order through the <a href="https://www.studio-shed.com/design-center/#configurator-landing-headline">Design Center</a> including the plan set option.</p>
+  <p>These models are the best of our Signature Series. Our most popular designs, delivered to your door in 3-4 weeks from time of order. Choose the perfect size, colors, and options for your perfect home office, studio, or backyard retreat. Specially priced for DIY installation only with <u>standard shipping included</u>. Permit Plan Set not available. For permitted units, please order through the <a href="https://shop.studio-shed.com/" target="_blank">Design Center</a> including the plan set option.</p>
 
 
   </div>
@@ -19,9 +19,9 @@
       </header>
       <footer>
         <a href="/product/pagoda/">
-          <div class="qs-price">$20,430*</div>
-          <div class="qs-original">$22,206</div>
-          <div class="qs-savings">Save $1,776</div>
+          <div class="qs-price">$18,875</div>
+          <div class="qs-original">$24,767</div>
+          <div class="qs-savings">Save $5,892</div>
           <img src="/wp-content/themes/studio-shed-child/img/qs-pagoda.png">
         </a>
       </footer>
@@ -35,9 +35,9 @@
       </header>
       <footer>
         <a href="/product/boreas/">
-            <div class="qs-price">$20,017*</div>
-            <div class="qs-original">$21,758</div>
-            <div class="qs-savings">Save $1,741</div>
+            <div class="qs-price">$18,494</div>
+            <div class="qs-original">$24,319</div>
+            <div class="qs-savings">Save $5,825</div>
             <img src="/wp-content/themes/studio-shed-child/img/qs-boreas.png">
         </a>
       </footer>
@@ -51,9 +51,9 @@
       </header>
       <footer>
         <a href="/product/solitude/">
-            <div class="qs-price">$22,584*</div>
-            <div class="qs-original">$24,548</div>
-            <div class="qs-savings">Save $1,964</div>
+            <div class="qs-price">$20,866</div>
+            <div class="qs-original">$27,109</div>
+            <div class="qs-savings">Save $6,243</div>
             <img src="/wp-content/themes/studio-shed-child/img/qs-solitude.png">
         </a>
       </footer>
@@ -67,17 +67,13 @@
       </header>
       <footer>
         <a href="/product/telluride/">
-            <div class="qs-price">$23,799*</div>
-            <div class="qs-original">$25,868</div>
-            <div class="qs-savings">Save $2,069</div>
+            <div class="qs-price">$21,988</div>
+            <div class="qs-original">$28,429</div>
+            <div class="qs-savings">Save $6,441</div>
             <img src="/wp-content/themes/studio-shed-child/img/qs-telluride.png">
         </a>
       </footer>
     </article>
   </div>
-
-
-  <div class="qs-disclaimer">* Everyday discount applied. Not eligible for additional promos.</div>
-  <div class="qs-disclaimer">NOTE:  Delivered to your door in 3-4 weeks. Pricing good when shipped in 60 days from time of order.</div>
 
 </div>
