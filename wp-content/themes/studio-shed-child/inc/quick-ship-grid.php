@@ -1,4 +1,8 @@
-<div class="container">
+<div class="container" style="background: #333;
+    padding: 10px;
+    color: #fff;
+    margin-bottom: 10px;
+    text-align: center;">
   <div class="qs-intro">
   <div class="product-headline text-uppercase">DIY Quick-Ship Models</div>
   
