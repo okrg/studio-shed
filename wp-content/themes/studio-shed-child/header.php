@@ -71,6 +71,7 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PFQVBLT');</script>
     <!-- End Google Tag Manager -->
+    
   </head>
   <body <?php body_class(); ?>>
     <div id="wrapper">
