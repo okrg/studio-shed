@@ -17,15 +17,15 @@
     <meta property="og:description" content="Studio Shed creates high-efficiency prefab modern sheds and backyard studios. Design and build your own modern studio with our 3D Configurator tool.">
     <meta property="og:url" content="https://www.studio-shed.com/">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2022-07-29T17:24:16.493Z">
+    <meta property="article:modified_time" content="2022-07-29T18:11:36.802Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="https://www.studio-shed.com/">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1659115455848">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1659118296256">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <script src="/assets/main.bundle.js?v=1659115455848"></script>
+    <script src="/assets/main.bundle.js?v=1659118296256"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
     <!--
     <script src="https://apps.elfsight.com/p/platform.js" async></script> 
@@ -876,7 +876,7 @@
     <div class="max-w-4xl mx-auto py-16 px-4 sm:py-12 sm:px-6 lg:px-8">
       <div class="text-center">
         <p class="mt-1 text-3xl font-extrabold text-gray-900">Our Models</p>
-        <p class="mx-auto text-gray-500">Adding more space to your home has never been easiers. Built entirely within a factory, delivered to your house, and installed quickly and without disruptions caused by a traditional remodel.</p>
+        <p class="mx-auto text-gray-500">Explore our backyard studios and accessory dwelling units.</p>
       </div>
     </div>
 
@@ -907,69 +907,15 @@
     </div>
   </div>
 
-
-<div class="py-16 bg-white overflow-hidden lg:py-24">
-  <div class="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
-    <div class="relative">
-      <h2 class="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">A better way to build</h2>
-      <p class="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">Backyard studios and accessory dwelling units, built in Colorado and shipped nationwide.</p>
-    </div>
-
-    <div class="relative mt-8 lg:mt-12 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+  <div class="py-16 bg-white overflow-hidden lg:py-24">
+    <div class="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
       <div class="relative">
-        <dl class="mt-10 space-y-10">
-          <div class="relative">
-            <dt>
-              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                </svg>
-              </div>
-              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Customizable</p>
-            </dt>
-            <dd class="mt-2 ml-16 text-base text-gray-500">From layout, color, interior finishes and more.</dd>
-          </div>
-
-          <div class="relative">
-            <dt>
-              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Quick</p>
-            </dt>
-            <dd class="mt-2 ml-16 text-base text-gray-500">Installed in a matter of days.</dd>
-          </div>
-
-          <div class="relative">
-            <dt>
-              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                </svg>
-              </div>
-              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">High Quality</p>
-            </dt>
-            <dd class="mt-2 ml-16 text-base text-gray-500">Sustainable materials designed to last a lifetime.</dd>
-          </div>
-        </dl>
-      </div>
-
-      <div class="mt-10 -mx-4 relative lg:mt-0" aria-hidden="true">
-        <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
-          <img src="/assets/images/home-better-way.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed virtual tour bedroom view">
-        </div>        
+        <h2 class="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">A better way to build</h2>
+        <p class="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">Built with high-quality, sustainable, and energy-efficient materials made to last. Each Studio Shed is prefabricated in our Colorado factory and available to ship nationwide. </p>
       </div>
     </div>
-
   </div>
-</div>
 
-
-
-
-  <div class="bg-white">
     <div class="relative">
       <img class="h-[36rem] w-full object-cover" src="/assets/images/home-process-hero.jpg" alt="A finished Studio Shed unit in a home backyard">
     </div>
@@ -977,18 +923,15 @@
       <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
         <span class="block">Our Process</span>          
       </h2>
-      <p class="mt-4 text-lg leading-6 text-gray-600">Start with our Design Center to see options and schedule a free consultation with a Studio Shed advisor to plan the project from design through the installation. The Studio team will shepherd your project through permitting as needed and fulfill your dream design in a matter of months.</p>
+      <p class="mt-4 text-lg leading-6 text-gray-600">From design through installation, we’re here for you every step of the way. Get started with our 3D Design Center to see options and schedule a free consultation with a Studio Shed advisor. </p>
       <a href="/process/" class="inline-block mt-6 px-4 py-3 border border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-black font-medium hover:opacity-80 sm:px-8">
         Learn more about the process
       </a>
     </div>
-  </div>
 
 
 
 
-
-  <div class="bg-white">
     <div class="relative">
       <img class="h-[32rem] w-full object-cover" src="/assets/images/home-virtual-tour-banner.jpg" alt="A screenshot from the Studio Shed virtual tour app">
     </div>
@@ -996,7 +939,7 @@
       <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
         <span class="block">Tour our virtual showroom</span>          
       </h2>
-      <p class="mt-4 text-lg leading-6 text-gray-600">Explore the Summit Series in a full 3D experience and visualize sizes, interior furnishings, and finishes.</p>
+      <p class="mt-4 text-lg leading-6 text-gray-600">Explore the Summit Series in a full 360° experience and visualize ADU sizes, interior furnishings and finishes, and sample staged interiors.</p>
     </div>
     <div class="max-w-6xl mx-auto pb-24 px-4 overflow-hidden sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8">
@@ -1016,28 +959,71 @@
         <a href="https://tour.studio-shed.com/" class="inline-block mt-6 px-4 py-3 border border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-black font-medium hover:opacity-80 sm:px-8" title="Studio Shed virtual tour">Take the Tour</a>
       </div>
     </div>
+
+
+  <div class="relative">
+    <img class="h-[32rem] w-full object-cover" src="/assets/images/home-pre-design-center.jpg" alt="Studio Shed Signature series 10x12 with backyard landscape">
   </div>
 
-  <div class="my-16 overflow-hidden bg-black">
-    <div class="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24 h-[600px]">
-      <div class="px-4 max-w-xl mx-auto sm:px-6 lg:pt-24 lg:max-w-none lg:mx-0 lg:px-0">
-        <div>
-          <div class="mt-6">
-            <h2 class="text-3xl font-extrabold tracking-tight text-white">Design Your Studio Shed</h2>
-            <p class="mt-4 text-lg text-gray-100">With our 3D design center, you are able to design and price your own Studio Shed that fits your needs. We put the designing process in your hands and make it easy with our configurator tool!</p>
-            <div class="mt-6">
-              <a href="https://shop.studio-shed.com/" class="inline-block mt-6 px-4 py-3 border border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-white font-medium hover:opacity-80 sm:px-8" title="Studio Shed 3D Design Center">Design &amp; Price</a>
-            </div>
+<div class="py-16 bg-white overflow-hidden lg:py-24">
+  <div class="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
+    <div class="relative">
+      <h2 class="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">Design Your Studio Shed</h2>
+      <p class="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">Design and price a Studio Shed in 5 simple steps with our 3D Design Center. We put the design process in your hands and make it easy with our online configurator tool! </p>
+    </div>
+
+    <div class="relative mt-8 lg:mt-12 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+      <div class="relative">
+        <dl class="mt-10 space-y-10">
+          <div class="relative">
+            <dt>
+              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white text-2xl font-bold">1</div>
+              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Model</p>
+            </dt>
+            <dd class="ml-16 text-base text-gray-500">Choose from our Summit, Signature, or Portland models</dd>
           </div>
-        </div>
+          <div class="relative">
+            <dt>
+              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white text-2xl font-bold">2</div>
+              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Interior</p>
+            </dt>
+            <dd class="ml-16 text-base text-gray-500">Customize your interior layout and flooring</dd>
+          </div>
+          <div class="relative">
+            <dt>
+              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white text-2xl font-bold">3</div>
+              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Exterior</p>
+            </dt>
+            <dd class="ml-16 text-base text-gray-500">Select your siding, colors, window & door placement, and more </dd>
+          </div>
+          <div class="relative">
+            <dt>
+              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white text-2xl font-bold">4</div>
+              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Location &amp; Permits</p>
+            </dt>
+            <dd class="ml-16 text-base text-gray-500">Enter your location and select permitting needs</dd>
+          </div>
+          <div class="relative">
+            <dt>
+              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white text-2xl font-bold">5</div>
+              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Installation</p>
+            </dt>
+            <dd class="ml-16 text-base text-gray-500">Choose DIY or Professional installation </dd>
+          </div>
+        </dl>
       </div>
-      <div class="mt-12 sm:mt-16 lg:mt-0">
-        <div class="pl-4 -mr-48 sm:pl-6 md:-mr-16 lg:px-0 lg:m-0 lg:relative lg:h-full">
-          <img class="w-full lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none" src="/assets/images/home-design-tablet.jpg" alt="Studio Shed 3D design center view">
-        </div>
+
+      <div class="mt-10 -mx-4 relative lg:mt-0" aria-hidden="true">
+        <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
+          <img src="/assets/images/home-design-center-hero.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed 3D Design Center">
+        </div>        
       </div>
     </div>
+
   </div>
+</div>
+
+
 
   <div class="bg-white">      
     <div class="max-w-2xl mx-auto text-center py-8 px-4 sm:pt-16 sm:px-6 lg:px-8">
@@ -1071,7 +1057,7 @@
 </main>
     <div class="relative bg-gray-800">
   <div class="h-56 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
-    <img class="w-full h-full object-cover" src="/assets/images/ss-footer-build.jpg" alt="">
+    <img class="w-full h-full object-cover" src="/assets/images/ss-footer-build.jpg" alt="Studio Shed 3D design center app">
   </div>
   <div class="relative max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
     <div class="md:ml-auto md:w-1/2 md:pl-10">
@@ -1285,8 +1271,8 @@
           });
         </script>
         <div class="flex space-x-12 mt-24">
-          <img src="/assets/images/footer-shipping.png" />
-          <img src="/assets/images/footer-houzz-badge.png" />
+          <img src="/assets/images/footer-shipping.png" alt="Studio Ships to all 50 states">
+          <img src="/assets/images/footer-houzz-badge.png" alt="Studio Shed design award by Houzz">
         </div>
       </div>
     </div>
