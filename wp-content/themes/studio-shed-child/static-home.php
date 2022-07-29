@@ -17,15 +17,15 @@
     <meta property="og:description" content="Studio Shed creates high-efficiency prefab modern sheds and backyard studios. Design and build your own modern studio with our 3D Configurator tool.">
     <meta property="og:url" content="https://www.studio-shed.com/">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2022-07-29T18:11:36.802Z">
+    <meta property="article:modified_time" content="2022-07-29T20:23:20.760Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="https://www.studio-shed.com/">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1659118296256">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1659126200140">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <script src="/assets/main.bundle.js?v=1659118296256"></script>
+    <script src="/assets/main.bundle.js?v=1659126200140"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
     <!--
     <script src="https://apps.elfsight.com/p/platform.js" async></script> 
@@ -913,6 +913,53 @@
         <h2 class="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">A better way to build</h2>
         <p class="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">Built with high-quality, sustainable, and energy-efficient materials made to last. Each Studio Shed is prefabricated in our Colorado factory and available to ship nationwide. </p>
       </div>
+      <div class="relative mt-8 lg:mt-12 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+      <div class="relative">
+        <dl class="mt-10 space-y-10">
+          <div class="relative">
+            <dt>
+              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+                </svg>
+              </div>
+              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Customizable</p>
+            </dt>
+            <dd class="mt-2 ml-16 text-base text-gray-500">From layout, color, interior finishes and more.</dd>
+          </div>
+
+          <div class="relative">
+            <dt>
+              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+              </div>
+              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Quick</p>
+            </dt>
+            <dd class="mt-2 ml-16 text-base text-gray-500">Installed in a matter of days.</dd>
+          </div>
+
+          <div class="relative">
+            <dt>
+              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                </svg>
+              </div>
+              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">High Quality</p>
+            </dt>
+            <dd class="mt-2 ml-16 text-base text-gray-500">Sustainable materials designed to last a lifetime.</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="mt-10 -mx-4 relative lg:mt-0" aria-hidden="true">
+        <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
+          <img src="/assets/images/home-better-way.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed virtual tour bedroom view">
+        </div>        
+      </div>
+    </div>
     </div>
   </div>
 
