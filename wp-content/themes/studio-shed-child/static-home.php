@@ -17,15 +17,15 @@
     <meta property="og:description" content="Studio Shed creates high-efficiency prefab modern sheds and backyard studios. Design and build your own modern studio with our 3D Configurator tool.">
     <meta property="og:url" content="https://www.studio-shed.com/">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2022-07-29T20:37:42.336Z">
+    <meta property="article:modified_time" content="2022-07-30T02:12:13.630Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="https://www.studio-shed.com/">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1659127061742">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1659147133051">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <script src="/assets/main.bundle.js?v=1659127061742"></script>
+    <script src="/assets/main.bundle.js?v=1659147133051"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
     <!--
     <script src="https://apps.elfsight.com/p/platform.js" async></script> 
@@ -499,7 +499,7 @@
       </ul>
     
     <div class="mt-6 text-sm font-semibold">
-      <a href="#" class="text-yellow-600 hover:text-yellow-500 transition ease-in-out duration-150">View all articles &amp; resources <span aria-hidden="true">→</span></a>
+      <a href="/blog/" class="text-yellow-600 hover:text-yellow-500 transition ease-in-out duration-150">View all articles &amp; resources <span aria-hidden="true">→</span></a>
     </div>
   </div>
 
@@ -864,7 +864,7 @@
     <div class="justify-center flex">
       <div class="mx-auto sm:flex sm:justify-center">
         <a href="/products/signature-series/" class="transition ease-in-out delay-250 w-full flex m-2 justify-center p-3 border border-2 border-white text-sm font-bold text-white uppercase text-center rounded-full hover:bg-white hover:text-black sm:w-auto sm:px-4">Browse In-Stock/Ready to Ship Models</a>
-        <a href="https://shop.studio-shed.com/#!signature" class="transition ease-in-out delay-250 w-full flex m-2 justify-center p-3 border border-2 border-white text-sm font-bold text-white uppercase text-center rounded-full hover:bg-white hover:text-black sm:w-auto sm:px-4">Design Your Own</a>
+        <a href="https://shop.studio-shed.com/" class="transition ease-in-out delay-250 w-full flex m-2 justify-center p-3 border border-2 border-white text-sm font-bold text-white uppercase text-center rounded-full hover:bg-white hover:text-black sm:w-auto sm:px-4">Design Your Own</a>
       </div>
     </div>
   
@@ -876,7 +876,7 @@
     <div class="max-w-4xl mx-auto py-16 px-4 sm:py-12 sm:px-6 lg:px-8">
       <div class="text-center">
         <p class="mt-1 text-3xl font-extrabold text-gray-900">Our Models</p>
-        <p class="mx-auto text-gray-500">Explore our backyard studios and accessory dwelling units.</p>
+        <p class="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">Explore our backyard studios and accessory dwelling units.</p>
       </div>
     </div>
 
@@ -1086,7 +1086,7 @@
 
   <div class="relative">
     <img class="h-[50vh] w-full object-cover" src="/assets/images/home-made-in-co.jpg" alt="A Studio Shed installed in a Colorado location with the Rocky mountains in the background.">
-    <div class="absolute bottom-0 top-auto h-24 inset-0 bg-gradient-to-t from-black to-transparent mix-blend-multiply"></div>
+    <div class="absolute bottom-0 top-auto h-16 inset-0 bg-gradient-to-t from-black to-transparent mix-blend-multiply"></div>
   </div>
   <div class="bg-black">
     <div class="max-w-4xl mx-auto py-16 px-4 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 lg:flex lg:items-center lg:justify-between">
