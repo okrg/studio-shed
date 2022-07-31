@@ -1,371 +1,250 @@
-   <link rel="stylesheet" href="/wp-content/themes/studio-shed-child/css/footer.css?v=2.0" type="text/css" />
-
-
-<footer id="footer" class="myfooter">
-	<div class="footer-subscribe">
-		<div class="container">
-		<div class="row">
-			<div class="col-sm-12 col-md-6">
-				<div class="subscribe-headline">Subscribe and get free studio shed resources delivered to you.</div>
-					<ul>
-					<li class="check-li">Get the latest shed stories, photos, and news from our community.</li>
-					<li class="check-li">Find local events and opportunities to see our products in person.</li>
-					<li class="check-li">See exclusive discounts and other special offers.</li>
-					</ul>
-                    <p>&nbsp;</p>
-			</div>
-			<div class="col-sm-12 col-md-6">                
-                <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
-                <script>
-                  hbspt.forms.create({
-                    region: "na1",
-                    portalId: "22119690",
-                    formId: "e158e038-8b4d-4302-8063-4604bc4faa47"
-                  });
-                </script>
-			</div>
-		</div>
-		</div>
-	</div>
-	<div class="footer-escape">
-		<div class="container">
-		<div class="row">
-			<div class="col-sm-3 col-md-2" style="vertical-align: top;">
-				<img src="/wp-content/uploads/2020/01/footer-studio-shed-escape.jpg" alt="Image of Studio Shed design configurator loaded on an ipad">
-			</div>
-			<div class="col-sm-9 col-md-4" style="vertical-align: top;">
-
-			<div class="escape-headline">Make Your Escape</div>
-				<p><span style="color: #ffffff;">One shed does not fit all. Our innovative modular system allows for tremendous customization. There are millions of combinations of sizes, door and window placements, and colors. All thoughtfully designed to work together.</span></p>
-                <a href="/design-center/" class="vce-button--style-basic button" title="Build and price your Studio Shed design" style="float: none;">Build &amp; Price</a>
-			</div>
-            <div class="col-sm-3 col-md-2" style="vertical-align: top;">
-                <img src="/wp-content/uploads/2021/07/ss-virtual-showroom-banner-scaled.jpg" alt="Image of Studio Shed virtual tour">
-            </div>
-            <div class="col-sm-9 col-md-4" style="vertical-align: top;">
-
-            <div class="escape-headline">3D Interactive Tour</div>
-                <p><span style="color: #ffffff;">Enter an immersive 360 degreee experience and explore the collection of sizes, interior layouts, materials and finishes avaialble for our Summit Series.</span></p>
-                <a href="https://tour.studio-shed.com" class="vce-button--style-basic button" title="Explore the Studio Shed virtual showroom" style="float: none;">Explore Now</a>
-            </div>
-			</div>
-		</div>
-		<div class="row delivery">
-			<div class="col-sm-0 col-md-2">
-				<p>&nbsp;</p>
-			</div>
-			<div class="col-sm-12 col-md-5">
-				<div class="delivery-headline">We Deliver and Build in all 50 States, beyond</div>
-				<hr>
-				<p>Studio Shed ships to all 50 U.S. states. Our products are built right here in Colorado and then shipped directly to your front door. Shipping costs will be calculated during the design process based on your exact location. </p></p>
-			</div>
-			<div class="col-sm-3 col-md-5">
-				<p>&nbsp;</p>
-			</div>
-		</div>
-	
-	</div>
-	</div>
-
-
-	<div class="footer-menus">
-		<div class="container">
-		<div class="row">
-			<div class="col-sm-12">
-                <a href="/" title="Studio Shed home page">
-				<img src="/wp-content/uploads/2019/09/studio-shed-logo-white.png" alt="studio shed">
+<div class="relative bg-gray-800">
+  <div class="h-56 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
+    <img class="w-full h-full object-cover" src="/assets/images/ss-footer-build.jpg" alt="Studio Shed 3D design center app">
+  </div>
+  <div class="relative max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+    <div class="md:ml-auto md:w-1/2 md:pl-10">
+      <h2 class="text-base font-semibold uppercase tracking-wider text-gray-300">Make Your Escape</h2>
+      <p class="mt-2 text-white text-3xl font-extrabold tracking-tight sm:text-4xl">Design Your Studio Shed</p>
+      <p class="mt-3 text-lg text-gray-300">One shed does not fit all. Our innovative prefab solution is a flat-packed, panelized kits of parts with hundreds of customizations in the Design Center. There are millions of combinations of sizes, door and window placements, and colors. All thoughtfully designed to work together.</p>
+      <div class="mt-8">
+        <div class="inline-flex rounded-md shadow">
+          <a href="https://shop.studio-shed.com/" class="inline-block mt-6 px-4 py-3 border border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-white font-medium hover:opacity-80 sm:px-8" title="Studio Shed 3D Design Center">Design &amp; Price Your Studio Shed</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="bg-black" aria-labelledby="footer-heading">
+  <h2 id="footer-heading" class="sr-only">Footer</h2>
+  <div class="max-w-7xl mx-auto pt-16 pb-8 px-4 sm:px-6 lg:pt-24 lg:px-8">
+    <div class="grid text-center md:grid-cols-3 gap-8 md:text-left lg:grid-cols-6 lg:gap-8">
+      
+          <div class="mt-6">
+            <h3 class="text-sm font-bold text-gray-200 tracking-wider uppercase">More</h3>
+            <ul role="list" class="mt-4 space-y-4">
+              <li>
+                <a href="https://www.studio-shed.com/process/" class="text-base text-gray-300 hover:text-white">
+                Process
                 </a>
-			</div>
-			<div class="col-sm-6 col-md-2">
-
-			<div class="footer-nav-headline">MODELS</div>
-            <ul>
-                <li class="menu-item">
-                    <a href="/products/summit-series/">Summit</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/products/signature-series/">Signature</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/products/portland-series/">Portland</a>
-                </li>
+              </li>
+              <li>
+                <a href="https://shop.studio-shed.com" class="text-base text-gray-300 hover:text-white">
+                Design Center
+                </a>
+              </li>              
+              <li>
+                <a href="https://www.studio-shed.com/blog/" class="text-base text-gray-300 hover:text-white">
+                Articles &amp; Resources
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/faqs/" class="text-base text-gray-300 hover:text-white">
+                  Frequently Asked Questions
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/about-us/" class="text-base text-gray-300 hover:text-white">
+                  About Studio Shed
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/join-our-team/" class="text-base text-gray-300 hover:text-white">
+                  Join Our Team
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/financing/" class="text-base text-gray-300 hover:text-white">
+                  Financing
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/installation-resources/" class="text-base text-gray-300 hover:text-white">
+                  Installation Guides
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/customer-reviews/" class="text-base text-gray-300 hover:text-white">
+                  Customer Reviews
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/partner-with-us/" class="text-base text-gray-300 hover:text-white">
+                  Partner With Us
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/contact-us/" class="text-base text-gray-300 hover:text-white">
+                  Contact Us
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/terms-and-conditions/" class="text-base text-gray-300 hover:text-white">
+                    Terms &amp; Conditions
+                  </a>
+              </li>
             </ul>
+          </div>
 
-			</div>
-			<div class="col-sm-6 col-md-2">
-            <div class="footer-nav-headline">ADU</div>
-            <ul>
-                <li class="menu-item">
-                    <a href="/adu/">Accessory Dwelling Unit</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/adu/cost-financing/">ADU Cost &amp; Financing</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/adu/design/">Design your ADU</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/adu/granny-flat/">Granny Flat</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/adu/ideas/">ADU Ideas</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/adu/interior-packages/">Interior Packages</a>
-                </li>
+        
+          <div class="mt-6">
+            <h3 class="text-sm font-bold text-gray-200 tracking-wider uppercase">ADUs</h3>
+            <ul role="list" class="mt-4 space-y-4">
+              <li>
+                <a href="https://www.studio-shed.com/products/summit-series" class="text-base text-gray-300 hover:text-white">Summit Series</a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/adu/#" class="text-base text-gray-300 hover:text-white">Accessory Dwelling Units</a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/adu/cost-financing/" class="text-base text-gray-300 hover:text-white">ADU Cost & Financing</a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/adu/granny-flat/" class="text-base text-gray-300 hover:text-white">Granny Flat</a>
+              </li>
+
+              <li>
+                <a href="https://www.studio-shed.com/adu/ideas/" class="text-base text-gray-300 hover:text-white">ADU Design Ideas</a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/adu/interior-packages/" class="text-base text-gray-300 hover:text-white">Interior Packages</a>
+              </li>
+              <li>
+                <a href="https://tour.studio-shed.com/" class="text-base text-gray-300 hover:text-white">3D Virtual Tour</a>
+              </li>
             </ul>
+          </div>
+          
 
-
-
-			</div>
-			<div class="col-sm-6 col-md-2">
-
-            <div class="footer-nav-headline">SHED STORIES</div>
-            <ul>
-                <li class="menu-item">
-                    <a href="/home-office-spaces/">Home Office Spaces</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/music-studios/">Music Studios</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/art-studios/">Art Studios</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/man-cave/">Man Cave</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/she-sheds/">She Shed</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/storage/">Storage</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/diy/">DIY</a>
-                </li>
+          <div class="mt-6">
+            <h3 class="text-sm font-bold text-gray-200 tracking-wider uppercase">Studios</h3>
+            <ul role="list" class="mt-4 space-y-4">
+              <li>
+                <a href="https://www.studio-shed.com/products/signature-series" class="text-base text-gray-300 hover:text-white">Signature Series</a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/products/portland-series" class="text-base text-gray-300 hover:text-white">Portland Series</a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/backyard-studios/" class="text-base text-gray-300 hover:text-white">Backyard Studios</a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/backyard-studios/cost-financing/" class="text-base text-gray-300 hover:text-white">Studio Cost &amp; Financing</a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/backyard-studios/ideas/" class="text-base text-gray-300 hover:text-white">Studio Ideas</a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/diy-quick-ship-models/" class="text-base text-gray-300 hover:text-white">DIY Quick Ship Models</a>
+              </li>
             </ul>
-			</div>
-			<div class="col-sm-6 col-md-2">
-
-            <div class="footer-nav-headline">SHOPPING TOOLS</div>
-            <ul>
-                <li class="menu-item">
-                    <a href="/design-center/">Build &amp; Price</a>
-                </li>
-                <li class="menu-item">
-                    <a href="https://tour.studio-shed.com/">Virtual Showroom</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/financing/">Financing</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/faqs/">Frequently Asked Questions</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/request-free-consultation/">Request Free Consultation</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/customer-reviews/">Customer Reviews</a>
-                </li>
+          </div>
+        
+        
+          <div class="mt-6">
+            <h3 class="text-sm font-bold text-gray-200 tracking-wider uppercase">Inspiration</h3>
+            <ul role="list" class="mt-4 space-y-4">
+              <li>
+                <a href="/home-office-spaces/" class="text-base text-gray-300 hover:text-white">
+                  Home Office Spaces
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/music-studios/" class="text-base text-gray-300 hover:text-white">Music Studios
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/art-studios/" class="text-base text-gray-300 hover:text-white">
+                  Art &amp; Creative Studios
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/man-cave/" class="text-base text-gray-300 hover:text-white">
+                  Man Cave
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/she-sheds/" class="text-base text-gray-300 hover:text-white">
+                  She Shed
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/storage/" class="text-base text-gray-300 hover:text-white">
+                  Storage
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/diy/" class="text-base text-gray-300 hover:text-white">
+                  DIY
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/wellness/" class="text-base text-gray-300 hover:text-white">
+                  Wellness
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/garages/" class="text-base text-gray-300 hover:text-white">
+                  Garages
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/modular-addition/" class="text-base text-gray-300 hover:text-white">
+                  Modular Additions
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/commercial/" class="text-base text-gray-300 hover:text-white">
+                  Commercial
+                </a>
+              </li>
             </ul>
-			</div>
-			<div class="col-sm-6 col-md-2">
+          </div>
+          
 
-			<div class="footer-nav-headline">MORE</div>
-            <ul>
-                <li class="menu-item">
-                    <a href="/installation-resources/">DIY Installation Guide</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/blog/">Blog</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/about-us/">About Studio Shed</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/our-team/">Our Team</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/our-story/">Our Story</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/sustainability/">Sustainability</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/award-winning-design/">Design Awards</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/join-our-team/">Join Our Team</a>
-                </li>
-                <li class="menu-item">
-                    <a href="/partner-with-us/">Partner With Us</a>
-                </li>
-            </ul>
-
-
-
-
-			</div>
-			<div class="col-sm-12 col-md-2">
-
-				<img alt="We ship nationwide" src="/wp-content/uploads/2020/01/we-ship-footer-icon.png">
-                <p>&nbsp;</p>
-                <table style="width: 54px;" cellpadding="0" cellspacing="0"><tr><td><a href="https://www.houzz.co.uk/pro/studioshed/studio-shed-live-large-build-small"><img src="https://st.hzcdn.com/static_en-GB/badge_53_7@2x.png" alt="Studio Shed in Louisville, CO on Houzz" width="54" height="54" border="0" /></a></td></tr></table>
-                <p>&nbsp;</p>
-                <div class="social">
-                    <a href="https://www.facebook.com/StudioShed" target="_blank" rel="noreferrer" title="Facebook profile page">
-                        <img alt="facebook social media icon" src="/wp-content/themes/studio-shed-child/img/social-fb.png">
-                    </a>
-                    <a href="https://twitter.com/studioshed" target="_blank" rel="noreferrer" title="Twitter profile page">
-                        <img alt="twitter social media icon" src="/wp-content/themes/studio-shed-child/img/social-tw.png">
-                    </a>
-                    <a href="https://www.instagram.com/studioshed/" target="_blank" rel="noreferrer" title="Instagram profile page">
-                        <img alt="instagram social media icon" src="/wp-content/themes/studio-shed-child/img/social-ig.png">
-                    </a>
-                    <a href="https://www.houzz.com/pro/studioshed" target="_blank" rel="noreferrer" title="Houzz profile page">
-                        <img alt="houzz social media icon" src="/wp-content/themes/studio-shed-child/img/social-hz.png">
-                    </a>
-                </div>
-
-			</div>
-                <div class="col-sm-12 copyfooter">
-                <div class="copyright">&copy; 2022 &mdash; <a href="/privacy/">Privacy</a> &mdash; <a href="/terms-and-conditions/">Terms of Use</a></div>
-                </div>
-			</div>
-		</div>
-	</div>
+        
+      <div class="mt-6 col-span-2">
+        <h3 class="text-sm font-black text-gray-200 tracking-wider uppercase">Subscribe to our newsletter</h3>
+        <p class="mb-4 text-base text-gray-200">The latest news, articles, and resources, sent to your inbox weekly.</p>
+        <script>
+          hbspt.forms.create({
+            region: "na1",
+            portalId: "22119690",
+            formId: "081be1e1-2bec-4811-a854-f6abb9704212"
+          });
+        </script>
+        <div class="flex space-x-12 mt-24">
+          <img src="/assets/images/footer-shipping.png" alt="Studio Ships to all 50 states">
+          <img src="/assets/images/footer-houzz-badge.png" alt="Studio Shed design award by Houzz">
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 pt-8 border-t border-gray-500 md:flex md:items-center md:justify-between lg:mt-16">
+      <div class="flex space-x-4 md:order-2">
+        <a href="https://www.facebook.com/StudioShed/" target="_blank" class="text-gray-400 hover:text-gray-500">
+          <span class="sr-only">Facebook</span>
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/studioshed" target="_blank" class="text-gray-400 hover:text-gray-500">
+          <span class="sr-only">Instagram</span>
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
+          </svg>
+        </a>
+        <a href="https://twitter.com/studioshed" target="_blank" class="text-gray-400 hover:text-gray-500">
+          <span class="sr-only">Twitter</span>
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+          </svg>
+        </a>
+      </div>
+      <p class="mt-8 text-base text-gray-400 md:mt-0 md:order-1">&copy; 2022 Studio Shed &bull; <a href="/privacy/">Privacy Policy</a> &bull; <a href="/do-not-sell/">Do Not Sell My Information</a></p>
+    </div>
+  </div>
 </footer>
 
-
-<!-- <div class="nav-fixed-footer">
-    <div class="col-fixed">
-        <a href="/configurator/">design & price</a>
-    </div>
-    <div class="col-fixed">
-        <p>start configuring your own custom studio shed now.</p>
-    </div>
-</div> -->
-
-<script type="text/javascript">
-    //Open external links in a new window
-    jQuery(document).ready(function($) {
-        $('.container a').each(function() {
-        var a = new RegExp('/' + window.location.host + '/');
-        if(!a.test(this.href)) {
-            $(this).click(function(event) {
-                event.preventDefault();
-                event.stopPropagation();
-                window.open(this.href, '_blank');
-            });
-        }
-        });
-    });
-
-
-    jQuery('#gform_11').submit(function () {
-        var value = jQuery('.range').val();
-        value = '$' + value * 1000;
-        value = value.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
-        // console.log(value);return false;
-        //Set
-        jQuery('#input_11_13').val(value);
-    });
-    jQuery(document).ready(function () {
-        jQuery("<div class='top-form'><div class='main-top'></div></div>").appendTo("#gform_fields_11");
-
-        var li_1_1 = jQuery("#field_11_15").detach();
-        var li_1_2 = jQuery("#field_11_16").detach();
-        var li_2 = jQuery("#field_11_9").detach();
-        var li_3 = jQuery("#field_11_3").detach();
-        var li_4 = jQuery("#field_11_4").detach();
-        jQuery(li_1_1).appendTo('.main-top');
-        jQuery(li_1_2).appendTo('.main-top');
-        jQuery(li_2).appendTo('.main-top');
-        jQuery(li_3).appendTo('.main-top');
-        jQuery(li_4).appendTo('.main-top');
-
-        jQuery("<div class='mid-form'><div class='main-mid'></div></div>").insertAfter(".top-form");
-        var li_5 = jQuery("#field_11_10").detach();
-        var li_6 = jQuery("#field_11_11").detach();
-        jQuery(li_5).appendTo('.main-mid');
-        jQuery(li_6).appendTo('.main-mid');
-
-        jQuery("<div class='bottom-form'></div>").insertAfter(".mid-form");
-        var li_7 = jQuery("#field_11_12").detach();
-        var li_8 = jQuery("#field_11_13").detach();
-        var li_9 = jQuery("#field_11_8").detach();
-        var li_10 = jQuery("#field_11_7").detach();
-        var li_11 = jQuery("#field_11_14").detach();
-        jQuery(li_7).appendTo('.bottom-form');
-        jQuery(li_8).appendTo('.bottom-form');
-        jQuery(li_9).appendTo('.bottom-form');
-        jQuery(li_10).appendTo('.bottom-form');
-        jQuery(li_11).appendTo('.bottom-form');
-        jQuery('#input_11_17, #input_11_18').prop('type', 'number');
-    })
-
-    jQuery('#gform_14').submit(function () {
-        var value = jQuery('.range').val();
-        value = '$' + value * 1000;
-        value = value.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
-        // console.log(value);return false;
-        //Set
-        jQuery('#input_14_13').val(value);
-    });
-    jQuery(document).ready(function () {
-        jQuery("<div class='top-form'><div class='main-top'></div></div>").appendTo("#gform_fields_14");
-
-        var li_1_1 = jQuery("#field_14_15").detach();
-        var li_1_2 = jQuery("#field_14_16").detach();
-        var li_2 = jQuery("#field_14_9").detach();
-        var li_3 = jQuery("#field_14_3").detach();
-        var li_4 = jQuery("#field_14_4").detach();
-        jQuery(li_1_1).appendTo('.main-top');
-        jQuery(li_1_2).appendTo('.main-top');
-        jQuery(li_2).appendTo('.main-top');
-        jQuery(li_3).appendTo('.main-top');
-        jQuery(li_4).appendTo('.main-top');
-
-        jQuery("<div class='mid-form'><div class='main-mid'></div></div>").insertAfter(".top-form");
-        var li_5 = jQuery("#field_14_10").detach();
-        var li_6 = jQuery("#field_14_11").detach();
-        jQuery(li_5).appendTo('.main-mid');
-        jQuery(li_6).appendTo('.main-mid');
-
-        jQuery("<div class='bottom-form'></div>").insertAfter(".mid-form");
-        var li_7 = jQuery("#field_14_12").detach();
-        var li_8 = jQuery("#field_14_13").detach();
-        var li_9 = jQuery("#field_14_8").detach();
-        var li_10 = jQuery("#field_14_7").detach();
-        var li_11 = jQuery("#field_14_14").detach();
-        jQuery(li_7).appendTo('.bottom-form');
-        jQuery(li_8).appendTo('.bottom-form');
-        jQuery(li_9).appendTo('.bottom-form');
-        jQuery(li_10).appendTo('.bottom-form');
-        jQuery(li_11).appendTo('.bottom-form');
-        jQuery('#input_14_17, #input_14_18').prop('type', 'number');
-    })
-</script>
-<!-- Budge -->
-<script type="text/javascript">
-
-    var event_type = /Trident/g.test(navigator.userAgent) ? 'change' : 'input';
-
-    jQuery('input[type=range]').on(event_type, function (e) {
-        var min = e.target.min,
-                max = e.target.max,
-                val = e.target.value;
-
-        jQuery(e.target).css({
-            'backgroundSize': (val - min) * 100 / (max - min) + '% 100%'
-        });
-
-        jQuery('#rangevalue').text(val);
-
-    }).trigger('input');
-
-</script>
-<a href="#myModal" role="button" class="btn btn-large btn-primary hidden" id="button-modal" data-toggle="modal">Modal</a>
 <script type="text/javascript" src="<?php echo bloginfo('template_directory'); ?>/bootrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo bloginfo('template_directory'); ?>/js/jquery.responsiveTabs.min.js"></script>
 <script type="text/javascript" src="<?php echo bloginfo('template_directory'); ?>/js/common.js"></script>

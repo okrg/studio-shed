@@ -465,7 +465,7 @@ div.main-explore div.explore-content h3 {
 @media (min-width: 992px){
 
 #wrapper {
-	padding-top:40px!important;
+	/*padding-top:40px!important;*/
 	}
 #lg-header-logo img,  
 #header-logo img {
@@ -563,7 +563,7 @@ div.main-explore div.explore-content h3 {
 }
 p {
     font-weight: 300;
-    font-size: 15px;
+    font-size: 18px;
     line-height: 1.3em;
 }
 p {
@@ -677,3 +677,7 @@ body.woocommerce-checkout h3 label{
 form.woocommerce-checkout #order_review .input-checkbox {
     position: relative;
 }
+body.page-template #secondary .container {padding-bottom: 80px;}
+body.single-post section.container {padding-bottom: 80px;}
+body.single-post p.titleintro {text-align: center; font-weight:  bold;}
+body.single-post .sidebar {display: none;}
