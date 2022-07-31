@@ -244,7 +244,7 @@
     </div>
   </div>
 </footer>
-
+<link rel="stylesheet" href="/wp-content/themes/studio-shed-child/css/footer.css?v=2.0" type="text/css" />
 <script type="text/javascript" src="<?php echo bloginfo('template_directory'); ?>/bootrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo bloginfo('template_directory'); ?>/js/jquery.responsiveTabs.min.js"></script>
 <script type="text/javascript" src="<?php echo bloginfo('template_directory'); ?>/js/common.js"></script>

@@ -677,8 +677,8 @@ body.woocommerce-checkout h3 label{
 form.woocommerce-checkout #order_review .input-checkbox {
     position: relative;
 }
-body.page-template #secondary-header .header-wrap {height: 400px;}
-body.page-template #secondary .container h1 {font-weight: bold; text-align: center; font-size: 36px;margin-top: 40px;}
+
+
 body.page-template #secondary .container {padding-bottom: 80px;}
 body.single-post section.container {padding-bottom: 80px;}
 body.single-post p.titleintro {text-align: center; font-weight:  bold;}
