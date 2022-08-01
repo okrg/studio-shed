@@ -240,11 +240,10 @@
           </svg>
         </a>
       </div>
-      <p class="mt-8 text-base text-gray-400 md:mt-0 md:order-1">&copy; 2022 Studio Shed &bull; <a href="/privacy/">Privacy Policy</a> &bull; <a href="/do-not-sell/">Do Not Sell My Information</a></p>
+      <p class="mt-8 text-base text-gray-400 md:mt-0 md:order-1">&copy; 2022 Studio Shed &bull; <a class="hover:text-gray-200" href="/privacy/">Privacy Policy</a> &bull; <a class="hover:text-gray-200" href="/do-not-sell/">Do Not Sell My Information</a></p>
     </div>
   </div>
 </footer>
-<link rel="stylesheet" href="/wp-content/themes/studio-shed-child/css/footer.css?v=2.0" type="text/css" />
 <script type="text/javascript" src="<?php echo bloginfo('template_directory'); ?>/bootrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo bloginfo('template_directory'); ?>/js/jquery.responsiveTabs.min.js"></script>
 <script type="text/javascript" src="<?php echo bloginfo('template_directory'); ?>/js/common.js"></script>
