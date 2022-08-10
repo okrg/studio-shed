@@ -12,15 +12,15 @@
     <meta property="og:description" content="Faster and more affordable than design-build, the Summit Series adds more SPACE. It’s a prefabricated guest house, your dream studio, the ultimate garage?">
     <meta property="og:url" content="https://www.studio-shed.com/products/summit-series/">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2022-08-02T00:14:28.541Z">
+    <meta property="article:modified_time" content="2022-08-10T23:19:35.238Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="https://www.studio-shed.com/products/summit-series/">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1659399267984">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1660145898636">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <script src="/assets/main.bundle.js?v=1659399267984"></script>
+    <script src="/assets/main.bundle.js?v=1660145898636"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
     <!--
     <script src="https://apps.elfsight.com/p/platform.js" async></script> 
@@ -897,11 +897,11 @@
     <select id="tabs" name="tabs" class="block w-full focus:ring-yellow-500 focus:border-yellow-500 border-gray-300" @change="document.getElementById($event.target.value).scrollIntoView()">
       <!--
       <option :selected="visibleSection == 'curated'" value="toc-curated">Quick Ship Models</option>
-      -->
-      <option :selected="visibleSection == 'interior'" value="toc-interior">Interior Kits</option>
+      -->      
       <option :selected="visibleSection == 'features'" value="toc-features">Features &amp; Specs</option>
       <option :selected="visibleSection == 'gallery'" value="toc-gallery">Gallery</option>
       <option :selected="visibleSection == 'options'" value="toc-options">Additional Options</option>
+      <option :selected="visibleSection == 'interior'" value="toc-interior">Interior Kits</option>
       <option :selected="visibleSection == 'ordering'" value="toc-ordering">Ordering</option>
       <option :selected="visibleSection == 'installation'" value="toc-installation">Installation</option>
     </select>
@@ -914,11 +914,6 @@
         <span aria-hidden="true" :class="visibleSection == 'curated' ? 'bg-yellow-600' : 'bg-gray-400'" class="absolute inset-x-0 bottom-0 h-1"></span>
       </a>
       -->
-
-      <a href="#" :class="visibleSection == 'interior' ? 'text-gray-900' : 'text-gray-500'" class="group relative min-w-0 flex-1 overflow-hidden py-4 px-4 text-sm font-medium text-center hover:opacity-80 focus:z-5" @click.prevent="document.getElementById('toc-interior').scrollIntoView()">
-        <span>Interior Kits</span>
-        <span aria-hidden="true" :class="visibleSection == 'interior' ? 'bg-yellow-600' : 'bg-gray-400'" class="absolute inset-x-0 bottom-0 h-1"></span>
-      </a>
 
       <a href="#" :class="visibleSection == 'features' ? 'text-gray-900' : 'text-gray-500'" class="group relative min-w-0 flex-1 overflow-hidden bg-white py-4 px-4 text-sm font-medium text-center hover:opacity-80 focus:z-10" @click.prevent="document.getElementById('toc-features').scrollIntoView()">
         <span>Features &amp; Specs</span>
@@ -935,6 +930,11 @@
         <span aria-hidden="true" :class="visibleSection == 'options' ? 'bg-yellow-600' : 'bg-gray-400'" class="absolute inset-x-0 bottom-0 h-1"></span>
       </a>
 
+      <a href="#" :class="visibleSection == 'interior' ? 'text-gray-900' : 'text-gray-500'" class="group relative min-w-0 flex-1 overflow-hidden py-4 px-4 text-sm font-medium text-center hover:opacity-80 focus:z-5" @click.prevent="document.getElementById('toc-interior').scrollIntoView()">
+        <span>Interior Kits</span>
+        <span aria-hidden="true" :class="visibleSection == 'interior' ? 'bg-yellow-600' : 'bg-gray-400'" class="absolute inset-x-0 bottom-0 h-1"></span>
+      </a>
+
       <a href="#" :class="visibleSection == 'ordering' ? 'text-gray-900' : 'text-gray-500'" class="group relative min-w-0 flex-1 overflow-hidden py-4 px-4 text-sm font-medium text-center hover:opacity-80 focus:z-10" @click.prevent="document.getElementById('toc-ordering').scrollIntoView()">
         <span>Ordering</span>
         <span aria-hidden="true" :class="visibleSection == 'ordering' ? 'bg-yellow-600' : 'bg-gray-400'" class=" absolute inset-x-0 bottom-0 h-1"></span>
@@ -947,6 +947,288 @@
     </nav>
   </div>
 </div>
+<div class="bg-white" id="toc-features" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'features'">
+  <div aria-hidden="true" class="relative">
+    <img src="/assets/images/summit-features.jpg" class="w-full h-96 object-center object-cover">
+    <div class="absolute inset-0 bottom-0 top-auto h-48 bg-gradient-to-t from-white"></div>
+  </div>
+
+  <div class="relative -mt-12 max-w-7xl mx-auto pb-8 px-4 sm:pb-12 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mx-auto text-center lg:max-w-4xl">
+      <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Summit Series Standard Features</h2>
+    </div>
+
+    <dl class="mt-16 max-w-2xl mx-auto grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:max-w-none lg:grid-cols-3 lg:gap-x-8">
+      <div class="border-t border-gray-200 pt-4">
+        <dt class="font-medium text-gray-900">Sizes</dt>
+        <dd class="mt-2 text-sm text-gray-500 flex gap-x-8 grid-cols-4">
+          <div>
+            <p>14’x18’</p>
+            <p>14’x22’</p>
+            <p>14’x26’</p>
+            <p>14’x30’</p>
+            <p>14’x34’ <span class="font-bold text-yellow-600">*</span></p>
+          </div>
+          <div>
+            <p>16’x18’</p>
+            <p>16’x22’</p>
+            <p>16’x26’</p>
+            <p>16’x30’</p>
+            <p>16’x34’ <span class="font-bold text-yellow-600">*</span></p>
+            <p>16’x38’ <span class="font-bold text-yellow-600">*</span></p>
+          </div>
+          <div>
+            <p>18’x18’</p>
+            <p>18’x22’</p>
+            <p>18’x26’</p>
+            <p>18’x30’</p>
+            <p>18’x34’ <span class="font-bold text-yellow-600">*</span></p>
+            <p>18’x38’ <span class="font-bold text-yellow-600">*</span></p>
+            <p>18’x42’ <span class="font-bold text-yellow-600">*</span></p>
+          </div>
+          <div>
+            <p>20’x22’</p>
+            <p>20’x26’</p>
+            <p>20’x30’</p>
+            <p>20’x34’ <span class="font-bold text-yellow-600">*</span></p>
+            <p>20’x38’ <span class="font-bold text-yellow-600">*</span></p>
+            <p>20’x42’ <span class="font-bold text-yellow-600">*</span></p>
+            <p>20’x46’ <span class="font-bold text-yellow-600">*</span></p>
+            <p>20’x50’ <span class="font-bold text-yellow-600">*</span></p>
+          </div>
+      </dd>
+      <p class="text-sm text-gray-600"><span class="font-bold text-yellow-600">*</span> Can include standard bedroom kit</p>
+      </div>
+
+      <div class="border-t border-gray-200 pt-4">
+        <dt class="font-medium text-gray-900">Construction</dt>
+        <dd class="mt-2 text-sm text-gray-500">2x6 Framing and Zip System weatherproof wall panels.</dd>
+      </div>
+
+      <div class="border-t border-gray-200 pt-4">
+        <dt class="font-medium text-gray-900">Roof</dt>
+        <dd class="mt-2 text-sm text-gray-500">LVL engineered wood roof beams, 1/2″ Plywood decking with Ice and Water shield, 26-gauge Galvalume roofing, James Hardie vented soffit.</dd>
+      </div>
+
+      <div class="border-t border-gray-200 pt-4">
+        <dt class="font-medium text-gray-900">Windows</dt>
+        <dd class="mt-2 text-sm text-gray-500">Double-pane, high efficiency. Fixed transom and vertical options. Operable, awning windows with screens.</dd>
+      </div>
+
+      <div class="border-t border-gray-200 pt-4">
+        <dt class="font-medium text-gray-900">Green Materials</dt>
+        <dd class="mt-2 text-sm text-gray-500">FSC certified lumber, mixed-source recycled metal and materials throughout, optimized prefabricated production. Meets building codes throughout the US.</dd>
+      </div>
+
+      <div class="border-t border-gray-200 pt-4">
+        <dt class="font-medium text-gray-900">Siding</dt>
+        <dd class="mt-2 text-sm text-gray-500">HardiePanel fiber cement siding in multiple colors. Galvalume metal wainscot and cedar wood options available.</dd>
+      </div>
+
+      <div class="border-t border-gray-200 pt-4">
+        <dt class="font-medium text-gray-900">Door</dt>
+        <dd class="mt-2 text-sm text-gray-500">36” Therma-Tru full-lite fiberglass door, or 72” Therma-Tru full-lite fiberglass French door.</dd>
+      </div>
+
+      <div class="border-t border-gray-200 pt-4">
+        <dt class="font-medium text-gray-900">Hardware</dt>
+        <dd class="mt-2 text-sm text-gray-500">Brushed aluminum trim and door/window hardware. Standard foundation attachment hardware included.</dd>
+      </div>
+
+      <div class="border-t border-gray-200 pt-4">
+        <dt class="font-medium text-gray-900">Warranty</dt>
+        <dd class="mt-2 text-sm text-gray-500">1 year manufacturer and workmanship warranty on all models. After 1 year, vendor specific warranties apply.</dd>
+      </div>
+    </dl>
+  </div>
+</div>
+<div class="bg-white">
+  <div class="max-w-xl mx-auto py-6 px-4 sm:py-12 sm:px-6 lg:max-w-4xl">
+    <div class="grid items-center grid-cols-1 gap-x-8 lg:grid-cols-2">
+      <div>        
+        <p class="text-xl font-bold tracking-tight text-gray-900">Technical Specifications</p>      
+
+        <div class="space-y-4">
+          <div><a href="/assets/downloads/summit-specs-14x.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Download 14' depth Summit Series specifications</a></div>
+          
+          <div><a href="/assets/downloads/summit-specs-16x.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Download 16' depth Summit Series specifications</a></div>
+          
+          <div><a href="/assets/downloads/summit-specs-18x.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Download 18' depth Summit Series specifications</a></div>
+          
+          <div><a href="/assets/downloads/summit-specs-14x.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Download 20' depth Summit Series specifications</a></div>
+          
+          <div><a href="/assets/downloads/summit-specs-20x.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Download Summit Series roof guide</a></div>
+          
+
+        </div>
+      </div>
+
+      <div>
+        <div class="aspect-w-2 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
+          <img src="/assets/images/summit-tech-specs.jpg" class="w-full h-full object-center object-cover">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-white mb-24" id="toc-gallery" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'gallery'">
+  <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="mb-8 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Gallery</h2>      
+    </div>
+    
+    <ul role="list" id="lightgallery" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/01.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+          <img src="/assets/images/summit-gallery/01_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/02.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+          <img src="/assets/images/summit-gallery/02_tn.jpg" class="object-cover">
+          </a>
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/03.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">      
+          <img src="/assets/images/summit-gallery/03_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/04.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+          <img src="/assets/images/summit-gallery/04_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/05.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+          <img src="/assets/images/summit-gallery/05_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/06.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+          <img src="/assets/images/summit-gallery/06_tn.jpg" class="object-cover">
+          </a>
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/07.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">      
+          <img src="/assets/images/summit-gallery/07_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/08.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+          <img src="/assets/images/summit-gallery/08_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/09.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+          <img src="/assets/images/summit-gallery/09_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/10.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+          <img src="/assets/images/summit-gallery/10_tn.jpg" class="object-cover">
+          </a>
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/11.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">      
+          <img src="/assets/images/summit-gallery/11_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/12.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+          <img src="/assets/images/summit-gallery/12_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/13.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+          <img src="/assets/images/summit-gallery/13_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/14.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+          <img src="/assets/images/summit-gallery/14_tn.jpg" class="object-cover">
+          </a>
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/15.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">      
+          <img src="/assets/images/summit-gallery/15_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/16.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+          <img src="/assets/images/summit-gallery/16_tn.jpg" class="object-cover">
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="bg-white" id="toc-options" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'options'">
+  <section aria-labelledby="features-heading" class="relative">
+    <div class="aspect-w-3 aspect-h-2 overflow-hidden sm:aspect-w-5 lg:aspect-none lg:absolute lg:w-1/2 lg:h-full lg:pr-4 xl:pr-16">
+      <img src="/assets/images/summit-additional-options.jpg" class="h-full w-full object-center object-cover lg:h-full lg:w-full">
+    </div>
+
+    <div class="max-w-2xl mx-auto pt-16 pb-24 px-4 sm:pb-32 sm:px-6 lg:max-w-7xl lg:pt-32 lg:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
+      <div class="lg:col-start-2">
+        <p class="mt-4 text-4xl font-extrabold text-gray-900 tracking-tight">Additional Options</p>
+
+        <dl class="mt-10 grid grid-cols-1 gap-y-10 gap-x-8 text-sm sm:grid-cols-2">
+          <div>
+            <dt class="font-bold text-gray-900">Window and Door Options</dt>
+            <dd class="mt-2 text-gray-500">
+              <div>&ndash; VistaLite vertical windows</div>
+              <div>&ndash; Marvin 72” x 42″ sliding fiberglass window</div>
+              <div>&ndash; Marvin 36” x 42″ operable fiberglass window</div>
+              <div>&ndash; Marvin 36” x 36″ operable fiberglass window</div>
+              <div>&ndash; Marvin 36” x 18” operable fiberglass window</div>
+              <div>&ndash; 36" Therma-Tru fiberglass, full-lite door</div>
+              <div>&ndash; 72" Therma-Tru fiberglass, full-lite French door</div>
+              <div>&ndash; 8’x7′ and 16’x7′ openings for garage and slider doors</div>
+            </dd>
+          </div>
+
+          <div>
+            <dt class="font-bold text-gray-900">Interior Packages</dt>
+            <dd class="mt-2 text-gray-500">
+              <div>&ndash; Standard insulation – R-21 (wall) and R-30 (roof)</div>
+              <div>&ndash; Finished flooring</div>
+              <div>&ndash; Electrical package with interior/exterior fixtures</div>
+              <div>&ndash; Upgraded 225A 30 slot electrical sub-panel</div>
+              <div>&ndash; Seamless painted interior drywall included with purchase of certified installation</div>
+              <div>&ndash; Kitchen Layouts and fixtures</div>
+              <div>&ndash; Bathroom Layouts and fixtures</div>
+              <div>&ndash; HVAC – Mini split AC/heat</div>
+              <div>&ndash; Tankless gas water heater or 50-gal electric heat pump</div>
+              <div>&ndash; Premium wood cabinetry</div>              
+              <div>&ndash; Premium laminate countertops</div>
+              <div>&ndash; Summit appliance packages</div>              
+            </dd>
+          </div>
+
+
+          <div>
+            <dt class="font-bold text-gray-900">Upgrades</dt>
+            <dd class="mt-2 text-gray-500">              
+              <div>&ndash; Bronze aluminum trim/roofing package</div>
+              <div>&ndash; Shortened eaves</div>
+              <div>&ndash; Painted soffit upgrade</div>
+            </dd>
+          </div>
+        </dl>
+
+        <div class="py-6">
+        <a href="/assets/downloads/lifestyle-interior-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Download Lifestyle Interior Guide</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
 <div class="bg-white" id="toc-interior" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'interior'">
   <section aria-labelledby="features-heading" class="max-w-7xl mx-auto py-32 sm:px-2 lg:px-8" x-data="window.Components.interiorKitManager()">
     <div class="max-w-2xl mx-auto px-4 lg:px-0 lg:max-w-none">
@@ -1247,287 +1529,6 @@
   </section>
 </div>
 
-<div class="bg-white" id="toc-features" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'features'">
-  <div aria-hidden="true" class="relative">
-    <img src="/assets/images/summit-features.jpg" class="w-full h-96 object-center object-cover">
-    <div class="absolute inset-0 bottom-0 top-auto h-48 bg-gradient-to-t from-white"></div>
-  </div>
-
-  <div class="relative -mt-12 max-w-7xl mx-auto pb-8 px-4 sm:pb-12 sm:px-6 lg:px-8">
-    <div class="max-w-2xl mx-auto text-center lg:max-w-4xl">
-      <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Summit Series Standard Features</h2>
-    </div>
-
-    <dl class="mt-16 max-w-2xl mx-auto grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:max-w-none lg:grid-cols-3 lg:gap-x-8">
-      <div class="border-t border-gray-200 pt-4">
-        <dt class="font-medium text-gray-900">Sizes</dt>
-        <dd class="mt-2 text-sm text-gray-500 flex gap-x-8 grid-cols-4">
-          <div>
-            <p>14’x18’</p>
-            <p>14’x22’</p>
-            <p>14’x26’</p>
-            <p>14’x30’</p>
-            <p>14’x34’</p>
-          </div>
-          <div>
-            <p>16’x18’</p>
-            <p>16’x22’</p>
-            <p>16’x26’</p>
-            <p>16’x30’</p>
-            <p>16’x34’</p>
-            <p>16’x38’</p>
-          </div>
-          <div>
-            <p>18’x18’</p>
-            <p>18’x22’</p>
-            <p>18’x26’</p>
-            <p>18’x30’</p>
-            <p>18’x34’</p>
-            <p>18’x38’</p>
-            <p>18’x42’</p>
-          </div>
-          <div>
-            <p>20’x22’</p>
-            <p>20’x26’</p>
-            <p>20’x30’</p>
-            <p>20’x34’</p>
-            <p>20’x38’</p>
-            <p>20’x42’</p>
-            <p>20’x46’</p>
-            <p>20’x50’</p>
-          </div>
-      </dd>
-      </div>
-
-      <div class="border-t border-gray-200 pt-4">
-        <dt class="font-medium text-gray-900">Construction</dt>
-        <dd class="mt-2 text-sm text-gray-500">2 x 4 framing and Zip System weatherproof wall panels. 2 x 6 framing option avaialble.</dd>
-      </div>
-
-      <div class="border-t border-gray-200 pt-4">
-        <dt class="font-medium text-gray-900">Roof</dt>
-        <dd class="mt-2 text-sm text-gray-500">LVL engineered wood roof beams, 1/2″ Plywood decking with Ice and Water shield, 26-gauge Galvalume roofing, James Hardie vented soffit</dd>
-      </div>
-
-      <div class="border-t border-gray-200 pt-4">
-        <dt class="font-medium text-gray-900">Windows</dt>
-        <dd class="mt-2 text-sm text-gray-500">Double-pane, high efficiency. Fixed transom and vertical options. Operable, awning windows with screens.</dd>
-      </div>
-
-      <div class="border-t border-gray-200 pt-4">
-        <dt class="font-medium text-gray-900">Green Materials</dt>
-        <dd class="mt-2 text-sm text-gray-500">FSC certified lumber, mixed-source recycled metal and materials throughout, optimized prefabricated production. Meets building codes throughout the US.</dd>
-      </div>
-
-      <div class="border-t border-gray-200 pt-4">
-        <dt class="font-medium text-gray-900">Siding</dt>
-        <dd class="mt-2 text-sm text-gray-500">HardiePanel fiber cement siding in multiple colors. Galvalume metal and cedar wood options available.</dd>
-      </div>
-
-      <div class="border-t border-gray-200 pt-4">
-        <dt class="font-medium text-gray-900">Door</dt>
-        <dd class="mt-2 text-sm text-gray-500">36” Therma-Tru full-lite fiberglass door, or 72” Therma-Tru full-lite fiberglass French door.</dd>
-      </div>
-
-      <div class="border-t border-gray-200 pt-4">
-        <dt class="font-medium text-gray-900">Hardware</dt>
-        <dd class="mt-2 text-sm text-gray-500">Brushed aluminum trim and door/window hardware</dd>
-      </div>
-
-      <div class="border-t border-gray-200 pt-4">
-        <dt class="font-medium text-gray-900">Warranty</dt>
-        <dd class="mt-2 text-sm text-gray-500">1 year manufacturer warranty on all models plus extended warranties on doors and windows</dd>
-      </div>
-    </dl>
-  </div>
-</div>
-<div class="bg-white">
-  <div class="max-w-xl mx-auto py-6 px-4 sm:py-12 sm:px-6 lg:max-w-4xl">
-    <div class="grid items-center grid-cols-1 gap-x-8 lg:grid-cols-2">
-      <div>        
-        <p class="text-xl font-bold tracking-tight text-gray-900">Technical Specifications</p>      
-
-        <div class="space-y-4">
-          <div><a href="/assets/downloads/summit-specs-14x.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Download 14' depth Summit Series specifications</a></div>
-          
-          <div><a href="/assets/downloads/summit-specs-16x.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Download 16' depth Summit Series specifications</a></div>
-          
-          <div><a href="/assets/downloads/summit-specs-18x.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Download 18' depth Summit Series specifications</a></div>
-          
-          <div><a href="/assets/downloads/summit-specs-14x.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Download 20' depth Summit Series specifications</a></div>
-          
-          <div><a href="/assets/downloads/summit-specs-20x.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Download Summit Series roof guide</a></div>
-          
-
-        </div>
-      </div>
-
-      <div>
-        <div class="aspect-w-2 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
-          <img src="/assets/images/summit-tech-specs.jpg" class="w-full h-full object-center object-cover">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="bg-white mb-24" id="toc-gallery" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'gallery'">
-  <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-    <div class="text-center">
-      <h2 class="mb-8 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Gallery</h2>      
-    </div>
-    
-    <ul role="list" id="lightgallery" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/01.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
-          <img src="/assets/images/summit-gallery/01_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/02.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
-          <img src="/assets/images/summit-gallery/02_tn.jpg" class="object-cover">
-          </a>
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/03.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">      
-          <img src="/assets/images/summit-gallery/03_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/04.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
-          <img src="/assets/images/summit-gallery/04_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/05.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
-          <img src="/assets/images/summit-gallery/05_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/06.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
-          <img src="/assets/images/summit-gallery/06_tn.jpg" class="object-cover">
-          </a>
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/07.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">      
-          <img src="/assets/images/summit-gallery/07_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/08.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
-          <img src="/assets/images/summit-gallery/08_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/09.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
-          <img src="/assets/images/summit-gallery/09_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/10.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
-          <img src="/assets/images/summit-gallery/10_tn.jpg" class="object-cover">
-          </a>
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/11.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">      
-          <img src="/assets/images/summit-gallery/11_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/12.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
-          <img src="/assets/images/summit-gallery/12_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/13.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
-          <img src="/assets/images/summit-gallery/13_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/14.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
-          <img src="/assets/images/summit-gallery/14_tn.jpg" class="object-cover">
-          </a>
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/15.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">      
-          <img src="/assets/images/summit-gallery/15_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/16.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
-          <img src="/assets/images/summit-gallery/16_tn.jpg" class="object-cover">
-        </div>
-      </li>
-    </ul>
-  </div>
-</div>
-
-<div class="bg-white" id="toc-options" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'options'">
-  <section aria-labelledby="features-heading" class="relative">
-    <div class="aspect-w-3 aspect-h-2 overflow-hidden sm:aspect-w-5 lg:aspect-none lg:absolute lg:w-1/2 lg:h-full lg:pr-4 xl:pr-16">
-      <img src="/assets/images/summit-additional-options.jpg" class="h-full w-full object-center object-cover lg:h-full lg:w-full">
-    </div>
-
-    <div class="max-w-2xl mx-auto pt-16 pb-24 px-4 sm:pb-32 sm:px-6 lg:max-w-7xl lg:pt-32 lg:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
-      <div class="lg:col-start-2">
-        <p class="mt-4 text-4xl font-extrabold text-gray-900 tracking-tight">Additional Options</p>
-
-        <dl class="mt-10 grid grid-cols-1 gap-y-10 gap-x-8 text-sm sm:grid-cols-2">
-          <div>
-            <dt class="font-bold text-gray-900">Window and Door Options</dt>
-            <dd class="mt-2 text-gray-500">
-              <div>&ndash; VistaLite vertical windows</div>
-              <div>&ndash; Marvin 72” x 42″ sliding fiberglass window</div>
-              <div>&ndash; Marvin 36” x 42″ operable fiberglass window</div>
-              <div>&ndash; Marvin 36” x 36″ operable fiberglass window</div>
-              <div>&ndash; Marvin 36” x 18” operable fiberglass window</div>
-              <div>&ndash; 36" Therma-Tru fiberglass, full-lite door</div>
-              <div>&ndash; 72" Therma-Tru fiberglass, full-lite French door</div>
-              <div>&ndash; 8’x7′ and 16’x7′ openings for garage and slider doors</div>
-            </dd>
-          </div>
-
-          <div>
-            <dt class="font-bold text-gray-900">Interior Packages</dt>
-            <dd class="mt-2 text-gray-500">
-              <div>&ndash; Insulation – R-21 (wall) and R-30 (roof)</div>
-              <div>&ndash; Finished Flooring</div>
-              <div>&ndash; Electrical package with interior/exterior fixtures</div>
-              <div>&ndash; Seamless painted interior drywall included with purchase of certified installation</div>
-              <div>&ndash; Kitchen Layouts</div>
-              <div>&ndash; Integrated bathroom with included plumbing</div>
-              <div>&ndash; HVAC – Mini Split AC/Heat</div>
-              <div>&ndash; Tankless hot water heater</div>
-              <div>&ndash; Upgraded 220v Electrical Service</div>
-              <div>&ndash; Latitude MODA Cabinetry</div>
-              <div>&ndash; Premium Laminate Countertops</div>
-              <div>&ndash; KitchenAid and Haier Appliance Packages</div>
-              <div>&ndash; 30″x60″ Shower, Dual-Flush toilet, 24″ Vanity</div>
-            </dd>
-          </div>
-
-
-          <div>
-            <dt class="font-bold text-gray-900">Upgrades</dt>
-            <dd class="mt-2 text-gray-500">              
-              <div>&ndash; Bronze Aluminum Trim/Roofing Package</div>
-              <div>&ndash; Shortened Back Eaves</div>
-            </dd>
-          </div>
-        </dl>
-
-        <div class="py-6">
-        <a href="/assets/downloads/lifestyle-interior-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Download Lifestyle Interior Guide</a>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-
 <div class="bg-gray-50" id="toc-ordering" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'ordering'">
   <div class="max-w-7xl mx-auto py-24 sm:px-2 sm:py-32 lg:px-4">
     <div class="max-w-2xl mx-auto px-4 lg:max-w-none">
@@ -1599,7 +1600,7 @@
       <div class="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:gap-x-8 lg:items-center">
         <div class="mt-6 lg:mt-0 lg:row-start-1 lg:col-span-5 xl:col-span-4 lg:col-start-1">
           <h3 class="text-lg font-medium text-gray-900">DIY Install</h3>
-          <p class="mt-2 text-sm text-gray-500">This is a great option for the handy homeowner who enjoys a weekend project and wants to save money. Every DIY Studio Shed purchase includes the same installer training tools that we use with our own Certified Install Teams. Homeowner also could hire a trusted contractor to install and count on the same resources  and training provided to our Professional Install teams. </p>
+          <p class="mt-2 text-sm text-gray-500">This is a great option for the handy homeowner who enjoys a weekend project and wants to save money. Every DIY Studio Shed purchase includes the same installer training resources that we share with our own In-Network Builders. Homeowner also could hire a trusted contractor to install and count on the same resources  and training provided to our In-Network Builders. </p>
         </div>
         <div class="flex-auto lg:row-start-1 lg:col-span-7 xl:col-span-8 lg:col-start-6 xl:col-start-5">
           <div class="aspect-w-3 aspect-h-2 rounded-lg bg-gray-100 overflow-hidden">
@@ -1611,7 +1612,7 @@
       <div class="flex flex-col-reverse lg:grid lg:grid-cols-12 lg:gap-x-8 lg:items-center">
         <div class="mt-6 lg:mt-0 lg:row-start-1 lg:col-span-5 xl:col-span-4 lg:col-start-8 xl:col-start-9">
           <h3 class="text-lg font-medium text-gray-900">Professional Install</h3>
-          <p class="mt-2 text-sm text-gray-500">Our network of 3rd party builders take delivery of your Studio Shed and install the Shell building kit of walls, roof and siding. Windows are pre-installed into the panels. Lifestyle interior also may be purchased for install into the Shell in the field. Installers also typically quote site work and other adds like step/deck.</p>
+          <p class="mt-2 text-sm text-gray-500">Our network of 3rd party builders take delivery of your Studio Shed and install the Shell building kit of walls, roof and siding. Windows are pre-installed into the panels. Lifestyle interior also may be purchased for install into the Shell in the field. Installers also typically quote site work and other adds like foundation/step/deck.</p>
         </div>
         <div class="flex-auto lg:row-start-1 lg:col-span-7 xl:col-span-8 lg:col-start-1">
           <div class="aspect-w-3 aspect-h-2 rounded-lg bg-gray-100 overflow-hidden">
