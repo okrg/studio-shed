@@ -4,27 +4,29 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Boreas 10x12</title>  
-    <meta name="description" content="Boreas 10x22">
+    <meta name="description" content="">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta property="og:locale" content="en_US">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="">
     <meta property="og:title" content="Boreas 10x12">
-    <meta property="og:description" content="Boreas 10x22">
-    <meta property="og:url" content="https://www.studio-shed.com/products/boreas-10x12">
+    <meta property="og:description" content="">
+    <meta property="og:url" content="">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2022-08-11T01:02:34.103Z">
+    <meta property="article:modified_time" content="2022-08-15T00:23:18.988Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
-    <link rel="canonical" href="https://www.studio-shed.com/products/boreas-10x12">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1660179753563">
+    <link rel="canonical" href="">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1660522998248">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <script src="/assets/main.bundle.js?v=1660179753563"></script>
+    <script src="/assets/main.bundle.js?v=1660522998248"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
-
-    <script src="/assets/mini-harp.js"></script>
-    <!--<script src="BABYLON JS LINK"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babylonjs/4.2.2/babylon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/babylonjs-loaders@5.9.1/babylonjs.loaders.min.js"></script>
+    <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
+    <script src="/assets/next-harp.js"></script>
+    
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -809,9 +811,366 @@
 </div>
   </div>
 </header>    
+    <main>
+
+
+
+
+
+
+
+  <div class="bg-white">
+    <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+      <div class="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start">
+        <!-- Image gallery -->
+        <div class="flex flex-col-reverse">
+          <div class="w-full aspect-w-1 aspect-h-1">        
+            <canvas id="renderCanvas" touch-action="none" style="display:none" data-studio-shed-model="boreas-10x12"></canvas>
+          </div>
+        </div>
+
+        <!-- Product info -->
+        <div class="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
+          <h1 class="text-3xl font-extrabold tracking-tight text-gray-900">Boreas 10&apos; &times; 12&apos;</h1>
+
+          <div class="mt-3">
+            <h2 class="sr-only">Product information</h2>
+            <p class="text-3xl text-gray-900">$24,548</p>
+          </div>
+
+
+
+          <div class="mt-6">
+            <h3 class="sr-only">Description</h3>
+
+            <div class="text-base text-gray-700 space-y-6">
+              <p>Lap style siding &bull; DIY installation only &bull; Foundation excluded &bull; Shipping included </p>
+            </div>
+          </div>
+
+          <section class="mt-6" x-data="window.Components.qsForm()">
+
+            <h2 class="text-sm font-medium text-gray-900">Color: <span x-show="sidingColorValue" x-text="sidingColorValue" class="text-xs font-medium text-gray-800"></span></h2>
+            <div id="siding-menu" class="mt-2 mb-4">
+              <div class="flex flex-wrap items-center"><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-iron-gray ring-2" :class="sidingColorValue === 'Iron Gray' ? 'ring ring-offset-1' : 'ring-0'"
+                  @click.prevent="setSidingColor('iron-gray', 'Iron Gray')">
+                  <input type="radio" x-model="sidingColorValue" name="color-choice" value="Iron Gray" class="sr-only" aria-labelledby="color-choice-0-label">
+                    <p id="color-choice-bg-iron-gray-label" class="sr-only">Iron Gray</p>
+                    <span aria-hidden="true" class="h-8 w-8 bg-iron-gray border border-black border-opacity-10 rounded-full"></span>
+                  </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-pearl-gray ring-2" :class="sidingColorValue === 'Pearl Gray' ? 'ring ring-offset-1' : 'ring-0'"
+                  @click.prevent="setSidingColor('pearl-gray', 'Pearl Gray')">
+                  <input type="radio" x-model="sidingColorValue" name="color-choice" value="Pearl Gray" class="sr-only" aria-labelledby="color-choice-0-label">
+                    <p id="color-choice-bg-pearl-gray-label" class="sr-only">Pearl Gray</p>
+                    <span aria-hidden="true" class="h-8 w-8 bg-pearl-gray border border-black border-opacity-10 rounded-full"></span>
+                  </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-arctic-white ring-2" :class="sidingColorValue === 'Arctic White' ? 'ring ring-offset-1' : 'ring-0'"
+                  @click.prevent="setSidingColor('arctic-white', 'Arctic White')">
+                  <input type="radio" x-model="sidingColorValue" name="color-choice" value="Arctic White" class="sr-only" aria-labelledby="color-choice-0-label">
+                    <p id="color-choice-bg-arctic-white-label" class="sr-only">Arctic White</p>
+                    <span aria-hidden="true" class="h-8 w-8 bg-arctic-white border border-black border-opacity-10 rounded-full"></span>
+                  </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-countrylane-red ring-2" :class="sidingColorValue === 'Countrylane Red' ? 'ring ring-offset-1' : 'ring-0'"
+                  @click.prevent="setSidingColor('countrylane-red', 'Countrylane Red')">
+                  <input type="radio" x-model="sidingColorValue" name="color-choice" value="Countrylane Red" class="sr-only" aria-labelledby="color-choice-0-label">
+                    <p id="color-choice-bg-countrylane-red-label" class="sr-only">Countrylane Red</p>
+                    <span aria-hidden="true" class="h-8 w-8 bg-countrylane-red border border-black border-opacity-10 rounded-full"></span>
+                  </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-rich-espresso ring-2" :class="sidingColorValue === 'Rich Espresso' ? 'ring ring-offset-1' : 'ring-0'"
+                  @click.prevent="setSidingColor('rich-espresso', 'Rich Espresso')">
+                  <input type="radio" x-model="sidingColorValue" name="color-choice" value="Rich Espresso" class="sr-only" aria-labelledby="color-choice-0-label">
+                    <p id="color-choice-bg-rich-espresso-label" class="sr-only">Rich Espresso</p>
+                    <span aria-hidden="true" class="h-8 w-8 bg-rich-espresso border border-black border-opacity-10 rounded-full"></span>
+                  </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-timber-bark ring-2" :class="sidingColorValue === 'Timber Bark' ? 'ring ring-offset-1' : 'ring-0'"
+                  @click.prevent="setSidingColor('timber-bark', 'Timber Bark')">
+                  <input type="radio" x-model="sidingColorValue" name="color-choice" value="Timber Bark" class="sr-only" aria-labelledby="color-choice-0-label">
+                    <p id="color-choice-bg-timber-bark-label" class="sr-only">Timber Bark</p>
+                    <span aria-hidden="true" class="h-8 w-8 bg-timber-bark border border-black border-opacity-10 rounded-full"></span>
+                  </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-cobble-stone ring-2" :class="sidingColorValue === 'Cobble Stone' ? 'ring ring-offset-1' : 'ring-0'"
+                  @click.prevent="setSidingColor('cobble-stone', 'Cobble Stone')">
+                  <input type="radio" x-model="sidingColorValue" name="color-choice" value="Cobble Stone" class="sr-only" aria-labelledby="color-choice-0-label">
+                    <p id="color-choice-bg-cobble-stone-label" class="sr-only">Cobble Stone</p>
+                    <span aria-hidden="true" class="h-8 w-8 bg-cobble-stone border border-black border-opacity-10 rounded-full"></span>
+                  </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-heathered-moss ring-2" :class="sidingColorValue === 'Heathered Moss' ? 'ring ring-offset-1' : 'ring-0'"
+                  @click.prevent="setSidingColor('heathered-moss', 'Heathered Moss')">
+                  <input type="radio" x-model="sidingColorValue" name="color-choice" value="Heathered Moss" class="sr-only" aria-labelledby="color-choice-0-label">
+                    <p id="color-choice-bg-heathered-moss-label" class="sr-only">Heathered Moss</p>
+                    <span aria-hidden="true" class="h-8 w-8 bg-heathered-moss border border-black border-opacity-10 rounded-full"></span>
+                  </label></div>
+            </div>
+
+            <h2 class="text-sm font-medium text-gray-900">Trim: <span x-show="trimColorValue" x-text="trimColorValue" class="text-xs font-medium text-gray-800"></span></h2>
+            <div id="trim-menu" class="mt-2 mb-4">
+              <div class="flex flex-wrap items-center"><label x-radio-group-option="" class="m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-aluminum ring-2" :class="trimColorValue === 'Clear Anodized Aluminum' ? 'ring ring-offset-1' : 'ring-0'" 
+                  @click.prevent="setTrimColor('aluminum', 'Clear Anodized Aluminum')">
+                  <input type="radio" x-model="trimColorValue" name="color-choice" value="Clear Anodized Aluminum" class="sr-only" aria-labelledby="color-choice-0-label">
+                    <p id="color-choice-bg-aluminum-label" class="sr-only">Clear Anodized Aluminum</p>
+                    <span aria-hidden="true" class="h-8 w-8 bg-aluminum border border-black border-opacity-10 rounded-full"></span>
+                  </label><label x-radio-group-option="" class="m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-studio-shed-bronze ring-2" :class="trimColorValue === 'Studio Shed Bronze' ? 'ring ring-offset-1' : 'ring-0'" 
+                  @click.prevent="setTrimColor('studio-shed-bronze', 'Studio Shed Bronze')">
+                  <input type="radio" x-model="trimColorValue" name="color-choice" value="Studio Shed Bronze" class="sr-only" aria-labelledby="color-choice-0-label">
+                    <p id="color-choice-bg-studio-shed-bronze-label" class="sr-only">Studio Shed Bronze</p>
+                    <span aria-hidden="true" class="h-8 w-8 bg-studio-shed-bronze border border-black border-opacity-10 rounded-full"></span>
+                  </label></div>
+            </div>
+
+            <h2 class="text-sm font-medium text-gray-900">Door: <span x-show="doorsColorValue" x-text="doorsColorValue" class="text-xs font-medium text-gray-800"></span></h2>
+            <div id="trim-menu" class="mt-2 mb-4">
+              <div class="flex flex-wrap items-center"><label x-radio-group-option="" class="m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-factory-primed-white ring-2" :class="doorsColorValue === 'Factory Primed White' ? 'ring ring-offset-1' : 'ring-0'"
+                @click.prevent="setDoorColor('factory-primed-white', 'Factory Primed White')">
+                <input type="radio" x-model="doorsColorValue" name="color-choice" value="Factory Primed White" class="sr-only" aria-labelledby="color-choice-0-label">
+                  <p id="color-choice-bg-factory-primed-white-label" class="sr-only">Factory Primed White</p>
+                  <span aria-hidden="true" class="h-8 w-8 bg-factory-primed-white border border-black border-opacity-10 rounded-full"></span>
+                </label><label x-radio-group-option="" class="m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-tricorn-black ring-2" :class="doorsColorValue === 'Tricorn Black' ? 'ring ring-offset-1' : 'ring-0'"
+                @click.prevent="setDoorColor('tricorn-black', 'Tricorn Black')">
+                <input type="radio" x-model="doorsColorValue" name="color-choice" value="Tricorn Black" class="sr-only" aria-labelledby="color-choice-0-label">
+                  <p id="color-choice-bg-tricorn-black-label" class="sr-only">Tricorn Black</p>
+                  <span aria-hidden="true" class="h-8 w-8 bg-tricorn-black border border-black border-opacity-10 rounded-full"></span>
+                </label></div>
+            </div>
+
+            <h2 class="text-sm font-medium text-gray-900">Eaves: <span x-show="eavesColorValue" x-text="eavesColorValue" class="text-xs font-medium text-gray-800"></span></h2>
+            <div id="trim-menu" class="mt-2 mb-4">
+              <div class="flex flex-wrap items-center"><label x-radio-group-option="" class="m-1 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-natural-stain ring-2" :class="eavesColorValue === 'Natural Stain' ? 'ring ring-offset-1' : 'ring-0'"
+                @click.prevent="setEavesColor('natural-stain', 'Natural Stain')">
+                <input type="radio" x-model="eavesColorValue" name="color-choice" value="Natural Stain" class="sr-only" aria-labelledby="color-choice-0-label">
+                  <p id="color-choice-bg-natural-stain-label" class="sr-only">Natural Stain</p>
+                  <span aria-hidden="true" class="h-8 w-8 bg-natural-stain border border-black border-opacity-10 rounded-full"></span>
+                </label><label x-radio-group-option="" class="m-1 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-arctic-white ring-2" :class="eavesColorValue === 'Arctic White' ? 'ring ring-offset-1' : 'ring-0'"
+                @click.prevent="setEavesColor('arctic-white', 'Arctic White')">
+                <input type="radio" x-model="eavesColorValue" name="color-choice" value="Arctic White" class="sr-only" aria-labelledby="color-choice-0-label">
+                  <p id="color-choice-bg-arctic-white-label" class="sr-only">Arctic White</p>
+                  <span aria-hidden="true" class="h-8 w-8 bg-arctic-white border border-black border-opacity-10 rounded-full"></span>
+                </label><label x-radio-group-option="" class="m-1 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-tricorn-black ring-2" :class="eavesColorValue === 'Tricorn Black' ? 'ring ring-offset-1' : 'ring-0'"
+                @click.prevent="setEavesColor('tricorn-black', 'Tricorn Black')">
+                <input type="radio" x-model="eavesColorValue" name="color-choice" value="Tricorn Black" class="sr-only" aria-labelledby="color-choice-0-label">
+                  <p id="color-choice-bg-tricorn-black-label" class="sr-only">Tricorn Black</p>
+                  <span aria-hidden="true" class="h-8 w-8 bg-tricorn-black border border-black border-opacity-10 rounded-full"></span>
+                </label></div>
+            </div>
+
+            <h2 class="text-sm font-medium text-gray-900">Flooring: <span x-show="main_flooringTextValue" x-text="main_flooringTextValue" class="text-xs font-medium text-gray-800"></span></h2>
+            <div id="flooring-menu" class="mt-2 mb-4">
+              <ul role="list" class="grid grid-cols-4 gap-x-4 gap-y-4 mt-2 mb-8"><li class="relative">
+                  <div :class="main_flooringValue === 'sandcastle-oak' ? 'ring-offset-2 ring-2' : 'ring-0'" class="group block w-full aspect-w-2 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden ring-yellow-500" 
+                  @click="setMainFlooring('sandcastle-oak', 'Sandcastle Oak')">
+                    <img src="/assets/textures/sandcastle-oak.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                    <button type="button" class="absolute inset-0 focus:outline-none">
+                     <span class="sr-only">Load Sandcastle Oak</span>
+                    </button>
+                  </div>                  
+                </li><li class="relative">
+                  <div :class="main_flooringValue === 'ashlar-oak' ? 'ring-offset-2 ring-2' : 'ring-0'" class="group block w-full aspect-w-2 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden ring-yellow-500" 
+                  @click="setMainFlooring('ashlar-oak', 'Ashlar Oak')">
+                    <img src="/assets/textures/ashlar-oak.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                    <button type="button" class="absolute inset-0 focus:outline-none">
+                     <span class="sr-only">Load Ashlar Oak</span>
+                    </button>
+                  </div>                  
+                </li><li class="relative">
+                  <div :class="main_flooringValue === 'fawn-chestnut' ? 'ring-offset-2 ring-2' : 'ring-0'" class="group block w-full aspect-w-2 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden ring-yellow-500" 
+                  @click="setMainFlooring('fawn-chestnut', 'Fawn Chestnut')">
+                    <img src="/assets/textures/fawn-chestnut.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                    <button type="button" class="absolute inset-0 focus:outline-none">
+                     <span class="sr-only">Load Fawn Chestnut</span>
+                    </button>
+                  </div>                  
+                </li><li class="relative">
+                  <div :class="main_flooringValue === 'knotted-chestnut' ? 'ring-offset-2 ring-2' : 'ring-0'" class="group block w-full aspect-w-2 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden ring-yellow-500" 
+                  @click="setMainFlooring('knotted-chestnut', 'Knotted Chestnut')">
+                    <img src="/assets/textures/knotted-chestnut.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                    <button type="button" class="absolute inset-0 focus:outline-none">
+                     <span class="sr-only">Load Knotted Chestnut</span>
+                    </button>
+                  </div>                  
+                </li></ul>
+            </div>
+
+            <div class="mt-10 flex sm:flex-col1">
+
+              <button type="submit" class="max-w-xs flex-1 bg-yellow-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-yellow-500 sm:w-full" @click.prevent="buyNow('boreas-10x12')">Buy Now</button>
+
+            </div>
+
+
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-white">
+    <section aria-labelledby="features-heading" class="relative">
+      <div class="aspect-w-3 aspect-h-2 overflow-hidden sm:aspect-w-5 lg:aspect-none lg:absolute lg:w-1/2 lg:h-full lg:pr-4 xl:pr-16">
+        <img src="/assets/images/quick-ship/boreas-lifestyle.jpg" class="h-full w-full object-center object-cover lg:h-full lg:w-full">
+      </div>
+
+      <div class="max-w-2xl mx-auto pt-16 pb-24 px-4 sm:pb-32 sm:px-6 lg:max-w-7xl lg:pt-32 lg:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
+        <div class="lg:col-start-2">
+          <p class="mt-4 text-4xl font-extrabold text-gray-900 tracking-tight">Boreas 10&apos; &times; 12&apos; Standard Features</p>          
+
+          <dl class="mt-4 grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 sm:gap-y-6  lg:gap-x-8">
+            <div class="border-t border-gray-200 pt-4">
+              <dt class="font-medium text-gray-900">Size</dt>
+              <dd class="mt-2 text-sm text-gray-500">10&apos; &times; 12&apos;<br>120 square feet</dd>
+            </div>
+
+            <div class="border-t border-gray-200 pt-4">
+              <dt class="font-medium text-gray-900">Construction</dt>
+              <dd class="mt-2 text-sm text-gray-500">2 &times; 4 wall framing<br>
+                2 &times; 6 roof rafters<br>
+                ZIP System wall panels<br>
+                26-gauge Galvalume roofing<br>
+                Excludes drywall &amp; foundation
+              </dd>
+            </div>
+
+            <div class="border-t border-gray-200 pt-4">
+              <dt class="font-medium text-gray-900">Doors &amp; Windows</dt>
+              <dd class="mt-2 text-sm text-gray-500">72&quot; Therma-Tru full-lite glass door<br>
+                Full-lite front elevation featuring double-pane, high-efficiency glass
+              </dd>
+            </div>
+
+            <div class="border-t border-gray-200 pt-4">
+              <dt class="font-medium text-gray-900">Siding &amp; Hardware</dt>
+              <dd class="mt-2 text-sm text-gray-500">Pre-painted James Hardie fiber cement siding<br>
+                Brushed Aluminum hardware trim and door hardware
+              </dd>
+            </div>
+
+            <div class="border-t border-gray-200 pt-4">
+              <dt class="font-medium text-gray-900">Warranty</dt>
+              <dd class="mt-2 text-sm text-gray-500">1 year manufacturer warranty on parts and workmanship, plus extended warranties on doors and windows. <a href="https://www.studio-shed.com/terms-and-conditions/">See terms &amp; conditions for full details</a>.</dd>
+            </div>
+
+            <div class="border-t border-gray-200 pt-4">
+              <dt class="font-medium text-gray-900">Sustainability</dt>
+              <dd class="mt-2 text-sm text-gray-500">FSC certified lumber, mixed-source recycled metal and materials throughout, optimized prefabricated production.</dd>
+            </div>
+          </dl>
+
+
+        </div>
+      </div>
+    </section>
+  </div>
+<div class="bg-gray-50">
+  <div class="max-w-2xl mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+    <!-- Details section -->
+    <section aria-labelledby="details-heading">
+      <div class="flex flex-col items-center text-center">
+        <p class="mb-4 text-3xl font-extrabold text-gray-900">Boreas Tech Specs</p>
+      </div>
+
+      <div class="mt-16 grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:gap-x-8" id="qs-specs">
+        <div class="cursor-pointer hover:opacity-80" data-src="/assets/images/quick-ship/qs-interior.jpg">
+          <div class="bg-white w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+            <img src="/assets/images/quick-ship/qs-interior.jpg"  class="w-full h-full object-center object-contain">
+          </div>
+        </div>
+        <div class="cursor-pointer hover:opacity-80" data-src="/assets/images/quick-ship/boreas-spec.png">
+          <div class="bg-white w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+            <img src="/assets/images/quick-ship/boreas-spec.png"  class="w-full h-full object-center object-contain">
+          </div>          
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<div class="bg-white mb-24">
+  <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <p class="mb-4 text-3xl font-extrabold text-gray-900">Floor Plan Ideas</p>
+    </div>
     
-<main x-data="window.Components.productManager('boreas-10x12')">
-	<h2 x-text="productModel"></h2>
+    <ul role="list" id="qs-floorplans" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/quick-ship/boreas-workshop.png">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+          <img src="/assets/images/quick-ship/boreas-workshop_tn.png" class="object-cover" alt="Workshop">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/quick-ship/boreas-workout.png">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+          <img src="/assets/images/quick-ship/boreas-workout_tn.png" class="object-cover" alt="Workout space">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/quick-ship/boreas-storage.png">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">      
+          <img src="/assets/images/quick-ship/boreas-storage_tn.png" class="object-cover" alt="Storage space">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/quick-ship/boreas-office.png">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+          <img src="/assets/images/quick-ship/boreas-office_tn.png" class="object-cover" alt="Home office">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/quick-ship/boreas-music.png">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+          <img src="/assets/images/quick-ship/boreas-music_tn.png" class="object-cover" alt="Music / recording studio">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/quick-ship/boreas-cave.png">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+          <img src="/assets/images/quick-ship/boreas-cave_tn.png" class="object-cover" alt="Man cave / she shed">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/quick-ship/boreas-retreat.png">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">      
+          <img src="/assets/images/quick-ship/boreas-retreat_tn.png" class="object-cover" alt="Backyard retreat">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/quick-ship/boreas-art.png">
+        <div class="block w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+          <img src="/assets/images/quick-ship/boreas-art_tn.png" class="object-cover" alt="Art / creative space">
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="bg-white">
+  <div class="max-w-4xl mx-auto py-16 px-4 sm:py-12 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <p class="mt-1 text-3xl font-extrabold text-gray-900">Curated Designs</p>
+      <p class="mt-1 text-xl font-extrabold text-gray-900">In-stock Models / Ready to ship</p>
+      <p class="mx-auto text-gray-500">These models are our most popular designs delivered to your door in 2-4 weeks for DIY installation.</p>
+    </div>
+  </div>
+
+
+  <div class="max-w-6xl mx-auto pb-24 px-4 overflow-hidden sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8">
+      <a href="/products/pagoda-right-10x12/" class="group text-sm text-center">
+        <div class="w-full rounded-lg overflow-hidden group-hover:opacity-75">
+          <img src="/assets/images/signature-curated-pagoda-right-10x12.jpg" class="w-full h-full object-center object-contain">
+        </div>
+        <h3 class="font-bold text-lg text-gray-700">Pagoda Right 10'&times;12'</h3>
+        <p class="font-normal text-base text-gray-900">$22,206</p>
+      </a>
+
+      <a href="/products/boreas-10x12/" class="group text-sm text-center">
+        <div class="w-full rounded-lg overflow-hidden group-hover:opacity-75">
+          <img src="/assets/images/signature-curated-boreas-10x12.jpg" class="w-full h-full object-center object-contain">
+        </div>
+        <h3 class="font-bold text-lg text-gray-700">Boreas 10'&times;12'</h3>
+        <p class="font-normal text-base text-gray-900">$21,758</p>
+      </a>
+
+      <a href="/products/solitude-10x12/" class="group text-sm text-center">
+        <div class="w-full rounded-lg overflow-hidden group-hover:opacity-75">
+          <img src="/assets/images/signature-curated-solitude-10x12.jpg" class="w-full h-full object-center object-contain">
+        </div>
+        <h3 class="font-bold text-lg text-gray-700">Solitude 10'&times;12'</h3>
+        <p class="font-normal text-base text-gray-900">$24,548</p>
+      </a>
+
+      <a href="/products/pagoda-left-10x12/" class="group text-sm text-center">
+        <div class="w-full rounded-lg overflow-hidden group-hover:opacity-75">
+          <img src="/assets/images/signature-curated-pagoda-left-10x12.jpg" class="w-full h-full object-center object-contain">
+        </div>
+        <h3 class="font-bold text-lg text-gray-700">Pagoda Left 10'&times;12'</h3>
+        <p class="font-normal text-base text-gray-900">$25,868</p>
+      </a>
+     
+    </div>
+  </div>
+</div>
 </main>
     <div class="relative bg-gray-800">
   <div class="h-56 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
