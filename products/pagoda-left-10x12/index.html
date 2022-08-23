@@ -12,21 +12,21 @@
     <meta property="og:description" content="">
     <meta property="og:url" content="">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2022-08-15T00:23:18.991Z">
+    <meta property="article:modified_time" content="2022-08-23T00:49:13.182Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1660522998248">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1661215752213">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <script src="/assets/main.bundle.js?v=1660522998248"></script>
+    <script src="/assets/main.bundle.js?v=1661215752213"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babylonjs/4.2.2/babylon.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/babylonjs-loaders@5.9.1/babylonjs.loaders.min.js"></script>
     <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
     <script src="/assets/next-harp.js"></script>
-    
+    <script src="https://fs.acornfinance.com/lib/js/v2/acorn-finance.min.js"></script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -819,6 +819,8 @@
 
 
 
+
+
   <div class="bg-white">
     <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
       <div class="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start">
@@ -835,12 +837,33 @@
 
           <div class="mt-3">
             <h2 class="sr-only">Product information</h2>
-            <p class="text-3xl text-gray-900">$24,548</p>
+            <div class="flex items-center">
+              <p class="text-3xl text-gray-900">$20,430</p>
+              <p class="text-sm ml-12 font-bold text-gray-500 ml-6">List price: <span class="line-through">$24,767</span> <span class="text-green-500 ml-3">Save $4,337!</span></p>
+            </div>
           </div>
 
+          <div class="mt-3">
+          <div id="acorn-payment-amount-line" class="acorn-payment-amount-line" style="font-size:80% !important"></div>
+          </div>
+          <script>
+            acornParameters = {
+              dealerId: 'SSD-DCENTER',
+              companyName: 'Studio Shed',
+              subPurpose: 'Sheds,%20Garages,%20%26%20Studios',
+              loanAmount: 20430,
+              returnURL: window.location.href,
+              env: 'Prod', // Set to QA for testing or Prod for Production
+              paymentPrefix: 'From',
+              paymentSuffix: '/mo with'
+            }
+            acornFinance.setAcornParameters(acornParameters)
+            setTimeout(() => {
+              acornFinance.calcPayment(acornParameters.loanAmount, 'acorn-payment-amount-line', 'popup', '1line', 'Get Started');              
+            }, 1000);
+          </script>
 
-
-          <div class="mt-6">
+          <div class="mt-3">
             <h3 class="sr-only">Description</h3>
 
             <div class="text-base text-gray-700 space-y-6">
@@ -984,7 +1007,7 @@
 
             <div class="mt-10 flex sm:flex-col1">
 
-              <button type="submit" class="max-w-xs flex-1 bg-yellow-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-yellow-500 sm:w-full" @click.prevent="buyNow('pagoda-left-10x12')">Buy Now</button>
+              <button type="submit" class="max-w-xs flex-1 bg-yellow-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-yellow-500 sm:w-full" @click.prevent="buyNow('Pagoda Left 10&amp;apos; &amp;times; 12&amp;apos;', 'pagoda-left-10x12', 20430)">Buy Now</button>
 
             </div>
 
@@ -1003,7 +1026,7 @@
 
       <div class="max-w-2xl mx-auto pt-16 pb-24 px-4 sm:pb-32 sm:px-6 lg:max-w-7xl lg:pt-32 lg:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
         <div class="lg:col-start-2">
-          <p class="mt-4 text-4xl font-extrabold text-gray-900 tracking-tight">Pagoda Left 10&apos; &times; 12&apos; Standard Features</p>          
+          <p class="mt-4 text-3xl font-extrabold text-gray-900 tracking-tight">Pagoda Left 10&apos; &times; 12&apos; Standard Features</p>          
 
           <dl class="mt-4 grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 sm:gap-y-6  lg:gap-x-8">
             <div class="border-t border-gray-200 pt-4">
@@ -1417,6 +1440,8 @@
       <p class="mt-8 text-base text-gray-400 md:mt-0 md:order-1">&copy; 2022 Studio Shed &bull; <a class="hover:text-gray-200" href="/privacy/">Privacy Policy</a> &bull; <a class="hover:text-gray-200" href="/do-not-sell/">Do Not Sell My Information</a></p>
     </div>
   </div>
-</footer>
+</footer>  
+    <link type="text/css" rel="stylesheet" href="https://fs.acornfinance.com/lib/js/v2/acorn-finance.min.css">
+    <div id="acornModalPopup" class="acorn-popup-modal" style="display: none"></div>
   </body>
 </html>

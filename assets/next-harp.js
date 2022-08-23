@@ -33,7 +33,7 @@ const createScene = function () {
     400,
     new BABYLON.Vector3(0,52,0)
   )
-  Harp.camera.zoomToMouseLocation = true
+  //Harp.camera.zoomToMouseLocation = true
   Harp.camera.useNaturalPinchZoom = true
   Harp.camera.upperBetaLimit = Math.PI / 2
   Harp.camera.upperRadiusLimit = 800
@@ -41,6 +41,9 @@ const createScene = function () {
   Harp.camera.angularSensibilityX = 5000
   Harp.camera.angularSensibilityY = 5000
   Harp.camera.attachControl(canvas, true)
+  Harp.camera.inputs.remove(Harp.camera.inputs.attached.mousewheel);
+
+
 
   
 
@@ -1972,6 +1975,8 @@ const Harp = {
   engine.runRenderLoop(function () {
     scene.render()
   })
+
+  document.querySelector('#renderCanvas').addEventListener('wheel', evt => evt.preventDefault())
 
   window.addEventListener("resize", function () {
     engine.resize()
