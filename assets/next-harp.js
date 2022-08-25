@@ -5,6 +5,24 @@ BABYLON.OBJFileLoader.SKIP_MATERIALS = true
 window.addEventListener('DOMContentLoaded', () => {
 
 const canvas = document.getElementById('renderCanvas')
+const loadEvent = new CustomEvent('configurator_loaded', {
+  bubbles: true,
+  cancelable: true
+})
+
+const loader = document.createElement('div')
+loader.setAttribute('id', 'loader')
+loader.setAttribute('style', 'font-size:36px;color: #fff;display: flex;align-items: center;justify-content: center;flex-direction: column;background: #222;position: absolute;z-index: 999;height: 100%;width: 100%;overflow: show;margin: auto;top: 0;left: 0;bottom: 0;right: 0;')  
+let dots = window.setInterval( function() {    
+  if ( loader.innerHTML.length > 2 ) 
+      loader.innerHTML = "";
+  else 
+      loader.innerHTML += ".";
+}, 500);
+
+canvas.before(loader)
+
+
 const engine = new BABYLON.Engine(canvas, true, { 
    preserveDrawingBuffer: true,
    stencil: true 
@@ -343,6 +361,7 @@ const createScene = function () {
 
   //Insert interior **********
   Harp.importInteriorLayout = function (sku) {
+    console.log('runing Harp.importInteriorLayout', sku)
     if(Harp.interiorContainer) {
       Harp.interiorContainer.dispose()
     }
@@ -544,6 +563,7 @@ const createScene = function () {
   //Default routine  **********
   Harp.useRecipe = function () {
     if(Harp.config.config_uid === undefined) {
+      console.log('yup this is the condition I am running')
       Harp.config.product = window.recipe.model      
       Harp.config.size = window.recipe.size
       Harp.config.area = window.recipe.length * window.recipe.depth
@@ -703,10 +723,6 @@ const createScene = function () {
       })
       Harp.updateElevationConfig(side)
     })
-
-
-
-
 
   }
 
@@ -1222,6 +1238,7 @@ const Harp = {
     Harp.floor_material.diffuseTexture = new BABYLON.Texture(Harp.textures[sku])
     Harp.floor_material.diffuseTexture.uScale = 10
     Harp.floor_material.diffuseTexture.vScale = 5
+    Harp.updateConfigParam('main_flooring', sku)
   },
   setDoorColor: function(color) {
     Harp.setColor('door_color', Harp.colors[color])
@@ -1545,9 +1562,11 @@ const Harp = {
       lineItems[i].textContent = text
     }
   },
-  loadDefaultRecipe: async function() {
-    let recipeResponse = {}
-    let model = document.querySelector('#renderCanvas').getAttribute('data-studio-shed-model')
+  loadDefaultRecipe: function(model = null) {
+    let recipeResponse = {}    
+    if(model == null) {      
+      model = document.querySelector('#renderCanvas').getAttribute('data-studio-shed-model')      
+    }
     if(model == 'boreas-10x12') {
       recipeResponse = {"model":"signature","size":"10x12","depth":10,"length":12,"name":"10x12 signature","shell_base_price":14606,"roof":{"model":"SG-10x12-STE-06F","x":0,"y":-9,"z":8},"floor":{"width":144,"height":12,"depth":120,"x":72,"y":-9,"z":60},"front":[{"slot":"f1","model":"F12-D72C","width":144,"x":-68,"y":-9,"z":60}],"back":[{"slot":"b1","model":"B10x12","width":144,"x":-68,"y":-9,"z":-60}],"left":[{"slot":"l1","model":"L10-36C","width":120,"x":-71,"y":-9,"z":-60}],"right":[{"slot":"r1","model":"R10-36C","width":120,"x":71,"y":-9,"z":60}]}
     }
@@ -1581,6 +1600,7 @@ const Harp = {
 
     window.recipe = recipeResponse
     Harp.useRecipe()
+    Harp.importInteriorLayout('lifestyle')
   },
   loadConfigRecipe: async function () {
     if(Harp.config.product_size.includes('Summit')) {
@@ -1964,11 +1984,14 @@ const Harp = {
 }
 
   const scene = createScene()
+
   scene.executeWhenReady(function () {
     Harp.init()
     setTimeout(function(){
       document.querySelector('#renderCanvas').removeAttribute('style')
+      document.querySelector('#loader').remove()
       engine.resize()
+      document.dispatchEvent(loadEvent);
     }, 1500);
   })
 

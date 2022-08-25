@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pagoda Right 10x12</title>      
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1661224862753">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1661467269566">
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/babylonjs/4.2.2/babylon.min.js"></script>
   	<script src="https://cdn.jsdelivr.net/npm/babylonjs-loaders@5.9.1/babylonjs.loaders.min.js"></script>
   	<script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
@@ -107,6 +107,14 @@
             </select>
           </div>
 
+          <div class="mb-6">
+            <label for="model" class="block text-sm font-medium text-gray-700">Model</label>
+            <select id="model" name="model" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+              <option value="pagoda-right-10x12" selected>Right</option>
+              <option value="pagoda-left-10x12">Left</option>
+            </select>
+          </div>
+
 
 
 
@@ -141,6 +149,12 @@ window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('flooring').addEventListener('change', function() {  
     Harp.setFlooring(this.value)
   })
+  document.getElementById('model').addEventListener('change', function() {  
+    Harp.loadDefaultRecipe(this.value)
+  })
+  document.addEventListener('configurator_loaded', function (event) {
+    console.log('Configurator loaded!');
+  });
 })
 </script>
     <footer class="text-center uppercase py-12 text-xs bg-gray-100">Footer</footer>
