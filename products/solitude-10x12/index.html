@@ -12,15 +12,15 @@
     <meta property="og:description" content="">
     <meta property="og:url" content="">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2022-08-25T23:42:05.302Z">
+    <meta property="article:modified_time" content="2022-09-08T20:36:21.981Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1661470924356">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1662669381110">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <script src="/assets/main.bundle.js?v=1661470924356"></script>
+    <script src="/assets/main.bundle.js?v=1662669381110"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babylonjs/4.2.2/babylon.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/babylonjs-loaders@5.9.1/babylonjs.loaders.min.js"></script>
@@ -821,6 +821,9 @@
 
 
 
+
+
+
   <div class="bg-white">
     <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
       <div class="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start">
@@ -835,11 +838,17 @@
         <div class="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
           <h1 class="text-3xl font-extrabold tracking-tight text-gray-900">Solitude 10&apos; &times; 12&apos;</h1>
 
+          <section class="mt-6" x-data="window.Components.qsForm()">
+
           <div class="mt-3">
             <h2 class="sr-only">Product information</h2>
-            <div class="flex items-center">
+            <div class="flex items-center" x-show="trimColorValue == 'Clear Anodized Aluminum'">
               <p class="text-3xl text-gray-900">$22,584</p>
               <p class="text-sm ml-12 font-bold text-gray-500 ml-6">List price: <span class="line-through">$27,109</span> <span class="text-green-500 ml-3">Save $4,525!</span></p>
+            </div>
+            <div class="flex items-center" x-show="trimColorValue == 'Studio Shed Bronze'">
+              <p class="text-3xl text-gray-900">$21,017</p>
+              <p class="text-sm ml-12 font-bold text-gray-500 ml-6">List price: <span class="line-through">$25,319</span> <span class="text-green-500 ml-3">Save $5,302!</span></p>
             </div>
           </div>
 
@@ -860,7 +869,7 @@
             acornFinance.setAcornParameters(acornParameters)
             setTimeout(() => {
               acornFinance.calcPayment(acornParameters.loanAmount, 'acorn-payment-amount-line', 'popup', '1line', 'Get Started');              
-            }, 1000);
+            }, 2500)
           </script>
 
           <div class="mt-3">
@@ -872,7 +881,7 @@
             </div>
           </div>
 
-          <section class="mt-6" x-data="window.Components.qsForm()">
+          
 
             <h2 class="text-sm font-medium text-gray-900">Color: <span x-show="sidingColorValue" x-text="sidingColorValue" class="text-xs font-medium text-gray-800"></span></h2>
             <div id="siding-menu" class="mt-2 mb-4">
@@ -1008,7 +1017,13 @@
 
             <div class="mt-10 flex sm:flex-col1">
 
+              <div x-show="trimColorValue == 'Clear Anodized Aluminum'">
               <button type="submit" class="max-w-xs flex-1 bg-yellow-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-yellow-500 sm:w-full" @click.prevent="buyNow('Solitude 10&amp;apos; &amp;times; 12&amp;apos;', 'solitude-10x12', 22584)">Buy Now</button>
+              </div>
+
+              <div x-show="trimColorValue == 'Studio Shed Bronze'">
+              <button type="submit" class="max-w-xs flex-1 bg-yellow-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-yellow-500 sm:w-full" @click.prevent="buyNow('Solitude 10&amp;apos; &amp;times; 12&amp;apos;', 'solitude-10x12', 21017)">Buy Now (+ Bronze package)</button>
+              </div>
 
             </div>
 
