@@ -3,21 +3,21 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Backyard Home Music and Recording Studios | Studio Shed</title>  
-    <meta name="description" content="Get creative in your own backyard home music studio! A Studio Shed is custom tailored to fit the needs of your creative expression. See why musicians love it.">
+    <title>Order Confirmation | Studio Shed</title>  
+    <meta name="description" content="">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta property="og:locale" content="en_US">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Backyard Home Music and Recording Studios | Studio Shed">
-    <meta property="og:description" content="Get creative in your own backyard home music studio! A Studio Shed is custom tailored to fit the needs of your creative expression. See why musicians love it.">
-    <meta property="og:url" content="https://www.studio-shed.com/music-studios/">
+    <meta property="og:type" content="">
+    <meta property="og:title" content="Order Confirmation | Studio Shed">
+    <meta property="og:description" content="">
+    <meta property="og:url" content="">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2022-09-21T23:15:15.934Z">
+    <meta property="article:modified_time" content="2022-09-21T23:15:15.944Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
-    <link rel="canonical" href="https://www.studio-shed.com/music-studios/">
+    <link rel="canonical" href="">
     <link rel="stylesheet" href="/assets/main.bundle.css?v=1663802114987">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
     <script src="/assets/main.bundle.js?v=1663802114987"></script>
@@ -812,277 +812,134 @@
   </div>
 </header>    
     <main>
-  <div class="h-[600px] bg-black relative">
+<!-- This example requires Tailwind CSS v2.0+ -->
+<main class="bg-white px-4 pt-16 pb-24 sm:px-6 sm:pt-24 lg:px-8 lg:py-32" x-data="window.Components.orderConfirmationData()" x-init="initOrderConfirmation">
+  <div class="max-w-3xl mx-auto">
+    <div class="max-w-xl">
+      <h1 class="text-base font-medium text-yellow-600">Thank you!</h1>
+      <p class="mt-2 text-4xl font-bold tracking-tight sm:tracking-tight">Let's get you that <span x-text="orderData.model"></span>!</p>
+      <p class="mt-2 text-base text-gray-500">Your Studio Shed will be prepared for shipment once your order is fully processed. You may <a href="/contact-us/" class="underline">contact us</a> or call us at 888-900-3933 with any questions.</p>
 
-  <div class="swiper mx-auto">  
-    <div class="swiper-wrapper">      
-      <div class="swiper-slide">
-        <img data-src="/assets/images/recording-studio-slider/01.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader"></div>
-      </div>
-      <div class="swiper-slide">
-        <img data-src="/assets/images/recording-studio-slider/02.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader"></div>
-      </div>
-      <div class="swiper-slide">
-        <img data-src="/assets/images/recording-studio-slider/03.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader"></div>
-      </div>
-      <div class="swiper-slide">
-        <img data-src="/assets/images/recording-studio-slider/04.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader"></div>
-      </div>
-      <div class="swiper-slide">
-        <img data-src="/assets/images/recording-studio-slider/05.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader"></div>
-      </div>
-      <div class="swiper-slide">
-        <img data-src="/assets/images/recording-studio-slider/06.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader"></div>
-      </div>
-      <div class="swiper-slide">
-        <img data-src="/assets/images/recording-studio-slider/07.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader"></div>
-      </div>
-      <div class="swiper-slide">
-        <img data-src="/assets/images/recording-studio-slider/08.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader"></div>
-      </div>
-      <div class="swiper-slide">
-        <img data-src="/assets/images/recording-studio-slider/09.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader"></div>
-      </div>
+      <dl class="mt-6 text-sm font-medium">
+        <dt class="text-gray-900">Transaction ID</dt>
+        <dd class="text-yellow-600 mt-2" x-text="gwResponse.transactionid"></dd>
+      </dl>
+
+      <dl class="mt-6 text-sm font-medium">
+        <dt class="text-gray-900">Order ID</dt>
+        <dd class="text-yellow-600 mt-2" x-text="gwResponse.orderid"></dd>
+      </dl>
     </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>    
-  </div>
 
-  </div>
-   <div class="bg-white">
-    <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-      <div class="text-center">      
-        <p class="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-5xl">Home music &amp; recording studios</p>
-        <p class="max-w-xl mt-5 mx-auto text-xl text-gray-500">We all need a place to play. A Studio Shed is your home music studio, just steps from your back door.</p>
-        <a href="https://shop.studio-shed.com/" class="mt-8 inline-block px-4 py-3 border border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-black font-medium hover:opacity-80 sm:px-8">Design &amp; Price</a>
-      </div>
-    </div>
-  </div>
+    <section aria-labelledby="order-heading" class="mt-10 border-t border-gray-200">
+      <h2 id="order-heading" class="sr-only">Your order</h2>
 
-  <div class="relative py-16 bg-white overflow-hidden">
-    <div class="relative px-4 sm:px-6 lg:px-8">
-      <div class="text-lg max-w-prose mx-auto">
-        <h2>
-          <span class="mt-2 block text-2xl text-center font-extrabold tracking-tight text-gray-900">Play loud. Rock out.</span>
-        </h2>
-        <p class="mt-8 text-lg text-gray-500">Unleash your inner musician. A Studio Shed backyard music studio can be custom tailored to fit the specific needs of those requiring interior acoustical optimization. We have worked with numerous musicians, producers, and industry professionals throughout the country to get them a space of their own in which to pursue their passion for music.</p>
-        <p class="mt-8 text-lg text-gray-500">A Studio Shed Signature Series or Summit Series model is the perfect starting point for your backyard music studio. We have worked with customers from the enthusiast to the professional end of the spectrum in the music industry. For the enthusiast, optimizing your interior may only require off-the-shelf acoustical panels which are widely available and simple to install. For professional level acoustical treatment, we have recommendations for third-party professionals who can make your Studio Shed into a truly professional recording or soundproof studio.</p>
-      </div>
-      <div class="mt-6 prose prose-indigo prose-lg text-gray-500 mx-auto">
-        <figure>
-          <img class="w-full rounded-lg" src="/assets/images/inspiration-home-office-hero.jpg">        
-        </figure>
-      </div>
-    </div>
-  </div>
+      <h3 class="sr-only">Items</h3>
 
-  <div class="bg-white pt-16 lg:py-24">
-    <div class="pb-16 bg-gray-100 lg:pb-0 lg:z-10 lg:relative">
-      <div class="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-8">
-        <div class="relative lg:-my-8">
-          <div aria-hidden="true" class="absolute inset-x-0 top-0 h-1/2 bg-white lg:hidden"></div>
-          <div class="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:p-0 lg:h-full">
-            <div class="aspect-w-10 aspect-h-6 rounded-xl shadow-xl overflow-hidden sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none lg:h-full">
-              <img class="object-cover lg:h-full lg:w-full" src="/assets/images/inspiration-home-office-quotes.jpg" alt="">
-            </div>
-          </div>
-        </div>
-        <div class="mt-12 lg:m-0 lg:col-span-2 lg:pl-8">
-          <div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0 lg:py-20 lg:max-w-none">
-            <blockquote class="mb-12">
-              <div>
-                <svg class="h-12 w-12 text-gray-800 opacity-25" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
-                  <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-                </svg>
-                <p class="mt-4 text-lg font-medium text-gray-900">This Studio Shed is my sanctuary, but it gives peace of mind to my whole family. Now I can play anytime I want – and I want to play all the time, knowing I won’t disturb anyone at our house or in the neighborhood. Inside, the sound is natural and warm. The inside-outside sound exchange is so muffled I don’t hear anything out there and vice versa. The guys come here to rehearse now. We can play anytime. My Studio Shed is about freedom.</p>
-              </div>
-              <footer>
-                <p class="text-sm font-medium text-gray-900">&mdash; Marty M. Denver, Colorado</p>
-              </footer>
-            </blockquote>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="relative py-16 bg-white overflow-hidden">
-    <div class="relative px-4 sm:px-6 lg:px-8">
-      <div class="text-lg max-w-prose mx-auto">
-        <h2>
-          <span class="mt-2 block text-2xl text-center font-extrabold tracking-tight text-gray-900">Soundproofing Recommendations</span>
-        </h2>
-
-        <p class="mt-8 text-lg text-gray-500">When it comes to soundproofing, there isn't always a one-size-fits-all solution for creating a music-ready studio. To help simplify this process, we recommend two separate routes depending on the degree to which you plan on soundproofing your Studio Shed.</p>
-
-        <p class="mt-8 text-lg text-gray-500"><strong>For the music enthusiast:</strong> For those interested in a baseline soundproofing solution for standard noise control, our Lifestyle Interior Package is a great starting point. All Lifestyle Interiors include high-efficiency insulation in the walls and roof, your choice of finished flooring, code-compliant electrical package, all interior/exterior fixtures and outlets, and all finish trim and hardware. From there, you can install non-invasive soundproofing materials such as soundproof curtains, foam panels, and rugs to help block out the noise. Adding acoustical treatments to our modular spaces is a simple process and a great way to optimize your backyard music studio.</p>
-
-        <p class="mt-8 text-lg text-gray-500"><strong>For the Professional Musician:</strong> For those looking for professional-grade soundproofing, we recommend purchasing the Studio Shed shell only and outsourcing acoustical materials from third-party vendors to finish out the interior. To achieve optimal sound isolation in your Studio Shed, we recommend using the following materials in coordination:</p>
-
-
-		<p class="mt-4 text-lg text-gray-500">&ndash; Ceiling: Auralex Ceiling System</p>
-		<p class="mt-4 text-lg text-gray-500">&ndash; Walls: Quiet Rock Drywall (2 layers) + Green Glue (between layers)</p>
-		<p class="mt-4 text-lg text-gray-500">&ndash; Floor: Green Glue + Plywood (2 layers)</p>
-
-      </div>
-      <div class="mt-12 prose prose-indigo prose-lg text-gray-500 mx-auto">
-        <figure>
-          <img class="w-full rounded-lg" src="/assets/images/inspiration-home-office-secondary.jpg">        
-        </figure>
-
-      </div>
-    </div>
-  </div>
-
-  <div class="bg-white pt-16 lg:py-24">
-    <div class="pb-16 bg-gray-100 lg:pb-0 lg:z-10 lg:relative">
-      <div class="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-8">
-
-        <div class="mt-12 lg:m-0 lg:col-span-2 lg:pl-8">
-          <div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0 lg:py-20 lg:max-w-none">
-            <blockquote class="mb-12">
-              <div>
-                <svg class="h-12 w-12 text-gray-800 opacity-25" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
-                  <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-                </svg>
-                <p class="mt-4 text-lg font-medium text-gray-900">We just had our new 10X12 recording studio built by Studio Shed. We rarely give out reviews but we have to say that Studio Shed is one of the most efficiently run companies we’ve had the pleasure of doing business with. It was an absolutely painless experience from start to finish. The hardest part was making the decisions about what we actually needed (form & function wise) for a recording studio. Once we pulled the trigger it was here and built in less then a month. The contractor was very efficient and extremely thorough. The building is well thought out and of extreme high quality. Studio Shed has gone to great efforts to minimize waste and utilize green materials. We are absolutely thrilled with our studio!.</p>
-              </div>
-              <footer>
-                <p class="text-sm font-medium text-gray-900">&mdash; M. Marienthal, Newport Beach, California– P. Sorenson, San Francisco, CA</p>
-              </footer>
-            </blockquote>
-          </div>
-        </div>
-
-        <div class="relative lg:-my-8">
-          <div aria-hidden="true" class="absolute inset-x-0 top-0 h-1/2 bg-white lg:hidden"></div>
-          <div class="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:p-0 lg:h-full">
-            <div class="aspect-w-10 aspect-h-6 rounded-xl shadow-xl overflow-hidden sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none lg:h-full">
-              <img class="object-cover lg:h-full lg:w-full" src="/assets/images/inspiration-home-office-quotes-2.jpg" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="max-w-2xl mx-auto p-4 lg:max-w-7xl lg:px-8">
-    <div class="grid grid-cols-1 gap-y-16 gap-x-8 lg:grid-cols-2">
-      <div>
-
-        <dl class="mt-10 space-y-10">
+      <div class="py-10 border-b border-gray-200 flex space-x-6">
+        
+        <div class="flex-auto flex flex-col">
           <div>
-            <dt class="text-lg font-medium text-gray-900">Studio Shed home music studio features</dt>
-            <dd class="mt-3 text-base text-gray-500">
-            	<div>&ndash; Hundreds of window and door configurations to capture or eliminate natural light</div>
-				<div>&ndash; Turnkey electrical package for an efficient installation</div>
-				<div>&ndash; Simple foundation options</div>
-				<div>&ndash; High-efficiency insulation in the walls and roof create a healthy interior space</div>
-				<div>&ndash; Partnerships with 3rd party vendors for interior customization</div>
+            <h4 class="font-medium text-gray-900"></h4>
+            <p class="mt-2 text-sm text-gray-600" x-text="orderData.order_description"></p>
+          </div>
+          <div class="mt-6 flex-1 flex items-end">
+            <dl class="flex text-sm divide-x divide-gray-200 space-x-4 sm:space-x-6">
+              <div class="flex">
+                <dt class="font-medium text-gray-900">Price</dt>
+                <dd class="ml-2 text-gray-700 font-bold" x-text="orderData.formattedAmount"></dd>
+              </div>
+              <div class="pl-4 flex sm:pl-6">
+                <dt class="font-medium text-gray-900">Deposit</dt>
+                <dd class="ml-2 text-gray-700 font-bold" x-text="orderData.formattedDepositAmount"></dd>
+              </div>
+
+              <div class="pl-4 flex sm:pl-6" x-show="orderData.payment == 'creditcard'">
+                <dt class="font-medium text-gray-900">Payment Amount (w/ credit card fee)</dt>
+                <dd class="ml-2 text-gray-700 font-bold" x-text="orderData.formattedTotalCreditOrderAmount"></dd>
+              </div>
+              <div class="pl-4 flex sm:pl-6" x-show="orderData.payment == 'check'">
+                <dt class="font-medium text-gray-900">Payment Amount</dt>
+                <dd class="ml-2 text-gray-700 font-bold" x-text="orderData.formattedTotalCheckOrderAmount"></dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="sr-only">Your information</h3>
+
+        <h4 class="sr-only">Addresses</h4>
+        <dl class="grid grid-cols-2 gap-x-6 text-sm py-10">
+          <div>
+            <dt class="font-medium text-gray-900">Shipping address</dt>
+            <dd class="mt-2 text-gray-700">
+              <address class="not-italic">
+                <span class="block" x-text="orderData.shipping_firstname + ' ' + orderData.shipping_lastname"></span>
+                <span class="block" x-text="orderData.shipping_address1"></span>
+                <span class="" x-text="orderData.shipping_city"></span>, <span class="" x-text="orderData.shipping_state"></span>  <span class="" x-text="orderData.shipping_zip"></span>
+              </address>
             </dd>
           </div>
-     	</dl>
-   </div>
+          <div>
+            <dt class="font-medium text-gray-900">Billing address</dt>
+            <dd class="mt-2 text-gray-700">
+              <address class="not-italic">
+                <span class="block" x-text="orderData.first_name + ' ' + orderData.last_name"></span>
+                <span class="block" x-text="orderData.address1"></span>
+                <span class="" x-text="orderData.city"></span>, <span class="" x-text="orderData.state"></span>  <span class="" x-text="orderData.zip"></span>
+              </address>
+            </dd>
+          </div>
+        </dl>
 
-   <div>
-    <div class="rounded-lg bg-gray-100 overflow-hidden">
-      <img src="/assets/images/inspiration-home-office-benefits.jpg" class="w-full h-full object-center object-cover">
-    </div>    
-  </div>
-  </div>
-  </div>
+        <h4 class="sr-only">Payment</h4>
+        <dl class="grid grid-cols-2 gap-x-6 border-t border-gray-200 text-sm py-6">
+          <div>
+            <dt class="font-medium text-gray-900">Payment Authorization #</dt>
+            <dd class="mt-2 text-gray-700">              
+              <p x-text="gwResponse.authcode"></p>
+            </dd>
+          </div>
+        </dl>
 
+        <h3 class="sr-only">Summary</h3>
 
+        <dl class="space-y-6 border-t border-gray-200 text-sm pt-6">
+          <div class="flex justify-between">
+            <dt class="font-medium text-gray-900">Price</dt>
+            <dd class="text-gray-700" x-text="window.Components.formatPrice.format(orderData.amount)"></dd>
+          </div>
+          <div class="flex justify-between">
+            <dt class="font-medium text-gray-900">Shipping</dt>
+            <dd class="text-gray-700">Included</dd>
+          </div>
+          <div class="flex justify-between">
+            <dt class="font-medium text-gray-900">Deposit</dt>
+            <dd class="text-gray-900">$5,000</dd>
+          </div>
 
-  <div class="relative py-16 bg-white overflow-hidden">
+          <div x-show="orderData.payment == 'creditcard'" class="flex justify-between">
+            <dt class="font-medium text-gray-900">Credit Card Fee</dt>
+            <dd class="text-gray-900">$150</dd>
+          </div>
 
-    <div class="relative px-4 sm:px-6 lg:px-8">
-      <div class="text-lg max-w-prose mx-auto">
-        <p class="mt-8 text-lg text-gray-500"><a class="underline" href="https://www.studio-shed.com/blog/">Read more in-depth stories about how musicians and artists are using their Studio Sheds to fire their creativity in their own backyards.</a></p>
+          <div x-show="orderData.payment == 'creditcard'" class="flex justify-between">
+            <dt class="font-medium text-gray-900">Payment Amount</dt>
+            <dd class="text-gray-900">$5,150</dd>
+          </div>
+
+          <div x-show="orderData.payment == 'check'" class="flex justify-between">
+            <dt class="font-medium text-gray-900">Payment Amount</dt>
+            <dd class="text-gray-900">$5,000</dd>
+          </div>
+        </dl>
       </div>
+    </section>
+  </div>
+</main>
 
-    </div>
-  </div>
-
-<div class="bg-gray-50">
-<div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between space-x-10">
-  <h2 class="text-gray-900 sm:text-4xl">
-    <span class="font-extrabold block text-2xl">Choose the perfect shed</span>      
-    <p class="text-lg">Whether you need a home office storage space, guest studio, or backyard retreat, we've got the perfect Studio Shed for your needs. Choose from our quick turnaround pre-configured selections, or design your own prefab backyard room in our 3D Design Center.</p>
-  </h2>
-  
-  <div class="mt-8 flex lg:mt-0 space-x-4 lg:flex-shrink-0">
-
-    <a href="https://shop.studio-shed.com/" class="flex items-center justify-center px-4 py-3 border border-2 border-yellow-600 text-base uppercase rounded-full shadow-sm text-white bg-yellow-600 font-medium hover:opacity-80 sm:px-8">Design &amp; Price</a>
-    <a href="/request-free-consultation/" class="flex items-center justify-center px-4 py-3 border border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-black font-medium hover:opacity-80 sm:px-8">Request Free Consultation</a>
-
-  </div>
-</div>
-</div>
-  
-  <div class="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
-    <div>
-      <div class="bg-white h-1/3 sm:h-2/3"></div>
-    </div>
-    <div class="relative max-w-7xl mx-auto">
-      <div class="text-center">
-        <h2 class="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">More Inspiration</h2>      
-      </div>
-      <div class="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-        <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
-  <div class="flex-shrink-0">
-    <img class="h-48 w-full object-cover" src="/assets/images/nav-inspiration-man-cave.jpg">
-  </div>
-  <div class="flex-1 bg-white p-6 flex flex-col justify-between">
-    <div class="flex-1">
-      <a href="/man-cave/" class="block mt-2">
-        <p class="text-xl font-semibold text-gray-900">Man Cave</p>
-        <p class="mt-3 text-base text-gray-500">Design the ultimate Man Cave with Studio Shed. The perfect place to get away after a long day that is still just right outside your back door.</p>
-      </a>
-    </div>
-  </div>
-</div>
-        <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
-  <div class="flex-shrink-0">
-    <img class="h-48 w-full object-cover" src="/assets/images/nav-inspiration-office.jpg">
-  </div>
-  <div class="flex-1 bg-white p-6 flex flex-col justify-between">
-    <div class="flex-1">
-      <a href="/home-office-spaces/" class="block mt-2">
-        <p class="text-xl font-semibold text-gray-900">Home Office Spaces</p>
-        <p class="mt-3 text-base text-gray-500">Our modern world requires that we work in new ways. A Studio Shed backyard office is a place you can commute to in seconds, without the distractions of an office in your home.</p>
-      </a>
-    </div>
-  </div>
-</div>
-        <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
-  <div class="flex-shrink-0">
-    <img class="h-48 w-full object-cover" src="/assets/images/nav-inspiration-art.jpg">
-  </div>
-  <div class="flex-1 bg-white p-6 flex flex-col justify-between">
-    <div class="flex-1">
-      <a href="/art-studios/" class="block mt-2">
-        <p class="text-xl font-semibold text-gray-900">Creative Sheds</p>
-        <p class="mt-3 text-base text-gray-500">A Studio Shed is your creative sanctuary, just steps from your back door.</p>
-      </a>
-    </div>
-  </div>
-</div>
-      </div>
-    </div>
-
-    <div class="text-center">      
-     <a href="/shed-stories/" class="mt-8 inline-block px-4 py-3 border border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-black font-medium hover:opacity-80 sm:px-8">See all inspiration</a>
-   </div>
 </main>
     <div class="relative bg-gray-800">
   <div class="h-56 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">

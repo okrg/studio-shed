@@ -4,10 +4,10 @@ define('APPROVED', 1);
 define('DECLINED', 2);
 define('ERROR', 3);
 
-$liveFlag = false;
+$env_mode = 'test';
 if ( ! empty( $_ENV['PANTHEON_ENVIRONMENT'] ) ) {
   if($_ENV['PANTHEON_ENVIRONMENT'] == 'live') {
-    $liveFlag = true;
+    $env_mode = 'live';
   }  
 }
 
@@ -110,9 +110,9 @@ class gwapi {
     $query .= "shipping_city=" . urlencode($this->shipping['city']) . "&";
     $query .= "shipping_state=" . urlencode($this->shipping['state']) . "&";
     $query .= "shipping_zip=" . urlencode($this->shipping['zip']) . "&";
-    $query .= "shipping_country=" . urlencode($this->shipping['country']) . "&";    
-    if(!$liveFlag) {
-      $query .= "test_mode=enabled&";
+    $query .= "shipping_country=" . urlencode($this->shipping['country']) . "&";
+    if($env_mode == 'test') {
+      $query .= "test_mode=enabled&"; 
     }
     $query .= "type=sale";
     return $this->_doPost($query);
@@ -217,20 +217,17 @@ if($res['response'] == APPROVED) {
       'payment' => $data->formattedAmount
     )
   );
-  if($liveFlag) {
+  if($env_mode == 'live') {
     $message['To'] = 'certeam@studioshed.com';    
-  } else {
+  }
+  if($env_mode == 'test') {
     $message['To'] = 'rolando.garcia@gmail.com';
   }
   $smart_email_id = '7a2656ec-8f2c-4e73-87e0-75036ba0018c';
   $bells_notification = new CS_REST_Transactional_SmartEmail($smart_email_id, $auth);
   $bells_notification_tx = $bells_notification->send($message, 'unchanged');
 
-  if($liveFlag) {
-    $message['To'] = $data->email;
-  } else {
-    $message['To'] = 'rolando.garcia@gmail.com';
-  }  
+  $message['To'] = $data->email;  
   $smart_email_id = 'dcac83bb-8d2c-4b62-8186-d06f0a44ab78';
   $order_confirmation = new CS_REST_Transactional_SmartEmail($smart_email_id, $auth);
   $order_confirmation_tx = $order_confirmation->send($message, 'unchanged');      
@@ -266,8 +263,10 @@ if($res['response'] == APPROVED) {
   $deals_payload = [
     'properties' => [
       'closedate' => 1000 * strtotime('today midnight'),
+      'area' => 120,
+      'quick_ship' => 'true',
       'amount' => $data->amount,            
-      'dealname' => $data->model .' - '. $data->last_name,
+      'dealname' => $data->model .' DIY QS - '. $data->last_name,
       'dealstage' => 'closedwon',
       'pipeline' => 'default'
     ]
@@ -287,4 +286,5 @@ if($res['response'] == APPROVED) {
   $res['hs_deals_association_response'] = $gw->pushHubspot('https://api.hubapi.com/crm/v3/objects/deals/'.$deal_id.'/associations/CONTACT/'.$hubspot_contact_id.'/deal_to_contact?hapikey=b4c3ffb4-8ff9-42c3-8b1c-8e1513dea0f6', null, 'PUT');
 
 }
+$res['env_mode'] = $env_mode;
 echo json_encode($res);
