@@ -1,13 +1,31 @@
 <?php
+date_default_timezone_set('UTC');
+define('APPROVED', 1);
+define('DECLINED', 2);
+define('ERROR', 3);
 
-define("APPROVED", 1);
-define("DECLINED", 2);
-define("ERROR", 3);
+$liveFlag = false;
+if ( ! empty( $_ENV['PANTHEON_ENVIRONMENT'] ) ) {
+  if($_ENV['PANTHEON_ENVIRONMENT'] == 'live') {
+    $liveFlag = true;
+  }  
+}
+
 
 class gwapi {
+  function pushHubspot($url, $payload, $method) {
+    $headers = array();
+    $headers[] = 'Content-Type: application/json';
 
-// Initial Setting Functions
-
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+    $result = curl_exec($ch);
+    return json_decode($result);
+  }
   function setLogin($security_key) {
     $this->login['security_key'] = $security_key;
   }
@@ -70,7 +88,7 @@ class gwapi {
     $query .= "payment_token=" . urlencode($payment_token) . "&";
     $query .= "amount=" . urlencode(number_format($amount,2,".","")) . "&";    
     // Order Information    
-    $query .= "orderid=" . urlencode($this->order['orderid']) . "&";
+    $query .= "orderid=" . urlencode($this->order['orderid']) . "-test&";
     $query .= "orderdescription=" . urlencode($this->order['orderdescription']) . "&";    
     $query .= "ipaddress=" . urlencode($this->order['ipaddress']) . "&";    
     // Billing Information
@@ -93,8 +111,9 @@ class gwapi {
     $query .= "shipping_state=" . urlencode($this->shipping['state']) . "&";
     $query .= "shipping_zip=" . urlencode($this->shipping['zip']) . "&";
     $query .= "shipping_country=" . urlencode($this->shipping['country']) . "&";    
-    $query .= "customer_receipt=true&";
-    $query .= "test_mode=enabled&";
+    if(!$liveFlag) {
+      $query .= "test_mode=enabled&";
+    }
     $query .= "type=sale";
     return $this->_doPost($query);
   }
@@ -125,7 +144,26 @@ class gwapi {
 
 $json = file_get_contents('php://input');
 $data = json_decode($json);
-$data->amount = number_format((float)$data->amount, 2, '.', '');
+$data->payment_amount = 0;
+$data->formattedAmount = '$0';
+if($data->payment == 'creditcard') {
+  $data->payment_amount = number_format((float)$data->totalCreditOrderAmount, 2, '.', '');
+  $data->formattedAmount = '$' . number_format((float)$data->totalCreditOrderAmount, 2, '.', ',');
+}
+if($data->payment == 'check') {
+  $data->payment_amount = number_format((float)$data->totalCheckOrderAmount, 2, '.', '');
+  $data->formattedAmount = '$' . number_format((float)$data->totalCheckOrderAmount, 2, '.', ',');
+}
+
+
+
+$data->location = array(
+  $data->shipping_address1,
+  $data->shipping_address2,
+  $data->shipping_city,
+  $data->shipping_state,
+  $data->shipping_zip
+);
 
 if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
   $data->ipaddress = $_SERVER['HTTP_CLIENT_IP'];
@@ -158,14 +196,10 @@ $gw->setShipping($data->shipping_firstname,
   $data->shipping_country  
 );
 $gw->setOrder($data->order_id,$data->order_description,$data->ipaddress);
-if($data->payment == 'creditcard') {
-  $res = $gw->doSale(5150.00,$data->payment_token, 'creditcard');
-}
-if($data->payment == 'check') {
-  $res = $gw->doSale(5000.00,$data->payment_token, 'check');
-}
+$res = $gw->doSale($data->payment_amount, $data->payment_token, $data->payment);
 
-if($res->response == 1) {
+if($res['response'] == APPROVED) {
+  //Send Transactional emails - Campaign monitor
   require_once 'createsend-php/csrest_general.php';
   require_once 'createsend-php/csrest_transactional_smartemail.php';
   $auth = array('api_key' => 'b2bcacdab42c5b79d24d1963c5f67e7dbdda724129014bda');
@@ -175,26 +209,82 @@ if($res->response == 1) {
       'lastname' => $data->last_name,
       'customerEmail' => $data->email,
       'customerPhone' => $data->phone,      
-      'location' => $data->shipping_city.', '.$data->shipping_state . ' '.$data->shipping_zip,
+      'location' => implode(', ', array_filter($data->location)),
       'orderid' => $data->order_id,
       'description' => $data->order_description,
-      'authcode' => $res->autocode,
-      'transactionid' => $res->transactionid
+      'authcode' => $res['authcode'],
+      'transactionid' => $res['transactionid'],
+      'payment' => $data->formattedAmount
     )
   );
-
-  $message['To'] = 'rolando.garcia@gmail.com';
+  if($liveFlag) {
+    $message['To'] = 'certeam@studioshed.com';    
+  } else {
+    $message['To'] = 'rolando.garcia@gmail.com';
+  }
   $smart_email_id = '7a2656ec-8f2c-4e73-87e0-75036ba0018c';
   $bells_notification = new CS_REST_Transactional_SmartEmail($smart_email_id, $auth);
   $bells_notification_tx = $bells_notification->send($message, 'unchanged');
-  
 
-  //$message['To'] = $data->email;
-  //$smart_email_id = $_ENV['ORDER_CONFIRMATION_SMART_EMAIL_ID'];
-  //$order_confirmation = new CS_REST_Transactional_SmartEmail($smart_email_id, $auth);
-  //$order_confirmation_tx = $order_confirmation->send($message, 'unchanged');
-      
+  if($liveFlag) {
+    $message['To'] = $data->email;
+  } else {
+    $message['To'] = 'rolando.garcia@gmail.com';
+  }  
+  $smart_email_id = 'dcac83bb-8d2c-4b62-8186-d06f0a44ab78';
+  $order_confirmation = new CS_REST_Transactional_SmartEmail($smart_email_id, $auth);
+  $order_confirmation_tx = $order_confirmation->send($message, 'unchanged');      
+
+
+
+  //check if contact exists in HS, then create or update and create deal
+  $search_payload = [
+    'filterGroups' => [
+      [
+        'filters' => [
+          [
+            'propertyName' => 'email',
+            'operator' => 'EQ',
+            'value' => $data->email,
+          ],
+        ],
+      ],
+    ],
+  ];
+  $contacts_payload = [
+    'properties' => [
+      'email' => $data->email,
+      'firstname' => $data->first_name,
+      'lastname' => $data->last_name,
+      'phone' => $data->phone,
+      'lead_source' => 'Curated model sale',
+      'hs_lead_status' => 'OPEN_DEAL',
+      'lifecyclestage' => 'customer'
+    ]
+  ];
+
+  $deals_payload = [
+    'properties' => [
+      'closedate' => 1000 * strtotime('today midnight'),
+      'amount' => $data->amount,            
+      'dealname' => $data->model .' - '. $data->last_name,
+      'dealstage' => 'closedwon',
+      'pipeline' => 'default'
+    ]
+  ];
+
+  $res['hs_search_response'] = $gw->pushHubspot('https://api.hubapi.com/crm/v3/objects/contacts/search?hapikey=b4c3ffb4-8ff9-42c3-8b1c-8e1513dea0f6', $search_payload, 'POST');
+  if((int)$res['hs_search_response']->total > 0) {
+    $hubspot_contact_id = $res['hs_search_response']->results[0]->id; 
+    $res['hs_contact_response'] = $gw->pushHubspot('https://api.hubapi.com/crm/v3/objects/contacts/'.$hubspot_contact_id.'?hapikey=b4c3ffb4-8ff9-42c3-8b1c-8e1513dea0f6', $contacts_payload, 'PATCH');
+  } else {    
+    $res['hs_contact_response'] = $gw->pushHubspot('https://api.hubapi.com/crm/v3/objects/contacts?hapikey=b4c3ffb4-8ff9-42c3-8b1c-8e1513dea0f6', $contacts_payload, 'POST');
+  }
+
+  //Create deal
+  $res['hs_deals_response'] = $gw->pushHubspot('https://api.hubapi.com/crm/v3/objects/deals?hapikey=b4c3ffb4-8ff9-42c3-8b1c-8e1513dea0f6', $deals_payload, 'POST');
+  $deal_id = $res['hs_deals_response']->id;
+  $res['hs_deals_association_response'] = $gw->pushHubspot('https://api.hubapi.com/crm/v3/objects/deals/'.$deal_id.'/associations/CONTACT/'.$hubspot_contact_id.'/deal_to_contact?hapikey=b4c3ffb4-8ff9-42c3-8b1c-8e1513dea0f6', null, 'PUT');
 
 }
-
 echo json_encode($res);
