@@ -4,15 +4,20 @@ define('APPROVED', 1);
 define('DECLINED', 2);
 define('ERROR', 3);
 
-$env_mode = 'test';
-if ( ! empty( $_ENV['PANTHEON_ENVIRONMENT'] ) ) {
-  if($_ENV['PANTHEON_ENVIRONMENT'] == 'live') {
-    $env_mode = 'live';
-  }  
-}
+
 
 
 class gwapi {
+  function envMode() {
+    $env_mode = 'test';
+    if ( ! empty( $_ENV['PANTHEON_ENVIRONMENT'] ) ) {
+      if($_ENV['PANTHEON_ENVIRONMENT'] == 'live') {
+        $env_mode = 'live';
+      }
+    }
+    return $env_mode;
+  }
+
   function pushHubspot($url, $payload, $method) {
     $headers = array();
     $headers[] = 'Content-Type: application/json';
@@ -111,8 +116,15 @@ class gwapi {
     $query .= "shipping_state=" . urlencode($this->shipping['state']) . "&";
     $query .= "shipping_zip=" . urlencode($this->shipping['zip']) . "&";
     $query .= "shipping_country=" . urlencode($this->shipping['country']) . "&";
+    
+    $env_mode = 'test';
+    if ( ! empty( $_ENV['PANTHEON_ENVIRONMENT'] ) ) {
+      if($_ENV['PANTHEON_ENVIRONMENT'] == 'live') {
+        $env_mode = 'live';
+      }
+    }
     if($env_mode == 'test') {
-      $query .= "test_mode=enabled&"; 
+      $query .= "test_mode=enabled&";     
     }
     $query .= "type=sale";
     return $this->_doPost($query);
@@ -217,10 +229,10 @@ if($res['response'] == APPROVED) {
       'payment' => $data->formattedAmount
     )
   );
-  if($env_mode == 'live') {
+  if($gw->envMode() == 'live') {
     $message['To'] = 'certeam@studioshed.com';    
   }
-  if($env_mode == 'test') {
+  if($gw->envMode() == 'test') {
     $message['To'] = 'rolando.garcia@gmail.com';
   }
   $smart_email_id = '7a2656ec-8f2c-4e73-87e0-75036ba0018c';
@@ -286,5 +298,5 @@ if($res['response'] == APPROVED) {
   $res['hs_deals_association_response'] = $gw->pushHubspot('https://api.hubapi.com/crm/v3/objects/deals/'.$deal_id.'/associations/CONTACT/'.$hubspot_contact_id.'/deal_to_contact?hapikey=b4c3ffb4-8ff9-42c3-8b1c-8e1513dea0f6', null, 'PUT');
 
 }
-$res['env_mode'] = $env_mode;
+$res['env_mode'] = $gw->envMode();
 echo json_encode($res);
