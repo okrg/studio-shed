@@ -51,7 +51,7 @@ const createScene = function () {
     400,
     new BABYLON.Vector3(0,52,0)
   )
-  //Harp.camera.zoomToMouseLocation = true
+  Harp.camera.zoomToMouseLocation = true
   Harp.camera.useNaturalPinchZoom = true
   Harp.camera.upperBetaLimit = Math.PI / 2
   Harp.camera.upperRadiusLimit = 800
@@ -59,12 +59,9 @@ const createScene = function () {
   Harp.camera.angularSensibilityX = 5000
   Harp.camera.angularSensibilityY = 5000
   Harp.camera.attachControl(canvas, true)
-  Harp.camera.inputs.remove(Harp.camera.inputs.attached.mousewheel);
-
-
-
-  
-
+  if(Math.min(window.screen.width, window.screen.height) < 768 || navigator.userAgent.indexOf("Mobi") > -1) {
+    Harp.camera.inputs.remove(Harp.camera.inputs.attached.mousewheel)
+  }
 
   //Lighting **********
   const ambient = new BABYLON.HemisphericLight('ambient', new BABYLON.Vector3(0, 1, 0), scene)

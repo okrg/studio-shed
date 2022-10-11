@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="14px" viewBox="0 0 21 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icons/checkmark</title>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Process-Page_All-Open" transform="translate(-990.000000, -1669.000000)" fill="#10B981" fill-rule="nonzero">
+            <g id="Site-Visit-Copy-7" transform="translate(0.000000, 850.000000)">
+                <g id="Customer-Deliverables" transform="translate(970.000000, 740.000000)">
+                    <g id="Checkmark" transform="translate(20.500000, 79.000000)">
+                        <path d="M19.5813598,0.409918543 C20.1395467,0.956641685 20.1395467,1.84287995 19.5813598,2.38960309 L8.14257393,13.5900815 C7.58421841,14.1366395 6.67912405,14.1366395 6.12076853,13.5900815 L0.401375587,7.98984228 C-0.140497157,7.44048837 -0.132747615,6.56726283 0.418793176,6.02721245 C0.970333966,5.48716206 1.86213873,5.47957397 2.42318099,6.01015772 L7.13167123,10.6205546 L17.5595544,0.409918543 C18.1179099,-0.136639514 19.0230043,-0.136639514 19.5813598,0.409918543 Z" id="Path"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

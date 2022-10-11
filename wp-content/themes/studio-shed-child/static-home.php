@@ -870,9 +870,9 @@
   </div>
 </div>
 
-    <div class="justify-center flex bg-black pb-8">
+    <!--<div class="justify-center flex bg-black pb-8">
       <a href="https://shop.studio-shed.com/" target="_blank"><img src="/assets/images/fall-sale-mini-banner.png"></a>
-    </div>
+    </div>-->
 
 
 
