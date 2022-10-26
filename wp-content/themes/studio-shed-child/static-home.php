@@ -1096,7 +1096,7 @@
     <div class="max-w-4xl mx-auto py-16 px-4 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 lg:flex lg:items-center lg:justify-between">
       <h2 class="text-4xl font-bold text-white sm:text-4xl">
         <span class="block">Built in Colorado</span>
-        <span class="-mb-1 pb-1 block text-lg font-medium">Shipping avaialble to all 50 U.S. states and select locations in Canada.</span>
+        <span class="-mb-1 pb-1 block text-lg font-medium">Shipping available to all 50 U.S. states and select locations in Canada.</span>
       </h2>
       <div class="mt-6 space-y-4 sm:space-y-0 sm:flex sm:space-x-5">
         <a href="https://shop.studio-shed.com/" class="inline-block mt-6 px-4 py-3 border border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-white font-medium hover:opacity-80 sm:px-8" title="Studio Shed 3D Design Center">Design &amp; Price</a>
