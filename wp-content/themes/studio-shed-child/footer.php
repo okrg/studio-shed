@@ -64,6 +64,11 @@
                 </a>
               </li>
               <li>
+                <a href="https://www.studio-shed.com/in-the-news/" class="text-base text-gray-300 hover:text-white">
+                  In the News
+                </a>
+              </li>
+              <li>
                 <a href="https://www.studio-shed.com/customer-reviews/" class="text-base text-gray-300 hover:text-white">
                   Customer Reviews
                 </a>
