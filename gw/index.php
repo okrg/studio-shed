@@ -93,7 +93,7 @@ class gwapi {
     $query .= "payment_token=" . urlencode($payment_token) . "&";
     $query .= "amount=" . urlencode(number_format($amount,2,".","")) . "&";    
     // Order Information    
-    $query .= "orderid=" . urlencode($this->order['orderid']) . "-test&";
+    $query .= "orderid=" . urlencode($this->order['orderid']) . "&";
     $query .= "orderdescription=" . urlencode($this->order['orderdescription']) . "&";    
     $query .= "ipaddress=" . urlencode($this->order['ipaddress']) . "&";    
     // Billing Information
@@ -166,8 +166,6 @@ if($data->payment == 'check') {
   $data->payment_amount = number_format((float)$data->totalCheckOrderAmount, 2, '.', '');
   $data->formattedAmount = '$' . number_format((float)$data->totalCheckOrderAmount, 2, '.', ',');
 }
-
-
 
 $data->location = array(
   $data->shipping_address1,
