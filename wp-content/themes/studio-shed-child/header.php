@@ -311,7 +311,7 @@
 
           <a href="https://www.studio-shed.com/diy-quick-ship-models/" class="-m-3 p-3 flex items-start hover:opacity-80">
             <div>
-              <p class="text-base font-medium text-gray-900">DIY Quick Ship Models</p>
+              <p class="text-base font-medium text-gray-900">Curated Models</p>
               <p class="text-sm text-gray-500">These models are our most popular designs
           <span class="text-xs block text-yellow-600 font-semibold tracking-wide uppercase">
             Delivered in 2-4 weeks. Shipping included
@@ -691,7 +691,7 @@
                 </a>
 
                 <a href="https://www.studio-shed.com/diy-quick-ship-models/" class="text-gray-700 block">
-                  DIY Quick Ship Models
+                  Curated Models
                   <span class="text-xs block text-yellow-600 font-semibold tracking-wide uppercase">
                     Delivered in 2-4 weeks. Shipping included
                   </span>
