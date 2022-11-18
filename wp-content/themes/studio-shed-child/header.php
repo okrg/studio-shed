@@ -506,14 +506,15 @@
         <a href="https://www.studio-shed.com/financing/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Financing</a>
         <a href="https://www.studio-shed.com/why-freestanding-modular/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Why Freestanding Modular?</a>
         <a href="https://www.studio-shed.com/installation-resources/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Installation Guides</a>
+        <a href="https://www.studio-shed.com/installation-network/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Installation Network</a>
         <a href="https://www.studio-shed.com/customer-reviews/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Customer Reviews</a>
         </div>
 
         <div>
-          <a href="https://www.studio-shed.com/in-the-news/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">In the News</a>
-          <a href="https://www.studio-shed.com/partner-with-us/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Partner With Us</a>
-          <a href="https://www.studio-shed.com/contact-us/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Contact Us</a>
-          <a href="https://www.studio-shed.com/terms-and-conditions/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Terms &amp; Conditions</a>
+        <a href="https://www.studio-shed.com/in-the-news/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">In the News</a>
+        <a href="https://www.studio-shed.com/partner-with-us/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Partner With Us</a>
+        <a href="https://www.studio-shed.com/contact-us/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Contact Us</a>
+        <a href="https://www.studio-shed.com/terms-and-conditions/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Terms &amp; Conditions</a>
         </div>
         
         <div>
@@ -837,6 +838,9 @@
                 </a>
                 <a href="https://www.studio-shed.com/installation-resources/" class="text-gray-700 block">
                   Installation Guides
+                </a>
+                <a href="https://www.studio-shed.com/installation-network/" class="text-gray-700 block">
+                  Installation Network
                 </a>
                 <a href="https://www.studio-shed.com/join-our-team/" class="text-gray-700 block">
                   Join Our Team

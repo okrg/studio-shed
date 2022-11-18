@@ -64,6 +64,11 @@
                 </a>
               </li>
               <li>
+                <a href="https://www.studio-shed.com/installation-network/" class="text-base text-gray-300 hover:text-white">
+                  Installation Network
+                </a>
+              </li>
+              <li>
                 <a href="https://www.studio-shed.com/in-the-news/" class="text-base text-gray-300 hover:text-white">
                   In the News
                 </a>
