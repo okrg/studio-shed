@@ -12,15 +12,15 @@
     <meta property="og:description" content="Learn how much it may cost to build out your dream backyard space for a home office or ADU">
     <meta property="og:url" content="https://www.studio-shed.com/cost-calculator/">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2022-11-20T23:57:48.132Z">
+    <meta property="article:modified_time" content="2022-11-21T18:34:15.616Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="https://www.studio-shed.com/cost-calculator/">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1668988666946">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1669055654800">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <script src="/assets/main.bundle.js?v=1668988666946"></script>
+    <script src="/assets/main.bundle.js?v=1669055654800"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
     <!--
     <script src="https://apps.elfsight.com/p/platform.js" async></script> 
@@ -815,7 +815,7 @@
 </div>
   </div>
 </header>    
-    <main x-data="window.Components.costCalculatorManager()" x-init="calculate()">
+    <main x-data="window.Components.costCalculatorManager()" x-init="initCalculator()">
 
   <div class="relative h-[50vh] md:h-[400px]">
     <div class="absolute inset-0">
@@ -843,8 +843,8 @@
                 <div class="flex justify-between text-xl mb-4 font-medium text-gray-700">
                   <dt class="font-bold">Square Feet</dt>
                   <dd>
-                    <input x-show="showInput" type="number" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" x-model="area" x-on:keyup.debounce="calculate()" placeholder="Square foot amount">
-                    <span x-show="!showInput" x-text="area"></span>
+                    <input type="number" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" x-model="area" x-on:keyup.debounce="calculate()" placeholder="Square foot amount">
+                    
                   </dd>
                 </div>
                 <div class="flex border-t pt-4 border-gray-400 justify-between text-xl mb-4 font-medium text-gray-700">
@@ -884,12 +884,18 @@
                   <dd class="font-bold text-3xl text-center text-yellow-700" x-text="window.Components.formatPrice.format(total)"></dd>
                 </div>
 
-                <p class="text-sm text-gray-600 my-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin tellus sapien, vel egestas metus posuere eget. Praesent sit amet imperdiet neque. Fusce dapibus augue non odio tincidunt, sed varius nunc pretium. Pellentesque porta ante sed urna rutrum, ac dignissim odio congue.</p>
+                
 
                 <div class="pt-4">
+
+                  <p class="text-sm text-gray-600 mb-4 text-center">Have a question? Need help or want to to chat about an idea? We can walk you through the entire process.</p>
                   
                   <div class="mb-4">
                     <a href="/request-free-consultation/" target="_blank" class="flex items-center justify-center bg-yellow-500 p-4 text-base font-medium text-white hover:opacity-80 sm:px-8">Request a Free Consultation</a>
+                  </div>
+
+                  <div class="text-sm text-gray-600 text-center">
+                    <a href="tel:888-900-3933">or call us at (888) 900-3933</a>
                   </div>
                 </div>
               </div>
