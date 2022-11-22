@@ -3,24 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Calculate the cost of your Stuio Shed ADU or backyard spacde</title>  
-    <meta name="description" content="Learn how much it may cost to build out your dream backyard space for a home office or ADU">
+    <title>Other Construction Costs Calculator</title>  
+    <meta name="description" content="Additional construction costs for your backyard ADU or studio. See average costs quoted by 3rd party contractor.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Calculate the cost of your Stuio Shed ADU or backyard spacde">
-    <meta property="og:description" content="Learn how much it may cost to build out your dream backyard space for a home office or ADU">
+    <meta property="og:title" content="Other Construction Costs Calculator">
+    <meta property="og:description" content="Additional construction costs for your backyard ADU or studio. See average costs quoted by 3rd party contractor.">
     <meta property="og:url" content="https://www.studio-shed.com/cost-calculator/">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2022-11-22T17:11:24.077Z">
+    <meta property="article:modified_time" content="2022-11-22T17:32:01.386Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="https://www.studio-shed.com/cost-calculator/">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1669137082904">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1669138320559">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <script src="/assets/main.bundle.js?v=1669137082904"></script>
+    <script src="/assets/main.bundle.js?v=1669138320559"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
     <!--
     <script src="https://apps.elfsight.com/p/platform.js" async></script> 
@@ -828,7 +828,7 @@
     <div class="mx-auto max-w-7xl px-4">
       <div class="text-center relative">
         <span class="bg-yellow-500 absolute inset-x-0 top-0 h-1 w-9 mx-auto"></span>
-        <h2 class="pt-9 text-3xl mb-4 text-gray-900">Project Cost Estimate Calculator</h2>
+        <h2 class="pt-9 text-3xl mb-4 text-gray-900">Other Construction Costs Calculator</h2>
         <p class="mx-auto text-gray-500">Additional construction costs for your backyard ADU or studio.</p>
         <p class="mx-auto text-gray-500">(Average costs quoted by 3rd party contractor)</p>
       </div>
@@ -840,12 +840,16 @@
           <div class="max-w-xl mx-auto p-4">
             
               <div class="bg-gray-100 p-8 md:ml-3">
-
+                <div class="flex justify-between items-center text-xl mb-4 font-medium text-gray-700">
+                  <dt class="font-bold">Studio Shed Estimate</dt>
+                  <dd class="text-black" x-text="window.Components.formatPrice.format(initialEstimate)"></dd>
+                </div>   
+ 
                 <div class="flex justify-between items-center text-xl mb-4 font-medium text-gray-700">
                   <dt class="font-bold">Square Feet</dt>
                   <dd>
-                    <input type="number" class="block w-24 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-lg" x-model="area" x-on:keyup.debounce="calculate()" placeholder="396">
-                    
+                    <!--<input type="number" class="block w-24 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-lg" x-model="area" x-on:keyup.debounce="calculate()" placeholder="396">-->
+                    <dd class="text-black" x-text="area"></dd>
                   </dd>
                 </div>                
                 <div class="flex border-t pt-4 border-gray-400 justify-between text-xl mb-4 font-medium text-gray-700">                
