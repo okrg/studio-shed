@@ -12,15 +12,15 @@
     <meta property="og:description" content="Learn how much it may cost to build out your dream backyard space for a home office or ADU">
     <meta property="og:url" content="https://www.studio-shed.com/cost-calculator/">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2022-11-22T01:13:39.199Z">
+    <meta property="article:modified_time" content="2022-11-22T02:33:45.196Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="https://www.studio-shed.com/cost-calculator/">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1669079618249">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1669084424345">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <script src="/assets/main.bundle.js?v=1669079618249"></script>
+    <script src="/assets/main.bundle.js?v=1669084424345"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
     <!--
     <script src="https://apps.elfsight.com/p/platform.js" async></script> 
@@ -856,12 +856,19 @@
                   <dt class="">Electrical</dt>
                   <dd class="text-black" x-text="window.Components.formatPrice.format(electrical)"></dd>
                 </div>
-                <div class="flex justify-between text-xl py-2 font-medium text-gray-700">
-                
+                <div class="flex justify-between text-xl py-2 font-medium text-gray-700">                
                   <dt class="">Site Prep/Demo</dt>
-                  <dd class="text-black text-sm" x-text="sitePrep"></dd>
+                  <dd class="text-black" x-text="window.Components.formatPrice.format(sitePrep)"></dd>
                 </div>
-                <div class="flex border-t pt-4 border-gray-400 justify-between text-xl mb-4 font-medium text-gray-700">
+                <div class="pt-4 border-t border-gray-400 flex justify-between text-xl py-2 font-medium">
+                  <dt class="">Estimated construction costs</dt>
+                  <dd class="font-bold text-2xl text-center text-yellow-700" x-text="window.Components.formatPrice.format(total)"></dd>
+                </div>
+                <div class="pt-8 flex justify-between text-base py-2 font-medium">
+                  <dt class="font-bold">Additional possible costs for permitted or ADUs</dt>
+                  <dd></dd>
+                </div>
+                <div class="flex pt-4 border-gray-400 justify-between text-xl mb-4 font-medium text-gray-700">
                   <dt class="">Plumbing</dt>
                   <dd class="text-black" x-text="window.Components.formatPrice.format(plumbing)"></dd>
                 </div>
@@ -876,18 +883,18 @@
                 <div class="flex justify-between text-xl py-2 font-medium text-gray-700">
                   <dt class="">HVAC</dt>
                   <dd class="text-black" x-text="window.Components.formatPrice.format(hvac)"></dd>
+                </div>                
+                <div class="flex justify-between text-xl py-2 font-medium text-gray-700">
+                  <dt class="">Submittal Services</dt>
+                  <dd class="text-black" x-text="window.Components.formatPrice.format(submittal)"></dd>
                 </div>
                 <div class="flex justify-between text-xl py-2 font-medium text-gray-700">
                   <dt class="">Permit Fees</dt>
                   <dd class="text-black text-sm" x-text="permit"></dd>
                 </div>
-                <div class="flex justify-between text-xl py-2 font-medium text-gray-700">
-                  <dt class="">Submittal Services</dt>
-                  <dd class="text-black" x-text="window.Components.formatPrice.format(submittal)"></dd>
-                </div>
                 <div class="pt-4 border-t border-gray-400 flex justify-between text-xl py-2 font-medium">
-                  <dt class="">Estimated construction costs</dt>
-                  <dd class="font-bold text-2xl text-center text-yellow-700" x-text="window.Components.formatPrice.format(total)"></dd>
+                  <dt class="">Estimated ADU construction costs</dt>
+                  <dd class="font-bold text-2xl text-center text-yellow-700" x-text="window.Components.formatPrice.format(aduTotal)"></dd>
                 </div>
 
                 
