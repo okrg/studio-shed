@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="35px" height="42px" viewBox="0 0 35 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Tree</title>
+    <defs>
+        <polygon id="path-1" points="0 41.416 34.234 41.416 34.234 0 0 0"></polygon>
+    </defs>
+    <g id="Desktop-and-Mobile-Final" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Holiday_Landing-Page_Revised" transform="translate(-100.000000, -4228.000000)">
+            <g id="Tree" transform="translate(100.000000, 4228.000000)">
+                <path d="M23.9492,14.3667 L25.9062,14.3667 C26.7522,14.3667 27.4392,13.7947 27.4392,13.0887 C27.4392,12.7787 27.3042,12.4947 27.0882,12.2737 L18.3932,1.5677 C18.1162,1.2247 17.6492,0.9997 17.1172,0.9997 C16.5862,0.9997 16.1172,1.2247 15.8432,1.5677 L7.1492,12.2737 C6.9282,12.4947 6.7972,12.7787 6.7972,13.0887 C6.7972,13.7947 7.4832,14.3667 8.3312,14.3667 L10.2852,14.3667 L3.6592,22.5907 C3.4392,22.8117 3.3062,23.0957 3.3062,23.4047 C3.3062,24.1107 3.9952,24.6837 4.8412,24.6837 L7.4632,24.6837 L1.3522,32.9947 C1.1342,33.2167 1.0002,33.5017 1.0002,33.8107 C1.0002,34.5157 1.6872,35.0877 2.5352,35.0877 L5.1572,35.0877 L29.0792,35.0877 L31.7002,35.0877 C32.5462,35.0877 33.2342,34.5157 33.2342,33.8107 C33.2342,33.5017 33.1022,33.2167 32.8822,32.9947 L26.7712,24.6837 L29.3952,24.6837 C30.2422,24.6837 30.9272,24.1107 30.9272,23.4047 C30.9272,23.0957 30.7952,22.8117 30.5762,22.5907 L23.9492,14.3667 Z" id="Stroke-1" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Clip-4"></g>
+                <polygon id="Stroke-3" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)" points="13.765 40.416 20.472 40.416 20.472 35.087 13.765 35.087"></polygon>
+                <line x1="10.2852" y1="14.3667" x2="11.9392" y2="14.3667" id="Stroke-5" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)"></line>
+                <line x1="22.2949" y1="14.3667" x2="23.9489" y2="14.3667" id="Stroke-6" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)"></line>
+                <line x1="23.3535" y1="24.6841" x2="26.7715" y2="24.6841" id="Stroke-7" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)"></line>
+                <line x1="7.4629" y1="24.6841" x2="10.8809" y2="24.6841" id="Stroke-8" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)"></line>
+            </g>
+        </g>
+    </g>
+</svg>

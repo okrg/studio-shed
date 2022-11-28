@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="48px" viewBox="0 0 50 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Snowman</title>
+    <g id="Desktop-and-Mobile-Final" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Holiday_Landing-Page_Revised" transform="translate(-698.000000, -1512.000000)">
+            <g id="Snowman" transform="translate(699.000000, 1513.000000)">
+                <line x1="9" y1="22" x2="1" y2="14" id="Stroke-1" stroke="#F59E0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></line>
+                <path d="M16.6389047,19 C15.191101,18.4743555 14.416429,17.8266649 14.0091272,17.3408969 L14.0262407,17.3263963 C12.7495722,15.5089957 12,13.295247 12,10.9087003 C12,6.61291622 14.4312607,2.87661117 18,1" id="Stroke-3" stroke="#F59E0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M30.7345329,3 C33.3448361,5.10397264 35,8.22839057 35,11.7201688 C35,14.0974971 34.2334237,16.3016589 32.9245748,18.1322759 L32.8198176,18.2893626 L32.832142,18.3066793 C32.3921617,18.8014406 31.5553365,19.4631839 30,20" id="Stroke-5" stroke="#F59E0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M33.127031,18.0035528 C37.2905213,20.8114875 40,25.3840037 40,30.5545828 C40,39.083788 32.6134308,46 23.4994056,46 C14.387758,46 7,39.083788 7,30.5545828 C7,25.3828194 9.71304536,20.800829 13.8801023,18" id="Stroke-7" stroke="#F59E0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M22,36.4988558 C22,37.326087 21.3272311,38 20.4988558,38 C19.6750572,38 19,37.326087 19,36.4988558 C19,35.673913 19.6750572,35 20.4988558,35 C21.3272311,35 22,35.673913 22,36.4988558" id="Fill-9" fill="#F59E0A"></path>
+                <path d="M22,28.5 C22,29.3272311 21.3272311,30 20.4988558,30 C19.6750572,30 19,29.3272311 19,28.5 C19,27.673913 19.6750572,27 20.4988558,27 C21.3272311,27 22,27.673913 22,28.5" id="Fill-11" fill="#F59E0A"></path>
+                <path d="M21,9.5 C21,10.326087 20.3269744,11 19.4971385,11 C18.6741702,11 18,10.326087 18,9.5 C18,8.67391304 18.6741702,8 19.4971385,8 C20.3269744,8 21,8.67391304 21,9.5" id="Fill-13" fill="#F59E0A"></path>
+                <path d="M28,9.49885584 C28,10.326087 27.3278626,11 26.4977099,11 C25.6732824,11 25,10.326087 25,9.49885584 C25,8.67276888 25.6732824,8 26.4977099,8 C27.3278626,8 28,8.67276888 28,9.49885584" id="Fill-15" fill="#F59E0A"></path>
+                <path d="M23,14.4987735 C23,15.3254293 22.2985946,16 21.4349334,16 C19.5006388,16 16,14.4987735 16,14.4987735 C16,14.4987735 19.5006388,13 21.4349334,13 C22.2985946,13 23,13.6733442 23,14.4987735" id="Fill-17" fill="#F59E0A"></path>
+                <line x1="6" y1="19.5" x2="0" y2="19.5" id="Stroke-19" stroke="#F59E0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></line>
+                <line x1="34" y1="27" x2="47" y2="14" id="Stroke-21" stroke="#F59E0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></line>
+                <line x1="42" y1="19.5" x2="48" y2="19.5" id="Stroke-23" stroke="#F59E0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></line>
+                <path d="M18,1.58565361 C19.655342,0.574799434 21.5522361,0 23.5687221,0 C26.3927498,0 28.9811458,1.12553091 31,3" id="Stroke-25" stroke="#F59E0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>
