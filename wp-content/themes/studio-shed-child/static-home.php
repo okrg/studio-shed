@@ -821,7 +821,7 @@
       <div class="justify-center flex py-2" style="background-color: rgb(195,17,22);">
       <img src="/assets/images/holiday-banner.jpg">
     </div>
-<div class="h-[75vh] bg-black relative">
+<div class="bg-black relative" style="height:75vh;">
   <div class="swiper mx-auto">  
     <div class="swiper-wrapper">      
       <div class="swiper-slide">
