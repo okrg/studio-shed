@@ -19,8 +19,10 @@ class gwapi {
   }
 
   function pushHubspot($url, $payload, $method) {
+    $token = 'pat-na1-591c786a-e750-488e-8398-16c1d6b87fe7';
     $headers = array();
     $headers[] = 'Content-Type: application/json';
+    $headers[] = 'Authorization: Bearer ' . $token;  
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
@@ -282,18 +284,18 @@ if($res['response'] == APPROVED) {
     ]
   ];
 
-  $res['hs_search_response'] = $gw->pushHubspot('https://api.hubapi.com/crm/v3/objects/contacts/search?hapikey=b4c3ffb4-8ff9-42c3-8b1c-8e1513dea0f6', $search_payload, 'POST');
+  $res['hs_search_response'] = $gw->pushHubspot('https://api.hubapi.com/crm/v3/objects/contacts/search', $search_payload, 'POST');
   if((int)$res['hs_search_response']->total > 0) {
     $hubspot_contact_id = $res['hs_search_response']->results[0]->id; 
-    $res['hs_contact_response'] = $gw->pushHubspot('https://api.hubapi.com/crm/v3/objects/contacts/'.$hubspot_contact_id.'?hapikey=b4c3ffb4-8ff9-42c3-8b1c-8e1513dea0f6', $contacts_payload, 'PATCH');
+    $res['hs_contact_response'] = $gw->pushHubspot('https://api.hubapi.com/crm/v3/objects/contacts/'.$hubspot_contact_id, $contacts_payload, 'PATCH');
   } else {    
-    $res['hs_contact_response'] = $gw->pushHubspot('https://api.hubapi.com/crm/v3/objects/contacts?hapikey=b4c3ffb4-8ff9-42c3-8b1c-8e1513dea0f6', $contacts_payload, 'POST');
+    $res['hs_contact_response'] = $gw->pushHubspot('https://api.hubapi.com/crm/v3/objects/contacts', $contacts_payload, 'POST');
   }
 
   //Create deal
-  $res['hs_deals_response'] = $gw->pushHubspot('https://api.hubapi.com/crm/v3/objects/deals?hapikey=b4c3ffb4-8ff9-42c3-8b1c-8e1513dea0f6', $deals_payload, 'POST');
+  $res['hs_deals_response'] = $gw->pushHubspot('https://api.hubapi.com/crm/v3/objects/deals', $deals_payload, 'POST');
   $deal_id = $res['hs_deals_response']->id;
-  $res['hs_deals_association_response'] = $gw->pushHubspot('https://api.hubapi.com/crm/v3/objects/deals/'.$deal_id.'/associations/CONTACT/'.$hubspot_contact_id.'/deal_to_contact?hapikey=b4c3ffb4-8ff9-42c3-8b1c-8e1513dea0f6', null, 'PUT');
+  $res['hs_deals_association_response'] = $gw->pushHubspot('https://api.hubapi.com/crm/v3/objects/deals/'.$deal_id.'/associations/CONTACT/'.$hubspot_contact_id.'/deal_to_contact', null, 'PUT');
 
 }
 $res['env_mode'] = $gw->envMode();
