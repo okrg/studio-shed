@@ -818,6 +818,9 @@
   </div>
 </header>    
     <main id="page-home">
+      <div class="justify-center flex bg-[#c31116] py-2">
+      <img src="/assets/images/holiday-banner.jpg">
+    </div>
 <div class="h-[66vh] bg-black relative">
   <div class="swiper mx-auto">  
     <div class="swiper-wrapper">      
@@ -871,10 +874,10 @@
     </div>  
   </div>
 </div>
-
+<!--
 <div class="justify-center flex bg-black pb-4">
   <a href="https://www.studio-shed.com/products/signature-series/#toc-curated" target="_blank"><img src="/assets/images/BFCM-banner.jpg"></a>
-</div>
+</div>-->
 
   <div class="bg-white" id="toc-curated" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'curated'">
     <div class="max-w-4xl mx-auto py-16 px-4 sm:py-12 sm:px-6 lg:px-8">
