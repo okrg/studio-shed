@@ -818,7 +818,7 @@
   </div>
 </header>    
     <main id="page-home">
-      <div class="justify-center flex bg-[#c31116] py-2">
+      <div class="justify-center flex py-2" style="background-color: rgb(195,17,22);">
       <img src="/assets/images/holiday-banner.jpg">
     </div>
 <div class="h-[66vh] bg-black relative">
