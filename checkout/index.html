@@ -12,20 +12,21 @@
     <meta property="og:description" content="">
     <meta property="og:url" content="">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2022-11-30T19:43:52.907Z">
+    <meta property="article:modified_time" content="2022-12-09T01:26:19.040Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1669837432024">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1670549178026">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <script src="/assets/main.bundle.js?v=1669837432024"></script>
+    <link type="text/css" rel="stylesheet" href="https://payment-amount.acornfinance.com/v4/acorn-finance-promo.min.css">
+
+    <script src="/assets/main.bundle.js?v=1670549178026"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
-    <!--
-    <script src="https://apps.elfsight.com/p/platform.js" async></script> 
-    <script src="https://www.bugherd.com/sidebarv2.js?apikey=0zstjadoqp0xjbyxbxs71g" async></script>
-    -->
+    <script async src="https://payment-amount.acornfinance.com/v4/acorn-finance-promo.min.js"></script>
+    <script src="https://versapay.transactiongateway.com/token/Collect.js" data-tokenization-key="G8DS35-b6X28W-746N3V-nChQY7"></script>
+
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -816,8 +817,6 @@
   </div>
 </header>
     <main>
-<script src="https://versapay.transactiongateway.com/token/Collect.js" data-tokenization-key="G8DS35-b6X28W-746N3V-nChQY7"></script>
-
 <div class="bg-gray-50">
   <div class="text-center">      
     <p class="py-8 text-3xl font-bold text-gray-900">Checkout</p>
@@ -828,6 +827,7 @@
     <form class="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16 mb-16" x-data="window.Components.checkoutForm()" x-init="initCheckoutForm()" @submit-checkout-form.window="submitCheckoutForm()" @invalid-payment-info.window="invalidPaymentInfo()">
       <input type="hidden" id="payment_token" x-model="formData.payment_token">
       <div>
+        <div x-show="showContactSection" x-transition>
         <div>
           <h2 class="text-lg font-medium text-gray-900">Contact information</h2>
 
@@ -981,18 +981,76 @@
 
           </div>
         </div>
+        
+        <p class="text-center text-red-500 font-bold mt-3" x-text="confirmMessage"></p>
+
+
+        <button  class="mt-6 w-full bg-gray-600 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500 disabled:bg-gray-300" @click.prevent="goToPaymentSection()">Continue to Payment Information <svg class="inline ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button>
+
+      </div>
 
 
 
-        <div class="mt-10 border-t border-gray-200 pt-10">
+        <div x-show="showPaymentSection" x-transition>
           <h2 class="text-lg font-medium text-gray-900">Payment</h2>
+
+          <section id="acorn-form">
+
+            <div class="bg-white rounded-lg border-2 border-gray-300 p-4 my-8 border-l-8 border-l-blue-900">
+              <p style="font-size: 22px; font-weight: 600;">Finance your <span x-html="modelLabel"
+                  style=" text-transform:none;"></span>
+              </p>
+              <p style="font-size: 18px;">Total Cost: <span x-html="formData.formattedAmount"
+                  style=" text-transform: uppercase;"></span></p>
+
+              <div id="acorn-payment-amount-line" class="acorn-payment-amount-line">
+                <a style="font-size: 18px; text-decoration: underline;" class="acorn-loading acorn-default-link"
+                  href="https://www.acornfinance.com/apply?d=SSD-CURATED&dmsg=1&utm_medium=fallBackLink" target="_blank">pay monthly on Acorn get started</a>
+              </div>
+
+              <img src="https://payment-amount.acornfinance.com/v4/acorn-finance-logo.svg" alt="Acorn Finance Logo" width="120px;"
+                style="margin-top: 0px;">
+            </div>
+          </section>
+
+          <section id="ach-form">
+              <div class="flex items-center mt-6 pt-6 border-t border-gray-200">
+                <input id="etransfer" value="check" x-model="formData.payment" type="radio" checked class="focus:ring-yellow-500 h-4 w-4 text-yellow-600 border-gray-300">
+                <label for="etransfer" class="ml-3 block text-sm font-medium text-gray-700">Bank transfer (ACH)</label>
+              </div>
+
+
+          <div class="mt-6 grid grid-cols-4 gap-y-6 gap-x-4">
+            <!--x-show="formData.payment == 'check'"-->
+            <div class="col-span-4">
+              <label for="checkname" class="block text-sm font-medium text-gray-700">Name on Account</label>
+              <div class="mt-1">
+                <div id="checkname"></div>
+              </div>
+            </div>
+
+            <div class="col-span-4">
+              <label for="checkaba" class="block text-sm font-medium text-gray-700">Routing number</label>
+              <div class="mt-1">
+                <div id="checkaba"></div>
+              </div>
+            </div>
+
+            <div class="col-span-4">
+              <label for="checkaccount" class="block text-sm font-medium text-gray-700">Account number</label>
+              <div class="mt-1">
+                <div id="checkaccount"></div>
+              </div>
+            </div>
+          </div>
+        </section>
 
 
           <section id="credit-form">
           <fieldset class="mt-4">          
             <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
               <div class="flex items-center">
-                <input id="credit-card" value="creditcard" x-model="formData.payment" type="radio" checked class="focus:ring-yellow-500 h-4 w-4 text-yellow-600 border-gray-300" selected>
+                <input id="credit-card" value="creditcard" x-model="formData.payment" type="radio"  class="focus:ring-yellow-500 h-4 w-4 text-yellow-600 border-gray-300">
                 <label for="credit-card" class="ml-3 block text-sm font-medium text-gray-700">Credit card</label>
               </div>
             </div>
@@ -1023,45 +1081,15 @@
           </div>
         </section>
 
-          <section id="ach-form">
-              <div class="flex items-center mt-6 pt-6 border-t border-gray-200">
-                <input id="etransfer" value="check" x-model="formData.payment" type="radio" class="focus:ring-yellow-500 h-4 w-4 text-yellow-600 border-gray-300">
-                <label for="etransfer" class="ml-3 block text-sm font-medium text-gray-700">Bank transfer (ACH)</label>
-              </div>
 
 
-          <div class="mt-6 grid grid-cols-4 gap-y-6 gap-x-4">
-            <!--x-show="formData.payment == 'check'"-->
-            <div class="col-span-4">
-              <label for="checkname" class="block text-sm font-medium text-gray-700">Name on Account</label>
-              <div class="mt-1">
-                <div id="checkname"></div>
-              </div>
-            </div>
-
-            <div class="col-span-4">
-              <label for="checkaba" class="block text-sm font-medium text-gray-700">Routing number</label>
-              <div class="mt-1">
-                <div id="checkaba"></div>
-              </div>
-            </div>
-
-            <div class="col-span-4">
-              <label for="checkaccount" class="block text-sm font-medium text-gray-700">Account number</label>
-              <div class="mt-1">
-                <div id="checkaccount"></div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <button  class="mt-6 w-full bg-gray-600 border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500 disabled:bg-gray-300" @click.prevent="goToContactSection()"><svg class="inline mr-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>Back to Contact Information</button>
 
         </div>
       </div>
       
       <div class="mt-10 lg:mt-0">
         <div class="sticky top-6">
-          <h2 class="text-lg font-medium text-gray-900">Order summary</h2>
-
           <div class="mt-4 bg-white border border-gray-200 rounded-lg shadow-sm">
             <h3 class="sr-only">Items in your cart</h3>
             <ul role="list" class="divide-y divide-gray-200">
@@ -1111,7 +1139,7 @@
 
             </dl>
 
-            <div class="border-t border-gray-200 py-6 px-4 sm:px-6">
+            <div class="border-t border-gray-200 py-6 px-4 sm:px-6" x-show="showConfirmationSection" x-transition>
 
 
                 <div class="flex">
@@ -1392,5 +1420,7 @@
     </div>
   </div>
 </footer>
+    <div id="acornModalPopup" class="acorn-popup-modal" style="display: none;"></div>
   </body>
 </html>
+
