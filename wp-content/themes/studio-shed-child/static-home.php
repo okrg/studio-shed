@@ -27,10 +27,6 @@
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
     <script src="/assets/main.bundle.js?v=1663733193277"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
-    <!--
-    <script src="https://apps.elfsight.com/p/platform.js" async></script> 
-    <script src="https://www.bugherd.com/sidebarv2.js?apikey=0zstjadoqp0xjbyxbxs71g" async></script>
-    -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -264,7 +260,7 @@
 
           <a href="https://www.studio-shed.com/diy-quick-ship-models/" class="-m-3 p-3 flex items-start hover:opacity-80">
             <div>
-              <p class="text-base font-medium text-gray-900">DIY Quick Ship Models</p>
+              <p class="text-base font-medium text-gray-900">Curated Models</p>
               <p class="text-sm text-gray-500">These models are our most popular designs
           <span class="text-xs block text-yellow-600 font-semibold tracking-wide uppercase">
             Delivered in 2-4 weeks. Shipping included
@@ -644,7 +640,7 @@
                 </a>
 
                 <a href="/diy-quick-ship-models/" class="text-gray-700 block">
-                  DIY Quick Ship Models
+                  Curated Models
                   <span class="text-xs block text-yellow-600 font-semibold tracking-wide uppercase">
                     Delivered in 2-4 weeks. Shipping included
                   </span>
