@@ -23,7 +23,7 @@
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="https://www.studio-shed.com/">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1663733193277">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1671070352436">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
     <script src="/assets/main.bundle.js?v=1663733193277"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
@@ -1339,8 +1339,8 @@
           });
         </script>
         <div class="flex space-x-12 mt-24">
-          <img src="/assets/images/footer-shipping.png" alt="Studio Ships to all 50 states">
-          <img src="/assets/images/footer-houzz-badge.png" alt="Studio Shed design award by Houzz">
+          <img class="self-center w-32 h-auto" src="/assets/images/footer-shipping.png" alt="Studio Ships to all 50 states">
+          <img class="self-center w-20 h-auto" src="/assets/images/footer-houzz-badge.png" alt="Studio Shed design award by Houzz">
         </div>
       </div>
     </div>
