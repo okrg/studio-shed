@@ -814,16 +814,9 @@
   </div>
 </header>    
 <main id="page-home">
-  <div class="justify-center flex py-2" style="background-color: rgb(195,17,22);">
-    <a href="/make-more-room/"><img src="/assets/images/holiday-banner.jpg"></a>
-  </div>
 <div class="bg-black relative" style="height:75vh;">
   <div class="swiper mx-auto">  
     <div class="swiper-wrapper">
-      <div class="swiper-slide bg-gray-50">
-        <img data-src="/assets/images/holiday-hero.jpg" class="swiper-lazy" alt="Make more room for holiday guests - Get 10% off + free shipping" style="object-fit: contain;">
-        <div class="swiper-lazy-preloader"></div>
-      </div>
       <div class="swiper-slide">
         <img data-src="/assets/images/home-slider/01.jpg" class="swiper-lazy" alt="Studio Shed unit installed at a customer location">
         <div class="swiper-lazy-preloader"></div>
