@@ -814,9 +814,16 @@
   </div>
 </header>    
 <main id="page-home">
+<div class="justify-center flex bg-[#c39432]">
+  <img src="/assets/images/ny-sale-banner.jpg">
+</div>
 <div class="bg-black relative" style="height:75vh;">
   <div class="swiper mx-auto">  
     <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img data-src="/assets/images/ny-sale-hero.jpg" class="swiper-lazy" alt="New  Years sale - Free shipping" style="object-fit: contain;">
+        <div class="swiper-lazy-preloader"></div>
+      </div>
       <div class="swiper-slide">
         <img data-src="/assets/images/home-slider/01.jpg" class="swiper-lazy" alt="Studio Shed unit installed at a customer location">
         <div class="swiper-lazy-preloader"></div>
