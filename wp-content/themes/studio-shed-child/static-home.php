@@ -814,7 +814,7 @@
   </div>
 </header>    
 <main id="page-home">
-<div class="justify-center flex bg-[#c39432]">
+<div class="justify-center flex" style="background: rgb(195,148,50);">
   <img src="/assets/images/ny-sale-banner.jpg">
 </div>
 <div class="bg-black relative" style="height:75vh;">
