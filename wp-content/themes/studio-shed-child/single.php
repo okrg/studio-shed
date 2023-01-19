@@ -12,78 +12,10 @@ while (have_posts()) : the_post();
             <div class="col-md-8">
                 <section id="content-header" class="single">
                     <div class="row">
-                        <div class="col-sm-12 show-mobile introstories">
+                        <div class="col-sm-12 introstories">
                             <p class="titleintro text-uppercase"><?php the_title(); ?></p>
                             <div class="description"><?php echo $description; ?></div>
                         </div>
-                        <?php if ($images != null) { ?>
-                            <div class="col-md-7 col-sm-12 slide-inter">
-                                <div id="slider" class="flexslider">
-                                    <ul class="slides">
-                                        <?php
-                                        $dem = 0;
-                                        foreach ($images as $image) {
-                                            ?>
-                                            <li>
-                                                <a rel="lightbox[image]" href="<?php echo $image['image']['sizes']['large']; ?>"  rel="img_group">
-                                                    <img src="<?php echo $image['image']['sizes']['blog-slide2']; ?>" class="img-responsive" alt="<?php echo $image['image']['alt']; ?>" title="<?php echo $image['image']['title']; ?>"/>
-                                                    <div class="view-large"><span><i class="fa fa-search-plus"></i></span></div>
-                                                </a>
-                                            </li>
-                                            <?php
-                                            $dem++;
-                                        };
-                                        ?>
-                                    </ul>
-                                </div>  
-                            </div>
-                            <div class="col-md-5 col-sm-12 intro introstories">
-                                <div class="row">
-                                    <div class="col-md-12 col-sm-5 hide-mobile">
-                                    <?php 
-                                        $title = get_the_title();
-                                        $line=$title;
-                                        if (preg_match('/^.{1,90}\b/s', $title, $match))
-                                        {
-                                            $line=$match[0];
-                                        }
-                                        $etc = ( strlen($title) > strlen($line) ) ? '...' : '';
-                                    ?>
-                                        <p title="<?php the_title(); ?>" class="titleintro text-uppercase"><?php echo $line.$etc; ?></p>
-                                        <div class="description"><?php echo $description; ?></div>
-                                    </div>
-
-                                    <div class="col-md-12 col-sm-7 thumb-positon">  
-                                        <div id="carousel" class="flexslider">
-                                            <ul class="slides">
-                                                <?php
-                                                $dem = 0;
-                                                foreach ($images as $image) {
-                                                    ?>
-                                                    <li>
-                                                        <a id="carousel-selector-<?php echo $dem; ?>" class="<?php
-                                                        if ($dem == 0) {
-                                                            echo 'selected';
-                                                        }
-                                                        ?>">
-                                                            <img src="<?php echo $image['image']['sizes']['custom-thumbnail']; ?>" alt="<?php echo $image['image']['alt']; ?>" title="<?php echo $image['image']['title']; ?>"/> 
-                                                        </a> 
-                                                    </li>
-                                                    <?php
-                                                    $dem++;
-                                                };
-                                                ?>
-                                            </ul>  
-                                        </div> 
-                                    </div>
-                                </div>
-                            </div>
-                        <?php } else { ?>
-                            <div class="col-md-12 intro introstories no-slide">
-                                <p class="titleintro text-uppercase"><?php the_title(); ?></p>
-                                <p class="description"><?php echo get_field('description_text'); ?></p>
-                            </div>
-                        <?php } ?>
                     </div>
                 </section>
                 <section class="one-column">
