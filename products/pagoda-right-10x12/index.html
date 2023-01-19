@@ -12,15 +12,15 @@
     <meta property="og:description" content="">
     <meta property="og:url" content="">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2023-01-19T01:44:40.051Z">
+    <meta property="article:modified_time" content="2023-01-19T18:57:04.523Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1674092679029">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1674154623223">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <script src="/assets/main.bundle.js?v=1674092679029"></script>
+    <script src="/assets/main.bundle.js?v=1674154623223"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babylonjs/4.2.2/babylon.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/babylonjs-loaders@5.9.1/babylonjs.loaders.min.js"></script>
@@ -838,7 +838,7 @@
         <!-- Image gallery -->
         <div class="flex flex-col-reverse">
           <div class="w-full aspect-w-1 aspect-h-1">        
-            <canvas id="renderCanvas" touch-action="none" style="display:none" data-studio-shed-model="pagoda-left-10x12"></canvas>
+            <canvas id="renderCanvas" touch-action="none" style="display:none" data-studio-shed-model="pagoda-right-10x12"></canvas>
           </div>
         </div>
 
@@ -916,8 +916,8 @@
                 acornFinance.setAcornParameters(acornParameters)
                 let uuid = acornFinance.getUUID()
                 acornParameters.uuid = uuid
-                acornParameters.utm_content = 'pagoda-left-10x12--' + uuid
-                acornParameters.utm_medium = 'pagoda-left-10x12'
+                acornParameters.utm_content = 'pagoda-right-10x12--' + uuid
+                acornParameters.utm_medium = 'pagoda-right-10x12'
                 acornFinance.calcPayment(21202, 'acorn-payment-amount-line', 'popup', '1line', 'Learn more', 'continue') // for popup;
                 acornFinance.calcPayment(22522, 'acorn-payment-amount-BZ-line', 'popup', '1line', 'Learn more', 'continue') // for popup;
               } catch (error) {
@@ -1082,11 +1082,11 @@
             <div class="mt-10 flex sm:flex-col1">
 
               <div x-show="trimColorValue == 'Clear Anodized Aluminum'">
-              <button type="submit" class="max-w-xs flex-1 bg-yellow-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-yellow-500 sm:w-full" @click.prevent="buyNow('Pagoda Right 10&amp;apos; &amp;times; 12&amp;apos;', 'pagoda-left-10x12', 21202)">Buy Now</button>
+              <button type="submit" class="max-w-xs flex-1 bg-yellow-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-yellow-500 sm:w-full" @click.prevent="buyNow('Pagoda Right 10&amp;apos; &amp;times; 12&amp;apos;', 'pagoda-right-10x12', 21202)">Buy Now</button>
               </div>
 
               <div x-show="trimColorValue == 'Studio Shed Bronze (+$1,320)'">
-              <button type="submit" class="max-w-xs flex-1 bg-yellow-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-yellow-500 sm:w-full" @click.prevent="buyNow('Pagoda Right 10&amp;apos; &amp;times; 12&amp;apos;', 'pagoda-left-10x12', 22522)">Buy Now</button>
+              <button type="submit" class="max-w-xs flex-1 bg-yellow-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-yellow-500 sm:w-full" @click.prevent="buyNow('Pagoda Right 10&amp;apos; &amp;times; 12&amp;apos;', 'pagoda-right-10x12', 22522)">Buy Now</button>
               </div>
 
             </div>
