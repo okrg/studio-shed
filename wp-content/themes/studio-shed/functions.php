@@ -323,12 +323,14 @@ function string_limit_words($string, $word_limit) {
 
 // Begin insert code php in widget
 function php_text($text) {
+    /*
     if (strpos($text, '<' . '?') !== false) {
         ob_start();
         eval('?' . '>' . $text);
         $text = ob_get_contents();
         ob_end_clean();
     }
+    */
     return $text;
 }
 
