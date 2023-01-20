@@ -67,6 +67,8 @@ class ES_Workflow_Admin_Edit {
 
 		add_action( 'wp_ajax_ig_es_get_workflow_email_preview', array( __CLASS__, 'get_workflow_email_preview' ) );
 		add_action( 'wp_ajax_ig_es_send_workflow_action_test_email', array( __CLASS__, 'send_workflow_action_test_email' ) );
+
+		add_action( 'admin_notices', array( __CLASS__, 'show_membership_integration_notice' ) );
 	}
 
 	/**
@@ -77,10 +79,10 @@ class ES_Workflow_Admin_Edit {
 	public static function send_workflow_action_test_email() {
 		check_ajax_referer( 'ig-es-admin-ajax-nonce', 'security' );
 
-		$email   = sanitize_email( ig_es_get_request_data( 'es_test_email' ) );
-		$subject = ig_es_get_request_data( 'subject', '' );
-		$content = ig_es_get_request_data( 'content', '', false );
-		$trigger = ig_es_get_request_data( 'trigger', '' );
+		$email    = sanitize_email( ig_es_get_request_data( 'es_test_email' ) );
+		$subject  = ig_es_get_request_data( 'subject', '' );
+		$content  = ig_es_get_request_data( 'content', '', false );
+		$trigger  = ig_es_get_request_data( 'trigger', '' );
 		$template = ig_es_get_request_data( 'template', '' );
 		$heading  = ig_es_get_request_data( 'heading', '' );
 
@@ -126,11 +128,17 @@ class ES_Workflow_Admin_Edit {
 			'ig-es-email-content'        => $content,
 			'ig-es-tracking-campaign-id' => ''
 		) );
+
+		$response[ 'subject' ] = $subject;
+
+
 		if ( ! empty( $response ) ) {
 			wp_send_json_success( $response );
 		} else {
 			wp_send_json_error();
 		}
+
+
 	}
 
 	/**
@@ -388,9 +396,10 @@ class ES_Workflow_Admin_Edit {
 
 		$page_prefix = ES()->get_admin_page_prefix();
 
-		add_meta_box( 'ig_es_workflow_trigger', __( 'Trigger', 'email-subscribers' ), array( __CLASS__, 'trigger_metabox' ), $page_prefix . '_page_es_workflows', 'normal', 'default' );
-		add_meta_box( 'ig_es_workflow_actions', __( 'Actions', 'email-subscribers' ), array( __CLASS__, 'actions_metabox' ), $page_prefix . '_page_es_workflows', 'normal', 'default' );
-		add_meta_box( 'ig_es_workflow_save', __( 'Save', 'email-subscribers' ), array( __CLASS__, 'save_metabox' ), $page_prefix . '_page_es_workflows', 'side', 'default' );
+		add_meta_box( 'ig_es_workflow_trigger', __( 'Trigger', 'email-subscribers' ), array( __CLASS__, 'trigger_metabox' ), $page_prefix . '_page_es_workflows', 'normal', 'high' );
+		add_meta_box( 'ig_es_workflow_rules', __( 'Rules', 'email-subscribers' ), array( __CLASS__, 'rules_metabox' ), $page_prefix . '_page_es_workflows', 'normal', 'core' );
+		add_meta_box( 'ig_es_workflow_actions', __( 'Actions', 'email-subscribers' ), array( __CLASS__, 'actions_metabox' ), $page_prefix . '_page_es_workflows', 'normal', 'low' );
+		add_meta_box( 'ig_es_workflow_save', __( 'Save', 'email-subscribers' ), array( __CLASS__, 'save_metabox' ), $page_prefix . '_page_es_workflows', 'side', 'high' );
 		add_meta_box( 'ig_es_workflow_variables', __( 'Placeholders', 'email-subscribers' ), array( __CLASS__, 'variables_metabox' ), $page_prefix . '_page_es_workflows', 'side', 'default' );
 
 		if ( ES()->can_upsell_features( array( 'lite', 'trial' ) ) ) {
@@ -485,6 +494,97 @@ class ES_Workflow_Admin_Edit {
 	}
 
 	/**
+	 * Get all rules in the workflow
+	 *
+	 * @return array
+	 *
+	 * @since 5.5.0
+	 */
+	public static function get_rules_data() {
+		$data = [];
+
+		foreach ( Es_Workflow_Rules::get_all() as $rule ) {
+			$rule_data = (array) $rule;
+			if ( is_callable( [ $rule, 'get_search_ajax_action' ] ) ) {
+				$rule_data['ajax_action'] = $rule->get_search_ajax_action();
+			}
+
+			if ( is_callable( [ $rule, 'get_select_choices' ] ) ) {
+				$rule_data['select_choices'] = $rule->get_select_choices();
+			}
+			
+			$data[ $rule->name ] = $rule_data;
+		}
+
+		return $data;
+	}
+
+	/**
+	 * Get the workflow rules to edit
+	 *
+	 * @return array
+	 */
+	public static function get_workflow_rules() {
+		Es_Workflow_Rules::get_all(); // load all the rules into memory so the order is preserved
+
+		if ( self::$workflow ) {
+			$rule_options = self::$workflow->get_rule_data();
+			foreach ( $rule_options as &$rule_group ) {
+				foreach ( $rule_group as &$rule ) {
+					if ( ! isset( $rule['name'] ) ) {
+						continue;
+					}
+
+					$rule_object = Es_Workflow_Rules::get( $rule['name'] );
+					if ( ! $rule_object ) {
+						continue;
+					}
+
+					if ( 'object' === $rule_object->type ) {
+						/**
+						 * Searchable search rule value field
+						 *
+						 * @var Es_Rule_Searchable_Select_Abstract $rule_object
+						 */
+						// If rule has multiple values get the display value for all keys
+						if ( $rule_object->is_multi ) {
+							foreach ( (array) $rule['value'] as $item ) {
+								$rule['selected'][] = $rule_object->get_object_display_value( $item );
+							}
+						} else {
+							$rule['selected'] = $rule_object->get_object_display_value( $rule['value'] );
+						}
+					} else {
+						// Format the rule value
+						$rule['value'] = $rule_object->format_value( $rule['value'] );
+					}
+				}
+			}
+		} else {
+			$rule_options = [];
+		}
+
+		return $rule_options;
+	}
+
+	/**
+	 * Rules meta box
+	 *
+	 * @since 5.5.0
+	 */
+	public static function rules_metabox() {
+		ES_Workflow_Admin::get_view(
+			'meta-box-rules',
+			array(
+				'workflow'         => self::$workflow,
+				'workflow_rules'   => self::get_workflow_rules(),
+				'selected_trigger' => self::$workflow ? self::$workflow->get_trigger() : false,
+				'all_rules'        => self::get_rules_data(),
+			)
+		);
+	}
+
+	/**
 	 * Save workflow meta box
 	 *
 	 * @since 4.4.1
@@ -497,21 +597,7 @@ class ES_Workflow_Admin_Edit {
 			)
 		);
 	}
-
-	/**
-	 * Timing meta box
-	 *
-	 * @since 4.4.1
-	 */
-	public static function timing_metabox() {
-		ES_Workflow_Admin::get_view(
-			'meta-box-timing',
-			array(
-				'workflow' => self::$workflow,
-			)
-		);
-	}
-
+	
 	/**
 	 * Options meta box
 	 *
@@ -561,7 +647,7 @@ class ES_Workflow_Admin_Edit {
 		$workflow_name   = ! empty( $workflow_title ) ? sanitize_title( ES_Clean::string( $workflow_title ) ) : '';
 		$trigger_name    = isset( $posted['trigger_name'] ) ? ig_es_clean( $posted['trigger_name'] ) : '';
 		$trigger_options = isset( $posted['trigger_options'] ) ? ig_es_clean( $posted['trigger_options'] ) : array();
-		$rules           = isset( $posted['rules'] ) ? ig_es_clean( $posted['rules'] ) : array();
+		$rules           = isset( $posted['rules'] ) ? self::filter_valid_rules_to_save( ig_es_clean( $posted['rules'] ) ) : array();
 		$actions         = isset( $posted['actions'] ) ? $posted['actions'] : array(); // We can't sanitize actions data since some actions like Send email allows html in its field.
 		$status          = isset( $posted['status'] ) ? ig_es_clean( $posted['status'] ) : 0;
 		$type            = isset( $posted['type'] ) ? ig_es_clean( $posted['type'] ) : 0;
@@ -633,6 +719,39 @@ class ES_Workflow_Admin_Edit {
 		}
 
 		return $workflow_id;
+	}
+
+	/**
+	 * Filter the rules before saving it into DB
+	 *
+	 * @param $rules
+	 *
+	 * @return array
+	 */
+	public static function filter_valid_rules_to_save( $rules ) {
+		if ( empty( $rules ) || ! is_array( $rules ) ) {
+			return array();
+		}
+		$valid_rules = array();
+
+		foreach ( $rules as $rule_group ) {
+			if ( empty( $rule_group ) || ! is_array( $rule_group ) ) {
+				continue;
+			}
+			$valid_rule_group = array();
+			foreach ( $rule_group as $rule ) {
+				if ( empty( $rule['name'] ) || empty( $rule['compare'] ) || empty( $rule['value'] ) ) {
+					continue;
+				}
+				array_push( $valid_rule_group, $rule );
+			}
+
+			if ( ! empty( $valid_rule_group ) ) {
+				array_push( $valid_rules, $valid_rule_group );
+			}
+		}
+
+		return $valid_rules;
 	}
 
 	/**
@@ -872,7 +991,7 @@ class ES_Workflow_Admin_Edit {
 	 *
 	 * @param int $workflow_id
 	 * @return string  $edit_url Workflow edit URL
-	 * 
+	 *
 	 * @since 5.3.8
 	 */
 	public static function get_admin_edit_url( $workflow_id ) {
@@ -888,5 +1007,70 @@ class ES_Workflow_Admin_Edit {
 		);
 
 		return $edit_url;
+	}
+
+	public static function show_membership_integration_notice() {
+
+		$notice_pages = array( 'es_workflows' );
+		$current_page = ig_es_get_request_data( 'page' );
+		$is_notice_page = in_array( $current_page, $notice_pages, true );
+		if ( ! $is_notice_page || ! ES()->is_pro() ) {
+			return;
+		}
+
+		global $ig_es_tracker;
+
+		$supported_membership_plugins = array(
+			'sfwd-lms/sfwd_lms.php' => 'LearnDash',
+			'ultimate-member/ultimate-member.php' => 'Ultimate Member',
+			'paid-memberships-pro/paid-memberships-pro.php' => 'Paid Memberships Pro',
+			'memberpress/memberpress.php' => 'MemberPress',
+			'woocommerce-memberships/woocommerce-memberships.php' => 'WooCommerce Memberships',
+		);
+
+		$active_plugins = $ig_es_tracker::get_active_plugins();
+		$supported_active_plugins = array();
+
+		foreach ( $supported_membership_plugins as $plugin_slug => $plugin_name ) {
+			if ( in_array( $plugin_slug, $active_plugins, true ) ) {
+				$supported_active_plugins[] = $plugin_slug;
+			}
+		}
+
+		if ( empty( $supported_active_plugins ) ) {
+			return;
+		}
+		
+		$workflow_gallery_url  = admin_url( 'admin.php?page=es_workflows&tab=gallery');
+		$workflow_gallery_url .= '&integration-plugins=' . implode( ',', $supported_active_plugins );
+		$supported_plugin_slug = $supported_active_plugins[0]; // We are showing only first plugin name from supported and active plugins.
+		$supported_plugin_name = $supported_membership_plugins[ $supported_plugin_slug ];
+
+		$membership_integration_notice_shown = get_option( 'ig_es_membership_integration_notice_shown', 'no' );
+		if ( 'no' === $membership_integration_notice_shown ) {
+			?>
+		<div class="notice notice-success is-dismissible p-2">
+			<h2 class="ig-es-workflow-gallery-item-title font-medium text-gray-600 tracking-wide text-base mb-2">
+			<?php
+				/* translators: 1. Email Subscriber name 3. Supported plugin name */
+				echo sprintf( esc_html__( 'Connect %1$s and %2$s', 'email-subscribers' ), '<strong>Icegram Express</strong>)', '<strong>' . esc_html( $supported_plugin_name ) . '</strong>' );
+			?>
+			</h2>
+			<p>
+				<?php
+					/* translators: 1. Plugin name */
+					echo sprintf( esc_html__( 'Automatically sync your %1$s users/members into %2$s\'s audience list through our workflow integrations.', 'email-subscribers' ), '<strong>' . esc_html( $supported_plugin_name ) . '</strong>', '<strong>Icegram Express</strong>)', '<strong>' );
+				?>
+				<br/>
+				<a href="<?php echo esc_url( $workflow_gallery_url ); ?>" class="ig-es-primary-button px-3 py-1 mt-2 align-middle">
+					<?php
+						echo esc_html__( 'Browse workflows', 'email-subscribers' );
+					?>
+				</a>
+			</p>
+		</div>
+		<?php
+			update_option( 'ig_es_membership_integration_notice_shown', 'yes', false );
+		}
 	}
 }

@@ -3,20 +3,172 @@
 	$(document).ready(
 		function () {
 
+			// When we click outside, close the dropdown
+			$(document).on("click", function (event) {
+				var $trigger = $("#ig-es-add-tags-button");
+				if ($trigger !== event.target && !$trigger.has(event.target).length) {
+					$("#ig-es-tags-dropdown").hide();
+				}
+			});
+
+			// Toggle Dropdown
+			$('#ig-es-add-tags-button').click(function () {
+				$('#ig-es-tags-dropdown').toggle();
+			});
+
+			// When we click outside, close the dropdown
+			$(document).on("click", function (event) {
+				var $trigger = $("#ig-es-add-tag-icon");
+				if ($trigger !== event.target && !$trigger.has(event.target).length) {
+					$("#ig-es-tag-icon-dropdown").hide();
+				}
+			});
+
+			var $newDiv = $("<div/>").addClass("pt-2 pb-2").html(`<div class="ig_es_process_message">Page <span id="ig_es_page_number">1</span> is processing <svg class="es-btn-loader animate-spin h-4 w-4 text-indigo inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+			<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+			<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+			</svg> </div>`);
+
+			
+			var getUrlParameter = function getUrlParameter(sParam) {
+				var sPageURL = window.location.search.substring(1),
+					sURLVariables = sPageURL.split('&'),
+					sParameterName,
+					i;
+			
+				for (i = 0; i < sURLVariables.length; i++) {
+					sParameterName = sURLVariables[i].split('=');
+			
+					if (sParameterName[0] === sParam) {
+						return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+					}
+				}
+				return false;
+			};
+
+			
+			$('.es-audience-view table.contacts #cb-select-all-1').click(function (e) {
+
+				if($('.es-audience-view table.contacts #cb-select-all-1').prop('checked') == true){
+					flag = confirm( ig_es_js_data.i18n_data.confirm_select_all );					
+				}
+
+				if( flag ) {
+					$('.es-audience-view .tablenav.top #doaction').click(function (e) {
+						e.preventDefault();
+						let actionData = $(this).closest('form').serializeArray();
+						let unchecked_subscriber_checkboxes = $('.es-audience-view form input[type="checkbox"][name="subscribers[]"]:not(:checked)');
+						let exclude_subscribers = [];
+						if ( unchecked_subscriber_checkboxes.length > 0 ) {
+							$(unchecked_subscriber_checkboxes).each((index,unchecked_subscriber_checkbox) => {
+								let unchecked_subscriber_id = $(unchecked_subscriber_checkbox).val();
+								exclude_subscribers.push(unchecked_subscriber_id);
+							});
+						}
+						actionData.push({ name: "exclude_subscribers", value: exclude_subscribers });
+						actionData.push({ name: "is_ajax", value: true });
+						let pageNumber = getUrlParameter('paged');
+						pageNumber = pageNumber ? pageNumber : 1;
+						ig_es_apply_contacts_bulk_action( actionData, pageNumber );
+						$(".es-audience-view table.contacts").addClass("ig_es_contacts_table");
+						
+					});
+				}
+							
+
+			});
+
+
+			function ig_es_apply_contacts_bulk_action( actionData, pageNumber ) {
+				jQuery.ajax({
+					method: 'POST',
+					url: location.href,
+					data: actionData,
+					dataType: 'json',
+					beforeSend: function () {
+						$($newDiv).find("#ig_es_page_number").text(pageNumber);
+						$('.es-audience-view .tablenav.top').append($newDiv);
+					},
+					success: function (response) {
+						if ( 'undefined' !== typeof response.success  ) {
+							if (response.success) {
+								if ( ! response.data.completed ) {									
+									actionData.push({name: 'paged', value: response.data.paged });
+									actionData.push({name: 'total_pages', value: response.data.total_pages });
+									actionData.push({name: 'start_page', value: response.data.start_page });
+									ig_es_apply_contacts_bulk_action( actionData, response.data.paged );									
+								} else {									
+									$('.ig_es_process_message').text('Process completed , reloading the page!');
+									let current_url = new URL(window.location.href);
+									let bulk_action = response.data.bulk_action;
+									
+									setTimeout(()=>{
+										current_url.searchParams.append('bulk_action', bulk_action);
+										window.location.href = current_url;								
+									},1000);
+								}
+							} else {
+
+								if( true !== response.data.errortype ) {
+									alert(response.data.message);
+								}
+
+								if( true == response.data.errortype ) {
+									if ( ! response.data.completed ) {
+										actionData.push({name: 'paged', value: response.data.paged });
+										actionData.push({name: 'total_pages', value: response.data.total_pages });
+										actionData.push({name: 'start_page', value: response.data.start_page });
+										ig_es_apply_contacts_bulk_action( actionData, response.data.paged );
+									} else 
+									{
+										$('.ig_es_process_message').text('Process completed , reloading the page!');
+										let current_url = new URL(window.location.href);
+										let bulk_action = response.data.bulk_action;
+										
+										setTimeout(()=>{
+											current_url.searchParams.append('bulk_action', bulk_action);
+											window.location.href = current_url;								
+										},1000);
+									}							
+
+								}
+
+							}
+						} else {
+							alert( response.i18n_data.ajax_error_message );
+						}
+					},
+					error: function (err) {
+						alert( ig_es_js_data.i18n_data.ajax_error_message );
+					}
+				});
+			}
+
+
+
+
+
+
+
+			// Toggle Dropdown
+			$('#ig-es-add-tag-icon').click(function () {
+				$('#ig-es-tag-icon-dropdown').toggle();
+			});
+
 			$('.es-preview-report').click(function(){
-				
+
 				let campaign_id 	= $(this).data('campaign-id');
 				let campaign_type 	= $(this).data('campaign-type');
 				let elem = $(this);
 
-				let preview_data = { 
+				let preview_data = {
 					action       : 'ig_es_preview_email_report',
 					security     : ig_es_js_data.security,
 					campaign_id  : campaign_id,
 					campaign_type: campaign_type,
 				};
 
-				
+
 				jQuery.ajax({
 					method: 'POST',
 					url: ajaxurl,
@@ -49,12 +201,12 @@
 				let template_id 	= $(this).data('post-id');
 				let elem = $(this);
 
-				let preview_data = { 
+				let preview_data = {
 					action       : 'ig_es_preview_template',
 					security     : ig_es_js_data.security,
 					template_id  : template_id,
 				};
-				
+
 				jQuery.ajax({
 					method: 'POST',
 					url: ajaxurl,
@@ -135,7 +287,7 @@
 					send_optin_emails_toggle_container.show();
 				}
 			});
-			
+
 			if(jQuery('#show_in_popup').is(":checked")){
 				jQuery('#popup_input_block').show();
 			}
@@ -161,16 +313,16 @@
 
 			});
 
-			$("#campaign_form #view_campaign_content_button,#campaign_form #campaign_content_menu").click(function() {
+			$("#campaign_form #view_campaign_content_button,#campaign_form #campaign_content_menu,.es-first-step-tab, #view_form_content_button").click(function() {
 				var fieldset = $(this).closest('.es_fieldset');
-				fieldset.find('.es_campaign_first').fadeIn('normal');
-				fieldset.next().find('.es_campaign_second').hide();
+				fieldset.find('.es_campaign_first,.es-first-step').fadeIn('normal');
+				fieldset.next().find('.es_campaign_second,.es-second-step').hide();
 
-				fieldset.find('#view_campaign_summary_button, #view_campaign_preview_button').show();
-				fieldset.find('#view_campaign_content_button, #campaign_summary_actions_buttons_wrapper').hide();
+				fieldset.find('#view_campaign_summary_button, #view_campaign_preview_button,.es-first-step-buttons-wrapper').show();
+				fieldset.find('#view_campaign_content_button, #campaign_summary_actions_buttons_wrapper,.es-second-step-buttons-wrapper').hide();
 
-				$('#campaign_summary_menu').removeClass("active");
-				$('#campaign_content_menu').addClass("active");
+				$('#campaign_summary_menu,.es-second-step-tab').removeClass("active");
+				$('#campaign_content_menu,.es-first-step-tab').addClass("active");
 			});
 
 			let schedule_option = $('input:radio[name="campaign_data[scheduling_option]"]:checked').val()
@@ -180,7 +332,7 @@
 				let scheduling_option = $(this).val();
 				broadcast_send_option_change_text(scheduling_option);
 			});
-			
+
 			function broadcast_send_option_change_text( scheduling_option = 'Schedule' ) {
 				if ( 'schedule_later' === scheduling_option ) {
 					$('.display_schedule').removeClass('hidden');
@@ -192,7 +344,7 @@
 				}
 			}
 
-			
+
 
 			$('#preview_template').hide();
 			$('#spam_score_modal').hide();
@@ -200,6 +352,11 @@
 			$("#close_template").on('click', function (event) {
 				event.preventDefault();
 				$('#preview_template').hide();
+			});
+
+			$("#close-unsubscribe-feedback-popup").on('click', function (event) {
+				event.preventDefault();
+				$('#unsubscribe-feedback-popup').hide();
 			});
 
 			$("#close-campaign-preview-popup").on('click', function (event) {
@@ -215,8 +372,25 @@
 				var groupselect = jQuery('.groupsselect')[0].outerHTML;
 			}
 
+			// Audience filter switch for Advanced filter
+
+			jQuery('.ig-es-switch.js-toggle-collapse').click(function(event){
+				event.preventDefault();
+				let $switch, state, new_state;
+				$switch = jQuery(this);
+				state     = $switch.attr( 'data-ig-es-switch' );
+				new_state = state === 'active' ? 'inactive' : 'active';
+				$switch.attr( 'data-ig-es-switch', new_state );
+				if(new_state === 'active'){
+					jQuery('.es-collapsible').show();
+				}
+				else{
+					jQuery('.es-collapsible').hide();
+				}
+			})
+
 			//Upsell Send confirmation email on Audience screen
-			$(".email-subscribers_page_es_subscribers #bulk-action-selector-top option[value=bulk_send_confirmation_email_upsell").attr('disabled','disabled');
+			$(".email-subscribers_page_es_subscribers #bulk-action-selector-top option[value=bulk_send_confirmation_email_upsell]").attr('disabled','disabled');
 			jQuery(".es-audience-view .bulkactions #bulk-action-selector-top").after(statusselect);
 			jQuery(".es-audience-view .bulkactions #bulk-action-selector-top").after(groupselect);
 
@@ -340,7 +514,8 @@
 				// Update total count in lists
 				var params = {
 					action: 'count_contacts_by_list',
-					list_id: selected_list_id
+					list_id: selected_list_id,
+					security: ig_es_js_data.security,
 				};
 
 				$.ajax({
@@ -361,7 +536,7 @@
 			// Filtering campaign status based of type
 			var campaign_type = $('#ig_es_filter_campaign_type').val();
 			campaign_status(campaign_type);
-				
+
 			$('#ig_es_filter_campaign_type').change(function (e) {
 				var campaign_type = $(this).val();
 				$('#ig_es_filter_campaign_status_by_type').val('');
@@ -373,7 +548,7 @@
 			function campaign_status( campaign_type ) {
 				var $status_id = $('#ig_es_filter_campaign_status_by_type');
 				switch (campaign_type) {
-					case 'newsletter':	
+					case 'newsletter':
 						$status_id.children('option').show();
 						$('#ig_es_filter_campaign_status_by_type option[value="0"]').html('Draft').show();
 						$('#ig_es_filter_campaign_status_by_type option[value="1"]').hide();
@@ -403,13 +578,13 @@
 				} else {
 					conditions_elem = jQuery('.ig-es-conditions');
 				}
-				
+
 				jQuery.each(jQuery(conditions_elem), function () {
 					var _self = jQuery(this),
 						conditions = _self.find('.ig-es-conditions-wrap'),
 						groups = _self.find('.ig-es-condition-group'),
 						cond = _self.find('.ig-es-condition');
-					
+
 					jQuery.each(edited_campaign_data,function(campaign_id, campaign_name){
 						let option        = jQuery(conditions_elem).find('.ig-es-campaign-select-field option[value="' + campaign_id + '"]');
 						let option_exists = jQuery(option).length > 0;
@@ -423,7 +598,7 @@
 					});
 
 					groups.eq(0).appendTo(_self.find('.ig-es-condition-container'));
-				
+
 					_self
 						.on('click', '.add-condition', function () {
 							ig_es_add_and_condtion();
@@ -432,7 +607,7 @@
 							var cont = jQuery(this).parent(),
 								id = cont.find('.ig-es-condition').last().data('id'),
 								clone = cond.eq(0).clone();
-				
+
 							clone.removeAttr('id').appendTo(cont).data('id', ++id);
 							jQuery.each(clone.find('input, select'), function () {
 								var _this = jQuery(this),
@@ -450,11 +625,11 @@
 							clone.find('.condition-field').val('').trigger('focus');
 							cond = _self.find('.ig-es-condition');
 						})
-						
+
 						jQuery(_self).closest('.ig-es-campaign-rules').find('.close-conditions').on('click', function(){
 							jQuery(document).trigger('ig_es_update_contacts_counts',[{condition_elem:_self}]);
 						});
-				
+
 						jQuery(_self).closest('.ig-es-campaign-rules').find('.remove-conditions').on('click', function () {
 							if (confirm(ig_es_js_data.i18n_data.remove_conditions_message)) {
 								jQuery(conditions).empty();
@@ -476,7 +651,7 @@
 							});
 						})
 						.on('change', '.condition-field', function (event) {
-				
+
 							var condition = jQuery(this).closest('.ig-es-condition'),
 								field = jQuery(this);
 							ig_es_show_operator_and_value_field(field);
@@ -501,9 +676,9 @@
 							if (0 == jQuery(this).val() && jQuery(this).parent().parent().find('.condition-value').size() > 1) jQuery(this).parent().remove();
 						})
 						.find('.condition-field').prop('disabled', false).trigger('change');
-				
+
 					jQuery(document).trigger('ig_es_update_contacts_counts',[{condition_elem:_self}]);
-				
+
 					// Add one list condition if there are no conditions.
 					if( 0 === jQuery(_self).find('.ig-es-conditions-wrap .ig-es-condition-group').length ) {
 						ig_es_add_default_list_condition();
@@ -514,23 +689,23 @@
 							}
 						});
 					}
-				
+
 					function ig_es_add_and_condtion( condition_data ) {
 						let id = groups.length,
 								clone = groups.eq(0).clone();
-				
+
 						clone.removeAttr('id').appendTo(conditions).data('id', id).show();
 						jQuery.each(clone.find('input, select'), function () {
 							let _this = jQuery(this);
 								name = _this.attr('name');
 							// match and replace regex '][any digit]' with '][id]' i.e. AND rule counter
 							_this.attr('name', name.replace(/\]\[\d+\]/, '][' + id + ']')).prop('disabled', false);
-							
+
 							if( jQuery(_this).hasClass('ig-es-campaign-rule-form-multiselect') ) {
 								jQuery(_this).ig_es_select2();
 							}
 						});
-				
+
 						if ( 'undefined' === typeof condition_data ) {
 							condition_data = {
 								condition: '',
@@ -539,9 +714,9 @@
 						let condition = condition_data.condition;
 
 						let condition_field = clone.find('.condition-field');
-						
+
 						jQuery(condition_field).val(condition).trigger('focus');
-						
+
 						if ( '' !== condition ) {
 							ig_es_show_operator_and_value_field(condition_field);
 						}
@@ -550,12 +725,12 @@
 						cond = _self.find('.ig-es-condition');
 						ig_es_handle_list_condition();
 					}
-				
+
 					function ig_es_handle_list_condition( selected_elem ) {
 						if ( ig_es_js_data.is_pro ) {
 							return;
 						}
-						
+
 						var condition_fields = jQuery('.ig-es-conditions-wrap .condition-field');
 						var list_rule_count = 0;
 						jQuery(condition_fields).each(function(){
@@ -569,17 +744,17 @@
 						jQuery(campaign_rules).each(function(index,elem){
 							var list_rule_option = jQuery(this).find('option[value = "_lists__in"]');
 							var list_rule_text   = jQuery(list_rule_option).text();
-							list_rule_text       = list_rule_text.replace(' [PRO]','');
+							list_rule_text       = list_rule_text.replace(' [MAX]','');
 							if ( 'undefined' !== typeof selected_elem ) {
 								if( disable_list_rule && ! ( jQuery(selected_elem)[0] === elem ) ) {
-									list_rule_text += ' [PRO]';
+									list_rule_text += ' [MAX]';
 									jQuery(list_rule_option).prop("selected", false).attr('disabled','disabled');
 								} else {
 									jQuery(list_rule_option).removeAttr('disabled');
 								}
 							} else {
 								if( index > 0 && disable_list_rule ) {
-									list_rule_text += ' [PRO]';
+									list_rule_text += ' [MAX]';
 									jQuery(list_rule_option).prop("selected", false).attr('disabled','disabled');
 								} else {
 									jQuery(list_rule_option).removeAttr('disabled');
@@ -588,32 +763,32 @@
 							jQuery(list_rule_option).text(list_rule_text);
 						});
 					}
-				
+
 					function ig_es_add_default_list_condition() {
 						ig_es_add_and_condtion({ condition: '_lists__in' });
 					}
-				
+
 					function ig_es_show_operator_and_value_field( field ) {
-				
+
 						var condition = jQuery(field).closest('.ig-es-condition'),
 								operator_field, value_field;
-				
+
 						condition.find('div.ig-es-conditions-value-field').removeClass('active').find('.condition-value').prop('disabled', true);
 						condition.find('div.ig-es-conditions-operator-field').removeClass('active').find('.condition-operator').prop('disabled', true);
-				
+
 						var field_value = jQuery(field).val();
 						condition.find('.ig-es-conditions-operator-fields,.ig-es-conditions-value-fields').attr('data-condition', field_value );
 
 						value_field = condition.find('div.ig-es-conditions-value-field[data-fields*=",' + field_value + ',"]').addClass('active').find('.condition-value').prop('disabled', false);
 						operator_field = condition.find('div.ig-es-conditions-operator-field[data-fields*=",' + field_value + ',"]').addClass('active').find('.condition-operator').prop('disabled', false);
-				
+
 						if (!value_field.length) {
 							value_field = condition.find('div.ig-es-conditions-value-field-default').addClass('active').find('.condition-value').prop('disabled', false);
 						}
 						if (!operator_field.length) {
 							operator_field = condition.find('div.ig-es-conditions-operator-field-default').addClass('active').find('.condition-operator').prop('disabled', false);
 						}
-				
+
 						if ( jQuery(field).hasClass('condition-field') ) {
 							ig_es_handle_list_condition(field);
 						}
@@ -622,7 +797,7 @@
 			});
 
 			$(document).on('ig_es_update_contacts_counts', function(e, data){
-				
+
 				let condition_elem           = data.condition_elem;
 				let condition_container_elem = $(condition_elem).closest('.ig-es-campaign-rules');
 				let selected_list_id         = $('#ig_es_broadcast_list_ids').val();
@@ -639,20 +814,20 @@
 							value,
 							field = _this.find('.condition-field').val(),
 							operator = _this.find('.ig-es-conditions-operator-field.active').find('.condition-operator').val();
-	
+
 						if (!operator || !field) return;
-	
+
 						value = _this.find('.ig-es-conditions-value-field.active').find('.condition-value').map(function () {
 							return $(this).val();
 						}).toArray();
 						if (value.length == 1) {
 							value = value[0];
 						}
-						
+
 						if (!conditions[i]) {
 							conditions[i] = [];
 						}
-						
+
 						conditions[i].push({
 							field: field,
 							operator: operator,
@@ -677,7 +852,8 @@
 					list_id: selected_list_id,
 					conditions: conditions,
 					status: 'subscribed',
-					get_count: get_count
+					get_count: get_count,
+					security: ig_es_js_data.security
 				};
 
 				if ( 'undefined' !== typeof update_contacts_counts_xhr && 'undefined' !== typeof update_contacts_counts_xhr[campaign_id] ) {
@@ -720,7 +896,7 @@
 								});
 								$(condition_container_elem).find('.ig-es-conditions-render-wrapper').append($(conditions));
 							}
-							
+
 							if ( $(condition_container_elem).find('.ig-es-conditions-wrap .condition-field').length > 0 ) {
 								$(condition_container_elem).find('.remove-all-conditions-wrapper').removeClass('hidden');
 							} else {
@@ -863,6 +1039,19 @@
 
 			jQuery('.es-note-category-parent').trigger('change');
 
+			jQuery('#tabs-general input[name="ig_es_from_email"]').on('change', function () {
+				let from_email        = jQuery(this).val();
+				let is_valid_email    = ig_es_is_valid_email(from_email);
+				if ( is_valid_email ) {
+					let from_email_domain = from_email.split('@')[1].toLowerCase();
+					let is_popolar_domain = ig_es_js_data.popular_domains.indexOf(from_email_domain) > -1;
+					if ( is_popolar_domain ) {
+						jQuery('#ig-es-from-email-notice').removeClass('hidden');
+					} else {
+						jQuery('#ig-es-from-email-notice').addClass('hidden');
+					}
+				}
+			});
 
 			//es mailer settings
 			jQuery(document).on('change', '.es_mailer', function (e) {
@@ -890,8 +1079,7 @@
 					jQuery('.es-form').find('form').find('#es_broadcast_preview').val('');
 				}
 			});
-			//add target new to go pro
-			jQuery('a[href="admin.php?page=es_pricing"]').attr('target', '_blank').attr('href', 'https://www.icegram.com/email-subscribers-pricing/');
+
 
 			$('.ig-es-campaign-status-toggle-label input[type="checkbox"]').change(function() {
 				let checkbox_elem       = $(this);
@@ -964,23 +1152,23 @@
 				$('.wp-editor-boradcast').trigger('change');
 			});
 
-			$("#campaign_form #view_campaign_summary_button, #campaign_form #campaign_summary_menu").click(function() {
-			
+			$("#campaign_form #view_campaign_summary_button, #campaign_form #campaign_summary_menu, .es-second-step-tab, #view_form_summary_button").click(function() {
+
 				let fieldset = $(this).closest('.es_fieldset');
-				fieldset.next().find('div.es_campaign_second').fadeIn('normal');
-				fieldset.find('.es_campaign_first').hide();
-			
-				fieldset.find('#view_campaign_content_button,#campaign_summary_actions_buttons_wrapper').show();
-				fieldset.find('#view_campaign_summary_button,#view_campaign_preview_button').hide();
-			
-				$('#campaign_content_menu').removeClass("active");
-				$('#campaign_summary_menu').addClass("active");
+				fieldset.next().find('div.es_campaign_second,.es-second-step').fadeIn('normal');
+				fieldset.find('.es_campaign_first,.es-first-step').hide();
+
+				fieldset.find('#view_campaign_content_button,#campaign_summary_actions_buttons_wrapper,.es-second-step-buttons-wrapper').show();
+				fieldset.find('#view_campaign_summary_button,#view_campaign_preview_button,.es-first-step-buttons-wrapper').hide();
+
+				$('#campaign_content_menu,.es-first-step-tab').removeClass("active");
+				$('#campaign_summary_menu,.es-second-step-tab').addClass("active");
 				//$('.active').removeClass('active').next().addClass('active');
-			
+
 				// Trigger template content changed event to update email preview.
 				$('textarea[name="campaign_data[body]"]').trigger('change');
 			});
-			
+
 			$('.wp-editor-boradcast, #edit-es-broadcast-body,#ig_es_broadcast_subject').on('change',function(event){
 
 				ig_es_sync_wp_editor_content();
@@ -1031,6 +1219,11 @@
 					url: ajaxurl,
 					data: form_data,
 					dataType: 'json',
+					beforeSend:function(){
+						if(jQuery('#campaign_summary_menu').hasClass('active')){
+							jQuery('.ig-es-ajax-loader').css("visibility","visible");
+						}
+					},
 					success: function (response) {
 						if (response.success) {
 							if ( 'undefined' !== typeof response.data ) {
@@ -1053,6 +1246,9 @@
 					},
 					error: function (err) {
 						alert( ig_es_js_data.i18n_data.ajax_error_message );
+					},
+					complete:function(){
+						jQuery('.ig-es-ajax-loader').css("visibility","hidden");
 					}
 				});
 			});
@@ -1074,7 +1270,27 @@
 				let template_button = $('#view_campaign_preview_button');
 				$(template_button).parent().find('.es-send-success').hide();
 				$(template_button).parent().find('.es-send-error').hide();
-				ig_es_show_campaign_preview_in_popup();
+				let campaign_data = $('form#campaign_form').serialize();
+				jQuery(template_button).addClass('loading');
+				ig_es_save_campaign( campaign_data ).then( response => {
+					if (response.success) {
+						let response_data = response.data;
+						let campaign_id   = response_data.campaign_id;
+						$('#campaign_id').val( campaign_id );
+						ig_es_show_campaign_preview_in_popup();
+					} else {
+						alert( ig_es_js_data.i18n_data.campaign_preivew_error_message );
+					}
+				}, response => {
+					alert( ig_es_js_data.i18n_data.campaign_preivew_error_message );
+				});
+			});
+
+			$('#view_template_preview_button').on('click', function(){
+				let template_button = $('#view_template_preview_button');
+				$(template_button).parent().find('.es-send-success').hide();
+				$(template_button).parent().find('.es-send-error').hide();
+				ig_es_show_template_preview_in_popup();
 			});
 
 			$('#save_campaign_as_template_button').on('click', function(e){
@@ -1115,6 +1331,119 @@
 				}
 			});
 
+			// Check email authentication headers
+			jQuery('#ig-es-verify-auth-headers').click(function(e){
+				e.preventDefault();
+
+				var params = {
+					type:'POST',
+					url:ajaxurl,
+					data:{
+						action:'es_send_auth_test_email',
+						security:ig_es_js_data.security,
+					},
+					dataType:'json',
+					beforeSend:function(){
+						jQuery('#ig-es-verify-auth-headers').next('#spinner-image').show();
+					},
+					success:function(res){
+
+						if( 'SUCCESS' === res['status'] ){
+							let time_delay = 5000;
+
+							setTimeout(function(){
+								getEmailAuthHeaders();
+							},time_delay);
+						}
+						else{
+							jQuery('#ig-es-verify-auth-headers').next('#spinner-image').hide();
+							jQuery('#ig-es-verify-auth-message').addClass('text-red-500').html(ig_es_js_data.i18n_data.error_send_test_email);
+						}
+					},
+					error:function(err){
+						jQuery('#ig-es-verify-auth-headers').next('#spinner-image').hide();
+						jQuery('#ig-es-verify-auth-message').addClass('text-red-500').html(ig_es_js_data.i18n_data.error_send_test_email);
+					},
+				}
+				jQuery.ajax(params);
+
+			});
+
+			function getEmailAuthHeaders(){
+
+				var params = {
+					type:'POST',
+					url:ajaxurl,
+					data:{
+						action:'es_get_auth_headers',
+						security:ig_es_js_data.security,
+					},
+					dataType:'json',
+					success:function(res){
+						let headerData = [];
+						let table_elem = jQuery('#ig-es-settings-authentication-table');
+						try {
+							headerData = JSON.parse(res.data);
+
+							if( 'undefined' !== table_elem && Array.isArray(headerData) && headerData.length > 0 ){
+								populateTableData( table_elem, headerData, false );
+								jQuery('#ig-es-verify-auth-message').addClass('text-green-500').html(ig_es_js_data.i18n_data.success_verify_email_headers);
+							}
+							else{
+								jQuery('#ig-es-verify-auth-message').addClass('text-red-500').html(ig_es_js_data.i18n_data.error_server_busy);
+							}
+						}
+						catch(err){
+							jQuery('#ig-es-verify-auth-message').addClass('text-red-500').html(ig_es_js_data.i18n_data.error_server_busy);
+						}
+					},
+					error:function(err){
+						jQuery('#ig-es-verify-auth-message').addClass('text-red-500').html(ig_es_js_data.i18n_data.error_server_busy);
+					},
+					complete:function(){
+						jQuery('#ig-es-verify-auth-headers').next('#spinner-image').hide();
+					}
+				}
+				jQuery.ajax(params);
+
+			}
+
+			function populateTableData(table_element, data_array,mapByIndex){
+				let table_row;
+				let row_id,cell_value='';
+				let row_data_keys={};
+				let table_body = table_element.find('tbody');
+
+				for (let index = 0; index < data_array.length; index++) {
+					row_id = (mapByIndex) ? data_array[index] : data_array[index]['key'];
+					table_row = table_body.find('tr[data-row-id="'+row_id+'"]');
+
+					row_data_keys = Object.keys(data_array[index]);
+
+					row_data_keys.forEach(key => {
+						cell_value = data_array[index][key];
+
+						if( cell_value.length > 30){
+							cell_value = cell_value.slice(0,30) + '...';
+						}
+						table_row.find('td[data-cell-id="'+row_id+"-"+key+'"]').html(cell_value );
+					});
+				}
+			}
+
+
+			jQuery(document).on( 'click', '#es_check_auth_header', function(e){
+				window.location.href = '?page=es_settings&btn=check_auth_header#tabs-email_sending';
+				jQuery('html, body').animate({
+					scrollTop: jQuery("#ig-es-settings-authentication-table").offset().top
+				}, 2000);
+			});
+
+			if(window.location.href.indexOf('page=es_settings&btn=check_auth_header#tabs-email_sending') !== -1){
+				jQuery('html, body').animate({
+					scrollTop: jQuery("#ig-es-settings-authentication-table").offset().top
+				}, 2000);
+			}
 			// Check spam score
 			jQuery(document).on('click', '.es_spam' , function(e) {
 				e.preventDefault();
@@ -1166,7 +1495,7 @@
 										}
 										for (var i = rules.length - 1; i >= 0; i--) {
 											if(rules[i].score > 1.2){
-				
+
 												jQuery('.es-spam-error-log').find('ul').append('<li class="' + rule_classes + '">'+ rules[i].description + '</li>');
 											}
 										}
@@ -1200,7 +1529,7 @@
 					jQuery('.ig_es_utm_campaign_name_wrapper').addClass('hidden');
 				}
 			});
-			
+
 			// Hide trial to premium offer notice when accepted. This function just hide it from frontend, actual notice gets hidden when reloading page in new tab.
 			jQuery('#ig-es-optin-trial-to-premium-offer').on('click', function(){
 				jQuery(this).closest('.notice').hide('slow');
@@ -1229,6 +1558,99 @@
 				}
 			});
 
+			// Create rest API key for selected user
+			jQuery('#ig-es-generate-rest-api-key').click(function(e){
+				e.preventDefault();
+				let user_id = jQuery('#ig-es-rest-api-user-id').val();
+				let message_class = '';
+				if ( '' === user_id ) {
+					message_class = 'text-red-600';
+					jQuery('#response-messages').removeClass('hidden').find('div').attr('class', message_class).html(ig_es_js_data.i18n_data.select_user);
+					return;
+				}
+
+				let btn_elem = $(this);
+
+				jQuery.ajax({
+					type:'POST',
+					url:ajaxurl,
+					data:{
+						action:'ig_es_generate_rest_api_key',
+						user_id: user_id,
+						security:ig_es_js_data.security,
+					},
+					dataType:'json',
+					beforeSend:function(){
+						jQuery(btn_elem).addClass('loading');
+					},
+					success:function(response){
+						if( response.status ){
+							let status = response.status;
+							let message = response.message;
+							jQuery('.rest-api-response').removeClass('hidden').addClass(status).html(message);
+							message_class = '';
+							jQuery('#response-messages').removeClass('hidden').find('div').attr('class', message_class).html(message);
+						} else{
+							message_class = 'text-red-600';
+							jQuery('#response-messages').removeClass('hidden').find('div').attr('class', message_class).html(ig_es_js_data.i18n_data.ajax_error_message);
+						}
+					},
+					error:function(err){
+						alert(ig_es_js_data.i18n_data.ajax_error_message);
+					},
+				}).always(function(){
+					jQuery(btn_elem).removeClass('loading');
+				});
+
+			});
+			
+			// Delete rest API key for selected user
+			jQuery('.ig-es-delete-rest-api-key').click(function(e){
+				e.preventDefault();
+				let delete_rest_api = confirm( ig_es_js_data.i18n_data.delete_rest_api_confirmation );
+				if ( ! delete_rest_api ) {
+					return;
+				}
+				let rest_api_row = jQuery(this).closest('.ig-es-rest-api-row');
+				let user_id = jQuery(rest_api_row).data('user-id');
+				let api_index = jQuery(rest_api_row).data('api-index');
+
+				let btn_elem = $(this);
+
+				jQuery.ajax({
+					type:'POST',
+					url:ajaxurl,
+					data:{
+						action:'ig_es_delete_rest_api_key',
+						user_id: user_id,
+						api_index: api_index,
+						security:ig_es_js_data.security,
+					},
+					dataType:'json',
+					beforeSend:function(){
+						jQuery(btn_elem).addClass('loading');
+					},
+					success:function(response){
+						if( response.status ){
+							let status = response.status;
+							if ( 'success' === status ) {
+								jQuery(rest_api_row).remove();
+							} else {
+								alert( response.message );
+							}
+						} else{
+							alert( ig_es_js_data.i18n_data.ajax_error_message );
+						}
+					},
+					error:function(err){
+						alert( ig_es_js_data.i18n_data.ajax_error_message );
+					},
+				}).always(function(){
+					jQuery(btn_elem).removeClass('loading');
+				});
+
+			});
+
 			// Workflow JS
 			IG_ES_Workflows = {
 
@@ -1237,32 +1659,33 @@
 				$variables_box: $('#ig_es_workflow_variables'),
 				$trigger_select: $('.js-trigger-select').first(),
 				$actions_container: $('.ig-es-actions-container'),
-	
+
 				init: function() {
 					IG_ES_Workflows.init_triggers_box();
 					IG_ES_Workflows.init_actions_box();
+					IG_ES_Workflows.init_rules_box();
 					IG_ES_Workflows.init_variables_box();
 					IG_ES_Workflows.init_show_hide();
 					IG_ES_Workflows.init_workflow_status_switch();
 					IG_ES_Workflows.init_workflow_gallery();
 				},
-	
+
 				init_workflow_status_switch: function() {
 					$('.ig-es-switch.js-toggle-workflow-status').click(function(){
-	
+
 						let $switch, state, new_state;
-	
+
 						$switch = $(this);
-	
+
 						if ( $switch.is('.ig-es-loading') ) {
 							return;
 						}
-	
+
 						state     = $switch.attr( 'data-ig-es-switch' );
 						new_state = state === 'active' ? 'inactive' : 'active';
-	
+
 						$switch.addClass('ig-es-loading');
-						
+
 						$.post( ajaxurl, {
 							action: 'ig_es_toggle_workflow_status',
 							workflow_id: $switch.attr( 'data-workflow-id' ),
@@ -1273,7 +1696,7 @@
 							$switch.attr( 'data-ig-es-switch', new_state );
 							$switch.removeClass('ig-es-loading');
 						});
-	
+
 					});
 				},
 
@@ -1299,17 +1722,17 @@
 						});
 					});
 				},
-	
+
 				/**
 				 * Show / hide logic with data attributes
 				 */
 				init_show_hide: function() {
-	
+
 					let update = function( $el ) {
 						let id          = $el.data( 'ig-es-bind' );
 						let value       = $el.val();
 						let is_checkbox = $el.is('input[type="checkbox"]');
-	
+
 						$('[data-ig-es-show]').each(function() {
 							if ( is_checkbox && $(this).data('ig-es-show') === id ) {
 								if ( $el.is(':checked') ) {
@@ -1319,13 +1742,13 @@
 								}
 							} else {
 								let logic = $(this).data('ig-es-show').split('=');
-	
+
 								if ( logic[0] !== id ) {
 									return;
 								}
-	
+
 								let possible_values = logic[1].split('|');
-	
+
 								if ( possible_values.indexOf( value ) !== -1 ) {
 									$(this).show();
 								} else {
@@ -1333,8 +1756,8 @@
 								}
 							}
 						});
-	
-	
+
+
 						$('[data-ig-es-hide]').each(function() {
 							if ( is_checkbox && $(this).data('ig-es-hide') === id ) {
 								if ( $el.is(':checked') ) {
@@ -1344,13 +1767,13 @@
 								}
 							} else {
 								let logic = $(this).data('ig-es-hide').split('=');
-	
+
 								if ( logic[0] !== id ) {
 									return;
 								}
-	
+
 								let possible_values = logic[1].split('|');
-	
+
 								if ( possible_values.indexOf( value ) !== -1 ) {
 									$(this).hide();
 								} else {
@@ -1359,40 +1782,40 @@
 							}
 						});
 					};
-	
-	
+
+
 					$(document).on( 'change', '[data-ig-es-bind]', function() {
 						update( $(this) );
 					});
-	
+
 					$('[data-ig-es-bind]').each(function() {
 						update( $(this) );
 					});
-	
+
 				},
-	
+
 				/**
 				 *
 				 */
 				init_triggers_box: function() {
-					IG_ES_Workflows.$trigger_select.change(function(e){				
+					IG_ES_Workflows.$trigger_select.change(function(e){
 						IG_ES_Workflows.fill_trigger_fields( $(this).val() );
 						IG_ES_Workflows.maybe_show_run_option();
 					});
 				},
-	
+
 				/**
 				 * @param trigger_name
 				 */
 				fill_trigger_fields: function( trigger_name ) {
-	
+
 					// Remove existing fields
 					IG_ES_Workflows.$triggers_box.find('tr.ig-es-trigger-option').remove();
 
 					if ( trigger_name ) {
-	
+
 						IG_ES_Workflows.$triggers_box.addClass('ig-es-loading');
-	
+
 						let workflow_id = $('#workflow_id').val();
 						$.ajax({
 							url: ajaxurl,
@@ -1404,24 +1827,415 @@
 							}
 							})
 							.done(function(response){
-	
+
 								if ( ! response.success ) {
 									return;
 								}
-	
+
 								ig_es_workflows_data.trigger = response.data.trigger;
 								IG_ES_Workflows.refine_variables();
-	
+
 								IG_ES_Workflows.$triggers_box.find('tbody').append( response.data.fields );
 								IG_ES_Workflows.$triggers_box.removeClass('ig-es-loading');
 								IG_ES_Workflows.$triggers_box.find('.js-trigger-description').html( '<p class="ig-es-field-description">' + response.data.trigger.description + '</p>' );
+								$(document).trigger('ig_es_workflow_trigger_updated', [response.data]);
 							});
 					} else {
 						$('.ig-es-variables-group').addClass('hidden');
 						IG_ES_Workflows.toggle_no_variable_message();
 					}
 				},
-	
+
+				init_rules_box: function () {
+					try {
+						//All rules avalilable in ES workflow
+						let rule_details = igEsWorkflowRules;
+						let all_rules = rule_details?.all_rules;
+						let grouped_rules = [];
+						let valid_rules = {};
+
+						let $meta_box_footer = $('.rules-metabox-footer');
+						let $rule_template_container = $('#rule-template-container');
+						let $rules_container = $('#ig-es-rules-container');
+						let $main_rule_container= $('.ig-es-rule-container');
+
+						//Add new rule group.
+						$(document).on('click', '.ig-es-add-rule-group', function () {
+							let $new_rule_group = add_new_rule_group();
+							$rules_container.append($new_rule_group);
+						});
+
+						//Add one more rules in respective rule group
+						$(document).on('click', '.ig-es-rule__add', function () {
+							let $rule_group = $(this).closest('.ig-es-rule-group');
+
+							let rule_id = get_unique_number();
+							let rule_group_id = $rule_group.data('group-id');
+
+							$new_rule_container = $rule_template_container.find('.ig-es-rule-container').clone();
+							$new_rule_container.data('rule-id', rule_id);
+							add_rule_container_to_rule_group($new_rule_container, rule_group_id, rule_id);
+
+							$rule_group.append($new_rule_container);
+						});
+
+						//Remove rule from the respective rule group..If there is no rules in the group, then remove entire rule group
+						$(document).on('click', '.ig-es-rule__remove', function () {
+							let $rule_group = $(this).closest('.ig-es-rule-group');
+
+							let rules_count = $rule_group.find('.ig-es-rule-container').length;
+							if (rules_count > 1) {
+								$(this).closest('.ig-es-rule-container').remove();
+							} else {
+								$rule_group.remove();
+							}
+							validate_and_show_option_to_add_rules(false);
+						});
+
+						//On selecting rule, reset the compare field and value field
+						$(document).on('change', '.rule-select-field', function () {
+							let $rule_group = $(this).closest('.ig-es-rule-group');
+							let $rule_container = $(this).closest('.ig-es-rule-container');
+							let $compare_field = $rule_container.find('.rule-compare-field');
+
+							let rule_name = $(this).val();
+							let rule_group_id = $rule_group.data('group-id');
+							let rule_id = $rule_container.data('rule-id');
+
+							render_compare_field($rule_container, $compare_field, rule_group_id, rule_id, {name: rule_name})
+						});
+
+						// Reset everything while changing the trigger
+						$(document).on('ig_es_workflow_trigger_updated', function (e, data) {
+							filter_valid_rules(data?.trigger?.supplied_data_items,data?.trigger?.name);
+							validate_and_show_option_to_add_rules(true);
+						});
+
+						/**
+						 * Get the timestamp for Rule group ID and Rule ID.
+						 *
+						 * @returns {number}
+						 */
+						const get_unique_number = function () {
+							return Date.now();
+						}
+
+						/**
+						 * Render the compare field and value field of the respective rule container
+						 * @param $rule_container
+						 * @param $compare_field
+						 * @param rule_group_id
+						 * @param rule_id
+						 * @param rule_details
+						 */
+						const render_compare_field = function ($rule_container, $compare_field, rule_group_id = 0, rule_id = 0, rule_details = {}) {
+							let rule_name = rule_details?.name;
+							if (rule_name && rule_name.length > 1) {
+								let rule = all_rules[rule_name];
+								let compare_types = rule?.compare_types;
+
+								if (compare_types && Object.keys(compare_types).length > 0) {
+									let compare_field_options = [];
+									$.each(compare_types, function( key, value ) {
+										compare_field_options.push('<option value="'+ key +'">'+ value +'</option>');
+									});
+									$compare_field.html(compare_field_options.join(''));
+
+									let rule_compare = rule_details?.compare;
+									if (rule_compare) {
+										$compare_field.val(rule_compare);
+									}
+									$compare_field.removeAttr('disabled')
+								}
+								add_rule_value_field($rule_container, rule, rule_group_id, rule_id, rule_details);
+							} else {
+								$compare_field.html('');
+								$compare_field.attr('disabled', true);
+								add_rule_value_field($rule_container, {type: ''}, rule_group_id, rule_id, rule_details)
+							}
+						}
+
+						/**
+						 * Add new rule group to the wokflow
+						 *
+						 * @param group_id
+						 * @param rule_id
+						 * @param include_default_rule
+						 * @returns {boolean|*}
+						 */
+						const add_new_rule_group = function (group_id, rule_id = 0, include_default_rule = true) {
+							$rules_container.find('.ig-es-rules-empty-message').remove();
+							$rules_container.find('.ig-es-no-rules-message').remove();
+
+							let total_rule_groups = $rules_container.find('.ig-es-rule-group').length;
+							if (!group_id) {
+								group_id = get_unique_number();
+							}
+
+							//For this release allow only one rule group. Remove IF/ELSE statement to allow multiple rule groups
+							if (total_rule_groups >= 1) {
+								return false;
+							} else {
+								$meta_box_footer.addClass('hidden');
+							}
+
+							let $new_rule_group = $rule_template_container.find('.ig-es-rule-group').clone();
+							$new_rule_group.data('group-id', group_id);
+
+							if (include_default_rule) {
+								let $new_rule_container = $rule_template_container.find('.ig-es-rule-container').clone();
+								$new_rule_container.data('rule-id', 0);
+
+								add_rule_container_to_rule_group($new_rule_container, group_id, rule_id);
+								$new_rule_group.append($new_rule_container)
+							}
+
+							return $new_rule_group;
+						}
+
+						/**
+						 * Add rule to rule group
+						 * @param $rule_container
+						 * @param rule_group_id
+						 * @param rule_id
+						 * @param rule_details
+						 */
+						const add_rule_container_to_rule_group = function ($rule_container, rule_group_id, rule_id, rule_details = {}) {
+							let $rule_select_field = $rule_container.find('.rule-select-field')
+							if (Object.keys(grouped_rules).length > 0) {
+								for (const group_name in grouped_rules) {
+									if (grouped_rules.hasOwnProperty(group_name)) {
+										let $option_group = $(`<optgroup label='${group_name}'>`);
+										let rules = grouped_rules[group_name];
+										for (i = 0; i < rules.length; i++) {
+											var option = "<option value='" + rules[i].name + "'>" + rules[i].title + "</option>";
+											$option_group.append(option);
+										}
+										$rule_select_field.append($option_group);
+									}
+									$rule_select_field.removeAttr('disabled');
+								}
+							}
+							let rule_name = rule_details?.name
+							$rule_select_field.attr('name', 'ig_es_workflow_data[rules][' + rule_group_id + '][' + rule_id + '][name]');
+							$rule_select_field.val(rule_name);
+
+							$rule_compare_field = $rule_container.find('.rule-compare-field');
+							$rule_compare_field.attr('name', 'ig_es_workflow_data[rules][' + rule_group_id + '][' + rule_id + '][compare]');
+							render_compare_field($rule_container, $rule_compare_field, rule_group_id, rule_id, rule_details);
+
+							$rule_container.find('.rule-value-field').attr('name', 'ig_es_workflow_data[rules][' + rule_group_id + '][' + rule_id + '][value]');
+						}
+
+						/**
+						 * Render the rule value field based on rule settings
+						 * @param $rule_group_container
+						 * @param rule
+						 * @param rule_group_id
+						 * @param rule_id
+						 * @param rule_details
+						 */
+						const add_rule_value_field = function ($rule_group_container, rule, rule_group_id, rule_id, rule_details = {}) {
+							let rule_value = rule_details?.value;
+							
+							switch (rule.type) {
+								case "select":
+									let $select_value_field = $rule_template_container.find('.rule-value-select-field').clone();
+									if (rule.placeholder) {
+										$select_value_field.data('placeholder', rule.placeholder)
+									}
+									if (rule.is_single_select) {
+										$select_value_field.attr('name', 'ig_es_workflow_data[rules][' + rule_group_id + '][' + rule_id + '][value]');
+									} else {
+										$select_value_field.attr('multiple', 'multiple');
+										$select_value_field.attr('name', 'ig_es_workflow_data[rules][' + rule_group_id + '][' + rule_id + '][value][]');
+										$select_value_field.addClass('ig-es-form-multiselect');
+									}
+									let select_choices = rule?.select_choices;
+									if (select_choices) {
+										for (const value in select_choices) {
+											if (select_choices.hasOwnProperty(value)) {
+												let selected = false;
+												if (rule_value) {
+													if (Array.isArray(rule_value)) {
+														if (rule_value.includes(value)) {
+															selected = true;
+														}
+													} else {
+														if (rule_value === value) {
+															selected = true;
+														}
+													}
+												}
+												let $option = `<option value='${value}' ${selected?'selected':''}>${select_choices[value]}</option>`;
+												$select_value_field.append($option);
+											}
+										}
+									}
+									$rule_group_container.find('.ig-es-rule-field-value').html($select_value_field);
+									// $('body').trigger('wc-enhanced-select-init');
+									$select_value_field.ig_es_select2();
+									break;
+								case "object":
+									let selected_values = rule_details?.selected;
+									let $object_value_field = $rule_template_container.find('.rule-value-object-field').clone();
+									if (rule.class) {
+										$object_value_field.addClass(rule.class)
+									}
+									if (rule.placeholder) {
+										$object_value_field.data('placeholder', rule.placeholder)
+									}
+									if (rule.ajax_action) {
+										$object_value_field.data('action', rule.ajax_action)
+									}
+									if (rule.is_multi) {
+										$object_value_field.attr('multiple', 'multiple')
+										$object_value_field.attr('name', 'ig_es_workflow_data[rules][' + rule_group_id + '][' + rule_id + '][value][]');
+										if(rule_value) {
+											for (let i = 0; i < rule_value.length; i++) {
+												var option = "<option value='" + rule_value[i] + "' selected>" + selected_values[i] + "</option>";
+												$object_value_field.append(option);
+											}
+										}
+									} else {
+										$object_value_field.attr('name', 'ig_es_workflow_data[rules][' + rule_group_id + '][' + rule_id + '][value]');
+										if(rule_value) {
+											var option = "<option value='" + rule_value + "' selected>" + selected_values + "</option>";
+											$object_value_field.append(option);
+										}
+									}
+									$rule_group_container.find('.ig-es-rule-field-value').html($object_value_field)
+									$('body').trigger('wc-enhanced-select-init');
+									break;
+
+								case "number":
+									let $number_value_field = $main_rule_container.find('.rule-value-number-field').clone();
+									$number_value_field.removeAttr('disabled');
+									$number_value_field.attr('name', 'ig_es_workflow_data[rules][' + rule_group_id + '][' + rule_id + '][value]');
+									if (rule_value) {
+										$number_value_field.val(rule_value);
+									}
+									if (rule.placeholder) {
+										$number_value_field.data('placeholder', rule.placeholder)
+									}
+									$rule_group_container.find('.ig-es-rule-field-value').html($number_value_field);
+									break;
+
+								default:
+									let $default_value_field = $rule_template_container.find('.rule-value-text-field').clone();
+									$default_value_field.attr('name', 'ig_es_workflow_data[rules][' + rule_group_id + '][' + rule_id + '][value]');
+									$rule_group_container.find('.ig-es-rule-field-value').html($default_value_field)
+									break;
+							}
+						}
+
+						/**
+						 * Validate the rules for trigger and toggle action buttons for the rules
+						 * @param force_reset
+						 */
+						const validate_and_show_option_to_add_rules = function (force_reset = false) {
+							let rule_groups_count = $rules_container.find('.ig-es-rule-group').length;
+							if (rule_groups_count > 0 && !force_reset) {
+								return;
+							}
+							let $rule_groups = $rules_container.find('.ig-es-rule-group');
+							let has_valid_rules = false;
+							if ($rule_groups.length > 0) {
+								$rule_groups.each(function (index) {
+									let $rule_group = $(this);
+									let $rules = $rule_group.find('.ig-es-rule-container');
+									let total_rules_count = $rules.length;
+									let valid_rules_count = 0;
+									if (total_rules_count > 0) {
+										$rules.each(function (index) {
+											let $rule = $(this);
+											let rule_name = $rule.find('.rule-select-field').val();
+											if (valid_rules.hasOwnProperty(rule_name)) {
+												has_valid_rules = true;
+												valid_rules_count += 1;
+											} else {
+												$rule.remove();
+											}
+										});
+									}
+									if (valid_rules_count <= 0) {
+										$rule_group.remove();
+									}
+								});
+							}
+							if (has_valid_rules) {
+								return;
+							} else {
+								$rules_container.html('')
+							}
+							if (Object.keys(grouped_rules).length > 0) {
+								$rule_template_container.find('.ig-es-rules-empty-message').clone().appendTo($rules_container)
+								$meta_box_footer.removeClass('hidden');
+							} else {
+								$meta_box_footer.addClass('hidden');
+								$rule_template_container.find('.ig-es-no-rules-message').clone().appendTo($rules_container)
+							}
+						}
+
+						/**
+						 * Filter the valid rules for the trigger
+						 * @param supplied_data_items
+						 */
+						const filter_valid_rules = function (supplied_data_items,trigger_name) {
+							grouped_rules = [];
+							valid_rules = {};
+							if (supplied_data_items) {
+								for (const rule_name in all_rules) {
+									if (all_rules.hasOwnProperty(rule_name)) {
+										let rule = all_rules[rule_name];
+										let excluded_triggers = rule.excluded_triggers;
+										if (supplied_data_items.includes(rule.data_item) && !excluded_triggers.includes(trigger_name)) {
+											if (!grouped_rules[rule.group]) {
+												grouped_rules[rule.group] = []
+											}
+											grouped_rules[rule.group].push(rule);
+											valid_rules[rule_name] = rule;
+										}
+									}
+								}
+							}
+						}
+
+						/**
+						 * While editing the workflow, render the rules
+						 */
+						const render_existing_rules = function () {
+							let workflow_rules = rule_details?.workflow_rules;
+							filter_valid_rules(rule_details?.supplied_data_items,rule_details?.trigger_name);
+							validate_and_show_option_to_add_rules(true);
+							if (workflow_rules.length > 0) {
+								for (let group_id = 0; group_id < workflow_rules.length; group_id++) {
+									let rules = workflow_rules[group_id];
+									let rule_group_id = get_unique_number() + group_id;
+									let $new_rule_group = add_new_rule_group(rule_group_id, 0, false);
+									for (let rule_id = 0; rule_id < rules.length; rule_id++) {
+										let saved_rule = rules[rule_id];
+										let original_rule = all_rules[saved_rule.name];
+
+										let $new_rule_container = $rule_template_container.find('.ig-es-rule-container').clone();
+										$new_rule_container.data('rule-id', rule_id);
+										let unique_rule_id = get_unique_number() + group_id;
+
+										add_rule_container_to_rule_group($new_rule_container, rule_group_id, unique_rule_id, saved_rule);
+
+										$new_rule_group.append($new_rule_container)
+									}
+									$rules_container.append($new_rule_group)
+								}
+							}
+						}
+
+						render_existing_rules();
+					} catch (e) {
+
+					}
+				},
+
 				/**
 				 *
 				 */
@@ -1432,19 +2246,19 @@
 						IG_ES_Workflows.fill_action_fields( $action, $(this).val() );
 						IG_ES_Workflows.maybe_show_run_option();
 					});
-	
+
 					// Add new action
 					$('.js-ig-es-add-action').click(function (e) {
 						e.preventDefault();
 						IG_ES_Workflows.add_new_action();
 					});
-	
+
 					$(document).on('click', '.js-edit-action, .ig-es-action__header', function (e) {
 						e.preventDefault();
 						e.stopImmediatePropagation();
-	
+
 						let $action = $(this).parents('.ig-es-action').first();
-	
+
 						if ($action.is('.js-open')) {
 							IG_ES_Workflows.action_edit_close($action);
 						} else {
@@ -1456,7 +2270,7 @@
 						let action_number = $(this).closest('.ig-es-action').data('action-number');
 						$(this).attr('name','ig_es_workflow_data[actions]['+action_number+'][attachments][]');
 					});
-	
+
 					// Delete action
 					$(document).on('click', '.js-delete-action', function (e) {
 						e.preventDefault();
@@ -1515,7 +2329,9 @@
 									if ('undefined' !== typeof response.data) {
 										let response_data = response.data;
 										let preview_html = response_data.preview_html;
+										let workflow_email_subject = response_data.subject;
 										ig_es_load_iframe_preview('#workflow-preview-iframe-container', preview_html);
+										$(".workflow-subject-preview").text(workflow_email_subject);
 										// We are setting popup visiblity hidden so that we can calculate iframe width/height before it is shown to user.
 									}
 								} else {
@@ -1543,23 +2359,23 @@
 						let selected_email_template = $(this).val();
 						let $action                 = $(this).closest('.ig-es-action').first();
 						let is_woocommerce_template = 'woocommerce' === selected_email_template;
-						
+
 						if ( is_woocommerce_template ) {
 							$action.find('tr[data-name="ig-es-email-heading"]').show();
 						} else {
 							$action.find('tr[data-name="ig-es-email-heading"]').hide();
 						}
 					});
-	
+
 					$('#ig_es_workflow_save #publish').on('click', function(e){
 						let trigger_name = $('.js-trigger-select').val();
-	
+
 						if ( '' === trigger_name) {
 							e.preventDefault();
 							alert( ig_es_js_data.i18n_data.no_trigger_message );
 							return;
 						}
-	
+
 						let actions = $('.ig-es-action:not([data-action-number=""]) .js-action-select');
 						if ( 0 === $( actions ).length ) {
 							e.preventDefault();
@@ -1590,56 +2406,56 @@
 						IG_ES_Workflows.maybe_show_action_preview_option($action, selected_action);
 					});
 				},
-	
+
 				add_new_action: function() {
-	
+
 					let $new_action,
 						action_number = IG_ES_Workflows.get_number_of_actions() + 1;
-	
+
 					$('.js-ig-es-no-actions-message').hide();
-	
+
 					$new_action = $('.ig-es-action-template .ig-es-action').clone();
-	
+
 					IG_ES_Workflows.$actions_container.append($new_action);
-	
+
 					$new_action.attr( 'data-action-number', action_number );
-	
+
 					IG_ES_Workflows.action_edit_open($new_action);
 				},
-	
+
 				/**
 				 * @param $action
 				 */
 				action_delete: function( $action ) {
 					$action.remove();
 				},
-	
+
 				action_edit_close: function( $action ) {
 					$action.removeClass('js-open');
 					$action.find('.ig-es-action__fields').slideUp(150);
 				},
-	
+
 				action_edit_open: function( $action ) {
 					$action.addClass('js-open');
 					$action.find('.ig-es-action__fields').slideDown(150);
 				},
-	
+
 				/**
 				 *
 				 */
 				fill_action_fields: function( $action, selected_action ) {
-	
+
 					let action_number = $action.data('action-number');
 					action_number     = ( typeof action_number !== 'undefined' && action_number !== '' ) ? action_number : IG_ES_Workflows.get_number_of_actions() + 1;
 					let $select       = $action.find('.js-action-select');
-	
+
 					let selected_trigger = $('.js-trigger-select').val();
-	
+
 					IG_ES_Workflows.$actions_box.addClass('ig-es-loading');
-	
+
 					// Remove existing fields
 					$action.find('tr.ig-es-table__row:not([data-name="action_name"])').remove();
-	
+
 					$.ajax({
 						url: ajaxurl,
 						data: {
@@ -1650,21 +2466,21 @@
 							security: ig_es_js_data.security
 						}
 					}).done(function(response){
-	
+
 						$action.find('.ig-es-table tbody').append( response.data.fields );
 						IG_ES_Workflows.$actions_box.removeClass('ig-es-loading');
-	
+
 						// Fill select box name
 						$select.attr('name', 'ig_es_workflow_data[actions][' + action_number + '][action_name]' );
-	
+
 						// Pre fill title
 						$action.find('.action-title').text( response.data.title );
-	
+
 						$action.find('.js-action-description').html( response.data.description );
 
 						IG_ES_Workflows.maybe_show_action_preview_option( $action, selected_action );
 					});
-	
+
 				},
 
 				maybe_show_action_preview_option: function ($action, selected_action) {
@@ -1675,18 +2491,18 @@
 						preview_option.addClass('hidden');
 					}
 				},
-	
+
 				get_number_of_actions: function () {
 					return $('.ig-es-action:not([data-action-number=""])').length;
 				},
-	
+
 				remove_actions: function() {
 					let number_of_actions = IG_ES_Workflows.get_number_of_actions();
 					if ( number_of_actions > 0 ) {
 						$('.ig-es-action:not([data-action-number=""])').remove();
 					}
 				},
-	
+
 				maybe_show_run_option: function() {
 					let trigger_name        = IG_ES_Workflows.$trigger_select.val();
 					let runnable_triggers   = [ 'ig_es_wc_order_created', 'ig_es_wc_order_completed', 'ig_es_wc_order_refunded' ];
@@ -1726,18 +2542,18 @@
 						IG_ES_Workflows.refine_variables();
 					}
 				},
-	
+
 				/**
 				 * Show or hide text var groups based on the selected trigger
 				 */
 				refine_variables: function() {
-	
+
 					let trigger = ig_es_workflows_data.trigger;
-	
+
 					$('.ig-es-variables-group').each(function( i, el ){
-	
+
 						let group = $(el).data( 'ig-es-variable-group' );
-	
+
 						if ( -1 === $.inArray( group, trigger.supplied_data_items ) ) {
 							$(el).addClass('hidden');
 						} else {
@@ -1937,7 +2753,7 @@
 				}
 
 			}
-		
+
 			if ( 'undefined' !== typeof ig_es_workflows_data ) {
 				IG_ES_Workflows.init();
 			}
@@ -2118,7 +2934,7 @@
 								import_data.id += 1;
 								$(document).trigger('ig_es_do_import', [import_data] );
 							}
-							
+
 							importprogressbar.animate({
 								'width': (percentage) + '%'
 							}, {
@@ -2171,7 +2987,7 @@
 					total_html,
 					error_html,
 					duplicate_html,
-					memoryusage_html) 
+					memoryusage_html)
 					+ '<br>' +
 					sprintf(
 						ig_es_js_data.i18n_data.estimate_time, timeleft
@@ -2181,13 +2997,13 @@
 			let import_error_handler = function(percentage, import_data) {
 				importerrors++;
 				if (importerrors >= 5) {
-			
+
 					alert(ig_es_js_data.i18n_data.error_importing);
 					importstatus.html(sprintf(ig_es_js_data.i18n_data.import_failed, '<svg class=" w-6 h-6 inline-block text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>'));
 					window.onbeforeunload = null;
 					return;
 				}
-			
+
 				let i = importerrors * 5,
 					str = '',
 					errorint = setInterval(function () {
@@ -2250,7 +3066,7 @@
 			$(document).on('ig_es_get_import_data', get_import_data );
 			$(document).on('ig_es_trigger_import', trigger_import );
 			$(document).on('ig_es_do_import', do_import );
-			
+
 			$('#form_import_subscribers').on('submit', function(e){
 				e.preventDefault();
 
@@ -2269,7 +3085,7 @@
 						is_subscriber_status_field_set = true;
 					}
 				});
-				
+
 
 				if ( ! is_email_field_set ) {
 					alert(ig_es_js_data.i18n_data.select_email_column);
@@ -2336,7 +3152,7 @@
 					});
 
 					return false;
-				});	
+				});
 
 				$("input:radio[name='es-import-subscribers']").click(function() {
 					let import_option = $(this).attr("value");
@@ -2350,12 +3166,12 @@
 					let mailchimp_api_key = $('#api-key').val();
 					let api_import_status = $('.es-api-import-status');
 					let steps_loader      = $('.es-import-loader');
-					let data = { 
+					let data = {
 						action       		: 'ig_es_mailchimp_verify_api_key',
 						security     		: ig_es_js_data.security,
 						mailchimp_api_key   : mailchimp_api_key,
 					};
-					
+
 					jQuery.ajax({
 						method: 'POST',
 						url: ajaxurl,
@@ -2388,7 +3204,7 @@
 				});
 
 				function get_mailchimp_lists( api_key = '' ){
-					let data = { 
+					let data = {
 						action       		: 'ig_es_mailchimp_lists',
 						security     		: ig_es_js_data.security,
 						mailchimp_api_key   : api_key,
@@ -2438,7 +3254,7 @@
 					var current_status;
 					var mailchimp_api_key = jQuery('#api-key').val();
 					var total_list_subscribers_added = 0;
-					
+
 					jQuery(".es_mailchimp_lists_and_status_input").addClass("installing");
 					jQuery(".es_mailchimp_lists_and_status_input").find("input").prop("disabled", true);
 					jQuery(".mailchimp_notice_nowindow_close").show().html(ig_es_js_data.i18n_data.mailchimp_notice_nowindow_close);
@@ -2562,19 +3378,19 @@
 				var link_activity_currentIndex = 5;
 
 				link_activity_rows.hide();
-				link_activity_rows.slice(0, 5).show(); 
+				link_activity_rows.slice(0, 5).show();
 				check_link_activity_rows();
 
-				link_activity_more.click(function (e) { 
+				link_activity_more.click(function (e) {
 				    e.preventDefault();
 				    $("#es_reports_link_activity tbody tr").slice(link_activity_currentIndex, link_activity_currentIndex + 10).show();
 				    link_activity_currentIndex += 10;
 				    check_link_activity_rows();
 				});
 
-				link_activity_less.click(function (e) { 
+				link_activity_less.click(function (e) {
 				    e.preventDefault();
-				   
+
 					link_activity_rows.hide();
 					link_activity_rows.slice(0, 5).show();
 					link_activity_currentIndex = 5;
@@ -2584,9 +3400,9 @@
 				function check_link_activity_rows() {
 				    var currentLength = $("#es_reports_link_activity tbody tr:visible").length;
 				    if (currentLength >= link_activity_table_length) {
-				        link_activity_more.hide();            
+				        link_activity_more.hide();
 				    } else {
-				        link_activity_more.show();   
+				        link_activity_more.show();
 				    }
 
 				    if (link_activity_table_length > 5 && currentLength > 5) {
@@ -2597,56 +3413,184 @@
 
 				}
 
+
+			// Find al rating items
+			const ratings = document.querySelectorAll(".es-engagement-score");
+
+			// Iterate over all rating items
+			ratings.forEach((rating) => {
+			// Get content and get score as an int
+			const ratingContent = rating.innerHTML;
+			const ratingScore = ratingContent;
+			const ratingPercentage = ( ratingScore / 5 ) * 100;
+
+			// Define if the score is good, meh or bad according to its value
+			//   const scoreClass =
+			//     ratingScore < 40 ? "bad" : ratingScore < 60 ? "meh" : "good";
+
+			//   // Add score class to the rating
+			//   rating.classList.add(scoreClass);
+
+			// After adding the class, get its color
+			const ratingColor = window.getComputedStyle(rating).backgroundColor;
+
+			// Define the background gradient according to the score and color
+			const gradient = `background: conic-gradient(${ratingColor} ${ratingPercentage}%, transparent 0 100%)`;
+
+			// Set the gradient as the rating background
+			rating.setAttribute("style", gradient);
+
+			// Wrap the content in a tag to show it above the pseudo element that masks the bar
+			rating.innerHTML = `<span>${ratingScore} ${
+				ratingContent.indexOf("%") >= 0 ? "<small>%</small>" : ""
+			}</span>`;
+			});
+
+			/* DND form builder code start */
+			jQuery('#es-form-name,#es-toggle-form-name-edit').click(function(){
+				jQuery('#es-form-name').removeAttr('readonly','readonly').focus();
+				jQuery('#es-toggle-form-name-edit').hide();
+			});
+
+			jQuery('#es-form-name').blur(function(){
+				jQuery('#es-toggle-form-name-edit').show();
+				jQuery(this).attr('readonly','readonly');
+			});
+
+			$('#es-edit-form-container').on('click','#form_settings_menu,#view_form_summary_button',function(e){
+
+				let form_html       = window.esVisualEditor.getHtml();
+				let form_css        = window.esVisualEditor.getCss();
+				let form_components = window.esVisualEditor.getComponents();
+
+				$('#ig-es-export-html-data-textarea').val(form_html);
+				$('#ig-es-export-css-data-textarea').val(form_css);
+				$('#form-dnd-editor-data').val(JSON.stringify(form_components));
+
+				let captcha = window.esVisualEditor.Canvas.getDocument().getElementsByClassName('es_captcha').length > 0 ? 'yes' : 'no';
+				$('input[name="form_data[settings][captcha]"]').val(captcha);
+
+
+
+				let list_added = window.esVisualEditor.Canvas.getDocument().getElementsByClassName('es-list').length > 0;
+				if ( list_added ) {
+					$('.es-form-lists').addClass('hidden');
+				} else {
+					$('.es-form-lists').removeClass('hidden');
+				}
+
+				let form_data = $(this).closest('form').serialize();
+
+				// Add action to form data
+				form_data += form_data + '&action=ig_es_get_form_preview&security='  + ig_es_js_data.security;
+				jQuery.ajax({
+					method: 'POST',
+					url: ajaxurl,
+					data: form_data,
+					dataType: 'json',
+					success: function (response) {
+						if (response.success) {
+							if ( 'undefined' !== typeof response.data ) {
+								let response_data    = response.data;
+								let preview_html     = response_data.preview_html;
+								preview_html         = ig_es_preprare_iframe_preview_html( preview_html );
+
+								ig_es_load_iframe_preview('.form_preview_content', preview_html);
+							}
+						} else {
+							alert( ig_es_js_data.i18n_data.ajax_error_message );
+						}
+					},
+					error: function (err) {
+						alert( ig_es_js_data.i18n_data.ajax_error_message );
+					}
+				});
+			});
+
+			$('#es-edit-form-container form').on('submit',function(e){
+
+				let list_required = ! $('.es-form-lists').hasClass('hidden');
+				if ( list_required ) {
+					let selected_lists_count = $('.es-form-lists input[name="form_data[settings][lists][]"]:checked').length;
+					if ( selected_lists_count === 0 ) {
+						alert( ig_es_form_editor_data.i18n.no_list_selected_message );
+						e.preventDefault();
+						return false;
+					}
+				}
+
+			});
+			/* DND form builder code end */
+
+		jQuery('body')
+		.on('click', '#ig-es-delete-template-image', function (e) {
+			e.preventDefault();
+			jQuery('#ig-es-template-image-attachment-container').addClass('hidden');
+			jQuery('#ig-es-add-template-image').removeClass('hidden');
+		})
+		.on('click', '#ig-es-add-template-image', function (e) {
+			e.preventDefault();
+			jQuery(this).addClass('clicked');
+			if ( ! wp.media.frames.ig_es_attachments ) {
+				// Create the media frame.
+				wp.media.frames.ig_es_attachments = wp.media({
+					// Set the title of the modal.
+					title: es_admin_data.i18n_data.add_attachment_text,
+					button: {
+						text: es_admin_data.i18n_data.add_attachment_text,
+					},
+					multiple: false,
+					states: [
+						new wp.media.controller.Library({
+							filterable: 'png,jpg',
+							multiple: false
+						})
+					]
+				});
+
+				// When a user click on Add file button.
+				wp.media.frames.ig_es_attachments.on('select', function () {
+					let attachment = wp.media.frames.ig_es_attachments.state().get('selection').first().toJSON();
+					jQuery('#ig-es-template-image-attachment-container').removeClass('hidden');
+					jQuery('#ig_es_template_attachment_image').attr('src', attachment.url);
+					jQuery('#ig_es_template_attachment_id').val(attachment.id);
+					jQuery('#ig-es-template-image-attachment-container').removeClass('hidden');
+					jQuery('#ig-es-add-template-image').addClass('hidden');
+				});
+			}
+			wp.media.frames.ig_es_attachments.open();
+		});
+		$('#es_template_type').on('change',function(){
+			let template_type = $(this).val();
+			$('#edit-campaign-form-container').attr('data-campaign-type', template_type);
+			ig_es_add_dnd_rte_tags(template_type);
 		});
 
-		function ig_es_uc_first(string){
-			return string.charAt(0).toUpperCase() + string.slice(1);
-		}
-
-		function ig_es_draft_broadcast( trigger_elem ) {
-			let is_draft_bttuon = $(trigger_elem).hasClass('ig_es_draft_broadcast');
-			let is_save_bttuon  = $(trigger_elem).hasClass('ig_es_save_broadcast');
-		
-			let broadcast_subject = $('#ig_es_broadcast_subject').val();
-			if ( '' === broadcast_subject ) {
-				if ( is_draft_bttuon ) {
-					alert( ig_es_js_data.i18n_data.broadcast_subject_empty_message );
-				}
-				return;
+		$('#es-dashboard-stats #filter_by_list').on('change',function() {
+			let list_id     = $(this).val();
+			let days        = 60;
+			let action_data = {
+				action  : 'ig_es_get_subscribers_stats',
+				list_id : list_id,
+				days    : days,
+				security: ig_es_js_data.security
 			}
-		
-			// If draft button is clicked then change broadcast status to draft..
-			if ( is_draft_bttuon ) {
-				$('#broadcast_status').val(0);
-			}
-		
-			ig_es_sync_wp_editor_content();
-		
-			let form_data = $(trigger_elem).closest('form').serialize();
-			// Add action to form data
-			form_data += '&action=ig_es_draft_broadcast&security='  + ig_es_js_data.security;
-			jQuery.ajax({
-				method: 'POST',
-				url: ajaxurl,
-				data: form_data,
-				dataType: 'json',
+			$.ajax({
+				method    : 'POST',
+				url       : ajaxurl,
+				data      : action_data,
+				dataType  : 'json',
 				beforeSend: function() {
-					// Prevent submit button untill saving is complete.
-					$('#ig_es_broadcast_submitted').addClass('opacity-50 cursor-not-allowed').attr('disabled','disabled');
+					$('#subscribers-stats').addClass('loading es-pulse-animation').css({'filter': 'blur(1px)', '-webkit-filter' : 'blur(1px)'});
 				},
 				success: function (response) {
 					if (response.success) {
 						if ( 'undefined' !== typeof response.data ) {
 							let response_data = response.data;
-							let broadcast_id  = response_data.broadcast_id;
-							$('#broadcast_id').val( broadcast_id );
-							if ( is_draft_bttuon || is_save_bttuon ) {
-								alert( ig_es_js_data.i18n_data.broadcast_saved_message );
-							}
+							let html          = response_data.html;
+							$('#subscribers-stats').replaceWith(html);
 						} else {
-							if ( is_draft_bttuon ) {
-								alert( ig_es_js_data.i18n_data.broadcast_error_message );
-							}
+							alert( ig_es_js_data.i18n_data.ajax_error_message );
 						}
 					} else {
 						alert( ig_es_js_data.i18n_data.ajax_error_message );
@@ -2656,114 +3600,174 @@
 					alert( ig_es_js_data.i18n_data.ajax_error_message );
 				}
 			}).always(function(){
-				$('#ig_es_broadcast_submitted').removeClass('opacity-50 cursor-not-allowed').removeAttr('disabled');
+				$('#subscribers-stats').removeClass('loading es-pulse-animation').css({'filter': 'blur(0px)', '-webkit-filter' : 'blur(0px)'});
 			});
+		});
+	});
+
+	function ig_es_uc_first(string){
+		return string.charAt(0).toUpperCase() + string.slice(1);
+	}
+
+	function ig_es_draft_broadcast( trigger_elem ) {
+		let is_draft_bttuon = $(trigger_elem).hasClass('ig_es_draft_broadcast');
+		let is_save_bttuon  = $(trigger_elem).hasClass('ig_es_save_broadcast');
+
+		let broadcast_subject = $('#ig_es_broadcast_subject').val();
+		if ( '' === broadcast_subject ) {
+			if ( is_draft_bttuon ) {
+				alert( ig_es_js_data.i18n_data.broadcast_subject_empty_message );
+			}
+			return;
 		}
 
-		let drafting_campaign = false;
-		function ig_es_draft_campaign( trigger_elem ) {
+		// If draft button is clicked then change broadcast status to draft..
+		if ( is_draft_bttuon ) {
+			$('#broadcast_status').val(0);
+		}
 
-			if( drafting_campaign){
-				return;
-			}
+		ig_es_sync_wp_editor_content();
 
-			drafting_campaign = true;
-			let is_draft_bttuon = $(trigger_elem).hasClass('ig_es_draft_campaign');
-			let is_save_bttuon  = $(trigger_elem).hasClass('ig_es_save_campaign');
-		
-			let campaign_subject = $('#ig_es_campaign_subject').val();
-			if ( '' === campaign_subject ) {
-				if ( is_draft_bttuon ) {
-					alert( ig_es_js_data.i18n_data.campaign_subject_empty_message );
-				}
-				drafting_campaign = false;
-				return;
-			}
-		
-			// If draft button is clicked then change campaign status to draft..
-			if ( is_draft_bttuon ) {
-				$('#campaign_status').val(0);
-			}
-		
-			ig_es_sync_wp_editor_content();
-		
-			let form_data = $(trigger_elem).closest('form').serialize();
-			// Add action to form data
-			form_data += '&action=ig_es_draft_campaign&security='  + ig_es_js_data.security;
-			jQuery.ajax({
-				method: 'POST',
-				url: ajaxurl,
-				data: form_data,
-				dataType: 'json',
-				beforeSend: function() {
-					// Prevent submit button untill saving is complete.
-					$('#ig_es_campaign_submitted').addClass('opacity-50 cursor-not-allowed').attr('disabled','disabled');
-				},
-				success: function (response) {
-					if (response.success) {
-						if ( 'undefined' !== typeof response.data ) {
-							let response_data = response.data;
-							let campaign_id  = response_data.campaign_id;
-							$('#campaign_id').val( campaign_id );
-							if ( is_draft_bttuon || is_save_bttuon ) {
-								alert( ig_es_js_data.i18n_data.campaign_saved_message );
-							}
-						} else {
-							if ( is_draft_bttuon ) {
-								alert( ig_es_js_data.i18n_data.campaign_error_message );
-							}
+		let form_data = $(trigger_elem).closest('form').serialize();
+		// Add action to form data
+		form_data += '&action=ig_es_draft_broadcast&security='  + ig_es_js_data.security;
+		jQuery.ajax({
+			method: 'POST',
+			url: ajaxurl,
+			data: form_data,
+			dataType: 'json',
+			beforeSend: function() {
+				// Prevent submit button untill saving is complete.
+				$('#ig_es_broadcast_submitted').addClass('opacity-50 cursor-not-allowed').attr('disabled','disabled');
+			},
+			success: function (response) {
+				if (response.success) {
+					if ( 'undefined' !== typeof response.data ) {
+						let response_data = response.data;
+						let broadcast_id  = response_data.broadcast_id;
+						$('#broadcast_id').val( broadcast_id );
+						if ( is_draft_bttuon || is_save_bttuon ) {
+							alert( ig_es_js_data.i18n_data.broadcast_saved_message );
 						}
 					} else {
-						alert( ig_es_js_data.i18n_data.ajax_error_message );
+						if ( is_draft_bttuon ) {
+							alert( ig_es_js_data.i18n_data.broadcast_error_message );
+						}
 					}
-				},
-				error: function (err) {
+				} else {
 					alert( ig_es_js_data.i18n_data.ajax_error_message );
 				}
-			}).always(function(){
-				drafting_campaign = false;
-				$('#ig_es_campaign_submitted').removeClass('opacity-50 cursor-not-allowed').removeAttr('disabled');
-			});
-		}
-
-		function ig_es_save_campaign_as_template() {
-			
-			ig_es_sync_wp_editor_content();
-
-			let campaign_subject = $('#ig_es_campaign_subject').val();
-			let campaign_content = $('textarea[name="campaign_data[body]"]').val();
-
-			if ( '' === campaign_subject || '' === campaign_content ) {
-				return;
+			},
+			error: function (err) {
+				alert( ig_es_js_data.i18n_data.ajax_error_message );
 			}
+		}).always(function(){
+			$('#ig_es_broadcast_submitted').removeClass('opacity-50 cursor-not-allowed').removeAttr('disabled');
+		});
+	}
 
-			let save_template_button = $('#save_campaign_as_template_button');
-		
-			let form_data = $('form#campaign_form').serialize();
-			// Add action to form data
-			form_data += '&action=ig_es_save_as_template&security='  + ig_es_js_data.security;
-			jQuery.ajax({
-				method: 'POST',
-				url: ajaxurl,
-				data: form_data,
-				dataType: 'json',
-				beforeSend: function() {
-					$(save_template_button).next('.es-loader').show();
-				},
-				success: function (response) {
-					if ( response.success ) {
-						$(save_template_button).parent().find('.es-saved-success').show();
-					} else {
-						$(save_template_button).parent().find('.es-saved-error').show();
-					}
-				},
-				error: function (err) {
-					alert( ig_es_js_data.i18n_data.ajax_error_message );
-				}
-			}).always(function(){
-				$(save_template_button).next('.es-loader').hide();
-			});
+	let drafting_campaign = false;
+	function ig_es_draft_campaign( trigger_elem ) {
+
+		if( drafting_campaign ){
+			return;
 		}
+
+		drafting_campaign = true;
+		let is_draft_bttuon = $(trigger_elem).hasClass('ig_es_draft_campaign');
+		let is_save_bttuon  = $(trigger_elem).hasClass('ig_es_save_campaign');
+
+		let campaign_subject = $('#ig_es_campaign_subject').val();
+		if ( '' === campaign_subject ) {
+			if ( is_draft_bttuon ) {
+				alert( ig_es_js_data.i18n_data.campaign_subject_empty_message );
+			}
+			drafting_campaign = false;
+			return;
+		}
+
+		// If draft button is clicked then change campaign status to draft..
+		if ( is_draft_bttuon ) {
+			$('#campaign_status').val(0);
+		}
+
+		ig_es_sync_wp_editor_content();
+		let campaign_data = $(trigger_elem).closest('form').serialize();
+
+		ig_es_save_campaign( campaign_data ).then( response => {
+			if (response.success) {
+				if ( 'undefined' !== typeof response.data ) {
+					let response_data = response.data;
+					let campaign_id  = response_data.campaign_id;
+					$('#campaign_id').val( campaign_id );
+					if ( is_draft_bttuon || is_save_bttuon ) {
+						alert( ig_es_js_data.i18n_data.campaign_saved_message );
+					}
+				} else {
+					if ( is_draft_bttuon ) {
+						alert( ig_es_js_data.i18n_data.campaign_error_message );
+					}
+				}
+			} else {
+				alert( ig_es_js_data.i18n_data.ajax_error_message );
+			}
+		}, response => {
+			alert( ig_es_js_data.i18n_data.ajax_error_message );
+		});
+	}
+
+	function ig_es_save_campaign( campaign_data ) {
+		campaign_data += '&action=ig_es_draft_campaign&security='  + ig_es_js_data.security;
+		return jQuery.ajax({
+			method: 'POST',
+			url: ajaxurl,
+			data: campaign_data,
+			dataType: 'json',
+			beforeSend: function() {
+				// Prevent submit button untill saving is complete.
+				$('#ig_es_campaign_submitted').addClass('opacity-50 cursor-not-allowed').attr('disabled','disabled');
+			}
+		});
+	}
+
+	function ig_es_save_campaign_as_template() {
+
+		ig_es_sync_wp_editor_content();
+
+		let campaign_subject = $('#ig_es_campaign_subject').val();
+		let campaign_content = $('textarea[name="campaign_data[body]"]').val();
+
+		if ( '' === campaign_subject || '' === campaign_content ) {
+			return;
+		}
+
+		let save_template_button = $('#save_campaign_as_template_button');
+
+		let form_data = $('form#campaign_form').serialize();
+		// Add action to form data
+		form_data += '&action=ig_es_save_as_template&security='  + ig_es_js_data.security;
+		jQuery.ajax({
+			method: 'POST',
+			url: ajaxurl,
+			data: form_data,
+			dataType: 'json',
+			beforeSend: function() {
+				$(save_template_button).next('.es-loader').show();
+			},
+			success: function (response) {
+				if ( response.success ) {
+					$(save_template_button).parent().find('.es-saved-success').show();
+				} else {
+					$(save_template_button).parent().find('.es-saved-error').show();
+				}
+			},
+			error: function (err) {
+				alert( ig_es_js_data.i18n_data.ajax_error_message );
+			}
+		}).always(function(){
+			$(save_template_button).next('.es-loader').hide();
+		});
+	}
 })(jQuery);
 
 
@@ -2820,7 +3824,7 @@ function ig_es_show_broadcast_preview_in_popup() {
 function ig_es_show_campaign_preview_in_popup() {
 	ig_es_sync_wp_editor_content();
 
-	let content = jQuery('textarea[name="campaign_data[body]"]').val();
+	let content = jQuery('textarea[name="campaign_data[body]"],textarea[name="data[body]"]').val();
 	if (jQuery("#edit-es-campaign-body-wrap").hasClass("tmce-active")) {
 		content = tinyMCE.activeEditor.getContent();
 	}
@@ -2831,11 +3835,59 @@ function ig_es_show_campaign_preview_in_popup() {
 		return;
 	}
 
-	let template_button = jQuery('#view_campaign_preview_button');
-	jQuery(template_button).addClass('loading');
+	
 	let form_data = jQuery('#view_campaign_preview_button').closest('form').serialize();
 	// Add action to form data
 	form_data += form_data + '&action=ig_es_get_campaign_preview&security='  + ig_es_js_data.security;
+	jQuery.ajax({
+		method: 'POST',
+		url: ajaxurl,
+		data: form_data,
+		dataType: 'json',
+		success: function (response) {
+			if (response.success) {
+				if ( 'undefined' !== typeof response.data ) {
+					let response_data = response.data;
+					let template_html = response_data.preview_html;
+					jQuery('#browser-preview-tab').trigger('click');
+					ig_es_load_iframe_preview( '#campaign-preview-iframe-container', template_html );
+					// We are setting popup visiblity hidden so that we can calculate iframe width/height before it is shown to user.
+					jQuery('#campaign-preview-popup').css('visibility','hidden').show();
+					setTimeout(()=>{
+						jQuery('#campaign-preview-popup').css('visibility','visible');
+					},100);
+				}
+			} else {
+				alert( ig_es_js_data.i18n_data.ajax_error_message );
+			}
+		},
+		error: function (err) {
+			alert( ig_es_js_data.i18n_data.ajax_error_message );
+		}
+	}).done(function(){
+		jQuery('#view_campaign_preview_button').removeClass('loading');
+	});
+}
+
+function ig_es_show_template_preview_in_popup() {
+	ig_es_sync_wp_editor_content();
+
+	let content = jQuery('textarea[name="data[body]"]').val();
+	if (jQuery("#edit-es-campaign-body-wrap").hasClass("tmce-active")) {
+		content = tinyMCE.activeEditor.getContent();
+	}
+
+
+	if ( !content ) {
+		alert( ig_es_js_data.i18n_data.empty_template_message );
+		return;
+	}
+
+	let template_button = jQuery('#view_campaign_preview_button,#view_template_preview_button');
+	jQuery(template_button).addClass('loading');
+	let form_data = jQuery('#view_campaign_preview_button,#view_template_preview_button').closest('form').serialize();
+	// Add action to form data
+	form_data += form_data + '&action=ig_es_get_template_preview&security='  + ig_es_js_data.security;
 	jQuery.ajax({
 		method: 'POST',
 		url: ajaxurl,
@@ -2874,12 +3926,17 @@ function ig_es_sync_wp_editor_content() {
 		window.tinyMCE.triggerSave();
 	}
 
+	ig_es_sync_dnd_editor_content( '#campaign-dnd-editor-data' );
+}
+
+function ig_es_sync_dnd_editor_content( data_field_id ) {
 	// Save the editor content to textarea
 	if ( 'undefined' !== typeof window.esVisualEditor ) {
 		let dnd_editor_data = window.esVisualEditor.exportEditorContent();
-		jQuery('#campaign-dnd-editor-data').val(dnd_editor_data.data);
+		jQuery(data_field_id).val(dnd_editor_data.data);
 	}
 }
+window.ig_es_sync_dnd_editor_content = ig_es_sync_dnd_editor_content;
 
 function ig_es_load_iframe_preview( parent_selector, iframe_html ) {
 	jQuery( parent_selector + ' iframe').remove();
@@ -2887,7 +3944,7 @@ function ig_es_load_iframe_preview( parent_selector, iframe_html ) {
 	let iframe = document.createElement('iframe');
 
 	jQuery(parent_selector).html(iframe);
-	
+
 	let should_set_max_height = jQuery(parent_selector).hasClass('popup-preview');
 
 	if ( should_set_max_height ) {
@@ -2896,10 +3953,11 @@ function ig_es_load_iframe_preview( parent_selector, iframe_html ) {
 	} else {
 		iframe.setAttribute("style","height:auto;width:100%;");
 	}
-	
+
 	iframe.setAttribute("onload","ig_es_resize_iframe(this)");
 	jQuery(iframe).attr("srcdoc", iframe_html);
 }
+
 
 function ig_es_resize_iframe( ifram_elem ) {
 
@@ -2919,7 +3977,95 @@ function ig_es_is_valid_json( string ) {
 	return true;
 }
 
+function ig_es_is_valid_email( email ) {
+	let regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	return regex.test(email);
+}
+
 window.ig_es_is_valid_json = ig_es_is_valid_json;
+
+function ig_es_add_dnd_rte_tags ( campaign_type ) {
+
+	let option_html = '';
+
+	if ( campaign_type !== 'newsletter' ) {
+		var campaignTagsData = ig_es_campaign_editor_data.campaignTags;
+		
+		for( let campaignType in campaignTagsData ) {
+			let campaignTags = campaignTagsData[campaignType];
+			if (  Array.isArray(campaignTags) ) {
+				option_html += '<optgroup label="Post">';
+				if ( campaign_type === 'post_digest' ) {
+					option_html += `<option value="{{post.digest}}Any keyword related to post{{/post.digest}}">Post digest</option>`;
+				}
+
+				campaignTags.forEach( campaignTag =>{
+					option_html += `<option value="{{${campaignTag.keyword}}}">${campaignTag.label}</option>`
+				});
+				option_html += '</optgroup>';
+			}
+		}
+	}
+
+
+	var subscriberTags = ig_es_campaign_editor_data.subscriberTags;
+	if ( Array.isArray( subscriberTags ) ) {
+		option_html += '<optgroup label="Subscriber">';
+		subscriberTags.forEach( subscriberTag =>{
+			option_html += `<option value="{{${subscriberTag.keyword}}}">${subscriberTag.label}</option>`
+		});
+		option_html += '</optgroup>';
+	}
+
+	var siteTags = ig_es_campaign_editor_data.siteTags;
+	if ( Array.isArray( siteTags ) ) {
+		option_html += '<optgroup label="Site">';
+		siteTags.forEach( siteTag =>{
+			option_html += `<option value="{{${siteTag.keyword}}}">${siteTag.label}</option>`
+		});
+		option_html += '</optgroup>';
+	}
+
+	// Remove to avoid duplicates.
+	window.esVisualEditor.RichTextEditor.remove('es-rte-tags');
+	window.esVisualEditor.RichTextEditor.add('es-rte-tags', {
+		icon: `<select class="gjs-field">
+		<option value="">Select keyword</option>
+		${option_html}
+		</select>`,
+		// Bind the 'result' on 'change' listener
+		event: 'change',
+		result: (rte, action) => { rte.insertHTML(action.btn.firstChild.value);},
+		// Reset the select on change
+		update: (rte, action) => { action.btn.firstChild.value = "";}
+	});
+}
+
+window.ig_es_add_dnd_rte_tags = ig_es_add_dnd_rte_tags;
+
+ig_es_preprare_iframe_preview_html = preview_html => {
+	let frontend_css = ig_es_get_frontend_css();
+    let iframe_html = `<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta http-equiv="X-UA-Compatible" content="ie=edge">
+			<title>Document</title>
+			${frontend_css}
+		</head>
+		<body style="background-color:#fff;padding:0">
+			<div class="ig-es-form-preview">
+				${preview_html}
+			</div>
+		</body>
+	</html>`;
+	return iframe_html;
+}
+
+ig_es_get_frontend_css = () => {
+	return ig_es_js_data.frontend_css;
+}
 
 jQuery.fn.extend({
 	ig_es_select2: function() {
@@ -2935,8 +4081,8 @@ jQuery.fn.extend({
 				// Get placeholder label from the first option.
 				placeholder_label = jQuery(first_option_elem).text();
 				placeholder_label = placeholder_label.trim();
-	
-				// Remove it from option to avoid being shown and allowing users to select it as an option in Select2's options panel. 
+
+				// Remove it from option to avoid being shown and allowing users to select it as an option in Select2's options panel.
 				jQuery(first_option_elem).remove();
 			}
 

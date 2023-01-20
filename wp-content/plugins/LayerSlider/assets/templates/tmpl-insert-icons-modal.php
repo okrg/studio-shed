@@ -53,7 +53,7 @@ $iconModules = [
 						'data-tt' => '',
 						'data-tt-de' => 0.1
 				]) ?>
-				<lse-tt class="lse-premium"><?= __('This icon family requires license registration. Click on the padlock icon to learn more.', 'LayerSlider') ?></lse-tt>
+				<lse-tt class="lse-premium"><?= __('This icon family requires license registration. Click to learn more.', 'LayerSlider') ?></lse-tt>
 				<?php elseif( empty( $iconModule['installed'] ) ) : ?>
 				<?= lsGetSVGIcon('arrow-alt-down', false, [
 					'class' => 'lse-installable-icon',

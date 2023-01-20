@@ -218,7 +218,7 @@ class KM_UpdatesV3 {
 	 * @since 6.1.5
 	 * @access public
 	 */
-	public function check_activation_state() {
+	public function check_activation_state( $subDeactivated = false ) {
 
 		if( LS_Config::isActivatedSite() ) {
 
@@ -226,7 +226,9 @@ class KM_UpdatesV3 {
 			delete_option( $this->config['authKey'] );
 			delete_option( $this->config['activationKey'] );
 
-			update_option( 'ls-show-canceled_activation_notice', 1 );
+			$noticeType = $subDeactivated ? 'subscription' : 'general';
+
+			update_option( 'ls-show-canceled_activation_notice', $noticeType );
 			update_option( 'layerslider_cancellation_update_info', $this->data );
 		}
 	}
@@ -282,7 +284,8 @@ class KM_UpdatesV3 {
 			// Check activation state on client side in
 			// case of receiving a "Not Activated" flag
 			if( ! empty( $this->data->_not_activated ) ) {
-				$this->check_activation_state();
+				$subDeactivated = ! empty( $this->data->_sub_deactivated );
+				$this->check_activation_state( $subDeactivated );
 			}
 
 

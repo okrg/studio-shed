@@ -210,7 +210,7 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 			$doing_ajax      = defined( 'DOING_AJAX' ) && DOING_AJAX;
 			$return_response = defined( 'IG_ES_RETURN_HANDLE_RESPONSE' ) && IG_ES_RETURN_HANDLE_RESPONSE;
 
-			// Verify nonce only if it is submitted through Email Subscribers' subscription form else check if we have form data in $external_form_data.
+			// Verify nonce only if it is submitted through Icegram Express' subscription form else check if we have form data in $external_form_data.
 			if ( ( 'subscribe' === $es ) || ! empty( $external_form_data ) ) {
 
 				// Get form data from external source if passed.
@@ -294,7 +294,6 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 							$data['source']     = 'form';
 							$data['form_id']    = $this->form_id;
 							$data['email']      = $this->email;
-							$data['hash']       = $this->guid;
 							$data['ip_address'] = $this->ip_address;
 							$data['status']     = 'verified';
 							$data['hash']       = $this->guid;
@@ -607,7 +606,7 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 			$ig_es_form_submission_success_message = get_option( 'ig_es_form_submission_success_message' );
 			$messages                              = array(
 				'es_empty_email_notice'       => __( 'Please enter email address', 'email-subscribers' ),
-				'es_rate_limit_notice'        => __( 'You need to wait for sometime before subscribing again', 'email-subscribers' ),
+				'es_rate_limit_notice'        => __( 'You need to wait for some time before subscribing again', 'email-subscribers' ),
 				'es_optin_success_message'    => ! empty( $ig_es_form_submission_success_message ) ? $ig_es_form_submission_success_message : __( 'Successfully Subscribed.', 'email-subscribers' ),
 				'es_email_exists_notice'      => __( 'Email Address already exists!', 'email-subscribers' ),
 				'es_unexpected_error_notice'  => __( 'Oops.. Unexpected error occurred.', 'email-subscribers' ),
@@ -638,6 +637,10 @@ if ( ! class_exists( 'ES_Handle_Subscription' ) ) {
 
 			$external_action = ig_es_get_request_data( 'ig_es_external_action' );
 			if ( ! empty( $external_action ) && 'subscribe' === $external_action ) {
+				$subscription_api_enabled = 'yes' === get_option( 'ig_es_allow_api', 'yes' );
+				if ( ! $subscription_api_enabled ) {
+					return;
+				}
 				$list_hash  = ig_es_get_request_data( 'list' );
 				$lists_hash = ig_es_get_request_data( 'lists' );
 				if ( ! empty( $list_hash ) ) {

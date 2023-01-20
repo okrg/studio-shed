@@ -546,6 +546,8 @@ class ES_Newsletters {
 				$data['body'] = ES_Common::es_process_template_body( $data['body'], $data['base_template_id'], $campaign_id );
 
 				$guid = ES_Common::generate_guid( 6 );
+				$campaign_meta = maybe_unserialize( $data['meta'] );
+				$meta = apply_filters( 'ig_es_before_save_campaign_notification_meta', array( 'type' => 'newsletter' ), $campaign_meta );
 				$data = array(
 					'hash'        => $guid,
 					'campaign_id' => $campaign_id,
@@ -556,7 +558,7 @@ class ES_Newsletters {
 					'finish_at'   => '',
 					'created_at'  => ig_get_current_date_time(),
 					'updated_at'  => ig_get_current_date_time(),
-					'meta'        => maybe_serialize( array( 'type' => 'newsletter' ) ),
+					'meta'        => maybe_serialize( $meta ),
 				);
 
 				$should_queue_emails = false;

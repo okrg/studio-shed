@@ -31,7 +31,89 @@ class ES_Common {
 
 
 	/**
+	 * Collect all emails.
+	 *
+	 * @return string $all_admin_email
+	 *
+	 * @since 5.3.18
+	 */
+	public static function get_admin_email() {
+		$admin_email     = get_option( 'ig_es_admin_emails', '' );
+		$all_admin_email = explode(',', $admin_email);
+
+		return $all_admin_email[0];
+	}
+
+
+	/**
+	 * Count sent emails
+	 *
+	 * @return int $total_emails_sent
+	 *
+	 * @since 5.3.18
+	 */
+	public static function count_sent_emails() {
+		$current_date = ig_es_get_current_date();
+		$current_hour = ig_es_get_current_hour();
+
+		// Get total emails sent in this hour
+		$email_sent_data = self::get_ig_option( 'email_sent_data', array() );
+
+		$total_emails_sent = 0;
+		if ( is_array( $email_sent_data ) && ! empty( $email_sent_data[ $current_date ] ) && ! empty( $email_sent_data[ $current_date ][ $current_hour ] ) ) {
+			$total_emails_sent = $email_sent_data[ $current_date ][ $current_hour ];
+		}
+
+		return $total_emails_sent;
+	}
+
+	/**
+	 * Process the email template and get variable fallbacks
+	 *
+	 * @param $template
+	 */
+	public static function get_template_fallbacks( $template ) {
+		preg_match_all( '/{{(.*?)}}/', $template, $matches );
+		$default_keywords = array();
+		if ( 1 < count( $matches ) ) {
+			$fallback_matches = $matches[1];
+			foreach ( $fallback_matches as $keyword ) {
+				if ( strstr( $keyword, '|' ) ) {
+					list( $variable_name, $variable_params ) = explode( '|', $keyword, 2 );
+				} else {
+					$variable_name   = $keyword;
+					$variable_params = '';
+				}
+				$variable_name = trim( $variable_name );
+				$variable      = new IG_ES_Workflow_Variable_Parser();
+				$parameters    = $variable->parse_parameters_from_string( trim( $variable_params ) );
+				if ( is_array( $parameters ) && ! empty( $parameters ) ) {
+					if ( isset( $parameters['fallback'] ) && ! empty( $parameters['fallback'] ) ) {
+						$replace_with_fallback = self::un_quote( $parameters['fallback'] );
+						$is_nested_variable    = strpos( $variable_name, '.' ); // Check if variable has dont(.) in its name
+						if ( $is_nested_variable ) {
+							$variable_parts = explode( '.', $variable_name );
+							$variable_type  = $variable_parts[0];
+							$variable_slug  = $variable_parts[1];
+							/**
+							 * For variables like subscribers.name, we need to pass the fallback data as nested array
+							 * $default_keywords['subscribers']['name'] = fallback_value
+							 **/ 
+							$default_keywords[ $variable_type ][ $variable_slug ] = $replace_with_fallback;
+						} else {
+							$default_keywords[ $variable_name ] = $replace_with_fallback;
+						}
+					}
+				}
+			}
+		}
+		return $default_keywords;
+	}
+
+
+	/**
 	 * Callback to replace keywords
+	 *
 	 * @param $keyword
 	 * @param $search_and_replace
 	 *
@@ -79,6 +161,7 @@ class ES_Common {
 
 	/**
 	 * Decode the html quotes
+	 *
 	 * @param $string
 	 *
 	 * @return string
@@ -105,7 +188,7 @@ class ES_Common {
 
 	/**
 	 * Remove quotes from string
-	 * 
+	 *
 	 * @param $string
 	 *
 	 * @return string
@@ -168,12 +251,15 @@ class ES_Common {
 		// total contacts
 		$total_contacts = ES()->contacts_db->count_active_contacts_by_list_id();
 		$content        = str_replace( '{{TOTAL-CONTACTS}}', $total_contacts, $content );
+		$content        = str_replace( '{{site.total_contacts}}', $total_contacts, $content );
 		// blog title
 		$blog_name = get_option( 'blogname' );
 		$content   = str_replace( '{{SITENAME}}', $blog_name, $content );
+		$content   = str_replace( '{{site.name}}', $blog_name, $content );
 		// site url
 		$site_url = home_url( '/' );
 		$content  = str_replace( '{{SITEURL}}', $site_url, $content );
+		$content  = str_replace( '{{site.url}}', $site_url, $content );
 
 		/*
 		TODO: Enable it once Pre header issue fix
@@ -474,7 +560,7 @@ class ES_Common {
 	 * @since 4.8.2
 	 */
 	public static function generate_random_string( $length = 6 ) {
-		$str        = 'abcdefghijklmnopqrstuvwxyz';
+		$str = 'abcdefghijklmnopqrstuvwxyz';
 
 		return substr( str_shuffle( $str ), 0, $length );
 	}
@@ -616,7 +702,7 @@ class ES_Common {
 		if ( ! is_array( $category_names ) ) {
 			$category_names = array();
 		}
-		$checked_selected = ! array_intersect( array( 'All', 'None' ), $category_names ) ? "checked='checked'" : '';
+		$checked_selected = in_array( 'selected_cat', $category_names, true ) ? "checked='checked'" : '';
 		$category_html    = '<tr><td style="padding-top:4px;padding-bottom:4px;padding-right:10px;" ><span class="block pr-4 text-sm font-normal text-gray-600 pb-1"><input class="es-note-category-parent form-radio text-indigo-600" type="radio" ' . esc_attr( $checked_selected ) . ' value="selected_cat"  name="campaign_data[es_note_cat_parent]">' . __(
 			'Select Categories',
 			'email-subscribers'
@@ -631,7 +717,7 @@ class ES_Common {
 
 			$category_html .= '<tr class="es-note-child-category"><td style="padding-top:4px;padding-bottom:4px;padding-right:10px;"><span class="block pr-4 text-sm font-normal text-gray-600 pb-1"><input type="checkbox" class="form-checkbox" ' . esc_attr( $checked ) . ' value="' . esc_attr( $category->term_id ) . '" id="es_note_cat[]" name="campaign_data[es_note_cat][]">' . esc_html( $category->name ) . '</td></tr>';
 		}
-		$checked_all = in_array( 'All', $category_names ) ? "checked='checked'" : '';
+		$checked_all = ! array_intersect( array( 'selected_cat', 'None' ), $category_names ) ? "checked='checked'" : '';
 		$all_html    = '<tr><td style="padding-top:4px;padding-bottom:4px;padding-right:10px;"><span class="block pr-4 text-sm font-normal text-gray-600 pb-1"><input type="radio" class="form-radio text-indigo-600 es-note-category-parent"  ' . esc_attr( $checked_all ) . ' value="{a}All{a}"  name="campaign_data[es_note_cat_parent]">' . __(
 			'All Categories (Also include all categories which will create later)',
 			'email-subscribers'
@@ -644,6 +730,53 @@ class ES_Common {
 		) . '</td></tr>';
 
 		return $none_html . $all_html . $category_html;
+	}
+
+	/**
+	 * Get list of default post types
+	 *
+	 * @since 5.3.17
+	 *
+	 * @return array $default_post_types List of default post types
+	 */
+	public static function get_default_post_types() {
+
+		$args = array(
+			'public'              => true,
+			'exclude_from_search' => false,
+			'_builtin'            => true,
+		);
+
+		$default_post_types = get_post_types( $args );
+
+		// remove attachment from the list
+		unset( $default_post_types['attachment'] );
+
+		// remove attachment from the list
+		unset( $default_post_types['post'] );
+
+		return $default_post_types;
+	}
+
+
+	/**
+	 * Get list of registered custom post types
+	 *
+	 * @since 5.4.0
+	 *
+	 * @return array $custom_post_types List of custom post types
+	 */
+	public static function get_custom_post_types() {
+
+		$args = array(
+			'public'              => true,
+			'exclude_from_search' => false,
+			'_builtin'            => false,
+		);
+
+		$custom_post_types = get_post_types( $args );
+
+		return $custom_post_types;
 	}
 
 	/**
@@ -682,33 +815,14 @@ class ES_Common {
 		return $custom_post_type_html;
 	}
 
-	/**
-	 * Get list of registered custom post types
-	 * 
-	 * @since 5.4.0
-	 * 
-	 * @return array $custom_post_types List of custom post types
-	 */
-	public static function get_custom_post_types() {
-
-		$args = array(
-			'public'              => true,
-			'exclude_from_search' => false,
-			'_builtin'            => false,
-		);
-
-		$custom_post_types = get_post_types( $args );
-
-		return $custom_post_types;
-	}
 
 	/**
 	 * Get categories for given post types
-	 * 
+	 *
 	 * @since 5.3.13
-	 * 
+	 *
 	 * @param array $post_type Post type
-	 * 
+	 *
 	 * @return array $post_type_categories List of categories for given post types
 	 */
 	public static function get_post_type_categories( $post_type ) {
@@ -719,7 +833,7 @@ class ES_Common {
 		}
 
 		$post_type_categories = array();
-		
+
 		foreach ( $taxonomies as $taxonomy_slug => $taxonomy ) {
 			$is_category_taxonomy = $taxonomy->hierarchical;
 			if ( ! $is_category_taxonomy ) {
@@ -737,7 +851,7 @@ class ES_Common {
 			if ( empty( $categories ) ) {
 				continue;
 			}
-			
+
 			$taxonomy_categories = array();
 			foreach ( $categories as $category ) {
 				$taxonomy_categories[ $category->term_id ] = $category->name;
@@ -1491,7 +1605,6 @@ class ES_Common {
 			'ig_es_subscription_success_message',
 			'ig_es_sync_wp_users',
 			'ig_es_unsubscribe_error_message',
-			'ig_es_enable_summary_automation',
 			'ig_es_run_cron_on',
 			'ig_es_run_cron_time',
 			'ig_es_unsubscribe_link',
@@ -1503,6 +1616,7 @@ class ES_Common {
 			'ig_es_welcome_email_content',
 			'ig_es_welcome_email_subject',
 			'ig_es_email_sent_data',
+			'ig_es_remote_gallery_items',
 		);
 
 	}
@@ -1546,27 +1660,46 @@ class ES_Common {
 	 */
 	public static function get_ig_es_meta_info() {
 
-		$total_contacts           = ES()->contacts_db->count();
-		$total_lists              = ES()->lists_db->count_lists();
-		$total_forms              = ES()->forms_db->count_forms();
-		$total_newsletters        = ES()->campaigns_db->get_total_newsletters();
-		$total_post_notifications = ES()->campaigns_db->get_total_post_notifications();
-		$total_sequences          = ES()->campaigns_db->get_total_sequences();
+		$plan 						= ES()->get_plan();
+		$total_contacts             = ES()->contacts_db->count();
+		$total_unconfirmed_contacts = ES()->lists_contacts_db->get_unconfirmed_contacts_count();
+		$total_lists                = ES()->lists_db->count_lists();
+		$total_forms                = ES()->forms_db->count_forms();
+		$total_newsletters          = ES()->campaigns_db->get_total_newsletters();
+		$total_post_notifications   = ES()->campaigns_db->get_total_post_notifications();
+		$total_post_digests 		= ( 'pro' === $plan ) ? ES()->campaigns_db->get_total_post_digests() : 0;
+		$total_sequences            = ( 'pro' === $plan ) ? ES()->campaigns_db->get_total_sequences() : 0;
+		$active_workflows_count     = ES()->workflows_db->get_active_workflows_count();
+		$remote_gallery_items   	= get_option('ig_es_imported_remote_gallery_template_ids', array());
+		$editor_count_by_type		= ES()->campaigns_db->get_count_by_editor_type();
+		$workflows_count_by_type	= ES()->workflows_db->get_workflows_count_by_triggername();
+		$mailer_name 				= ES()->mailer->get_current_mailer_name();
+		$campaign_sending_frequency = ES_DB_Mailing_Queue::get_campaign_sending_frequency(10);
+
 
 		return array(
 			'version'                  => ES_PLUGIN_VERSION,
 			'installed_on'             => get_option( 'ig_es_installed_on', '' ),
 			'is_premium'               => ES()->is_premium() ? 'yes' : 'no',
-			'plan'                     => ES()->get_plan(),
+			'plan'                     => $plan,
 			'is_trial'                 => ES()->trial->is_trial() ? 'yes' : 'no',
 			'is_trial_expired'         => ES()->trial->is_trial_expired() ? 'yes' : 'no',
 			'trial_start_at'           => ES()->trial->get_trial_start_date(),
 			'total_contacts'           => $total_contacts,
+			'unconfirmed_contacts'	   => $total_unconfirmed_contacts,		// Added in 5.5.7
 			'total_lists'              => $total_lists,
 			'total_forms'              => $total_forms,
 			'total_newsletters'        => $total_newsletters,
 			'total_post_notifications' => $total_post_notifications,
+			'total_post_digests'	   => $total_post_digests,				// Added in 5.5.7
 			'total_sequences'          => $total_sequences,
+			'editor_count_by_type'	   => $editor_count_by_type, 			// Added in 5.5.7
+			'active_workflows_count'   => $active_workflows_count, 			// Added in 5.5.7
+			'campaign_sending_frequency' => $campaign_sending_frequency,	// Added in 5.5.7
+			'workflows_count_by_type'  => $workflows_count_by_type, 		// Added in 5.5.7
+			'mailer'				   => $mailer_name,						// Added in 5.5.7
+			'remote_gallery_items'	   => $remote_gallery_items, 			// Added in 5.5.7
+			'is_rest_api_used'	       => self::is_rest_api_used(),		 	// Added in 5.5.7
 			'settings'                 => self::get_all_settings(),
 		);
 	}
@@ -1698,6 +1831,7 @@ class ES_Common {
 				'custom_fields',
 				'drag_drop_editor',
 				'gallery',
+				'template',
 			);
 
 			return $sub_menus;
@@ -1761,24 +1895,27 @@ class ES_Common {
 
 		if ( $upsell ) {
 
-			$articles_upsell = array(
-				array(
-					'title'       => __( 'Email Subscribers PRO', 'email-subscribers' ),
-					'link'        => 'https://www.icegram.com/er6r',
-					'label'       => __( 'Lifetime', 'email-subscribers' ),
-					'label_class' => 'bg-green-100 text-green-800',
-				),
-				array(
-					'title'       => __( '<b>Email Subscribers Secret Club</b>', 'email-subscribers' ),
-					'link'        => 'https://www.facebook.com/groups/2298909487017349/',
-					'label'       => __( 'Join Now', 'email-subscribers' ),
-					'label_class' => 'bg-green-100 text-green-800',
-				),
+			$pricing_page_url = admin_url( 'admin.php?page=es_pricing' );
+
+			$articles_upsell[] = array(
+				'title'       => __( '<b>Icegram Express</b>) Secret Club', 'email-subscribers' ),
+				'link'        => 'https://www.facebook.com/groups/2298909487017349/',
+				'label'       => __( 'Join Now', 'email-subscribers' ),
+				'label_class' => 'bg-green-100 text-green-800',
 			);
+
+			if ( ! ES()->is_premium() ) {
+				$articles_upsell[] = array(
+					'title'       => __( 'Icegram Express MAX', 'email-subscribers' ),
+					'link'        => $pricing_page_url,
+					'label'       => __( 'MAX', 'email-subscribers' ),
+					'label_class' => 'bg-green-100 text-green-800',
+				);
+			}
 		}
 
 		$articles = array_merge( $blog_articles, $articles_upsell );
-
+		
 		return $articles;
 	}
 
@@ -1860,6 +1997,54 @@ class ES_Common {
 		$convert_time_format = get_option( 'time_format' );
 
 		return date_i18n( "$convert_date_format $convert_time_format", strtotime( $date ) );
+	}
+
+	/**
+	 * Get next local midnight time
+	 * 
+	 * @since 5.5.2
+	 * 
+	 * @return string $local_next_midnight_time next local midnight time
+	 */
+	public static function get_next_local_midnight_time() {
+		$next_day_utc_time   = time() + DAY_IN_SECONDS;
+		$offset_in_seconds   = self::get_timezone_offset_in_seconds();
+		$next_day_local_time = $next_day_utc_time + $offset_in_seconds;
+		$next_day_local_date = date_i18n( 'Y-m-d H:i:s', $next_day_local_time );
+	
+		$local_date_obj = new DateTime( $next_day_local_date );
+		$local_date_obj->setTime( 0, 0, 0 );
+	
+		$local_next_midnight_time = $local_date_obj->getTimestamp();
+
+		return $local_next_midnight_time;
+	}
+
+	/**
+	 * Convert UTC time for local midnight time
+	 * 
+	 * @since 5.5.2
+	 * 
+	 * @return string $utc_time_for_local_midnight UTC time local midnight time
+	 */
+	public static function get_utc_time_for_local_midnight_time() {
+		$offset_in_seconds           = self::get_timezone_offset_in_seconds();
+		$next_local_midnight_time    = self::get_next_local_midnight_time();
+		$utc_time_for_local_midnight = $next_local_midnight_time - $offset_in_seconds;
+		return $utc_time_for_local_midnight;
+	}
+
+	/**
+	 * Get site's timezone offset in seconds
+	 * 
+	 * @since 5.5.2
+	 * 
+	 * @return int $offset_in_seconds
+	 */
+	public static function get_timezone_offset_in_seconds() {
+		$offset            = get_option( 'gmt_offset' );
+		$offset_in_seconds = $offset * HOUR_IN_SECONDS;
+		return $offset_in_seconds;
 	}
 
 	/**
@@ -2300,7 +2485,7 @@ class ES_Common {
 				<svg class="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
 				<span class="break-words invisible h-auto lg:w-48 xl:w-64 tracking-wide absolute z-70 tooltip-text bg-black text-gray-300 text-xs rounded p-3 py-2">
 					' . $tooltip_text . '
-					<svg class="absolute mt-2 text-black text-opacity-100 h-2.5 left-0" x="0px" y="0px" viewBox="0 0 255 255" xml:space="preserve">
+					<svg class="tooltip-arrow absolute mt-2 text-black text-opacity-100 h-2.5 left-0" x="0px" y="0px" viewBox="0 0 255 255" xml:space="preserve">
 						<polygon class="fill-current" points="0,0 127.5,127.5 255,0"/>
 					</svg>
 				</span>
@@ -2451,7 +2636,7 @@ class ES_Common {
 	 *
 	 * @param $selected
 	 * @param $default_label
-	 * 
+	 *
 	 * @return string
 	 *
 	 * @since 4.8.4
@@ -2498,12 +2683,12 @@ class ES_Common {
 
 		$slug_name = explode( '_', $slug );
 		unset( $slug_name[0] );
-		unset( $slug_name[1] );	
-		return implode( '_', $slug_name	 );	
+		unset( $slug_name[1] );
+		return implode( '_', $slug_name	 );
 	}
 
 	/**
-	 * Get column datatype for custom field in contacts table 
+	 * Get column datatype for custom field in contacts table
 	 *
 	 * @param $selected
 	 *
@@ -2524,7 +2709,7 @@ class ES_Common {
 			default:
 				return 'longtext';
 		}
-		
+
 	}
 
 	/**
@@ -2532,7 +2717,7 @@ class ES_Common {
 	 *
 	 * @param $selected
 	 * @param $default_label
-	 * 
+	 *
 	 * @return string
 	 *
 	 * @since 5.0.5
@@ -2554,12 +2739,12 @@ class ES_Common {
 
 			$month_name_value = $record['MONTHNAME(`start_at`)'];
 			$year_value 	  = $record['YEAR(`start_at`)'];
-			
+
 			$field_key   = $year_value . gmdate( 'm', strtotime($month_name_value));
 			$field_value = $month_name_value . ' ' . $year_value;
-			
+
 			$field_options[$field_key] = $field_value;
-			
+
 		}
 
 		foreach ($field_options as $key => $option_value) {
@@ -2572,7 +2757,7 @@ class ES_Common {
 
 		}
 
-		return $dropdown; 
+		return $dropdown;
 	}
 
 	public static function get_in_between_content( $content, $start, $end ) {
@@ -2586,4 +2771,228 @@ class ES_Common {
 		return '';
 	}
 
+	public static function get_popular_domains() {
+		/** Domains list from https://github.com/mailcheck/mailcheck/wiki/List-of-Popular-Domains */
+		$popular_domains = array(
+			/* Default domains included */
+			'aol.com', 'att.net', 'comcast.net', 'facebook.com', 'gmail.com', 'gmx.com', 'googlemail.com',
+			'google.com', 'hotmail.com', 'hotmail.co.uk', 'mac.com', 'me.com', 'mail.com', 'msn.com',
+			'live.com', 'sbcglobal.net', 'verizon.net', 'yahoo.com', 'yahoo.co.uk',
+
+			/* Other global domains */
+			'email.com', 'fastmail.fm', 'games.com' /* AOL */, 'gmx.net', 'hush.com', 'hushmail.com', 'icloud.com',
+			'iname.com', 'inbox.com', 'lavabit.com', 'love.com' /* AOL */, 'outlook.com', 'pobox.com', 'protonmail.ch', 'protonmail.com', 'tutanota.de', 'tutanota.com', 'tutamail.com', 'tuta.io',
+		   'keemail.me', 'rocketmail.com' /* Yahoo */, 'safe-mail.net', 'wow.com' /* AOL */, 'ygm.com' /* AOL */,
+			'ymail.com' /* Yahoo */, 'zoho.com', 'yandex.com',
+
+			/* United States ISP domains */
+			'bellsouth.net', 'charter.net', 'cox.net', 'earthlink.net', 'juno.com',
+
+			/* British ISP domains */
+			'btinternet.com', 'virginmedia.com', 'blueyonder.co.uk', 'live.co.uk',
+			'ntlworld.com', 'orange.net', 'sky.com', 'talktalk.co.uk', 'tiscali.co.uk',
+			'virgin.net', 'bt.com',
+
+			/* Domains used in Asia */
+			'sina.com', 'sina.cn', 'qq.com', 'naver.com', 'hanmail.net', 'daum.net', 'nate.com', 'yahoo.co.jp', 'yahoo.co.kr', 'yahoo.co.id', 'yahoo.co.in', 'yahoo.com.sg', 'yahoo.com.ph', '163.com', 'yeah.net', '126.com', '21cn.com', 'aliyun.com', 'foxmail.com',
+
+			/* French ISP domains */
+			'hotmail.fr', 'live.fr', 'laposte.net', 'yahoo.fr', 'wanadoo.fr', 'orange.fr', 'gmx.fr', 'sfr.fr', 'neuf.fr', 'free.fr',
+
+			/* German ISP domains */
+			'gmx.de', 'hotmail.de', 'live.de', 'online.de', 't-online.de' /* T-Mobile */, 'web.de', 'yahoo.de',
+
+			/* Italian ISP domains */
+			'libero.it', 'virgilio.it', 'hotmail.it', 'aol.it', 'tiscali.it', 'alice.it', 'live.it', 'yahoo.it', 'email.it', 'tin.it', 'poste.it', 'teletu.it',
+
+			/* Russian ISP domains */
+			'bk.ru', 'inbox.ru', 'list.ru', 'mail.ru', 'rambler.ru', 'yandex.by', 'yandex.com', 'yandex.kz', 'yandex.ru', 'yandex.ua', 'ya.ru',
+
+			/* Belgian ISP domains */
+			'hotmail.be', 'live.be', 'skynet.be', 'voo.be', 'tvcablenet.be', 'telenet.be',
+
+			/* Argentinian ISP domains */
+			'hotmail.com.ar', 'live.com.ar', 'yahoo.com.ar', 'fibertel.com.ar', 'speedy.com.ar', 'arnet.com.ar',
+
+			/* Domains used in Mexico */
+			'yahoo.com.mx', 'live.com.mx', 'hotmail.es', 'hotmail.com.mx', 'prodigy.net.mx',
+
+			/* Domains used in Canada */
+			'yahoo.ca', 'hotmail.ca', 'bell.net', 'shaw.ca', 'sympatico.ca', 'rogers.com',
+
+			/* Domains used in Brazil */
+			'yahoo.com.br', 'hotmail.com.br', 'outlook.com.br', 'uol.com.br', 'bol.com.br', 'terra.com.br', 'ig.com.br', 'r7.com', 'zipmail.com.br', 'globo.com', 'globomail.com', 'oi.com.br'
+		);
+
+		return $popular_domains;
+	}
+
+	public static function is_popular_domain( $email ) {
+
+		$is_email = is_email( $email );
+		if ( ! $is_email ) {
+			return false;
+		}
+
+		$email_parts = explode( '@', $email );
+		$domain 	 = end( $email_parts );
+		$$domain     = strtolower( $domain );
+
+		$popular_domains = self::get_popular_domains();
+
+		return in_array( $domain, $popular_domains, true );
+	}
+
+	public static function get_domain_from_url( $url ) {
+		$pieces = parse_url($url);
+		$domain = isset($pieces['host']) ? $pieces['host'] : $pieces['path'];
+		return $domain;
+	}
+	
+	public static function get_engagement_score_html( $engagement_score ) {
+		if ( is_numeric( $engagement_score ) ) {
+			$score_class = 'bad';
+
+			if ( $engagement_score > 0 ) {
+				$score_text = number_format_i18n( $engagement_score, 1 );
+			} else {
+				$score_text = 0;
+			}
+
+			if ( $engagement_score >= 4 ) {
+				$score_class = 'excellent';
+			} elseif ( $engagement_score >= 3 ) {
+				$score_class = 'good';
+			} elseif ( $engagement_score >= 2 ) {
+				$score_class = 'low';
+			} elseif ( $engagement_score >= 1 ) {
+				$score_class = 'very-low';
+			}
+		}
+		$engagement_score_html = ( is_numeric( $engagement_score ) ? '<div class="es-engagement-score ' . $score_class . '">' . $score_text . '</div>' : '-' );
+
+		return $engagement_score_html;
+	}
+
+	public static function get_email_verify_mailbox_user() {
+		$username = get_option( 'ig_es_test_mailbox_user', '' );
+		if ( !empty( $username) ) {
+			$username = 'spam_check_' . $username;
+		}
+		return( $username );
+	}
+
+	public static function get_ig_es_mailbox_domain() {
+		$domain = 'box.icegram.com';
+		return( $domain );
+	}
+
+	public static function get_email_verify_test_email() {
+		$username = self::get_email_verify_mailbox_user();
+		$domain   = self::get_ig_es_mailbox_domain();
+
+		if ( !empty( $username) ) {
+			$email = $username . '@' . $domain;
+			return( $email );
+		}
+		return '';
+	}
+
+	public static function download_image_from_url( $image_url ) {
+
+		$attachment_url = '';
+		$upload_dir     = wp_upload_dir();
+		$image_data     = file_get_contents( $image_url );
+		$filename       = basename( $image_url );
+		if ( wp_mkdir_p( $upload_dir['path'] ) ) {
+			$file = $upload_dir['path'] . '/' . $filename;
+		} else {
+			$file = $upload_dir['basedir'] . '/' . $filename;
+		}
+
+		file_put_contents( $file, $image_data );
+
+		$wp_filetype = wp_check_filetype( $filename, null );
+		$attachment  = array(
+			'post_mime_type' => $wp_filetype['type'],
+			'post_title'     => sanitize_file_name( $filename ),
+			'post_content'   => '',
+			'post_status'    => 'inherit',
+		);
+		$attach_id   = wp_insert_attachment( $attachment, $file );
+		if ( ! empty( $attach_id ) ) {
+			$attachment_url = wp_get_attachment_url( $attach_id );
+		}
+		return $attachment_url;
+	}
+
+	/**
+	 * Get list status(subscribed or unconfirmed) based on optin type(single optin or double optin)
+	 * 
+	 * @since 5.4.18
+	 * 
+	 * @return string
+	 */
+	public static function get_list_status_from_optin_type() {
+		$es_optin_type = get_option( 'ig_es_optin_type' );
+			
+		if ( in_array( $es_optin_type, array( 'double_opt_in', 'double_optin' ), true ) ) { 
+			$status = 'unconfirmed';
+		} else {
+			$status = 'subscribed';
+		}
+
+		return $status;
+	}
+
+	/**
+	 * Check if WordPress has REST API support or not
+	 * 
+	 * @since 5.4.18
+	 * 
+	 * @return bool
+	 */
+	public static function is_rest_api_supported() {
+		global $wp_version;
+
+		if ( version_compare( $wp_version, '4.4.0', '<' ) ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Check if WordPress User is using Rest API feature
+	 * 
+	 * @since 5.5.7
+	 * 
+	 * @return string yes|no
+	 */
+	public static function is_rest_api_used() {
+		
+		// Check if REST API settings option is enabled
+		$is_api_enabled = get_option('ig_es_allow_api', 'no');
+
+		if ( 'no' === $is_api_enabled ) {
+			return 'no';
+		}
+
+		// Ensure there is atleast one users for whom REST API keys are generated
+		$rest_api_users_ids = get_users( array(
+			'meta_key' => 'ig_es_rest_api_keys',
+			'fields'   => 'ID'
+		) );
+
+		if ( empty( $rest_api_users_ids ) ) {
+			return 'no';
+		}
+		
+		return 'yes';
+
+	}
+
+	public static function is_positive_number( $number ) {
+		return is_numeric( $number ) && $number > 0;
+	}
 }

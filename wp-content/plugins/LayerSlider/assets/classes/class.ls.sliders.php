@@ -115,8 +115,9 @@ class LS_Sliders {
 			// In addition of using esc_sql(), we're performing some
 			// further tests trying to filter out user data that might
 			// not be handled properly prior to this function call.
-			$columns = ['id', 'author', 'name', 'slug', 'data', 'date_c', 'date_m', 'flag_hidden', 'flag_deleted', 'schedule_start', 'schedule_end'];
+			$columns = ['id', 'group_id', 'author', 'name', 'slug', 'data', 'date_c', 'date_m', 'schedule_start', 'schedule_end', 'flag_dirty',  'flag_hidden', 'flag_deleted', 'flag_popup', 'flag_group'];
 
+			$args['columns'] 	= ( $args['columns'] === '*' ) ? implode(', ', $columns) : $args['columns'];
 			$args['orderby'] 	= in_array($args['orderby'], $columns) ? $args['orderby'] : 'date_c';
 			$args['order'] 		= ($args['order'] === 'DESC') ? 'DESC' : 'ASC';
 			$args['limit'] 		= (int)  $args['limit'];
@@ -126,6 +127,10 @@ class LS_Sliders {
 			$args['drafts'] 	= (bool) $args['drafts'];
 
 
+
+			if( ! $args['data'] ) {
+				$args['columns'] = str_replace(', data', '', $args['columns'] );
+			}
 
 
 			$exclude = [];

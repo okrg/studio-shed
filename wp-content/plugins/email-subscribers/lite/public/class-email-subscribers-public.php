@@ -79,7 +79,7 @@ class Email_Subscribers_Public {
 		wp_enqueue_style( $this->email_subscribers, plugin_dir_url( __FILE__ ) . 'css/email-subscribers-public.css', array(), $this->version, 'all' );
 		wp_register_style( 'ig-es-popup-frontend', plugin_dir_url( __FILE__ ) . 'css/frontend.css', array(), $this->version, 'all' );
 		wp_register_style( 'ig-es-popup-css', plugin_dir_url( __FILE__ ) . 'css/popup.min.css', array(), $this->version, 'all' );
-		
+
 	}
 
 	/**
@@ -105,12 +105,12 @@ class Email_Subscribers_Public {
 		wp_enqueue_script( $this->email_subscribers, plugin_dir_url( __FILE__ ) . 'js/email-subscribers-public.js', array( 'jquery' ), $this->version, true );
 		wp_register_script( 'ig-es-pre-data', plugin_dir_url( __FILE__ ) . 'js/icegram_messages_data.js', array(), $this->version, false );
 		wp_register_script( 'ig-es-popup-js', plugin_dir_url( __FILE__ ) . 'js/icegram.js', array( 'jquery', 'ig-es-pre-data' ), $this->version, false );
-				
+
 		$es_data = array(
 
 			'messages' => array(
 				'es_empty_email_notice'           => __( 'Please enter email address', 'email-subscribers' ),
-				'es_rate_limit_notice'            => __( 'You need to wait for sometime before subscribing again', 'email-subscribers' ),
+				'es_rate_limit_notice'            => __( 'You need to wait for some time before subscribing again', 'email-subscribers' ),
 				'es_single_optin_success_message' => __( 'Successfully Subscribed.', 'email-subscribers' ),
 				// 'es_double_optin_success_message' => __( 'Your subscription was successful! Kindly check your mailbox and confirm your subscription. If you don\'t see the email within a few minutes, check the spam/junk folder.', 'email-subscribers' ),
 				'es_email_exists_notice'          => __( 'Email Address already exists!', 'email-subscribers' ),
@@ -184,7 +184,8 @@ class Email_Subscribers_Public {
 								'last_name'  => ! empty( $contact[ $email ] ) ? $contact[ $email ]['last_name'] : '',
 								'email'      => $email,
 								'contact_id' => $db_id,
-								'guid'       => $guid
+								'guid'       => $guid,
+								'list_ids'   => $list_ids,
 							);
 
 							$lists     = ES()->lists_db->get_all_lists_name_by_contact( $db_id );
@@ -193,14 +194,14 @@ class Email_Subscribers_Public {
 							$data['list_name'] = $list_name;
 
 							do_action( 'ig_es_contact_subscribed', $data );
-							
+
 						} elseif ( 'unsubscribe' === $option ) {
 							$unsubscribed = 1;
 
 							$submitted         = '';
 							$unsubscribe_lists = array();
 							$list_selected     = ig_es_get_request_data( 'list_selected' );
-							
+
 							// Check if nonce value is not empty.
 							if ( ! empty( $_POST['ig_es_unsubscribe_nonce'] ) ) {
 								// Verify nonce value.
@@ -218,7 +219,7 @@ class Email_Subscribers_Public {
 							}
 
 							$message = get_option( 'ig_es_unsubscribe_success_message' );
-							
+
 							if ( ES()->is_starter() && empty( $submitted ) && empty( $unsubscribe_lists ) && ! $list_selected ) {
 								do_action( 'ig_es_update_subscriber', $db_id );
 							}
@@ -236,8 +237,12 @@ class Email_Subscribers_Public {
 								$unsubscribe_lists = ES()->lists_contacts_db->get_list_ids_by_contact( $db_id, 'subscribed' );
 							}
 
-							//update list status
-							ES()->contacts_db->edit_list_contact_status( array( $db_id ), $unsubscribe_lists, 'unsubscribed' );
+							// Confirm if there are lists to unsubscribe before we unsubscribe the contact.
+							if ( ! empty( $unsubscribe_lists ) ) {
+								//update list status
+								ES()->contacts_db->edit_list_contact_status( array( $db_id ), $unsubscribe_lists, 'unsubscribed' );
+							}
+
 							//check if all list have same status
 							$list_ids = ES()->lists_contacts_db->get_list_ids_by_contact( $db_id, 'subscribed' );
 							if ( count( $list_ids ) == 0 ) {
@@ -288,8 +293,9 @@ class Email_Subscribers_Public {
 						// Track Link Click
 						do_action( 'ig_es_message_click', $link_id, $contact_id, $message_id, $campaign_id );
 
+						$redirect_link = htmlspecialchars_decode( $link['link'] );
 						// Now, redirect to target
-						wp_redirect( $link['link'] );
+						wp_redirect( $redirect_link );
 						exit;
 					}
 				}
@@ -303,7 +309,10 @@ class Email_Subscribers_Public {
 	public function add_contact( $contact_data, $list_id ) {
 
 		$email = $contact_data['email'];
-		
+
+
+		$user_list_status = isset( $contact_data['user_list_status'] ) ? $contact_data['user_list_status'] : 'subscribed' ;
+
 		$default_data = array(
 			'status'     => 'verified',
 			'hash'       => ES_Common::generate_guid(),
@@ -333,7 +342,7 @@ class Email_Subscribers_Public {
 		$list_id           = ! empty( $list_id ) ? $list_id : 1;
 		$list_contact_data = array(
 			'contact_id'    => $contact_id,
-			'status'        => 'subscribed',
+			'status'        => $user_list_status,
 			'subscribed_at' => ig_get_current_date_time(),
 			'optin_type'    => $optin_type,
 			'subscribed_ip' => '',
@@ -481,18 +490,18 @@ class Email_Subscribers_Public {
 	}
 
 	/**
-	 * Add Email Subscribers template types
-	 * 
+	 * Add Icegram Express template types
+	 *
 	 * @param array $template_type Template types
-	 * 
+	 *
 	 * @return array $template_type Template types
-	 * 
+	 *
 	 * @since 5.0.0
 	 */
 	public function add_template_type( $template_type = array() ) {
 
 		$template_type['newsletter'] = __( 'Broadcast', 'email-subscribers' );
-		
+
 		// Start-IG-Code.
 		$template_type['post_notification'] = __( 'Post Notification', 'email-subscribers' );
 		// End-IG-Code.

@@ -183,7 +183,6 @@ class ES_Reports_Table extends ES_List_Table {
 	 */
 	public function column_default( $item, $column_name ) {
 		global $wpdb;
-		$item = apply_filters( 'es_add_additional_report_column_data', $item, $column_name );
 		switch ( $column_name ) {
 			case 'start_at':
 			case 'finish_at':
@@ -208,6 +207,11 @@ class ES_Reports_Table extends ES_List_Table {
 			case 'total_sent':
 				$total_emails_sent = ES()->actions_db->get_count_based_on_id_type( $item['campaign_id'], $item['id'], IG_MESSAGE_SENT );
 				return number_format_i18n( $total_emails_sent );
+			case 'total_opened':
+				$total_emails_sent   = ES()->actions_db->get_count_based_on_id_type( $item['campaign_id'], $item['id'], IG_MESSAGE_SENT );
+				$total_emails_opened = ES()->actions_db->get_count_based_on_id_type( $item['campaign_id'], $item['id'], IG_MESSAGE_OPEN );
+				$open_rate           = ! empty( $total_emails_sent) ? number_format_i18n( ( ( $total_emails_opened * 100 ) / $total_emails_sent ), 2 ) : 0;
+				return number_format_i18n( $total_emails_opened ) . esc_html( ' (' . $open_rate . '%)' );
 			default:
 				$column_data = isset( $item[ $column_name ] ) ? $item[ $column_name ] : '-';
 
@@ -251,9 +255,17 @@ class ES_Reports_Table extends ES_List_Table {
 			</svg>',
 					__( 'Scheduled', 'email-subscribers' )
 				);
+			} elseif ( IG_ES_MAILING_QUEUE_STATUS_FAILED === $report_status ) {
+				$status_html = sprintf(
+					'<svg class="flex-shrink-0 h-6 w-6 inline text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+					<title>%s</title>
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>',
+					__( 'Failed', 'email-subscribers' )
+				);
 			}
+
 			$actions = array();
-			if ( in_array( $report_status, array( IG_ES_MAILING_QUEUE_STATUS_QUEUED, IG_ES_MAILING_QUEUE_STATUS_SENDING ), true ) ) {
+			if ( in_array( $report_status, array( IG_ES_MAILING_QUEUE_STATUS_QUEUED, IG_ES_MAILING_QUEUE_STATUS_SENDING, IG_ES_MAILING_QUEUE_STATUS_FAILED ), true ) ) {
 				$actions['send_now'] = $this->prepare_send_now_url( $item );
 			}
 
@@ -311,14 +323,15 @@ class ES_Reports_Table extends ES_List_Table {
 	 */
 	public function get_columns() {
 		$columns = array(
-			'cb'         => '<input type="checkbox" />',
-			'subject'    => __( 'Subject', 'email-subscribers' ),
-			'type'       => __( 'Type', 'email-subscribers' ),
-			'status'     => __( 'Status', 'email-subscribers' ),
-			'start_at'   => __( 'Start Date', 'email-subscribers' ),
-			'finish_at'  => __( 'End Date', 'email-subscribers' ),
-			'count'      => __( 'Total contacts', 'email-subscribers' ),
-			'total_sent' => __( 'Total sent', 'email-subscribers' ),
+			'cb'         	 => '<input type="checkbox" />',
+			'subject'    	 => __( 'Subject', 'email-subscribers' ),
+			'type'       	 => __( 'Type', 'email-subscribers' ),
+			'status'     	 => __( 'Status', 'email-subscribers' ),
+			'start_at'   	 => __( 'Start Date', 'email-subscribers' ),
+			'finish_at'  	 => __( 'End Date', 'email-subscribers' ),
+			'count'      	 => __( 'Total contacts', 'email-subscribers' ),
+			'total_sent' 	 => __( 'Total sent', 'email-subscribers' ),
+			'total_opened'	 => __( 'Total Opened', 'email-subscribers' ),
 		);
 
 		return $columns;
@@ -457,14 +470,14 @@ class ES_Reports_Table extends ES_List_Table {
 
 			if ( preg_match('/^[0-9]{6}$/', $filter_reports_by_month_year) ) {
 
-				$year_val 	= substr($filter_reports_by_month_year, 0, 4);
-				$month_val 	= substr($filter_reports_by_month_year, 4 );
+				$year_val  = substr($filter_reports_by_month_year, 0, 4);
+				$month_val = substr($filter_reports_by_month_year, 4 );
 
 				$date_string = $year_val . '-' . $month_val;
-				$date = new DateTime($date_string);
+				$date        = new DateTime($date_string);
 
 				$start_date = $date->format('Y-m-01 H:i:s') ;
-				$end_date = $date->format('Y-m-t H:i:s');
+				$end_date   = $date->format('Y-m-t H:i:s');
 
 				array_push( $where_columns, 'start_at >= %s', 'start_at <= %s' );
 				array_push($where_args, $start_date, $end_date);

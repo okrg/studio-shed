@@ -204,6 +204,16 @@
     height: 1em !important;
 }
 
+.ig_form_container .ig_form_els.ig_form_el_radio input[type="checkbox"] {
+    display: inline-block !important;
+    margin: 0 0.3em;
+    height: 1em !important;
+}
+.ig_form_container .ig_form_els.ig_form_el_radio input[type="checkbox"]::before {
+    margin: -0.85rem 0 0 -0.65em;
+}
+
+
 .ig_form_bottom .ig_form_container.layout_bottom .ig_quater .ig_form_els.ig_form_el_radio,
 .ig_form_inline .ig_form_container.layout_inline .ig_quater .ig_form_els.ig_form_el_radio{
     display: inline;

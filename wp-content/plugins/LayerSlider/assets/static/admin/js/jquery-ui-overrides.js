@@ -7,6 +7,15 @@ jQuery(document).ready(function($){
 			data = $el.data(),
 			_left, _top, recoup;
 
+		// Exclude other jQuery UI dragables, which does not need
+		// correction caused by editor zoom.
+		if( $el.data('exclude-zoom-correction') ) {
+			return {
+				left: 0,
+				top: 0
+			}
+		}
+
 		if( !data.uiDraggable || data.uiDraggable.options.noRecoup ){
 
 			recoup = {
@@ -201,7 +210,7 @@ jQuery(document).ready(function($){
 					}
 				}
 
-				if ( !inst.snapElements[ i ].snapping && ( ts || bs || ls || rs || cc || mm || first ) ) {
+				if ( !inst.snapElements[ i ].snapping && ( ts || bs || ls || rs || cc || mm || first ) ) {
 					if ( inst.options.snap.snap ) {
 						inst.options.snap.snap.call(
 							inst.element,

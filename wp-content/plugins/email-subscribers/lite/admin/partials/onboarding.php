@@ -54,7 +54,7 @@
 						);
 						?>
 					  </p>
-				   
+
 					  <div class="space-y-1">
 						<h3 class="text-base font-medium text-gray-900"><?php echo esc_html__( 'Essentials:', 'email-subscribers' ); ?></h3>
 
@@ -99,8 +99,8 @@
 						  class="my-2 space-y-2 sm:my-0 sm:space-y-0 sm:space-x-4 sm:flex sm:items-center"
 						>
 						  <div class="w-full sm:w-1/2">
-							<input type="email" 
-							  name="es_test_email[]" 
+							<input type="email"
+							  name="es_test_email[]"
 							  required
 							  class="es_email es_onboard_email block w-full text-sm transition duration-150 ease-in-out rounded-md shadow-sm form-input sm:leading-5"
 							  placeholder="name@domain.com"
@@ -115,7 +115,7 @@
 						  </div>
 						</div>
 					  </div>
-				  
+
 					  <div class="space-y-1 leading-5">
 						<h3 class="text-base font-medium text-gray-900 -mb-0.5"><?php echo esc_html__( 'Your preferences:', 'email-subscribers' ); ?></h3>
 						<!-- Start-IG-Code -->
@@ -133,7 +133,7 @@
 									<label for="es_allow_tracking" class="text-sm">
 									<?php
 										/* translators: %s. Plugin name. */
-										echo sprintf( esc_html__( 'Help us to improve %s by opting in to share non-sensitive plugin usage data. No personal data is tracked or stored.', 'email-subscribers' ), '<strong>Email Subscribers</strong>' );
+										echo sprintf( esc_html__( 'Help us to improve %s by opting in to share non-sensitive plugin usage data. No personal data is tracked or stored.', 'email-subscribers' ), '<strong>Icegram Express</strong>' );
 									?>
 									</label>
 								</div>
@@ -265,7 +265,7 @@
 							?>
 						  </p>
 						</li>
-						
+
 						<li id="ig-es-onboard-create_contacts_and_add_to_list" class="flex items-start space-x-3 group">
 						  <div
 							class="relative pt-1 flex items-center justify-center flex-shrink-0 w-5 h-5"
@@ -276,7 +276,7 @@
 						  </div>
 						  <p class="text-sm">
 							<?php echo esc_html__( 'Subscribing you and ', 'email-subscribers' ); ?>
-							<span id="es_onboarding_emails_list"></span> 
+							<span id="es_onboarding_emails_list"></span>
 							<?php echo esc_html__( ' to these lists', 'email-subscribers' ); ?>
 						  </p>
 						</li>
@@ -528,9 +528,9 @@
 								</div>
 							  </div>
 
-							  
+
 							  <!-- End-IG-Code -->
-							  
+
 							  <div class="space-y-1">
 								<h3 class="text-base font-medium text-gray-900 pt-2">
 									<?php echo esc_html__( 'Recommended next steps:', 'email-subscribers' ); ?>
@@ -547,7 +547,7 @@
 									  target="_blank"
 									  ><?php echo esc_html__( 'documentation', 'email-subscribers' ); ?></a
 									>
-									<?php echo esc_html__( 'if you need any help', 'email-subscribers' ); ?>	
+									<?php echo esc_html__( 'if you need any help', 'email-subscribers' ); ?>
 								  </li>
 								  <!-- End-IG-Code -->
 								</ul>
@@ -572,7 +572,7 @@
 			   </div>
 			</section>
 		  </div>
-	
+
 		<div class="sp es-popup-message" style="display:none">
 			<div class="fixed flex inset-0 overflow-x-hidden overflow-y-auto z-50 flex justify-center w-full h-full" style="background-color: rgba(0,0,0,.5);">
 				<section class="absolute flex justify-center mx-auto md:mx-auto lg:mx-auto my-12 sm:my-12 lg:my-24">
@@ -613,7 +613,7 @@
 									  </div>
 									</div>
 									<p class="additional-message text-sm">
-									 
+
 									</p>
 									<p class="error-message font-medium text-sm">
 										<?php

@@ -5,6 +5,9 @@ defined( 'LS_ROOT_FILE' ) || exit;
 
 $slider = [];
 
+$sliderVersion 	= ! empty( $slides['properties']['sliderVersion'] ) ? $slides['properties']['sliderVersion'] : '1.0.0';
+$preVersion725 	= version_compare( $sliderVersion, '7.2.5', '<' );
+
 // Filter to override the defaults
 if(has_filter('layerslider_override_defaults')) {
 	$newDefaults = apply_filters('layerslider_override_defaults', $lsDefaults);
@@ -91,8 +94,18 @@ if( empty( $slides['properties']['props']['height'] ) ) { $slides['properties'][
 if(isset($slides['layers']) && is_array($slides['layers'])) {
 	foreach($slides['layers'] as $slidekey => $slide) {
 
-		// 6.6.1: Fix PHP undef notice
+		// v6.6.1: Fix PHP undef notice
 		$slide['properties'] = ! empty( $slide['properties'] ) ? $slide['properties'] : [];
+
+		// v7.2.5: Backward compatibility for parallax transformOrigin changes
+		if( $preVersion725 && ! empty( $slide['properties']['parallaxtransformorigin'] ) ) {
+
+			$toParams = explode(' ', trim( $slide['properties']['parallaxtransformorigin'] ) );
+			if( $toParams[0] === '50%' ) { $toParams[0] = 'slidercenter'; }
+			if( $toParams[1] === '50%' ) { $toParams[1] = 'slidermiddle'; }
+
+			$slide['properties']['parallaxtransformorigin'] = implode(' ', $toParams);
+		}
 
 		$slider['slides'][$slidekey] = apply_filters('ls_parse_defaults', $lsDefaults['slides'], $slide['properties']);
 
@@ -103,7 +116,6 @@ if(isset($slides['layers']) && is_array($slides['layers'])) {
 				if( ! empty( $layer['transition'] ) ) {
 					$layer = array_merge($layer, json_decode(stripslashes($layer['transition']), true));
 				}
-
 
 				if( ! empty( $layer['styles'] ) ) {
 					$layerStyles = json_decode($layer['styles'], true);
@@ -134,6 +146,16 @@ if(isset($slides['layers']) && is_array($slides['layers'])) {
 					) {
 						$layer['styles']['background-repeat'] = 'repeat';
 					}
+				}
+
+				// v7.2.5: Backward compatibility for parallax transformOrigin changes
+				if( $preVersion725 && ! empty( $layer['parallaxtransformorigin'] ) ) {
+
+					$toParams = explode(' ', trim( $layer['parallaxtransformorigin'] ) );
+					if( $toParams[0] === '50%' ) { $toParams[0] = 'slidercenter'; }
+					if( $toParams[1] === '50%' ) { $toParams[1] = 'slidermiddle'; }
+
+					$layer['parallaxtransformorigin'] = implode(' ', $toParams);
 				}
 
 

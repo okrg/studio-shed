@@ -62,7 +62,7 @@ Icegram.prototype.init = function ( data ) {
 				} else {
 					m = new Icegram_Message_Type( v );
 				}
-				
+
 				self.messages.push( m );
 				self.map_id_to_index['_'+v['id'] ] = i;
 				self.map_type_to_index[ v['type'] ] = jQuery.isArray(self.map_type_to_index[ v['type'] ]) ? self.map_type_to_index[ v['type'] ] : new Array();
@@ -344,6 +344,13 @@ Icegram_Message_Type.prototype.embed_form = function ( ) {
 					this.el.find('form[data-source="ig-es"]').addClass('es_form_container');
 				}
 				
+				//es form remote site support
+				var url = new URL(this.el.find('form').attr('action'), window.location.href); //Passing second parameter as the current page url to avoid TypeError in case URL in action attribute is not valid
+				var actionparam = url.searchParams.get('action');
+				
+				if( 'ig_es_external_subscription_form_submission' === actionparam ){
+					this.el.find('form').addClass('ig-es-embeded-from es_form_container');
+				}
 				
 
 				if(form_has_label == undefined ){ 
@@ -524,7 +531,7 @@ Icegram.prototype.formProcess = function(self, form_text) {
 
 			if(el_obj.is('label')){ // get the label if found.
 				//GDPR compatibility
-				if(el_obj.attr('class') == 'gdpr-label'){
+				if(el_obj.attr('class') == 'gdpr-label' || el_obj.find('input[name="es_gdpr_consent"]').length > 0){
 					el_obj.find('input[type=checkbox]').remove();
 					label_text = el_obj.not('input, select, textarea, button, span, br').html().replace(/\s+/g, ' ') || '.';
 				}else{
@@ -563,6 +570,12 @@ Icegram.prototype.formProcess = function(self, form_text) {
 
 				el_count++;
 			}else if(el_obj.is('input[type=radio]') || el_obj.is('input[type=checkbox]') ) {
+				
+				//For Bottom & Inline position, form fields does not look good so we are giving full width to the fields. 
+				if( 'bottom' === self.data.form_layout || 'inline' === self.data.form_layout ){
+					form_container.addClass('ig_form_full');
+				}
+
 				label_class = 'ig_el_label ig_button_label';
 				if(label_text != '.'){
 					label_class = 'ig_el_label';
@@ -583,8 +596,13 @@ Icegram.prototype.formProcess = function(self, form_text) {
 		if(form_container.find('.ig_form_required_field').length <= 0){
 			form_container.append('<div class="ig_form_els"><input class="ig_form_required_field" type="text" tabindex="-1" value="" /></div>');
 		}
-		form_container.addClass(elsClass[el_count])
-			.find('.ig_form_required_field').parent().removeClass('ig_form_els').css({'position':'absolute' , 'left': '-5000px'}).end().end()
+		//Checking if full width needs to be given to form fields.
+		if( form_container.hasClass('ig_form_full')){
+			form_container.addClass('ig_full').removeClass('ig_form_full');
+		} else{
+			form_container.addClass(elsClass[el_count]);
+		}
+		form_container.find('.ig_form_required_field').parent().removeClass('ig_form_els').css({'position':'absolute' , 'left': '-5000px'}).end().end()
 			.find('.ig_form_hidden_field').parent().removeClass('ig_form_els').css({'display':'none'});
 		form_object.append(form_container);
 		

@@ -78,6 +78,23 @@ export const LS_tourData = {
 		},
 
 		steps: [
+			// {
+			// 	title: 'Choose Your Preferred Appearance',
+			// 	content: '<div class="lse-tac">\
+			// 				<img class="lse-iguider-img" src="https://layerslider.com/media/guides/welcome/editor-dark-color-scheme.png" alt="LayerSlider Project Editor">\
+			// 				<lse-fe-wrapper class="lse-select">\
+			// 				<select data-lse-action="setTheme" class="lse-action-select-with-multiple-values">\
+			// 				<option selected value="default">Default (Dark)</option>\
+			// 				<option value="light">Light</option>\
+			// 				<option value="grayscale">Grayscale</option>\
+			// 				</select>\
+			// 			  	</lse-fe-wrapper>\
+			// 			  </div>',
+			// 	width: 760,
+			// 	before: function(){
+			// 		jQuery( '.g-modal-size' ).attr( 'data-step', 'intro' );
+			// 	}
+			// },
 			{
 				target: '#lse-show-project-settings',
 				title: 'Project Settings',

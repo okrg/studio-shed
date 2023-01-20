@@ -201,6 +201,8 @@ jQuery(document).ready(function() {
 				// Check if there are any unsuccessfull tasks related to email delivery i.e. having any errors.
 				if ( 0 === unsuccessful_tasks.length ) {
 					ig_es_change_onboard_task_status( 'ig-es-onboard-test-email-delivery', 'success');
+				}else{
+					ig_es_change_onboard_task_status( 'ig-es-onboard-test-email-delivery', 'error');
 				}
 			}, time_increament);
 		},
@@ -295,6 +297,7 @@ jQuery(document).ready(function() {
 			jQuery.ajax(params);
 		},
 		handle_functions_error_event: function() {
+			onboarding_functions.updating_email_delivery_main_task_status();
 			setTimeout(function(){
 				let email_delivery_error_text = jQuery('#es_delivery_check_processed').data('error-text');
 				jQuery('#es_delivery_check_processed').text(email_delivery_error_text);

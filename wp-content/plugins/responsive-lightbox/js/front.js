@@ -54,6 +54,8 @@
 
 		// any infinite galleries?
 		if ( containers.length > 0 ) {
+			var infArgs = [];
+
 			for ( var i = 0; i < containers.length; i++ ) {
 				var container = containers[i];
 				var gallery = container.find( '.rl-gallery' );
@@ -61,39 +63,46 @@
 				var galleryScrollType = container.find( '.rl-pagination-bottom' ).data( 'button' );
 				var galleryButton = typeof galleryScrollType !== 'undefined' && galleryScrollType === 'manually';
 
+				infArgs[i] = {
+					container: container,
+					gallery: gallery,
+					galleryId: galleryId,
+					galleryButton: galleryButton
+				};
+
 				// initialize infinite scroll
-				gallery.infiniteScroll( {
-					path: '.rl-gallery-container[data-gallery_id="' + galleryId + '"] .rl-pagination-bottom .next',
-					append: '.rl-gallery-container[data-gallery_id="' + galleryId + '"] .rl-gallery-item',
+				infArgs[i].gallery.infiniteScroll( {
+					path: '.rl-gallery-container[data-gallery_id="' + infArgs[i].galleryId + '"] .rl-pagination-bottom .next',
+					append: '.rl-gallery-container[data-gallery_id="' + infArgs[i].galleryId + '"] .rl-gallery-item',
 					status: false,
-					hideNav: '.rl-gallery-container[data-gallery_id="' + galleryId + '"] .rl-pagination-bottom',
-					prefill: ! galleryButton,
+					hideNav: '.rl-gallery-container[data-gallery_id="' + infArgs[i].galleryId + '"] .rl-pagination-bottom',
+					prefill: ! infArgs[i].galleryButton,
 					loadOnScroll: true,
-					scrollThreshold: galleryButton ? false : 400,
-					button: galleryButton ? '.rl-gallery-container[data-gallery_id="' + galleryId + '"] .rl-load-more' : false,
-					debug: true,
+					scrollThreshold: infArgs[i].galleryButton ? false : 400,
+					button: infArgs[i].galleryButton ? '.rl-gallery-container[data-gallery_id="' + infArgs[i].galleryId + '"] .rl-load-more' : false,
+					debug: false,
 					history: false,
 					responseBody: 'text',
 					onInit: function() {
-						// infinite with button?
-						if ( container.hasClass( 'rl-pagination-infinite' ) && galleryButton ) {
-							// remove loading class
-							container.removeClass( 'rl-loading' );
-						}
+						// get current arguments
+						var args = infArgs[i];
 
-						// store gallery ID for append event
-						var _galleryId = galleryId;
+						// infinite with button?
+						if ( args.container.hasClass( 'rl-pagination-infinite' ) && args.galleryButton ) {
+							// remove loading class
+							args.container.removeClass( 'rl-loading' );
+						}
 
 						// request event
 						this.on( 'request', function() {
 							// add loading class
-							container.addClass( 'rl-loading' );
+							args.container.addClass( 'rl-loading' );
 						} );
 
 						// append event
 						this.on( 'append', function( body, path, items, response ) {
 							// remove loading class
-							container.removeClass( 'rl-loading' );
+							args.container.removeClass( 'rl-loading' );
 
 							$.event.trigger( {
 								type: 'doResponsiveLightbox',
@@ -101,10 +110,11 @@
 								selector: rlArgs.selector,
 								args: rlArgs,
 								pagination_type: 'infinite',
-								gallery_id: _galleryId,
-								masonry: gallery.hasClass( 'rl-masonry-gallery' ) || gallery.hasClass( 'rl-basicmasonry-gallery' ),
+								gallery_id: args.galleryId,
+								masonry: args.gallery.hasClass( 'rl-masonry-gallery' ) || args.gallery.hasClass( 'rl-basicmasonry-gallery' ),
+								delayLightbox: args.gallery.hasClass( 'rl-expander-gallery' ),
 								infinite: {
-									gallery: gallery,
+									gallery: args.gallery,
 									body: body,
 									items: items,
 									response: response
@@ -136,6 +146,7 @@
 			e.stopPropagation();
 
 			var galleryId = container.data( 'gallery_id' );
+			var galleryNo = container.find( '.rl-gallery' ).data( 'gallery_no' );
 
 			// add loading class
 			container.addClass( 'rl-loading' );
@@ -143,10 +154,12 @@
 			$.post( rlArgs.ajaxurl, {
 				action: 'rl-get-gallery-page-content',
 				gallery_id: galleryId,
+				gallery_no: galleryNo,
 				post_id: rlArgs.postId,
 				page: parseQueryString( 'rl_page', link.prop( 'href' ) ),
 				nonce: rlArgs.nonce,
-				preview: rlArgs.preview
+				preview: rlArgs.preview,
+				lightbox: rlArgs.script
 			} ).done( function( response ) {
 				// replace container with new content
 				container.replaceWith( $( response ).removeClass( 'rl-loading' ) );
@@ -158,7 +171,8 @@
 					selector: rlArgs.selector,
 					args: rlArgs,
 					pagination_type: 'ajax',
-					gallery_id: galleryId
+					gallery_id: galleryId,
+					gallery_no: galleryNo
 				} );
 			} ).always( function() {
 				container.removeClass( 'rl-loading' );
@@ -175,10 +189,15 @@
 
 		var script = event.script;
 		var selector = event.selector;
-		var args = event.args;
 
 		if ( typeof script === 'undefined' || typeof selector === 'undefined' )
 			return false;
+
+		var args = event.args;
+		var delayLightbox = false;
+
+		if ( typeof event.delayLightbox !== 'undefined' && event.delayLightbox === true )
+			delayLightbox = true;
 
 		rl_view_image = function( script, url ) {
 			$.event.trigger( {
@@ -210,16 +229,60 @@
 						e.preventDefault();
 						e.stopPropagation();
 
-						if ( flex.length )
-							flex.find( '.flex-active-slide a[data-rel]' ).trigger( 'click' );
-						else
-							gallery.find( 'a[data-rel]' ).first().trigger( 'click' );
+						if ( script === 'lightgallery' ) {
+							if ( flex.length ) {
+								var image = flex.find( '.flex-active-slide a[data-rel] img' );
+								var linkId = flex.find( '.flex-active-slide a[data-rel]' ).data( 'lg-id' );
+
+								image.trigger( 'click.lgcustom-item-' + linkId );
+							} else {
+								var link = gallery.find( 'a[data-rel]' ).first();
+								var image = link.find( 'img' );
+
+								image.trigger( 'click.lgcustom-item-' + link.data( 'lg-id' ) );
+							}
+						} else if ( script === 'fancybox_pro' ) {
+							if ( flex.length ) {
+								var index = flex.find( '.flex-active-slide' ).index();
+								var imageId = flex.find( '.flex-active-slide a[data-rel]' ).data( 'fancybox' );
+
+								Fancybox.fromOpener( '[data-fancybox="' + imageId + '"]', {
+									startIndex: index
+								} );
+							} else {
+								var link = gallery.find( 'a[data-rel]' ).first();
+
+								Fancybox.fromOpener( '[data-fancybox="' + link.data( 'fancybox' ) + '"]', {
+									startIndex: 0
+								} );
+							}
+						} else {
+							if ( flex.length )
+								flex.find( '.flex-active-slide a[data-rel]' ).trigger( 'click' );
+							else
+								gallery.find( 'a[data-rel]' ).first().trigger( 'click' );
+						}
 					} );
 				}
 			}
 		}, 10 );
 
-		// initialize lightbox
+		if ( delayLightbox ) {
+			setTimeout( function() {
+				initLightbox( event );
+			}, 0 );
+		} else
+			initLightbox( event );
+	} );
+
+	/**
+	 * Initialize lightbox script.
+	 */
+	function initLightbox( event ) {
+		var script = event.script;
+		var selector = event.selector;
+		var args = event.args;
+
 		switch ( script ) {
 			case 'swipebox':
 				var slide = $( '#swipebox-overlay' ).find( '.slide.current' );
@@ -330,12 +393,20 @@
 
 				$( 'a[rel*="' + selector + '"], a[data-rel*="' + selector + '"]' ).each( function() {
 					var el = $( this );
+					var title = el.data( 'rl_title' );
+					var caption = el.data( 'rl_caption' );
+
+					if ( ! title )
+						title = '';
+
+					if ( ! caption )
+						caption = '';
 
 					// set description
-					el.attr( 'title', el.data( 'rl_caption' ) );
+					el.attr( 'title', caption );
 
 					// set title
-					el.find( 'img' ).attr( 'alt', el.data( 'rl_title' ) );
+					el.find( 'img' ).attr( 'alt', title );
 				} );
 
 				$( 'a[rel*="' + selector + '"], a[data-rel*="' + selector + '"]' ).prettyPhoto( {
@@ -762,7 +833,16 @@
 							fixedBgPos: args.fixedBgPos === 'auto' ? 'auto' : ( args.fixedBgPos === '1' ),
 							image: {
 								titleSrc: function( item ) {
-									return item.el.attr( 'data-rl_title' ) + '<small>' + item.el.attr( 'data-rl_caption' ) + '</small>';
+									var title = item.el.data( 'rl_title' );
+									var caption = item.el.data( 'rl_caption' );
+
+									if ( ! title )
+										title = '';
+
+									if ( ! caption )
+										caption = '';
+
+									return title + '<small>' + caption + '</small>';
 								}
 							},
 							gallery: {
@@ -784,6 +864,6 @@
 				}
 				break;
 		}
-	} );
+	}
 
 } )( jQuery );

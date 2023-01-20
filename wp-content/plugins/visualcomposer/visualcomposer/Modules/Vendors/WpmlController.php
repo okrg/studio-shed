@@ -95,14 +95,19 @@ class WpmlController extends Container implements Module
         $this->wpAddAction('admin_notices', 'createNotice');
 
         $this->addFilter('vcv:dataAjax:setData:sourceId', 'changeLanguageWhileUpdate', -1);
+
+        $this->addFilter(
+            'vcv:resources:view:settings:pages:handleIframeBodyClick',
+            'addHandleIframeBodyClick'
+        );
     }
 
     /**
-     * Add our editor vcv-pageContent meta to translation package.
+     * Replace our content data with translation content.
      *
      * @param array $package
      *
-     * @return array
+     * @return array|mixed
      */
     protected function prepareTranslationJobData($package)
     {
@@ -110,46 +115,65 @@ class WpmlController extends Container implements Module
             return $package;
         }
 
-        $fields = $package['contents'];
+        // Not a vc post.
+        if (!array_key_exists('field-vcv-pageContent-0', $package['contents'])) {
+            return $package;
+        }
 
-        foreach ($fields as $fieldKey => $field) {
-            if ($fieldKey === 'field-vcv-pageContent-0') {
-                // Make the magic
-                $pageContent = json_decode(rawurldecode(base64_decode($field['data'])), true);
+        if (isset($package['contents']['field-vcv-pageContent-0'])) {
+            $pageContent = $package['contents']['field-vcv-pageContent-0'];
 
-                $translations = [];
-                foreach ($pageContent['elements'] as $elementId => $valueElement) {
-                    $translations = array_merge(
-                        $translations,
-                        $this->getTranslations($valueElement, [$elementId])
-                    );
-                }
 
-                // Create new sub-list of pageContent inner fields as separate fields for xcliff file
-                if (!empty($translations)) {
-                    foreach ($translations as $translation) {
-                        // we have 'path' and 'value'
-                        $key = implode('.', $translation['path']);
-                        $package['contents'][ 'field-vcv-pageContentField--' . $key . '-0' ] = [
-                            'translate' => 1,
-                            'data' => base64_encode($translation['value']),
-                            'format' => 'base64',
-                        ];
-                        $package['contents'][ 'field-vcv-pageContentField--' . $key . '-0-name' ] = [
-                            'translate' => 0,
-                            'data' => 'vcv-pageContentField--' . $key,
-                        ];
-                        $package['contents'][ 'field-vcv-pageContentField--' . $key . '-0-type' ] = [
-                            'translate' => 0,
-                            'data' => 'custom_field',
-                        ];
-                    }
-                }
+            // Content Encoded in Base64 as it is safe to use in URL and JSON
+            // @codingStandardsIgnoreLine
+            $pageContent = json_decode(rawurldecode(base64_decode($pageContent['data'])), true);
+
+            $translations = [];
+            foreach ($pageContent['elements'] as $elementId => $valueElement) {
+                $translations = array_merge(
+                    $translations,
+                    $this->getTranslations($valueElement, [$elementId])
+                );
             }
-            // Remove 'body' as it not needed
-            if ($fieldKey === 'body') {
-                unset($package['contents'][ $fieldKey ]);
-            }
+
+            $package = $this->setNewContentForTranslationPackage($translations, $package);
+        }
+
+        return $package;
+    }
+
+    /**
+     * Create new sub-list of pageContent inner fields as separate fields for xcliff file
+     *
+     * @param array $translations
+     * @param array $package
+     *
+     * @return array
+     */
+    protected function setNewContentForTranslationPackage($translations, $package)
+    {
+        if (empty($translations)) {
+            return $package;
+        }
+
+        foreach ($translations as $translation) {
+            // we have 'path' and 'value'
+            $key = implode('.', $translation['path']);
+            $package['contents'][ 'field-vcv-pageContentField--' . $key . '-0' ] = [
+                'translate' => 1,
+                // Content Encoded in Base64 as it is safe to use in URL and JSON
+                // @codingStandardsIgnoreLine
+                'data' => base64_encode($translation['value']),
+                'format' => 'base64',
+            ];
+            $package['contents'][ 'field-vcv-pageContentField--' . $key . '-0-name' ] = [
+                'translate' => 0,
+                'data' => 'vcv-pageContentField--' . $key,
+            ];
+            $package['contents'][ 'field-vcv-pageContentField--' . $key . '-0-type' ] = [
+                'translate' => 0,
+                'data' => 'custom_field',
+            ];
         }
 
         return $package;
@@ -180,19 +204,20 @@ class WpmlController extends Container implements Module
         }
 
         $pageContent = json_decode(
-            // @codingStandardsIgnoreLine
+        // Content Encoded in Base64 as it is safe to use in URL and JSON
+        // @codingStandardsIgnoreLine
             rawurldecode(base64_decode($job->elements[ $pageContentIndex ]->field_data)),
             true
         );
         $elements = $job->elements;
         foreach ($elements as $index => $field) {
             // @codingStandardsIgnoreLine
-            $isFieldPostContent = isset($field->field_type) &&
-                // @codingStandardsIgnoreLine
+            $isFieldPostContent = isset($field->field_type)
+                && // @codingStandardsIgnoreLine
                 strpos($field->field_type, 'field-vcv-pageContentField--') !== false;
 
             // @codingStandardsIgnoreLine
-            if ( !$field->field_finished ||  !$isFieldPostContent) {
+            if (!$field->field_finished || !$isFieldPostContent) {
                 continue;
             }
             // @codingStandardsIgnoreLine
@@ -216,7 +241,7 @@ class WpmlController extends Container implements Module
         // Encode back updated translation
         // @codingStandardsIgnoreLine
         $job->elements[ $pageContentIndex ]->field_data_translated = base64_encode(
-            rawurlencode(json_encode($pageContent))
+            rawurlencode(wp_json_encode($pageContent))
         );
 
         return $fields;
@@ -225,10 +250,11 @@ class WpmlController extends Container implements Module
     protected function createNotice()
     {
         global $pagenow;
-
+        $requestHelper = vchelper('Request');
+        $page = $requestHelper->input('page');
         if (
-            isset($_GET['page']) && $pagenow === 'admin.php'
-            && strpos($_GET['page'], 'wpml-translation-management') !== false
+            $pagenow === 'admin.php'
+            && strpos($page, 'wpml-translation-management') !== false
         ) {
             // Add notice that after translation you have to open automatic post updates page: %url%
             $class = 'notice notice-info';
@@ -236,11 +262,15 @@ class WpmlController extends Container implements Module
                 '<div class="%1$s"><p>%2$s</p></div>',
                 esc_attr($class),
                 sprintf(
-                    __(
-                        '<b>Visual Composer:</b> To complete WPML Translation Manager process for the Visual Composer supported pages you will need to run automatic posts update. <a href="%s">Update Posts</a>',
+                // translators: %1$s: <strong>, %2$s: </strong>, %3$s: <a href url to automatic post updates page, %4$s: </a>
+                    esc_html__(
+                        '%1$sVisual Composer:%2$s To complete WPML Translation Manager process for the Visual Composer supported pages you will need to run automatic posts update. %3$sUpdate Posts%4$s',
                         'visualcomposer'
                     ),
-                    admin_url('admin.php?page=vcv-update')
+                    '<strong>',
+                    '</strong>',
+                    '<a href="' . esc_url(admin_url('admin.php?page=vcv-update')) . '">',
+                    '</a>'
                 )
             );
         }
@@ -400,7 +430,7 @@ class WpmlController extends Container implements Module
     }
 
     /**
-     * While post update we need set post land appropriate to current updating post.
+     * While post update we need set post lang appropriate to currently updating post.
      *
      * @param int $postId
      *
@@ -414,9 +444,12 @@ class WpmlController extends Container implements Module
 
         global $wpdb;
 
-        $sql = sprintf("SELECT language_code FROM %sicl_translations WHERE element_id = %s", $wpdb->prefix, $postId);
-
-        $result = $wpdb->get_results($sql);
+        $result = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT language_code FROM " . $wpdb->prefix . "icl_translations WHERE element_id = %d",
+                $postId
+            )
+        );
 
         if (!empty($result[0]->language_code)) {
             $_POST['post_ID'] = $postId;
@@ -424,5 +457,25 @@ class WpmlController extends Container implements Module
         }
 
         return $postId;
+    }
+
+    /**
+     * Add script that help us redirect to wpml translate service inside our iframe settings.
+     *
+     * @param string $output
+     *
+     * @return string
+     */
+    protected function addHandleIframeBodyClick($output)
+    {
+        $output .= "
+            const link = e.target.closest('.js-wpml-translate-link')
+            if (link) {
+              e.preventDefault();
+              window.open(link.href)
+            }
+        ";
+
+        return $output;
     }
 }

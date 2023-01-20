@@ -117,6 +117,15 @@ add_action('init', function() {
 			}
 		}
 
+		// Use recommended settings
+		if( isset( $_GET['page']) && $_GET['page'] == 'layerslider' && isset($_GET['action']) && $_GET['action'] == 'use_recommended_settings') {
+			if( check_admin_referer('use_recommended_settings') ) {
+				ls_use_recommended_settings();
+				wp_redirect( admin_url('admin.php?page=layerslider&section=system-status&message=revertToRecommendedSettings') );
+				exit;
+			}
+		}
+
 
 		if( isset( $_GET['page']) && $_GET['page'] == 'layerslider' && isset($_GET['action']) && $_GET['action'] == 'check_updates') {
 			if( check_admin_referer('check_updates') ) {
@@ -249,6 +258,7 @@ add_action('init', function() {
 		add_action('wp_ajax_ls_get_slider_details', 'ls_get_slider_details');
 		add_action('wp_ajax_ls_get_mce_sliders', 'ls_get_mce_sliders');
 		add_action('wp_ajax_ls_get_mce_slides', 'ls_get_mce_slides');
+		add_action('wp_ajax_ls_layer_action_popups', 'ls_layer_action_popups');
 		add_action('wp_ajax_ls_get_post_details', 'ls_get_post_details');
 		add_action('wp_ajax_lse_get_search_posts', 'lse_get_search_posts');
 		add_action('wp_ajax_ls_get_taxonomies', 'ls_get_taxonomies');
@@ -262,8 +272,57 @@ add_action('init', function() {
 		add_action('wp_ajax_ls_download_module', 'ls_download_module');
 		add_action('wp_ajax_ls_get_revisions', 'ls_get_revisions');
 		add_action('wp_ajax_ls_save_revisions_options', 'ls_save_revisions_options');
+		add_action('wp_ajax_ls_save_transition_presets', 'ls_save_transition_presets');
+
+		add_action( 'wp_ajax_ls_get_popup_markup', 'ls_get_popup_markup' );
 	}
+
+
+	// FRONT-END AJAX FUNCTIONS
+	add_action( 'wp_ajax_nopriv_ls_get_popup_markup', 'ls_get_popup_markup' );
 });
+
+function ls_save_transition_presets() {
+
+	wp_verify_nonce( $_POST['nonce'], 'ls-editor-nonce');
+
+	include LS_ROOT_PATH . '/classes/class.ls.transitionpresets.php';
+
+	$data 	= stripslashes( $_POST['data'] );
+	$result = LS_TransitionPresets::save( $data );
+
+	die( json_encode( ['success' => $result ] ) );
+}
+
+function ls_get_popup_markup() {
+
+	$id 	= (int) $_GET['id'];
+	$popup = LS_Sliders::find( $id );
+
+	if( $popup ) {
+		$GLOBALS['lsAjaxOverridePopupSettings'] = true;
+		$parts 	= LS_Shortcode::generateSliderMarkup( $popup );
+		die( $parts['container'].$parts['markup'].'<script>'.$parts['init'].'</script>' );
+	}
+
+	die();
+}
+
+function ls_use_recommended_settings() {
+
+	$options = [
+		'use_cache',
+		'clear_3rd_party_caches',
+		'admin_no_conflict_mode',
+		'gsap_sandboxing',
+		'use_custom_jquery'
+	];
+
+	foreach( $options as $option ) {
+		delete_option( 'ls_' . $option );
+	}
+}
+
 
 function ls_force_update_check() {
 	LS_RemoteData::update();
@@ -271,6 +330,7 @@ function ls_force_update_check() {
 	wp_redirect( admin_url( 'update-core.php' ) );
 	exit;
 }
+
 
 function ls_download_module() {
 
@@ -283,6 +343,10 @@ function ls_download_module() {
 }
 
 function ls_get_revisions() {
+
+	// Attempt to workaround memory limit & execution time issues
+	@ini_set( 'max_execution_time', 0 );
+	@ini_set( 'memory_limit', apply_filters( 'admin_memory_limit', WP_MAX_MEMORY_LIMIT ) );
 
 	$revisions = LS_Revisions::snapshots( (int) $_GET['sliderID'] );
 
@@ -521,6 +585,7 @@ function ls_save_plugin_settings() {
 	$options = [
 
 		//Performance
+		'performance_mode',
 		'use_cache',
 		'include_at_footer',
 		'conditional_script_loading',
@@ -541,6 +606,7 @@ function ls_save_plugin_settings() {
 		'gutenberg_block',
 		'elementor_widget',
 		'suppress_debug_info',
+		'enable_play_by_scroll',
 
 		// Project Defaults
 		'use_srcset',
@@ -597,7 +663,7 @@ function ls_save_pagination_limit() {
 
 function ls_save_editor_settings() {
 
-	wp_verify_nonce( $_POST['nonce'], 'ls-save-editor-settings');
+	wp_verify_nonce( $_POST['nonce'], 'ls-editor-nonce');
 	update_user_meta( get_current_user_id(), 'ls-editor-settings', $_POST['data'] );
 	exit;
 }
@@ -647,6 +713,7 @@ function ls_get_mce_sliders() {
 		$sliders[ $key ]['preview'] = apply_filters('ls_preview_for_slider', $item );
 		$sliders[ $key ]['name'] 	= apply_filters('ls_slider_title', stripslashes( $item['name'] ), 40);
 		$sliders[ $key ]['slug'] 	= ! empty( $item['slug'] ) ? htmlentities( $item['slug'] ) : '';
+		$sliders[ $key ]['pt'] 		= ! empty( $item['data']['properties']['pt'] );
 
 
 		// Prevent outputting the unnecessarily large slider data object that
@@ -750,6 +817,24 @@ function ls_get_mce_slides() {
 	}
 
 	die( json_encode( $slides ) );
+}
+
+
+function ls_layer_action_popups() {
+
+	$popups = LS_Sliders::find( [
+		'limit' => 200,
+		'where' => "flag_popup = '1'",
+		'data' => false
+	]);
+
+	foreach( $popups as $key => $item) {
+		$popups[ $key ]['name'] 	= apply_filters('ls_slider_title', stripslashes( $item['name'] ), 40);
+		$popups[ $key ]['slug'] 	= ! empty( $item['slug'] ) ? htmlentities( $item['slug'] ) : '';
+	}
+
+
+	return die( json_encode( $popups ) );
 }
 
 
@@ -1124,8 +1209,8 @@ function ls_import_online() {
 
 	$name 			= $_GET['name'];
 	$slider 		= urlencode( $_GET['slider'] );
-	$collection 	= ! empty( $_GET['collection'] ) ? urlencode( $_GET['collection'] ) : '';
-	$remoteURL 		= LS_REPO_BASE_URL.'sliders/download.php?slider='.$slider.'&collection='.$collection;
+	$category 	= ! empty( $_GET['category'] ) ? urlencode( $_GET['category'] ) : '';
+	$remoteURL 		= LS_REPO_BASE_URL.'sliders/download.php?slider='.$slider.'&collection='.$category;
 
 	$uploads 		= wp_upload_dir();
 	$downloadPath 	= $uploads['basedir'].'/lsimport.zip';
@@ -1134,7 +1219,7 @@ function ls_import_online() {
 	$zip 			= $GLOBALS['LS_AutoUpdate']->sendApiRequest( $remoteURL );
 	$defErrorCode 	= 'ERR_UNAUTHORIZED_ACCESS';
 	$defErrorTitle 	= __('Import Error', 'LayerSlider');
-	$defErrorMsg 	= __('LayerSlider couldn’t download your selected slider. Please check LayerSlider → Options → System Status for potential issues. The WP Remote functions may be unavailable or your web hosting provider has to allow external connections to our domain.', 'LayerSlider');
+	$defErrorMsg 	= sprintf(__('It seems there is a server issue that prevented LayerSlider from importing the selected template. Please check %sSystem Status%s for potential errors, try to temporarily disable themes/plugins to rule out incompatibility issues or contact your hosting provider to resolve server configuration problems. Retrying the import might also help.', 'LayerSlider'), '<a href="'.admin_url( 'admin.php?page=layerslider&section=system-status' ).'" target="_blank">', '</a>');
 
 
 	// Invalid response
@@ -1156,7 +1241,10 @@ function ls_import_online() {
 
 			// Check activation state
 			if( ! empty( $json['_not_activated'] ) ) {
-				$GLOBALS['LS_AutoUpdate']->check_activation_state();
+
+				$subDeactivated = ! empty( $json['_sub_deactivated'] );
+				$GLOBALS['LS_AutoUpdate']->check_activation_state( $subDeactivated );
+
 				die( json_encode( [
 					'success' => false,
 					'reload' => true
@@ -1174,10 +1262,10 @@ function ls_import_online() {
 
 
 	// Save package
-	if( ! file_put_contents($downloadPath, $zip) ) {
+	if( ! file_put_contents( $downloadPath, $zip ) ) {
 		die( json_encode( [
 			'success' => false,
-			'message' => __('LayerSlider couldn’t save the downloaded slider on your server. Please check LayerSlider → Options → System Status for potential issues. The most common reason for this issue is the lack of write permission on the /wp-content/uploads/ directory.', 'LayerSlider')
+			'message' => sprintf(__('LayerSlider couldn’t save the downloaded template on your server. Please check %sSystem Status%s for potential issues. The most common reason for this issue is the lack of write permission on the /wp-content/uploads/ directory.', 'LayerSlider'), '<a href="'.admin_url( 'admin.php?page=layerslider&section=system-status' ).'" target="_blank">', '</a>')
 		] ) );
 	}
 
@@ -1226,6 +1314,16 @@ function ls_import_sliders() {
 		__('Imported Group', 'LayerSlider')
 	);
 
+	if( ! empty( $import->lastErrorCode) ) {
+		if( $import->lastErrorCode === 'LR_PARTIAL_IMPORT' ) {
+			wp_redirect( admin_url('admin.php?page=layerslider&message=importLRPartial&error') );
+			exit;
+
+		} elseif( $import->lastErrorCode === 'LR_EMPTY_IMPORT' ) {
+			wp_redirect( admin_url('admin.php?page=layerslider&message=importLSEmpty&error') );
+			exit;
+		}
+	}
 
 	// One slider, redirect to editor
 	if( ! empty( $import->lastImportId ) ) {
@@ -1314,9 +1412,9 @@ function ls_export_sliders( $sliderId = 0 ) {
 		$date = ls_date('Y-m-d').' at '.ls_date('H.i.s');
 
 		if( count( $sliders ) > 1 ) {
-			$fileName = 'LayerSlider – '.count( $sliders ).' sliders – '.$date.'.zip';
+			$fileName = 'LayerSlider - '.count( $sliders ).' sliders - '.$date.'.zip';
 		} else {
-			$fileName = 'LayerSlider – '.$name.' – '.$date.'.zip';
+			$fileName = 'LayerSlider - '.$name.' - '.$date.'.zip';
 		}
 
 		$zip->download( $fileName );

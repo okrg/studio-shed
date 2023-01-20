@@ -269,7 +269,7 @@ wp_localize_script('ls-about-page', 'LS_pageMeta', [
 									<?= __('Follow us on Instagram', 'LayerSlider') ?></a>
 								</ls-li>
 								<ls-li>
-									<a href="https://www.youtube.com/user/kreaturamedia" target="_blank">
+									<a href="https://www.youtube.com/channel/UCduItJ7Cr84lrts7I8Usygw" target="_blank">
 									<?= __('Watch our YouTube channel', 'LayerSlider') ?></a>
 								</ls-li>
 							</ls-ul>

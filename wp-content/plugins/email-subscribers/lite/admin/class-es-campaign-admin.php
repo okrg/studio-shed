@@ -14,7 +14,7 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 	 * @package    Email_Subscribers
 	 * @subpackage Email_Subscribers/admin
 	 */
-	class ES_Campaign_Admin {
+	class ES_Campaign_Admin extends ES_Admin {
 
 		// class instance
 		public static $instance;
@@ -59,6 +59,10 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 
 			add_action( 'ig_es_' . IG_CAMPAIGN_TYPE_POST_DIGEST . '_data', array( $this, 'add_post_notification_data' ) );
 
+			// preview popup
+			add_action( 'ig_es_campaign_preview_options_content', array( $this, 'show_campaign_preview_options_content' ) );
+
+
 			if ( ! ES()->is_pro() ) {
 				// Add newsletter scheduler data
 				add_filter( 'ig_es_' . IG_CAMPAIGN_TYPE_NEWSLETTER . '_data', array( $this, 'add_broadcast_scheduler_data' ) );
@@ -67,9 +71,12 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 			add_action( 'wp_ajax_ig_es_draft_campaign', array( $this, 'draft_campaign' ) );
 			add_action( 'wp_ajax_ig_es_get_campaign_preview', array( $this, 'get_campaign_preview' ) );
 			add_action( 'wp_ajax_ig_es_save_as_template', array( $this, 'save_as_template' ) );
+
+			add_action( 'admin_notices', array( $this, 'show_new_keyword_notice' ) );
+			add_action( 'media_buttons', array( $this, 'add_tag_button' ) );
 		}
 
-		public function setup_campaign() {
+		public function setup() {
 			$campaign_id = $this->get_campaign_id_from_url();
 			if ( ! empty( $campaign_id ) ) {
 				$campaign = new ES_Campaign( $campaign_id );
@@ -150,6 +157,8 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 							$meta['list_conditions'] = IG_ES_Campaign_Rules::remove_empty_conditions( $meta['list_conditions'] );
 						}
 
+						$meta = apply_filters( 'ig_es_before_save_campaign_meta', $meta, $campaign_data );
+
 						$campaign_data['meta'] = maybe_serialize( $meta );
 
 						if ( 'schedule' === $campaign_action ) {
@@ -217,6 +226,316 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 			$this->show_campaign_form( $message_data );
 		}
 
+
+		/**
+		 * Add an Tag button to WP Editor
+		 *
+		 * @param string $editor_id Editor id
+		 *
+		 * @since 5.4.10
+		 */
+		public function add_tag_button( $editor_id ) {
+
+			if ( ! ES()->is_es_admin_screen() ) {
+				return;
+			}
+
+			$campaign_type = isset( $this->campaign_data['type'] ) ? $this->campaign_data['type'] : '';
+			?>
+
+			<div id="ig-es-add-tags-button" class="merge-tags-wrapper relative bg-white inline-block">
+				<button type="button" class="button">
+					<span class="dashicons dashicons-tag"></span>
+					<?php echo esc_html__( 'Add Tags', 'email-subscribers' ); ?>
+				</button>
+				<div x-show="open" id="ig-es-tags-dropdown" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100"
+				x-transition:leave-end="transform opacity-0 scale-95" class="absolute center-0 z-10 hidden w-56 origin-top-right rounded-md shadow-lg">
+					<div class="bg-white rounded-md shadow-xs">
+						<?php $this->show_merge_tags( $campaign_type ); ?>
+					</div>
+				  </div>
+		  </div>
+			<?php
+		}
+
+		public function get_campaign_tags() {
+
+			$post_notification_tags = $this->get_post_notification_tags();
+
+			$campaign_tags = array(
+				'post_notification' => $post_notification_tags,
+			);
+
+			return apply_filters( 'ig_es_campaign_tags', $campaign_tags );
+		}
+
+		public function get_post_notification_tags() {
+			$post_notification_tags = array(
+				'{{post.date}}',
+				'{{post.title}}',
+				'{{post.image}}',
+				'{{post.excerpt}}',
+				'{{post.description}}',
+				'{{post.author}}',
+				'{{post.link}}',
+				'{{post.link_with_title}}',
+				'{{post.link_only}}',
+				'{{post.full}}',
+				'{{post.cats}}',
+				'{{post.more_tag}}',
+				'{{post.image_url}}'
+			);
+			return apply_filters( 'ig_es_post_notification_tags', $post_notification_tags );
+		}
+
+		public function get_subscriber_tags() {
+			$subscriber_tags = array(
+				'{{subscriber.name}}',
+				'{{subscriber.first_name}}',
+				'{{subscriber.last_name}}',
+				'{{subscriber.email}}',
+			);
+			return apply_filters( 'ig_es_subscriber_tags', $subscriber_tags );
+		}
+
+		public function get_site_tags() {
+			$site_tags = array(
+				'{{site.total_contacts}}',
+				'{{site.url}}',
+				'{{site.name}}',
+			);
+
+			return apply_filters( 'ig_es_site_tags', $site_tags );
+		}
+
+		public function get_dnd_campaign_tags() {
+
+			$post_notification_tags = array(
+				array(
+					'keyword'  => 'post.title',
+					'label' => __( 'Post title', 'email-subscribers' ),
+					'icon' => '<svg style=" fill:#000000;" width="36" height="36" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><rect fill="none" height="256" width="256"/><path d="M208,48H48a8,8,0,0,0-8,8V88a8,8,0,0,0,16,0V64h64V192H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V64h64V88a8,8,0,0,0,16,0V56A8,8,0,0,0,208,48Z"/></svg>',
+					'description' => __( 'Show a post title', 'email-subscribers' ),
+				),
+				array( 
+					'keyword'  => 'post.image',
+					'label' => __( 'Post image', 'email-subscribers' ),
+					'icon' => '<svg width="36" height="36" viewBox="0 0 172 172" style=" fill:#000000;"><g transform="translate(0.516,0.516) scale(0.994,0.994)"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-size="none" style="mix-blend-mode: normal"><g fill="#000000" stroke="#cccccc" stroke-linejoin="round"><path d="M172,17.2v137.6h-172v-137.6zM6.88,94.89563l31.4975,-31.4975l14.80813,22.22562l16.74312,-3.35937l14.05563,14.05562h20.3175l24.08,17.2h36.73812v-89.44h-158.24zM144.48,60.2c0,8.50594 -6.97406,15.48 -15.48,15.48c-8.50594,0 -15.48,-6.97406 -15.48,-15.48c0,-8.50594 6.97406,-15.48 15.48,-15.48c8.50594,0 15.48,6.97406 15.48,15.48zM120.4,60.2c0,4.78375 3.81625,8.6 8.6,8.6c4.78375,0 8.6,-3.81625 8.6,-8.6c0,-4.78375 -3.81625,-8.6 -8.6,-8.6c-4.78375,0 -8.6,3.81625 -8.6,8.6zM6.88,104.62438v43.29562h158.24v-27.52h-38.94187l-24.08,-17.2h-20.9625l-13.46438,-13.46437l-17.65687,3.52062l-12.71188,-19.05437z"></path></g><path d="M0,172v-172h172v172z" fill="none" stroke="none" stroke-linejoin="miter"></path><g fill="#000000" stroke="none" stroke-linejoin="miter"><path d="M0,17.2v137.6h172v-137.6zM6.88,24.08h158.24v89.44h-36.73812l-24.08,-17.2h-20.3175l-14.05563,-14.05562l-16.74312,3.35937l-14.80813,-22.22562l-31.4975,31.4975zM129,44.72c-8.50594,0 -15.48,6.97406 -15.48,15.48c0,8.50594 6.97406,15.48 15.48,15.48c8.50594,0 15.48,-6.97406 15.48,-15.48c0,-8.50594 -6.97406,-15.48 -15.48,-15.48zM129,51.6c4.78375,0 8.6,3.81625 8.6,8.6c0,4.78375 -3.81625,8.6 -8.6,8.6c-4.78375,0 -8.6,-3.81625 -8.6,-8.6c0,-4.78375 3.81625,-8.6 8.6,-8.6zM37.3025,74.20188l12.71188,19.05437l17.65687,-3.52062l13.46438,13.46437h20.9625l24.08,17.2h38.94187v27.52h-158.24v-43.29562z"></path></g><path d="" fill="none" stroke="none" stroke-linejoin="miter"></path></g></g></svg>
+				  ',
+				),
+				array(
+					'keyword'  => 'post.date',
+					'label' => __( 'Post date', 'email-subscribers' ),
+					'icon' => '<svg style=" fill:#000000;" enable-background="new 0 0 48 48" width="36" height="36" id="Layer_1" version="1.1" viewBox="0 0 48 48" width="48px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path clip-rule="evenodd" d="M43,43H5c-2.209,0-4-1.791-4-4V9c0-2.209,1.791-4,4-4h38c2.209,0,4,1.791,4,4v30  C47,41.209,45.209,43,43,43z M45,9c0-1.104-0.896-2-2-2H5C3.896,7,3,7.896,3,9v6h42V9z M45,17H3v22c0,1.104,0.896,2,2,2h38  c1.104,0,2-0.896,2-2V17z M41,31h-2c-0.552,0-1-0.447-1-1v-2c0-0.552,0.448-1,1-1h2c0.553,0,1,0.448,1,1v2  C42,30.553,41.553,31,41,31z M41,24h-2c-0.552,0-1-0.447-1-1v-2c0-0.553,0.448-1,1-1h2c0.553,0,1,0.447,1,1v2  C42,23.553,41.553,24,41,24z M33,31h-2c-0.552,0-1-0.447-1-1v-2c0-0.552,0.448-1,1-1h2c0.553,0,1,0.448,1,1v2  C34,30.553,33.553,31,33,31z M33,24h-2c-0.552,0-1-0.447-1-1v-2c0-0.553,0.448-1,1-1h2c0.553,0,1,0.447,1,1v2  C34,23.553,33.553,24,33,24z M25,31h-2c-0.553,0-1-0.447-1-1v-2c0-0.552,0.447-1,1-1h2c0.553,0,1,0.448,1,1v2  C26,30.553,25.553,31,25,31z M25,24h-2c-0.553,0-1-0.447-1-1v-2c0-0.553,0.447-1,1-1h2c0.553,0,1,0.447,1,1v2  C26,23.553,25.553,24,25,24z M17,38h-2c-0.553,0-1-0.447-1-1v-2c0-0.553,0.447-1,1-1h2c0.553,0,1,0.447,1,1v2  C18,37.553,17.553,38,17,38z M17,31h-2c-0.553,0-1-0.447-1-1v-2c0-0.552,0.447-1,1-1h2c0.553,0,1,0.448,1,1v2  C18,30.553,17.553,31,17,31z M17,24h-2c-0.553,0-1-0.447-1-1v-2c0-0.553,0.447-1,1-1h2c0.553,0,1,0.447,1,1v2  C18,23.553,17.553,24,17,24z M9,38H7c-0.553,0-1-0.447-1-1v-2c0-0.553,0.447-1,1-1h2c0.553,0,1,0.447,1,1v2C10,37.553,9.553,38,9,38  z M9,31H7c-0.553,0-1-0.447-1-1v-2c0-0.552,0.447-1,1-1h2c0.553,0,1,0.448,1,1v2C10,30.553,9.553,31,9,31z M23,34h2  c0.553,0,1,0.447,1,1v2c0,0.553-0.447,1-1,1h-2c-0.553,0-1-0.447-1-1v-2C22,34.447,22.447,34,23,34z" fill-rule="evenodd"/></svg>',
+				),
+				array( 
+					'keyword'  => 'post.excerpt',
+					'label' => __( 'Post excerpt', 'email-subscribers' ),
+					'icon' => '<svg width="36" height="36" viewBox="0 0 172 172" style=" fill:#000000;"><g transform="translate(0.516,0.516) scale(0.994,0.994)"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="none" stroke-linecap="butt" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-size="none" style="mix-blend-mode: normal"><g stroke="#cccccc" stroke-width="1" stroke-linejoin="round"><path d="M13.76,17.2h144.48M13.76,51.6h144.48M13.76,86h144.48M13.76,120.4h144.48M13.76,154.8h82.56"></path></g><path d="M0,172v-172h172v172z" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><g stroke="#000000" stroke-width="6.88" stroke-linejoin="round"><path d="M13.76,17.2h144.48M13.76,51.6h144.48M13.76,86h144.48M13.76,86h144.48M13.76,120.4h144.48M13.76,120.4h144.48M13.76,154.8h82.56"></path></g><path d="" stroke="none" stroke-width="1" stroke-linejoin="miter"></path></g></g></svg>',
+				),
+				array( 
+					'keyword'  => 'post.description',
+					'label' => __( 'Post description', 'email-subscribers' ),
+					'icon' => '<svg width="36" height="36" viewBox="0 0 172 172" style=" fill:#000000;"><g transform="translate(0.516,0.516) scale(0.994,0.994)"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="none" stroke-linecap="butt" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-size="none" style="mix-blend-mode: normal"><g stroke="#cccccc" stroke-width="1" stroke-linejoin="round"><path d="M13.76,17.2h144.48M13.76,51.6h144.48M13.76,86h144.48M13.76,120.4h144.48M13.76,154.8h82.56"></path></g><path d="M0,172v-172h172v172z" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><g stroke="#000000" stroke-width="6.88" stroke-linejoin="round"><path d="M13.76,17.2h144.48M13.76,51.6h144.48M13.76,86h144.48M13.76,86h144.48M13.76,120.4h144.48M13.76,120.4h144.48M13.76,154.8h82.56"></path></g><path d="" stroke="none" stroke-width="1" stroke-linejoin="miter"></path></g></g></svg>',
+				),
+				array( 
+					'keyword'  => 'post.author',
+					'label' => __( 'Post author', 'email-subscribers' ),
+					'icon' => '<svg style=" fill:#000000;" width="36" height="36" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><title/><g id="about"><path d="M16,16A7,7,0,1,0,9,9,7,7,0,0,0,16,16ZM16,4a5,5,0,1,1-5,5A5,5,0,0,1,16,4Z"/><path d="M17,18H15A11,11,0,0,0,4,29a1,1,0,0,0,1,1H27a1,1,0,0,0,1-1A11,11,0,0,0,17,18ZM6.06,28A9,9,0,0,1,15,20h2a9,9,0,0,1,8.94,8Z"/></g></svg>',
+				),
+				array( 
+					'keyword'  => 'post.link',
+					'label' => __( 'Post link', 'email-subscribers' ),
+					'icon' => '<svg style=" fill:#000000;" width="36" height="36" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><rect fill="none" height="256" width="256"/><path d="M122.3,71.4l19.8-19.8a44.1,44.1,0,0,1,62.3,62.3l-28.3,28.2a43.9,43.9,0,0,1-62.2,0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/><path d="M133.7,184.6l-19.8,19.8a44.1,44.1,0,0,1-62.3-62.3l28.3-28.2a43.9,43.9,0,0,1,62.2,0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/></svg>',
+				),
+				array( 
+					'keyword'  => 'post.link_with_title',
+					'label' => __( 'Post link with title', 'email-subscribers' ),
+					'icon' => '<svg style=" fill:#000000;" width="36" height="36" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><rect fill="none" height="256" width="256"/><path d="M122.3,71.4l19.8-19.8a44.1,44.1,0,0,1,62.3,62.3l-28.3,28.2a43.9,43.9,0,0,1-62.2,0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/><path d="M133.7,184.6l-19.8,19.8a44.1,44.1,0,0,1-62.3-62.3l28.3-28.2a43.9,43.9,0,0,1,62.2,0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/></svg>',
+				),
+				array( 
+					'keyword'  => 'post.link_only',
+					'label' => __( 'Post link only', 'email-subscribers' ),
+					'icon' => '<svg style=" fill:#000000;" width="36" height="36" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><rect fill="none" height="256" width="256"/><path d="M122.3,71.4l19.8-19.8a44.1,44.1,0,0,1,62.3,62.3l-28.3,28.2a43.9,43.9,0,0,1-62.2,0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/><path d="M133.7,184.6l-19.8,19.8a44.1,44.1,0,0,1-62.3-62.3l28.3-28.2a43.9,43.9,0,0,1,62.2,0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/></svg>',
+				),
+				array( 
+					'keyword'  => 'post.full',
+					'label' => __( 'Post full', 'email-subscribers' ),
+					'icon' => '<svg width="36" height="36" viewBox="0 0 172 172" style=" fill:#000000;"><g transform="translate(0.516,0.516) scale(0.994,0.994)"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="none" stroke-linecap="butt" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-size="none" style="mix-blend-mode: normal"><g stroke="#cccccc" stroke-width="1" stroke-linejoin="round"><path d="M13.76,17.2h144.48M13.76,51.6h144.48M13.76,86h144.48M13.76,120.4h144.48M13.76,154.8h82.56"></path></g><path d="M0,172v-172h172v172z" stroke="none" stroke-width="1" stroke-linejoin="miter"></path><g stroke="#000000" stroke-width="6.88" stroke-linejoin="round"><path d="M13.76,17.2h144.48M13.76,51.6h144.48M13.76,86h144.48M13.76,86h144.48M13.76,120.4h144.48M13.76,120.4h144.48M13.76,154.8h82.56"></path></g><path d="" stroke="none" stroke-width="1" stroke-linejoin="miter"></path></g></g></svg>',
+				),
+				array( 
+					'keyword'  => 'post.cats',
+					'label' => __( 'Post categories', 'email-subscribers' ),
+					'icon' => '<svg style=" fill:#000000;" width="36" height="36" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10 3H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM9 9H5V5h4v4zm11-6h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1 6h-4V5h4v4zm-9 4H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1zm-1 6H5v-4h4v4zm8-6c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0 6c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"/></svg>',
+				),
+				array( 
+					'keyword'  => 'post.more_tag',
+					'label' => __( 'Post more tag', 'email-subscribers' ),
+					'icon' => '<svg style=" fill:#000000;" width="36" height="36" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M4 9v1.5h16V9H4zm12 5.5h4V13h-4v1.5zm-6 0h4V13h-4v1.5zm-6 0h4V13H4v1.5z"></path></svg>',
+				),
+				array( 
+					'keyword'  => 'post.image_url',
+					'label' => __( 'Post image URL', 'email-subscribers' ),
+					'icon' => '<svg style=" fill:#000000;" width="36" height="36" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><rect fill="none" height="256" width="256"/><path d="M122.3,71.4l19.8-19.8a44.1,44.1,0,0,1,62.3,62.3l-28.3,28.2a43.9,43.9,0,0,1-62.2,0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/><path d="M133.7,184.6l-19.8,19.8a44.1,44.1,0,0,1-62.3-62.3l28.3-28.2a43.9,43.9,0,0,1,62.2,0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/></svg>',
+					'description' => __( 'Show a post image URL', 'email-subscribers' ),
+				),
+			);
+
+			$campaign_tags = array(
+				'post_notification' => $post_notification_tags,
+			);
+
+			return apply_filters( 'ig_es_dnd_campaign_tags', $campaign_tags );
+		}
+
+		public function get_dnd_subscriber_tags() {
+			$subscriber_tags = array(
+				array(
+					'keyword' => 'subscriber.name',
+					'label'   => __( 'Name', 'email-subscribers' ),
+				),
+				array(
+					'keyword' => 'subscriber.fist_name',
+					'label'   => __( 'First name', 'email-subscribers' ),
+				),
+				array(
+					'keyword' => 'subscriber.last_name',
+					'label'   => __( 'Last name', 'email-subscribers' ),
+				),
+				array(
+					'keyword' => 'subscriber.email',
+					'label'   => __( 'Email', 'email-subscribers' ),
+				),
+			);
+
+			return apply_filters( 'ig_es_dnd_subscriber_tags', $subscriber_tags );
+		}
+
+		public function get_dnd_site_tags() {
+			$site_tags = array(
+				array(
+					'keyword' => 'site.name',
+					'label'   => __( 'Name', 'email-subscribers' ),
+				),
+				array(
+					'keyword' => 'site.url',
+					'label'   => __( 'URL', 'email-subscribers' ),
+				),
+				array(
+					'keyword' => 'site.total_contacts',
+					'label'   => __( 'Total contacts', 'email-subscribers' ),
+				),
+			);
+
+			return apply_filters( 'ig_es_dnd_site_tags', $site_tags );
+		}
+
+		public function show_merge_tags( $campaign_type ) {
+			$subscriber_tags = $this->get_subscriber_tags();
+			if ( ! empty( $subscriber_tags ) ) {
+				?>
+				<div id="ig-es-subscriber-tags">
+					<?php
+						$this->render_merge_tags( $subscriber_tags );
+					?>
+				</div>
+				<?php
+			}
+			$site_tags = $this->get_site_tags();
+			if ( ! empty( $site_tags ) ) {
+				?>
+				<div id="ig-es-site-tags">
+					<?php
+						$this->render_merge_tags( $site_tags );
+					?>
+				</div>
+				<?php
+			}
+			$campaign_tags = $this->get_campaign_tags();
+			if ( ! empty( $campaign_tags ) ) {
+				?>
+				<div id="ig-es-campaign-tags">
+				<?php foreach ($campaign_tags as $type => $tags ) : ?>
+					<?php
+						$class = $type !== $campaign_type ? 'hidden' : '';
+					?>
+					<div class="ig-es-campaign-tags <?php echo esc_attr( $type ); ?> <?php echo esc_attr( $class ); ?>">
+							<?php
+								
+								$this->render_merge_tags( $tags );
+							?>
+					</div>
+				<?php endforeach; ?>
+				</div>
+				<?php
+			}
+		}
+
+		public function render_merge_tags( $merge_tags = array() ) {
+			if ( empty( $merge_tags ) ) {
+				return;
+			}
+			foreach ( $merge_tags as $tag_key => $tag ) {
+				?>
+				<span data-tag-text="<?php echo is_string( $tag_key ) ? esc_attr( $tag ) : ''; ?>" class="ig-es-merge-tag cursor-pointer block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900">
+					<?php echo is_string( $tag_key ) ? esc_html( $tag_key ) : esc_html( $tag ); ?>
+				</span>
+				<?php
+			}
+		}
+
+		/**
+		 * Method to show send test email and campaign content section.
+		 *
+		 * @param array $campaign_data Broadcast data
+		 *
+		 * @since 5.4.4.1.
+		 *
+		 */
+		public function show_campaign_preview_options_content( $campaign_data = array() ) {
+
+			$type       = isset( $campaign_data['type'] ) ? $campaign_data['type'] : 'campaign';
+			$subject    = isset( $campaign_data['subject'] ) ? $campaign_data['subject'] : '';
+			$test_email = ES_Common::get_admin_email();
+			$trim_character_count = 30;
+
+			if ( !( strlen($subject) <= $trim_character_count ) ) {
+				$subject 	   = substr( $subject, 0, $trim_character_count );
+				$string_length = empty( strrpos( $subject, ' ' ) ) ? $trim_character_count : strrpos( $subject, ' ' ) ;
+				$subject 	   = substr( $subject, 0, $string_length );				
+				$subject 	   = $subject . '...';
+			}
+			
+			?>
+			<div id="campaign-email-preview-container">
+
+				<div class="campaign-email-preview-container-left">
+
+						<div class="from leading-5">
+							<strong><?php echo esc_html__( 'From: ', 'email-subscribers' ); ?></strong><?php echo esc_html( $test_email ); ?>
+						</div>
+
+						<div class="from leading-5">
+							<strong><?php echo esc_html__( 'Subject: ', 'email-subscribers' ); ?></strong><span id="sequence-subject-preview" class="workflow-subject-preview"></span><?php echo esc_html( $subject ); ?>
+						</div>
+
+				</div>
+
+
+				<div class="campaign-email-preview-container-right">
+
+					<?php	do_action( 'ig_es_view_upsell_send_test_email_feature', $type, $test_email ); ?>
+
+					<?php do_action( 'ig_es_campaign_preview_test_email_content', $campaign_data ); ?>
+
+				</div>
+
+
+			</div>
+			<?php
+		}
+
+
 		/**
 		 * Method to display newsletter setting form
 		 *
@@ -248,9 +567,11 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 			} elseif ( IG_CAMPAIGN_TYPE_NEWSLETTER === $campaign_type ) {
 				$campaign_text = __( 'Broadcast', 'email-subscribers' );
 			}
+
+			
 			?>
 
-			<div id="edit-campaign-form-container" data-editor-type="<?php echo esc_attr( $editor_type ); ?>" class="<?php echo esc_attr( $editor_type ); ?> font-sans pt-1.5 wrap">
+			<div id="edit-campaign-form-container" data-editor-type="<?php echo esc_attr( $editor_type ); ?>" data-campaign-type="<?php echo esc_attr( $campaign_type ); ?>" class="<?php echo esc_attr( $editor_type ); ?> font-sans pt-1.5 wrap">
 				<?php
 				if ( ! empty( $message_data ) ) {
 					$message = $message_data['message'];
@@ -361,10 +682,24 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 										<div class="campaign_main_content py-4 pl-2">
 											<div class="block px-4 py-2">
 												<label for="ig_es_campaign_subject" class="text-sm font-medium leading-5 text-gray-700"><?php echo esc_html__( 'Subject', 'email-subscribers' ); ?></label>
-												<input id="ig_es_campaign_subject" class="block w-full mt-1 text-sm leading-5 border-gray-400 rounded-md shadow-sm form-input" name="campaign_data[subject]" value="<?php echo esc_attr( $campaign_subject ); ?>"/>
+												<div class="w-full mt-1 relative text-sm leading-5 rounded-md shadow-sm form-input border-gray-400">
+													<div id="ig-es-add-tag-icon" class="merge-tags-wrapper float-right items-center" style="width:3%;">
+														<span class="dashicons dashicons-tag cursor-pointer"></span>
+														<div x-show="open" id="ig-es-tag-icon-dropdown" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100"
+														 x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 mt-2 z-10 hidden w-56 origin-top-right rounded-md shadow-lg">
+														<div class="bg-white rounded-md shadow-xs">
+															<?php
+															$this->show_merge_tags( $campaign_type );
+															?>
+														</div>
+													</div>
+													</div>
+													<div>
+														<input id="ig_es_campaign_subject"  style="width:95%;" class="outline-none" name="campaign_data[subject]" value="<?php echo esc_attr( $campaign_subject ); ?>"/>
+													</div>
+													
+												</div>
 											</div>
-
-
 											<div class="w-full px-4 pt-1 pb-2 mt-1 message-label-wrapper">
 												<label for="message" class="text-sm font-medium leading-5 text-gray-700"><?php echo esc_html__( 'Message', 'email-subscribers' ); ?></label>
 												<?php
@@ -385,14 +720,22 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 													$this->show_avaialable_keywords();
 												} else {
 													?>
+													<div id="ig-es-dnd-merge-tags" class="hidden">
+														<div x-show="open" id="ig-es-dnd-tags-dropdown" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100"
+														x-transition:leave-end="transform opacity-0 scale-95" class="absolute center-0 z-10 hidden w-56 origin-top-right rounded-md shadow-lg">
+															<div class="bg-white rounded-md shadow-xs">
+																<?php $this->show_merge_tags( $campaign_type ); ?>
+															</div>
+														</div>
+													</div>
 													<textarea id="campaign-dnd-editor-data" name="campaign_data[meta][dnd_editor_data]" style="display:none;">
 														<?php
-															$dnd_editor_data = ! empty( $campaign_data['meta']['dnd_editor_data'] ) ? $campaign_data['meta']['dnd_editor_data'] : $this->get_campaign_default_content();
+															$dnd_editor_data     = ! empty( $campaign_data['meta']['dnd_editor_data'] ) ? $campaign_data['meta']['dnd_editor_data'] : $this->get_campaign_default_content();
 															echo esc_html( $dnd_editor_data );
 														?>
 													</textarea>
 													<script>
-														jQuery(document).ready(function(){
+														jQuery(document).ready(function($){
 															let editor_data = jQuery('#campaign-dnd-editor-data').val().trim();
 															if ( '' !== editor_data ) {
 																let is_valid_json = ig_es_is_valid_json( editor_data );
@@ -403,12 +746,82 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 																	window.esVisualEditor.importMjml(editor_data);
 																});
 															}
+															jQuery(document).on('es_drag_and_drop_editor_loaded',()=>{
+																let dropdown = jQuery('#ig-es-dnd-merge-tags #ig-es-dnd-tags-dropdown').clone();
+																	
+																	jQuery('#ig-es-dnd-merge-tags-wrapper').append(dropdown);
+																	jQuery('#ig-es-dnd-merge-tags #ig-es-dnd-tags-dropdown').remove();
+																	jQuery(document).on("click", function (event) {
+																		var $trigger = jQuery("#ig-es-dnd-add-merge-tag-button");
+																		if ($trigger !== event.target && !$trigger.has(event.target).length) {
+																			//jQuery("#ig-es-dnd-merge-tags-wrapper #ig-es-dnd-tags-dropdown").hide();
+																		}
+																	});
+
+																	// Toggle Dropdown
+																	jQuery('#ig-es-dnd-add-merge-tag-button').click(function () {
+																		jQuery('#ig-es-dnd-merge-tags-wrapper #ig-es-dnd-tags-dropdown').toggle();
+																	});
+																	ig_es_add_dnd_rte_tags( '<?php echo esc_js( $campaign_type ); ?>' );
+															});
 														});
 													</script>
 													<?php
 												}
 												?>
 											</div>
+											<script>
+												jQuery(document).ready(function($){
+													var clipboard = new ClipboardJS('.ig-es-merge-tag', {
+													text: function(trigger) {
+															let tag_text = $(trigger).data('tag-text');
+															if ( '' === tag_text ) {
+																tag_text = $(trigger).text();
+															}
+															return tag_text.trim();
+													}
+													});
+
+													clipboard.on('success', function(e) {
+														let sourceElem    = e.trigger;
+														let sourceID	  = $(sourceElem).closest('.merge-tags-wrapper').attr('id');
+														let targetID      = 'ig-es-add-tag-icon' === sourceID ? 'ig_es_campaign_subject': 'edit-es-campaign-body';
+														let clipBoardText = e.text;
+														let editorType    = $('#editor_type').val();
+														if ( 'classic' === editorType || 'ig_es_campaign_subject' === targetID ) {
+															var target        = document.getElementById(targetID);
+											
+															if (target.setRangeText) {
+																target.focus();
+																//if setRangeText function is supported by current browser
+																target.setRangeText(clipBoardText);
+															} else {
+																target.focus()
+																document.execCommand('insertText', false /*no UI*/, clipBoardText);
+															}
+															if ( 'edit-es-campaign-body' === targetID && 'undefined' !== typeof tinymce.activeEditor ) {
+																tinymce.activeEditor.execCommand('mceInsertContent', false, clipBoardText);
+															}
+														} else {
+															// Insert placeholders into DND editor
+															// var canvasDoc = window.esVisualEditor.Canvas.getBody().ownerDocument;
+															// // Insert text at the current pointer position
+															// canvasDoc.execCommand("insertText", false, 'Test');
+															let selectedComponent = window.esVisualEditor.getSelected();
+															let selectedContent   = selectedComponent.get('content');
+															selectedComponent.set({
+																content: selectedContent + clipBoardText
+															});
+															$("#ig-es-dnd-merge-tags-wrapper #ig-es-dnd-tags-dropdown").hide();
+														}
+													});
+
+													let campaign_type = '<?php echo esc_attr( $campaign_type ); ?>';
+													if ( 'newsletter' === campaign_type ) {
+														window.esVisualEditor.RichTextEditor.remove('es-tags');
+													}
+												});
+											</script>
 											<?php do_action( 'ig_es_after_campaign_left_pan_settings', $campaign_data ); ?>
 										</div>
 										<div class="campaign_side_content ml-2 bg-gray-100 rounded-r-lg">
@@ -423,45 +836,25 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 													<div class="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full" style="background-color: rgba(0,0,0,.5);">
 														<div id="campaign-preview-main-container" class="absolute h-auto pt-2 ml-16 mr-4 text-left bg-white rounded shadow-xl z-80 w-1/2 md:max-w-5xl lg:max-w-7xl md:pt-3 lg:pt-2">
 															<div class="py-2 px-4">
-																<div class="flex border-b border-gray-200 pb-2">
-																	<h3 class="w-full text-2xl text-left">
-																		<?php
-																			echo esc_html__( 'Campaign Preview', 'email-subscribers' );
-																		?>
-																	</h3>
 																	<div class="flex">
-																		<div class="campaign-preview-options flex">
-																			<div id="browser-preview-tab" class="campaign-preview-option cursor-pointer text-sm font-normal text-gray-600 active" title="<?php echo esc_attr__( 'Preview in browser', 'email-subscribers' ); ?>">
-																				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-																					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-																				</svg>
-																			</div>
-																			<?php do_action( 'ig_es_campaign_preview_tab_options', $campaign_data ); ?>
-																		</div>
 																		<button id="close-campaign-preview-popup" class="text-sm font-medium tracking-wide text-gray-700 select-none no-outline focus:outline-none focus:shadow-outline-red hover:border-red-400 active:shadow-lg">
 																			<svg class="h-5 w-5 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
 																				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
 																			</svg>
 																		</button>
 																	</div>
-
-																</div>
 															</div>
 															<div id="campaign-browser-preview-container">
-																<p class="mx-4 mb-2">
-																	<?php echo esc_html__( 'There could be a slight variation on how your customer will view the email content.', 'email-subscribers' ); ?>
-																</p>
+
+																<?php do_action( 'ig_es_campaign_preview_options_content', $campaign_data ); ?>
+
 																<div id="campaign-preview-iframe-container" class="py-4 list-decimal popup-preview">
 																</div>
 															</div>
-															<?php
-																do_action( 'ig_es_campaign_preview_options_content', $campaign_data );
-															?>
+
 														</div>
 													</div>
 												</div>
-
-												<?php do_action( 'ig_es_after_campaign_content_left_pan_settings', $campaign_data ); ?>
 											</div>
 										</div>
 									</div>
@@ -473,7 +866,6 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 										$editor_settings = array(
 											'attributes' => array(
 												'data-html-textarea-name'  => 'campaign_data[body]',
-												'data-is-in-campaign-flow' => 'yes',
 											),
 										);
 										( new ES_Drag_And_Drop_Editor() )->show_editor( $editor_settings );
@@ -490,6 +882,9 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 					<fieldset class="es_fieldset">
 
 						<div class="mt-7 hidden mx-auto es_campaign_second max-w-7xl">
+							<span class="ig-es-ajax-loader">
+								<img src="<?php echo esc_url(ES_PLUGIN_URL); ?>lite/admin/images/spinner-2x.gif">
+							</span>
 							<?php
 							$inline_preview_data = $this->get_campaign_inline_preview_data( $campaign_data );
 							?>
@@ -699,6 +1094,8 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 				$data['body'] = ES_Common::es_process_template_body( $data['body'], $data['base_template_id'], $campaign_id );
 
 				$guid = ES_Common::generate_guid( 6 );
+
+				$meta = apply_filters( 'ig_es_before_save_campaign_notification_meta', array( 'type' => 'newsletter' ), $campaign_meta );
 				$data = array(
 					'hash'        => $guid,
 					'campaign_id' => $campaign_id,
@@ -709,7 +1106,7 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 					'finish_at'   => '',
 					'created_at'  => ig_get_current_date_time(),
 					'updated_at'  => ig_get_current_date_time(),
-					'meta'        => maybe_serialize( array( 'type' => 'newsletter' ) ),
+					'meta'        => maybe_serialize( $meta ),
 				);
 
 				$should_queue_emails = false;
@@ -757,7 +1154,6 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 						$queue_start_at    = $mailing_queue['start_at'];
 						$current_timestamp = time();
 						$sending_timestamp = strtotime( $queue_start_at );
-
 						// Check if campaign sending time has come.
 						if ( ! empty( $sending_timestamp ) && $sending_timestamp <= $current_timestamp ) {
 							$request_args = array(
@@ -811,6 +1207,14 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 					'EMAIL'     => $useremail
 				) );
 
+
+				$campaign_body = ES_Common::replace_keywords_with_fallback( $campaign_body, array(
+					'subscriber.first_name' => $first_name,
+					'subscriber.name'      => $username,
+					'subscriber.last_name'  => $last_name,
+					'subscriber.email'     => $useremail
+				) );
+
 				$campaign_type = $campaign_data['type'];
 
 				$campaign_data['body'] = $campaign_body;
@@ -835,9 +1239,9 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 
 				$campaign_data['body'] = $campaign_body;
 
-				return $campaign_data;
 			}
-
+			
+			return $campaign_data;
 		}
 
 		/**
@@ -864,6 +1268,10 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 			$is_updating   = ! empty( $campaign_id ) ? true : false;
 			$list_id       = ! empty( $campaign_data['list_ids'] ) ? $campaign_data['list_ids'] : '';
 			$template_id   = ! empty( $campaign_data['template_id'] ) ? $campaign_data['template_id'] : '';
+
+			if ( is_null( $campaign_id ) ) {
+				unset( $campaign_data['id'] );
+			}
 
 			$campaign_data['base_template_id'] = $template_id;
 			$campaign_data['list_ids']         = $list_id;
@@ -1096,7 +1504,7 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 				$ignore_last_run        = true;
 				$campaign_id 			= $campaign_data['id'];
 				$campaign_body 			= $campaign_data['body'];
-				$post_ids               = ES_Post_Digest::get_post_id_for_post_digest( $campaign_id, $ignore_stored_post_ids, $ignore_last_run );
+				$post_ids               = ES_Post_Digest::get_matching_post_ids( $campaign_id, $ignore_stored_post_ids, $ignore_last_run );
 				$campaign_body          = ES_Post_Digest::process_post_digest_template( $campaign_body, $post_ids );
 				$campaign_data['body']  = $campaign_body;
 			}
@@ -1144,40 +1552,40 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 			<div class="campaign-keyword-wrapper mt-1 p-4 w-full border border-gray-300">
 				<!-- Start-IG-Code -->
 				<p id="post_notification" class="pb-2 border-b border-gray-300">
-					<a href="https://www.icegram.com/documentation/es-what-are-the-available-keywords-in-the-post-notifications/?utm_source=es&amp;utm_medium=in_app&amp;utm_campaign=view_docs_help_page" target="_blank"><?php esc_html_e( 'Available Keywords', 'email-subscribers' ); ?></a> <?php esc_html_e( 'for Post Notification: ', 'email-subsribers' ); ?>
-					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{FIRSTNAME | fallback:'there'}}</span>
-					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{LASTNAME}}</span>
-					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{NAME | fallback:'there'}}</span>
-					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{EMAIL}}</span>
+					<a href="https://www.icegram.com/documentation/what-keywords-can-be-used-while-designing-the-campaign/?utm_source=es&amp;utm_medium=in_app&amp;utm_campaign=view_docs_help_page" target="_blank"><?php esc_html_e( 'Available Keywords', 'email-subscribers' ); ?></a> <?php esc_html_e( 'for Post Notification: ', 'email-subsribers' ); ?>
+					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{subscriber.first_name | fallback:'there'}}</span>
+					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{subscriber.last_name}}</span>
+					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{subscriber.name | fallback:'there'}}</span>
+					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{subscriber.email}}</span>
 					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{DATE}}</span>
-					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{POSTTITLE}}</span>
-					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{POSTIMAGE}}</span>
-					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{POSTEXCERPT}}</span>
-					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{POSTDESC}}</span>
-					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{POSTAUTHOR}}</span>
-					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{POSTAUTHORAVATAR}}</span>
-					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{POSTAUTHORAVATARLINK-ONLY}}</span>
-					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{POSTLINK}}</span>
-					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{POSTLINK-WITHTITLE}}</span>
-					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{POSTLINK-ONLY}}</span>
-					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{POSTFULL}}</span>
+					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{post.title}}</span>
+					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{post.image}}</span>
+					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{post.excerpt}}</span>
+					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{post.description}}</span>
+					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{post.author}}</span>
+					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{post.author_avatar}}</span>
+					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{post.author_avatar_link}}</span>
+					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{post.link}}</span>
+					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{post.link_with_title}}</span>
+					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{post.link_only}}</span>
+					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{post.full}}</span>
 				</p>
 				<!-- End-IG-Code -->
 				<p id="newsletter" class="py-2 border-b border-gray-300">
-					<a href="https://www.icegram.com/documentation/es-what-are-the-available-keywords-in-the-newsletters/?utm_source=es&amp;utm_medium=in_app&amp;utm_campaign=view_docs_help_page" target="_blank"><?php esc_html_e( 'Available Keywords', 'email-subscribers' ); ?></a> <?php esc_html_e( 'for Broadcast:', 'email-subscribers' ); ?>
-					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{FIRSTNAME | fallback:'there'}}</span>
-					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{LASTNAME}}</span>
-					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{NAME | fallback:'there'}}</span>
-					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{EMAIL}}</span>
+					<a href="https://www.icegram.com/documentation/what-keywords-can-be-used-while-designing-the-campaign/?utm_source=es&amp;utm_medium=in_app&amp;utm_campaign=view_docs_help_page" target="_blank"><?php esc_html_e( 'Available Keywords', 'email-subscribers' ); ?></a> <?php esc_html_e( 'for Broadcast:', 'email-subscribers' ); ?>
+					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{subscriber.first_name | fallback:'there'}}</span>
+					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{subscriber.last_name}}</span>
+					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{subscriber.name | fallback:'there'}}</span>
+					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{subscriber.email}}</span>
 				</p>
 				<!-- Start-IG-Code -->
 				<div id="post_digest" class="pt-2 pb-0">
-					<span style="font-size: 0.8em; margin-left: 0.3em; padding: 2px; background: #e66060; color: #fff; border-radius: 2px; ">Pro</span>&nbsp;
+					<span style="font-size: 0.8em; margin-left: 0.3em; padding: 2px; background: #e66060; color: #fff; border-radius: 2px; ">MAX</span>&nbsp;
 					<a href="https://www.icegram.com/send-post-digest-using-email-subscribers-plugin/?utm_source=es&amp;utm_medium=in_app&amp;utm_campaign=view_post_digest_post" target="_blank"><?php esc_html_e( 'Available Keywords', 'email-subscribers' ); ?></a> <?php esc_html_e( 'for Post Digest:', 'email-subscribers' ); ?>
-					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{FIRSTNAME | fallback:'there'}}</span>
-					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{LASTNAME}}</span>
-					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{NAME | fallback:'there'}}</span>
-					<div class="post_digest_block"> {{POSTDIGEST}} <br/><?php esc_html_e( 'Any keywords related Post Notification', 'email-subscribers' ); ?> <br/>{{/POSTDIGEST}} </div>
+					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{subscriber.first_name | fallback:'there'}}</span>
+					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{subscriber.last_name}}</span>
+					<span class="ig-es-workflow-variable-outer inline-block px-2 py-2 mr-2 mb-2 text-xs font-bold bg-gray-100 hover:bg-gray-300 rounded-md ">{{subscriber.name | fallback:'there'}}</span>
+					<div class="post_digest_block"> {{post.digest}} <br/><?php esc_html_e( 'Any keywords related Post Notification', 'email-subscribers' ); ?> <br/>{{/post.digest}} </div>
 				</div>
 			</div>
 			<!-- End-IG-Code -->
@@ -1241,6 +1649,38 @@ if ( ! class_exists( 'ES_Campaign_Admin' ) ) {
 			}
 
 			return $response;
+		}
+
+		public function show_new_keyword_notice() {
+			$notice_pages   = array( 'es_notifications', 'es_templates', 'es_newsletters', 'es_sequence' );
+			$current_page   = ig_es_get_request_data( 'page' );
+			$is_notice_page = in_array( $current_page, $notice_pages, true );
+			if ( ! $is_notice_page ) {
+				return;
+			}
+
+			$action           = ig_es_get_request_data( 'action' );
+			$campaign_actions = array( 'new', 'edit' );
+			$allowed_action   = in_array( $action, $campaign_actions, true );
+			if ( ! $allowed_action ) {
+				return;
+			}
+
+			$new_keyword_notice_shown = get_option( 'ig_es_new_keyword_notice_shown', 'no' );
+			if ( 'no' === $new_keyword_notice_shown ) {
+				$new_keyword_doc_url = 'https://www.icegram.com/documentation/what-keywords-can-be-used-while-designing-the-campaign/?utm_source=es&utm_medium=in_app&utm_campaign=new_keyword_notice';
+				?>
+				<div class="notice notice-success is-dismissible">
+					<p>
+					<?php
+						/* translators: %s: link to new keyword doc */
+						echo sprintf( esc_html__( '%1$s[Update]%2$s: Improved keyword structure. Made it easy to use in campaign. Checkout %3$shere%4$s.', 'email-subscribers' ), '<strong>', '</strong>', '<a href="' . esc_url( $new_keyword_doc_url ) . '" target="_blank">', '</a>');
+					?>
+					</p>
+				</div>
+				<?php
+				update_option( 'ig_es_new_keyword_notice_shown', 'yes', false );
+			}
 		}
 	}
 

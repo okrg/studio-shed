@@ -5,10 +5,12 @@
 	<lse-smart-help-arrow></lse-smart-help-arrow>
 	<lse-smart-help-bg>
 		<lse-smart-help-inner>
-			<lse-smart-help-title></lse-smart-help-title>
-			<lse-smart-help-content></lse-smart-help-content>
-			<lse-grid class="lse-smart-help-cols">
-			</lse-grid>
+			<lse-smart-help-overflow class="lse-scrollbar lse-scrollbar-light">
+				<lse-smart-help-title></lse-smart-help-title>
+				<lse-smart-help-content></lse-smart-help-content>
+				<lse-grid class="lse-smart-help-cols">
+				</lse-grid>
+			</lse-smart-help-overflow>
 		</lse-smart-help-inner>
 		<lse-smart-help-outer></lse-smart-help-outer>
 	</lse-smart-help-bg>
@@ -138,10 +140,20 @@
 	</div>
 
 
+	<div data-smart-help="minresponsiveratio">
+		<?= __('The minimum responsive ratio specifies the smallest size your layers can shrink to when viewed on smaller screens. By default, this value is zero, and there’s no size limitation. The value 1 corresponds to the layer’s original size, making it impossible to become smaller.', 'LayerSlider') ?>
+	</div>
+
+
+	<div data-smart-help="maxresponsiveratio">
+		<?= __('The maximum responsive ratio specifies the largest size your layers can enlarge to when viewed on bigger screens. There’s no size limitation by default. The value 1 corresponds to the layer’s original size, making it impossible to become larger. The value 2 means the layer can double in its size.', 'LayerSlider') ?>
+	</div>
+
+
 	<!-- OFFSETS -->
 	<div data-smart-help="offset">
 
-		<lse-b class="lse-anim lse-jcsb">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-25 lse-anim-box lse-axis-x">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -169,7 +181,7 @@
 
 	<div data-smart-help="offsetin">
 
-		<lse-b class="lse-anim lse-jcsa">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-25 lse-anim-box lse-axis-x">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -189,10 +201,9 @@
 		<?= __('Shifts the layer starting position with the given amount on the selected axis. Layers animate from the offset value toward their position set under the <b>STYLE</b> menu. Refer to the below options to see special values and supported units.', 'LayerSlider') ?>
 	</div>
 
-
 	<div data-smart-help="offsettextin">
 
-		<lse-b class="lse-anim lse-jcsa">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-25 lse-anim-box lse-axis-x">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -215,7 +226,7 @@
 
 	<div data-smart-help="offsetout">
 
-		<lse-b class="lse-anim lse-jcsa">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-28 lse-anim-box lse-axis-x">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -238,7 +249,7 @@
 
 	<div data-smart-help="offsettextout">
 
-		<lse-b class="lse-anim lse-jcsa">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-28 lse-anim-box lse-axis-x">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -258,11 +269,39 @@
 		<?= __('Shifts each text fragment position with the given amount on the selected axis while the layer animates out. Text fragments animate from the whole joint text toward the value you set here. Refer to the below options to see special values and supported units.', 'LayerSlider') ?>
 	</div>
 
+	<div data-smart-help="offsetxscroll">
+
+		<lse-b class="lse-anim lse-jcse">
+			<lse-ib class="lse-anim-box-30 lse-anim-box lse-axis-x">
+				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
+				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
+			</lse-ib>
+		</lse-b>
+
+		<?= __('Shifts the layer position with the given amount of intensity on the X axis by scrolling up or down on your site.', 'LayerSlider') ?>
+		<br><br>
+		<?= __('You can use decimal values and go over the pre-defined ranges to fine-tune the animation intensity.', 'LayerSlider') ?>
+	</div>
+
+	<div data-smart-help="offsetyscroll">
+
+		<lse-b class="lse-anim lse-jcse">
+			<lse-ib class="lse-anim-box-31 lse-anim-box lse-axis-y">
+				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
+				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
+			</lse-ib>
+		</lse-b>
+
+		<?= __('Shifts the layer position with the given amount of intensity on the Y axis by scrolling up or down on your site.', 'LayerSlider') ?>
+		<br><br>
+		<?= __('You can use decimal values and go over the pre-defined ranges to fine-tune the animation intensity.', 'LayerSlider') ?>
+	</div>
+
 
 
 	<!-- SCALES -->
 	<div data-smart-help="scale">
-		<lse-b class="lse-anim lse-jcsb">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-3 lse-anim-box lse-axis-x">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -286,7 +325,7 @@
 
 
 	<div data-smart-help="scalein">
-		<lse-b class="lse-anim lse-jcsb">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-3 lse-anim-box lse-axis-x">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -310,7 +349,7 @@
 
 
 	<div data-smart-help="scaletextin">
-		<lse-b class="lse-anim lse-jcsb">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-3 lse-anim-box lse-axis-x">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -334,7 +373,7 @@
 
 
 	<div data-smart-help="scaleout">
-		<lse-b class="lse-anim lse-jcsb">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-3 lse-anim-box lse-axis-x">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -358,7 +397,7 @@
 
 
 	<div data-smart-help="scaletextout">
-		<lse-b class="lse-anim lse-jcsb">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-3 lse-anim-box lse-axis-x">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -381,10 +420,39 @@
 	</div>
 
 
+	<div data-smart-help="scalexscroll">
+
+		<lse-b class="lse-anim lse-jcse">
+			<lse-ib class="lse-anim-box-32 lse-anim-box lse-axis-x">
+				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
+				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
+			</lse-ib>
+		</lse-b>
+
+		<?= __('Scales the layer with the given amount of intensity on the X axis by scrolling up or down on your site.', 'LayerSlider') ?>
+		<br><br>
+		<?= __('You can use decimal values and go over the pre-defined ranges to fine-tune the animation intensity.', 'LayerSlider') ?>
+	</div>
+
+	<div data-smart-help="scaleyscroll">
+
+		<lse-b class="lse-anim lse-jcse">
+			<lse-ib class="lse-anim-box-33 lse-anim-box lse-axis-y">
+				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
+				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
+			</lse-ib>
+		</lse-b>
+
+		<?= __('Scales the layer position with the given amount of intensity on the Y axis by scrolling up or down on your site.', 'LayerSlider') ?>
+		<br><br>
+		<?= __('You can use decimal values and go over the pre-defined ranges to fine-tune the animation intensity.', 'LayerSlider') ?>
+	</div>
+
+
 
 	<!-- ROTATE -->
 	<div data-smart-help="rotate">
-		<lse-b class="lse-anim lse-jcsa">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-7 lse-anim-box">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -405,7 +473,7 @@
 
 
 	<div data-smart-help="rotatein">
-		<lse-b class="lse-anim lse-jcsa">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-7 lse-anim-box">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -426,7 +494,7 @@
 
 
 	<div data-smart-help="rotatetextin">
-		<lse-b class="lse-anim lse-jcsa">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-7 lse-anim-box">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -447,7 +515,7 @@
 
 
 	<div data-smart-help="rotateout">
-		<lse-b class="lse-anim lse-jcsa">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-7 lse-anim-box">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -468,7 +536,7 @@
 
 
 	<div data-smart-help="rotatetextout">
-		<lse-b class="lse-anim lse-jcsa">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-7 lse-anim-box">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -488,10 +556,55 @@
 	</div>
 
 
+	<div data-smart-help="rotatescroll">
+
+		<lse-b class="lse-anim lse-jcse">
+			<lse-ib class="lse-anim-box-34 lse-anim-box lse-axis-x lse-axis-y">
+				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
+				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
+			</lse-ib>
+		</lse-b>
+
+		<?= __('Rotates the layer with the given amount of intensity by scrolling up or down on your site.', 'LayerSlider') ?>
+		<br><br>
+		<?= __('You can use decimal values and go over the pre-defined ranges to fine-tune the animation intensity.', 'LayerSlider') ?>
+	</div>
+
+
+	<div data-smart-help="rotatexscroll">
+
+		<lse-b class="lse-anim lse-jcse">
+			<lse-ib class="lse-anim-box-35 lse-anim-box lse-axis-x">
+				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
+				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
+			</lse-ib>
+		</lse-b>
+
+		<?= __('Rotates the layer with the given amount of intensity on the X axis by scrolling up or down on your site.', 'LayerSlider') ?>
+		<br><br>
+		<?= __('You can use decimal values and go over the pre-defined ranges to fine-tune the animation intensity.', 'LayerSlider') ?>
+	</div>
+
+
+	<div data-smart-help="rotateyscroll">
+
+		<lse-b class="lse-anim lse-jcse">
+			<lse-ib class="lse-anim-box-36 lse-anim-box lse-axis-y">
+				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
+				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
+			</lse-ib>
+		</lse-b>
+
+		<?= __('Rotates the layer with the given amount of intensity on the Y axis by scrolling up or down on your site.', 'LayerSlider') ?>
+		<br><br>
+		<?= __('You can use decimal values and go over the pre-defined ranges to fine-tune the animation intensity.', 'LayerSlider') ?>
+	</div>
+
+
 
 	<!-- SKEW -->
 	<div data-smart-help="skew">
-		<lse-b class="lse-anim lse-jcsa">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-8 lse-anim-box lse-axis-x">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -511,7 +624,7 @@
 
 
 	<div data-smart-help="skewin">
-		<lse-b class="lse-anim lse-jcsa">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-8 lse-anim-box lse-axis-x">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -531,7 +644,7 @@
 
 
 	<div data-smart-help="skewtextin">
-		<lse-b class="lse-anim lse-jcsa">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-8 lse-anim-box lse-axis-x">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -551,7 +664,7 @@
 
 
 	<div data-smart-help="skewout">
-		<lse-b class="lse-anim lse-jcsa">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-8 lse-anim-box lse-axis-x">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -571,7 +684,7 @@
 
 
 	<div data-smart-help="skewtextout">
-		<lse-b class="lse-anim lse-jcsa">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-8 lse-anim-box lse-axis-x">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -590,10 +703,68 @@
 	</div>
 
 
+	<div data-smart-help="skewxscroll">
+
+		<lse-b class="lse-anim lse-jcse">
+			<lse-ib class="lse-anim-box-37 lse-anim-box lse-axis-x">
+				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
+				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
+			</lse-ib>
+		</lse-b>
+
+		<?= __('Skews the layer with the given amount of intensity on the X axis by scrolling up or down on your site.', 'LayerSlider') ?>
+		<br><br>
+		<?= __('You can use decimal values and go over the pre-defined ranges to fine-tune the animation intensity.', 'LayerSlider') ?>
+	</div>
+
+
+	<div data-smart-help="skewyscroll">
+
+		<lse-b class="lse-anim lse-jcse">
+			<lse-ib class="lse-anim-box-38 lse-anim-box lse-axis-y">
+				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
+				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
+			</lse-ib>
+		</lse-b>
+
+		<?= __('Skews the layer with the given amount of intensity on the Y axis by scrolling up or down on your site.', 'LayerSlider') ?>
+		<br><br>
+		<?= __('You can use decimal values and go over the pre-defined ranges to fine-tune the animation intensity.', 'LayerSlider') ?>
+	</div>
+
+	<div data-smart-help="opacityscroll">
+
+		<lse-b class="lse-anim lse-jcse">
+			<lse-ib class="lse-anim-box-39 lse-anim-box">
+				<lse-anim-block class="lse-anim-rect lse-anim-orig lse-anim-moved"></lse-anim-block>
+			</lse-ib>
+		</lse-b>
+
+		<?= __('Changes the transparency of the layer with the given amount of intensity by scrolling up or down on your site.', 'LayerSlider') ?>
+		<br><br>
+		<?= __('You can use decimal values and go over the pre-defined ranges to fine-tune the animation intensity.', 'LayerSlider') ?>
+	</div>
+
+	<div data-smart-help="durationscroll">
+		<?= __('The length of the scroll transition in milliseconds. A second equals to 1000 milliseconds. <br><br> Using smaller values will result in quick and fast animations, while larger values will result in slower and delayed animations.', 'LayerSlider') ?>
+	</div>
+
+	<div data-smart-help="centerpointscroll">
+		<?= __('Choose a center point for scroll transition layers where they will be aligned perfectly according to their original position. <br><br> <b>Inherit</b>: Uses the global value set in Project Settings → Defaults. <br><br> <b>Top</b>: When the top edge of the slider is at the top of the viewport. <br><br> <b>Center</b>: When the center of the slider is at the center of the viewport. <br><br> <b>Bottom</b>: When the bottom edge of the slider is at the bottom of the viewport.', 'LayerSlider') ?>
+	</div>
+
+	<div data-smart-help="scrollgetposition">
+		<?= __('Choose whether Scroll Transition should watch for the project position or the scene progression. By default, Scroll Transition won’t animate while the project is pinned when using a Sticky or Scroll Scene. Choose the “Scene” option if you’d like to use them in combination.', 'LayerSlider') ?>
+	</div>
+
+
+
+
+
 
 	<!-- TRANSFORM -->
-	<div data-smart-help="transformOrigin">
-		<lse-b class="lse-anim lse-jcsa">
+	<div data-smart-help="transformorigin">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-13 lse-anim-box">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -617,7 +788,7 @@
 
 
 	<div data-smart-help="perspective">
-		<lse-b class="lse-anim lse-jcsa">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-14 lse-anim-box lse-axis-y">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -632,10 +803,14 @@
 
 	</div>
 
+	<div data-smart-help="mirrortransition">
+		<?= __('Mirrors the selected transition properties on slide change based on whether you navigate forward or backward in the slider. For example, if a layer normally animates from left to right, it’ll go the opposite direction from the right to the left when you navigate backward.', 'LayerSlider') ?>
+	</div>
+
 
 	<div data-smart-help="mask">
 
-		<lse-b class="lse-anim lse-jcsa">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-21 lse-anim-box">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -661,7 +836,7 @@
 
 	<div data-smart-help="easing">
 
-		<lse-b class="lse-anim lse-jcsa">
+		<lse-b class="lse-anim lse-jcse">
 			<lse-ib class="lse-anim-box-16 lse-anim-box">
 				<lse-anim-block class="lse-anim-rect lse-anim-orig"></lse-anim-block>
 				<lse-anim-block class="lse-anim-rect lse-anim-moved"></lse-anim-block>
@@ -750,7 +925,7 @@
 	<div data-smart-help="startwhenmodifier">
 		<?= __('Shifts the above selected starting time by performing a custom operation.', 'LayerSlider') ?>
 		<br><br>
-		<?= __('For example, "- 1000" will advance the animation by playing it 1 second (1000 milliseconds) earlier.', 'LayerSlider') ?>
+		<?= __('For example, “- 1000” will advance the animation by playing it 1 second (1000 milliseconds) earlier.', 'LayerSlider') ?>
 	</div>
 
 
@@ -778,6 +953,15 @@
 		<?= __('Layers can be kept at their place across multiple slides. Here you can select the slide on which this layer should animate out.', 'LayerSlider') ?>
 	</div>
 
+	<div data-smart-help="skipviewport">
+		<?= __('By default, LayerSlider will start playing your project when it enters the viewport so that visitors will not miss the animation and effects you intended them to see, even if the project is below the fold. This behavior is controlled by the Project Settings → Slideshow → Start Only In Viewport option.<br><br>
+
+		However, there are cases where you might want to display certain interface elements immediately, even if the project canvas is only partially visible and the playback of your project hasn’t started yet.<br><br>
+
+		With this option, you can exclude layers from waiting for the playback to begin, and they will start the selected transitions immediately.', 'LayerSlider') ?>
+	</div>
+
+
 
 	<div data-smart-help="fontfamily">
 
@@ -798,25 +982,41 @@
 	</div>
 
 
-	<div data-smart-help="textColor">
+	<div data-smart-help="textcolor">
 	</div>
 
 
-	<div data-smart-help="iconColor">
+	<div data-smart-help="iconcolor">
 	</div>
 
 
-	<div data-smart-help="backgroundColor">
+	<div data-smart-help="backgroundcolor">
 	</div>
 
 
-	<div data-smart-help="backgroundSize">
+	<div data-smart-help="backgroundsize">
 		<?= __('Sets the size of the background image. The image can be left to its natural size, stretched, or constrained to fit the available space.', 'LayerSlider') ?>
 	</div>
 
 
 	<div data-smart-help="deeplink">
 		<?= __('A slide alias name, which you can use in your URLs with a hash tag so LayerSlider will start with the corresponding slide when visitors arrive to the page. <br><br> Example: domain.com/page/#welcome<br><br>Use only lowercase alphanumeric values. You can also use this feature to implement slide navigation with links.', 'LayerSlider') ?>
+	</div>
+
+	<div data-smart-help="sceneheight">
+		<?= __('The length of the scrollable area. Use larger values to keep the slider visible for longer, and play animations slower in case of a Scroll Scene. Supported units: <br><br> <b>px:</b> A fixed value specified in pixels. <br><br> <b>%</b> or <b>sh:</b> Percentage of the slider height. 1sh equals to 1% of the slider height. This value scales dinamically when the slider’s size changes. <b> <br><br> vh:</b> Percentage of the viewport (browser window) height. 1vh equals to 1% of the viewport height. This value scales dinamically when the browser window is resized.', 'LayerSlider') ?>
+	</div>
+
+	<div data-smart-help="projectverticalspacing">
+		<?= __('Creates empty space above and below your projects (i.e. margins). Supported units: <br><br> <b>px:</b> A fixed value specified in pixels. <br><br> <b>%</b> or <b>sh:</b> Percentage of the slider height. 1sh equals to 1% of the slider height. This value scales dinamically when the slider’s size changes. <b> <br><br> vh:</b> Percentage of the viewport (browser window) height. 1vh equals to 1% of the viewport height. This value scales dinamically when the browser window is resized.', 'LayerSlider') ?>
+	</div>
+
+	<div data-smart-help="firstslide">
+		<?= __('Enter the slide number you want your project to start with, or choose from the below options.', 'LayerSlider') ?>
+	</div>
+
+	<div data-smart-help="performancemodethreshold">
+		<?= __('The minimum distance between the slider and viewport edges when Performance Mode should activate as described on the right. Supported units: <br><br> <b>px:</b> A fixed value specified in pixels. <br><br> <b>%</b> or <b>sh:</b> Percentage of the slider height. 1sh equals to 1% of the slider height. This value scales dinamically when the slider’s size changes. <b> <br><br> vh:</b> Percentage of the viewport (browser window) height. 1vh equals to 1% of the viewport height. This value scales dinamically when the browser window is resized.', 'LayerSlider') ?>
 	</div>
 
 </lse-smart-help-contents>
@@ -880,6 +1080,9 @@
 		<lse-ul class="lse-smart-inject">
 			<lse-li data-smart-inject="random(120,-120)"><?= __('Random between two values', 'LayerSlider') ?></lse-li>
 			<lse-li class="_text" data-smart-inject="30|60|90|120"><?= __('Cycle through multiple values', 'LayerSlider') ?></lse-li>
+			<lse-li class="_in _out" data-smart-inject="="><?= __('Inherit value from style settings', 'LayerSlider') ?></lse-li>
+			<lse-li class="_in _out" data-smart-inject="+=60"><?= __('Add 60 to style settings value', 'LayerSlider') ?></lse-li>
+			<lse-li class="_in _out" data-smart-inject="/=2"><?= __('Divide style settings value by 2', 'LayerSlider') ?></lse-li>
 		</lse-ul>
 
 	</div>
@@ -893,6 +1096,9 @@
 			<lse-li data-smart-inject="-1"><?= __('Flip layer', 'LayerSlider') ?></lse-li>
 			<lse-li class="_transition" data-smart-inject="random(1,2)"><?= __('Random between two values', 'LayerSlider') ?></lse-li>
 			<lse-li class="_text" data-smart-inject="3|2|1.5"><?= __('Cycle through multiple values', 'LayerSlider') ?></lse-li>
+			<lse-li class="_in _out" data-smart-inject="="><?= __('Inherit value from style settings', 'LayerSlider') ?></lse-li>
+			<lse-li class="_in _out" data-smart-inject="*=1.5"><?= __('Multiply style settings value by 1.5', 'LayerSlider') ?></lse-li>
+			<lse-li class="_in _out" data-smart-inject="/=2"><?= __('Divide style settings value by 2', 'LayerSlider') ?></lse-li>
 		</lse-ul>
 
 	</div>
@@ -902,11 +1108,13 @@
 		<lse-ul class="lse-smart-inject">
 			<lse-li data-smart-inject="random(20,-20)"><?= __('Random between two values', 'LayerSlider') ?></lse-li>
 			<lse-li class="_text" data-smart-inject="10|20|30"><?= __('Cycle through multiple values', 'LayerSlider') ?></lse-li>
+			<lse-li class="_in _out" data-smart-inject="="><?= __('Inherit value from style settings', 'LayerSlider') ?></lse-li>
+			<lse-li class="_in _out" data-smart-inject="+=30"><?= __('Add 30 to style settings value', 'LayerSlider') ?></lse-li>
 		</lse-ul>
 
 	</div>
 
-	<div data-smart-options="backgroundSize">
+	<div data-smart-options="backgroundsize">
 
 		<lse-ul class="lse-smart-inject">
 			<lse-li data-smart-inject="auto" data-tt><?= __('auto', 'LayerSlider') ?></lse-li><lse-tt><?= __('The background image is displayed in its original size', 'LayerSlider') ?></lse-tt>
@@ -925,10 +1133,7 @@
 		<?php if( $googleFontsEnabled ) : ?>
 		<lse-b class="lse-smart-help-fonts-in-projects lse-dn">
 			<lse-smart-options-subtitle><?= __('Used in Project', 'LayerSlider') ?></lse-smart-options-subtitle>
-			<lse-ul class="lse-smart-inject">
-				<lse-li data-smart-inject="Lato">Lato</lse-li>
-				<lse-li data-smart-inject="'Open Sans'">Open Sans</lse-li>
-			</lse-ul>
+			<lse-ul class="lse-smart-inject"></lse-ul>
 		</lse-b>
 		<?php endif ?>
 
@@ -943,6 +1148,12 @@
 			<lse-li data-smart-inject="Verdana">Verdana</lse-li>
 		</lse-ul>
 
+		<lse-b class="lse-smart-help-external-fonts lse-dn">
+			<lse-smart-options-subtitle><?= __('External Fonts', 'LayerSlider') ?></lse-smart-options-subtitle>
+			<lse-ib class="lse-mt-10"><?= __('Fonts loaded by third parties might not be present on every page and might only support some font weights and styles.', 'LayerSlider') ?></lse-ib>
+			<lse-ul class="lse-smart-inject"></lse-ul>
+		</lse-b>
+
 	</div>
 
 	<div data-smart-options="mask">
@@ -956,7 +1167,7 @@
 
 	</div>
 
-	<div data-smart-options="transformOrigin">
+	<div data-smart-options="transformorigin">
 		<lse-grid class="lse-transform-origin-smart-select lse-form-elements lse-smart-help-theme lse-collect-values">
 			<lse-row>
 				<lse-col class="lse-full">
@@ -1049,6 +1260,50 @@
 		</lse-grid>
 	</div>
 
+	<div data-smart-options="minresponsiveratio">
+		<lse-ul class="lse-smart-inject">
+			<lse-li data-smart-inject="0"><?= __('No limitation', 'LayerSlider') ?></lse-li>
+			<lse-li data-smart-inject="0.5"><?= __('Half the layer’s original size', 'LayerSlider') ?></lse-li>
+			<lse-li data-smart-inject="1"><?= __('Don’t allow shrinking', 'LayerSlider') ?></lse-li>
+		</lse-ul>
+	</div>
+
+	<div data-smart-options="maxresponsiveratio">
+		<lse-ul class="lse-smart-inject">
+			<lse-li data-smart-inject=""><?= __('No limitation', 'LayerSlider') ?></lse-li>
+			<lse-li data-smart-inject="2"><?= __('Double the layer’s original size', 'LayerSlider') ?></lse-li>
+			<lse-li data-smart-inject="1"><?= __('Don’t allow enlarging', 'LayerSlider') ?></lse-li>
+		</lse-ul>
+	</div>
+
+	<div data-smart-options="mirrortransition">
+		<lse-grid class="lse-form-elements lse-smart-help-theme lse-form-rows lse-collect-values">
+			<?= lsGetSVGIcon('times-circle',false,['class' => 'lse-form-rows-close']) ?>
+			<lse-row>
+				<lse-col class="lse-placeholder">
+					<lse-ib>
+						<lse-fe-wrapper class="lse-select">
+							<select class="lse-value">
+								<option value=""><?= __('Select properties to mirror', 'LayerSlider') ?></option>
+								<option value="x"><?= __('Offset X', 'LayerSlider') ?></option>
+								<option value="y"><?= __('Offset Y', 'LayerSlider') ?></option>
+								<option value="scalex"><?= __('Scale X', 'LayerSlider') ?></option>
+								<option value="scaley"><?= __('Scale Y', 'LayerSlider') ?></option>
+								<option value="rotation"><?= __('Rotation', 'LayerSlider') ?></option>
+								<option value="rotationx"><?= __('Rotation X', 'LayerSlider') ?></option>
+								<option value="rotationy"><?= __('Rotation Y', 'LayerSlider') ?></option>
+								<option value="skewx"><?= __('Skew X', 'LayerSlider') ?></option>
+								<option value="skewy"><?= __('Skew Y', 'LayerSlider') ?></option>
+							</select>
+						</lse-fe-wrapper>
+					</lse-ib>
+				</lse-col>
+				<lse-col>
+					<lse-button><?= __('Apply selected values', 'LayerSlider') ?></lse-button>
+				</lse-col>
+			</lse-row>
+		</lse-grid>
+	</div>
 	<div data-smart-options="applytoallslides">
 		<lse-grid class="lse-form-elements lse-smart-help-theme lse-form-rows">
 			<lse-row>
@@ -1059,5 +1314,40 @@
 		</lse-grid>
 	</div>
 
+	<div data-smart-options="sceneheight">
+
+		<lse-ul class="lse-smart-inject">
+			<lse-li data-smart-inject=""><?= __('auto (Calculated automatically based on slide duration and slider height)', 'LayerSlider') ?></lse-li>
+			<lse-li data-smart-inject="2000px"><?= __('2000px', 'LayerSlider') ?></lse-li>
+			<lse-li data-smart-inject="250sh"><?= __('250sh (250% of slider height)', 'LayerSlider') ?></lse-li>
+			<lse-li data-smart-inject="150vh"><?= __('150vh (150% of viewport height)', 'LayerSlider') ?></lse-li>
+		</lse-ul>
+	</div>
+
+	<div data-smart-options="projectverticalspacing">
+
+		<lse-ul class="lse-smart-inject">
+			<lse-li data-smart-inject="200px"><?= __('200px', 'LayerSlider') ?></lse-li>
+			<lse-li data-smart-inject="60sh"><?= __('60sh (60% of slider height)', 'LayerSlider') ?></lse-li>
+			<lse-li data-smart-inject="90vh"><?= __('90vh (90% of viewport height)', 'LayerSlider') ?></lse-li>
+		</lse-ul>
+	</div>
+
+	<div data-smart-options="firstslide">
+
+		<lse-ul class="lse-smart-inject">
+			<lse-li data-smart-inject=""><?= __('Normal sequence', 'LayerSlider') ?></lse-li>
+			<lse-li data-smart-inject="random"><?= __('Random', 'LayerSlider') ?></lse-li>
+		</lse-ul>
+	</div>
+
+	<div data-smart-options="performancemodethreshold">
+
+		<lse-ul class="lse-smart-inject">
+			<lse-li data-smart-inject=""><?= __('Default', 'LayerSlider') ?></lse-li>
+			<lse-li data-smart-inject="0"><?= __('Activate immediately once the slider leaves the viewport', 'LayerSlider') ?></lse-li>
+			<lse-li data-smart-inject="100vh"><?= __('Activate once the slider moves by a screen distance away from the viewport', 'LayerSlider') ?></lse-li>
+		</lse-ul>
+	</div>
 
 </lse-smart-options-contents>

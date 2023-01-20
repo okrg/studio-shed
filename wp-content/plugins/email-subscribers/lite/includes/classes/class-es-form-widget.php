@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class ES_Form_Widget extends WP_Widget {
 
 	public function __construct() {
-		parent::__construct( 'email-subscribers-form', __( 'Email Subscribers', 'email-subscribers' ), array( 'description' => __( 'Email Subscribers Form', 'email-subscribers' ) ) );
+		parent::__construct( 'email-subscribers-form', __( 'Icegram Express', 'email-subscribers' ), array( 'description' => __( 'Icegram Express Form', 'email-subscribers' ) ) );
 	}
 
 	public function widget( $args, $instance ) {
@@ -29,8 +29,9 @@ class ES_Form_Widget extends WP_Widget {
 		if ( ! empty( $form_id ) ) {
 
 			$form = ES()->forms_db->get_form_by_id( $form_id );
-
-			$form_data = ES_Forms_Table::get_form_data_from_body( $form );
+			if ( $form ) {
+				$form_data = ES_Forms_Table::get_form_data_from_body( $form );
+			}
 		}
 
 		$data = array();
@@ -56,6 +57,16 @@ class ES_Form_Widget extends WP_Widget {
 
 		if ( ! empty ( $form_data['custom_fields'] ) ) {
 			$data['custom_fields'] 		= ( ! empty( $form_data['custom_fields' ] ) ) ? $form_data['custom_fields' ] : '';
+		}
+
+		if ( ! empty( $form_data['settings'] ) ) {
+			$data['settings']['editor_type']    = ! empty( $form_data['settings']['editor_type'] ) ? $form_data['settings']['editor_type'] : array();
+			$data['settings']['dnd_editor_css'] = ! empty( $form_data['settings']['dnd_editor_css'] ) ? $form_data['settings']['dnd_editor_css'] : array();
+			$data['settings']['lists']          = ! empty( $form_data['settings']['lists'] ) ? $form_data['settings']['lists'] : array();
+		}
+
+		if ( ! empty( $form_data['body'] ) ) {
+			$data['body'] = ! empty( $form_data['body'] ) ? $form_data['body'] : '';
 		}
 
 		ES_Shortcode::render_form( $data );

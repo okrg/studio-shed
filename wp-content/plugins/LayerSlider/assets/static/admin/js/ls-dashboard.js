@@ -43,15 +43,17 @@ jQuery(function($) {
 	}).change();
 
 	$('#ls-plugin-settings-tabs .ls-empty-google-fonts').on('click', function( event ) {
-		if( ! confirm( LS_l10n.GFEmptyConfirmation ) ) {
-			event.preventDefault();
-			return false;
-		}
+
+		event.preventDefault();
+		lsCommon.smartAlert.confirm( LS_l10n.GFEmptyConfirmation, () => {
+			document.location.href = $( this ).attr('href');
+		});
 	});
 
 	$('#ls-global-google-fonts').on('click', '.ls-remove-font', function() {
 
-		if( confirm( LS_l10n.GFRemoveConfirmation ) ) {
+		lsCommon.smartAlert.confirm( LS_l10n.GFRemoveConfirmation, () => {
+
 			var $fontItem = $( this ).closest('.ls-font-item');
 
 			$fontItem.css({ opacity: 0, transform: 'scale(0)'});
@@ -59,7 +61,7 @@ jQuery(function($) {
 				$fontItem.remove();
 				saveGoogleFonts();
 			}, 250 );
-		}
+		});
 	});
 
 	$( document ).on('click', '.ls-open-plugin-settings-button', function() {
@@ -103,22 +105,27 @@ jQuery(function($) {
 		const 	$checkbox 	= $( this ),
 				checked 	= $checkbox.prop('checked');
 
-		// Show additional warning message when enabling option
+		// Enable warning
 		if( checked && $checkbox.data('warning-enable') ) {
-			if( ! confirm( $( this ).data('warning-enable') ) ) {
-				event.preventDefault();
-				event.stopPropagation();
-				return;
-			}
+
+			event.preventDefault();
+			event.stopPropagation();
+
+			lsCommon.smartAlert.confirm( $checkbox.data('warning-enable'), () => {
+				$checkbox.prop('checked', true ).trigger('change');
+			});
+
 		}
 
-		// Show additional warning message when disabling option
+		// Disable warning
 		if( ! checked && $checkbox.data('warning-disable') ) {
-			if( ! confirm( $( this ).data('warning-disable') ) ) {
-				event.preventDefault();
-				event.stopPropagation();
-				return;
-			}
+
+			event.preventDefault();
+			event.stopPropagation();
+
+			lsCommon.smartAlert.confirm( $( this ).data('warning-disable'), () => {
+				$checkbox.prop('checked', false ).trigger('change');
+			});
 		}
 
 	});
@@ -232,7 +239,7 @@ jQuery(function($) {
 		});
 
 
-	}).on('click', '.slider-item .preview', function( event ) {
+	}).on('click', '.slider-item .ls-preview', function( event ) {
 
 		if( event.ctrlKey || event.metaKey ) {
 
@@ -248,7 +255,7 @@ jQuery(function($) {
 	}).on('mouseleave', '.slider-actions-button, .slider-item-wrapper input', function() {
 		$( this ).closest('.slider-item').removeClass('ls-block-active-state');
 
-	}).on('input', '.slider-item-wrapper input', function() {
+	}).on('input', '.slider-item-wrapper .ls--project-name-input', function() {
 
 		var $this = $( this );
 
@@ -295,7 +302,7 @@ jQuery(function($) {
 		e.preventDefault();
 
 		var $this 		= $( this ),
-			groupName 	= $.trim( $this.find('.name ls-span').html() ).replace(/"/g, '&quot;');
+			groupName 	= $.trim( $this.find('.ls-name ls-span').html() ).replace(/"/g, '&quot;');
 
 		$lastOpenedGroup = $this;
 
@@ -349,7 +356,7 @@ jQuery(function($) {
 		}, 300 );
 
 
-		$lastOpenedGroup.find('.name ls-span').text( $this.val() );
+		$lastOpenedGroup.find('.ls-name ls-span').text( $this.val() );
 	});
 
 	$( document ).on('click', '.ls-slider-group-modal-window .ls-remove-group-button', function( e) {
@@ -357,45 +364,41 @@ jQuery(function($) {
 		e.preventDefault();
 		kmUI.popover.close();
 
+		lsCommon.smartAlert.confirm( LS_l10n.SLRemoveGroupConfirm, () => {
 
-		setTimeout( function() {
+			$.get( ajaxurl, {
+				action: 'ls_delete_slider_group',
+				groupId: $lastOpenedGroup.data('id'),
+			});
 
-			if( confirm( LS_l10n.SLRemoveGroupConfirm ) ) {
+			var $sliders = $('.ls-slider-group-modal-window .slider-item');
 
-				$.get( ajaxurl, {
-					action: 'ls_delete_slider_group',
-					groupId: $lastOpenedGroup.data('id'),
-				});
-
-				var $sliders = $('.ls-slider-group-modal-window .slider-item');
-
-				// Destroy previous draggable instance (if any)
-				if( $sliders.hasClass('ui-draggable') ) {
-					$sliders.draggable('destroy');
-				}
-
-				// Destroy previous droppable instance (if any)
-				if( $sliders.hasClass('ui-droppable') ) {
-					$sliders.droppable('destroy');
-				}
-
-				$sliders.prependTo('.ls-sliders-grid');
-
-				setTimeout( function() {
-					addSliderToGroupDraggable();
-					addSliderToGroupDroppable();
-
-					createSliderGroupDroppable();
-				}, 300 );
-
-
-				$lastOpenedGroup.next().remove();
-				$lastOpenedGroup.remove();
-
-				kmw.modal.close();
+			// Destroy previous draggable instance (if any)
+			if( $sliders.hasClass('ui-draggable') ) {
+				$sliders.draggable('destroy');
 			}
 
-		}, 300 );
+			// Destroy previous droppable instance (if any)
+			if( $sliders.hasClass('ui-droppable') ) {
+				$sliders.droppable('destroy');
+			}
+
+			$sliders.prependTo('.ls-sliders-grid');
+
+			setTimeout( function() {
+				addSliderToGroupDraggable();
+				addSliderToGroupDroppable();
+
+				createSliderGroupDroppable();
+			}, 300 );
+
+
+			$lastOpenedGroup.next().remove();
+			$lastOpenedGroup.remove();
+
+			kmw.modal.close();
+		});
+
 	});
 
 	jQuery('#ls-add-slider-button').click( function( e ) {
@@ -546,30 +549,6 @@ jQuery(function($) {
 				jQuery.get( window.ajaxurl, { action: 'ls_store_opened' });
 			}
 
-			// Hide all template items temporarily for faster animations
-			jQuery( '#ls-import-modal-window .items' ).hide();
-
-
-			// Initialize Looking for more? slider
-			setTimeout( function() {
-				jQuery('#popups-looking-for-more').layerSlider({
-					keybNav: false,
-					touchNav: false,
-					skin: 'v6',
-					navPrevNext: false,
-					hoverPrevNext: false,
-					navStartStop: false,
-					navButtons: false,
-					showCircleTimer: false,
-					useSrcset: false,
-					skinsPath: pluginPath + 'layerslider/skins/'
-				});
-
-				jQuery('#open-webshopworks-popups').on('click', function() {
-					jQuery('#ls-import-modal-window .source-filter li:last').click();
-				});
-			}, 1200 );
-
 			importModalWindowTimeline = new TimelineMax({
 				onStart: function(){
 					jQuery( '#ls-import-modal-overlay' ).show();
@@ -584,8 +563,11 @@ jQuery(function($) {
 					if( importModalWindowTimeline ) {
 						importModalWindowTimeline.remove( importModalThumbnailsTransition );
 					}
+					featuredSlideshow.start();
+
 				},
 				onReverseComplete: function(){
+					featuredSlideshow.stop();
 					jQuery( 'html, body' ).removeClass( 'ls-no-overflow' );
 					jQuery(document).off( 'keyup.LS' );
 					jQuery( '#ls-import-modal-overlay' ).hide();
@@ -609,18 +591,17 @@ jQuery(function($) {
 				ease: Quart.easeInOut
 			}, 0 );
 
-			importModalThumbnailsTransition = TweenMax.fromTo( $( '#ls-import-modal-window .items' )[0], 0.5, {
+			importModalThumbnailsTransition = TweenMax.fromTo( $( '#ls-import-modal-window ls-templates-container.ls--active' )[0], 0.5, {
 				autoCSS: false,
 				css: {
-					opacity: 0,
-					display: 'flex'
+					opacity: 0
 				}
 			},{
 				autoCSS: false,
 				css: {
 					opacity: 1
 				},
-			ease: Quart.easeInOut
+				ease: Quart.easeInOut
 			});
 
 			importModalWindowTimeline.add( importModalThumbnailsTransition, 0.75 );
@@ -650,44 +631,7 @@ jQuery(function($) {
 	});
 
 
-
-	// Template Store: Content chooser
-	jQuery( document ).on('click', '#ls-import-modal-window .content-filter li, #ls-import-modal-window .source-filter li', function() {
-
-		activeShuffleContainerIndex = jQuery( this ).data('index');
-
-		jQuery('#ls-import-modal-window .inner')
-			.removeClass('active')
-			.eq( activeShuffleContainerIndex )
-			.addClass('active')
-			.find('.items')
-			.show();
-	});
-
-
-	// Template Store: Slider filters
-	jQuery( document ).on( 'click', '#ls-import-modal-window .shuffle-filters li', function(){
-
-		$(this).addClass('active').siblings().removeClass('active');
-
-		var $this 	= $( this ),
-			$target = $('.ls-template-items').eq( activeShuffleContainerIndex ),
-			$scroll = $('.ls-templates-holder').eq( activeShuffleContainerIndex ),
-			$items 	= $target.find('.item'),
-			cat 	= $this.data('group');
-
-
-		if( ! cat ) {
-			$items.show();
-		} else {
-		 	$items.hide().filter('[data-groups*="'+cat+'"]').show();
-		}
-
-		$scroll.animate({ scrollTop: 0 }, 300 );
-	});
-
-
-	$( document ).on( 'click', '#ls-import-modal-window > header b', function(){
+	$( document ).on( 'click', '#ls-import-modal-window .ls--close-templates', function(){
 		$( '#ls-browse-templates-button' ).data( 'lsModalTimeline' ).reverse();
 
 	}).on('submit', '#ls-upload-modal-window form', function(e) {
@@ -729,6 +673,127 @@ jQuery(function($) {
 		});
 	});
 
+	// Template Store: Category selector
+	$( document ).on( 'click', '#ls-import-modal-window [data-show-category]', function() {
+		var $el = $( this );
+		changeCategory( $( this ).attr('data-show-category') );
+
+		if( $el.attr( 'data-show-tag') ){
+			$( '#ls-import-modal-window ls-templates-container.ls--active ls-tag[data-handle="'+ $el.attr( 'data-show-tag') +'"]' ).click();
+		}
+	});
+
+	var changeCategory = function( category ){
+		$( '#ls-import-modal-window ls-templates-nav [data-show-category]' ).removeClass('ls--active');
+		$( '#ls-import-modal-window ls-templates-nav [data-show-category="'+category+'"]' ).addClass( 'ls--active' );
+
+		$( '#ls-import-modal-window ls-templates-container' ).removeClass( 'ls--active' );
+		$( '#ls-import-modal-window ls-templates-container[data-category="'+category+'"]' ).addClass( 'ls--active' );
+
+		$( 'ls-templates-containers' ).scrollTop(0);
+	};
+
+	// Template Store: Collections
+	$( document ).on( 'click', '#ls-import-modal-window [data-show-category="collections"]', function(e){
+		e.preventDefault();
+		if( !$('#ls--collection-templates').children().length ){
+			$( 'ls-templates-holder.ls--collections-list ls-template.ls--active' ).click();
+		}
+	}).on( 'click', '#ls-import-modal-window [data-show-collection]', function(e){
+		e.preventDefault();
+		changeCategory( 'collections' );
+		$( 'ls-templates-holder.ls--collections-list ls-template[data-handle="'+$(this).attr('data-show-collection')+'"]' ).click();
+	}).on( 'click', '#ls-import-modal-window ls-templates-holder.ls--collections-list ls-template', function(){
+		var $activeCollectionSelector = $( this );
+		$activeCollectionSelector.addClass( 'ls--active' ).siblings().removeClass( 'ls--active' );
+		getCollectionItems( $activeCollectionSelector.attr( 'data-handle'), $activeCollectionSelector.attr( 'data-name' ) );
+	});
+
+	// Template Store: Tags
+	$( document ).on( 'click', '#ls-import-modal-window ls-tag', function() {
+
+		var $curTag = $(this),
+			handle = $curTag.attr( 'data-handle' ),
+			$templatesHolder = $curTag.closest( 'ls-templates-container' ).find( 'ls-templates-holder' ),
+			$allTemplates = $templatesHolder.find( 'ls-template' ),
+			$filteredTemplates = $templatesHolder.find( 'ls-template[data-groups*="'+handle+'"]' ),
+			$allButFilteredTemplates = $templatesHolder.find( 'ls-template:not([data-groups*="'+handle+'"])' );
+
+			$curTag.addClass('ls--active').siblings().removeClass('ls--active');
+			$allTemplates.show();
+			if( handle === '' || handle === 'all' ){
+				return;
+			}
+			$allButFilteredTemplates.hide();
+	});
+
+	var getCollectionItems = function( handle, name ){
+
+		$( '#ls--collection-templates' ).empty();
+		$( '.ls-template-collections-target ls-template[data-collections*=' + handle + ']' ).clone().show().appendTo( '#ls--collection-templates' );
+		$( '#ls--collection-title ls-ib span').text( name );
+	};
+
+	// Template Store: Featured
+	$( document ).on( 'click', '#ls-import-modal-window ls-featured-bullet', function( event ) {
+		var index = $( this ).index( '#ls-import-modal-window ls-templates-featured ls-featured-bullet' );
+		featuredSlideshow.change( index, event );
+	});
+
+	var featuredSlideshow = {
+
+		timer: 60,
+		interval: 0,
+
+		start: function(){
+
+			this.itemsNum = $( '#ls-import-modal-window ls-templates-featured ls-featured-bullet' ).length;
+
+			if( this.itemsNum > 1 ){
+				this.currentIndex = 0;
+				this.timer = parseInt( $( '#ls-import-modal-window ls-templates-featured' ).attr( 'data-slideshow-interval' ) ) || this.timer;
+
+				this.startInterval();
+			}
+		},
+
+		startInterval: function() {
+
+			clearInterval( this.interval );
+			this.interval = setInterval( () => {
+				this.change();
+			}, this.timer * 1000 );
+		},
+
+		stop: function(){
+			clearInterval( this.interval );
+		},
+
+		change: function( index, event ){
+
+			if( typeof index !== 'undefined' ) {
+				this.currentIndex = index;
+			} else {
+
+				if( this.currentIndex + 1 >= this.itemsNum ){
+					this.currentIndex = 0;
+				}else{
+					this.currentIndex++;
+				}
+			}
+
+			var $bullet = $('#ls-import-modal-window ls-templates-featured ls-featured-bullet').eq( this.currentIndex );
+
+			$bullet.addClass('ls--active').siblings( 'ls-featured-bullet' ).removeClass( 'ls--active' );
+			$( '#ls-import-modal-window ls-templates-featured ls-featured-item' ).eq( this.currentIndex ).addClass( 'ls--active' ).siblings( 'ls-featured-item' ).removeClass( 'ls--active' );
+
+			if( typeof event !== 'undefined' ) {
+				featuredSlideshow.startInterval();
+			}
+		}
+	};
+
+
 
 	// Auto-update and License registration
 	$('#ls--box-license form').submit(function(e) {
@@ -741,7 +806,7 @@ jQuery(function($) {
 			$button = $form.find('.button-save:visible');
 
 		if( $key.val().length < 10 ) {
-			alert(LS_l10n.SLEnterCode);
+			lsCommon.smartAlert.open( LS_l10n.SLEnterCode );
 			return false;
 		}
 
@@ -754,7 +819,12 @@ jQuery(function($) {
 			url: ajaxurl,
 			data: $(this).serialize(),
 			error: function( jqXHR, textStatus, errorThrown ) {
-				alert(LS_l10n.SLActivationError.replace('%s', errorThrown) );
+				lsCommon.smartAlert.open({
+					width: 700,
+					theme: 'red',
+					title: LS_l10n.SLActivationErrorTitle,
+					text: LS_l10n.SLActivationError.replace('%s', errorThrown)
+				});
 				$button.removeClass('saving').text( $button.data('text') );
 			},
 			success: function( data ) {
@@ -795,7 +865,7 @@ jQuery(function($) {
 
 				// Alert message (if any)
 				} else if( typeof data.message !== "undefined" ) {
-					alert( data.message );
+					lsCommon.smartAlert.open( data.message );
 				}
 
 				$button.removeClass('saving').text( $button.data('text') );
@@ -808,33 +878,37 @@ jQuery(function($) {
 	$('#ls--box-license a.ls-deauthorize').click(function(event) {
 		event.preventDefault();
 
-		if( confirm(LS_l10n.SLDeactivate) ) {
+		var $form = $(this).closest('form');
 
-			var $form = $(this).closest('form');
+		$.get( ajaxurl, $.param({ action: 'ls_deauthorize_site' }), function(data) {
 
-			$.get( ajaxurl, $.param({ action: 'ls_deauthorize_site' }), function(data) {
+			// Parse response and set message
+			var data = $.parseJSON(data);
 
-				// Parse response and set message
-				var data = $.parseJSON(data);
+			if( data && ! data.errCode ) {
 
-				if( data && ! data.errCode ) {
+				$form.find('.ls--key input').val('');
 
-					$form.find('.ls--key input').val('');
-
-					LS_slidersMeta.isActivatedSite = false;
+				LS_slidersMeta.isActivatedSite = false;
 
 
-					// Update GUI to reflect the "registered" state
-					$( '#ls--license-slider' ).layerSlider( 1 );
-					LS__setRegistered( false );
-				}
+				// Update GUI to reflect the "registered" state
+				$( '#ls--license-slider' ).layerSlider( 1 );
+				LS__setRegistered( false );
 
-				// Alert message (if any)
-				if(typeof data.message !== "undefined") {
-					alert(data.message);
-				}
-			});
-		}
+				// Display notification modal window
+				kmw.modal.open({
+					content: '#tmpl-deregister-license',
+					maxWidth: 560,
+					minWidth: 560
+				});
+			}
+
+			// Alert message (if any)
+			if( typeof data.message !== "undefined" ) {
+				lsCommon.smartAlert.open( data.message );
+			}
+		});
 	});
 
 	var lsShowActivationBox = function( activateBox ) {
@@ -861,6 +935,11 @@ jQuery(function($) {
 	$( document ).on('click', '.ls-show-activation-box', function(e) {
 		e.preventDefault();
 		lsShowActivationBox();
+	}).on('click', '.ls-premium-lock-templates', function( e ) {
+		e.preventDefault();
+		lsDisplayActivationWindow({
+			title: LS_l10n.notifyPremiumTemplateMT
+		});
 	});
 
 	$( document ).on('click', '#lse-activation-modal-window .lse-button-activation', function( e ) {
@@ -898,20 +977,19 @@ jQuery(function($) {
 	});
 
 	// Template Store Import
-	$( document ).on('click', '#ls-import-modal-window .item-import a', function( event ) {
+	$( document ).on('click', '#ls-import-modal-window .ls--import-template-button', function( event ) {
 		event.preventDefault();
 
 		var $item 		= jQuery(this),
-			$figure 	= $item.closest('figure'),
-			name 		= $figure.data('name'),
-			handle 		= $figure.data('handle'),
-			collection 	= $figure.data('collection'),
-			bundled 	= !! $figure.data('bundled'),
+			name 		= $item.data('name'),
+			handle 		= $item.data('handle'),
+			category 	= $item.data('category'),
+			bundled 	= !! $item.data('bundled'),
 			action 		= bundled ? 'ls_import_bundled' : 'ls_import_online';
 
 
 		// Premium notice
-		if( $figure.data('premium') && ! LS_slidersMeta.isActivatedSite ) {
+		if( $item.data('premium') && ! LS_slidersMeta.isActivatedSite ) {
 
 			lsDisplayActivationWindow({
 				into: '#ls-import-modal-window',
@@ -921,7 +999,7 @@ jQuery(function($) {
 			return;
 
 		// Version warning
-		} else if( $figure.data('version-warning') ) {
+		} else if( $item.data('version-warning') ) {
 
 			kmw.modal.open({
 				into: '#ls-import-modal-window',
@@ -953,7 +1031,7 @@ jQuery(function($) {
 				action: action,
 				slider: handle,
 				name: name,
-				collection: collection,
+				category: category,
 				security: window.lsImportNonce
 			},
 
@@ -997,29 +1075,24 @@ jQuery(function($) {
 
 					if( data.errCode && data.errCode == 'ERR_WW_POPUPS_PURCHASE_NOT_FOUND') {
 
-
-							lsDisplayActivationWindow({
-								into: '#ls-import-modal-window',
-								title: LS_l10n.purchaseWWPopups,
-								content: '#tmpl-purchase-webshopworks-popups',
-								minHeight: 680,
-								maxHeight: 680
-							});
-
+						lsDisplayActivationWindow({
+							into: '#ls-import-modal-window',
+							title: LS_l10n.purchaseWWPopups,
+							content: '#tmpl-purchase-webshopworks-popups',
+							minHeight: 680,
+							maxHeight: 680
+						});
 
 						return;
 					}
 
 					setTimeout(function() {
-						kmw.modal.open({
-							into: '#ls-import-modal-window',
-							title: data.title || LS_l10n.SLImportErrorTitle,
-							content: data.message || LS_l10n.SLImportError,
-							animationIn: 'scale',
-							overlaySettings: {
-								animationIn: 'fade'
-							}
 
+						lsCommon.smartAlert.open({
+							theme: 'red',
+							width: 700,
+							title: data.title || LS_l10n.SLImportErrorTitle,
+							text: data.message || LS_l10n.SLImportError,
 						});
 
 					}, 600);
@@ -1030,15 +1103,12 @@ jQuery(function($) {
 				kmw.modal.close();
 
 				setTimeout(function() {
-					kmw.modal.open({
-						into: '#ls-import-modal-window',
-						title: LS_l10n.SLImportErrorTitle,
-						content: LS_l10n.SLImportHTTPError.replace('%s', errorThrown),
-						animationIn: 'scale',
-						overlaySettings: {
-							animationIn: 'fade'
-						}
 
+					lsCommon.smartAlert.open({
+						width: 700,
+						theme: 'red',
+						title: LS_l10n.SLImportErrorTitle,
+						text: LS_l10n.SLImportHTTPError.replace('%s', errorThrown)
 					});
 
 				}, 600);
@@ -1067,8 +1137,8 @@ jQuery(function($) {
 
 		$('.ls-sliders-grid > .slider-item').draggable({
 			scope: 'add-to-group',
-			cancel: '.group-item, .hero',
-			handle: '.preview',
+			cancel: '.group-item, .ls-hero',
+			handle: '.ls-preview',
 			distance: 5,
 			helper: 'clone',
 			revert: 'invalid',
@@ -1095,11 +1165,11 @@ jQuery(function($) {
 			hoverClass: 'slider-dropping',
 			over: function( event, ui ) {
 
-				ui.helper.find('.preview').addClass('slider-dropping');
+				ui.helper.find('.ls-preview').addClass('slider-dropping');
 			},
 
 			out: function( event, ui ) {
-				ui.helper.find('.preview').removeClass('slider-dropping');
+				ui.helper.find('.ls-preview').removeClass('slider-dropping');
 			},
 
 
@@ -1116,7 +1186,7 @@ jQuery(function($) {
 
 		$('.ls-sliders-grid .kmw-modal-inner .slider-item').draggable({
 			scope: 'remove-from-group',
-			handle: '.preview',
+			handle: '.ls-preview',
 			appendTo: '.ls-sliders-grid',
 			distance: 5,
 			helper: 'clone',
@@ -1146,13 +1216,13 @@ jQuery(function($) {
 
 			over: function( event, ui ) {
 				ui.draggable.addClass('over-drag-area');
-				ui.helper.find('.preview').addClass('cursor-default');
+				ui.helper.find('.ls-preview').addClass('cursor-default');
 				$( event.target ).addClass('over');
 			},
 
 			out: function( event, ui ) {
 				ui.draggable.removeClass('over-drag-area');
-				ui.helper.find('.preview').removeClass('cursor-default');
+				ui.helper.find('.ls-preview').removeClass('cursor-default');
 				$( event.target ).removeClass('over');
 			},
 
@@ -1175,7 +1245,7 @@ jQuery(function($) {
 
 	var createSliderGroupDroppable = function() {
 
-		$('.ls-sliders-grid .slider-item:not(.hero,.group-item)').droppable({
+		$('.ls-sliders-grid .slider-item:not(.ls-hero,.group-item)').droppable({
 			scope: 'add-to-group',
 			accept: '.slider-item',
 			tolerance: 'pointer',
@@ -1186,7 +1256,7 @@ jQuery(function($) {
 				var f = function(){
 					targetSliderItem = event.target;
 					$( event.target ).addClass('create-group');
-					ui.helper.find('.preview').addClass('slider-dropping');
+					ui.helper.find('.ls-preview').addClass('slider-dropping');
 					createSliderGroupLastEvent = 'over';
 				};
 
@@ -1204,7 +1274,7 @@ jQuery(function($) {
 				var f = function(){
 					targetSliderItem = null;
 					$('.slider-item').removeClass('create-group');
-					ui.helper.find('.preview').removeClass('slider-dropping');
+					ui.helper.find('.ls-preview').removeClass('slider-dropping');
 					createSliderGroupLastEvent = 'out';
 				};
 
@@ -1221,7 +1291,7 @@ jQuery(function($) {
 			deactivate: function( event, ui ) {
 				clearTimeout( sliderDragGroupingTimeout );
 				$('.slider-item').removeClass('create-group');
-				ui.helper.find('.preview').removeClass('slider-dropping');
+				ui.helper.find('.ls-preview').removeClass('slider-dropping');
 			},
 
 			drop: function( event, ui ) {
@@ -1263,9 +1333,9 @@ jQuery(function($) {
 	var addSliderToGroup = function( groupElement, sliderElement, withoutXHR ) {
 
 		var $group 			= $( groupElement ),
-			$groupItems 	= $group.find('.items'),
+			$groupItems 	= $group.find('.ls-items'),
 			$slider 		= $( sliderElement ),
-			$sliderPreview 	= $slider.find('.preview'),
+			$sliderPreview 	= $slider.find('.ls-preview'),
 			$groupItem 		= $( $('#tmpl-slider-group-placeholder').text() );
 
 		// XHR request to add slider to group
@@ -1280,8 +1350,8 @@ jQuery(function($) {
 
 		// Add slider to group on UI
 		if( ! $sliderPreview.find('.no-preview').length ) {
-			$groupItem.find('.preview').css('background-image', $sliderPreview.css('background-image') );
-			$groupItem.find('.preview').empty();
+			$groupItem.find('.ls-preview').css('background-image', $sliderPreview.css('background-image') );
+			$groupItem.find('.ls-preview').empty();
 		}
 
 		// Destroy previous draggable instance (if any)
@@ -1301,7 +1371,7 @@ jQuery(function($) {
 
 		$groupItem.appendTo( $groupItems );
 		setTimeout( function() {
-			$groupItem.removeClass('scale0');
+			$groupItem.removeClass('ls-scale0');
 		}, 100 );
 
 		// Remove the original element
@@ -1313,9 +1383,9 @@ jQuery(function($) {
 	var removeSliderFromGroup = function( groupElement, sliderElement, withoutXHR ) {
 
 		var $group 			= $( groupElement ),
-			$groupItems 	= $group.find('.items'),
+			$groupItems 	= $group.find('.ls-items'),
 			$slider 		= $( sliderElement ),
-			$sliderPreview 	= $slider.find('.preview'),
+			$sliderPreview 	= $slider.find('.ls-preview'),
 			$siblings 		= $slider.siblings();
 
 		// XHR request to add slider to group
@@ -1392,14 +1462,14 @@ jQuery(function($) {
 				$('body').removeClass('ls-has-multiple-slider-selection');
 			}
 
-			if( $selected.closest('.slider-item.dimmed').length ) {
+			if( $selected.closest('.slider-item.ls-dimmed').length ) {
 				$('body').addClass('ls-has-hidden-slider-selection');
 			} else {
 				$('body').removeClass('ls-has-hidden-slider-selection');
 			}
 
 
-			if( $selected.closest('.slider-item:not(.dimmed)').length ) {
+			if( $selected.closest('.slider-item:not(.ls-dimmed)').length ) {
 				$('body').addClass('ls-has-published-slider-selection');
 			} else {
 				$('body').removeClass('ls-has-published-slider-selection');
@@ -1429,7 +1499,8 @@ jQuery(function($) {
 
 		var $form 			= $('.ls-slider-list-form'),
 			$bulkSelect 	= $('.ls-bulk-actions select[name="action"]'),
-			$sliderItem		= $('.slider-item.ls-selected');
+			$sliderItem		= $('.slider-item.ls-selected'),
+			sliderName 		= '';
 
 		if( actionProperties.sliderItem ) {
 			$sliderItem = $( actionProperties.sliderItem );
@@ -1438,6 +1509,8 @@ jQuery(function($) {
 		if( actionProperties.selectSliderItem ) {
 			$sliderItem.find('.slider-checkbox').prop('checked', true );
 		}
+
+		sliderName = $sliderItem.find('input.ls--project-name-input').val();
 
 		switch( action ) {
 
@@ -1476,10 +1549,31 @@ jQuery(function($) {
 				break;
 
 			case 'hide':
-				if( confirm( LS_l10n.SLHideProjects ) ) {
-					$bulkSelect.val('hide');
-					$form.submit();
-				}
+
+				lsCommon.smartAlert.open({
+					type: 'confirm',
+					width: 650,
+					title: $sliderItem.length > 1 ? LS_l10n.SLHideProjectsTitle : LS_l10n.SLHideProjectTitle.replace( '%s', sliderName ),
+					text: $sliderItem.length > 1 ? LS_l10n.SLHideProjectsText : LS_l10n.SLHideProjectText,
+					buttons: {
+						ok: {
+							label: $sliderItem.length > 1 ? LS_l10n.SLHideProjectsButton : LS_l10n.SLHideProjectButton
+						}
+					},
+					onConfirm: () => {
+
+						if( actionProperties.selectSliderItem ) {
+							$sliderItem.find('.slider-checkbox').prop('checked', true );
+						}
+
+						$bulkSelect.val('hide');
+						$form.submit();
+
+						if( actionProperties.selectSliderItem ) {
+							$sliderItem.find('.slider-checkbox').prop('checked', false );
+						}
+					}
+				});
 				break;
 
 			case 'unhide':
@@ -1498,10 +1592,32 @@ jQuery(function($) {
 				break;
 
 			case 'delete':
-				if( confirm( LS_l10n.SLDeleteProject ) ) {
-					$bulkSelect.val('delete');
-					$form.submit();
-				}
+				lsCommon.smartAlert.open({
+					type: 'confirm',
+					width: 650,
+					theme: 'red',
+					title: $sliderItem.length > 1 ? LS_l10n.SLDeleteProjectsTitle : LS_l10n.SLDeleteProjectTitle.replace( '%s', sliderName ),
+					text: $sliderItem.length > 1 ? LS_l10n.SLDeleteProjectsText : LS_l10n.SLDeleteProjectText,
+					textAlign: 'center',
+					buttons: {
+						ok: {
+							label: $sliderItem.length > 1 ? LS_l10n.SLDeleteProjectsButton : LS_l10n.SLDeleteProjectButton
+						}
+					},
+					onConfirm: () => {
+
+						if( actionProperties.selectSliderItem ) {
+							$sliderItem.find('.slider-checkbox').prop('checked', true );
+						}
+
+						$bulkSelect.val('delete');
+						$form.submit();
+
+						if( actionProperties.selectSliderItem ) {
+							$sliderItem.find('.slider-checkbox').prop('checked', false );
+						}
+					}
+				});
 				break;
 		}
 
@@ -1607,9 +1723,9 @@ jQuery(function($) {
 
 	var LS__setRegistered = function( registered){
 		if( registered ){
-			$('#ls--admin-boxes').removeClass('ls--not-registered').addClass('ls--registered');
+			$('#ls--admin-boxes, #ls--projects-list').removeClass('ls--not-registered').addClass('ls--registered');
 		}else{
-			$('#ls--admin-boxes').removeClass('ls--registered').addClass('ls--not-registered');
+			$('#ls--admin-boxes, #ls--projects-list').removeClass('ls--registered').addClass('ls--not-registered');
 		}
 
 	};

@@ -147,7 +147,7 @@ class ES_Campaigns_Table extends ES_List_Table {
 				// End-IG-Code.
 				?>
 
-				<a href="edit.php?post_type=es_template" class="ig-es-imp-button px-3 py-1 ml-2 align-middle"><?php esc_html_e( 'Manage Templates', 'email-subscribers' ); ?></a>
+				<a href="admin.php?page=es_gallery&manage-templates=yes" class="ig-es-imp-button px-3 py-1 ml-2 align-middle"><?php esc_html_e( 'Manage Templates', 'email-subscribers' ); ?></a>
 
 
 			</div>

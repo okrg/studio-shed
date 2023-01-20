@@ -2,9 +2,9 @@
 /*
 Plugin Name: Wufoo Shortcode Plugin
 Description: Enables shortcode to embed Wufoo forms. Usage: <code>[wufoo username="chriscoyier" formhash="x7w3w3" autoresize="true" height="458" header="show" ssl="true"]</code>. This code is available to copy and paste directly from the Wufoo Code Manager.
-Version: 1.43
+Version: 1.46
 License: GPL
-Author: Chris Coyier / Wufoo
+Author: Wufoo
 Author URI: http://wufoo.com
 Text Domain: wufoo-shortcode
 */
@@ -26,7 +26,7 @@ function createWufooEmbedJS($atts, $content = null) {
 		$error = "
 		<div style='border: 20px solid red; border-radius: 40px; padding: 40px; margin: 50px 0 70px;'>
 			<h3>Uh oh!</h3>
-			<p style='margin: 0;'>Something is wrong with your Wufoo shortcode. If you copy and paste it from the <a href='http://wufoo.com/docs/code-manager/'>Wufoo Code Manager</a>, you should be golden.</p>
+			<p style='margin: 0;'>Something is wrong with your Wufoo shortcode. If you copy and paste it from the <a href='https://wufoo.com/docs/code-manager/'>Wufoo Code Manager</a>, you should be golden.</p>
 		</div>";
 
 		return $error;
@@ -34,7 +34,7 @@ function createWufooEmbedJS($atts, $content = null) {
 	} else {
 
 		$JSEmbed =  "<div id='wufoo-$formhash'>\n";
-		$JSEmbed .= "Fill out my <a href='http://$username.wufoo.com/forms/$formhash'>online form</a>.\n";
+		$JSEmbed .= "Fill out my <a href='https://$username.wufoo.com/forms/$formhash'>online form</a>.\n";
 		$JSEmbed .=  "</div>\n";
 
 		$JSEmbed .= "<script type='text/javascript'>var $formhash;(function(d, t) {\n";
@@ -56,7 +56,7 @@ function createWufooEmbedJS($atts, $content = null) {
 		}
 		$JSEmbed .= "};\n";
 
-		$JSEmbed .= "s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'wufoo.com/scripts/embed/form.js';\n";
+		$JSEmbed .= "s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'secure.wufoo.com/scripts/embed/form.js';\n";
 		$JSEmbed .= "s.onload = s.onreadystatechange = function() {\n";
 		$JSEmbed .= "var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;\n";
 		$JSEmbed .= "try { $formhash = new WufooForm();$formhash.initialize(options);$formhash.display(); } catch (e) {}}\n";
@@ -68,7 +68,7 @@ function createWufooEmbedJS($atts, $content = null) {
 		*/
 		$iframe_embed = '<iframe ';
 		$iframe_embed .= 'height="'. (int) $height .'" ';
-		$iframe_embed .= 'allowTransparency="true" frameborder="0" scrolling="no" style="width:100%;border:none;"';
+		$iframe_embed .= 'allowTransparency="true" sandbox="allow-top-navigation allow-scripts allow-popups allow-forms allow-same-origin allow-popups-to-escape-sandbox" frameborder="0" scrolling="no" style="width:100%;border:none;"';
 		$iframe_embed .= 'src="https://'. $username .'.wufoo.com/embed/'. $formhash . '/';
 		if (isset($defaultv) && $defaultv != ''){
 			$iframe_embed .= "def/$defaultv&entsource=wordpress\">";

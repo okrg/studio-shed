@@ -335,6 +335,7 @@ abstract class ES_Workflow_Action {
 
 	/**
 	 * Load preview for the action
+	 *
 	 * @return null
 	 */
 	public function load_preview() {

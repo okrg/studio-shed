@@ -52,12 +52,12 @@
 	<script src="<?= $uploads['baseurl'].'/layerslider.custom.transitions.js?ver='.LS_PLUGIN_VERSION ?>"></script>
 	<?php endif ?>
 </head>
-<body>
+<body class="lse-scrollbar lse-scrollbar-dark">
 	<div id="lse-project-scroll-wrapper">
 		<div id="lse-project-wrapper"></div>
 	</div>
-	<div id="lse-project-scroll-icon">
-		<svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="mouse-alt" class="svg-inline--fa fa-mouse-alt fa-w-12" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M224 0h-64A160 160 0 0 0 0 160v192a160 160 0 0 0 160 160h64a160 160 0 0 0 160-160V160A160 160 0 0 0 224 0zm128 352a128.14 128.14 0 0 1-128 128h-64A128.14 128.14 0 0 1 32 352V160A128.14 128.14 0 0 1 160 32h64a128.14 128.14 0 0 1 128 128zM192 80a48.05 48.05 0 0 0-48 48v32a48 48 0 0 0 96 0v-32a48.05 48.05 0 0 0-48-48zm16 80a16 16 0 0 1-32 0v-32a16 16 0 0 1 32 0z"></path></svg>
-	</div>
+
+	<?= lsGetSVGIcon('mouse-alt', 'light', [ 'id' => 'lse-project-scroll-icon' ], 'div') ?>
+
 </body>
 </html>

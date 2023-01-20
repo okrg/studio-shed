@@ -109,8 +109,8 @@ class LS_Notifications {
 		self::_checkForSystemIssues();
 
 
-		if( get_option('ls-show-canceled_activation_notice', 0) ) {
-			self::_checkForLicenseIssues();
+		if( $noticeType = get_option('ls-show-canceled_activation_notice', 0 ) ) {
+			self::_checkForLicenseIssues( $noticeType );
 
 		} else {
 			self::_checkForPromotions();
@@ -220,24 +220,48 @@ class LS_Notifications {
 	}
 
 
-	private static function _checkForLicenseIssues() {
+	private static function _checkForLicenseIssues( $noticeType ) {
 
-		// Inline notification
-		self::prependInlineNotification([
-			'icon' 		=> 'key',
-			'title' 	=> __('Re-register your license key on this site', 'LayerSlider'),
-			'message' 	=> __('You’ve previously used your license key on this site to receive live plugin updates, add-ons, exclusive features, premium templates, and more. However, it seems that your license is now registered to a different site or is no longer valid. These benefits are unavailable until you re-enter a valid license key.', 'LayerSlider'),
-			'fixed'		=> true,
-			'buttons' 	=> [
-				[
-					'text' 	=> __('What’s this?', 'LayerSlider'),
-					'class' => 'ls-show-canceled-activation-modal'
-				],[
-					'text' 	=> __('OK, I understand', 'LayerSlider'),
-					'href' 	=> wp_nonce_url( admin_url('admin.php?page=layerslider&action=hide-canceled-activation-notice' ), 'hide-canceled-activation-notice')
+
+		if( $noticeType === 'subscription' ) {
+
+			self::prependInlineNotification([
+				'icon' 		=> 'calendar-circle-exclamation',
+				'title' 	=> __('Your subscription has expired', 'LayerSlider'),
+				'message' 	=> __('Resubscribe to continue receiving plugin updates and keep using add-ons, exclusive features, premium templates, and more. <b>These benefits will no longer be available, and projects built using premium templates will not display on front-end pages until you re-enter a valid license key.</b> This might affect the appearance and functionality of your site and projects.', 'LayerSlider'),
+				'fixed'		=> true,
+				'buttons' 	=> [
+					[
+						'text' 	=> __('Resubscribe', 'LayerSlider'),
+						'href' 	=> LS_Config::get('purchase_url'),
+						'target' => '_blank'
+					],
+					[
+						'text' 	=> __('Dismiss', 'LayerSlider'),
+						'href' 	=> wp_nonce_url( admin_url('admin.php?page=layerslider&action=hide-canceled-activation-notice' ), 'hide-canceled-activation-notice')
+					]
 				]
-			]
-		]);
+			]);
+
+		} else {
+
+			self::prependInlineNotification([
+				'icon' 		=> 'key',
+				'title' 	=> __('Re-register your license key on this site', 'LayerSlider'),
+				'message' 	=> __('You’ve previously used your license key on this site to receive plugin updates, add-ons, exclusive features, premium templates, and more. However, it seems that your license is now registered to a different site or is no longer valid. These benefits are no longer available, and projects built using premium templates will not display on front-end pages until you re-enter a valid license key. This might affect the appearance and functionality of your site and projects. Register a LayerSlider license key to restore them and continue to receive premium benefits.', 'LayerSlider'),
+				'fixed'		=> true,
+				'buttons' 	=> [
+					[
+						'text' 	=> __('What’s this?', 'LayerSlider'),
+						'class' => 'ls-show-canceled-activation-modal'
+					],[
+						'text' 	=> __('OK, I understand', 'LayerSlider'),
+						'href' 	=> wp_nonce_url( admin_url('admin.php?page=layerslider&action=hide-canceled-activation-notice' ), 'hide-canceled-activation-notice')
+					]
+				]
+			]);
+		}
+
 
 		update_user_meta( get_current_user_id(), 'ls-show-support-notice-timestamp', time() - WEEK_IN_SECONDS * 3 );
 	}

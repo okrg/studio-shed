@@ -45,7 +45,9 @@ class Update implements Helper
             $postsActions = $tempPosts[0]['data'];
         }
 
-        return ['actions' => $requiredActions, 'posts' => $postsActions];
+        $updateList = ['actions' => $requiredActions, 'posts' => $postsActions];
+
+        return apply_filters('vcv:helpers:hub:getRequiredActions', $updateList);
     }
 
     public function createPostUpdateObjects(array $posts)
@@ -94,6 +96,9 @@ class Update implements Helper
 
         $accessUserCapabilitiesHelper = vchelper('AccessUserCapabilities');
         foreach ($updatePosts as $updatePost) {
+            if (empty($updatePost)) {
+                continue;
+            }
             $post = get_post($updatePost);
             // @codingStandardsIgnoreLine
             if ($post && $post->post_status !== 'trash' && $accessUserCapabilitiesHelper->canEdit($post->ID)) {
@@ -279,9 +284,13 @@ class Update implements Helper
         return false;
     }
 
-    protected function processTeasers($actions)
+    /**
+     * Process hub teasers.
+     *
+     * @param array $actions
+     */
+    public function processTeasers($actions)
     {
-
         if (isset($actions['hubTeaser'])) {
             vcevent('vcv:hub:process:action:hubTeaser', ['teasers' => $actions['hubTeaser']]);
             $optionsHelper = vchelper('Options');

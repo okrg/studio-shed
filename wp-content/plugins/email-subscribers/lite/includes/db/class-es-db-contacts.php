@@ -137,7 +137,7 @@ class ES_DB_Contacts extends ES_DB {
 				$custom_field_cols[$data['slug']] = null;
 			}
 		}
-		
+
 		$columns = array_merge( $default_col_values, $custom_field_cols);
 		return $columns;
 	}
@@ -225,7 +225,7 @@ class ES_DB_Contacts extends ES_DB {
 						$data_to_update[$key] = sanitize_text_field( $value );
 					}
 				}
-				
+
 
 				$this->update( $contact_id, $data_to_update );
 			}
@@ -403,6 +403,17 @@ class ES_DB_Contacts extends ES_DB {
 		return $subscribers;
 
 	}
+
+
+
+		// Get all contact ids
+	public function get_all_contact_ids() {
+		global $wpbd;
+
+		$query = "SELECT id FROM $this->table_name";
+		return $wpbd->get_results( $query );
+	}
+
 
 	/**
 	 * Get Total Contacts
@@ -992,19 +1003,19 @@ class ES_DB_Contacts extends ES_DB {
 		if ( $total > 0 ) {
 
 			$wpdb->query(
-				"UPDATE {$wpdb->prefix}ig_contacts AS contact_data 
-				LEFT JOIN {$wpdb->prefix}ig_lists_contacts AS list_data 
-				ON contact_data.id = list_data.contact_id 
-				SET contact_data.ip_address = list_data.subscribed_ip 
-				WHERE contact_data.id = list_data.contact_id 
-				AND list_data.subscribed_ip IS NOT NULL 
+				"UPDATE {$wpdb->prefix}ig_contacts AS contact_data
+				LEFT JOIN {$wpdb->prefix}ig_lists_contacts AS list_data
+				ON contact_data.id = list_data.contact_id
+				SET contact_data.ip_address = list_data.subscribed_ip
+				WHERE contact_data.id = list_data.contact_id
+				AND list_data.subscribed_ip IS NOT NULL
 				AND list_data.subscribed_ip <> ''"
 			);
 		}
 	}
 
 	/**
-	 * Add custom fields column 
+	 * Add custom fields column
 	 *
 	 * @param $col_name
 	 * @param string $type
@@ -1093,6 +1104,13 @@ class ES_DB_Contacts extends ES_DB {
 		return $contact_id;
 	}
 
+	/**
+	 * Get last contact's id
+	 * 
+	 * @since 5.3.14
+	 * 
+	 * @param @int $last_contact_id
+	 */
 	public function get_last_contact_id() {
 		global $wpdb;
 		$last_contact_id = $wpdb->get_var( "SELECT id FROM {$wpdb->prefix}ig_contacts ORDER BY id DESC LIMIT 0, 1" );

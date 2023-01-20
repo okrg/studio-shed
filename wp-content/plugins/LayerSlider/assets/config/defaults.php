@@ -180,7 +180,7 @@ $lsDefaults = [
 		],
 
 		'allowFullscreen' => [
-			'value' => true,
+			'value' => false,
 			'name' => __('Allow Fullscreen Mode', 'LayerSlider'),
 			'keys' => 'allowFullscreen',
 			'desc' => __('Visitors can enter OS native full-screen mode when double clicking on the slider.', 'LayerSlider')
@@ -210,6 +210,21 @@ $lsDefaults = [
 			'advanced' => true
 		],
 
+		'marginTop' => [
+			'value' => '',
+			'keys' => 'marginTop',
+			'attrs' => [
+				'placeholder' => __('above project', 'LayerSlider')
+			]
+		],
+
+		'marginBottom' => [
+			'value' => '',
+			'keys' => 'marginBottom',
+			'attrs' => [
+				'placeholder' => __('below project', 'LayerSlider')
+			]
+		],
 
 		'insertMethod' => [
 			'value' => 'prependTo',
@@ -245,6 +260,87 @@ $lsDefaults = [
 				'y' => __('Y Axis', 'LayerSlider')
 			]
 		],
+
+
+		'calculateOffsetFrom' => [
+			'value' => '',
+			'name' => __('Calculate offset from element', 'LayerSlider'),
+			'keys' => 'calculateOffsetFrom',
+			'desc' => __('You can provide a jQuery/CSS selector for your theme’s top navigation area, so LayerSlider can automatically adjust the position of your Hero scene relative to that element. This allows perfectly aligning the two elements in all cases, even if your top navigation area changes its size.', 'LayerSlider'),
+			'advanced' => true,
+			'attrs' => [
+				'placeholder' => __('Enter selector', 'LayerSlider')
+			]
+		],
+
+		'performanceMode' => [
+			'value' => 'inherit',
+			'name' => __('Performance Mode', 'LayerSlider'),
+			'keys' => 'performanceMode',
+			'desc' => __('Performance mode suspends every background activity when your sliders are out of the viewport and not visible. This can dramatically increase performance on pages with many sliders. However, it also means that media playback will stop, and sliders won’t progress further in the background.', 'LayerSlider'),
+			'options' => [
+				'inherit' => __('Global default', 'LayerSlider'),
+				'enabled' => __('Enabled', 'LayerSlider'),
+				'disabled' => __('Disabled', 'LayerSlider')
+			]
+		],
+
+		'performanceModeThreshold' => [
+			'value' => '20sh',
+			'name' => __('Performance Mode Threshold', 'LayerSlider'),
+			'keys' => 'performanceModeThreshold',
+			'desc' => __('The default 20sh value means that Performance Mode activates when a slider is out of the viewport with more than 20% of its height. A larger value will delay Performance Mode activation, and you’ll need to scroll further down or up before sliders stop running in the background.', 'LayerSlider')
+		],
+
+		'scene' => [
+			'value' => '',
+			'name' => __('Slider Behavior', 'LayerSlider'),
+			'keys' => 'scene',
+			'options' => [
+				'' => __('Disabled', 'LayerSlider'),
+				'sticky' => __('Sticky', 'LayerSlider'),
+				'scroll' => __('Scroll', 'LayerSlider')
+			],
+			'premium' => true
+		],
+
+		'sceneHeight' => [
+			'value' => '',
+			'name' => __('Scene Height', 'LayerSlider'),
+			'keys' => 'sceneHeight',
+			'attrs' => [
+				'placeholder' => __('auto', 'LayerSlider')
+			]
+		],
+
+		'sceneDuration' => [
+			'value' => '',
+			'keys' => 'sceneDuration'
+		],
+
+		'sceneSpeed' => [
+			'value' => 100,
+			'name' => __('Scene Speed', 'LayerSlider'),
+			'keys' => 'sceneSpeed',
+			'attrs' => [
+				'placeholder' => 100,
+				'min' => 10,
+				'max' => 999
+			]
+		],
+
+		'stickTo' => [
+			'value' => 'center',
+			'name' => __('Stick To', 'LayerSlider'),
+			'keys' => 'stickTo',
+			'desc' => __('The portion of the viewport (browser window) where the slider should stick to until visitors scrolls beyond the scene height.', 'LayerSlider'),
+			'options' => [
+				'top' => __('Top', 'LayerSlider'),
+				'center' => __('Center', 'LayerSlider'),
+				'bottom' => __('Bottom', 'LayerSlider')
+			]
+		],
+
 
 
 		// == COMPATIBILITY ==
@@ -333,12 +429,12 @@ $lsDefaults = [
 
 		'parallaxCenterLayers' => [
 			'value' => 'center',
-			'name' => __('Parallax Center Layers', 'LayerSlider'),
+			'name' => __('Parallax Center Point', 'LayerSlider'),
 			'keys' => 'parallaxCenterLayers',
-			'desc' => __('Choose a center point for parallax content where all layers will be aligned perfectly according to their original position.', 'LayerSlider'),
+			'desc' => __('Choose a center point for parallax layers where they will be aligned perfectly according to their original position. This option only takes effect if the parallax event type is set to scroll.', 'LayerSlider'),
 			'options' => [
-				'center' => __('At center of the viewport', 'LayerSlider'),
-				'top' => __('At the top of the viewport', 'LayerSlider')
+				'center' => __('Center', 'LayerSlider'),
+				'top' => __('Top', 'LayerSlider')
 			]
 		],
 
@@ -355,6 +451,19 @@ $lsDefaults = [
 			'keys' => 'parallaxScrollReverse',
 			'desc' => __('Your parallax layers will move to the opposite direction when scrolling the page.', 'LayerSlider')
 		],
+
+		'scrollCenterLayers' => [
+			'value' => 'center',
+			'name' => __('Scroll Center Point', 'LayerSlider'),
+			'keys' => 'scrollCenterLayers',
+			'desc' => __('Choose a center point for scroll transition layers where they will be aligned perfectly according to their original position. Top: when the top edge of the slider is at the top of the viewport. Center: when the center of the slider is at the center of the viewport. Bottom: when the bottom edge of the slider is at the bottom of the viewport.', 'LayerSlider'),
+			'options' => [
+				'top' => __('Top', 'LayerSlider'),
+				'center' => __('Center', 'LayerSlider'),
+				'bottom' => __('Bottom', 'LayerSlider')
+			]
+		],
+
 
 
 		// ================= //
@@ -576,7 +685,7 @@ $lsDefaults = [
 
 
 		'sliderFadeInDuration' => [
-			'value' => 350,
+			'value' => 0,
 			'name' => __('Initial Fade Duration', 'LayerSlider'),
 			'keys' => ['sliderfadeinduration', 'sliderFadeInDuration'],
 			'advanced' => true,
@@ -598,7 +707,7 @@ $lsDefaults = [
 		],
 
 		'sliderStyle' => [
-			'value' => 'margin-bottom: 0px;',
+			'value' => '',
 			'name' => __('Project CSS', 'LayerSlider'),
 			'keys' => ['sliderstyle', 'sliderStyle'],
 			'desc' => __('You can enter custom CSS to change some style properties on the project wrapper element. More complex CSS should be applied with the Custom Styles Editor.', 'LayerSlider'),
@@ -923,7 +1032,7 @@ $lsDefaults = [
 			'value' => true,
 			'name' => __('Show Close Button', 'LayerSlider'),
 			'keys' => 'popupShowCloseButton',
-			'desc' => __('Disable this option to hide the Popup close button. This option is also useful when you would like to use a custom close button. To do that, select the “Close the Popup” option from the layer linking field.', 'LayerSlider')
+			'desc' => __('Disable this option to hide the Popup close button. This option is also useful when you would like to use a custom close button with the “Close Popup” layer action.', 'LayerSlider')
 		],
 
 		'popupCloseButtonStyle' => [
@@ -1421,7 +1530,6 @@ $lsDefaults = [
 				'enabled' => __('Enabled', 'LayerSlider'),
 				'disabled' => __('Disabled', 'LayerSlider')
 			],
-			'advanced' => true,
 			'props' => [
 				'meta' => true
 			]
@@ -1815,7 +1923,7 @@ $lsDefaults = [
 
 
 		'parallaxTransformOrigin' => [
-			'value' => '50% 50% 0',
+			'value' => 'slidercenter slidermiddle 0',
 			'name' => __('Transform Origin', 'LayerSlider'),
 			'keys' => 'parallaxtransformorigin'
 		],
@@ -2222,14 +2330,14 @@ $lsDefaults = [
 
 		'transitionInOffsetX' => [
 			'value' => '0',
-			'name' => __('OffsetX', 'LayerSlider'),
+			'name' => __('Offset X', 'LayerSlider'),
 			'keys' => 'offsetxin',
 			'attrs' => ['type' => 'text']
 		],
 
 		'transitionInOffsetY' => [
 			'value' => '0',
-			'name' => __('OffsetY', 'LayerSlider'),
+			'name' => __('Offset Y', 'LayerSlider'),
 			'keys' => 'offsetyin',
 			'attrs' => ['type' => 'text']
 		],
@@ -2269,42 +2377,42 @@ $lsDefaults = [
 
 		'transitionInRotateX' => [
 			'value' => 0,
-			'name' => __('RotationX', 'LayerSlider'),
+			'name' => __('Rotation X', 'LayerSlider'),
 			'keys' => 'rotatexin',
 			'attrs' => ['type' => 'text']
 		],
 
 		'transitionInRotateY' => [
 			'value' => 0,
-			'name' => __('RotationY', 'LayerSlider'),
+			'name' => __('Rotation Y', 'LayerSlider'),
 			'keys' => 'rotateyin',
 			'attrs' => ['type' => 'text']
 		],
 
 		'transitionInSkewX' => [
 			'value' => 0,
-			'name' => __('SkewX', 'LayerSlider'),
+			'name' => __('Skew X', 'LayerSlider'),
 			'keys' => 'skewxin',
 			'attrs' => ['type' => 'text']
 		],
 
 		'transitionInSkewY' => [
 			'value' => 0,
-			'name' => __('SkewY', 'LayerSlider'),
+			'name' => __('Skew Y', 'LayerSlider'),
 			'keys' => 'skewyin',
 			'attrs' => ['type' => 'text']
 		],
 
 		'transitionInScaleX' => [
 			'value' => 1,
-			'name' => __('ScaleX', 'LayerSlider'),
+			'name' => __('Scale X', 'LayerSlider'),
 			'keys' => 'scalexin',
 			'attrs' => ['type' => 'text']
 		],
 
 		'transitionInScaleY' => [
 			'value' => 1,
-			'name' => __('ScaleY', 'LayerSlider'),
+			'name' => __('Scale Y', 'LayerSlider'),
 			'keys' => 'scaleyin',
 			'attrs' => ['type' => 'text']
 		],
@@ -2363,6 +2471,12 @@ $lsDefaults = [
 			'keys' => 'transformperspectivein'
 		],
 
+		'transitionInMirror' => [
+			'value' => '',
+			'name' => __('Mirror Transition', 'LayerSlider'),
+			'keys' => 'transformmirrorin'
+		],
+
 		// ======
 
 		'transitionOut' => [
@@ -2372,14 +2486,14 @@ $lsDefaults = [
 
 		'transitionOutOffsetX' => [
 			'value' => 0,
-			'name' => __('OffsetX', 'LayerSlider'),
+			'name' => __('Offset X', 'LayerSlider'),
 			'keys' => 'offsetxout',
 			'attrs' => ['type' => 'text']
 		],
 
 		'transitionOutOffsetY' => [
 			'value' => 0,
-			'name' => __('OffsetY', 'LayerSlider'),
+			'name' => __('Offset Y', 'LayerSlider'),
 			'keys' => 'offsetyout',
 			'attrs' => ['type' => 'text']
 		],
@@ -2460,42 +2574,42 @@ $lsDefaults = [
 
 		'transitionOutRotateX' => [
 			'value' => 0,
-			'name' => __('RotationX', 'LayerSlider'),
+			'name' => __('Rotation X', 'LayerSlider'),
 			'keys' => 'rotatexout',
 			'attrs' => ['type' => 'text']
 		],
 
 		'transitionOutRotateY' => [
 			'value' => 0,
-			'name' => __('RotationY', 'LayerSlider'),
+			'name' => __('Rotation Y', 'LayerSlider'),
 			'keys' => 'rotateyout',
 			'attrs' => ['type' => 'text']
 		],
 
 		'transitionOutSkewX' => [
 			'value' => 0,
-			'name' => __('SkewX', 'LayerSlider'),
+			'name' => __('Skew X', 'LayerSlider'),
 			'keys' => 'skewxout',
 			'attrs' => ['type' => 'text']
 		],
 
 		'transitionOutSkewY' => [
 			'value' => 0,
-			'name' => __('SkewY', 'LayerSlider'),
+			'name' => __('Skew Y', 'LayerSlider'),
 			'keys' => 'skewyout',
 			'attrs' => ['type' => 'text']
 		],
 
 		'transitionOutScaleX' => [
 			'value' => 1,
-			'name' => __('ScaleX', 'LayerSlider'),
+			'name' => __('Scale X', 'LayerSlider'),
 			'keys' => 'scalexout',
 			'attrs' => ['type' => 'text']
 		],
 
 		'transitionOutScaleY' => [
 			'value' => 1,
-			'name' => __('ScaleY', 'LayerSlider'),
+			'name' => __('Scale Y', 'LayerSlider'),
 			'keys' => 'scaleyout',
 			'attrs' => ['type' => 'text']
 		],
@@ -2522,6 +2636,12 @@ $lsDefaults = [
 			'value' => '500',
 			'name' => __('Perspective', 'LayerSlider'),
 			'keys' => 'transformperspectiveout'
+		],
+
+		'transitionOutMirror' => [
+			'value' => '',
+			'name' => __('Mirror Transition', 'LayerSlider'),
+			'keys' => 'transformmirrorout'
 		],
 
 		// -----
@@ -2636,14 +2756,14 @@ $lsDefaults = [
 
 		'textOffsetXIn' => [
 			'value' => 0,
-			'name' => __('OffsetX', 'LayerSlider'),
+			'name' => __('Offset X', 'LayerSlider'),
 			'keys'  => 'textoffsetxin',
 			'attrs' => ['type' => 'text']
 		],
 
 		'textOffsetYIn' => [
 			'value' => 0,
-			'name' => __('OffsetY', 'LayerSlider'),
+			'name' => __('Offset Y', 'LayerSlider'),
 			'keys'  => 'textoffsetyin',
 			'attrs' => ['type' => 'text']
 		],
@@ -2666,6 +2786,18 @@ $lsDefaults = [
 			'name' => __('Fade', 'LayerSlider'),
 			'keys'  => 'textfadein'
 		],
+
+		'textOverflowIn' => [
+			'value' => 'inherit',
+			'name' => __('Overflow', 'LayerSlider'),
+			'keys' => 'textoverflowin',
+			'options' => [
+				'inherit' => __('Inherit', 'LayerSlider'),
+				'visible' => __('Visible', 'LayerSlider'),
+				'hidden' => __('Hidden', 'LayerSlider')
+			]
+		],
+
 
 		'textStartAtIn' => [
 			'value' => 'transitioninend',
@@ -2709,42 +2841,42 @@ $lsDefaults = [
 
 		'textRotateXIn' => [
 			'value' => 0,
-			'name' => __('RotationX', 'LayerSlider'),
+			'name' => __('Rotation X', 'LayerSlider'),
 			'keys'  => 'textrotatexin',
 			'attrs' => ['type' => 'text']
 		],
 
 		'textRotateYIn' => [
 			'value' => 0,
-			'name' => __('RotationY', 'LayerSlider'),
+			'name' => __('Rotation Y', 'LayerSlider'),
 			'keys'  => 'textrotateyin',
 			'attrs' => ['type' => 'text']
 		],
 
 		'textScaleXIn' => [
 			'value' => 1,
-			'name' => __('ScaleX', 'LayerSlider'),
+			'name' => __('Scale X', 'LayerSlider'),
 			'keys'  => 'textscalexin',
 			'attrs' => ['type' => 'text']
 		],
 
 		'textScaleYIn' => [
 			'value' => 1,
-			'name' => __('ScaleY', 'LayerSlider'),
+			'name' => __('Scale Y', 'LayerSlider'),
 			'keys'  => 'textscaleyin',
 			'attrs' => ['type' => 'text']
 		],
 
 		'textSkewXIn' => [
 			'value' => 0,
-			'name' => __('SkewX', 'LayerSlider'),
+			'name' => __('Skew X', 'LayerSlider'),
 			'keys'  => 'textskewxin',
 			'attrs' => ['type' => 'text']
 		],
 
 		'textSkewYIn' => [
 			'value' => 0,
-			'name' => __('SkewY', 'LayerSlider'),
+			'name' => __('Skew Y', 'LayerSlider'),
 			'keys'  => 'textskewyin',
 			'attrs' => ['type' => 'text']
 		],
@@ -2761,6 +2893,18 @@ $lsDefaults = [
 			'value' => '500',
 			'name' => __('Perspective', 'LayerSlider'),
 			'keys' => 'texttransformperspectivein',
+		],
+
+		'textMirrorIn' => [
+			'value' => '',
+			'name' => __('Mirror Transition', 'LayerSlider'),
+			'keys' => 'texttransformmirrorin'
+		],
+
+		'textColorIn' => [
+			'value' => '',
+			'name' => __('Color', 'LayerSlider'),
+			'keys' => 'textcolorin'
 		],
 
 
@@ -2801,7 +2945,7 @@ $lsDefaults = [
 		],
 
 		'textShiftOut' => [
-			'value' => '',
+			'value' => 50,
 			'name' => __('Shift Out', 'LayerSlider'),
 			'keys'  => 'textshiftout',
 			'attrs' => ['type' => 'number']
@@ -2809,14 +2953,14 @@ $lsDefaults = [
 
 		'textOffsetXOut' => [
 			'value' => 0,
-			'name' => __('OffsetX', 'LayerSlider'),
+			'name' => __('Offset X', 'LayerSlider'),
 			'keys'  => 'textoffsetxout',
 			'attrs' => ['type' => 'text']
 		],
 
 		'textOffsetYOut' => [
 			'value' => 0,
-			'name' => __('OffsetY', 'LayerSlider'),
+			'name' => __('Offset Y', 'LayerSlider'),
 			'keys'  => 'textoffsetyout',
 			'attrs' => ['type' => 'text']
 		],
@@ -2841,6 +2985,17 @@ $lsDefaults = [
 			'keys'  => 'textfadeout'
 		],
 
+		'textOverflowOut' => [
+			'value' => 'inherit',
+			'name' => __('Overflow', 'LayerSlider'),
+			'keys' => 'textoverflowout',
+			'options' => [
+				'inherit' => __('Inherit', 'LayerSlider'),
+				'visible' => __('Visible', 'LayerSlider'),
+				'hidden' => __('Hidden', 'LayerSlider')
+			]
+		],
+
 		'textStartAtOut' => [
 			'value' => 'allinandloopend',
 			'name' => __('StartAt', 'LayerSlider'),
@@ -2853,6 +3008,7 @@ $lsDefaults = [
 			'keys'  => 'textstartatouttiming',
 			'props' => [ 'meta' => true ],
 			'options' => [
+				'slidechangeonly' => __('Slide change starts (ignoring modifier)', 'LayerSlider'),
 				'transitioninend' => __('Opening Transition completes', 'LayerSlider'),
 				'textinstart' => __('Opening Text Transition starts', 'LayerSlider'),
 				'textinend' => __('Opening Text Transition completes', 'LayerSlider'),
@@ -2887,42 +3043,42 @@ $lsDefaults = [
 
 		'textRotateXOut' => [
 			'value' => 0,
-			'name' => __('RotationX', 'LayerSlider'),
+			'name' => __('Rotation X', 'LayerSlider'),
 			'keys'  => 'textrotatexout',
 			'attrs' => ['type' => 'text']
 		],
 
 		'textRotateYOut' => [
 			'value' => 0,
-			'name' => __('RotationY', 'LayerSlider'),
+			'name' => __('Rotation Y', 'LayerSlider'),
 			'keys'  => 'textrotateyout',
 			'attrs' => ['type' => 'text']
 		],
 
 		'textScaleXOut' => [
 			'value' => 1,
-			'name' => __('ScaleX', 'LayerSlider'),
+			'name' => __('Scale X', 'LayerSlider'),
 			'keys'  => 'textscalexout',
 			'attrs' => ['type' => 'text']
 		],
 
 		'textScaleYOut' => [
 			'value' => 1,
-			'name' => __('ScaleY', 'LayerSlider'),
+			'name' => __('Scale Y', 'LayerSlider'),
 			'keys'  => 'textscaleyout',
 			'attrs' => ['type' => 'text']
 		],
 
 		'textSkewXOut' => [
 			'value' => 0,
-			'name' => __('SkewX', 'LayerSlider'),
+			'name' => __('Skew X', 'LayerSlider'),
 			'keys'  => 'textskewxout',
 			'attrs' => ['type' => 'text']
 		],
 
 		'textSkewYOut' => [
 			'value' => 0,
-			'name' => __('SkewY', 'LayerSlider'),
+			'name' => __('Skew Y', 'LayerSlider'),
 			'keys'  => 'textskewyout',
 			'attrs' => ['type' => 'text']
 		],
@@ -2943,6 +3099,18 @@ $lsDefaults = [
 			'keys' => 'texttransformperspectiveout',
 		],
 
+		'textMirrorOut' => [
+			'value' => '',
+			'name' => __('Mirror Transition', 'LayerSlider'),
+			'keys' => 'texttransformmirrorout'
+		],
+
+		'textColorOut' => [
+			'value' => '',
+			'name' => __('Color', 'LayerSlider'),
+			'keys' => 'textcolorout'
+		],
+
 
 
 
@@ -2961,14 +3129,14 @@ $lsDefaults = [
 
 		'loopOffsetX' => [
 			'value' => 0,
-			'name' => __('OffsetX', 'LayerSlider'),
+			'name' => __('Offset X', 'LayerSlider'),
 			'keys' => 'loopoffsetx',
 			'attrs' => ['type' => 'text']
 		],
 
 		'loopOffsetY' => [
 			'value' => 0,
-			'name' => __('OffsetY', 'LayerSlider'),
+			'name' => __('Offset Y', 'LayerSlider'),
 			'keys' => 'loopoffsety',
 			'attrs' => ['type' => 'text']
 		],
@@ -3035,42 +3203,42 @@ $lsDefaults = [
 
 		'loopRotateX' => [
 			'value' => 0,
-			'name' => __('RotationX', 'LayerSlider'),
+			'name' => __('Rotation X', 'LayerSlider'),
 			'keys' => 'looprotatex',
 			'attrs' => ['type' => 'text']
 		],
 
 		'loopRotateY' => [
 			'value' => 0,
-			'name' => __('RotationY', 'LayerSlider'),
+			'name' => __('Rotation Y', 'LayerSlider'),
 			'keys' => 'looprotatey',
 			'attrs' => ['type' => 'text']
 		],
 
 		'loopSkewX' => [
 			'value' => 0,
-			'name' => __('SkewX', 'LayerSlider'),
+			'name' => __('Skew X', 'LayerSlider'),
 			'keys' => 'loopskewx',
 			'attrs' => ['type' => 'text']
 		],
 
 		'loopSkewY' => [
 			'value' => 0,
-			'name' => __('SkewY', 'LayerSlider'),
+			'name' => __('Skew Y', 'LayerSlider'),
 			'keys' => 'loopskewy',
 			'attrs' => ['type' => 'text']
 		],
 
 		'loopScaleX' => [
 			'value' => 1,
-			'name' => __('ScaleX', 'LayerSlider'),
+			'name' => __('Scale X', 'LayerSlider'),
 			'keys' => 'loopscalex',
 			'attrs' => ['type' => 'text']
 		],
 
 		'loopScaleY' => [
 			'value' => 1,
-			'name' => __('ScaleY', 'LayerSlider'),
+			'name' => __('Scale Y', 'LayerSlider'),
 			'keys' => 'loopscaley',
 			'attrs' => ['type' => 'text']
 		],
@@ -3159,14 +3327,14 @@ $lsDefaults = [
 
 		'hoverOffsetX' => [
 			'value' => 0,
-			'name' => __('OffsetX', 'LayerSlider'),
+			'name' => __('Offset X', 'LayerSlider'),
 			'keys' => 'hoveroffsetx',
 			'attrs' => ['type' => 'text']
 		],
 
 		'hoverOffsetY' => [
 			'value' => 0,
-			'name' => __('OffsetY', 'LayerSlider'),
+			'name' => __('Offset Y', 'LayerSlider'),
 			'keys' => 'hoveroffsety',
 			'attrs' => ['type' => 'text']
 		],
@@ -3218,42 +3386,42 @@ $lsDefaults = [
 
 		'hoverRotateX' => [
 			'value' => 0,
-			'name' => __('RotationX', 'LayerSlider'),
+			'name' => __('Rotation X', 'LayerSlider'),
 			'keys' => 'hoverrotatex',
 			'attrs' => ['type' => 'text']
 		],
 
 		'hoverRotateY' => [
 			'value' => 0,
-			'name' => __('RotationY', 'LayerSlider'),
+			'name' => __('Rotation Y', 'LayerSlider'),
 			'keys' => 'hoverrotatey',
 			'attrs' => ['type' => 'text']
 		],
 
 		'hoverSkewX' => [
 			'value' => 0,
-			'name' => __('SkewX', 'LayerSlider'),
+			'name' => __('Skew X', 'LayerSlider'),
 			'keys' => 'hoverskewx',
 			'attrs' => ['type' => 'text']
 		],
 
 		'hoverSkewY' => [
 			'value' => 0,
-			'name' => __('SkewY', 'LayerSlider'),
+			'name' => __('Skew Y', 'LayerSlider'),
 			'keys' => 'hoverskewy',
 			'attrs' => ['type' => 'text']
 		],
 
 		'hoverScaleX' => [
 			'value' => 1,
-			'name' => __('ScaleX', 'LayerSlider'),
+			'name' => __('Scale X', 'LayerSlider'),
 			'keys' => 'hoverscalex',
 			'attrs' => ['type' => 'text']
 		],
 
 		'hoverScaleY' => [
 			'value' => 1,
-			'name' => __('ScaleY', 'LayerSlider'),
+			'name' => __('Scale Y', 'LayerSlider'),
 			'keys' => 'hoverscaley',
 			'attrs' => ['type' => 'text']
 		],
@@ -3417,6 +3585,358 @@ $lsDefaults = [
 		],
 
 
+
+		// Scroll Transition
+		'scroll' => [
+			'value' => false,
+			'keys' => 'scroll',
+			'premium' => true
+		],
+
+		'scrollDuration' => [
+			'value' => 500,
+			'name' => __('Duration', 'LayerSlider'),
+			'keys' => 'scrollduration',
+			'attrs' => [ 'min' => 0, 'step' => 100 ]
+		],
+
+		'scrollCenter' => [
+			'value' => '',
+			'name' => __('Center Point', 'LayerSlider'),
+			'keys' => 'scrollcenter',
+			'options' => [
+				'' => __('Inherit', 'LayerSlider'),
+				'top' => __('Top', 'LayerSlider'),
+				'center' => __('Center', 'LayerSlider'),
+				'bottom' => __('Bottom', 'LayerSlider')
+			]
+		],
+
+		'scrollGetPosition' => [
+			'value' => 'project',
+			'name' => __('Calculate Scroll Position Of', 'LayerSlider'),
+			'keys' => 'scrollgetposition',
+			'options' => [
+				'project' => __('Project', 'LayerSlider'),
+				'scene' => __('Scene', 'LayerSlider'),
+				'document' => __('Document', 'LayerSlider')
+			]
+		],
+
+		'scrollTransformOrigin' => [
+			'value' => '50% 50% 0',
+			'name' => __('Transform Origin', 'LayerSlider'),
+			'keys' => 'scrolltransformorigin'
+		],
+
+		'scrollPerspective' => [
+			'value' => '500',
+			'name' => __('Perspective', 'LayerSlider'),
+			'keys' => 'scrolltransformperspective'
+		],
+
+
+		'scrollOffsetX' => [
+			'value' => 0,
+			'name' => __('Offset X', 'LayerSlider'),
+			'keys' => 'scrolloffsetx'
+		],
+
+		'scrollOffsetXMin' => [
+			'value' => '',
+			'keys' => 'scrolloffsetxmin',
+			'attrs' => [
+				'type' => 'number'
+			]
+		],
+
+		'scrollOffsetXMax' => [
+			'value' => '',
+			'keys' => 'scrolloffsetxmax',
+			'attrs' => [
+				'type' => 'number'
+			]
+		],
+
+		'scrollOffsetXYoyo' => [
+			'value' => false,
+			'keys' => 'scrolloffsetxyoyo'
+		],
+
+		'scrollOffsetXResponsive' => [
+			'value' => true,
+			'keys' => 'scrolloffsetxresponsive'
+		],
+
+
+		'scrollOffsetY' => [
+			'value' => 0,
+			'name' => __('Offset Y', 'LayerSlider'),
+			'keys' => 'scrolloffsety'
+		],
+
+		'scrollOffsetYMin' => [
+			'value' => '',
+			'keys' => 'scrolloffsetymin',
+			'attrs' => [
+				'type' => 'number'
+			]
+		],
+
+		'scrollOffsetYMax' => [
+			'value' => '',
+			'keys' => 'scrolloffsetymax',
+			'attrs' => [
+				'type' => 'number'
+			]
+		],
+
+		'scrollOffsetYYoyo' => [
+			'value' => false,
+			'keys' => 'scrolloffsetyyoyo'
+		],
+
+		'scrollOffsetYResponsive' => [
+			'value' => true,
+			'keys' => 'scrolloffsetyresponsive'
+		],
+
+
+		'scrollScaleX' => [
+			'value' => 0,
+			'name' => __('Scale X', 'LayerSlider'),
+			'keys' => 'scrollscalex'
+		],
+
+		'scrollScaleXMin' => [
+			'value' => '',
+			'keys' => 'scrollscalexmin',
+			'attrs' => [
+				'type' => 'number'
+			]
+		],
+
+		'scrollScaleXMax' => [
+			'value' => '',
+			'keys' => 'scrollscalexmax',
+			'attrs' => [
+				'type' => 'number'
+			]
+		],
+
+		'scrollScaleXYoyo' => [
+			'value' => false,
+			'keys' => 'scrollscalexyoyo'
+		],
+
+
+		'scrollScaleY' => [
+			'value' => 0,
+			'name' => __('Scale Y', 'LayerSlider'),
+			'keys' => 'scrollscaley'
+		],
+
+		'scrollScaleYMin' => [
+			'value' => '',
+			'keys' => 'scrollscaleymin',
+			'attrs' => [
+				'type' => 'number'
+			]
+		],
+
+		'scrollScaleYMax' => [
+			'value' => '',
+			'keys' => 'scrollscaleymax',
+			'attrs' => [
+				'type' => 'number'
+			]
+		],
+
+		'scrollScaleYYoyo' => [
+			'value' => false,
+			'keys' => 'scrollscaleyyoyo'
+		],
+
+
+		'scrollSkewX' => [
+			'value' => 0,
+			'name' => __('Skew X', 'LayerSlider'),
+			'keys' => 'scrollskewx'
+		],
+
+		'scrollSkewXMin' => [
+			'value' => '',
+			'keys' => 'scrollskewxmin',
+			'attrs' => [
+				'type' => 'number'
+			]
+		],
+
+		'scrollSkewXMax' => [
+			'value' => '',
+			'keys' => 'scrollskewxmax',
+			'attrs' => [
+				'type' => 'number'
+			]
+		],
+
+		'scrollSkewXYoyo' => [
+			'value' => false,
+			'keys' => 'scrollskewxyoyo'
+		],
+
+
+		'scrollSkewY' => [
+			'value' => 0,
+			'name' => __('Skew Y', 'LayerSlider'),
+			'keys' => 'scrollskewy'
+		],
+
+		'scrollSkewYMin' => [
+			'value' => '',
+			'keys' => 'scrollskewymin',
+			'attrs' => [
+				'type' => 'number'
+			]
+		],
+
+		'scrollSkewYMax' => [
+			'value' => '',
+			'keys' => 'scrollskewymax',
+			'attrs' => [
+				'type' => 'number'
+			]
+		],
+
+		'scrollSkewYYoyo' => [
+			'value' => false,
+			'keys' => 'scrollskewyyoyo'
+		],
+
+
+		'scrollRotate' => [
+			'value' => 0,
+			'name' => __('Rotation', 'LayerSlider'),
+			'keys' => 'scrollrotate'
+		],
+
+		'scrollRotateMin' => [
+			'value' => '',
+			'keys' => 'scrollrotatemin',
+			'attrs' => [
+				'type' => 'number'
+			]
+		],
+
+		'scrollRotateMax' => [
+			'value' => '',
+			'keys' => 'scrollrotatemax',
+			'attrs' => [
+				'type' => 'number'
+			]
+		],
+
+		'scrollRotateYoyo' => [
+			'value' => false,
+			'keys' => 'scrollrotateyoyo'
+		],
+
+
+		'scrollRotateX' => [
+			'value' => 0,
+			'name' => __('Rotation X', 'LayerSlider'),
+			'keys' => 'scrollrotatex'
+		],
+
+		'scrollRotateXMin' => [
+			'value' => '',
+			'keys' => 'scrollrotatexmin',
+			'attrs' => [
+				'type' => 'number'
+			]
+		],
+
+		'scrollRotateXMax' => [
+			'value' => '',
+			'keys' => 'scrollrotatexmax',
+			'attrs' => [
+				'type' => 'number'
+			]
+		],
+
+		'scrollRotateXYoyo' => [
+			'value' => false,
+			'keys' => 'scrollrotatexyoyo'
+		],
+
+
+		'scrollRotateY' => [
+			'value' => 0,
+			'name' => __('Rotation Y', 'LayerSlider'),
+			'keys' => 'scrollrotatey'
+		],
+
+		'scrollRotateYMin' => [
+			'value' => '',
+			'keys' => 'scrollrotateymin',
+			'attrs' => [
+				'type' => 'number'
+			]
+		],
+
+		'scrollRotateYMax' => [
+			'value' => '',
+			'keys' => 'scrollrotateymax',
+			'attrs' => [
+				'type' => 'number'
+			]
+		],
+
+		'scrollRotateYYoyo' => [
+			'value' => false,
+			'keys' => 'scrollrotateyyoyo'
+		],
+
+
+		'scrollOpacity' => [
+			'value' => 0,
+			'name' => __('Opacity', 'LayerSlider'),
+			'keys' => 'scrollopacity'
+		],
+
+		'scrollOpacityMin' => [
+			'value' => '',
+			'keys' => 'scrollopacitymin',
+			'attrs' => [
+				'type' => 'number',
+				'min' => 0,
+				'max' => 1,
+				'step' => 0.05
+			]
+		],
+
+		'scrollOpacityMax' => [
+			'value' => '',
+			'keys' => 'scrollopacitymax',
+			'attrs' => [
+				'type' => 'number',
+				'min' => 0,
+				'max' => 1,
+				'step' => 0.05
+			]
+		],
+
+		'scrollOpacityYoyo' => [
+			'value' => false,
+			'keys' => 'scrollopacityyoyo'
+		],
+
+		'scrollOpacityInvert' => [
+			'value' => false,
+			'keys' => 'scrollopacityinvert'
+		],
+
+
 		// TRANSITON MISC
 		'transitionStatic' => [
 			'value' => 'none',
@@ -3425,6 +3945,17 @@ $lsDefaults = [
 			'options' => [
 				'none' => __('Until the end of this slide (default)', 'LayerSlider'),
 				'forever' => __('Forever (the layer will never animate out)', 'LayerSlider')
+			]
+		],
+
+		'transitionSkipViewport' => [
+			'value' => 'disabled',
+			'name' => __('Skip “Start in Viewport”', 'LayerSlider'),
+			'keys' => 'skipViewport',
+			'options' => [
+				'disabled' => __('Disabled', 'LayerSlider'),
+				'opening' => __('Enabled for Opening transition', 'LayerSlider'),
+				'loop' => __('Enabled for Opening and Loop transitions', 'LayerSlider')
 			]
 		],
 
@@ -3834,6 +4365,20 @@ $lsDefaults = [
 			]
 		],
 
+		'backgroundClip' => [
+			'value' => 'border-box',
+			'name' => __('Background Clip', 'LayerSlider'),
+			'keys' => 'background-clip',
+			'premium' => true,
+			'options' => [
+				'border-box' => __('No clip', 'LayerSlider'),
+				'text' => __('Text', 'LayerSlider'),
+				'ui-separator' => '–',
+				'padding-box' => __('Padding area', 'LayerSlider'),
+				'content-box' => __('Content area', 'LayerSlider')
+			]
+		],
+
 		'borderRadius' => [
 			'value' => '',
 			'name' => __('Rounded Corners', 'LayerSlider'),
@@ -3883,19 +4428,19 @@ $lsDefaults = [
 
 		'rotateX' => [
 			'value' => 0,
-			'name' => __('RotationX', 'LayerSlider'),
+			'name' => __('Rotation X', 'LayerSlider'),
 			'keys' => 'rotationX'
 		],
 
 		'rotateY' => [
 			'value' => 0,
-			'name' => __('RotationY', 'LayerSlider'),
+			'name' => __('Rotation Y', 'LayerSlider'),
 			'keys' => 'rotationY'
 		],
 
 		'scaleX' => [
 			'value' => 1,
-			'name' => __('ScaleX', 'LayerSlider'),
+			'name' => __('Scale X', 'LayerSlider'),
 			'keys' => 'scaleX',
 			'attrs' => [
 				'step' => '0.1'
@@ -3904,7 +4449,7 @@ $lsDefaults = [
 
 		'scaleY' => [
 			'value' => 1,
-			'name' => __('ScaleY', 'LayerSlider'),
+			'name' => __('Scale Y', 'LayerSlider'),
 			'keys' => 'scaleY',
 			'attrs' => [
 				'step' => '0.1'
@@ -3913,13 +4458,13 @@ $lsDefaults = [
 
 		'skewX' => [
 			'value' => 0,
-			'name' => __('SkewX', 'LayerSlider'),
+			'name' => __('Skew X', 'LayerSlider'),
 			'keys' => 'skewX'
 		],
 
 		'skewY' => [
 			'value' => 0,
-			'name' => __('SkewY', 'LayerSlider'),
+			'name' => __('Skew Y', 'LayerSlider'),
 			'keys' => 'skewY'
 		],
 
@@ -3935,6 +4480,35 @@ $lsDefaults = [
 			]
 		],
 
+		'pinned' => [
+			'value' => false,
+			'name' => __('Pin layer', 'LayerSlider'),
+			'keys' => 'pinned'
+		],
+
+		'minResponsiveRatio' => [
+			'value' => 0,
+			'name' => __('Minimum responsive ratio', 'LayerSlider'),
+			'keys' => 'minresponsiveratio',
+			'attrs' => [
+				'type' => 'number',
+				'step' => 0.1,
+				'min' => 0
+			]
+		],
+
+		'maxResponsiveRatio' => [
+			'value' => '',
+			'name' => __('Maximum responsive ratio', 'LayerSlider'),
+			'keys' => 'maxresponsiveratio',
+			'attrs' => [
+				'placeholder' => __('auto', 'LayerSlider'),
+				'type' => 'number',
+				'step' => 0.1,
+				'min' => 0
+			]
+		],
+
 		'zIndex' => [
 			'value' => '',
 			'name' => __('Stacking Order', 'LayerSlider'),
@@ -3943,6 +4517,16 @@ $lsDefaults = [
 				'type' => 'number',
 				'min' => 1,
 				'placeholder' => __('auto', 'LayerSlider')
+			]
+		],
+
+		'overflow' => [
+			'value' => 'visible',
+			'name' => __('Overflow', 'LayerSlider'),
+			'keys' => 'overflow',
+			'options' => [
+				'visible' => __('Visible', 'LayerSlider'),
+				'hidden' => __('Hidden', 'LayerSlider')
 			]
 		],
 
@@ -4001,6 +4585,12 @@ $lsDefaults = [
 			'keys' => 'filter'
 		],
 
+		'backdropFilter' => [
+			'value' => '',
+			'name' => __('Backdrop Filter', 'LayerSlider'),
+			'keys' => 'backdrop-filter'
+		],
+
 
 
 		// Attributes
@@ -4018,6 +4608,15 @@ $lsDefaults = [
 			'value' => '',
 			'name' => __('Classes', 'LayerSlider'),
 			'keys' => 'class',
+			'props' => [
+				'meta' => true
+			]
+		],
+
+		'tabindex' => [
+			'value' => '',
+			'name' => __('Tabindex', 'LayerSlider'),
+			'keys' => 'tabindex',
 			'props' => [
 				'meta' => true
 			]

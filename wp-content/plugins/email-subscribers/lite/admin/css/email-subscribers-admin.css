@@ -1,3 +1,10 @@
+/** Common UI Elements CSS - START */
+.es-spinner-loader {
+	display: none;
+}
+/** Common UI Elements CSS - END */
+
+
 #menu-content-change:focus {
 	box-shadow: none;
 	color: #FFFFFF;
@@ -79,6 +86,13 @@ a:focus {
 	text-align: center;
 }
 
+#es-settings-menu #menu-nav li svg {
+    stroke-width: 2;
+}
+
+tr#ig-es-no-api-keys-message:not(:only-child) {
+    display:none;
+}
 
 .help-info-content {
 	background: #FFF;
@@ -851,6 +865,46 @@ h5.es-badge {
 	margin: 0.2em 0;
 }
 
+.es-w-25 {
+	width: 25%;
+}
+
+.es-w-35 {
+	width: 35%;
+}
+
+.es-w-40 {
+	width: 40%;
+}
+
+.es-w-65 {
+	width: 65%;
+}
+
+table#top-countries tbody tr:last-child:not(first-child),
+table#recent-subscribers-activities tbody tr:last-child:not(first-child) {
+    border-bottom: none;
+}
+
+#subscribers-stats.loading,
+#recent-subscribers-activities.loading {
+    cursor: progress;
+}
+
+#es-dashboard-stats select {
+    --text-opacity: 1;
+    color: #9fa6b2;
+    color: rgba(159, 166, 178, var(--text-opacity));
+    border-color: #e5e7eb;
+    box-shadow: none;
+	background: #fff url('../images/arrow.svg') no-repeat right 5px top 55%;
+	max-width: 120px;
+}
+
+#es-dashboard-stats .premium-icon {
+    position: relative;
+    top: -3px;
+}
 /**** Dashboard : end ***/
 
 .es_list_contact_status:before {
@@ -1165,7 +1219,7 @@ div.es .last {
 	padding: 0.7em;
 }
 
-/* Email Subscribers new css : Start*/
+/* Icegram Express new css : Start*/
 .es_settings_field {
 	margin-bottom: 0.8em;
 }
@@ -1694,12 +1748,15 @@ body.email-subscribers_page_es_campaigns .column-status .dashicons[title="Finish
 }
 
 .broadcast_main_content,
-.campaign_main_content {
+.campaign_main_content,
+.form_main_content
+ {
 	width: 70% ;
 }
 
-.broadcast_side_content, 
-.campaign_side_content {
+.broadcast_side_content,
+.campaign_side_content,
+.form_side_content {
 		width: 30% ;
 }
 
@@ -1730,11 +1787,11 @@ body.email-subscribers_page_es_campaigns .column-status .dashicons[title="Finish
   filter: blur(0);
 }
 .campaign_open_blur{
-	-webkit-filter: blur(1.6px);  
+	-webkit-filter: blur(1.6px);
 	filter: blur(1.6px);
 }
 
-#browser_open_graph .chart-legend, #os_info_graph .chart-legend{
+#browser_open_graph .chart-legend, #os_info_graph .chart-legend, #unsubscribe_feedback_graph .chart-legend{
 	transform: translate(50px,230px);
 }
 
@@ -1978,7 +2035,7 @@ body.email-subscribers_page_es_campaigns .column-status .dashicons[title="Finish
 	padding-top: 0 !important;
 }
 
-#es_campaign_report .pulse-animation{
+.es-pulse-animation{
 	animation: es-pulse-animation 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 
 }
@@ -2038,7 +2095,7 @@ body.email-subscribers_page_es_campaigns .column-status .dashicons[title="Finish
 	padding-right: 4px;
 }
 
-.ig-es-conditions-value-fields:not([data-condition="email"]):not([data-condition="country_code"]):not([data-condition="engagement_score"]):not([data-condition="bounce_status"]) {
+.ig-es-conditions-value-fields:not([data-condition="email"]):not([data-condition="country_code"]):not([data-condition="engagement_score"]):not([data-condition="bounce_status"]):not([data-condition^="cf_"]) {
     max-width: 60%;
 }
 
@@ -2147,7 +2204,7 @@ body.email-subscribers_page_es_campaigns .column-status .dashicons[title="Finish
 	visibility: hidden !important;
 }
 
-div.ig-es-conditions-render-wrapper::after, 
+div.ig-es-conditions-render-wrapper::after,
 .ig-es-conditions-render-wrapper .ig-es-conditions-render::after {
 	content: '';
 	display: block;
@@ -2161,7 +2218,7 @@ div.ig-es-conditions-render-wrapper::after,
 	border-radius: 0.25rem;
 }
 
-.ig-es-conditions-wrap .ig-es-conditions-value-field-multiselect:not(:first-child) { 
+.ig-es-conditions-wrap .ig-es-conditions-value-field-multiselect:not(:first-child) {
 	margin-top:0.5rem;
 }
 .es-add-or-condition{
@@ -2215,6 +2272,10 @@ body[class*="es_reports"] .recipient-text {
     display: none;
 }
 
+.ig_es_feature_name .es-tooltip span{
+	background-color: #000 !important;
+}
+
 /* Campaign Rules CSS - END */
 
 /** Tailwind tooltip Custom CSS - START */
@@ -2227,6 +2288,7 @@ body[class*="es_reports"] .recipient-text {
     transform: translate(-50%,0%);
     left: 50%;
 	opacity: 0.9;
+	z-index: 9999;
 }
 
 .es-tooltip .tooltip-text svg  {
@@ -2283,7 +2345,7 @@ body[class*="es_reports"] #the-list tr.loading {
     opacity: 0.5;
 }
 
-body[class*="es_campaigns"] #the-list td.column-status > svg:only-child, 
+body[class*="es_campaigns"] #the-list td.column-status > svg:only-child,
 body[class*="es_reports"] #the-list td.column-status > svg:only-child {
     margin-left: .5rem;
 }
@@ -2304,6 +2366,26 @@ body[class*="page_es_subscribers"] .wp-list-table.contacts th#last_opened_at {
 	right: 25px !important;
 	top: 25px !important;
 }
+.es-editor .gjs-field-checkbox input {
+	content: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
+	display: inline-block;
+	color: #5850ec!important;
+	color: rgba(88,80,236,var(--text-opacity))!important;
+}
+
+.es-editor i.gjs-chk-icon {
+	display: none;
+}
+
+.es-editor .gjs-field-checkbox input:checked {
+	background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 16 16' fill='%23fff' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4a1 1 0 00-1.414-1.414L7 8.586 5.707 7.293z'/%3E%3C/svg%3E");
+	border-color: transparent;
+	background-color: currentColor;
+	background-size: 100% 100%;
+	background-position: 50%;
+	background-repeat: no-repeat
+}
+
 /** Editor CSS - END **/
 
 /** New Campaign UI CSS - START **/
@@ -2321,11 +2403,7 @@ body[class*="page_es_subscribers"] .wp-list-table.contacts th#last_opened_at {
     border-color: #ccc;
 }
 
-button#close-campaign-preview-popup {
-    margin: 0 0 0 0.2rem;
-}
-
-#campaign-preview-iframe-container {
+#campaign-preview-iframe-container, #sequence-preview-iframe-container, #workflow-preview-iframe-container {
     --bg-opacity: 1;
     background-color: #f4f5f7;
     background-color: rgb(244, 245, 247);
@@ -2333,6 +2411,64 @@ button#close-campaign-preview-popup {
 
 #campaign-preview-iframe-container iframe {
     background-color: #fff;
+}
+
+#sequence-preview-iframe-container iframe {
+    background-color: #fff;
+}
+
+#workflow-preview-iframe-container iframe {
+    background-color: #fff;
+}
+
+
+.campaign-email-preview-container-left {
+	font-size: 13px;
+	color: #787878;
+	display: inline-block;
+}
+
+
+.campaign-email-preview-container-right {
+
+	float: right;
+}
+
+
+#campaign-email-preview-container .from {
+		white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 430px;
+}
+
+
+ #unsubscribe_feedback_graph .chart-legend {
+	display: none;
+}
+
+
+span.feedback_reason_dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+
+
+#close-sequence-email-preview-popup, #close-workflow-email-preview-popup, #close-campaign-preview-popup, #close-unsubscribe-feedback-popup {
+	margin-left: auto;
+}
+
+#campaign-email-preview-container {
+	position: relative;
+  z-index: 5;
+	padding: 0px 30px 40px 30px;
+	box-shadow: rgb(0 0 0 / 5%) 0 1px 2px 1px;
+	border-bottom: 1px solid #e4e4e4;
+  background: #fff;
+	margin-top: 4px;
+
 }
 
 .ig-es-inline-loader {
@@ -2350,6 +2486,21 @@ button#close-campaign-preview-popup {
 
 .ig-es-inline-loader.loading span {
     visibility: hidden;
+}
+
+.ig-es-ajax-loader{
+	visibility: hidden;
+	background-color: rgb(255,255,255,0.7);
+	position: absolute;
+	z-index: +100;
+	width: 100%;
+	height:100%;
+}
+
+.ig-es-ajax-loader img{
+	position: relative;
+	top:15%;
+	left:35%;
 }
 
 .campaign-preview-option {
@@ -2421,6 +2572,19 @@ button#close-campaign-preview-popup {
     box-shadow: none;
 }
 
+#ig-es-tag-icon-dropdown .ig-es-campaign-tags.post_digest {
+    display: none;
+}
+
+.form-drag-and-drop-editor-container span#ig-es-dnd-merge-tags-wrapper {
+    display: none;
+}
+
+#edit-campaign-form-container[data-campaign-type="newsletter"] .gjs-block-category:nth-child(2),
+#edit-campaign-form-container:not([data-campaign-type="post_digest"]) .gjs-block[title="Posts"] {
+    display: none;
+}
+
 /** New Campaign UI CSS - END **/
 
 /** Workflow Gallery CSS - START **/
@@ -2452,3 +2616,206 @@ button#close-campaign-preview-popup {
     pointer-events: none;
 }
 /** Onboarding CSS - END */
+
+/** Enagement Score CSS - START **/
+
+  /* Variables */
+  .es-items-lists table.contacts, .dashboard-engagement-score-stat {
+	--rating-size: 30px;
+	--bar-size: 3px;
+	--background-color: #e7f2fa;
+	--rating-color-default: #2980b9;
+	--rating-color-background: #c7e1f3;
+	--rating-color-excellent: #56C624;
+	--rating-color-good: #AAD31F;
+	--rating-color-low: #FCD10F;
+	--rating-color-very-low: #FD7925;
+	--rating-color-bad: #FF2F22;
+	--bounce-color-background-low: rgba(255,165,0,0.1);
+	--bounce-color-background-high: rgba(255,0,0,0.1);
+}
+
+.es-items-lists table.contacts #engagement_score {
+    width: 70px;
+}
+
+/* Rating item */
+.es-items-lists table.contacts  .es-engagement-score,
+.dashboard-engagement-score-stat  .es-engagement-score {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 100%;
+	overflow: hidden;
+
+	background: var(--rating-color-default);
+	color: var(--rating-color-default);
+	width: var(--rating-size);
+	height: var(--rating-size);
+
+	/* Basic style for the text */
+	font-size: calc(var(--rating-size) / 3);
+	line-height: 1;
+}
+
+/* Rating circle content */
+.es-items-lists table.contacts .es-engagement-score span,
+.dashboard-engagement-score-stat  .es-engagement-score span {
+	position: relative;
+	display: flex;
+	font-weight: normal;
+	color:#000;
+	z-index: 2;
+}
+
+.es-items-lists table.contacts  .es-engagement-score span small,
+.dashboard-engagement-score-stat .es-engagement-score span small {
+	font-size: 0.5em;
+	font-weight: 900;
+	align-self: center;
+}
+
+/* Bar mask, creates an inner circle with the same color as thee background */
+.es-items-lists table.contacts  .es-engagement-score::after,
+.dashboard-engagement-score-stat   .es-engagement-score::after {
+	content: "";
+	position: absolute;
+	top: var(--bar-size);
+	right: var(--bar-size);
+	bottom: var(--bar-size);
+	left: var(--bar-size);
+	background: var(--background-color);
+	border-radius: inherit;
+	z-index: 1;
+}
+
+/* Bar background */
+.es-items-lists table.contacts  .es-engagement-score::before,
+.dashboard-engagement-score-stat   .es-engagement-score::before {
+	content: "";
+	position: absolute;
+	top: var(--bar-size);
+	right: var(--bar-size);
+	bottom: var(--bar-size);
+	left: var(--bar-size);
+	border-radius: inherit;
+	box-shadow: 0 0 0 1rem var(--rating-color-background);
+	z-index: -1;
+}
+
+/* Classes to give different colors to ratings, based on their score */
+.es-items-lists table.contacts  .es-engagement-score.excellent,
+.dashboard-engagement-score-stat   .es-engagement-score.excellent {
+	background: var(--rating-color-excellent);
+	color: var(--rating-color-excellent);
+}
+
+.es-items-lists table.contacts .es-engagement-score.good,
+.dashboard-engagement-score-stat .es-engagement-score.good {
+	background: var(--rating-color-good);
+	color: var(--rating-color-good);
+}
+
+.es-items-lists table.contacts .es-engagement-score.low,
+.dashboard-engagement-score-stat  .es-engagement-score.low {
+	background: var(--rating-color-low);
+	color: var(--rating-color-low);
+}
+
+.es-items-lists table.contacts .es-engagement-score.very-low,
+.es-items-lists table.contacts .es-engagement-score.very-low {
+	background: var(--rating-color-very-low);
+	color: var(--rating-color-very-low);
+}
+
+.es-items-lists table.contacts .es-engagement-score.bad,
+.dashboard-engagement-score-stat  .es-engagement-score.bad {
+	background: var(--rating-color-bad);
+}
+
+.es-items-lists table.contacts .es-engagement-score.bad span,
+.dashboard-engagement-score-stat  .es-engagement-score.bad span {
+    color: var(--rating-color-bad);;
+}
+
+.es-items-lists table.contacts #es_email_status,
+.dashboard-engagement-score-stat  #es_email_status {
+    width: 120px;
+}
+
+.ig_es_contacts_table {
+	margin-top: 2rem !important;
+}
+
+/* .es-tooltip .tooltip-text #device_open_graph svg,
+.es-tooltip .tooltip-text #sources_graph svg,
+.es-tooltip .tooltip-text #unsubscribe_feedbacks_graph svg {
+    left: 0;
+    transform: none;
+top: 50%;}
+
+
+
+#es-dashboard-stats .tooltip-text {background: transparent;}
+
+#es-dashboard-stats .es-tooltip .tooltip-text {right: 25px;
+    top: 50%;left: initial;transform: translate(50%,0%);
+    /* left: 50%; */
+    /* opacity: 0.9;z-index: 999;} */
+
+/* #es-dashboard-stats svg.tooltip-arrow {display: none;} */
+/** Enagement Score CSS - END **/
+
+/** DND form build CSS - START **/
+#es-edit-form input#es-form-name {
+	outline: none;
+	cursor: pointer;
+}
+
+#es-edit-form input#es-form-name:not([readonly]) {
+	background: #fff;
+}
+
+.es-editor .gjs-one-bg .gjs-field .es-gjs-checkbox-group input[type="checkbox"] {
+	width: auto;
+}
+
+#ig-es-dnd-builder .gjs-field.gjs-field-checkbox-group {
+	border: none;
+}
+
+#es-edit-form-container #ig-es-dnd-builder .es-content #es-email-subscribers {padding: 15px;background-color:#fff}
+
+#es-edit-form-container #ig-es-dnd-builder .es-content .gjs-editor, 
+#ig-es-dnd-builder .es-content .gjs-editor .gjs-cv-canvas,
+#es-edit-form-container #ig-es-dnd-builder .es-content {
+	box-shadow: none;
+	border-top-left-radius: unset;
+    border-bottom-left-radius: unset;
+}
+
+#es-edit-form-container  .gjs-block__media svg {
+	width: 35px;
+	height: 35px;
+}
+/** DND form build CSS - END **/
+
+/** Workflow Rules CSS - START **/
+.ig-es-rule-group:not(:first-child){
+	margin-top:20px;
+	border-top: 2px solid #CCC;
+}
+.ig-es-rule-group,.ig-es-rule-container,.ig-es-rule-group .ig-es-rule__fields,.ig-es-rule__fields .select2-container{
+	width: 100% !important;
+}
+.ig-es-rule__fields .ig-es-rule-select-container{
+	width: 26%;
+}
+.ig-es-rule__fields .ig-es-rule-field-compare{
+	width: 16%;
+}
+.ig-es-rule__fields .ig-es-rule-field-value{
+	width: 58%;
+}
+/** Workflow Rules CSS - END **/

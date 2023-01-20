@@ -41,6 +41,7 @@ class IG_ES_Replace_Helper {
 
 	/**
 	 * The keywords that can be processable
+	 *
 	 * @var array
 	 */
 	public $parsable_keywords;

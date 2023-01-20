@@ -243,6 +243,11 @@ function ls_normalize_slider_data( $slider ) {
 
 	$sliderItem 	= $slider;
 	$lsActivated 	= LS_Config::isActivatedSite();
+	$sliderVersion 	= ! empty( $slider['properties']['sliderVersion'] ) ? $slider['properties']['sliderVersion'] : '1.0.0';
+
+	$preVersion700 	= version_compare( $sliderVersion, '7.0.0', '<' );
+	$preVersion725 	= version_compare( $sliderVersion, '7.2.5', '<' );
+
 
 	if( ! isset($slider['properties']['status']) ) {
 		$slider['properties']['status'] = true;
@@ -312,7 +317,7 @@ function ls_normalize_slider_data( $slider ) {
 		}
 	}
 
-	if( ! empty($slider['properties']['sublayercontainer']) ) {
+	if( ! empty( $slider['properties']['sublayercontainer'] ) ) {
 		unset($slider['properties']['sublayercontainer']);
 	}
 
@@ -324,11 +329,11 @@ function ls_normalize_slider_data( $slider ) {
 		$slider['properties']['height'] = (int) $slider['properties']['height'];
 	}
 
-	if( empty($slider['properties']['new']) && empty( $slider['properties']['pauseonhover'] ) ) {
+	if( empty( $slider['properties']['new'] ) && empty( $slider['properties']['pauseonhover'] ) ) {
 		$slider['properties']['pauseonhover'] = 'enabled';
 	}
 
-	if( empty($slider['properties']['sliderVersion'] ) && empty($slider['properties']['circletimer'] ) ) {
+	if( empty( $slider['properties']['sliderVersion'] ) && empty( $slider['properties']['circletimer'] ) ) {
 		$slider['properties']['circletimer'] = false;
 	}
 
@@ -408,6 +413,15 @@ function ls_normalize_slider_data( $slider ) {
 			$slideVal['sublayers'] = array_values( $slideVal['sublayers'] );
 		}
 
+		// v7.2.5: Backward compatibility for parallax transformOrigin changes
+		if( $preVersion725 && ! empty( $slideVal['properties']['parallaxtransformorigin'] ) ) {
+
+			$toParams = explode(' ', trim( $slideVal['properties']['parallaxtransformorigin'] ) );
+			if( $toParams[0] === '50%' ) { $toParams[0] = 'slidercenter'; }
+			if( $toParams[1] === '50%' ) { $toParams[1] = 'slidermiddle'; }
+
+			$slideVal['properties']['parallaxtransformorigin'] = implode(' ', $toParams);
+		}
 
 		$slider['layers'][$slideKey] = $slideVal;
 
@@ -469,7 +483,7 @@ function ls_normalize_slider_data( $slider ) {
 				// Parse embedded JSON data
 				$layerVal['styles'] = !empty($layerVal['styles']) ? (object) json_decode(stripslashes($layerVal['styles']), true) : new stdClass;
 				$layerVal['transition'] = !empty($layerVal['transition']) ? (object) json_decode(stripslashes($layerVal['transition']), true) : new stdClass;
-				$layerVal['html'] = !empty($layerVal['html']) ? stripslashes($layerVal['html']) : '';
+				$layerVal['html'] = ( ! empty( $layerVal['html'] ) || ( isset( $layerVal['html'] ) && $layerVal['html'] === '0' ) ) ? stripslashes($layerVal['html']) : '';
 
 				// Add 'top', 'left' and 'wordwrap' to the styles object
 				if(isset($layerVal['top'])) { $layerVal['styles']->top = $layerVal['top']; unset($layerVal['top']); }
@@ -490,9 +504,7 @@ function ls_normalize_slider_data( $slider ) {
 
 
 				if( ! empty( $layerVal['layerBackground'] ) && empty( $layerVal['styles']->{'background-repeat'} ) ) {
-					if( empty( $slider['properties']['sliderVersion'] ) ||
-						version_compare( $slider['properties']['sliderVersion'], '7.0.0', '<' )
-					) {
+					if( $preVersion700 ) {
 						$layerVal['styles']->{'background-repeat'} = 'repeat';
 					}
 				}
@@ -538,6 +550,16 @@ function ls_normalize_slider_data( $slider ) {
 					} elseif( false === $layerVal['transition']->controls ) {
 						$layerVal['transition']->controls = 'disabled';
 					}
+				}
+
+				// v7.2.5: Backward compatibility for parallax transformOrigin changes
+				if( $preVersion725 && ! empty( $layerVal['transition']->parallaxtransformorigin ) ) {
+
+					$toParams = explode(' ', trim( $layerVal['transition']->parallaxtransformorigin ) );
+					if( $toParams[0] === '50%' ) { $toParams[0] = 'slidercenter'; }
+					if( $toParams[1] === '50%' ) { $toParams[1] = 'slidermiddle'; }
+
+					$layerVal['transition']->parallaxtransformorigin = implode(' ', $toParams);
 				}
 
 				$slider['layers'][$slideKey]['sublayers'][$layerKey] = $layerVal;

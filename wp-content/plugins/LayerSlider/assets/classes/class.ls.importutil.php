@@ -23,6 +23,10 @@ class LS_ImportUtil {
 	public $lastImportId;
 
 
+	// Last import error code
+	public $lastErrorCode;
+
+
 	// Target folders
 	private $uploadsDir, $targetDir, $targetURL, $tmpDir;
 
@@ -74,12 +78,14 @@ class LS_ImportUtil {
 				// Uploaded folders
 				$folders = glob( $this->tmpDir.'/*', GLOB_ONLYDIR );
 
+				$folders = $this->reduceSliders( $folders );
+
 				$groupId = NULL;
 				if( ! empty( $groupName ) && count( $folders ) > 1 ) {
 					$groupId = LS_Sliders::addGroup( $groupName );
 				}
 
-				foreach( $folders as $key => $dir) {
+				foreach( $folders as $key => $dir ) {
 
 					$this->imported = [];
 
@@ -292,6 +298,37 @@ class LS_ImportUtil {
 
 		// Add slider
 		return LS_Sliders::add( $title, $data, $slug, $groupId );
+	}
+
+
+	public function reduceSliders( $folders ) {
+
+		if( empty( $folders ) ) {
+			return [];
+		}
+
+		if( LS_Config::isActivatedSite() ) {
+			return $folders;
+		}
+
+		foreach( $folders as $key => $dir ) {
+
+			if( file_exists($dir.'/settings.json') ) {
+				$data = json_decode(file_get_contents( $dir.'/settings.json' ), true);
+				if( ! empty( $data['properties']['pt'] ) ) {
+					unset( $folders[ $key ] );
+					$this->lastErrorCode = 'LR_PARTIAL_IMPORT';
+				}
+			}
+		}
+
+		$folders = array_values( $folders );
+
+		if( empty( $folders ) ) {
+			$this->lastErrorCode = 'LR_EMPTY_IMPORT';
+		}
+
+		return $folders;
 	}
 
 

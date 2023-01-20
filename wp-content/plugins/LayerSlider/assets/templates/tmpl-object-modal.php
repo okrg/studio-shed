@@ -31,7 +31,7 @@
 				<img src="<?= LS_ROOT_URL ?>/static/admin/img/creature-coming-soon.png" alt="<?= __('Coming Soon', 'LayerSlider') ?>">
 				<lse-p class="lse-mt-s"><?= __('Stay tuned for an extensive collection of ready-to-go media assets that you can instantly use in your projects. The Object Library will soon offer commonly used images, video and audio, and scalable vector graphics.', 'LayerSlider') ?></lse-p>
 
-				<lse-p class="lse-mt-s"><?= __('In the meantime, you can insert your own SVG objects just by dropping them on the project canvas or under the "Insert SVG" tab in this window.', 'LayerSlider') ?></lse-p>
+				<lse-p class="lse-mt-s"><?= __('In the meantime, you can insert your own SVG objects just by dropping them on the project canvas or under the “Insert SVG” tab in this window.', 'LayerSlider') ?></lse-p>
 			</lse-b>
 
 

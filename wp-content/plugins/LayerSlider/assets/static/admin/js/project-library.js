@@ -52,12 +52,12 @@ var LS_SliderLibrary = {
 			LS_SliderLibrary.initialized = true;
 
 			// Open group
-			jQuery( document ).on('click', '.slider-item.group-item', function( e ) {
+			jQuery( document ).on('click', '.ls-slider-item.ls-group-item', function( e ) {
 				e.preventDefault();
 				LS_SliderLibrary.openGroup( jQuery( this ) );
 
 			// Select slider
-			}).on('click', '#ls-slider-library-modal .slider-item:not(.group-item)', function( event ) {
+			}).on('click', '#ls-slider-library-modal .ls-slider-item:not(.ls-group-item)', function( event ) {
 				LS_SliderLibrary.selectSlider( event, jQuery( event.currentTarget ) );
 			});
 
@@ -85,7 +85,7 @@ var LS_SliderLibrary = {
 
 		var groupModalSettings = LS_SliderLibrary.settings.groupModalSettings;
 
-		groupModalSettings.title = $item.find('.name').html();
+		groupModalSettings.title = $item.find('.ls-name').html();
 		groupModalSettings.content = $item.next().children();
 
 		kmw.modal.open( groupModalSettings );

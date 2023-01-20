@@ -42,6 +42,7 @@ class LS_Uninstaller {
 			'ls_custom_locale',
 			'ls-google-fonts',
 			'ls-google-font-scripts',
+			'ls_performance_mode',
 			'ls_use_cache',
 			'ls_include_at_footer',
 			'ls_conditional_script_loading',
@@ -62,6 +63,7 @@ class LS_Uninstaller {
 			'ls_ls_scripts_priority',
 			'ls_use_srcset',
 			'ls_enhanced_lazy_load',
+			'ls_enable_play_by_scroll',
 
 			// Updates & Services
 			'ls-share-displayed',
@@ -101,6 +103,9 @@ class LS_Uninstaller {
 
 			// Popup Index
 			'ls-popup-index',
+
+			// Other
+			'ls-transition-presets',
 
 			// Legacy
 			'ls-collapsed-boxes',

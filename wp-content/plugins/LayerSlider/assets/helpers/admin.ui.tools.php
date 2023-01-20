@@ -286,8 +286,11 @@ function lsGetCheckbox($default, $current = null, $attrs = [], $return = false, 
 	$label->attr( $labelAttrs );
 	$label->addClass( $labelClassList );
 
+	// Premium exclude list
+	$premiumExclude = ['scroll'];
+
 	// License registration check
-	if( ! empty( $default['premium'] ) ) {
+	if( ! empty( $default['premium'] ) && ! in_array( $name, $premiumExclude ) ) {
 		if( ! LS_Config::isActivatedSite() ) {
 			$input->addClass('locked');
 			$input->attr('disabled', 'disabled');
@@ -341,12 +344,16 @@ function lsGetSelect($default, $current = null, $attrs = [], $forceOptionVal = f
 	// Add options
 	foreach($options as $name => $val) {
 
+		$disabled = '';
 		$name = (is_string($name) || $forceOptionVal) ? $name : $val;
 		$name = ($name === 'zero') ? 0 : $name;
 
+		if( $name === 'ui-separator' ) {
+			$disabled = 'disabled';
+		}
 
 		$checked = ($name == $value) ? ' selected="selected"' : '';
-		$listItems[] = "<option value=\"$name\" $checked>$val</option>";
+		$listItems[] = "<option value=\"$name\" $checked $disabled>$val</option>";
 	}
 
 	$attributes['data-default'] = $default['value'];

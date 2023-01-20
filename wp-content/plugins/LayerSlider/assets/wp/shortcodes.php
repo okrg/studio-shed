@@ -345,7 +345,7 @@ class LS_Shortcode {
 	public static function generateSliderMarkup( $slider = null, $embed = [] ) {
 
 		// Bail out early if no params received or using Popup on unactivated sites
-		if( ! $slider || ( (int)$slider['flag_popup'] && ! LS_Config::isActivatedSite() ) ) {
+		if( ! $slider || ( (int)$slider['flag_popup'] && ! LS_Config::isActivatedSite() ) || ! LS_Config::isActivatedSite() && ! empty( $slider['data']['properties']['pt'] ) ) {
 			return ['init' => '', 'container' => '', 'markup' => ''];
 		}
 
@@ -369,6 +369,7 @@ class LS_Shortcode {
 				require_once LS_ROOT_PATH.'/classes/class.ls.dom.php';
 			}
 
+			$GLOBALS['lsInitAjaxURL'] = false;
 			$GLOBALS['lsPremiumNotice'] = [];
 			$GLOBALS['lsIsActivatedSite'] = LS_Config::isActivatedSite();
 

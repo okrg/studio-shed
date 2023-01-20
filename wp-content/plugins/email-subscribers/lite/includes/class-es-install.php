@@ -301,6 +301,10 @@ if ( ! class_exists( 'ES_Install' ) ) {
 				'ig_es_update_540_alter_contacts_table',
 				'ig_es_update_540_db_version',
 			),
+			'5.5.0'  => array(
+				'ig_es_migrate_workflow_trigger_conditions_to_rules',
+				'ig_es_update_550_db_version',
+			),
 		);
 
 		/**
@@ -337,8 +341,7 @@ if ( ! class_exists( 'ES_Install' ) ) {
 
 				self::install();
 			}
-			// Do we need to load templates?
-			self::load_templates();
+			
 		}
 
 		/**
@@ -398,7 +401,7 @@ if ( ! class_exists( 'ES_Install' ) ) {
 
 			if ( self::is_new_install() ) {
 
-				self::$logger->info( 'It seems new Email Subscribers. Start Installation process.', self::$logger_context );
+				self::$logger->info( 'It seems new Icegram Express. Start Installation process.', self::$logger_context );
 
 				// If we made it till here nothing is running yet, lets set the transient now.
 				set_transient( 'ig_es_installing', 'yes', MINUTE_IN_SECONDS * 10 );
@@ -414,10 +417,6 @@ if ( ! class_exists( 'ES_Install' ) ) {
 				self::create_options();
 
 				self::$logger->info( 'Create Options.', self::$logger_context );
-
-				self::load_templates();
-
-				self::$logger->info( 'Load readymade template', self::$logger_context );
 
 				self::$logger->info( 'Installation Complete.', self::$logger_context );
 			}
@@ -797,11 +796,11 @@ if ( ! class_exists( 'ES_Install' ) ) {
 			$report .= "Unique ID: {{UNIQUE}}\n";
 			$report .= "Start Time: {{STARTTIME}}\n";
 			$report .= "End Time: {{ENDTIME}}\n";
-			$report .= "For more information, login to your dashboard and go to Reports menu in Email Subscribers.\n\n";
+			$report .= "For more information, login to your dashboard and go to Reports menu in Icegram Express.\n\n";
 			$report .= 'Thank You.';
 
 			$new_contact_email_subject = 'One more contact joins our tribe!';
-			$new_contact_email_content = "Hi,\r\n\r\nYour friendly Email Subscribers notification bot here!\r\n\r\n{{NAME}} ({{EMAIL}}) joined our tribe just now.\r\n\r\nWhich list/s? {{LIST}}\r\n\r\nIf you know this person, or if they are an influencer, you may want to reach out to them personally!\r\n\r\nLater...";
+			$new_contact_email_content = "Hi,\r\n\r\nYour friendly Icegram Express notification bot here!\r\n\r\n{{NAME}} ({{EMAIL}}) joined our tribe just now.\r\n\r\nWhich list/s? {{LIST}}\r\n\r\nIf you know this person, or if they are an influencer, you may want to reach out to them personally!\r\n\r\nLater...";
 
 			$confirmation_email_subject = 'Thanks!';
 			$confirmation_email_content = "Hi {{NAME}},\r\n\r\nJust one more step before we share the awesomeness from {{SITENAME}}!\r\n\r\nPlease confirm your subscription by clicking on <a href='{{SUBSCRIBE-LINK}}'>this link</a>\r\n\r\nThanks!";
@@ -978,7 +977,7 @@ if ( ! class_exists( 'ES_Install' ) ) {
 				'ig_es_disable_wp_cron'                           => array( 'default' => 'no' ),
 				'ig_es_enable_sending_mails_in_customer_timezone' => array( 'default' => 'no' ),
 				'ig_es_track_email_opens'                         => array( 'default' => 'yes' ),
-				'ig_es_enable_ajax_form_submission'               => array( 'default' => 'no' ),
+				'ig_es_enable_ajax_form_submission'               => array( 'default' => 'yes' ),
 				'ig_es_show_opt_in_consent'                       => array( 'default' => 'yes' ),
 				'ig_es_opt_in_consent_text'                       => array( 'default' => 'Subscribe to our email updates as well.' ),
 				'ig_es_installed_on'                              => array(
@@ -1006,7 +1005,7 @@ if ( ! class_exists( 'ES_Install' ) ) {
 				'ig_es_max_email_send_at_once'                    => array(
 					'default'    => IG_ES_MAX_EMAIL_SEND_AT_ONCE,
 					'old_option' => '',
-				),
+				),				
 				'ig_es_test_mailbox_user'                         => array(
 					'default'    => ES_Common::generate_test_mailbox_user(),
 					'old_option' => '',
@@ -1092,7 +1091,7 @@ if ( ! class_exists( 'ES_Install' ) ) {
 				`timezone` varchar(255) NULL DEFAULT NULL,
 				`form_id` int(10) NOT NULL DEFAULT '0',
 				`status` varchar(10) DEFAULT NULL,
-				`reference_site` varchar(255) NULL DEFAULT NULL, 
+				`reference_site` varchar(255) NULL DEFAULT NULL,
 				`unsubscribed` tinyint(1) NOT NULL DEFAULT '0',
 				`hash` varchar(50) DEFAULT NULL,
 				`engagement_score` float DEFAULT NULL,
@@ -1543,6 +1542,7 @@ if ( ! class_exists( 'ES_Install' ) ) {
 		 * @since 4.3.2
 		 */
 		public static function load_templates( $force = false ) {
+			
 			// TODO :: Add template with custom post type
 			global $wpdb;
 

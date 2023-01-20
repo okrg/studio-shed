@@ -102,7 +102,7 @@ class LS_ModuleManager {
 		$zipContent = $GLOBALS['LS_AutoUpdate']->sendApiRequest( $targetURL );
 
 		if( ! $zipContent || is_wp_error( $zipContent ) ) {
-			$this->logError('ERR_DOWNLOAD', sprintf( __('LayerSlider was unable to download the module. Please check %sLayerSlider → Options → System Status%s for potential issues. The WP Remote functions may be unavailable or your web hosting provider has to allow external connections to our domain.', 'LayerSlider'), '<a href="'.admin_url( 'admin.php?page=layerslider&section=system-status' ).'" target="_blank">', '</a>' ) );
+			$this->logError('ERR_DOWNLOAD', sprintf( __('LayerSlider was unable to download the module. Please check %sSystem Status%s for potential issues. The WP Remote functions may be unavailable or your web hosting provider has to allow external connections to our domain.', 'LayerSlider'), '<a href="'.admin_url( 'admin.php?page=layerslider&section=system-status' ).'" target="_blank">', '</a>' ) );
 			return false;
 		}
 
@@ -113,7 +113,8 @@ class LS_ModuleManager {
 
 				// Check activation state
 				if( ! empty( $json['message'] ) ) {
-					$GLOBALS['LS_AutoUpdate']->check_activation_state();
+					$subDeactivated = ! empty( $json['_sub_deactivated'] );
+					$GLOBALS['LS_AutoUpdate']->check_activation_state( $subDeactivated );
 					$this->logError( $json['errCode'], $json['message'] );
 					return false;
 				}
@@ -131,7 +132,7 @@ class LS_ModuleManager {
 			return true;
 		}
 
-		$this->logError('ERR_ZIP_EXTRACTION', sprintf( __('LayerSlider was unable to uncompress the module. Please check %sLayerSlider → Options → System Status%s for potential issues. The WP Remote functions may be unavailable or your web hosting provider has to allow external connections to our domain.', 'LayerSlider'), '<a href="'.admin_url( 'admin.php?page=layerslider&section=system-status' ).'" target="_blank">', '</a>' ) );
+		$this->logError('ERR_ZIP_EXTRACTION', sprintf( __('LayerSlider was unable to uncompress the module. Please check %sSystem Status%s for potential issues.', 'LayerSlider'), '<a href="'.admin_url( 'admin.php?page=layerslider&section=system-status' ).'" target="_blank">', '</a>' ) );
 		unlink( $dlFilePath );
 		return false;
 	}

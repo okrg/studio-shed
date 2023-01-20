@@ -49,6 +49,7 @@ class ES_Workflow_Triggers extends ES_Workflow_Registry {
 			'ig_es_user_unconfirmed'  => 'ES_Trigger_User_Unconfirmed',
 			'ig_es_user_unsubscribed' => 'ES_Trigger_User_Unsubscribed',
 			'ig_es_campaign_sent'     => 'ES_Trigger_Campaign_Sent',
+			'ig_es_campaign_failed'   => 'ES_Trigger_Campaign_Failed',
 		);
 
 		return apply_filters( 'ig_es_workflow_triggers', $includes );

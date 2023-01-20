@@ -252,7 +252,7 @@ class ES_DB_Mailing_Queue {
 			$results = ES_Cache::get( $cache_key, 'query' );
 		}
 
-		if ( count( $results ) > 0 ) {
+		if ( is_array( $results ) && count( $results ) > 0 ) {
 			$notification = array_shift( $results );
 		}
 
@@ -575,5 +575,36 @@ class ES_DB_Mailing_Queue {
 				$mailing_queue_id
 			)
 		);
+	}
+
+	/**
+	 * Get frequency of sending recent newsletter campaigns.
+	 *
+	 * @param int $max_campaigns_count fetch the recent n number of campaigns
+	 *
+	 * @since 5.5.7
+	 */
+	public static function get_campaign_sending_frequency( $max_campaigns_count = 10 ) {
+
+		$campaigns            = self::get_recent_campaigns( $max_campaigns_count );
+		$campaigns_count      = count($campaigns);
+		$total_interval       = 0;
+		$avg_sending_interval = 0;
+
+		if ($campaigns_count > 1) {
+			for ($index=0; $index < $campaigns_count; $index++) {
+				if ( $index < $campaigns_count-1) {
+
+					$first_date  = !empty($campaigns[$index]['start_at']) ? strtotime($campaigns[$index]['start_at']) : null;
+					$second_date = !empty($campaigns[$index+1]['start_at']) ? strtotime($campaigns[$index+1]['start_at']) : null;
+
+					if ( $first_date && $second_date ) {
+						$total_interval = $total_interval + ( $first_date-$second_date );
+					}
+				}
+			}
+			$avg_sending_interval = $total_interval / $campaigns_count;
+		} 
+		return $avg_sending_interval;
 	}
 }

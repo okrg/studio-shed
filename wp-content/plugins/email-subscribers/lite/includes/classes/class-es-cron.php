@@ -14,6 +14,7 @@ class ES_Cron {
 	 */
 	public function __construct() {
 		add_action( 'wp_loaded', array( &$this, 'init' ), 1 );
+		add_filter( 'cron_schedules', array( &$this, 'cron_schedules' ) );
 		add_action( 'ig_es_plugin_deactivate', array( &$this, 'clear' ) );
 		add_action( 'ig_es_after_settings_save', array( &$this, 'reschedule' ) );
 	}
@@ -24,9 +25,6 @@ class ES_Cron {
 	 * @since 4.3.1
 	 */
 	public function init() {
-
-		add_filter( 'cron_schedules', array( &$this, 'cron_schedules' ) );
-
 		add_action( 'ig_es_cron', array( &$this, 'hourly' ) );
 		add_action( 'ig_es_cron_worker', array( &$this, 'handler' ), - 1 );
 
@@ -203,7 +201,12 @@ class ES_Cron {
 			return $process_id;
 		}
 
-		$process_id = @getmypid();
+		// On some hosts getmypid is disabled due to security reasons.
+		if ( function_exists( 'getmypid' ) ) {
+			$process_id = @getmypid();
+		} else {
+			$process_id = wp_rand();
+		}
 
 		update_option( 'ig_es_cron_lock_' . $key, $process_id, false );
 
@@ -273,11 +276,10 @@ class ES_Cron {
 	 * @since 4.3.2 Changed name from filter_cron_schedules to cron_schedules
 	 */
 	public function cron_schedules( $schedules = array() ) {
-
 		$es_schedules = array(
 			'ig_es_cron_interval'   => array(
 				'interval' => $this->get_cron_interval(),
-				'display'  => __( 'Email Subscribers Cronjob Interval', 'email-subscribers' ),
+				'display'  => __( 'Icegram Express Cronjob Interval', 'email-subscribers' ),
 			),
 			'ig_es_two_minutes'     => array(
 				'interval' => 2 * MINUTE_IN_SECONDS,
@@ -354,7 +356,10 @@ class ES_Cron {
 			parse_str( $cron_url, $result );
 		}
 
-		$cron_url = add_query_arg( 'es', 'cron', site_url() );
+		// Adding site url with a trailing slash
+		$site_url = trailingslashit( site_url() );
+
+		$cron_url = add_query_arg( 'es', 'cron', $site_url );
 		if ( empty( $result['guid'] ) ) {
 			$guid = ES_Common::generate_guid();
 		} else {
@@ -387,12 +392,17 @@ class ES_Cron {
 	 * @return bool
 	 *
 	 * @since 4.3.3
+	 *
+	 * @modify 5.4.5
 	 */
 	public function set_last_hit() {
 
-		$last_hit = array();
-
+		$last_hit = get_option( 'ig_es_cron_last_hit', array() );
 		$last_hit['timestamp'] = time();
+
+		if ( isset( $_SERVER['HTTP_X_ES_EMAIL_SENDING_LIMIT'] ) ) {
+			$last_hit['icegram_timestamp'] = time();
+		}
 
 		return update_option( 'ig_es_cron_last_hit', $last_hit );
 	}
@@ -446,7 +456,7 @@ class ES_Cron {
 	 *
 	 * @since 4.0.0
 	 *
-	 * @modify 4.3.1
+	 * @modify 5.4.5.
 	 */
 	public function handle_cron_request() {
 

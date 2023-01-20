@@ -1,6 +1,6 @@
 es_pre_data = {
   "messages":[{
-  "post_title": "Email Subscribers Form - Popup",
+  "post_title": "Icegram Express Form - Popup",
   "type": "popup",
   "theme": "inspire",
   "headline": "",
@@ -15,7 +15,7 @@ es_pre_data = {
   "form_html_original": "",
   "label": "",
   "text_color": "#000000",
-  "cta_bg_color": "#ee0204",
+  "cta_bg_color": "",
   "position": {
     "inline": "10"
   },

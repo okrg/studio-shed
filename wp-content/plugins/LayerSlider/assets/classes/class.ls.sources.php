@@ -202,7 +202,7 @@ class LS_Sources {
 					'handle' => $handle,
 					'dir' => $path,
 					'file' => $path.DIRECTORY_SEPARATOR.'slider.zip',
-					'bundled' => true,
+					'bundled' => true
 				];
 
 				// Get skin info (if any)
@@ -215,7 +215,7 @@ class LS_Sources {
 						$sliders[$handle]['groups'] .= $sliders[$handle]['info']['groups'];
 					}
 
-					$sliders[$handle]['url'] = '#';
+					$sliders[$handle]['url'] = '';
 					if( ! empty($sliders[$handle]['info']['url']) ) {
 						$sliders[$handle]['url'] = $sliders[$handle]['info']['url'];
 					}
@@ -278,6 +278,18 @@ class LS_Sources {
 	 */
 	public static function getDemoSliders() {
 		return self::$sliders;
+	}
+
+
+	/**
+	 * Tells whether there are any demo sliders added.
+	 *
+ 	 * @since 7.6.5
+	 * @access public
+	 * @return bool True if there are demo sliders available
+	 */
+	public static function hasDemoSliders() {
+		return ! empty( self::$sliders );
 	}
 
 

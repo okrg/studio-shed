@@ -50,8 +50,8 @@ $l10n_ls_gutenberg = [
 		'fixedsize' 			=> __('Fixed size', 'LayerSlider'),
 		'responsive' 			=> __('Responsive', 'LayerSlider'),
 		'fullwidth' 			=> __('Full width', 'LayerSlider'),
-		'fullsize' 				=> __('Full size', 'LayerSlider'),
-		'hero' 					=> __('Hero scene', 'LayerSlider')
+		'hero' 					=> __('Hero', 'LayerSlider'),
+		'fullsize' 				=> __('Full size', 'LayerSlider')
 	],
 ];
 

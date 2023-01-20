@@ -41,6 +41,7 @@ if ( ! class_exists( 'ES_Queue' ) ) {
 			// add_action( 'ig_es_email_sending_error', array( &$this, 'set_status_in_queue' ), 10, 4 );
 			add_action( 'ig_es_message_sent', array( &$this, 'set_sent_status' ), 10, 3 );
 			add_action( 'ig_es_message_sent', array( &$this, 'update_email_sent_count' ), 10, 3 );
+			add_action( 'ig_es_message_failed', array( &$this, 'set_failed_status' ), 10, 3 );
 			add_action( 'ig_es_contact_unsubscribe', array( &$this, 'delete_contact_queued_emails' ), 10, 4 );
 			add_action( 'ig_es_admin_contact_unsubscribe', array( &$this, 'delete_contact_queued_emails' ), 10, 4 );
 
@@ -147,7 +148,7 @@ if ( ! class_exists( 'ES_Queue' ) ) {
 
 								$post_ids = array();
 								if ( class_exists( 'ES_Post_Digest' ) ) {
-									$post_ids = ES_Post_Digest::get_post_id_for_post_digest( $campaign_id );
+									$post_ids = ES_Post_Digest::get_matching_post_ids( $campaign_id );
 								}
 
 								// Proceed only if we have posts for digest.
@@ -310,6 +311,8 @@ if ( ! class_exists( 'ES_Queue' ) ) {
 						'having'        => array( "timestamp <= UNIX_TIMESTAMP ( CONVERT_TZ( '$end_time', '+0:00', @@session.time_zone ) )" ),
 						'orderby'       => array( 'timestamp' ),
 						'groupby'       => 'lists_subscribers.contact_id',
+						'status'		=> 'subscribed',
+						'subscriber_status'		=> array( 'verified' ),
 					);
 
 					if ( $grace_period ) {
@@ -770,6 +773,41 @@ if ( ! class_exists( 'ES_Queue' ) ) {
 									do_action( 'ig_es_campaign_sent', $notification_guid );
 								}
 
+								
+								$campaign_failed = did_action( 'ig_es_message_failed' );
+								if ( $campaign_failed ) {
+									$pending_statuses = array( 
+										IG_ES_SENDING_QUEUE_STATUS_QUEUED,
+										IG_ES_SENDING_QUEUE_STATUS_SENDING 
+									);
+									$pending_emails = ES_DB_Sending_Queue::get_total_emails_to_be_sent_by_hash( $notification_guid, $pending_statuses );	
+									if ( empty( $pending_emails ) ) {
+										$notification_meta = maybe_unserialize( $notification['meta'] );
+										$failed_count      = isset( $notification_meta['failed_count'] ) ? $notification_meta['failed_count'] : 0;
+										$failed_count++;
+										$notification_meta['failed_count'] = $failed_count;
+										$notification_data = array(
+											'meta'    => maybe_serialize( $notification_meta ),
+										);
+										if ( $failed_count >= 3 ) {
+											$notification_data['status'] = IG_ES_MAILING_QUEUE_STATUS_FAILED;
+											do_action( 'ig_es_campaign_failed', $notification_guid );
+										}
+										ES_DB_Mailing_Queue::update_mailing_queue( $message_id, $notification_data );
+									}									
+								} elseif ( $triggered_by_admin ) {
+									$notification_status = $notification['status'];
+									if ( IG_ES_MAILING_QUEUE_STATUS_FAILED === $notification_status ) {
+										$notification_meta = maybe_unserialize( $notification['meta'] );
+										unset( $notification_meta['failed_count'] );
+										$notification_data = array(
+											'meta'    => maybe_serialize( $notification_meta ),
+										);
+										$notification_data['status'] = IG_ES_MAILING_QUEUE_STATUS_SENDING;
+										ES_DB_Mailing_Queue::update_mailing_queue( $message_id, $notification_data );
+									}
+								}
+
 								// TODO: Implement better solution
 								set_transient( 'ig_es_total_emails_sent', $total_emails, MINUTE_IN_SECONDS );
 								set_transient( 'ig_es_remaining_email_count', $remaining_emails_to_be_sent, MINUTE_IN_SECONDS );
@@ -921,7 +959,8 @@ if ( ! class_exists( 'ES_Queue' ) ) {
 		public function set_sending_status( $contact_id = 0, $campaign_id = 0, $message_id = 0 ) {
 
 			if ( 0 != $contact_id && 0 != $message_id ) {
-				$this->update_email_sent_status( $contact_id, $campaign_id, $message_id, 'Sending' );
+				$sending_status = IG_ES_SENDING_QUEUE_STATUS_SENDING;
+				$this->update_email_sent_status( $contact_id, $campaign_id, $message_id, $sending_status );
 			}
 		}
 
@@ -937,7 +976,25 @@ if ( ! class_exists( 'ES_Queue' ) ) {
 		public function set_sent_status( $contact_id = 0, $campaign_id = 0, $message_id = 0 ) {
 
 			if ( 0 != $contact_id && 0 != $message_id ) {
-				$this->update_email_sent_status( $contact_id, $campaign_id, $message_id, 'Sent' );
+				$sent_status = IG_ES_SENDING_QUEUE_STATUS_SENT;
+				$this->update_email_sent_status( $contact_id, $campaign_id, $message_id, $sent_status );
+			}
+		}
+
+		/**
+		 * Set "Sent" status
+		 *
+		 * @param int $contact_id
+		 * @param int $campaign_id
+		 * @param int $message_id
+		 *
+		 * @since 4.3.2
+		 */
+		public function set_failed_status( $contact_id = 0, $campaign_id = 0, $message_id = 0 ) {
+
+			if ( 0 != $contact_id && 0 != $message_id ) {
+				$failed_status = IG_ES_SENDING_QUEUE_STATUS_FAILED;
+				$this->update_email_sent_status( $contact_id, $campaign_id, $message_id, $failed_status );
 			}
 		}
 
@@ -954,7 +1011,8 @@ if ( ! class_exists( 'ES_Queue' ) ) {
 		public function set_status_in_queue( $contact_id = 0, $campaign_id = 0, $message_id = 0, $response = array() ) {
 
 			if ( 0 != $contact_id && 0 != $message_id ) {
-				$this->update_email_sent_status( $contact_id, $campaign_id, $message_id, 'In Queue' );
+				$in_queue_status = IG_ES_SENDING_QUEUE_STATUS_QUEUED;
+				$this->update_email_sent_status( $contact_id, $campaign_id, $message_id, $in_queue_status );
 			}
 		}
 

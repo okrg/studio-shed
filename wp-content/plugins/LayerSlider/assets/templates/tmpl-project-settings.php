@@ -25,6 +25,9 @@ $sProps =& $slider['properties'];
 			<kmw-menuitem class="kmw-active" data-deeplink="layout">
 				<?= lsGetSVGIcon('expand-arrows-alt', false, false, 'kmw-icon') ?>
 				<kmw-menutext><?= __('Layout', 'LayerSlider') ?></kmw-menutext>
+				<lse-badge>
+					<?= __('NEW', 'LayerSlider') ?>
+				</lse-badge>
 			</kmw-menuitem>
 
 			<kmw-menuitem data-deeplink="mobile">
@@ -61,6 +64,14 @@ $sProps =& $slider['properties'];
 				<?= lsGetSVGIcon('box-open', false, false, 'kmw-icon') ?>
 				<kmw-menutext><?= __('Content Sources', 'LayerSlider') ?></kmw-menutext>
 			</kmw-menuitem> -->
+
+			<kmw-menuitem data-deeplink="performance">
+				<?= lsGetSVGIcon('tachometer-alt-fastest', false, false, 'kmw-icon') ?>
+				<kmw-menutext><?= __('Performance', 'LayerSlider') ?></kmw-menutext>
+				<lse-badge>
+					<?= __('NEW', 'LayerSlider') ?>
+				</lse-badge>
+			</kmw-menuitem>
 
 			<kmw-menuitem data-deeplink="defaults">
 				<?= lsGetSVGIcon('sliders-v-square', false, false, 'kmw-icon') ?>
@@ -272,7 +283,7 @@ $sProps =& $slider['properties'];
 
 
 
-						<lse-b class="lse-project-layout <?= ! $lsActivated ? 'lse-locked lse-premium-lock' : '' ?>" data-layout="popup">
+						<lse-b class="lse-project-layout <?= ! $lsActivated ? 'lse-locked lse-premium-lock' : '' ?>" <?=! $lsActivated ? 'data-tt=".tt-premium"': ''; ?> data-layout="popup">
 							<svg xmlns="http://www.w3.org/2000/svg" width="124" height="84" viewBox="0 0 124 84" id="lse-popup" class="lse-slider-type">
 								<g transform="translate(-6 -6)">
 									<path class="lse-type-base" d="M14,8H122a6,6,0,0,1,6,6V82a6,6,0,0,1-6,6H14a6,6,0,0,1-6-6V14A6,6,0,0,1,14,8Z"/>
@@ -288,7 +299,7 @@ $sProps =& $slider['properties'];
 							<lse-b class="lse-project-layout-name"><?= __('Popup', 'LayerSlider') ?></lse-b>
 
 							<?php if( ! $lsActivated ) : ?>
-								<?= lsGetSVGIcon('lock',false,['data-tt' => '.tt-premium']) ?>
+								<?= lsGetSVGIcon('lock') ?>
 							<?php endif ?>
 						</lse-b>
 
@@ -326,7 +337,7 @@ $sProps =& $slider['properties'];
 								<lse-tt><?= __('Your project seems empty. Start building something, then check back when there’s content to be previewed.', 'LayerSlider') ?></lse-tt>
 							</lse-b>
 
-							<lse-h2><?= __('Layout', 'LayerSlider') ?></lse-h2>
+							<lse-h2><?= __('Layout Settings', 'LayerSlider') ?></lse-h2>
 							<lse-table-wrapper>
 								<table>
 									<tr>
@@ -580,7 +591,7 @@ $sProps =& $slider['properties'];
 											<td><lse-fe-wrapper>
 												<?php lsGetInput($sDefs['popupShowOnTimeout'], $sProps, [ 'class' => 'mini']) ?><lse-unit><?= __('seconds') ?></lse-unit>
 											</lse-fe-wrapper></td>
-											<td class="desc"><?= $sDefs['popupShowOnTimeout']['desc'] ?></td>
+											<td class="lse-desc"><?= $sDefs['popupShowOnTimeout']['desc'] ?></td>
 										</tr>
 										<tr class="lse-popup-triggers">
 											<td><?= $sDefs['popupShowOnIdle']['name'] ?></td>
@@ -609,7 +620,7 @@ $sProps =& $slider['properties'];
 											<td><lse-fe-wrapper>
 												<?php lsGetInput($sDefs['popupCloseOnTimeout'], $sProps, [ 'class' => 'mini']) ?><lse-unit><?= __('seconds') ?></lse-unit>
 											</lse-fe-wrapper></td>
-											<td class="desc"><?= $sDefs['popupCloseOnTimeout']['desc'] ?></td>
+											<td class="lse-desc"><?= $sDefs['popupCloseOnTimeout']['desc'] ?></td>
 										</tr>
 										<?php
 										lsOptionRow('input', $sDefs['popupCloseOnScroll'], $sProps, [ 'class' => 'mini'] );
@@ -630,7 +641,7 @@ $sProps =& $slider['properties'];
 											<td><lse-fe-wrapper>
 												<?php lsGetInput($sDefs['popupRepeatDays'], $sProps, [ 'class' => 'mini']) ?><lse-unit><?= __('days') ?></lse-unit>
 											</lse-fe-wrapper></td>
-											<td class="desc"><?= $sDefs['popupRepeatDays']['desc'] ?></td>
+											<td class="lse-desc"><?= $sDefs['popupRepeatDays']['desc'] ?></td>
 										</tr>
 										<?php lsOptionRow('checkbox', $sDefs['popupShowOnce'], $sProps ); ?>
 
@@ -770,8 +781,107 @@ $sProps =& $slider['properties'];
 						</lse-b>
 
 						<!-- Common -->
-						<lse-b class="lse-any-but-popup-layout lse-table-wrapper">
+						<lse-b class="lse-any-but-popup-layout">
 
+							<lse-h2><?= __('Slider Scroll Behavior', 'LayerSlider') ?></lse-h2>
+							<lse-table-wrapper>
+								<lse-badge><?= __('NEW', 'LayerSlider') ?></lse-badge>
+								<table>
+									<tbody>
+										<tr class="lse-project-settings-helper-row">
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td colspan="2">
+												<lse-button-group id="lse-scene-selector" data-search-name="<?= __('Slider Scroll Behavior', 'LayerSlider') ?>" data-search-keywords="<?= _x('scene normal sticky scroll behavior', 'search keywords', 'LayerSlider') ?>">
+													<lse-button data-scene="">
+														<?= lsGetSVGIcon('image-landscape', 'duotone' ) ?>
+														<lse-b><?= __('Normal', 'LayerSlider') ?></lse-b>
+													</lse-button>
+													<lse-button data-scene="sticky" <?=! $lsActivated ? 'data-tt=".tt-premium"': ''; ?> class="<?= ! $lsActivated ? 'lse-locked lse-premium-lock' : '' ?>">
+														<?= lsGetSVGIcon('image-landscape', 'duotone' ) ?>
+														<?= lsGetSVGIcon('thumbtack', false, ['class' => 'lse-pwr'] ) ?>
+														<lse-b><?= __('Sticky', 'LayerSlider') ?></lse-b>
+
+															<?php if( ! $lsActivated ) {
+																echo lsGetSVGIcon('lock',false,[ 'class' => 'lse-pwr' ]);
+															} ?>
+													</lse-button>
+													<lse-button data-scene="scroll" <?=! $lsActivated ? 'data-tt=".tt-premium"': ''; ?> class="<?= ! $lsActivated ? 'lse-locked lse-premium-lock' : '' ?>">
+														<?= lsGetSVGIcon('image-landscape', 'duotone' ) ?>
+														<?= lsGetSVGIcon('computer-mouse-scrollwheel', false, ['class' => 'lse-pwr'] ) ?>
+														<lse-b><?= __('Scroll Scene', 'LayerSlider') ?></lse-b>
+
+														<?php if( ! $lsActivated ) {
+															echo lsGetSVGIcon('lock',false, [ 'class' => 'lse-pwr' ]);
+														} ?>
+													</lse-button>
+												</lse-button-group>
+											</td>
+											<td class="lse-desc">
+												<lse-i class="lse-any-but-scene">
+													<?= __('The slider will be a regular element on the page. It will scroll along with other elements and play animations normally based on your settings.', 'LayerSlider') ?>
+												</lse-i>
+												<lse-i class="lse-only-sticky-scene">
+													<?= __('Once the slider reaches the chosen viewport portion, it’ll stick to that location and act as a pinned element until visitors scroll beyond the threshold defined below. Animations are not affected.', 'LayerSlider') ?>
+												</lse-i>
+												<lse-i class="lse-only-scroll-scene">
+													<?= __('Acts as the Sticky behavior, but reacts and plays animations by scrolling the page. It’s the long-awaited successor to the <b>“Play By Scroll”</b> feature. Scroll Scene will display and animate the first slide only.', 'LayerSlider') ?>
+												</lse-i>
+											</td>
+										</tr>
+
+										<tr class="lse-only-sticky-scene">
+											<td>
+												<lse-b>
+													<?= __('Scene Height', 'LayerSlider') ?>
+												</lse-b>
+											</td>
+											<td>
+												<lse-fe-wrapper class="lse-smart-help" data-smart-help="sceneheight" data-smart-options="sceneheight" data-smart-help-title="<?= __('Scene Height', 'LayerSlider') ?>" >
+													<?php lsGetInput($sDefs['sceneHeight'], $sProps ); ?>
+												</lse-fe-wrapper>
+											</td>
+											<td class="lse-desc">
+												<?= __('The length of the scrollable area. Use larger values to keep the slider visible for longer, and play animations slower in case of a Scroll Scene. Supported units: px, % or sh (percentage of slider height), vh (percentage of viewport height).', 'LayerSlider') ?>
+											</td>
+										</tr>
+
+										<tr class="lse-only-scroll-scene">
+											<td>
+												<lse-b>
+													<?= __('Scene Speed', 'LayerSlider') ?>
+												</lse-b>
+											</td>
+											<td>
+												<lse-ib class="lse-range-inputs lse-half lse-modal-inputs">
+
+														<?php lsGetInput( $sDefs['sceneSpeed'], $sProps, [
+															'name' => '',
+															'type' => 'range',
+															'min' => 10,
+															'max' => 300,
+															'step' => 10
+														]) ?>
+														<?php lsGetInput( $sDefs['sceneSpeed'], $sProps ); ?>
+														<lse-unit>%</lse-unit>
+												</lse-ib>
+											</td>
+											<td class="lse-desc">
+												<?= __('Controls the scene’s animation speed when scrolling the page. This is a percentage value, so, for example, 50% will result in slower and less intense animations.', 'LayerSlider') ?>
+											</td>
+										</tr>
+
+										<?php
+											lsOptionRow('select', $sDefs['stickTo'], $sProps, [], 'lse-only-scene' );
+										?>
+									</tbody>
+								</table>
+							</lse-table-wrapper>
+
+							<lse-h2><?= __('Layout Settings', 'LayerSlider') ?></lse-h2>
 							<lse-table-wrapper>
 								<table>
 									<tbody>
@@ -781,11 +891,32 @@ $sProps =& $slider['properties'];
 										lsOptionRow('input', $sDefs['maxWidth'], $sProps, [], 'lse-any-but-fixed-layout' );
 										lsOptionRow('input', $sDefs['responsiveUnder'], $sProps, [], 'lse-only-fullwidth-layout' );
 										lsOptionRow('select', $sDefs['fullSizeMode'], $sProps, [], 'lse-only-fullsize-layout' );
-										lsOptionRow('checkbox', $sDefs['fitScreenWidth'], $sProps, [], 'lse-only-full-layout' );
-										lsOptionRow('checkbox', $sDefs['allowFullscreen'], $sProps, [] )
 										?>
 
-										<?php lsOptionRow('input', $sDefs['maxRatio'], $sProps, [], 'lse-any-but-fixed-layout' ); ?>
+										<tr class="lse-project-spacing-row">
+											<td>
+												<lse-b>
+													<?= __('Vertical Spacing', 'LayerSlider') ?>
+												</lse-b>
+											</td>
+											<td>
+												<lse-fe-wrapper class="lse-smart-help" data-smart-help="projectverticalspacing" data-smart-options="projectverticalspacing" data-smart-help-title="<?= __('Vertical Spacing', 'LayerSlider') ?>" >
+													<?php lsGetInput($sDefs['marginTop'], $sProps ); ?>
+												</lse-fe-wrapper>
+												<lse-fe-wrapper class="lse-smart-help lse-mt-10" data-smart-help="projectverticalspacing" data-smart-options="projectverticalspacing" data-smart-help-title="<?= __('Vertical Spacing', 'LayerSlider') ?>" >
+													<?php lsGetInput($sDefs['marginBottom'], $sProps ); ?>
+												</lse-fe-wrapper>
+											</td>
+											<td class="lse-desc">
+												<?= __('Creates the given amount of space above and below your slider. <br>Supported units: px, % or sh (percentage of slider height), vh (percentage of viewport height).', 'LayerSlider') ?>
+											</td>
+										</tr>
+										<?php
+											lsOptionRow('checkbox', $sDefs['fitScreenWidth'], $sProps, [], 'lse-only-full-layout' );
+											lsOptionRow('checkbox', $sDefs['allowFullscreen'], $sProps, [], 'lse-any-but-scene' );
+											lsOptionRow('input', $sDefs['maxRatio'], $sProps, [], 'lse-any-but-fixed-layout' );
+											lsOptionRow('input', $sDefs['calculateOffsetFrom'], $sProps, [], 'lse-only-hero-layout' );
+										?>
 										<tr class="lse-advanced">
 											<td>
 												<lse-b>
@@ -846,8 +977,14 @@ $sProps =& $slider['properties'];
 						<table>
 							<tbody>
 								<tr>
-									<td><?= $sDefs['firstSlide']['name'] ?></td>
-									<td><?php lsGetInput($sDefs['firstSlide'], $sProps) ?></td>
+									<td>
+										<?= $sDefs['firstSlide']['name'] ?>
+									</td>
+									<td>
+										<lse-fe-wrapper class="lse-smart-help" data-smart-help="firstslide" data-smart-options="firstslide" data-smart-help-title="<?= $sDefs['firstSlide']['name'] ?>">
+											<?php lsGetInput($sDefs['firstSlide'], $sProps) ?>
+										</lse-fe-wrapper>
+									</td>
 									<td class="lse-desc"><?= $sDefs['firstSlide']['desc'] ?></td>
 								</tr>
 								<?php
@@ -873,6 +1010,7 @@ $sProps =& $slider['properties'];
 						</table>
 					</lse-table-wrapper>
 
+					<?php if( $lseProjectUsesPlayByScroll || $lsePlayByScrollEnabled ) : ?>
 					<lse-h2><?= __('Play By Scroll', 'LayerSlider') ?></lse-h2>
 					<lse-table-wrapper>
 						<table>
@@ -886,6 +1024,7 @@ $sProps =& $slider['properties'];
 							</tbody>
 						</table>
 					</lse-table-wrapper>
+					<?php endif ?>
 
 					<lse-h2><?= __('Cycles', 'LayerSlider') ?></lse-h2>
 					<lse-table-wrapper>
@@ -946,7 +1085,7 @@ $sProps =& $slider['properties'];
 								?>
 								<tr>
 									<td><?= __('Custom Project CSS', 'LayerSlider') ?></td>
-									<td colspan="2"><textarea data-search-name="<?= __('Custom Project CSS', 'LayerSlider') ?>" name="sliderstyle" cols="30" rows="10"><?= !empty($sProps['sliderstyle']) ? $sProps['sliderstyle'] : $sDefs['sliderStyle']['value'] ?></textarea></td>
+									<td colspan="2"><textarea data-search-name="<?= __('Custom Project CSS', 'LayerSlider') ?>" name="sliderstyle" cols="30" rows="10" placeholder="<?= __('List of CSS properties, e.g. border-radius: 5px;') ?>"><?= !empty($sProps['sliderstyle']) ? $sProps['sliderstyle'] : $sDefs['sliderStyle']['value'] ?></textarea></td>
 								</tr>
 							</tbody>
 						</table>
@@ -998,7 +1137,7 @@ $sProps =& $slider['properties'];
 								<tr>
 									<td><?= $sDefs['globalBGSize']['name'] ?></td>
 									<td>
-										<lse-fe-wrapper class="lse-smart-help" data-smart-help="backgroundSize" data-smart-help-title="<?= __('Background Size', 'LayerSlider') ?>" data-smart-options="backgroundSize">
+										<lse-fe-wrapper class="lse-smart-help" data-smart-help="backgroundsize" data-smart-help-title="<?= __('Background Size', 'LayerSlider') ?>" data-smart-options="backgroundsize">
 											<?php lsGetInput($sDefs['globalBGSize'], $sProps, ['class' => 'input'] ) ?>
 										</lse-fe-wrapper>
 									</td>
@@ -1098,7 +1237,7 @@ $sProps =& $slider['properties'];
 						<table>
 							<tbody>
 								<?php
-								lsOptionRow('checkbox', $sDefs['autoPlayVideos'], $sProps );
+								lsOptionRow('checkbox', $sDefs['autoPlayVideos'], $sProps, [ 'class' => 'lse-media-autoplay-notification' ] );
 								lsOptionRow('checkbox', $sDefs['rememberUnmuteState'], $sProps );
 								lsOptionRow('select', $sDefs['autoPauseSlideshow'], $sProps );
 								lsOptionRow('select', $sDefs['youtubePreviewQuality'], $sProps );
@@ -1120,6 +1259,42 @@ $sProps =& $slider['properties'];
 						</lse-ul>
 					</lse-table-wrapper>
 				</lse-b> -->
+
+
+				<!-- Performance -->
+				<lse-b data-category="<?= __('Performance', 'LayerSlider') ?>">
+					<lse-h2><?= __('Performance Mode', 'LayerSlider') ?></lse-h2>
+					<lse-table-wrapper>
+						<lse-badge>
+							<?= __('NEW', 'LayerSlider') ?>
+						</lse-badge>
+						<table>
+							<tbody>
+								<?php lsOptionRow('select', $sDefs['performanceMode'], $sProps );?>
+
+								<tr>
+									<td><?= $sDefs['performanceModeThreshold']['name'] ?></td>
+									<td>
+										<lse-fe-wrapper class="lse-smart-help" data-smart-help="performancemodethreshold" data-smart-help-title="<?= __('Perf. Mode Threshold', 'LayerSlider') ?>" data-smart-options="performancemodethreshold" data-smart-options-title="<?= __('Threshold', 'LayerSlider') ?>">
+											<?php lsGetInput( $sDefs['performanceModeThreshold'], $sProps ) ?>
+										</lse-fe-wrapper>
+									</td>
+									<td class="lse-desc"><?= $sDefs['performanceModeThreshold']['desc'] ?></td>
+								</tr>
+							</tbody>
+						</table>
+					</lse-table-wrapper>
+
+					<lse-h2><?= __('Lazy Load', 'LayerSlider') ?></lse-h2>
+					<lse-table-wrapper>
+						<table>
+							<tbody>
+								<?php lsOptionRow('select', $sDefs['enhancedLazyLoad'], $sProps ); ?>
+							</tbody>
+						</table>
+					</lse-table-wrapper>
+				</lse-b>
+
 
 				<!-- Defaults -->
 				<lse-b data-category="<?= __('Defaults', 'LayerSlider') ?>">
@@ -1149,7 +1324,7 @@ $sProps =& $slider['properties'];
 						</table>
 					</lse-table-wrapper>
 
-					<lse-h2><?= __('Parallax defaults', 'LayerSlider') ?></lse-h2>
+					<lse-h2><?= __('Parallax Transition defaults', 'LayerSlider') ?></lse-h2>
 					<lse-table-wrapper>
 						<table>
 							<tbody>
@@ -1158,6 +1333,17 @@ $sProps =& $slider['properties'];
 								lsOptionRow('select', $sDefs['parallaxCenterLayers'], $sProps );
 								lsOptionRow('input', $sDefs['parallaxCenterDegree'], $sProps );
 								lsOptionRow('checkbox', $sDefs['parallaxScrollReverse'], $sProps );
+								?>
+							</tbody>
+						</table>
+					</lse-table-wrapper>
+
+					<lse-h2><?= __('Scroll Transition defaults', 'LayerSlider') ?></lse-h2>
+					<lse-table-wrapper>
+						<table>
+							<tbody>
+								<?php
+								lsOptionRow('select', $sDefs['scrollCenterLayers'], $sProps );
 								?>
 							</tbody>
 						</table>
@@ -1199,7 +1385,6 @@ $sProps =& $slider['properties'];
 								<?php
 								lsOptionRow('checkbox', $sDefs['relativeURLs'], $sProps );
 								lsOptionRow('select', $sDefs['useSrcset'], $sProps );
-								lsOptionRow('select', $sDefs['enhancedLazyLoad'], $sProps );
 								lsOptionRow('checkbox', $sDefs['allowRestartOnResize'], $sProps );
 								lsOptionRow('select', $sDefs['preferBlendMode'], $sProps );
 								?>

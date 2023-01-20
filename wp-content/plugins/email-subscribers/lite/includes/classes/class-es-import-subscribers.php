@@ -1141,6 +1141,7 @@ class ES_Import_Subscribers {
 
 	/**
 	 * Handle adding contact id to excluded contact list
+	 *
 	 * @param $contact_id
 	 */
 	public function handle_new_contact_inserted( $contact_id ) {
@@ -1154,6 +1155,7 @@ class ES_Import_Subscribers {
 
 	/**
 	 * Get the excluded contact ID's list
+	 *
 	 * @return array|mixed
 	 */
 	public function get_excluded_contact_id_on_import() {
@@ -1166,7 +1168,7 @@ class ES_Import_Subscribers {
 	}
 
 	/**
-	 * set the excluded contact ID's list in transient
+	 * Set the excluded contact ID's list in transient
 	 */
 	public function set_excluded_contact_id_on_import( $list ) {
 		if ( ! is_array( $list ) ) {

@@ -1,17 +1,8 @@
 <?php
-
-/*
-        CHECK THE "QUICK START GUIDE.HTML" FILE LOCATED
-        IN THIS DIRECTORY FOR INSTALLATION INSTRUCTIONS
-        AND OTHER HELPFUL RESOURCES.
-*/
-
-
-
 /*
         Plugin Name:  LayerSlider
          Plugin URI:  https://layerslider.com/
-            Version:  7.2.1
+            Version:  7.6.7
 
         Description:  LayerSlider is a premium multi-purpose content creation and animation platform. Easily create sliders, image galleries, slideshows with mind-blowing effects, popups, landing pages, animated page blocks, or even a full website. LayerSlider empowers millions of active websites on a daily basis with stunning visuals and eye-catching effects.
 
@@ -26,6 +17,23 @@
 
        Requires PHP:  5.4
   Requires at least:  4.4
+
+
+	 _                           _____ _ _     _
+	| |                         / ____| (_)   | |
+	| |     __ _ _   _  ___ _ _| (___ | |_  __| | ___ _ __
+	| |    / _` | | | |/ _ \ '__\___ \| | |/ _` |/ _ \ '__|
+	| |___| (_| | |_| |  __/ |  ____) | | | (_| |  __/ |
+	|______\__,_|\__, |\___|_| |_____/|_|_|\__,_|\___|_|
+	              __/ |
+	             |___/
+
+	© 2011-2022 Kreatura Media & AgeraWeb. All Rights Reserved.
+
+
+	CHECK THE "QUICK START GUIDE.HTML" FILE LOCATED
+	IN THIS DIRECTORY FOR INSTALLATION INSTRUCTIONS
+	AND OTHER HELPFUL RESOURCES.
 
 */
 
@@ -59,7 +67,7 @@ if( defined('LS_PLUGIN_VERSION') || isset( $GLOBALS['lsPluginPath'] ) ) {
 
 	define( 'LS_ROOT_FILE', __FILE__ );
 
-	define( 'LS_PLUGIN_VERSION', '7.2.1' );
+	define( 'LS_PLUGIN_VERSION', '7.6.7' );
 	define( 'LS_DB_VERSION', '7.0.0' );
 
 	require __DIR__.'/assets/init.php';

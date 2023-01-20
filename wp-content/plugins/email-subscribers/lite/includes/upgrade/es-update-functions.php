@@ -1047,7 +1047,7 @@ function ig_es_update_431_db_version() {
  * @sicne 4.3.2
  */
 function ig_es_update_432_import_bfcm_templates() {
-	ES_Install::load_templates();
+	// ES_Install::load_templates();
 }
 
 /**
@@ -1174,7 +1174,7 @@ function ig_es_update_449_db_version() {
  * @since 4.4.10
  */
 function ig_es_update_4410_load_templates() {
-	ES_Install::load_templates( true );
+	// ES_Install::load_templates( true );
 }
 
 /**
@@ -1908,3 +1908,74 @@ function ig_es_update_540_db_version() {
 }
 
 /* --------------------- ES 5.4.0(End)--------------------------- */
+
+/* --------------------- ES 5.5.0(Start)--------------------------- */
+
+/**
+ * Migrate Existing Workflow trigger conditions to rules section
+ *
+ * @since 5.5.0
+ */
+function ig_es_migrate_workflow_trigger_conditions_to_rules() {
+	$workflows = ES()->workflows_db->get_workflows();
+	if ( ! empty( $workflows ) ) {
+		foreach ( $workflows as $workflow ) {
+			$workflow_id     = $workflow['id'];
+			$trigger_name    = $workflow['trigger_name'];
+			$trigger_options = maybe_unserialize( $workflow['trigger_options'] );
+			$data_to_update  = array(
+				'rules'           => maybe_serialize( array() ),
+				'trigger_options' => maybe_serialize( array() ),
+			);
+			$do_migration    = true;
+			$new_rule        = array( array() );
+
+			switch ( $trigger_name ) {
+				case 'ig_es_user_registered':
+					$rule_value = ! empty( $trigger_options['ig-es-allowed-user-roles'] ) ? $trigger_options['ig-es-allowed-user-roles'] : array();
+					if ( ! empty( $rule_value ) ) {
+						$new_rule[0][] = array(
+							'name'    => 'ig_es_user_role',
+							'compare' => 'matches_any',
+							'value'   => $rule_value
+						);
+						$data_to_update['rules'] = maybe_serialize( $new_rule);
+					} else {
+						$do_migration = false;
+					}
+					break;
+				case 'ig_es_user_unconfirmed':
+				case 'ig_es_user_subscribed':
+					$rule_value = ! empty( $trigger_options['ig-es-list'] ) ? $trigger_options['ig-es-list'] : array();
+					if ( ! empty( $rule_value ) ) {
+						$new_rule[0][] = array(
+							'name'    => 'ig_es_subscriber_list',
+							'compare' => 'matches_any',
+							'value'   => $rule_value
+						);
+						$data_to_update['rules'] = maybe_serialize( $new_rule);
+					} else {
+						$do_migration = false;
+					}
+					break;
+				default:
+					$do_migration = false;
+					break;
+			}
+			if ( $do_migration ) {
+				ES()->workflows_db->update( $workflow_id, $data_to_update );
+			}
+		}
+	}
+}
+
+/**
+ * Update DB version
+ *
+ * @since 5.5.0
+ */
+function ig_es_update_550_db_version() {
+	ES_Install::update_db_version( '5.5.0' );
+}
+
+/* --------------------- ES 5.5.0(End)--------------------------- */

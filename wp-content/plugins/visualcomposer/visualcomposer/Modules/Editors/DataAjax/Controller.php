@@ -71,10 +71,11 @@ class Controller extends Container implements Module
             // BC for hub templates and old templates
             // @codingStandardsIgnoreLine
             if ($post->post_type === 'vcv_templates' || $post->post_type === 'vcv_tutorials') {
+                $editorTemplatesHelper = vchelper('EditorTemplates');
                 $data = rawurlencode(
                     wp_json_encode(
                         [
-                            'elements' => get_post_meta($sourceId, 'vcvEditorTemplateElements', true),
+                            'elements' => $editorTemplatesHelper->getTemplateElementsByMeta($sourceId),
                         ]
                     )
                 );
@@ -250,9 +251,11 @@ class Controller extends Container implements Module
         } elseif ($isPreview) {
             $previewPost = $previewHelper->generatePreview($post, $sourceId);
         } else {
-            if ($currentUserAccessHelper->wpAll(
-                [get_post_type_object($post->post_type)->cap->publish_posts, $sourceId]
-            )->get()) {
+            if (
+                $currentUserAccessHelper->wpAll(
+                    [get_post_type_object($post->post_type)->cap->publish_posts, $sourceId]
+                )->get()
+            ) {
                 if ($post->post_status !== 'private' && $post->post_status !== 'future') {
                     $post->post_status = 'publish';
                 }

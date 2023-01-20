@@ -38,6 +38,7 @@ if ( ! class_exists( 'ES_Workflow_Gallery' ) ) {
 	
 		public static function register_hooks() {
 			add_filter( 'ig_es_workflow_gallery', array( __CLASS__, 'add_workflow_gallery' ) );
+			add_filter( 'ig_es_workflow_gallery', array( __CLASS__, 'filter_workflow_gallery_items' ), 99 );
 		}
 
 		public static function add_workflow_gallery( $gallery = array() ) {
@@ -101,6 +102,21 @@ if ( ! class_exists( 'ES_Workflow_Gallery' ) ) {
 		public static function get_workflow_gallery_items() {
 			$workflow_gallery = apply_filters( 'ig_es_workflow_gallery', array() );
 			return $workflow_gallery;
+		}
+
+		public static function filter_workflow_gallery_items( $gallery_items = array() ) {
+			$integration_plugins = ig_es_get_request_data( 'integration-plugins');
+			if ( ! empty( $integration_plugins ) && ! empty( $gallery_items ) ) {
+				$integration_plugins = explode( ',', $integration_plugins );
+				foreach ( $gallery_items as $item_index => $gallery_item ) {
+					$required_plugins = ! empty( $gallery_item['required_plugins'] ) ? $gallery_item['required_plugins'] : array();
+					$is_integration_plugin_active = ! empty( array_intersect( $required_plugins, $integration_plugins ) ); 
+					if ( ! $is_integration_plugin_active ) {
+						unset( $gallery_items[ $item_index ] );
+					}
+				}
+			}
+			return $gallery_items;
 		}
 	}
 }

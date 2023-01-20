@@ -17,9 +17,9 @@ class LS_RemoteData {
 		self::$sources = [
 
 			'general' 	=> [
-				'url' 		=> LS_REPO_BASE_URL.'/data/ls-wp/',
-				'dataKey' 	=> 'ls-remote-data',
-				'updateKey' => 'ls-remote-data-updated',
+				'url' 		=> LS_REPO_BASE_URL.'data/ls-wp/v2/',
+				'dataKey' 	=> 'ls-remote-data-v2',
+				'updateKey' => 'ls-remote-data-v2-updated',
 				'interval' 	=> HOUR_IN_SECONDS * 6
 			],
 
@@ -28,7 +28,6 @@ class LS_RemoteData {
 				'dataKey' 	=> 'ls-google-fonts-data',
 				'updateKey' => 'ls-google-fonts-data-updated',
 				'interval' 	=> WEEK_IN_SECONDS
-
 			]
 		];
 
@@ -99,10 +98,17 @@ class LS_RemoteData {
 		$data 	= ! empty( $data ) ? $data : '{}';
 		$json 	= json_decode( $data, true );
 
+		// Success
 		if( ! empty( $json ) ) {
 
 			update_option( $source['dataKey'], $json, false );
 			update_option( $source['updateKey'], time(), false );
+
+		// Failed
+		} else {
+
+			$time = time() - $source['interval'] + ( 60 * 30 );
+			update_option( $source['updateKey'], $time, false );
 		}
 	}
 

@@ -453,7 +453,7 @@ const LS_SearchActions = [
 				icon: 'youtube',
 				keywords: 'tutorial help documentation social',
 				action: function() {
-					window.open( 'https://www.youtube.com/user/kreaturamedia' );
+					window.open( 'https://www.youtube.com/channel/UCduItJ7Cr84lrts7I8Usygw' );
 				}
 			}
 

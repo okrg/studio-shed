@@ -522,7 +522,7 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 		 */
 		public function get_test_email_subject( $email = '' ) {
 			/* translators: %s: Email address */
-			return 'Email Subscribers: ' . sprintf( esc_html__( 'Test email to %s', 'email-subscribers' ), $email );
+			return 'Icegram Express: ' . sprintf( esc_html__( 'Test email to %s', 'email-subscribers' ), $email );
 		}
 
 		/**
@@ -540,7 +540,7 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 			<head></head>
 			<body>
 			<p><?php echo esc_html__( 'Congrats, test email was sent successfully!', 'email-subscribers' ); ?></p>
-			<p><?php echo esc_html__( 'Thank you for trying out Email Subscribers. We are on a mission to make the best Email Marketing Automation plugin for WordPress.', 'email-subscribers' ); ?></p>
+			<p><?php echo esc_html__( 'Thank you for trying out Icegram Express. We are on a mission to make the best Email Marketing Automation plugin for WordPress.', 'email-subscribers' ); ?></p>
 			<!-- Start-IG-Code -->
 			<p>
 			<?php
@@ -650,7 +650,7 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 			}
 
 			$total_recipients = count( $emails );
-			
+
 			$can_use_batch_api = $total_recipients > 1 && $this->mailer->support_batch_sending;
 			$can_use_batch_api = apply_filters( 'ig_es_can_use_batch_api_' . $this->mailer->slug, $can_use_batch_api, $total_recipients, $sender_data );
 
@@ -704,7 +704,17 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 					if ( $this->add_unsubscribe_link ) {
 						$unsubscribe_message = get_option( 'ig_es_unsubscribe_link_content', '' );
 						$unsubscribe_message = stripslashes( $unsubscribe_message );
-						$content            .= $unsubscribe_message;
+						if ( false === strpos( $content, '</html>' ) ) {
+							$content = $content . $unsubscribe_message;
+						} else {
+							if ( strpos( $content, '</body>' ) > 0 ) {
+								// Insert unsubscribe message inside body tag.
+								$content = str_replace( '</body>', $unsubscribe_message . '</body>', $content );
+							} else {
+								// Insert unsubscribe message inside html tag.
+								$content = str_replace( '</html>', $unsubscribe_message . '</html>', $content );
+							}
+						}
 					}
 
 					$subject = $this->replace_global_tags( $subject );
@@ -718,7 +728,17 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 					if ( $this->can_track_open() ) {
 						$tracking_pixel_variable_name = $this->mailer->get_variable_prefix() . $this->mailer->get_variable_string( 'tracking_pixel_url' ) . $this->mailer->get_variable_suffix();
 						$tracking_image               = '<img src="' . $tracking_pixel_variable_name . '" width="1" height="1" alt=""/>';
-						$content                     .= $tracking_image;
+						if ( false === strpos( $content, '</html>' ) ) {
+							$content = $content . $tracking_image;
+						} else {
+							// Insert tracking pixel inside body tag.
+							if ( strpos( $content, '</body>' ) > 0 ) {
+								$content = str_replace( '</body>', $tracking_image . '</body>', $content );
+							} else {
+								// Insert tracking pixel inside html tag.
+								$content = str_replace( '</html>', $tracking_image . '</html>', $content );
+							}
+						}
 					}
 
 					if ( $this->unsubscribe_headers_enabled() && is_callable( array( $this->mailer, 'set_list_unsubscribe_header' ) ) ) {
@@ -747,7 +767,7 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 				$contact_id = ! empty( $this->email_id_map[ $email ] ) ? $this->email_id_map[ $email ] : 0;
 
 				$merge_tags['contact_id'] = $contact_id;
-				
+
 				$merge_tags = array_merge( $merge_tags, $this->get_contact_merge_tags( $contact_id ) );
 
 				$this->link_data = array(
@@ -782,11 +802,10 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 
 						$send_response = $this->mailer->send_batch();
 
-						if ( ! is_wp_error( $send_response ) ) {
-
-							if ( ! empty( $contact_ids ) ) {
-								do_action( 'ig_es_message_sent', $contact_ids, $campaign_id, $message_id );
-							}
+						$send_status = ! is_wp_error( $send_response ) ? 'sent' : 'failed';
+						
+						if ( ! empty( $contact_ids ) ) {
+							do_action( 'ig_es_message_' . $send_status, $contact_ids, $campaign_id, $message_id );
 						}
 
 						$this->email_limit -= $this->mailer->current_batch_size;
@@ -794,7 +813,7 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 						$this->mailer->handle_throttling();
 
 						// Error Sending Email?
-						if ( is_wp_error( $send_response ) ) {
+						if ( 'failed' === $send_status ) {
 							$response['status']  = 'ERROR';
 							$response['message'] = $send_response->get_error_messages();
 							// TODO: Log somewhere
@@ -807,18 +826,15 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 
 					// object | WP_Error
 					$send_response = $this->mailer->send( $message );
+					$send_status   = ! is_wp_error( $send_response ) ? 'sent' : 'failed';
+
+					do_action( 'ig_es_message_' . $send_status, $contact_id, $campaign_id, $message_id );
 
 					// Error Sending Email?
 					if ( is_wp_error( $send_response ) ) {
 						$response['status']  = 'ERROR';
 						$response['message'] = $send_response->get_error_messages();
-
-						do_action( 'ig_es_email_sending_error', $contact_id, $campaign_id, $message_id, $response );
-
-						// TODO: Log somewhere
 					}
-
-					do_action( 'ig_es_message_sent', $contact_id, $campaign_id, $message_id );
 
 					// Reduce Email Sending Limit for this hour
 					$this->email_limit --;
@@ -835,11 +851,10 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 						}
 
 						$send_response = $this->mailer->send_batch();
-						if ( ! is_wp_error( $send_response ) ) {
-							$contact_ids = array_column( $this->mailer->batch_data, 'contact_id' );
-							if ( ! empty( $contact_ids ) ) {
-								do_action( 'ig_es_message_sent', $contact_ids, $campaign_id, $message_id );
-							}
+						$send_status   = ! is_wp_error( $send_response ) ? 'sent' : 'failed';
+						
+						if ( ! empty( $contact_ids ) ) {
+							do_action( 'ig_es_message_' . $send_status, $contact_ids, $campaign_id, $message_id );
 						}
 
 						$this->email_limit -= $this->mailer->current_batch_size;
@@ -968,7 +983,14 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 			// Can Track Email Open? Add pixel.
 			$email_tracking_image = $this->get_tracking_pixel();
 
-			$message->body = $message->body . $unsubscribe_message . $email_tracking_image;
+
+			if ( false === strpos( $message->body, '<html' ) ) {
+				$message->body = $message->body . $unsubscribe_message . $email_tracking_image;
+			} else {
+				// If content is HTML then we need to place unsubscribe message and tracking image inside body tag.
+				$message->body = str_replace( '</body>', $unsubscribe_message . $email_tracking_image . '</body>', $message->body );
+			}
+
 
 			if ( $nl2br ) {
 				$message->body = nl2br( $message->body );
@@ -1075,16 +1097,9 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 			if ( 0 != $contact_id ) {
 				$contact_details = ES()->contacts_db->get_details_by_ids( array( $contact_id ) );
 				if ( is_array( $contact_details ) ) {
-					$contact_details = array_shift( $contact_details );
 
-					$first_name = $contact_details['first_name'];
-					$last_name  = $contact_details['last_name'];
-
-					$merge_tags['first_name'] = $first_name;
-					$merge_tags['last_name']  = $last_name;
-					$merge_tags['name']       = ES_Common::prepare_name_from_first_name_last_name( $first_name, $last_name );
-					$merge_tags['hash']       = $contact_details['hash'];
-					$merge_tags['email']      = $contact_details['email'];
+					$merge_tags         = array_shift( $contact_details );
+					$merge_tags['name'] = ES_Common::prepare_name_from_first_name_last_name( $merge_tags['first_name'], $merge_tags['last_name'] );
 				}
 			}
 
@@ -1139,6 +1154,13 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 				'EMAIL'     => $email
 			) );
 
+			$content = ES_Common::replace_keywords_with_fallback( $content, array(
+				'subscriber.first_name' => $first_name,
+				'subscriber.name'      => $name,
+				'subscriber.last_name'  => $last_name,
+				'subscriber.email'     => $email
+			) );
+
 			// TODO: This is a quick workaround to handle <a href="{{LINK}}?utm_source=abc" >
 			// TODO: Implement some good solution
 
@@ -1152,12 +1174,15 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 			$content = str_replace( '{{UNSUBSCRIBE-LINK}}', $unsubscribe_link, $content );
 
 			$content = str_replace( '{{TOTAL-CONTACTS}}', $total_contacts, $content );
+			$content = str_replace( '{{site.total_contacts}}', $total_contacts, $content );
 			$content = str_replace( '{{GROUP}}', $list_name, $content );
 			$content = str_replace( '{{LIST}}', $list_name, $content );
 			$content = str_replace( '{{SITENAME}}', $blog_name, $content );
 			$content = str_replace( '{{SITEURL}}', $site_url, $content );
+			$content = str_replace( '{{site.name}}', $blog_name, $content );
+			$content = str_replace( '{{site.url}}', $site_url, $content );
 
-			return $content;
+			return apply_filters( 'ig_es_message_content', $content, $merge_tags );
 		}
 
 		/**
@@ -1186,6 +1211,8 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 			$content = str_replace( '{{LIST}}', $list_name, $content );
 			$content = str_replace( '{{SITENAME}}', $blog_name, $content );
 			$content = str_replace( '{{SITEURL}}', $site_url, $content );
+			$content = str_replace( '{{site.name}}', $blog_name, $content );
+			$content = str_replace( '{{site.url}}', $site_url, $content );
 
 			return $content;
 		}
@@ -1252,7 +1279,7 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 				$link_data['action'] = 'click';
 
 				// get all links from the basecontent
-				preg_match_all( '# href=(\'|")?(https?[^\'"]+)(\'|")?#', $content, $links );
+				preg_match_all( '#<a\s+(?:[^>]*?\s+)?href=(\'|")?(https?[^\'"]+)(\'|")?#', $content, $links );
 
 				$links = $links[2];
 
@@ -1332,7 +1359,7 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 			if ( $this->can_track_clicks() ) {
 
 				// get all links from the basecontent
-				preg_match_all( '# href=(\'|")?(https?[^\'"]+)(\'|")?#', $content, $links );
+				preg_match_all( '#<a\s+(?:[^>]*?\s+)?href=(\'|")?(https?[^\'"]+)(\'|")?#', $content, $links );
 
 				$links = $links[2];
 
@@ -1550,7 +1577,7 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 		public function get_tracking_pixel( $link_data = array() ) {
 
 			$tracking_image = '';
-			
+
 			if ( $this->can_track_open() ) {
 
 				if ( empty( $link_data ) ) {
@@ -1665,17 +1692,9 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 		 * @since 4.3.5
 		 */
 		public function get_total_emails_send_now( $max_send = 100000 ) {
-
-			$current_date = ig_es_get_current_date();
-			$current_hour = ig_es_get_current_hour();
-
+			
 			// Get total emails sent in this hour
-			$email_sent_data = ES_Common::get_ig_option( 'email_sent_data', array() );
-
-			$total_emails_sent = 0;
-			if ( is_array( $email_sent_data ) && ! empty( $email_sent_data[ $current_date ] ) && ! empty( $email_sent_data[ $current_date ][ $current_hour ] ) ) {
-				$total_emails_sent = $email_sent_data[ $current_date ][ $current_hour ];
-			}
+			$total_emails_sent = ES_Common::count_sent_emails();
 
 			// Get hourly limit
 			$can_total_emails_send_in_hour = ES_Common::get_ig_option( 'hourly_email_send_limit', 300 );
@@ -1756,15 +1775,23 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 			// Check if it is an campaign email and unsubscribe headers are enabled on the site.
 			if ( $this->unsubscribe_headers_enabled() ) {
 				$unsubscribe_link = $this->get_unsubscribe_link( $this->link_data );
+				$contact_id       = ! empty( $this->link_data['contact_id'] )  ? $this->link_data['contact_id']  : 0;
+				$campaign_id      = ! empty( $this->link_data['campaign_id'] ) ? $this->link_data['campaign_id'] : 0;
+				$message_id       = ! empty( $this->link_data['message_id'] )  ? $this->link_data['message_id']  : 0;
 
 				/* translators: 1. Subscriber email 2. Blog name */
-				$mail_to_subject   = sprintf( __( 'Unsubscribe %1$s from %2$s', 'email-subscribers' ), $email, get_bloginfo( 'name' ) );
+				$mail_to_subject = sprintf( __( 'Unsubscribe %1$s from %2$s', 'email-subscribers' ), $email, get_bloginfo( 'name' ) );
+				$mail_to_body    = "Contact-ID:$contact_id,Campaign-ID:$campaign_id";
+				if ( ! empty( $message_id ) ) {
+					$mail_to_body .= ",Message-ID:$message_id";
+				}
 				$list_unsub_header = sprintf(
 					/* translators: 1. Unsubscribe link 2. Blog admin email */
-					'<%1$s>,<mailto:%2$s?subject=%3$s',
+					'<%1$s>,<mailto:%2$s?subject=%3$s&body=%4$s>',
 					$unsubscribe_link,
-					get_bloginfo( 'admin_email' ),
-					$mail_to_subject
+					ES_Common::get_admin_email(),
+					$mail_to_subject,
+					$mail_to_body
 				);
 			}
 
@@ -1825,6 +1852,19 @@ if ( ! class_exists( 'ES_Mailer' ) ) {
 			$phpmailer->CharSet = 'UTF-8';
 
 			return $phpmailer;
+		}
+
+		/**
+		 * Get current mailer name
+		 *
+		 * @return string $mailer
+		 * 
+		 * @since 5.5.7
+		 */
+		public function get_current_mailer_name() {
+			$mailer_settings = get_option( 'ig_es_mailer_settings', '');
+			$mailer_name	 = ( !empty( $mailer_settings['mailer'] ) ) ? $mailer_settings['mailer'] : 'wpmail';
+			return $mailer_name;
 		}
 	}
 }

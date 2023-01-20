@@ -5,6 +5,7 @@
 
 	<p><?= __('Other potential reasons why you see this notification:', 'LayerSlider') ?></p>
 	<ul>
+		<li><?= __('your subscription has expired;', 'LayerSlider') ?></li>
 		<li><?= __('you’ve moved your site, or your domain name has changed;', 'LayerSlider') ?></li>
 		<li><?= __('you’ve remotely deregistered your site using our online tools or asked us to do the same on your behalf;', 'LayerSlider') ?></li>
 		<li><?= __('you’re using a non-genuine copy of LayerSlider', 'LayerSlider') ?></li>

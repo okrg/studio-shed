@@ -114,7 +114,7 @@ $posts = LS_Posts::find($queryArgs)->getParsedObject();
 						<?php else : ?>
 						<?php $postTaxTerms = []; ?>
 						<?php endif ?>
-						<select data-param="post_tax_terms" name="post_tax_terms" class="lse-scrollbar lse-scrollbar-dark" multiple="multiple">
+						<select data-param="post_tax_terms" name="post_tax_terms" class="lse-post-taxonomy-terms lse-scrollbar lse-scrollbar-dark" multiple="multiple">
 							<?php foreach ($postTaxTerms as $item): ?>
 							<?php if(isset($slider['properties']['post_tax_terms']) && in_array($item->term_id, $slider['properties']['post_tax_terms'])) : ?>
 							<option value="<?= $item->term_id ?>" selected="selected"><?= $item->name ?></option>

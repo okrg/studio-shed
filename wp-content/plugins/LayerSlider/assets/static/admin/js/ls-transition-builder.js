@@ -225,7 +225,7 @@ var lsTrBuilder = {
 			// Iterate over 3D transitions
 			jQuery('.ls-transition-item', this).each(function(index) {
 
-				// Get working transition object & store its name
+				// Get working transition object & store its name
 				var trType = jQuery(this).closest('.ls-tr-list-2d').length ? '2d' : '3d';
 				var tr = layerSliderCustomTransitions['t'+trType][index] = {};
 				tr.name = jQuery('.ls-transitions-sidebar ul.'+trType+' li:eq('+index+') input').val();

@@ -4,20 +4,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-if ( ! class_exists( 'IG_Feedback_V_1_2_6' ) ) {
+if ( ! class_exists( 'IG_Feedback_V_1_2_8' ) ) {
 	/**
 	 * IG Feedback
 	 *
 	 * The IG Feedback class adds functionality to get quick interactive feedback from users.
 	 * There are different types of feedabck widget like Stars, Emoji, Thubms Up/ Down, Number etc.
 	 *
-	 * @class       IG_Feedback_V_1_2_6
+	 * @class       IG_Feedback_V_1_2_8
 	 * @since       1.0.0
 	 * @copyright   Copyright (c) 2019, Icegram
 	 * @license     https://opensource.org/licenses/gpl-license GNU Public License
 	 * @package     feedback
 	 */
-	class IG_Feedback_V_1_2_6 {
+	class IG_Feedback_V_1_2_8 {
 
 		/**
 		 * Version of Feedback Library
@@ -25,7 +25,7 @@ if ( ! class_exists( 'IG_Feedback_V_1_2_6' ) ) {
 		 * @since 1.0.13
 		 * @var string
 		 */
-		public $version = '1.2.6';
+		public $version = '1.2.8';
 		/**
 		 * The API URL where we will send feedback data.
 		 *
@@ -81,7 +81,7 @@ if ( ! class_exists( 'IG_Feedback_V_1_2_6' ) ) {
 		public $event_prefix;
 
 		/**
-		 *
+		 * Footer HTML
 		 */
 		public $footer = '<span class="ig-powered-by">Made With&nbsp;💜&nbsp;by&nbsp;<a href="https://www.icegram.com/" target="_blank">Icegram</a></span>';
 
@@ -235,7 +235,7 @@ if ( ! class_exists( 'IG_Feedback_V_1_2_6' ) ) {
 							$review_url = "https://wordpress.org/support/plugin/{$this->plugin}/reviews/";
 							$icon_url   = plugin_dir_url( __FILE__ ) . 'assets/images/icon-64.png';
 							/* translators: %s: Plugin name */
-							$message    = __( sprintf( "<span><p>We hope you're enjoying <b>%s</b> plugin! Could you please do us a BIG favor and give us a 5-star rating on WordPress to help us spread the word and boost our motivation?</p>", $this->name ), $this->plugin );
+							$message = __( sprintf( "<span><p>We hope you're enjoying <b>%s</b> plugin! Could you please do us a BIG favor and give us a 5-star rating on WordPress to help us spread the word and boost our motivation?</p>", $this->name ), $this->plugin );
 
 							$message_data = array(
 								'review_url' => $review_url,
@@ -267,7 +267,7 @@ if ( ! class_exists( 'IG_Feedback_V_1_2_6' ) ) {
 
 								.ig-feedback-notice-links li a {
 									display: inline-block;
-									color: #10738b;
+									color: #5850EC;
 									text-decoration: none;
 									padding-left: 26px;
 									position: relative;
@@ -292,7 +292,7 @@ if ( ! class_exists( 'IG_Feedback_V_1_2_6' ) ) {
 							echo wp_kses_post( $message );
 							echo "<ul class='ig-feedback-notice-links'>";
 							echo sprintf(
-								'<li><a href="%s" class="button-primary" target="_blank" data-rated="' . esc_attr__(
+								'<li><a href="%s" class="px-4 py-2 ml-6 mr-2 align-middle cursor-pointer button button-primary bg-indigo-600" target="_blank" data-rated="' . esc_attr__(
 									'Thank You :) ',
 									$this->plugin
 								) . '"><span class="dashicons dashicons-external"></span>&nbsp;&nbsp;Ok, you deserve it</a></li> <li><a href="%s"><span class="dashicons dashicons-calendar-alt"></span>&nbsp;&nbsp;Maybe later</a></li><li><a href="%s"><span class="dashicons dashicons-smiley"></span>&nbsp;&nbsp;I already did!</a></li><li><a href="%s"><span class="dashicons dashicons-no"></span>&nbsp;&nbsp;Don\'t ask me again</a></li>',
@@ -345,7 +345,7 @@ if ( ! class_exists( 'IG_Feedback_V_1_2_6' ) ) {
 		 * @since 1.0.0
 		 */
 		public function render_deactivate_feedback() {
-			add_action( 'admin_print_scripts', array( $this, 'js' ), 20 );
+			add_action( 'admin_print_footer_scripts', array( $this, 'js' ), 20 );
 			add_action( 'admin_print_scripts', array( $this, 'css' ) );
 			add_action( 'admin_footer', array( $this, 'modal' ) );
 		}
@@ -372,20 +372,25 @@ if ( ! class_exists( 'IG_Feedback_V_1_2_6' ) ) {
 		 * @since 1.0.1
 		 */
 		public function enqueue_styles() {
-			wp_register_style( "sweetalert_{$this->version}", plugin_dir_url( __FILE__ ) . 'assets/css/sweetalert2.min.css', array(), $this->version );
-			wp_enqueue_style( "sweetalert_{$this->version}" );
 
-			wp_register_style( "animate_{$this->version}", plugin_dir_url( __FILE__ ) . 'assets/css/animate.min.css', array(), $this->version );
-			wp_enqueue_style( "animate_{$this->version}" );
+			$can_load = apply_filters( $this->plugin_abbr . '_can_load_sweetalert_css', false );
 
-			wp_register_style( "ig-feedback-star-rating_{$this->version}", plugin_dir_url( __FILE__ ) . 'assets/css/star-rating.min.css', array(), $this->version );
-			wp_enqueue_style( "ig-feedback-star-rating_{$this->version}" );
-
-			wp_register_style( "ig-feedback-emoji_{$this->version}", plugin_dir_url( __FILE__ ) . 'assets/css/emoji.min.css', array(), $this->version );
-			wp_enqueue_style( "ig-feedback-emoji_{$this->version}" );
-
-			wp_register_style( "ig-feedback_{$this->version}", plugin_dir_url( __FILE__ ) . 'assets/css/feedback.min.css', array(), $this->version );
-			wp_enqueue_style( "ig-feedback_{$this->version}" );
+			if ( $can_load ) {
+				wp_register_style( "sweetalert_{$this->version}", plugin_dir_url( __FILE__ ) . 'assets/css/sweetalert2.min.css', array(), $this->version );
+				wp_enqueue_style( "sweetalert_{$this->version}" );
+	
+				wp_register_style( "animate_{$this->version}", plugin_dir_url( __FILE__ ) . 'assets/css/animate.min.css', array(), $this->version );
+				wp_enqueue_style( "animate_{$this->version}" );
+	
+				wp_register_style( "ig-feedback-star-rating_{$this->version}", plugin_dir_url( __FILE__ ) . 'assets/css/star-rating.min.css', array(), $this->version );
+				wp_enqueue_style( "ig-feedback-star-rating_{$this->version}" );
+	
+				wp_register_style( "ig-feedback-emoji_{$this->version}", plugin_dir_url( __FILE__ ) . 'assets/css/emoji.min.css', array(), $this->version );
+				wp_enqueue_style( "ig-feedback-emoji_{$this->version}" );
+	
+				wp_register_style( "ig-feedback_{$this->version}", plugin_dir_url( __FILE__ ) . 'assets/css/feedback.min.css', array(), $this->version );
+				wp_enqueue_style( "ig-feedback_{$this->version}" );
+			}
 		}
 
 		/**
@@ -892,18 +897,24 @@ if ( ! class_exists( 'IG_Feedback_V_1_2_6' ) ) {
 		public function render_poll_widget( $params = array() ) {
 			$params = $this->prepare_widget_params( $params );
 
-			$poll_options = ! empty( $params['poll_options'] ) ? $params['poll_options'] : array();
-
-			if ( empty( $poll_options ) ) {
+			$fields = ! empty( $params['fields'] ) ? $params['fields'] : array();
+			if ( empty( $fields ) ) {
 				return;
 			}
+			$default_values = ! empty( $params['default_values'] ) ? $params['default_values'] : array();
 
 			$allow_multiple = ! empty( $params['allow_multiple'] ) ? $params['allow_multiple'] : false;
 
 			$title = $params['title'];
-			$slug  = sanitize_title( $title );
-			$event = $this->event_prefix . $params['event'];
-			$desc  = ! empty( $params['desc'] ) ? $params['desc'] : '';
+			if ( ! empty( $params['slug'] ) ) {
+				$slug = $params['slug'];
+			} else {
+				$slug = sanitize_title( $title );
+			}
+			$event       = $this->event_prefix . $params['event'];
+			$desc        = ! empty( $params['desc'] ) ? $params['desc'] : '';
+			$display_as  = ! empty( $params['display_as'] ) ? $params['display_as'] : 'inline';
+			$system_info = isset( $params['system_info'] ) ? $params['system_info'] : true;
 
 			ob_start();
 
@@ -911,16 +922,95 @@ if ( ! class_exists( 'IG_Feedback_V_1_2_6' ) ) {
 
 			<div class="ig-general-feedback" id="ig-general-feedback-<?php echo esc_attr( $this->plugin ); ?>">
 				<form class="ig-general-feedback" id="ig-general-feedback">
-					<p><?php echo wp_kses_post( $desc ); ?></p>
-
+					<?php
+					if ( ! empty( $title ) ) {
+						?>
+						<h2><?php echo wp_kses_post( $title ); ?></h2>
+						<?php
+					}
+					?>
+					<?php
+					if ( ! empty( $desc ) ) {
+						?>
+						<p><?php echo wp_kses_post( $desc ); ?></p>
+						<?php
+					}
+					?>
 					<p class="ig-general-feedback mb-3">
-						<?php foreach ( $poll_options as $value => $option ) { ?>
-							<input type="radio" name="feedback_data[poll_options]" value="<?php echo esc_attr( $value ); ?>"><b style="color: <?php echo esc_attr( $option['color'] ); ?>"><?php echo wp_kses_post( $option['text'] ); ?></b><br/>
-						<?php } ?>
+						<?php 
+						foreach ( $fields as $index => $field ) {
+							$field_type        = $field['type'];
+							$field_name        =  $field['name'];
+							$field_value       = ! empty( $field['value'] ) ? $field['value'] : '';
+							$field_placeholder = ! empty( $field['placeholder'] ) ? $field['placeholder'] : '';
+							$field_required    = isset ( $field['required'] ) ? $field['required'] : false;
+							switch ( $field_type ) {
+								case 'textarea':
+									?>
+										<p class="ig-feedback-data-poll-message mb-3" id="ig-feedback-data-poll-message">
+											<textarea name="feedback_data[<?php echo esc_attr( $field_name ); ?>]" id="ig-feedback-data-poll-additional-message" placeholder="<?php echo esc_attr( $field_placeholder ); ?>"></textarea>
+										</p>
+										<br/>
+									<?php
+									break;
+								case 'radio':
+								case 'checkbox':
+									?>
+									<label>
+											<input 
+												type="<?php echo esc_attr( $field_type ); ?>" 
+												name="feedback_data[<?php echo esc_attr( $field_name ); ?>]" 
+												value="<?php echo esc_attr( $field_value ); ?>"
+											<?php echo ( ! empty( $default_values[ $field_name ] ) && $field_value === $default_values[ $field_name ] ) ? 'checked' : ''; ?>
+												class="<?php echo esc_attr( $this->plugin_abbr ); ?>-feedback-field"
+												<?php echo $field_required ? 'required' : ''; ?>>
+										<?php echo wp_kses_post( $field['label'] ); ?>
+									</label>
+									<br/>
+									<?php
+									break;
+								default:
+									?>
+									<label>
+											<input 
+												type="<?php echo esc_attr( $field_type ); ?>" 
+												name="feedback_data[<?php echo esc_attr( $field_name ); ?>]" 
+												value="<?php echo esc_attr( $field['value'] ); ?>"
+												class="<?php echo esc_attr( $this->plugin_abbr ); ?>-feedback-field">
+										<?php echo wp_kses_post( $field['label'] ); ?>
+									</label>
+									<br/>
+									<?php
+							}
+							?>
+						<?php
+							if ( 'other' === $field['value'] ) {
+								?>
+								<div class="ig_feedback_text_wrapper">
+									<textarea 
+										id="feedback_text"
+										name="feedback[feedback_text]"
+										class="form-textarea text-sm w-2/3 mt-3 mb-1 border-gray-400 w-3/5 hidden"
+										placeholder="<?php echo esc_attr__( 'Tell us more about your desired feature', $this->plugin ); ?>"></textarea>
+								</div>
+								<?php
+							}
+						}
+						?>
 					</p>
-					<p class="ig-feedback-data-poll-message mb-3" id="ig-feedback-data-poll-message">
-						<textarea name="feedback_data[details]" id="ig-feedback-data-poll-additional-message" placeholder="Additional feedback"></textarea>
-					</p>
+					<?php
+					if ( 'inline' === $display_as ) {
+						?>
+						<button type="submit" class="button">
+							<?php
+								echo esc_html__( 'Submit your feedback', $this->plugin );
+							?>
+						</button>
+						<br/>
+						<br/>
+						<?php
+					}
+					?>
 				</form>
 			</div>
 
@@ -928,120 +1018,227 @@ if ( ! class_exists( 'IG_Feedback_V_1_2_6' ) ) {
 
 			$html = str_replace( array( "\r", "\n" ), '', trim( ob_get_clean() ) );
 
-			$params['html'] = $html;
-
-			$title = $params['title'];
-			$slug  = sanitize_title( $title );
 			$event = $this->event_prefix . $params['event'];
-			$html  = ! empty( $params['html'] ) ? $params['html'] : '';
-
-			$escape_allowed_tags = $this->get_escape_allowed_tags();
+			
+			if ( 'inline' === $display_as ) {
+				$this->render_inline_feedback_widget( $html, $params );
+			} elseif ( 'popup' === $display_as ) {
+				$this->render_popup_feedback_widget( $html, $params );
+			}
 			?>
-
 			<script type="text/javascript">
 
-				jQuery(document).ready(function ($) {
-
-					function doSend(data, meta, system_info) {
-
-						var data = {
-							action: '<?php echo esc_js( $this->ajax_action ); ?>',
-							feedback: {
-								type: '<?php echo esc_js( $params['type'] ); ?>',
-								slug: '<?php echo esc_js( $slug ); ?>',
-								title: '<?php echo esc_js( $title ); ?>',
-								data: data
-							},
-
-							event: '<?php echo esc_js( $event ); ?>',
-
-							// Add additional information
-							misc: {
-								plugin: '<?php echo esc_js( $this->plugin ); ?>',
-								plugin_abbr: '<?php echo esc_js( $this->plugin_abbr ); ?>',
-								is_dev_mode: '<?php echo esc_js( $this->is_dev_mode ); ?>',
-								set_transient: '<?php echo esc_js( $params['set_transient'] ); ?>',
-								meta_info: meta,
-								system_info: system_info
-							},
-							security: '<?php echo esc_js( wp_create_nonce( $this->plugin_abbr . '-admin-ajax-nonce' ) ); ?>'
-						};
-
-						return jQuery.post(ajaxurl, data);
-					}
-
-					Swal.mixin({
-						footer: '',
-						position: '<?php echo esc_js( $params['position'] ); ?>',
-						width: <?php echo esc_js( $params['width'] ); ?>,
-						animation: false,
-						focusConfirm: false,
-						allowEscapeKey: true,
-						showCloseButton: '<?php echo esc_js( $params['showCloseButton'] ); ?>',
-						allowOutsideClick: '<?php echo esc_js( $params['allowOutsideClick'] ); ?>',
-						showLoaderOnConfirm: true,
-						confirmButtonText: '<?php echo wp_kses_post( $params['confirmButtonText'] ); ?>',
-						backdrop: '<?php echo (int) $params['backdrop']; ?>'
-					}).queue([
-						{
-							title: '<p class="ig-feedback-title"><?php echo esc_js( $params['title'] ); ?></p>',
-							html: '<?php echo wp_kses( $html, $escape_allowed_tags ); ?>',
-							customClass: {
-								popup: 'animated fadeInUpBig'
-							},
-							onOpen: () => {
-
-							},
-
-							preConfirm: () => {
-								var $overlay = $('#ig-general-feedback-<?php echo esc_js( $this->plugin ); ?>');
-								var $form = $overlay.find('form');
-								var poll_options = $form.find("input[name='feedback_data[poll_options]']:checked").val();
-								var message = $form.find("#ig-feedback-data-poll-additional-message").val();
-
-								if (poll_options === undefined) {
-									Swal.showValidationMessage('Please select option');
-									return;
-								}
-
-								var data = {
-									poll_option: poll_options,
-									additional_feedback: message
-								};
-
-								var meta = {};
-
-								return doSend(data, meta, true);
-							}
+				function doSend(data) {
+					var system_info = <?php echo $system_info ? 'true' : 'false'; ?>;
+					var requestData = {
+						action: '<?php echo esc_js( $this->ajax_action ); ?>',
+						feedback: {
+							type: '<?php echo esc_js( $params['type'] ); ?>',
+							slug: '<?php echo esc_js( $slug ); ?>',
+							data: data
 						},
 
-					]).then(response => {
+						event: '<?php echo esc_js( $event ); ?>',
 
-						if (response.hasOwnProperty('value')) {
+						// Add additional information
+						misc: {
+							plugin: '<?php echo esc_js( $this->plugin ); ?>',
+							plugin_abbr: '<?php echo esc_js( $this->plugin_abbr ); ?>',
+							is_dev_mode: '<?php echo esc_js( $this->is_dev_mode ); ?>',
+							set_transient: '<?php echo esc_js( $params['set_transient'] ); ?>',
+							system_info: system_info
+						},
+						security: '<?php echo esc_js( wp_create_nonce( $this->plugin_abbr . '-admin-ajax-nonce' ) ); ?>'
+					};
 
-							Swal.fire({
-								type: 'success',
-								width: <?php echo esc_js( $params['width'] ); ?>,
-								title: '<?php echo esc_attr__( 'Thank You!', $this->plugin ); ?>',
-								showConfirmButton: false,
-								position: '<?php echo esc_js( $params['position'] ); ?>',
-								timer: 1500,
-								animation: false
-							});
-
-						}
-					});
-
-
-				});
-
+					return jQuery.post(ajaxurl, requestData, null, 'json');
+				}
 			</script>
-
-
 			<?php
 		}
 
+		/**
+		 * Render inline feedback widget
+		 *
+		 * @since 1.2.7
+		 * 
+		 * @param string $html
+		 * @param array $params
+		 * @return void
+		 */
+		public function render_inline_feedback_widget( $html, $params ) {
+			$escape_allowed_tags = $this->get_escape_allowed_tags();
+			?>
+			<style type="text/css">
+				.ig-feedback-inline h2{
+					font-size:2em;
+					padding: 0.5em 0;
+				}
+				.ig-feedback-inline{
+					border:none;
+					width:90%;
+					margin: 1em auto !important;
+					/* background:#fbe2597d; */
+				}
+				.ig-feedback-inline button{
+					background: green !important;
+					color: #FFF !important;
+				}
+				.ig-feedback-inline radio{
+					line-height:1em;
+				}
+				.ig-feedback-logo{
+					float:right;
+				}
+				.ig-feedback-inline label{
+					font-size: 1.1em;
+					padding-bottom: 0.5em;
+				}
+				.ig-feedback-inline .button{
+				padding: 0.7em;
+					font-size: 1.2em;
+					border-radius: 0;
+				}
+				</style>
+			<div class="notice ig-feedback-notice ig-feedback-inline">
+				<?php
+				if ( $params['logo_img_url'] ) {
+					?>
+				 <div class="ig-feedback-logo">
+					 <img src="<?php echo esc_url( $params['logo_img_url'] ); ?>">
+				 </div>
+					<?php
+				}
+				?>
+				<?php echo wp_kses( $html, $escape_allowed_tags ); ?>
+			</div>
+			<script type="text/javascript">
+				jQuery(document).ready(function ($) {
+					$('.<?php echo esc_attr( $this->plugin_abbr ); ?>-feedback-field').on('change', function(){
+						let value = $(this).val();
+						if ( 'other' === value ) {
+							$('#feedback_text').removeClass('hidden');
+						} else {
+							$('#feedback_text').addClass('hidden');
+						}
+					});
 
+					var $overlay = $('#ig-general-feedback-<?php echo esc_js( $this->plugin ); ?>');
+					var $form = $overlay.find('form');
+					$($form).on('submit', function(e){
+						e.preventDefault();
+						let selected_feature = $form.find("input[name='feedback_data[feature]']:checked").val();
+						let form_data = {
+							questions_response : {
+								selected_feature: selected_feature
+							}
+						}
+
+						if ( selected_feature === 'other' ) {
+							form_data.other_feature = $form.find('textarea[name="feedback[feedback_text]"]').val();
+						}
+
+						var request = doSend( form_data );
+						request.done(response => {
+							if (response.status && response.status === 'success') {
+								let success_text = '<?php echo esc_html__( 'Your feedback submitted successfully.', $this->plugin ); ?>';
+								$('.ig-feedback-notice').html('<p>' + success_text + '</p>');
+							} else {
+								let error_text = '<?php echo esc_html__( 'An error has occured. Please try again.', $this->plugin ); ?>';
+								$('.ig-feedback-notice').removeClass('notice-success').addClass('notice-error').append('<p>' + error_text + '</p>');
+							}
+						}).fail( response => {
+							let error_text = '<?php echo esc_html__( 'An error has occured. Please try again.', $this->plugin ); ?>';
+									$('.ig-feedback-notice').removeClass('notice-success').addClass('notice-error').append('<p>' + error_text + '</p>');
+						});
+					});
+				});
+			</script>
+			<?php
+		}
+
+		/**
+		 * Render popup feedback widget
+		 *
+		 * @since 1.2.7
+		 * 
+		 * @param string $html
+		 * @param array $params
+		 * @return void
+		 */
+		public function render_popup_feedback_widget( $html, $params ) {
+			$escape_allowed_tags = $this->get_escape_allowed_tags();
+			?>
+			<script type="text/javascript">
+
+			jQuery(document).ready(function ($) {
+
+				Swal.mixin({
+					footer: '',
+					position: '<?php echo esc_js( $params['position'] ); ?>',
+					width: <?php echo esc_js( $params['width'] ); ?>,
+					animation: false,
+					focusConfirm: false,
+					allowEscapeKey: true,
+					showCloseButton: '<?php echo esc_js( $params['showCloseButton'] ); ?>',
+					allowOutsideClick: '<?php echo esc_js( $params['allowOutsideClick'] ); ?>',
+					showLoaderOnConfirm: true,
+					confirmButtonText: '<?php echo wp_kses_post( $params['confirmButtonText'] ); ?>',
+					backdrop: '<?php echo (int) $params['backdrop']; ?>'
+				}).queue([
+					{
+						title: '<p class="ig-feedback-title"><?php echo esc_js( $params['title'] ); ?></p>',
+						html: '<?php echo wp_kses( $html, $escape_allowed_tags ); ?>',
+						customClass: {
+							popup: 'animated fadeInUpBig'
+						},
+						onOpen: () => {
+
+						},
+
+						preConfirm: () => {
+							var $overlay = $('#ig-general-feedback-<?php echo esc_js( $this->plugin ); ?>');
+							var $form = $overlay.find('form');
+							if ( ! jQuery($form)[0].checkValidity()) {
+								Swal.showValidationMessage('<?php echo esc_html__( 'Please select option', $this->plugin ); ?>');
+								return;
+							}
+
+							var poll_options = $form.find("input[name='feedback_data[poll_options]']:checked").val();
+							var message = $form.find("#ig-feedback-data-poll-additional-message").val();
+
+							var data = {
+								poll_option: poll_options,
+								additional_feedback: message
+							};
+
+							var meta = {};
+
+							return doSend(data);
+						}
+					},
+
+				]).then(response => {
+
+					if (response.hasOwnProperty('value')) {
+
+						Swal.fire({
+							type: 'success',
+							width: <?php echo esc_js( $params['width'] ); ?>,
+							title: '<?php echo esc_attr__( 'Thank You!', $this->plugin ); ?>',
+							showConfirmButton: false,
+							position: '<?php echo esc_js( $params['position'] ); ?>',
+							timer: 1500,
+							animation: false
+						});
+
+					}
+				});
+			});
+
+			</script>
+			<?php
+		}
 		/**
 		 * Get Feedback API url
 		 *
@@ -1725,6 +1922,80 @@ if ( ! class_exists( 'IG_Feedback_V_1_2_6' ) ) {
 		public function get_escape_allowed_tags() {
 			$ig_es_escape_allowed_tags = apply_filters( $this->plugin_abbr . '_escape_allowed_tags', array() );
 			return $ig_es_escape_allowed_tags;
+		}
+
+		/**
+		 * Render Quick Feedback Widget
+		 *
+		 * @param $params
+		 *
+		 * @since 4.1.0
+		 */
+		public function render_feedback_widget( $params ) {
+
+			if ( ! $this->can_show_feedback_widget() ) {
+				return;
+			}
+
+			$default_params = array(
+				'set_transient' => true,
+				'force'         => false,
+				'show_once'     => false,
+			);
+
+			$params = wp_parse_args( $params, $default_params );
+
+			if ( ! empty( $params['event'] ) ) {
+
+				$event = $this->event_prefix . $params['event'];
+				$force = ! empty( $params['force'] ) ? $params['force'] : false;
+
+				$can_show = false;
+
+				if ( $force ) {
+					$can_show = true;
+				} else {
+					if ( ! $this->is_event_transient_set( $event ) ) {
+						$can_show = true;
+
+						$feedback_data = $this->get_event_feedback_data( $this->plugin_abbr, $event );
+						if ( count( $feedback_data ) > 0 ) {
+							$show_once              = $params['show_once'];
+							$feedback_data          = array_reverse( $feedback_data );
+							$last_feedback_given_on = $feedback_data[0]['created_on'];
+
+							// If event feedback given within 45 days or show event only once?
+							// Don't show now
+							if ( $show_once || ( strtotime( $last_feedback_given_on ) > strtotime( '-45 days' ) ) ) {
+								$can_show = false;
+							}
+						}
+					}
+				}
+
+				if ( $can_show ) {
+					if ( 'star' === $params['type'] ) {
+						$this->render_stars( $params );
+					} elseif ( 'emoji' === $params['type'] ) {
+						$this->render_emoji( $params );
+					} elseif ( 'feedback' === $params['type'] ) {
+						$this->render_general_feedback( $params );
+					} elseif ( 'fb' === $params['type'] ) {
+						/**
+						 * We are not calling home for this event and we want to show
+						 * this Widget only once. So, we are storing feedback data now.
+						 */
+						$this->set_feedback_data( $this->plugin_abbr, $event );
+						$this->render_fb_widget( $params );
+					} elseif ( 'poll' === $params['type'] ) {
+						if ( $params['show_once'] ) {
+							$this->set_feedback_data( $this->plugin_abbr, $event );
+						}
+						$this->render_poll_widget( $params );
+					}
+				}
+			}
+
 		}
 	}
 } // End if().

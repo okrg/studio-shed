@@ -60,6 +60,7 @@ if ( ! class_exists( 'IG_ES_Premium_Services_UI' ) ) {
 				// Add UI for CSS inliner only if service is valid.
 				if ( ES()->validate_service_request( array( 'css_inliner' ) ) ) {
 					add_action( 'ig_es_after_campaign_left_pan_settings', array( &$this, 'add_custom_css_field' ) );
+					add_action( 'ig_es_after_template_left_pan_settings', array( &$this, 'add_custom_css_field' ) );
 					add_action( 'edit_form_after_editor', array( &$this, 'add_custom_css_block' ), 11, 2 );
 					add_action( 'save_post', array( &$this, 'update_template' ), 10, 2 );
 				}
@@ -68,6 +69,7 @@ if ( ! class_exists( 'IG_ES_Premium_Services_UI' ) ) {
 				if ( ES()->validate_service_request( array( 'spam_score_check' ) ) ) {
 					add_action( 'add_meta_boxes', array( &$this, 'add_metaboxes' ) );
 					add_action( 'ig_es_after_campaign_right_pan_settings', array( &$this, 'add_check_spam_score_button' ) );
+					add_action( 'ig_es_after_campaign_right_pan_settings', array( &$this, 'add_check_email_authentication_button' ) );
 				}
 
 				// Add UI for utm tracking only if service is valid.
@@ -88,10 +90,16 @@ if ( ! class_exists( 'IG_ES_Premium_Services_UI' ) ) {
 		 * @return void
 		 */
 		public function add_custom_css_field( $campaign_data ) {
-			$editor_type = ! empty( $campaign_data['meta']['editor_type'] ) ? $campaign_data['meta']['editor_type'] : IG_ES_DRAG_AND_DROP_EDITOR;
+			$is_campaign_page = doing_action( 'ig_es_after_campaign_left_pan_settings' );
+			if ( $is_campaign_page ) {
+				$editor_type_meta_key = 'editor_type';
+			} else {
+				$editor_type_meta_key = 'es_editor_type';
+			}
+			$editor_type = ! empty( $campaign_data['meta'][$editor_type_meta_key] ) ? $campaign_data['meta'][$editor_type_meta_key] : IG_ES_DRAG_AND_DROP_EDITOR;
 			if ( IG_ES_CLASSIC_EDITOR === $editor_type ) {
 				$custom_css            = ! empty( $campaign_data['meta']['es_custom_css'] ) ? $campaign_data['meta']['es_custom_css'] : '';
-				$custom_css_field_name = 'campaign_data[meta][es_custom_css]';
+				$custom_css_field_name = $is_campaign_page ? 'campaign_data[meta][es_custom_css]' : 'data[meta][es_custom_css]';
 				$is_trial_valid 	   = ES()->trial->is_trial_valid();
 				?>
 				<div class="w-full px-4 py-2">
@@ -268,6 +276,46 @@ if ( ! class_exists( 'IG_ES_Premium_Services_UI' ) ) {
 			<?php
 		}
 
+		public function add_check_email_authentication_button() {
+			$is_trial_valid = ES()->trial->is_trial_valid();
+			$url            = admin_url();
+			$headers        = get_option('ig_es_email_auth_headers', []);
+			?>
+			<div class="block mx-4 my-3 pb-5 border-b border-gray-200">
+				<span class="pt-3 text-sm font-medium leading-5 text-gray-700">
+					<?php echo esc_html__( 'Email Authentication Score', 'email-subscribers' ); ?>
+					<?php
+					if ( $is_trial_valid ) {
+						?>
+						<span class="trial-icon" title="<?php echo esc_attr__( 'Feature available during Trial', 'email-subscribers' ); ?>"></span>
+						<?php
+					}
+					?>
+				</span>
+				<?php 
+				//
+				if ( empty($headers)) {
+					?>
+					<a id = "es_check_auth_header" href="#" class="float-right rounded-md border text-indigo-600 border-indigo-500 text-sm leading-5 font-medium transition ease-in-out duration-150 select-none inline-flex justify-center hover:text-indigo-500 hover:border-indigo-600 hover:shadow-md focus:outline-none focus:shadow-outline-indigo focus:shadow-lg px-3 py-1">
+						<?php
+						echo esc_html__(
+							'Check',
+							'email-subscribers'
+						);
+						?>
+				</a>
+				<?php
+				} else {
+				$result  = Email_Subscribers_Starter::calculate_email_auth_score();
+				$remark  = !empty( $result['remark'] ) ? $result['remark'] : __( 'Unverified', 'email-subscribers' );
+					?>
+				<span class="float-right"><?php echo wp_kses_post( $remark ); ?></span>
+				<?php } ?>
+			</div>
+			
+		<?php
+		}
+
 		/**
 		 * Method to show available tracking option in pro version
 		 *
@@ -284,14 +332,14 @@ if ( ! class_exists( 'IG_ES_Premium_Services_UI' ) ) {
 
 			<div class="flex mt-3 pb-1 w-full">
 				<div class="w-11/12 text-sm font-normal text-gray-600">
-					<?php echo esc_html__( 'UTM tracking', 'email-subscribers' ); ?>
-					<?php
-					if ( $is_trial_valid ) {
-						?>
+				<?php echo esc_html__( 'UTM tracking', 'email-subscribers' ); ?>
+				<?php
+				if ( $is_trial_valid ) {
+					?>
 						<span class="trial-icon" title="<?php echo esc_attr__( 'Feature available during Trial', 'email-subscribers' ); ?>"></span>
 						<?php
-					}
-					?>
+				}
+				?>
 				</div>
 
 				<div>
@@ -308,7 +356,7 @@ if ( ! class_exists( 'IG_ES_Premium_Services_UI' ) ) {
 			<div class="py-1 ig_es_utm_campaign_name_wrapper <?php echo 'no' === $enable_utm_tracking ? esc_attr( 'hidden' ) : ''; ?>">
 				<input name="campaign_data[meta][es_utm_campaign]" placeholder="<?php echo esc_html__( 'Campaign Name', 'email-subscribers' ); ?>" id="es_utm_campaign" class="form-input border-gray-400 text-sm relative rounded-md shadow-sm block w-2/4 sm:leading-5" value="<?php echo esc_attr( $campaign_name ); ?>">
 			</div>
-			<?php
+				<?php
 		}
 
 		/**
@@ -337,7 +385,7 @@ if ( ! class_exists( 'IG_ES_Premium_Services_UI' ) ) {
 			$tooltip_html = ES_Common::get_tooltip_html( sprintf( __( 'This will be appended to every URL in this template with parameters: %s', 'email-subscribers' ), 'utm_source=es&utm_medium=email&utm_campaign=campaign_name' ) );
 			?>
 			<label class="es_utm_label"><span class="font-medium text-sm text-gray-700"><?php echo esc_html__( 'Campaign Name', 'email-subscribers' ); ?></span>
-				<?php echo wp_kses( $tooltip_html, $allowedtags ); ?> </label><br>
+			<?php echo wp_kses( $tooltip_html, $allowedtags ); ?> </label><br>
 			<input style="margin: 0.20rem 0;" type="text" name="es_utm_campaign" value="<?php echo esc_attr( $es_utm_campaign ); ?>" placeholder="<?php echo esc_html__( 'Campaign Name', 'email-subscribers' ); ?>" id="es_utm_campaign"/><br/>
 			<?php
 		}
@@ -374,13 +422,13 @@ if ( ! class_exists( 'IG_ES_Premium_Services_UI' ) ) {
 
 			// UTM tracking option
 			$track_utm = array(
-				'ig_es_track_utm' => array(
-					'id'      => 'ig_es_track_utm',
-					'name'    => __( 'Google Analytics UTM tracking', 'email-subscribers' ),
-					'info'    => __( 'Do you want to automatically add campaign tracking parameters in emails to track performance in Google Analytics? (We recommend keeping it enabled)', 'email-subscribers' ),
-					'type'    => 'checkbox',
-					'default' => 'no',
-				),
+			'ig_es_track_utm' => array(
+				'id'      => 'ig_es_track_utm',
+				'name'    => __( 'Google Analytics UTM tracking', 'email-subscribers' ),
+				'info'    => __( 'Do you want to automatically add campaign tracking parameters in emails to track performance in Google Analytics? (We recommend keeping it enabled)', 'email-subscribers' ),
+				'type'    => 'checkbox',
+				'default' => 'no',
+			),
 			);
 
 			$general_fields = $fields['general'];

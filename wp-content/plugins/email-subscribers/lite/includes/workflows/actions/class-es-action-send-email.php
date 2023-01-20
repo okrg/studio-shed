@@ -106,6 +106,7 @@ if ( ! class_exists( 'ES_Action_Send_Email' ) ) {
 
 		/**
 		 * Create content for showing preview
+		 *
 		 * @return mixed|null
 		 */
 		public function load_preview() {
@@ -116,6 +117,13 @@ if ( ! class_exists( 'ES_Action_Send_Email' ) ) {
 
 			$email_content = $this->add_template_styling( $email_content, $email_heading, $email_template );
 			$current_user  = wp_get_current_user();
+
+			$email_content = ES_Common::replace_keywords_with_fallback( $email_content, array(
+				'subscriber.first_name' => $current_user->first_name,
+				'subscriber.name'      => $current_user->display_name,
+				'subscriber.last_name'  => $current_user->last_name,
+				'subscriber.email'     => $current_user->user_email
+			) );
 
 			return ES_Common::replace_keywords_with_fallback( $email_content, array(
 				'EMAIL'     => $current_user->user_email,
@@ -232,6 +240,7 @@ if ( ! class_exists( 'ES_Action_Send_Email' ) ) {
 					$email_content = $wc_email->style_inline( $email_content );
 					// When inlining CSS, curly braces {{UNSUBSCRIBE-LINK}} gets converted to following characters. We are reverting them back 
 					$email_content = str_replace( array( '%5C%7B', '%5C%7D' ), array( '{', '}' ), $email_content );
+					$email_content = str_replace( array( '%7B', '%7D' ), array( '{', '}' ), $email_content );
 				}
 			}
 

@@ -1,15 +1,13 @@
 === Plugin Name ===
 
-Contributors: Chris Coyier
+Contributors: William Collins
 Plugin Name: Wufoo Shortcode
-Plugin URI: http://wufoo.com
+Plugin URI: https://www.wufoo.com
 Tags: wufoo, form, shortcode
-Author URI: http://wufoo.com
-Author: Chris Coyier
 Requires at least: 2.6
-Tested up to: 4.2
-Stable tag: 1.42
-Version: 1.43
+Tested up to: 6.0
+Stable tag: 1.47
+Version: 1.47
 
 Allows the use of a special short code [wufoo] for embedding Wufoo forms.
 
@@ -17,7 +15,7 @@ Allows the use of a special short code [wufoo] for embedding Wufoo forms.
 
 Allows the use of a special short code [wufoo] for embedding Wufoo forms. It's best to grab the shortcode from the Wufoo Code Manager.
 
-**Example:** 
+**Example:**
 `[wufoo username="examples" formhash="z7w4r7" autoresize="true" height="517" header="show" ssl="true"]`
 
 For advanced users, you can pre-set Wufoo form values with an extra parameter:
@@ -48,11 +46,17 @@ For old school manual installation people: copy the folder "wufoo_shortcode" int
 
 1.42 - Improvements to plugin
 
+1.43 - Top level navigation support for chromium based browsers
+
+1.46 - Fix insecure links generation
+
+1.47 - Fix hyperlink execution in forms
+
 == Frequently Asked Questions ==
 
 **What is Wufoo?**
 
-[Wufoo](http://wufoo.com) is a web app that helps anybody build amazing online forms. It's great for busy people who need to collect data or payments quickly, but don't want to deal with programming or servers. 
+[Wufoo](http://wufoo.com) is a web app that helps anybody build amazing online forms. It's great for busy people who need to collect data or payments quickly, but don't want to deal with programming or servers.
 
 **Why is this useful?**
 

@@ -91,6 +91,26 @@ if( isset( $slides['properties']['props']['enhancedLazyLoad'] ) ) {
 $slides['properties']['props']['enhancedLazyLoad'] = $enhancedLazyLoad;
 
 
+// Performance mode
+$performanceMode = (bool) get_option('ls_performance_mode', true );
+if( isset( $slides['properties']['attrs']['performanceMode'] ) ) {
+
+	if( is_bool( $slides['properties']['attrs']['performanceMode'] ) ) {
+		$performanceMode = $slides['properties']['attrs']['performanceMode'];
+
+	} elseif( $slides['properties']['attrs']['performanceMode'] === 'enabled' ||
+			  $slides['properties']['attrs']['performanceMode'] === '1') {
+		$performanceMode = true;
+
+	} elseif( $slides['properties']['attrs']['performanceMode'] === 'disabled' ||
+			  empty( $slides['properties']['attrs']['performanceMode'] ) ) {
+		$performanceMode = false;
+	}
+}
+
+$slides['properties']['attrs']['performanceMode'] = $performanceMode;
+
+
 // Project-level Google Fonts
 if( get_option('layerslider-google-fonts-enabled', true ) ) {
 
@@ -119,6 +139,71 @@ if( get_option('layerslider-google-fonts-enabled', true ) ) {
 	}
 }
 
+
+
+
+
+
+// STICKY + SCROLL SCENE
+
+$type 					= ! empty( $slides['properties']['attrs']['type'] ) ? $slides['properties']['attrs']['type'] : 'responsive';
+$scene 					= ! empty( $slides['properties']['attrs']['scene'] ) ? $slides['properties']['attrs']['scene'] : '';
+$needsSceneWrapper 		= ( $type !== 'popup' && ! empty( $scene ) );
+$sceneWrapperHeight 	= '';
+
+if( $needsSceneWrapper ) {
+
+	$sceneDuration 	= ! empty( $slides['properties']['attrs']['sceneDuration'] ) ? (float) $slides['properties']['attrs']['sceneDuration'] : 1;
+	$sceneSpeed 	= ! empty( $slides['properties']['attrs']['sceneSpeed'] ) ? (float) $slides['properties']['attrs']['sceneSpeed'] : 100;
+	$sceneSpeed 	= max( 10, $sceneSpeed );
+	$sceneSpeed 	= min( 999, $sceneSpeed );
+	$sceneHeight 	= ! empty( $slides['properties']['attrs']['sceneHeight'] ) ? $slides['properties']['attrs']['sceneHeight'] : '200%';
+	$canvasHeight 	= (float) $slides['properties']['props']['height'];
+
+	if( in_array( $type, ['fixedsize', 'responsive', 'fullwidth'] ) ) {
+
+		if( $scene === 'scroll' ) {
+			$sceneWrapperHeight = round( $canvasHeight + ( $canvasHeight * $sceneDuration / ( $sceneSpeed / 100 ) ) ) . 'px';
+
+		} elseif( $scene === 'sticky' ) {
+
+			if( strpos( $sceneHeight, '%') !== false || strpos( $sceneHeight, 'sh') !== false  ) {
+				$sceneWrapperHeight = round( $canvasHeight * ( (float) $sceneHeight / 100 ) ) . 'px';
+			} elseif( strpos( $sceneHeight, 'px') !== false ) {
+				$sceneWrapperHeight = round( max( (float) $sceneHeight, $canvasHeight ) ). 'px';
+			} else {
+				$sceneWrapperHeight = $sceneHeight;
+			}
+		}
+
+	} else {
+
+		if( $scene === 'scroll' ) {
+			$sceneWrapperHeight = 100 + ( 100 * $sceneDuration / ( $sceneSpeed / 100 ) ) . 'vh';
+
+		} elseif( $scene === 'sticky' ) {
+
+			if( strpos( $sceneHeight, '%') !== false || strpos( $sceneHeight, 'sh') !== false  ) {
+				$sceneWrapperHeight = max( 100, 100 * ( (float) $sceneHeight / 100 ) ) . 'vh';
+			} elseif( strpos( $sceneHeight, 'px') !== false ) {
+				$sceneWrapperHeight = round( max( (float) $sceneHeight, $canvasHeight ) ) . 'px';
+			} else {
+				$sceneWrapperHeight = max( 100, (float) $sceneHeight ) . 'vh';
+			}
+		}
+	}
+
+
+
+
+	// Sticky + Scroll Scene wrapper START
+	$lsContainer[] = '<ls-scene-wrapper '.( !empty( $sceneWrapperHeight ) ? 'style="height: '.$sceneWrapperHeight.'"' : '').'>';
+}
+
+
+
+
+
 // Start of slider container
 $lsContainer[] = '<div id="'.$sliderID.'" class="ls-wp-container fitvidsignore'.$customClasses.'" style="'.implode('', $sliderStyleAttr).'">';
 
@@ -136,9 +221,16 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 			continue;
 		}
 
+		// Schedule end
 		if( ! empty( $slide['props']['schedule_end'] ) && (int) $slide['props']['schedule_end'] < time() ) {
 			continue;
 		}
+
+		// First slide only for Scroll Scene
+		if( ( $scene === 'scroll' && $type !== 'popup' ) && $slidekey > 0 ) {
+			break;
+		}
+
 
 		// Get slide attributes
 		$slideId = !empty($slide['props']['id']) ? ' id="'.$slide['props']['id'].'"' : '';
@@ -288,7 +380,7 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 					$layer['props']['styles'] = [];
 				}
 
-				$layer['props']['html'] = ! empty( $layer['props']['html'] ) ? trim( $layer['props']['html'] ) : '';
+				$layer['props']['html'] = ( ! empty( $layer['props']['html'] ) || ( isset( $layer['props']['html'] ) && $layer['props']['html'] === '0' ) ) ? trim( $layer['props']['html'] ) : '';
 				$layer['props']['type'] = !empty($layer['props']['type']) ? $layer['props']['type'] : '';
 				$layer['props']['media'] = !empty($layer['props']['media']) ? $layer['props']['media'] : '';
 
@@ -570,14 +662,29 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 
 				if(!empty($layer['props']['id'])) { $innerAttributes['id'] = $layer['props']['id']; }
 				if(!empty($layer['props']['class'])) { $innerAttributes['class'] .= ' '.$layer['props']['class']; }
+
 				if(!empty($layer['props']['url'])) {
+
 					if(!empty($layer['props']['rel'])) {
-						$layerAttributes['rel'] = $layer['props']['rel']; }
+						$layerAttributes['rel'] = $layer['props']['rel'];
+					}
+
 					if(!empty($layer['props']['title'])) {
-						$layerAttributes['title'] = $layer['props']['title']; }
+						$layerAttributes['title'] = $layer['props']['title'];
+					}
+
+					if( isset( $layer['props']['tabindex']) && $layer['props']['tabindex'] !== '' ) {
+						$layerAttributes['tabindex'] = $layer['props']['tabindex'];
+					}
+
 				} else {
 					if(!empty($layer['props']['title'])) {
-						$innerAttributes['title'] = $layer['props']['title']; }
+						$innerAttributes['title'] = $layer['props']['title'];
+					}
+
+					if( isset( $layer['props']['tabindex']) && $layer['props']['tabindex'] !== '' ) {
+						$innerAttributes['tabindex'] = $layer['props']['tabindex'];
+					}
 				}
 
 
@@ -618,12 +725,34 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 				if( ! empty( $layer['props']['styles']['background-color'] ) && strstr( $layer['props']['styles']['background-color'], 'gradient' ) ) {
 
 					if( empty( $layer['props']['styles']['background-image'] ) ) {
-						$layer['props']['styles']['background'] = $layer['props']['styles']['background-color'];
+						$layer['props']['styles']['background-image'] = $layer['props']['styles']['background-color'];
 					} else {
 						$layer['props']['styles']['background-image'] .= ', ' . $layer['props']['styles']['background-color'];
 					}
 
 					unset( $layer['props']['styles']['background-color'] );
+				}
+
+
+				if( ! empty( $layer['props']['styles']['backdrop-filter'] ) ) {
+					$layer['props']['styles']['-webkit-backdrop-filter'] = $layer['props']['styles']['backdrop-filter'];
+				}
+
+				// v7.5.0: Browser support for background-clip
+				if( ! empty( $layer['props']['styles']['background-clip'] ) ) {
+
+					if( ! $GLOBALS['lsIsActivatedSite'] ) {
+						unset( $layer['props']['styles']['background-clip'] );
+
+					} else {
+
+						$layer['props']['styles']['-webkit-background-clip'] = $layer['props']['styles']['background-clip'];
+
+						if( $layer['props']['styles']['background-clip'] === 'text' ) {
+							$layer['props']['styles']['text-fill-color'] = 'transparent';
+							$layer['props']['styles']['-webkit-text-fill-color'] = 'transparent';
+						}
+					}
 				}
 
 
@@ -678,7 +807,15 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 				}
 
 				if( ! empty( $layer['props']['actions'] ) ) {
-					$el->attr('data-ls-actions', json_encode( $layer['props']['actions']) );
+
+					$actionsString = json_encode( $layer['props']['actions']);
+
+					$el->attr('data-ls-actions', $actionsString );
+
+					if( strpos( $actionsString, 'openPopup' ) !== false ) {
+						$GLOBALS['lsInitAjaxURL'] = true;
+						$GLOBALS['lsLoadPlugins'][] = 'popup';
+					}
 				}
 
 				if( $svgIB ) {
@@ -763,6 +900,11 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 
 // End of slider container
 $lsMarkup[] = '</div>';
+
+// End of scene wrapper
+if( $needsSceneWrapper ) {
+	$lsMarkup[] = '</ls-scene-wrapper>';
+}
 
 // End of Popup wrapper
 if( !empty($slides['properties']['attrs']['type']) && $slides['properties']['attrs']['type'] === 'popup' ) {

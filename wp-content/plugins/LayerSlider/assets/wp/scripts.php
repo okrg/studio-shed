@@ -131,9 +131,9 @@ function ls_enqueue_slider_library() {
 
 	// Dependencies: LS Utils & Kreatura Modal Window
 	wp_enqueue_script('layerslider-utils', LS_ROOT_URL.'/static/layerslider/js/layerslider.utils.js', ['jquery'], LS_PLUGIN_VERSION );
-	wp_enqueue_style('kreatura-modal-window', LS_ROOT_URL.'/static/kmw/css/kmw.css', false, LS_PLUGIN_VERSION );
-	wp_enqueue_style('kreatura-modal-window-utils', LS_ROOT_URL.'/static/kmw/css/kmw-utils.css', false, LS_PLUGIN_VERSION );
-	wp_enqueue_script('kreatura-modal-window', LS_ROOT_URL.'/static/kmw/js/kmw.js', ['jquery'], LS_PLUGIN_VERSION );
+	wp_enqueue_style('kreatura-modal', LS_ROOT_URL.'/static/kmw/css/kmw.css', false, LS_PLUGIN_VERSION );
+	wp_enqueue_style('kreatura-modal-utils', LS_ROOT_URL.'/static/kmw/css/kmw-utils.css', false, LS_PLUGIN_VERSION );
+	wp_enqueue_script('kreatura-modal', LS_ROOT_URL.'/static/kmw/js/kmw.js', ['jquery'], LS_PLUGIN_VERSION );
 
 	// Slider Library files
 	wp_enqueue_style('layerslider-slider-library', LS_ROOT_URL.'/static/admin/css/project-library.css', false, LS_PLUGIN_VERSION );
@@ -372,12 +372,12 @@ function layerslider_enqueue_admin_res() {
 		wp_enqueue_script('layerslider-utils', LS_ROOT_URL.'/static/layerslider/js/layerslider.utils.js', ['jquery'], LS_PLUGIN_VERSION );
 		wp_register_script('popper', LS_ROOT_URL.'/static/popper/popper.min.js', false, '2.6.0' );
 		wp_register_script('kreaturamedia-ui', LS_ROOT_URL.'/static/admin/js/km-ui.js', ['jquery', 'popper'], LS_PLUGIN_VERSION );
-		wp_enqueue_script('kreatura-modal-window', LS_ROOT_URL.'/static/kmw/js/kmw.js', ['jquery'], LS_PLUGIN_VERSION );
+		wp_enqueue_script('kreatura-modal', LS_ROOT_URL.'/static/kmw/js/kmw.js', ['jquery'], LS_PLUGIN_VERSION );
 		wp_enqueue_script('km-tabs', LS_ROOT_URL.'/static/kmw/js/km-tabs.js', ['jquery'], LS_PLUGIN_VERSION );
-		wp_enqueue_script('ls-common', LS_ROOT_URL.'/static/admin/js/ls-common.js', ['jquery', 'updates'], LS_PLUGIN_VERSION, true );
+		wp_enqueue_script('ls-common', LS_ROOT_URL.'/static/admin/js/ls-common-min.js', ['jquery', 'updates'], LS_PLUGIN_VERSION, true );
 
-		wp_enqueue_style('kreatura-modal-window', LS_ROOT_URL.'/static/kmw/css/kmw.css', false, LS_PLUGIN_VERSION );
-		wp_enqueue_style('kreatura-modal-window-utils', LS_ROOT_URL.'/static/kmw/css/kmw-utils.css', false, LS_PLUGIN_VERSION );
+		wp_enqueue_style('kreatura-modal', LS_ROOT_URL.'/static/kmw/css/kmw.css', false, LS_PLUGIN_VERSION );
+		wp_enqueue_style('kreatura-modal-utils', LS_ROOT_URL.'/static/kmw/css/kmw-utils.css', false, LS_PLUGIN_VERSION );
 		wp_enqueue_style('km-tabs', LS_ROOT_URL.'/static/kmw/css/km-tabs.css', false, LS_PLUGIN_VERSION );
 		wp_enqueue_style('kreatura-tabs', LS_ROOT_URL.'/static/admin/css/km-tabs.css', false, LS_PLUGIN_VERSION );
 
@@ -611,7 +611,7 @@ function ls_meta_generator() {
 	}
 
 
-	$str = '<meta name="generator" content="Powered by LayerSlider '.LS_PLUGIN_VERSION.' - Multi-Purpose, Responsive, Parallax, Mobile-Friendly Slider Plugin for WordPress." />' . NL;
+	$str = '<meta name="generator" content="Powered by LayerSlider '.LS_PLUGIN_VERSION.' - Build Heros, Sliders, and Popups. Create Animations and Beautiful, Rich Web Content as Easy as Never Before on WordPress." />' . NL;
 	$str.= '<!-- LayerSlider updates and docs at: https://layerslider.com -->' . NL;
 
 	echo apply_filters('ls_meta_generator', $str);

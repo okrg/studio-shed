@@ -421,15 +421,6 @@ if ( ! class_exists( 'IG_ES_Onboarding' ) ) {
 				'status' => 'error',
 			);
 
-			$default_list = ES()->lists_db->get_list_by_name( IG_DEFAULT_LIST );
-			// Check if list already not exists.
-			if ( empty( $default_list['id'] ) ) {
-				// Add default list.
-				$default_list_id = ES()->lists_db->add_list( IG_DEFAULT_LIST );
-			} else {
-				$default_list_id = $default_list['id'];
-			}
-
 			$main_list = ES()->lists_db->get_list_by_name( IG_MAIN_LIST );
 			// Check if list already not exists.
 			if ( empty( $main_list['id'] ) ) {
@@ -437,6 +428,15 @@ if ( ! class_exists( 'IG_ES_Onboarding' ) ) {
 				$main_list_id = ES()->lists_db->add_list( IG_MAIN_LIST );
 			} else {
 				$main_list_id = $main_list['id'];
+			}
+			
+			$default_list = ES()->lists_db->get_list_by_name( IG_DEFAULT_LIST );
+			// Check if list already not exists.
+			if ( empty( $default_list['id'] ) ) {
+				// Add default list.
+				$default_list_id = ES()->lists_db->add_list( IG_DEFAULT_LIST );
+			} else {
+				$default_list_id = $default_list['id'];
 			}
 
 			// Check if lists created successfully.
@@ -472,13 +472,14 @@ if ( ! class_exists( 'IG_ES_Onboarding' ) ) {
 				$main_list_id = $main_list['id'];
 			}
 
-			// Get contact data for admin
+			// Get contact data for 
 			$admin_email = get_option( 'admin_email' );
-			$admin_name  = get_option( 'admin_email' );
 			$user        = get_user_by( 'email', $admin_email );
+			$admin_name  = '';			
 			$wp_user_id  = 0;
 			if ( $user instanceof WP_User ) {
 				$wp_user_id = $user->ID;
+				$admin_name = $user->display_name;
 			}
 
 			// Prepare admin contact data.
@@ -813,12 +814,12 @@ if ( ! class_exists( 'IG_ES_Onboarding' ) ) {
 
 			// First Create Default Template.
 			// Start-IG-Code.
-			$sample = '<strong style="color: #990000">What can you achieve using Email Subscribers?</strong><p>Add subscription forms on website, send HTML newsletters & automatically notify subscribers about new blog posts once it is published.';
+			$sample = '<strong style="color: #990000">What can you achieve using Icegram Express?</strong><p>Add subscription forms on website, send HTML newsletters & automatically notify subscribers about new blog posts once it is published.';
 			// End-IG-Code.
 			// Start-Woo-Code.
-			$sample = '<strong style="color: #990000">What can you achieve using Email Subscribers?</strong><p>Add subscription forms on website, send HTML newsletters.';
+			$sample = '<strong style="color: #990000">What can you achieve using Icegram Express?</strong><p>Add subscription forms on website, send HTML newsletters.';
 			// End-Woo-Code.
-			$sample .= ' You can also Import or Export subscribers from any list to Email Subscribers.</p>';
+			$sample .= ' You can also Import or Export subscribers from any list to Icegram Express.</p>';
 			$sample .= ' <strong style="color: #990000">Plugin Features</strong><ol>';
 			// Start-IG-Code.
 			$sample .= ' <li>Send notification emails to subscribers when new blog posts are published.</li>';
@@ -833,21 +834,8 @@ if ( ! class_exists( 'IG_ES_Onboarding' ) ) {
 			$sample .= ' </ol>';
 			$sample .= ' <strong>Thanks & Regards,</strong><br/>Admin<br/>';
 
-			$title   = esc_html__( 'Welcome To Email Subscribers', 'email-subscribers' );
-			$subject = esc_html__( 'Welcome To Email Subscribers', 'email-subscribers' );
-
-			$es_post = array(
-				'post_title'   => $title,
-				'post_content' => $sample,
-				'post_status'  => 'publish',
-				'post_type'    => 'es_template',
-				'meta_input'   => array(
-					'es_template_type' => 'newsletter',
-				),
-			);
-
-			// Insert the post into the database
-			$post_id = wp_insert_post( $es_post );
+			$title   = esc_html__( 'Welcome To Icegram Express', 'email-subscribers' );
+			$subject = esc_html__( 'Welcome To Icegram Express', 'email-subscribers' );
 
 			// Create Broadcast Campaign
 
@@ -856,44 +844,40 @@ if ( ! class_exists( 'IG_ES_Onboarding' ) ) {
 			if ( ! empty( $default_list ) ) {
 				$list_id = $default_list['id'];
 
-				if ( ! empty( $post_id ) ) {
+				$data['slug']             = sanitize_title( $title );
+				$data['name']             = $title;
+				$data['subject']          = $subject;
+				$data['type']             = IG_CAMPAIGN_TYPE_NEWSLETTER;
+				$data['from_email']       = $from_email;
+				$data['reply_to_email']   = $from_email;
+				$data['from_name']        = $from_name;
+				$data['reply_to_name']    = $from_name;
+				$data['body']             = $sample;
+				$data['status']           = 1;
 
-					$data['slug']             = sanitize_title( $title );
-					$data['name']             = $title;
-					$data['subject']          = $subject;
-					$data['type']             = IG_CAMPAIGN_TYPE_NEWSLETTER;
-					$data['from_email']       = $from_email;
-					$data['reply_to_email']   = $from_email;
-					$data['from_name']        = $from_name;
-					$data['reply_to_name']    = $from_name;
-					$data['base_template_id'] = $post_id;
-					$data['body']             = $sample;
-					$data['status']           = 1;
-
-					$meta = array(
-						'enable_open_tracking' => ES()->mailer->can_track_open() ? 'yes' : 'no',
-						'enable_link_tracking' => ES()->mailer->can_track_clicks() ? 'yes' : 'no',
-						'list_conditions' => array(
+				$meta = array(
+					'enable_open_tracking' => ES()->mailer->can_track_open() ? 'yes' : 'no',
+					'enable_link_tracking' => ES()->mailer->can_track_clicks() ? 'yes' : 'no',
+					'list_conditions' => array(
+						array(
 							array(
-								array(
-									'field'    => '_lists__in',
-									'operator' => 'is',
-									'value'    => $list_id,
-								)
-							),
+								'field'    => '_lists__in',
+								'operator' => 'is',
+								'value'    => $list_id,
+							)
 						),
+					),
+				);
+
+				$data['meta'] = maybe_serialize( $meta );
+
+				$broadcast_id = ES()->campaigns_db->save_campaign( $data );
+
+				if ( $broadcast_id ) {
+					$response['status']     = 'success';
+					$response['tasks_data'] = array(
+						'broadcast_id' => $broadcast_id,
 					);
-
-					$data['meta'] = maybe_serialize( $meta );
-
-					$broadcast_id = ES()->campaigns_db->save_campaign( $data );
-
-					if ( $broadcast_id ) {
-						$response['status']     = 'success';
-						$response['tasks_data'] = array(
-							'broadcast_id' => $broadcast_id,
-						);
-					}
 				}
 			}
 
@@ -1118,76 +1102,61 @@ if ( ! class_exists( 'IG_ES_Onboarding' ) ) {
 			$content .= 'You received this email because in the past you have provided us your email address : {{EMAIL}} to receive notifications when new updates are posted.';
 
 			$title = esc_html__( 'New Post Published - {{POSTTITLE}}', 'email-subscribers' );
-			// Create Post Notification object
-			$post = array(
-				'post_title'   => $title,
-				'post_content' => $content,
-				'post_status'  => 'publish',
-				'post_type'    => 'es_template',
-				'meta_input'   => array(
-					'es_template_type' => 'post_notification',
-				),
-			);
-			// Insert the post into the database
-			$post_id = wp_insert_post( $post );
 
 			$default_list = ES()->lists_db->get_list_by_name( IG_DEFAULT_LIST );
 
-			if ( ! empty( $post_id ) ) {
-				$list_id = $default_list['id'];
+			$list_id = $default_list['id'];
 
-				$categories_objects = get_terms(
-					array(
-						'taxonomy'   => 'category',
-						'hide_empty' => false,
-					)
-				);
+			$categories_objects = get_terms(
+				array(
+					'taxonomy'   => 'category',
+					'hide_empty' => false,
+				)
+			);
 
-				$categories = array();
-				if ( count( $categories_objects ) > 0 ) {
-					foreach ( $categories_objects as $category ) {
-						if ( $category instanceof WP_Term ) {
-							$categories[] = $category->term_id;
-						}
+			$categories = array();
+			if ( count( $categories_objects ) > 0 ) {
+				foreach ( $categories_objects as $category ) {
+					if ( $category instanceof WP_Term ) {
+						$categories[] = $category->term_id;
 					}
 				}
+			}
 
-				$meta = array(
-					'list_conditions' => array(
+			$meta = array(
+				'list_conditions' => array(
+					array(
 						array(
-							array(
-								'field'    => '_lists__in',
-								'operator' => 'is',
-								'value'    => $list_id,
-							)
-						),
+							'field'    => '_lists__in',
+							'operator' => 'is',
+							'value'    => $list_id,
+						)
 					),
+				),
+			);
+
+			$categories_str = ES_Common::convert_categories_array_to_string( $categories );
+
+			$data['slug']             = sanitize_title( $title );
+			$data['name']             = $title;
+			$data['subject']          = $title;
+			$data['body']             = $content;
+			$data['type']             = IG_CAMPAIGN_TYPE_POST_NOTIFICATION;
+			$data['from_email']       = $from_name;
+			$data['reply_to_email']   = $from_name;
+			$data['from_name']        = $from_email;
+			$data['reply_to_name']    = $from_email;
+			$data['categories']       = $categories_str;
+			$data['list_ids']         = $list_id;
+			$data['status']           = 0;
+			$data['meta']             = maybe_serialize( $meta );
+
+			$post_notification_id = ES()->campaigns_db->save_campaign( $data );
+			if ( $post_notification_id ) {
+				$response['status']     = 'success';
+				$response['tasks_data'] = array(
+					'post_notification_id' => $post_notification_id,
 				);
-
-				$categories_str = ES_Common::convert_categories_array_to_string( $categories );
-
-				$data['slug']             = sanitize_title( $title );
-				$data['name']             = $title;
-				$data['subject']          = $title;
-				$data['body']             = $content;
-				$data['type']             = IG_CAMPAIGN_TYPE_POST_NOTIFICATION;
-				$data['from_email']       = $from_name;
-				$data['reply_to_email']   = $from_name;
-				$data['from_name']        = $from_email;
-				$data['reply_to_name']    = $from_email;
-				$data['categories']       = $categories_str;
-				$data['list_ids']         = $list_id;
-				$data['base_template_id'] = $post_id;
-				$data['status']           = 0;
-				$data['meta']             = maybe_serialize( $meta );
-
-				$post_notification_id = ES()->campaigns_db->save_campaign( $data );
-				if ( $post_notification_id ) {
-					$response['status']     = 'success';
-					$response['tasks_data'] = array(
-						'post_notification_id' => $post_notification_id,
-					);
-				}
 			}
 
 			return $response;

@@ -22,7 +22,16 @@ class LS_FileSystem {
 
 		} elseif( is_dir( $path ) ) {
 			$path = rtrim( $path, '/' );
-			$scan = glob( $path.'/{*,.[!.]*,..?*}*', GLOB_BRACE );
+
+			// Attempt to also find hidden files
+			if( defined('GLOB_BRACE') ) {
+				$scan = glob( $path.'/{*,.[!.]*,..?*}*', GLOB_BRACE );
+
+			// Fallback if PHP version does not support GLOB_BRACE
+			} else {
+				$scan = glob( $path.'/*' );
+			}
+
 			foreach( $scan as $index => $item) {
 				self::emptyDir( $item );
 			}

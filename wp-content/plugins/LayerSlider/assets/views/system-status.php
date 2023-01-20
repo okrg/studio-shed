@@ -17,6 +17,8 @@ $isAdmin 	= current_user_can('manage_options');
 
 $notifications = [
 
+	'revertToRecommendedSettings' => __('Reverted to recommended settings.'),
+
 	'dbUpdateSuccess' => __('LayerSlider has attempted to update your database. Server restrictions may apply, please verify whether it was successful.', 'LayerSlider'),
 
 	'clearGroupsSuccess' => __('Groups have been removed. All projects are now moved to the main grid where they remain available to you.', 'LayerSlider')
@@ -72,11 +74,10 @@ include LS_ROOT_PATH . '/includes/ls_global.php';
 		<ls-box>
 
 			<ls-p>
-				<?= __('This page is intended to help you identifying possible issues and to display relevant debug information about your site.', 'LayerSlider') ?>
-				<?= __('Whenever a potential issues is detected, it will be marked with red or orange text describing the nature of that issue.', 'LayerSlider') ?>
+				<?= __('This page is intended to help you identify possible issues and to display relevant debug information about your site. Whenever a potential issue is detected, it will be marked with red or orange text describing the nature of that issue.', 'LayerSlider') ?>
 			</ls-p>
 			<ls-p class="ls--strong">
-				<?= __('Please keep in mind that in most cases only your web hosting company can change server settings, thus you should contact them with the messages provided (if any).', 'LayerSlider') ?>
+				<?= __('Please keep in mind that in most cases, only your web hosting company can change server settings; thus, you should contact them with the messages provided (if any).', 'LayerSlider') ?>
 
 			</ls-p>
 		</ls-box>
@@ -99,7 +100,7 @@ include LS_ROOT_PATH . '/includes/ls_global.php';
 				<table class="ls--table ls--striped">
 					<thead>
 						<tr>
-							<th colspan="4"><?= __('Available Updates', 'LayerSlider') ?></th>
+							<th colspan="4"><?= __('Updates & Online Services', 'LayerSlider') ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -109,7 +110,15 @@ include LS_ROOT_PATH . '/includes/ls_global.php';
 							<td><?= ! $authorized ?  __('Not set', 'LayerSlider') :  __('Activated', 'LayerSlider') ?></td>
 							<td>
 								<?php if( ! $authorized ) : ?>
-								<ls-span><?= sprintf(__('Register your LayerSlider license for auto-updates so you can always use the latest release with all the new features and bug fixes. %sClick here to learn more%s.', 'LayerSlider'), '<a href="https://layerslider.com/documentation/#activation" target="_blank">', '</a>') ?></ls-span>
+								<ls-span><?= __('Register your LayerSlider license for auto-updates so you can always use the latest release with all the new features and bug fixes.') ?></ls-span>
+								<ls-div class="ls--text-right ls--mt-2">
+									<a href="https://layerslider.com/documentation/#activation" target="_blank" class="ls--mb-1 ls--mr-1 ls--button ls--small ls--bg-light"><?= __('Learn More', 'LayerSlider') ?></a>
+
+									<a href="<?= admin_url('admin.php?page=layerslider#activationBox') ?>" class="ls--mb-1 ls--mr-1 ls--button ls--small ls--bg-light"><?= __('Register License', 'LayerSlider') ?></a>
+
+									<a href="<?= LS_Config::get('purchase_url') ?>" target="_blank" class="ls--mb-1 ls--button ls--small ls--bg-light"><?= __('Get License', 'LayerSlider') ?></a>
+
+								</ls-div>
 								<?php endif ?>
 							</td>
 						</tr>
@@ -125,28 +134,6 @@ include LS_ROOT_PATH . '/includes/ls_global.php';
 								<?php if( ! $test ) : ?>
 								<ls-span><?= sprintf( __('Update to latest version (%1$s), as we are constantly working on new features, improvements and bug fixes.', 'LayerSlider'), $latest) ?></ls-span>
 								<?php endif ?>
-							</td>
-						</tr>
-
-						<?php $test = layerslider_verify_db_tables(); ?>
-						<tr class="<?= ! $test ? 'ls--error' : '' ?>">
-							<td><?= __('LayerSlider database:', 'LayerSlider') ?></td>
-							<td><?= lsGetSVGIcon( ! $test ? 'exclamation-triangle' : 'check' ) ?></td>
-							<td><?= ! $test ? __('Error', 'LayerSlider') : __('OK', 'LayerSlider') ?></td>
-							<td class="ls--pb-0">
-									<?php if( ! $test ) : ?>
-									<ls-div class="ls--mb-2">
-										<ls-span><?= __('Your database needs an update in order for LayerSlider to work properly. Please press the ’Update Database’ button on the right. If this does not help, you need to contact your web server hosting company to fix any issue preventing plugins creating and updating database tables.', 'LayerSlider') ?></ls-span>
-									</ls-div>
-
-									<?php endif ?>
-
-									<ls-div class="ls--text-right">
-										<a href="<?= wp_nonce_url( admin_url('admin.php?page=layerslider&section=system-status&action=clear_groups'), 'clear_groups') ?>" class="ls--mb-1 ls--button ls--small ls--bg-light ls-clear-groups-button"><?= __('Clear Groups', 'LayerSlider') ?></a>
-
-										<a href="<?= wp_nonce_url( admin_url('admin.php?page=layerslider&section=system-status&action=database_update'), 'database_update') ?>" class="ls--mb-1 ls--ml-1 ls--button ls--small ls--bg-light"><?= __('Update Database', 'LayerSlider') ?></a>
-									</ls-div>
-
 							</td>
 						</tr>
 
@@ -183,6 +170,28 @@ include LS_ROOT_PATH . '/includes/ls_global.php';
 					</thead>
 					<tbody>
 
+						<?php $test = layerslider_verify_db_tables(); ?>
+						<tr class="<?= ! $test ? 'ls--error' : '' ?>">
+							<td><?= __('LayerSlider database:', 'LayerSlider') ?></td>
+							<td><?= lsGetSVGIcon( ! $test ? 'exclamation-triangle' : 'check' ) ?></td>
+							<td><?= ! $test ? __('Error', 'LayerSlider') : __('OK', 'LayerSlider') ?></td>
+							<td class="ls--pb-0">
+									<?php if( ! $test ) : ?>
+									<ls-div class="ls--mb-2">
+										<ls-span><?= __('Your database needs an update in order for LayerSlider to work properly. Please press the ’Update Database’ button below. If this does not help, you need to contact your web server hosting company to fix any issue preventing plugins from creating and updating database tables.', 'LayerSlider') ?></ls-span>
+									</ls-div>
+
+									<?php endif ?>
+
+									<ls-div class="ls--text-right">
+										<a href="<?= wp_nonce_url( admin_url('admin.php?page=layerslider&section=system-status&action=clear_groups'), 'clear_groups') ?>" class="ls--mb-1 ls--button ls--small ls--bg-light ls-clear-groups-button"><?= __('Clear Groups', 'LayerSlider') ?></a>
+
+										<a href="<?= wp_nonce_url( admin_url('admin.php?page=layerslider&section=system-status&action=database_update'), 'database_update') ?>" class="ls--mb-1 ls--ml-1 ls--button ls--small ls--bg-light"><?= __('Update Database', 'LayerSlider') ?></a>
+									</ls-div>
+
+							</td>
+						</tr>
+
 
 						<?php
 
@@ -206,20 +215,6 @@ include LS_ROOT_PATH . '/includes/ls_global.php';
 						<?php endif ?>
 
 
-						<?php $test = defined('WP_DEBUG') && WP_DEBUG; ?>
-						<tr class="<?= ! $test ? 'ls--info' : '' ?>">
-							<td><?= __('WP Debug Mode:', 'LayerSlider') ?></td>
-							<td><?= lsGetSVGIcon( ! $test ? 'info-circle' : 'check' ) ?></td>
-							<td><?= ! $test ? __('Disabled', 'LayerSlider') : __('Enabled', 'LayerSlider') ?></td>
-							<td>
-								<?php if( ! $test ) : ?>
-								<ls-span>
-									<?= __('If you experience any issue, we recommend enabling the WP Debug mode while debugging.', 'LayerSlider') ?>
-									<?= '<a href="https://wordpress.org/support/article/debugging-in-wordpress/" target="_blank">'. __('Click here to learn more', 'LayerSlider') .'</a>' ?>
-								</ls-span>
-								<?php endif ?>
-							</td>
-						</tr>
 
 
 						<?php
@@ -236,8 +231,10 @@ include LS_ROOT_PATH . '/includes/ls_global.php';
 								<?php if( ! $test ) : ?>
 								<ls-span>
 									<?= __('LayerSlider uses the uploads directory for image uploads, exporting/importing projects, and downloading modules. Make sure that your /wp-content/uploads/ directory exists and has write permission.', 'LayerSlider') ?>
-									<?= '<a href="http://www.wpbeginner.com/wp-tutorials/how-to-fix-image-upload-issue-in-wordpress/" target="_blank">'. __('Click here to learn more', 'LayerSlider') .'</a>' ?>
 								</ls-span>
+								<ls-div class="ls--text-right ls--mt-2">
+									<a href="http://www.wpbeginner.com/wp-tutorials/how-to-fix-image-upload-issue-in-wordpress/" target="_blank" class="ls--mb-1 ls--button ls--small ls--bg-light"><?= __('Learn More', 'LayerSlider') ?></a>
+								</ls-div>
 								<?php endif ?>
 							</td>
 						</tr>
@@ -268,15 +265,111 @@ include LS_ROOT_PATH . '/includes/ls_global.php';
 							</td>
 						</tr>
 
-						<?php $test = ! get_option('ls_use_custom_jquery', false); ?>
+						<?php
+
+							$tests = [
+								'use_cache' => [
+									'default' 	=> false,
+									'name' 		=> __('Use markup caching', 'LayerSlider'),
+									'message' 	=> __('Although markup caching can increase performance, it can also interfere with localization and translation plugins or whenever LayerSlider needs to serve alternating content based on external factors. We recommend disabling this setting and using a site-wide caching plugin. This helps avoid issues while still achieving the same performance gains.', 'LayerSlider')
+								],
+
+								'clear_3rd_party_caches' => [
+									'default' 	=> true,
+									'name' 		=> __('Clear 3rd party caches', 'LayerSlider'),
+									'message' 	=> __('Enabling this option can ensure that changes to your projects are always reflected on front-end pages when using popular caching plugins.', 'LayerSlider')
+								],
+
+
+								'admin_no_conflict_mode' => [
+									'default' 	=> false,
+									'name' 		=> __('No-conflict mode', 'LayerSlider'),
+									'message' 	=> __('While “No-conflict mode” can help with issues caused by 3rd parties, it can just as easily break your site. This option should remain disabled in most cases unless you experience problems without it.', 'LayerSlider')
+								],
+
+								'gsap_sandboxing' => [
+									'default' 	=> true,
+									'name' 		=> __('Use GreenSock (GSAP) sandboxing', 'LayerSlider'),
+									'message' 	=> __('GreenSock is a popular animation engine used by many. Enabling sandboxing helps avoid issues when 3rd parties like other plugins and WordPress themes are also using GreenSock.', 'LayerSlider')
+								],
+
+								'use_custom_jquery' => [
+									'default' 	=> false,
+									'name' 		=> __('Use Google CDN version of jQuery', 'LayerSlider'),
+									'message' 	=> __('This setting should be used in very special cases only as it can break otherwise functioning sites.', 'LayerSlider')
+								]
+							];
+
+							$issues = [];
+
+							foreach( $tests as $option => $details ) {
+
+								if( $details['default'] != get_option( 'ls_'.$option, $details['default'] ) ) {
+									$issues[] = $details;
+								}
+							}
+
+							$test = empty( $issues );
+
+						?>
+
 						<tr class="<?= ! $test ? 'ls--warning' : '' ?>">
 
-							<td><?= __('jQuery Google CDN:', 'LayerSlider') ?></td>
+							<td><?= __('Recommended settings:', 'LayerSlider') ?></td>
 							<td><?= lsGetSVGIcon( ! $test ? 'exclamation-triangle' : 'check' ) ?></td>
-							<td><?= ! $test ? __('Enabled', 'LayerSlider') : __('Disabled', 'LayerSlider') ?></td>
+							<td><?= ! $test ? __('Warning', 'LayerSlider') : __('OK', 'LayerSlider') ?></td>
+							<td class="ls--pb-0">
+									<?php if( ! $test ) : ?>
+									<ls-div class="ls--mb-2">
+										<ls-span><?= __('The following LayerSlider settings deviate from what’s recommended. These settings can cause all sorts of issues if misused, but they can also be necessary in cases. If you’re experiencing problems, we encourage reverting to the recommended settings with the button below. This action will not touch your projects, so you don’t have to worry about data loss.', 'LayerSlider') ?></ls-span>
+
+										<?php
+
+										if( ! empty( $issues ) ) {
+											foreach( $issues as $issue ) {
+												echo '<ls-p><ls-strong>', $issue['name'], '</ls-strong> ', $issue['message'], '</ls-p>';
+											}
+										}
+										?>
+									</ls-div>
+
+									<?php endif ?>
+
+									<?php if( ! $test ) : ?>
+									<ls-div class="ls--text-right">
+										<a href="<?= wp_nonce_url( admin_url('admin.php?page=layerslider&section=system-status&action=use_recommended_settings'), 'use_recommended_settings') ?>" class="ls--mb-1 ls--ml-1 ls--button ls--small ls--bg-light"><?= __('Use Recommended Settings', 'LayerSlider') ?></a>
+									</ls-div>
+									<?php endif ?>
+
+							</td>
+						</tr>
+
+						<tr class="ls--info">
+							<td><?= __('LocalStorage', 'LayerSlider') ?></td>
+							<td><?= lsGetSVGIcon('info-circle') ?></td>
+							<td><?= __('Info', 'LayerSlider') ?></td>
+							<td>
+								<?= __('If you experience issues in the project editor, especially a broken interface, clearing the web browser’s LocalStorage might help resolve that.', 'LayerSlider') ?>
+								<ls-div class="ls--text-right ls--mt-2">
+									<a class="ls--mb-1 ls--button ls--small ls--bg-light ls-clear-localstorage-button"><?= __('Clear LocalStorage', 'LayerSlider') ?></a>
+								</ls-div>
+							</td>
+						</tr>
+
+						<?php $test = defined('WP_DEBUG') && WP_DEBUG; ?>
+						<tr class="<?= ! $test ? 'ls--info' : '' ?>">
+							<td><?= __('WP Debug Mode:', 'LayerSlider') ?></td>
+							<td><?= lsGetSVGIcon( ! $test ? 'info-circle' : 'check' ) ?></td>
+							<td><?= ! $test ? __('Disabled', 'LayerSlider') : __('Enabled', 'LayerSlider') ?></td>
 							<td>
 								<?php if( ! $test ) : ?>
-								<ls-span><?= __('Should be used in special cases only, as it can break otherwise functioning sites. This option is located on the main LayerSlider admin screen under the Advanced tab.', 'LayerSlider') ?></ls-span>
+								<ls-span>
+									<?= __('If you experience any issue, we recommend enabling the WP Debug mode while debugging.', 'LayerSlider') ?>
+								</ls-span>
+								<ls-div class="ls--text-right ls--mt-2">
+									<a target="_blank" href="https://wordpress.org/support/article/debugging-in-wordpress/" class="ls--mb-1 ls--button ls--small ls--bg-light"><?= __('Learn More', 'LayerSlider') ?>
+									</a>
+								</ls-div>
 								<?php endif ?>
 							</td>
 						</tr>
@@ -524,11 +617,36 @@ include LS_ROOT_PATH . '/includes/ls_global.php';
 
 			jQuery('.ls-clear-groups-button').click( function( event ) {
 
-				if( ! confirm( LS_l10n.SSClearGroupsConfirmation ) ) {
-					event.preventDefault();
-				}
+				event.preventDefault();
+				lsCommon.smartAlert.confirm( LS_l10n.SSClearGroupsConfirmation, () => {
+					document.location.href = jQuery( this ).attr('href');
+				});
+			});
+
+
+			jQuery('.ls-clear-localstorage-button').click( function() {
+
+				lsCommon.smartAlert.confirm( LS_l10n.SSClearLocalStorageConfirmation, () => {
+
+					let items = [
+						'lsEditor',
+						'lse-layer-clipboard',
+						'lse-layer-options-clipboard',
+						'lse-scroll-transition-preview-warning-count',
+						'lse-welcome-guide-completed',
+						'lse-welcome-guide-warned',
+						'lse-menu-more-displayed',
+						'lse-media-autoplay-notification',
+						'iGuider_data-anyTourID',
+						'lsExportHTMLWarning'
+					];
+
+					items.forEach( item => window.localStorage.removeItem( item ) );
+				});
 			});
 
 		});
 	</script>
 </div>
+
+<?php include LS_ROOT_PATH . '/templates/tmpl-smart-alert.php'; ?>
