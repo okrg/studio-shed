@@ -224,8 +224,8 @@
           });
         </script>
         <div class="flex space-x-12 mt-24">
-          <img src="/assets/images/footer-shipping.png" alt="Studio Ships to all 50 states">
-          <img src="/assets/images/footer-houzz-badge.png" alt="Studio Shed design award by Houzz">
+          <img src="/assets/images/footer-shipping.png" class="self-center w-32 h-auto" alt="Studio Ships to all 50 states">
+          <img src="/assets/images/footer-houzz-badge.png" class="self-center w-20 h-auto" alt="Studio Shed design award by Houzz">
         </div>
       </div>
     </div>
