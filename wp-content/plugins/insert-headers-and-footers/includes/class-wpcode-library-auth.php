@@ -53,6 +53,11 @@ class WPCode_Library_Auth {
 	 */
 	public function ajax_auth_url() {
 		check_ajax_referer( 'wpcode_admin' );
+
+		if ( ! current_user_can( 'wpcode_activate_snippets' ) ) {
+			wp_send_json_error( esc_html__( 'You do not have permissions to connect WPCode to the library.', 'insert-headers-and-footers' ) );
+		}
+
 		$site_name = get_bloginfo( 'name' );
 		if ( empty( $site_name ) ) {
 			$site_name = __( 'Your WordPress Site', 'insert-headers-and-footers' );
@@ -95,6 +100,10 @@ class WPCode_Library_Auth {
 	 */
 	public function store_auth_key() {
 		check_ajax_referer( 'wpcode_admin' );
+
+		if ( ! current_user_can( 'wpcode_activate_snippets' ) ) {
+			wp_send_json_error( esc_html__( 'You do not have permissions to connect WPCode to the library.', 'insert-headers-and-footers' ) );
+		}
 
 		$key               = ! empty( $_POST['key'] ) ? sanitize_key( $_POST['key'] ) : false;
 		$username          = ! empty( $_POST['username'] ) ? sanitize_user( wp_unslash( $_POST['username'] ) ) : false;
@@ -143,6 +152,10 @@ class WPCode_Library_Auth {
 	 */
 	public function delete_auth() {
 		check_ajax_referer( 'wpcode_admin' );
+
+		if ( ! current_user_can( 'wpcode_activate_snippets' ) ) {
+			wp_send_json_error( esc_html__( 'You do not have permissions to connect WPCode to the library.', 'insert-headers-and-footers' ) );
+		}
 
 		if ( delete_option( 'wpcode_library_api_auth' ) ) {
 			do_action( 'wpcode_library_api_auth_deleted' );

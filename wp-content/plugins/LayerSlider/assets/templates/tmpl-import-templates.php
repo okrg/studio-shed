@@ -42,6 +42,7 @@ function lsPrintTemplateGridItems( $originalCategory, $items, $max = 9999, $excl
 			break;
 		}
 
+		$item['order'] 			= ! empty( $item['released'] ) ? str_replace('-', '', $item['released']) : '19700101';
 		$item['collections'] 	= ! empty( $item['collections'] ) ? $item['collections'] : '';
 		$item['bundled'] 		= ! empty( $item['bundled'] ) ? 'true' : 'false';
 		$item['premium'] 		= ! empty( $item['premium'] ) ? 'true' : 'false';
@@ -49,7 +50,7 @@ function lsPrintTemplateGridItems( $originalCategory, $items, $max = 9999, $excl
 		$item['warning'] 		= version_compare( $item['requires'], LS_PLUGIN_VERSION, '>') ? 'true' : 'false';
 
 	?>
-	<ls-template data-groups="<?= $item['groups'] ?>" data-collections="<?= $item['collections'] ?>">
+	<ls-template data-groups="<?= $item['groups'] ?>" data-collections="<?= $item['collections'] ?>" data-order="<?= $item['order'] ?>">
 		<ls-wrapper>
 			<ls-image-holder style="background-image: url(<?= $item['preview'] ?>);"></ls-image-holder>
 			<ls-content-wrapper>
@@ -223,12 +224,14 @@ function lsPrintTemplateGridItems( $originalCategory, $items, $max = 9999, $excl
 
 					<?php foreach( $lsStoreData['categories'] as $categoryKey => $category ) : ?>
 					<ls-templates-title>
-						<ls-ib class="ls--float-left"><?= sprintf( _x('Latest %s', 'Templates category (eg. Latest Sliders)', 'LayerSlider'), $category['name-alt'] ) ?></ls-ib>
-						<ls-ib class="ls--float-right" data-show-category="<?= $categoryKey ?>"><?= __('See All', 'LayerSlider') ?></ls-ib>
+						<ls-ib><?= sprintf( _x('Latest %s', 'Templates category (eg. Latest Sliders)', 'LayerSlider'), $category['name-alt'] ) ?></ls-ib>
 					</ls-templates-title>
 					<ls-templates-holder class="ls--clear ls--templates-list ls--grid-filter">
 						<?php lsPrintTemplateGridItems( $categoryKey, $category['items'], 9, $lsStoreData['new']['handles'] ) ?>
 					</ls-templates-holder>
+					<ls-templates-button-holder>
+						<ls-ib class="ls--button ls--show-all" data-show-category="<?= $categoryKey ?>"><?= __('Show All', 'LayerSlider') ?></ls-ib>
+					</ls-templates-button-holder>
 					<?php endforeach ?>
 
 

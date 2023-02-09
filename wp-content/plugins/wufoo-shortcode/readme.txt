@@ -1,13 +1,13 @@
-=== Plugin Name ===
+=== Wufoo Shortcode ===
 
-Contributors: William Collins
+Contributors: apetrevski
 Plugin Name: Wufoo Shortcode
 Plugin URI: https://www.wufoo.com
 Tags: wufoo, form, shortcode
 Requires at least: 2.6
 Tested up to: 6.0
-Stable tag: 1.47
-Version: 1.47
+Stable tag: 1.53
+Version: 1.53
 
 Allows the use of a special short code [wufoo] for embedding Wufoo forms.
 
@@ -51,6 +51,18 @@ For old school manual installation people: copy the folder "wufoo_shortcode" int
 1.46 - Fix insecure links generation
 
 1.47 - Fix hyperlink execution in forms
+
+1.48 - Fix XSS vulnerability
+
+1.49 - Minor improvements
+
+1.50 - Minor improvements
+
+1.51 - Fix XSS vulnerability
+
+1.52 - Security improvements
+
+1.53 - autoresize fix
 
 == Frequently Asked Questions ==
 

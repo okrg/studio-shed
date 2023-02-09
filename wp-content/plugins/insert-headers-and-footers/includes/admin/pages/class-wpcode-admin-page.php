@@ -657,11 +657,13 @@ abstract class WPCode_Admin_Page {
 	 * @param bool   $checked Is it checked or not.
 	 * @param string $name The name for the input.
 	 * @param string $description Field description (optional).
+	 * @param string|int $value Field value (optional).
+	 * @param string $label Field label (optional).
 	 *
 	 * @return string
 	 */
-	public function get_checkbox_toggle( $checked, $name, $description = '' ) {
-		return wpcode_get_checkbox_toggle( $checked, $name, $description );
+	public function get_checkbox_toggle( $checked, $name, $description = '', $value = '', $label = '' ) {
+		return wpcode_get_checkbox_toggle( $checked, $name, $description, $value, $label );
 	}
 
 	/**

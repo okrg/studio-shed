@@ -2,7 +2,7 @@
 /*
 	* KM-Tabs
 	*
-	* (c) 2019-2022 Kreatura Media, AgeraWeb, George K., John G.
+	* (c) 2019-2023 Kreatura Media, AgeraWeb, George K., John G.
 	*
 */
 

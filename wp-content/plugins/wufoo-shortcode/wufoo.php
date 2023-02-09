@@ -2,7 +2,7 @@
 /*
 Plugin Name: Wufoo Shortcode Plugin
 Description: Enables shortcode to embed Wufoo forms. Usage: <code>[wufoo username="chriscoyier" formhash="x7w3w3" autoresize="true" height="458" header="show" ssl="true"]</code>. This code is available to copy and paste directly from the Wufoo Code Manager.
-Version: 1.46
+Version: 1.53
 License: GPL
 Author: Wufoo
 Author URI: http://wufoo.com
@@ -10,26 +10,24 @@ Text Domain: wufoo-shortcode
 */
 
 function createWufooEmbedJS($atts, $content = null) {
-	extract(shortcode_atts(array(
-		'username'   => '',
-		'formhash'   => '',
-		'autoresize' => true,
-		'height'     => '500',
-		'header'     => 'show',
-		'ssl'        => '',
-		'defaultv'   => '',
-		'entsource'  => 'wordpress',
-	), $atts));
+	extract($atts);
 
-	if (!$username or !$formhash) {
+	$username = ctype_alnum($username) ? $username : false;
+	$formhash = ctype_alnum($formhash) ? $formhash : false;
+	$height = isset($height) && is_numeric($height) ? intval($height) : 500;
+	$header = isset($header) && ctype_alnum($header) ? $header : 'show';
+	$ssl = !isset($ssl) || $ssl;
+	$entsource = isset($entsource) && ctype_alnum($entsource) ? $entsource : 'wordpress';
+	$defaultv = isset($defaultv) ? htmlentities($defaultv, ENT_QUOTES) : '';
+	$autoresize = isset($autoresize) ? filter_var($autoresize, FILTER_VALIDATE_BOOLEAN) : true;
 
-		$error = "
+	if (!$username || !$formhash) {
+
+		return "
 		<div style='border: 20px solid red; border-radius: 40px; padding: 40px; margin: 50px 0 70px;'>
 			<h3>Uh oh!</h3>
 			<p style='margin: 0;'>Something is wrong with your Wufoo shortcode. If you copy and paste it from the <a href='https://wufoo.com/docs/code-manager/'>Wufoo Code Manager</a>, you should be golden.</p>
 		</div>";
-
-		return $error;
 
 	} else {
 
@@ -41,7 +39,7 @@ function createWufooEmbedJS($atts, $content = null) {
 		$JSEmbed .= "var s = d.createElement(t), options = {\n";
 		$JSEmbed .= "'userName'      : '$username',    \n";
 		$JSEmbed .= "'formHash'      : '$formhash',    \n";
-		$JSEmbed .= "'autoResize'    :  $autoresize,   \n";
+		$JSEmbed .= "'autoResize'    :  " . var_export($autoresize, true) . ",   \n";
 		$JSEmbed .= "'height'        : '$height',      \n";
 		$JSEmbed .= "'async'         :  true,          \n";
 		$JSEmbed .= "'header'        : '$header',      \n";

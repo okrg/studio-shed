@@ -823,4 +823,32 @@ class WPCode_Snippet {
 
 		return $this->device_type;
 	}
+
+	/**
+	 * @return array|false
+	 */
+	public function get_generator_data() {
+		if ( ! isset( $this->generator_data ) ) {
+			$generator_data       = get_post_meta( $this->get_id(), '_wpcode_generator_data', true );
+			$this->generator_data = empty( $generator_data ) ? false : $generator_data;
+		}
+
+		return $this->generator_data;
+	}
+
+	/**
+	 * @return array|false
+	 */
+	public function get_generator() {
+		if ( ! isset( $this->generator ) ) {
+			$generator_name  = get_post_meta( $this->get_id(), '_wpcode_generator', true );
+			$this->generator = empty( $generator_name ) ? false : $generator_name;
+		}
+
+		return $this->generator;
+	}
+
+	public function is_generated() {
+		return ! empty( $this->get_generator() );
+	}
 }

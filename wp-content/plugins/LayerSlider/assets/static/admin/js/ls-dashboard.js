@@ -729,8 +729,13 @@ jQuery(function($) {
 
 	var getCollectionItems = function( handle, name ){
 
-		$( '#ls--collection-templates' ).empty();
-		$( '.ls-template-collections-target ls-template[data-collections*=' + handle + ']' ).clone().show().appendTo( '#ls--collection-templates' );
+		$( '.ls-template-collections-target ls-template[data-collections*=' + handle + ']' )
+			.clone()
+			.show()
+			.sort( ( a, b ) => {
+				return parseInt( b.dataset.order ) - parseInt( a.dataset.order );
+			})
+			.appendTo( '#ls--collection-templates' );
 		$( '#ls--collection-title ls-ib span').text( name );
 	};
 

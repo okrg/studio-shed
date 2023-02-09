@@ -308,7 +308,7 @@ class WPCode_Admin_Page_Snippet_Manager extends WPCode_Admin_Page {
 					<?php $this->field_code_type(); ?>
 				</div>
 			</div>
-			<textarea name="wpcode_snippet_code" id="wpcode_snippet_code" class="widefat" rows="8" <?php disabled( ! current_user_can( 'unfiltered_html' ) ); ?>><?php echo esc_html( $value ); ?></textarea>
+			<textarea name="wpcode_snippet_code" id="wpcode_snippet_code" class="widefat" rows="8" <?php disabled( ! current_user_can( 'unfiltered_html' ) ); ?>><?php echo esc_textarea( $value ); ?></textarea>
 			<?php
 			wp_editor(
 				$value,
@@ -570,6 +570,10 @@ class WPCode_Admin_Page_Snippet_Manager extends WPCode_Admin_Page {
 		$this->metabox_row( __( 'Priority', 'insert-headers-and-footers' ), $this->get_input_number( 'wpcode_priority', $priority ), 'wpcode_priority' );
 		$this->metabox_row( __( 'Note', 'insert-headers-and-footers' ), $this->get_input_textarea( 'wpcode_note', $note ), 'wpcode_note' );
 
+		if ( isset( $this->snippet ) && $this->snippet->is_generated() ) {
+			$this->metabox_row( __( 'Generator', 'insert-headers-and-footers' ), $this->get_input_generator() );
+		}
+
 		$this->metabox(
 			__( 'Basic info', 'insert-headers-and-footers' ),
 			ob_get_clean(),
@@ -617,6 +621,28 @@ class WPCode_Admin_Page_Snippet_Manager extends WPCode_Admin_Page {
 		$markup .= '<input type="hidden" name="wpcode_tags" id="wpcode-tags" value="' . esc_attr( $tags_string ) . '" />';
 
 		return $markup;
+	}
+
+	/**
+	 * Get the link to the generator page for the current snippet.
+	 *
+	 * @return string
+	 */
+	public function get_input_generator() {
+		$generator = $this->snippet->get_generator();
+
+		return sprintf(
+			'<a href="%1$s" class="wpcode-button wpcode-button-secondary">%2$s</a>',
+			add_query_arg(
+				array(
+					'generator' => $generator,
+					'page'      => 'wpcode-generator',
+					'snippet'   => $this->snippet->get_id(),
+				),
+				admin_url( 'admin.php' )
+			),
+			esc_html__( 'Update Generated Snippet', 'insert-headers-and-footers' )
+		);
 	}
 
 	/**
@@ -1405,5 +1431,4 @@ class WPCode_Admin_Page_Snippet_Manager extends WPCode_Admin_Page {
 
 		return $list_item;
 	}
-
 }

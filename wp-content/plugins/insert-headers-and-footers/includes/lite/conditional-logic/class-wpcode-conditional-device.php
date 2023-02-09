@@ -31,7 +31,7 @@ class WPCode_Conditional_Device_Lite extends WPCode_Conditional_Type {
 	 *
 	 * @return void
 	 */
-	protected function load_type_options() {
+	public function load_type_options() {
 		$this->options = array(
 			'device_type' => array(
 				'label'   => __( 'Device Type', 'insert-headers-and-footers' ),

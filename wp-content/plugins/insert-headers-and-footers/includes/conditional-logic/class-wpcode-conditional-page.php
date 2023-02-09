@@ -31,7 +31,7 @@ class WPCode_Conditional_Page extends WPCode_Conditional_Type {
 	 *
 	 * @return void
 	 */
-	protected function load_type_options() {
+	public function load_type_options() {
 		$this->options = array(
 			'type_of_page'  => array(
 				'label'    => __( 'Type of page', 'insert-headers-and-footers' ),

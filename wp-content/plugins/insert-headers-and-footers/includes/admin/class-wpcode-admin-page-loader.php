@@ -62,6 +62,7 @@ class WPCode_Admin_Page_Loader {
 		require_once WPCODE_PLUGIN_PATH . 'includes/admin/pages/class-wpcode-admin-page-tools.php';
 		require_once WPCODE_PLUGIN_PATH . 'includes/admin/pages/class-wpcode-admin-page-settings.php';
 		require_once WPCODE_PLUGIN_PATH . 'includes/admin/pages/class-wpcode-admin-page-click.php';
+		require_once WPCODE_PLUGIN_PATH . 'includes/admin/pages/class-wpcode-admin-page-pixel.php';
 	}
 
 	/**
@@ -80,6 +81,7 @@ class WPCode_Admin_Page_Loader {
 		$this->pages['code_snippets']   = 'WPCode_Admin_Page_Code_Snippets';
 		$this->pages['snippet_manager'] = 'WPCode_Admin_Page_Snippet_Manager';
 		$this->pages['headers_footers'] = 'WPCode_Admin_Page_Headers_Footers';
+		$this->pages['pixel']           = 'WPCode_Admin_Page_Pixel';
 		$this->pages['library']         = 'WPCode_Admin_Page_Library';
 		$this->pages['generator']       = 'WPCode_Admin_Page_Generator';
 		$this->pages['tools']           = 'WPCode_Admin_Page_Tools';
@@ -95,6 +97,8 @@ class WPCode_Admin_Page_Loader {
 	public function load_pages() {
 
 		$this->prepare_pages();
+
+		do_action( 'wpcode_before_admin_pages_loaded', $this->pages );
 
 		foreach ( $this->pages as $page_class ) {
 			if ( ! class_exists( $page_class ) ) {
@@ -224,7 +228,7 @@ class WPCode_Admin_Page_Loader {
 	 */
 	public function hide_menus( $parent_file ) {
 
-		foreach( $this->hidden_pages as $page ) {
+		foreach ( $this->hidden_pages as $page ) {
 			remove_submenu_page( 'wpcode', $page );
 		}
 
