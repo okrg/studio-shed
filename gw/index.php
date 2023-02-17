@@ -228,10 +228,10 @@ if($res['response'] == APPROVED) {
     )
   );
   if($gw->envMode() == 'live') {
-    $message['To'] = 'certeam@studioshed.com,jlas@studioshed.com';    
+    $message['To'] = ['certeam@studioshed.com','jlas@studioshed.com'];
   }
   if($gw->envMode() == 'test') {
-    $message['To'] = 'rolando.garcia@gmail.com';
+    $message['To'] = ['rolando.garcia@gmail.com','rgarcia@studioshed.com'];
   }
   $smart_email_id = '7a2656ec-8f2c-4e73-87e0-75036ba0018c';
   $bells_notification = new CS_REST_Transactional_SmartEmail($smart_email_id, $auth);
