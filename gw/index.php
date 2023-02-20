@@ -208,6 +208,10 @@ $gw->setShipping($data->shipping_firstname,
 $gw->setOrder($data->order_id,$data->order_description,$data->ipaddress);
 $res = $gw->doSale($data->payment_amount, $data->payment_token, $data->payment);
 
+if($res['response'] == DECLINED) {
+  echo 'declined';
+  exit;
+}
 if($res['response'] == APPROVED) {
   //Send Transactional emails - Campaign monitor
   require_once 'createsend-php/csrest_general.php';
