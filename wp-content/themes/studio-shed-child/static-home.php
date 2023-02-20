@@ -34,6 +34,9 @@
     })(window,document,'script','dataLayer','GTM-PFQVBLT');</script>
   </head>
   <body>
+  <a href="https://shop.studio-shed.com/" target="_blank">
+    <img src="/assets/images/spring-sale-banner.jpg" alt="Spring Sale Banner" class="w-full">
+  </a>
     <header x-cloak x-data="window.Components.navManager">
   <div class="relative bg-white">
     <div class="flex justify-between items-center max-w-7xl mx-auto px-4 py-2 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
