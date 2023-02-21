@@ -86,7 +86,8 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
       <a href="https://shop.studio-shed.com/" target="_blank">
-        <img src="/assets/images/spring-sale-banner.jpg" alt="Spring Sale Banner" class="w-full">
+        <img src="/assets/images/spring-sale-banner.jpg" alt="Spring Sale Banner" class="w-full hidden sm:block">
+        <img src="/assets/images/spring-sale-mobile.jpg" alt="Spring Sale Banner" class="w-full sm:hidden">
       </a>
       <header x-cloak x-data="window.Components.navManager">
   <div class="relative bg-white">
