@@ -85,10 +85,7 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFQVBLT"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-      <a href="https://shop.studio-shed.com/" target="_blank">
-        <img src="/assets/images/spring-sale-banner.jpg" alt="Spring Sale Banner" class="w-full hidden sm:block">
-        <img src="/assets/images/spring-sale-mobile.jpg" alt="Spring Sale Banner" class="w-full sm:hidden">
-      </a>
+
       <header x-cloak x-data="window.Components.navManager">
   <div class="relative bg-white">
     <div class="flex justify-between items-center max-w-7xl mx-auto px-4 py-2 sm:px-6 md:justify-start md:space-x-10 lg:px-8">

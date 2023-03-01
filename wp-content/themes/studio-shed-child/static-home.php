@@ -34,10 +34,7 @@
     })(window,document,'script','dataLayer','GTM-PFQVBLT');</script>
   </head>
   <body>
-  <a href="https://shop.studio-shed.com/" target="_blank">
-    <img src="/assets/images/spring-sale-banner.jpg" alt="Spring Sale Banner" class="w-full hidden sm:block">
-    <img src="/assets/images/spring-sale-mobile.jpg" alt="Spring Sale Banner" class="w-full sm:hidden">
-  </a>
+
     <header x-cloak x-data="window.Components.navManager">
   <div class="relative bg-white">
     <div class="flex justify-between items-center max-w-7xl mx-auto px-4 py-2 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
@@ -822,7 +819,13 @@
 <div class="bg-black relative" style="height:75vh;">
   <div class="swiper mx-auto">  
     <div class="swiper-wrapper">
-
+      <div class="swiper-slide bg-white">
+        <a href="https://shop.studio-shed.com">
+          <img data-src="/assets/images/spring-sale-hero.png" class="hidden lg:block swiper-lazy" style="object-fit: contain !important" alt="Spring sale">
+          <img data-src="/assets/images/spring-sale-hero-mobile.png" class="lg:hidden swiper-lazy" style="object-fit: contain !important" alt="Spring sale">
+        </a>
+        <div class="swiper-lazy-preloader"></div>
+      </div>
       <div class="swiper-slide">
         <img data-src="/assets/images/home-slider/01.jpg" class="swiper-lazy" alt="Studio Shed unit installed at a customer location">
         <div class="swiper-lazy-preloader"></div>
