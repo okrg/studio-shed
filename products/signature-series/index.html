@@ -12,15 +12,15 @@
     <meta property="og:description" content="The original Studio Shed. From simple storage to studio spaces with lifestyle interiors, it’s the backyard shed... re-imagined. Design and build your own backyard room from Studio Shed today.">
     <meta property="og:url" content="https://www.studio-shed.com/products/signature-series/">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2023-03-01T17:34:09.893Z">
+    <meta property="article:modified_time" content="2023-03-06T18:09:46.556Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="https://www.studio-shed.com/products/signature-series/">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1677692049588">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1678126186263">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <script src="/assets/main.bundle.js?v=1677692049588"></script>
+    <script src="/assets/main.bundle.js?v=1678126186263"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
     <!--
     <script src="https://apps.elfsight.com/p/platform.js" async></script> 
@@ -816,7 +816,7 @@
   </div>
 </header>
     <main x-data="window.Components.signatureManager()">
-<div class="h-[66vh] bg-black relative">
+  <div class="h-[66vh] bg-black relative">
   <div class="swiper mx-auto">  
     <div class="swiper-wrapper">
       <div class="swiper-slide bg-white">
@@ -902,7 +902,7 @@
     </div>
   </div>
 </div>
-<div x-intersect.full="visibleSection = 'none'" class="h-0.5 w-full"></div>
+  <div x-intersect.full="visibleSection = 'none'" class="h-0.5 w-full"></div>
 
 
 <div class="mt-0 mb-12 sticky top-0 z-10 bg-white tsmx-auto">
@@ -956,7 +956,7 @@
     </nav>
   </div>
 </div>
-<div class="bg-white" id="toc-curated" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'curated'">
+  <div class="bg-white" id="toc-curated" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'curated'">
   <div class="max-w-4xl mx-auto py-16 px-4 sm:py-12 sm:px-6 lg:px-8">
     <div class="text-center">
       <p class="mt-1 text-3xl font-extrabold text-gray-900">Curated Models</p>
@@ -1001,7 +1001,7 @@
     </div>
   </div>
 </div>
-<div class="bg-white" id="toc-features" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'features'">
+  <div class="bg-white" id="toc-features" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'features'">
   <div aria-hidden="true" class="relative">
     <img src="/assets/images/signature-features.jpg" class="w-full h-96 object-center object-cover">
     <div class="absolute inset-0 bottom-0 top-auto h-48 bg-gradient-to-t from-white"></div>
@@ -1080,7 +1080,7 @@
     </dl>
   </div>
 </div>
-<div class="bg-white">
+  <div class="bg-white">
   <div class="max-w-xl mx-auto py-6 px-4 sm:py-12 sm:px-6 lg:max-w-4xl">
     <div class="grid items-center grid-cols-1 gap-x-8 lg:grid-cols-2">
       <div>        
@@ -1106,7 +1106,7 @@
   </div>
 </div>
 
-<div class="bg-white mb-24" id="toc-gallery" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'gallery'">
+  <div class="bg-white" id="toc-gallery" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'gallery'">
   <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
     <div class="text-center">
       <h2 class="mb-8 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Gallery</h2>      
@@ -1201,7 +1201,154 @@
   </div>
 </div>
 
-<div class="bg-white" id="toc-options" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'options'">
+  
+  <div class="bg-white" x-data="window.Components.projectCostWidgetManager()" x-init="product = 'studio'; init();">
+  <div class="mx-auto max-w-4xl px-4 py-16">
+    <div class="text-center relative">
+      <span class="bg-yellow-500 absolute inset-x-0 top-0 h-1 w-9 mx-auto"></span>
+      <h2 class="pt-4 text-3xl text-center font-extrabold tracking-tight text-gray-900 sm:text-4xl">Project Cost Calculator</h2>
+      <p class="mx-auto text-gray-500">Overview of construction costs for your backyard ADU or Studio.</p>
+      <p class="mx-auto text-gray-500">(Cost estimates quoted by 3rd party contractors)</p>
+    </div>
+
+    <fieldset class="my-4 mx-auto max-w-lg">
+      <div class="mb-4 grid grid-cols-2 gap-4">
+        <label :class="product === 'studio' ? 'border-yellow-600' : 'border-gray-300'"
+               class="relative flex cursor-pointer rounded-lg border bg-white px-4 py-2 shadow-sm focus:outline-none">
+          <input type="radio" name="project-type" x-on:change="calculate()" x-model="product" value="studio"
+                 class="sr-only">
+          <div class="flex flex-1">
+            <div class="flex flex-col">
+              <span class="block text-sm font-medium text-gray-900">Typical single room studio</span>
+              <span :class="product == 'studio' ? 'text-yellow-700' : 'text-gray-500'"
+                    class="mt-1 flex items-center text-sm">120 square feet</span>
+            </div>
+          </div>
+          <svg :class="product === 'studio' || 'invisible'" class="h-5 w-5 text-yellow-600" viewBox="0 0 20 20"
+               fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                  clip-rule="evenodd"/>
+          </svg>
+          <span :class="product === 'studio' ? 'border border-yellow-600' : 'border-2 border-transparent'"
+                class="pointer-events-none absolute -inset-px rounded-lg border-2" aria-hidden="true"></span>
+        </label>
+
+
+        <label :class="product === 'adu' ? 'border-yellow-600' : 'border-gray-300'"
+               class="relative flex cursor-pointer rounded-lg border bg-white px-4 py-2 shadow-sm focus:outline-none">
+          <input type="radio" name="project-type" x-on:change="calculate()" x-model="product" value="adu"
+                 class="sr-only">
+          <div class="flex flex-1">
+            <div class="flex flex-col">
+              <span class="block text-sm font-medium text-gray-900">Typical ADU</span>
+              <span :class="product == 'adu' ? 'text-yellow-700' : 'text-gray-500'"
+                    class="mt-1 flex items-center text-sm">476 square feet</span>
+            </div>
+          </div>
+          <svg :class="product === 'adu' || 'invisible'" class="h-5 w-5 text-yellow-600" viewBox="0 0 20 20"
+               fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                  clip-rule="evenodd"/>
+          </svg>
+          <span :class="product === 'adu' ? 'border border-yellow-600' : 'border-2 border-transparent'"
+                class="pointer-events-none absolute -inset-px rounded-lg border-2" aria-hidden="true"></span>
+        </label>
+
+
+      </div>
+
+
+      <div class="-space-y-px rounded-md bg-white">
+
+        <label :class="assembly == 'Turnkey' ? 'z-10 border-yellow-200 bg-yellow-50' : 'border-gray-200'"
+               class="rounded-tl-md rounded-tr-md relative flex cursor-pointer border py-2 px-4 focus:outline-none">
+          <input type="radio" x-on:change="calculate()" name="assembly" x-model="assembly" value="Turnkey"
+                 class="mt-0.5 h-4 w-4 shrink-0 cursor-pointer text-yellow-600 border-gray-300 focus:ring-yellow-600">
+          <div class="ml-3 flex flex-col">
+            <span class="block text-sm font-medium">Turnkey Assembly</span>
+            <span :class="assembly == 'Turnkey' ? 'text-yellow-700' : 'text-gray-500'" class="block text-sm">Existing foundation and site work already finished and unit ready to assemble</span>
+          </div>
+        </label>
+
+        <label :class="assembly === 'Basic Site Work' ? 'z-10 border-yellow-200 bg-yellow-50' : 'border-gray-200'"
+               class="relative flex cursor-pointer border py-2 px-4 focus:outline-none">
+          <input type="radio" x-on:change="calculate()" name="assembly" x-model="assembly" value="Basic Site Work"
+                 class="mt-0.5 h-4 w-4 shrink-0 cursor-pointer text-yellow-600 border-gray-300 focus:ring-yellow-600">
+          <div class="ml-3 flex flex-col">
+            <span class="block text-sm font-medium">Basic Site Work</span>
+            <span :class="assembly == 'Basic Site Work' ? 'text-yellow-700' : 'text-gray-500'" class="block text-sm">Foundation and electrical work required before unit can be assembled</span>
+          </div>
+        </label>
+
+        <label :class="assembly === 'Custom Site Work' ? 'z-10 border-yellow-200 bg-yellow-50' : 'border-gray-200'"
+               class="rounded-bl-md rounded-br-md relative flex cursor-pointer border py-2 px-4 focus:outline-none">
+          <input type="radio" x-on:change="calculate()" name="assembly" x-model="assembly" value="Custom Site Work"
+                 class="mt-0.5 h-4 w-4 shrink-0 cursor-pointer text-yellow-600 border-gray-300 focus:ring-yellow-600">
+          <div class="ml-3 flex flex-col">
+
+            <span class="block text-sm font-medium">Custom Site Work</span>
+            <span :class="assembly == 'Custom Site Work' ? 'text-yellow-700' : 'text-gray-500'" class="block text-sm">Demolition of existing structures or construction of an additional deck</span>
+          </div>
+        </label>
+      </div>
+    </fieldset>
+
+    <dl class="flex" x-transition>
+      <div class="py-5 transition-[width] duration-500" :style="{ width: costs.productPct + 'vw' }" x-transition>
+
+        <dd class="items-baseline justify-between block bg-yellow-600 text-white p-2">
+          <div class="flex items-baseline text-xl font-semibold" x-transition
+               x-text="window.Components.formatProjectCost(costs.product)"></div>
+        </dd>
+        <dt class="text-sm mt-2 px-2 font-normal text-gray-900">Product / Plans / Shipping</dt>
+        <div class="text-xs px-2 font-medium text-gray-500" x-text="costs.description"></div>
+
+      </div>
+      <div class="py-5 transition-[width] duration-500" :style="{ width: costs.assemblyPct + 'vw' }" x-transition>
+
+        <dd class="items-baseline justify-between block bg-yellow-500 text-white p-2">
+          <div class="flex items-baseline text-xl font-semibold" x-transition
+               x-text="window.Components.formatProjectCost(costs.assembly)"></div>
+        </dd>
+        <dt class="text-sm mt-2 px-2 font-normal text-gray-900">Assembly</dt>
+        <div class="text-xs px-2 font-medium text-gray-500" x-transition x-text="assembly"></div>
+
+      </div>
+      <div class="py-5 transition-[width] duration-500 min-w-min" :style="{ width: costs.otherPct + 'vw' }"
+           x-transition>
+
+        <dd class="items-baseline justify-between block bg-gray-300 text-gray-600 p-2">
+          <div class="flex items-baseline text-xl font-semibold" x-transition
+               x-text="window.Components.formatProjectCost(costs.other)"></div>
+        </dd>
+        <dt class="text-xs mt-2 px-2 font-normal text-gray-900">Soils reports and other site inspections</dt>
+
+      </div>
+      <div class="py-5 transition-[width] duration-500 min-w-min" :style="{ width: costs.feesPct + 'vw' }"
+           x-transition>
+
+        <dd class="items-baseline justify-between block bg-gray-200 text-gray-600 p-2">
+          <div class="flex items-baseline text-xl font-semibold" x-transition
+               x-text="window.Components.formatProjectCost(costs.fees)"></div>
+        </dd>
+        <dt class="text-xs mt-2 px-2 font-normal text-gray-900">Estimated taxes and permit fees</dt>
+      </div>
+      <div class="py-5 transition-[width] duration-500 w-[10vw]" x-transition>
+
+        <dd class="items-baseline justify-between md:block lg:flex p-2">
+          <div class="flex items-baseline text-xl font-semibold text-gray-800" x-transition
+               x-text="window.Components.formatProjectCost(costs.total)"></div>
+        </dd>
+        <dt class="text-sm mt-2 px-2 font-normal text-gray-900">Total</dt>
+      </div>
+    </dl>
+
+
+  </div>
+</div>
+  <div class="bg-white" id="toc-options" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'options'">
   <section aria-labelledby="features-heading" class="relative">
     <div class="aspect-w-3 aspect-h-2 overflow-hidden sm:aspect-w-5 lg:aspect-none lg:absolute lg:w-1/2 lg:h-full lg:pr-4 xl:pr-16">
       <img src="/assets/images/signature-additional-options.jpg" class="h-full w-full object-center object-cover lg:h-full lg:w-full">
@@ -1252,7 +1399,7 @@
   </section>
 </div>
 
-<div class="bg-gray-50" id="toc-ordering" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'ordering'">
+  <div class="bg-gray-50" id="toc-ordering" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'ordering'">
   <div class="max-w-7xl mx-auto py-24 sm:px-2 sm:py-32 lg:px-4">
     <div class="max-w-2xl mx-auto px-4 lg:max-w-none">
       <div class="grid grid-cols-1 items-center gap-y-10 gap-x-16 lg:grid-cols-2">
@@ -1312,7 +1459,7 @@
   </div>
 </div>
 
-<div class="bg-white" id="toc-installation" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'installation'">
+  <div class="bg-white" id="toc-installation" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'installation'">
   <div class="max-w-2xl mx-auto py-24 px-4 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8">
     <div class="max-w-3xl mx-auto text-center">
       <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Installation</h2>
@@ -1345,926 +1492,6 @@
       </div>
     </div>
   </div>
-</div>
-
-<div class="relative z-10" role="dialog" aria-modal="true" x-show="showSolitude10x12">
-  <div class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 transition transition-opacity md:block" @click="showSolitude10x12 = false" 
-  x-transition:enter="transition ease-out duration-300" 
-  x-transition:enter-start="opacity-0" 
-  x-transition:enter-end="opacity-100" 
-  x-transition:leave="transition ease-in duration-200" 
-  x-transition:leave-start="opacity-100" 
-  x-transition:leave-end="opacity-0"
-  ></div>
-
-  <div class="fixed z-10 inset-0 overflow-y-auto">
-  	<div class="flex items-stretch md:items-center justify-center min-h-full text-center md:px-2 lg:px-4"> 
-      <div class="flex text-base text-left transform transition w-full md:max-w-2xl md:px-4 md:my-8 lg:max-w-4xl" 
-      x-show="showSolitude10x12" 
-      @click.outside="showSolitude10x12 = false" 
-      x-transition:enter="transition ease-out duration-300" 
-      x-transition:enter-start="opacity-0 translate-y-4 md:translate-y-0 md:scale-95" 
-      x-transition:enter-end="opacity-100 translate-y-0 md:scale-100" 
-      x-transition:leave="transition ease-in duration-200" 
-      x-transition:leave-start="opacity-100 translate-y-0 md:scale-100" 
-      x-transition:leave-end="opacity-0 translate-y-4 md:translate-y-0 md:scale-95"
-      >
-      	<div class="w-full relative flex items-center bg-white px-4 pt-14 pb-8 overflow-hidden shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
-      		<button type="button" class="absolute top-4 right-4 text-gray-400 hover:text-gray-500 sm:top-8 sm:right-6 md:top-6 md:right-6 lg:top-8 lg:right-8" @click.prevent="showSolitude10x12 = false">
-      			<span class="sr-only">Close</span>
-      			<!-- Heroicon name: outline/x -->
-      			<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-      				<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-      			</svg>
-      		</button>
-
-      		<div class="w-full grid grid-cols-1 gap-y-8 gap-x-6 items-start sm:grid-cols-12 lg:gap-x-8">
-      			<div class="sm:col-span-4 lg:col-span-5">
-      				<div class="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
-      					<img src="/assets/images/signature-qs-solitude.jpg" class="object-center object-cover">
-      				</div>
-      			</div>
-      			<div class="sm:col-span-8 lg:col-span-7">
-      				<h2 class="text-2xl font-extrabold text-gray-900 sm:pr-12">Solitude 10'&times;12'</h2>
-
-      				<section aria-labelledby="information-heading" class="mt-4 flex justify-between">
-      					<p class="text-lg text-gray-900 sm:text-xl">$22,584</p>
-
-      					<div class="flex items-center">
-      						<svg class="flex-shrink-0 w-5 h-5 text-green-500" x-description="Heroicon name: solid/check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-      							<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-      						</svg>
-      						<p class="ml-2 font-medium text-gray-500">In stock and ready to ship</p>
-      					</div>
-
-
-      				</section>
-
-      				<section aria-labelledby="options-heading" class="mt-6">
-      					<h3 id="options-heading" class="sr-only">Product options</h3>
-
-      					<form>
-
-      						<dl class="mt-4 grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 sm:gap-y-6  lg:gap-x-8">
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Size</dt>
-      								<dd class="mt-2 text-sm text-gray-500">10' &times 12'<br>120 square feet</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Construction</dt>
-      								<dd class="mt-2 text-sm text-gray-500">2 &times; 4 wall framing<br>
-      									2 &times; 6 roof rafters<br>
-      									ZIP System wall panels<br>
-      									26-gauge Galvalume roofing<br>
-                        Excludes drywall &amp; foundation
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Doors &amp; Windows</dt>
-      								<dd class="mt-2 text-sm text-gray-500">72&quot; Therma-Tru full-lite glass door<br>
-      									Full-lite front elevation featuring double-pane, high-efficiency glass
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Siding &amp; Hardware</dt>
-      								<dd class="mt-2 text-sm text-gray-500">Pre-painted James Hardie fiber cement siding<br>
-      									Brushed Aluminum hardware trim and door hardware
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Warranty</dt>
-      								<dd class="mt-2 text-sm text-gray-500">1 year manufacturer warranty on parts and workmanship, plus extended warranties on doors and windows. <a href="https://www.studio-shed.com/terms-and-conditions/">See terms &amp; conditions for full details</a>.</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Sustainability</dt>
-      								<dd class="mt-2 text-sm text-gray-500">FSC certified lumber, mixed-source recycled metal and materials throughout, optimized prefabricated production.</dd>
-      							</div>
-      						</dl>
-
-
-
-      						<div class="mt-6">
-      							<a href="https://harp.studio-shed.com/#!solitude-10x12" class="inline-block mt-6 px-4 py-3 border border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-black font-bold hover:opacity-80 sm:px-8">Customize &amp; Order Solitude 10'&times;12'&rarr;</a>
-      						</div>
-
-      					</form>
-      				</section>
-      			</div>
-      		</div>
-      	</div>
-      </div>
-  </div>
-</div>
-</div>
-
-<div class="relative z-10" role="dialog" aria-modal="true" x-show="showBoreas10x12">
-  <div class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 transition transition-opacity md:block" @click="showBoreas10x12 = false" 
-  x-transition:enter="transition ease-out duration-300" 
-  x-transition:enter-start="opacity-0" 
-  x-transition:enter-end="opacity-100" 
-  x-transition:leave="transition ease-in duration-200" 
-  x-transition:leave-start="opacity-100" 
-  x-transition:leave-end="opacity-0"
-  ></div>
-
-  <div class="fixed z-10 inset-0 overflow-y-auto">
-  	<div class="flex items-stretch md:items-center justify-center min-h-full text-center md:px-2 lg:px-4"> 
-      <div class="flex text-base text-left transform transition w-full md:max-w-2xl md:px-4 md:my-8 lg:max-w-4xl" 
-      x-show="showBoreas10x12" 
-      @click.outside="showBoreas10x12 = false" 
-      x-transition:enter="transition ease-out duration-300" 
-      x-transition:enter-start="opacity-0 translate-y-4 md:translate-y-0 md:scale-95" 
-      x-transition:enter-end="opacity-100 translate-y-0 md:scale-100" 
-      x-transition:leave="transition ease-in duration-200" 
-      x-transition:leave-start="opacity-100 translate-y-0 md:scale-100" 
-      x-transition:leave-end="opacity-0 translate-y-4 md:translate-y-0 md:scale-95"
-      >
-      	<div class="w-full relative flex items-center bg-white px-4 pt-14 pb-8 overflow-hidden shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
-      		<button type="button" class="absolute top-4 right-4 text-gray-400 hover:text-gray-500 sm:top-8 sm:right-6 md:top-6 md:right-6 lg:top-8 lg:right-8" @click.prevent="showBoreas10x12 = false">
-      			<span class="sr-only">Close</span>
-      			<!-- Heroicon name: outline/x -->
-      			<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-      				<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-      			</svg>
-      		</button>
-
-      		<div class="w-full grid grid-cols-1 gap-y-8 gap-x-6 items-start sm:grid-cols-12 lg:gap-x-8">
-      			<div class="sm:col-span-4 lg:col-span-5">
-      				<div class="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
-      					<img src="/assets/images/signature-qs-boreas.jpg" class="object-center object-cover">
-      				</div>
-      			</div>
-      			<div class="sm:col-span-8 lg:col-span-7">
-      				<h2 class="text-2xl font-extrabold text-gray-900 sm:pr-12">Boreas 10'&times;12'</h2>
-
-      				<section aria-labelledby="information-heading" class="mt-4 flex justify-between">
-      					<p class="text-lg text-gray-900 sm:text-xl">$22,584</p>
-
-      					<div class="flex items-center">
-      						<svg class="flex-shrink-0 w-5 h-5 text-green-500" x-description="Heroicon name: solid/check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-      							<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-      						</svg>
-      						<p class="ml-2 font-medium text-gray-500">In stock and ready to ship</p>
-      					</div>
-
-
-      				</section>
-
-      				<section aria-labelledby="options-heading" class="mt-6">
-      					<h3 id="options-heading" class="sr-only">Product options</h3>
-
-      					<form>
-
-      						<dl class="mt-4 grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 sm:gap-y-6  lg:gap-x-8">
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Size</dt>
-      								<dd class="mt-2 text-sm text-gray-500">10' &times 12'<br>120 square feet</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Construction</dt>
-      								<dd class="mt-2 text-sm text-gray-500">2 &times; 4 wall framing<br>
-      									2 &times; 6 roof rafters<br>
-      									ZIP System wall panels<br>
-      									26-gauge Galvalume roofing<br>
-                        Excludes drywall &amp; foundation
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Doors &amp; Windows</dt>
-      								<dd class="mt-2 text-sm text-gray-500">72&quot; Therma-Tru full-lite glass door<br>
-      									Full-lite front elevation featuring double-pane, high-efficiency glass
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Siding &amp; Hardware</dt>
-      								<dd class="mt-2 text-sm text-gray-500">Pre-painted James Hardie fiber cement siding<br>
-      									Brushed Aluminum hardware trim and door hardware
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Warranty</dt>
-      								<dd class="mt-2 text-sm text-gray-500">1 year manufacturer warranty on parts and workmanship, plus extended warranties on doors and windows. <a href="https://www.studio-shed.com/terms-and-conditions/">See terms &amp; conditions for full details</a>.</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Sustainability</dt>
-      								<dd class="mt-2 text-sm text-gray-500">FSC certified lumber, mixed-source recycled metal and materials throughout, optimized prefabricated production.</dd>
-      							</div>
-      						</dl>
-
-
-
-      						<div class="mt-6">
-      							<a href="https://harp.studio-shed.com/#!boreas-10x12" class="inline-block mt-6 px-4 py-3 border border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-black font-bold hover:opacity-80 sm:px-8">Customize &amp; Order Boreas 10'&times;12' &rarr;</a>
-      						</div>
-
-      					</form>
-      				</section>
-      			</div>
-      		</div>
-      	</div>
-      </div>
-  </div>
-</div>
-</div>
-
-<div class="relative z-10" role="dialog" aria-modal="true" x-show="showPagodaLeft10x12">
-  <div class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 transition transition-opacity md:block" @click="showPagodaLeft10x12 = false" 
-  x-transition:enter="transition ease-out duration-300" 
-  x-transition:enter-start="opacity-0" 
-  x-transition:enter-end="opacity-100" 
-  x-transition:leave="transition ease-in duration-200" 
-  x-transition:leave-start="opacity-100" 
-  x-transition:leave-end="opacity-0"
-  ></div>
-
-  <div class="fixed z-10 inset-0 overflow-y-auto">
-  	<div class="flex items-stretch md:items-center justify-center min-h-full text-center md:px-2 lg:px-4"> 
-      <div class="flex text-base text-left transform transition w-full md:max-w-2xl md:px-4 md:my-8 lg:max-w-4xl" 
-      x-show="showPagodaLeft10x12" 
-      @click.outside="showPagodaLeft10x12 = false" 
-      x-transition:enter="transition ease-out duration-300" 
-      x-transition:enter-start="opacity-0 translate-y-4 md:translate-y-0 md:scale-95" 
-      x-transition:enter-end="opacity-100 translate-y-0 md:scale-100" 
-      x-transition:leave="transition ease-in duration-200" 
-      x-transition:leave-start="opacity-100 translate-y-0 md:scale-100" 
-      x-transition:leave-end="opacity-0 translate-y-4 md:translate-y-0 md:scale-95"
-      >
-      	<div class="w-full relative flex items-center bg-white px-4 pt-14 pb-8 overflow-hidden shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
-      		<button type="button" class="absolute top-4 right-4 text-gray-400 hover:text-gray-500 sm:top-8 sm:right-6 md:top-6 md:right-6 lg:top-8 lg:right-8" @click.prevent="showPagodaLeft10x12 = false">
-      			<span class="sr-only">Close</span>
-      			<!-- Heroicon name: outline/x -->
-      			<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-      				<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-      			</svg>
-      		</button>
-
-      		<div class="w-full grid grid-cols-1 gap-y-8 gap-x-6 items-start sm:grid-cols-12 lg:gap-x-8">
-      			<div class="sm:col-span-4 lg:col-span-5">
-      				<div class="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
-      					<img src="/assets/images/signature-qs-pagoda.jpg" class="object-center object-cover">
-      				</div>
-      			</div>
-      			<div class="sm:col-span-8 lg:col-span-7">
-      				<h2 class="text-2xl font-extrabold text-gray-900 sm:pr-12">Pagoda Left 10'&times;12'</h2>
-
-      				<section aria-labelledby="information-heading" class="mt-4 flex justify-between">
-      					<p class="text-lg text-gray-900 sm:text-xl">$22,584</p>
-
-      					<div class="flex items-center">
-      						<svg class="flex-shrink-0 w-5 h-5 text-green-500" x-description="Heroicon name: solid/check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-      							<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-      						</svg>
-      						<p class="ml-2 font-medium text-gray-500">In stock and ready to ship</p>
-      					</div>
-
-
-      				</section>
-
-      				<section aria-labelledby="options-heading" class="mt-6">
-      					<h3 id="options-heading" class="sr-only">Product options</h3>
-
-      					<form>
-
-      						<dl class="mt-4 grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 sm:gap-y-6  lg:gap-x-8">
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Size</dt>
-      								<dd class="mt-2 text-sm text-gray-500">10' &times 12'<br>120 square feet</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Construction</dt>
-      								<dd class="mt-2 text-sm text-gray-500">2 &times; 4 wall framing<br>
-      									2 &times; 6 roof rafters<br>
-      									ZIP System wall panels<br>
-      									26-gauge Galvalume roofing<br>
-                        Excludes drywall &amp; foundation
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Doors &amp; Windows</dt>
-      								<dd class="mt-2 text-sm text-gray-500">72&quot; Therma-Tru full-lite glass door<br>
-      									Full-lite front elevation featuring double-pane, high-efficiency glass
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Siding &amp; Hardware</dt>
-      								<dd class="mt-2 text-sm text-gray-500">Pre-painted James Hardie fiber cement siding<br>
-      									Brushed Aluminum hardware trim and door hardware
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Warranty</dt>
-      								<dd class="mt-2 text-sm text-gray-500">1 year manufacturer warranty on parts and workmanship, plus extended warranties on doors and windows. <a href="https://www.studio-shed.com/terms-and-conditions/">See terms &amp; conditions for full details</a>.</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Sustainability</dt>
-      								<dd class="mt-2 text-sm text-gray-500">FSC certified lumber, mixed-source recycled metal and materials throughout, optimized prefabricated production.</dd>
-      							</div>
-      						</dl>
-
-
-
-      						<div class="mt-6">
-      							<a href="https://harp.studio-shed.com/#!pagoda-left-10x12" class="inline-block mt-6 px-4 py-3 border border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-black font-bold hover:opacity-80 sm:px-8">Customize &amp; Order Pagoda Left 10'&times;12' &rarr;</a>
-      						</div>
-
-      					</form>
-      				</section>
-      			</div>
-      		</div>
-      	</div>
-      </div>
-  </div>
-</div>
-</div>
-
-<div class="relative z-10" role="dialog" aria-modal="true" x-show="showPagodaRight10x12">
-  <div class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 transition transition-opacity md:block" @click="showPagodaRight10x12 = false" 
-  x-transition:enter="transition ease-out duration-300" 
-  x-transition:enter-start="opacity-0" 
-  x-transition:enter-end="opacity-100" 
-  x-transition:leave="transition ease-in duration-200" 
-  x-transition:leave-start="opacity-100" 
-  x-transition:leave-end="opacity-0"
-  ></div>
-
-  <div class="fixed z-10 inset-0 overflow-y-auto">
-  	<div class="flex items-stretch md:items-center justify-center min-h-full text-center md:px-2 lg:px-4"> 
-      <div class="flex text-base text-left transform transition w-full md:max-w-2xl md:px-4 md:my-8 lg:max-w-4xl" 
-      x-show="showPagodaRight10x12" 
-      @click.outside="showPagodaRight10x12 = false" 
-      x-transition:enter="transition ease-out duration-300" 
-      x-transition:enter-start="opacity-0 translate-y-4 md:translate-y-0 md:scale-95" 
-      x-transition:enter-end="opacity-100 translate-y-0 md:scale-100" 
-      x-transition:leave="transition ease-in duration-200" 
-      x-transition:leave-start="opacity-100 translate-y-0 md:scale-100" 
-      x-transition:leave-end="opacity-0 translate-y-4 md:translate-y-0 md:scale-95"
-      >
-      	<div class="w-full relative flex items-center bg-white px-4 pt-14 pb-8 overflow-hidden shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
-      		<button type="button" class="absolute top-4 right-4 text-gray-400 hover:text-gray-500 sm:top-8 sm:right-6 md:top-6 md:right-6 lg:top-8 lg:right-8" @click.prevent="showPagodaRight10x12 = false">
-      			<span class="sr-only">Close</span>
-      			<!-- Heroicon name: outline/x -->
-      			<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-      				<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-      			</svg>
-      		</button>
-
-      		<div class="w-full grid grid-cols-1 gap-y-8 gap-x-6 items-start sm:grid-cols-12 lg:gap-x-8">
-      			<div class="sm:col-span-4 lg:col-span-5">
-      				<div class="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
-      					<img src="/assets/images/signature-qs-pagoda.jpg" class="object-center object-cover">
-      				</div>
-      			</div>
-      			<div class="sm:col-span-8 lg:col-span-7">
-      				<h2 class="text-2xl font-extrabold text-gray-900 sm:pr-12">Pagoda Right 10'&times;12'</h2>
-
-      				<section aria-labelledby="information-heading" class="mt-4 flex justify-between">
-      					<p class="text-lg text-gray-900 sm:text-xl">$22,584</p>
-
-      					<div class="flex items-center">
-      						<svg class="flex-shrink-0 w-5 h-5 text-green-500" x-description="Heroicon name: solid/check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-      							<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-      						</svg>
-      						<p class="ml-2 font-medium text-gray-500">In stock and ready to ship</p>
-      					</div>
-
-
-      				</section>
-
-      				<section aria-labelledby="options-heading" class="mt-6">
-      					<h3 id="options-heading" class="sr-only">Product options</h3>
-
-      					<form>
-
-      						<dl class="mt-4 grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 sm:gap-y-6  lg:gap-x-8">
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Size</dt>
-      								<dd class="mt-2 text-sm text-gray-500">10' &times 12'<br>120 square feet</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Construction</dt>
-      								<dd class="mt-2 text-sm text-gray-500">2 &times; 4 wall framing<br>
-      									2 &times; 6 roof rafters<br>
-      									ZIP System wall panels<br>
-      									26-gauge Galvalume roofing<br>
-                        Excludes drywall &amp; foundation
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Doors &amp; Windows</dt>
-      								<dd class="mt-2 text-sm text-gray-500">72&quot; Therma-Tru full-lite glass door<br>
-      									Full-lite front elevation featuring double-pane, high-efficiency glass
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Siding &amp; Hardware</dt>
-      								<dd class="mt-2 text-sm text-gray-500">Pre-painted James Hardie fiber cement siding<br>
-      									Brushed Aluminum hardware trim and door hardware
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Warranty</dt>
-      								<dd class="mt-2 text-sm text-gray-500">1 year manufacturer warranty on parts and workmanship, plus extended warranties on doors and windows. <a href="https://www.studio-shed.com/terms-and-conditions/">See terms &amp; conditions for full details</a>.</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Sustainability</dt>
-      								<dd class="mt-2 text-sm text-gray-500">FSC certified lumber, mixed-source recycled metal and materials throughout, optimized prefabricated production.</dd>
-      							</div>
-      						</dl>
-
-
-
-      						<div class="mt-6">
-      							<a href="https://harp.studio-shed.com/#!pagoda-right-10x12" class="inline-block mt-6 px-4 py-3 border border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-black font-bold hover:opacity-80 sm:px-8">Customize &amp; Order Pagoda Right 10'&times;12' &rarr;</a>
-      						</div>
-
-      					</form>
-      				</section>
-      			</div>
-      		</div>
-      	</div>
-      </div>
-  </div>
-</div>
-</div>
-
-<div class="relative z-10" role="dialog" aria-modal="true" x-show="showSolitude12x16">
-  <div class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 transition transition-opacity md:block" @click="showSolitude12x16 = false" 
-  x-transition:enter="transition ease-out duration-300" 
-  x-transition:enter-start="opacity-0" 
-  x-transition:enter-end="opacity-100" 
-  x-transition:leave="transition ease-in duration-200" 
-  x-transition:leave-start="opacity-100" 
-  x-transition:leave-end="opacity-0"
-  ></div>
-
-  <div class="fixed z-10 inset-0 overflow-y-auto">
-  	<div class="flex items-stretch md:items-center justify-center min-h-full text-center md:px-2 lg:px-4"> 
-      <div class="flex text-base text-left transform transition w-full md:max-w-2xl md:px-4 md:my-8 lg:max-w-4xl" 
-      x-show="showSolitude12x16" 
-      @click.outside="showSolitude12x16 = false" 
-      x-transition:enter="transition ease-out duration-300" 
-      x-transition:enter-start="opacity-0 translate-y-4 md:translate-y-0 md:scale-95" 
-      x-transition:enter-end="opacity-100 translate-y-0 md:scale-100" 
-      x-transition:leave="transition ease-in duration-200" 
-      x-transition:leave-start="opacity-100 translate-y-0 md:scale-100" 
-      x-transition:leave-end="opacity-0 translate-y-4 md:translate-y-0 md:scale-95"
-      >
-      	<div class="w-full relative flex items-center bg-white px-4 pt-14 pb-8 overflow-hidden shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
-      		<button type="button" class="absolute top-4 right-4 text-gray-400 hover:text-gray-500 sm:top-8 sm:right-6 md:top-6 md:right-6 lg:top-8 lg:right-8" @click.prevent="showSolitude12x16 = false">
-      			<span class="sr-only">Close</span>
-      			<!-- Heroicon name: outline/x -->
-      			<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-      				<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-      			</svg>
-      		</button>
-
-      		<div class="w-full grid grid-cols-1 gap-y-8 gap-x-6 items-start sm:grid-cols-12 lg:gap-x-8">
-      			<div class="sm:col-span-4 lg:col-span-5">
-      				<div class="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
-      					<img src="/assets/images/signature-qs-solitude.jpg" class="object-center object-cover">
-      				</div>
-      			</div>
-      			<div class="sm:col-span-8 lg:col-span-7">
-      				<h2 class="text-2xl font-extrabold text-gray-900 sm:pr-12">Solitude 12'&times;16'</h2>
-
-      				<section aria-labelledby="information-heading" class="mt-4 flex justify-between">
-      					<p class="text-lg text-gray-900 sm:text-xl">$22,584</p>
-
-      					<div class="flex items-center">
-      						<svg class="flex-shrink-0 w-5 h-5 text-green-500" x-description="Heroicon name: solid/check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-      							<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-      						</svg>
-      						<p class="ml-2 font-medium text-gray-500">In stock and ready to ship</p>
-      					</div>
-
-
-      				</section>
-
-      				<section aria-labelledby="options-heading" class="mt-6">
-      					<h3 id="options-heading" class="sr-only">Product options</h3>
-
-      					<form>
-
-      						<dl class="mt-4 grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 sm:gap-y-6  lg:gap-x-8">
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Size</dt>
-      								<dd class="mt-2 text-sm text-gray-500">12' &times 16'<br>192 square feet</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Construction</dt>
-      								<dd class="mt-2 text-sm text-gray-500">2 &times; 4 wall framing<br>
-      									2 &times; 6 roof rafters<br>
-      									ZIP System wall panels<br>
-      									26-gauge Galvalume roofing<br>
-                        Excludes drywall &amp; foundation
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Doors &amp; Windows</dt>
-      								<dd class="mt-2 text-sm text-gray-500">72&quot; Therma-Tru full-lite glass door<br>
-      									Full-lite front elevation featuring double-pane, high-efficiency glass
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Siding &amp; Hardware</dt>
-      								<dd class="mt-2 text-sm text-gray-500">Pre-painted James Hardie fiber cement siding<br>
-      									Brushed Aluminum hardware trim and door hardware
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Warranty</dt>
-      								<dd class="mt-2 text-sm text-gray-500">1 year manufacturer warranty on parts and workmanship, plus extended warranties on doors and windows. <a href="https://www.studio-shed.com/terms-and-conditions/">See terms &amp; conditions for full details</a>.</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Sustainability</dt>
-      								<dd class="mt-2 text-sm text-gray-500">FSC certified lumber, mixed-source recycled metal and materials throughout, optimized prefabricated production.</dd>
-      							</div>
-      						</dl>
-
-
-
-      						<div class="mt-6">
-      							<a href="https://harp.studio-shed.com/#!solitude-12x16" class="inline-block mt-6 px-4 py-3 border border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-black font-bold hover:opacity-80 sm:px-8">Customize &amp; Order Solitude 12'&times;16'&rarr;</a>
-      						</div>
-
-      					</form>
-      				</section>
-      			</div>
-      		</div>
-      	</div>
-      </div>
-  </div>
-</div>
-</div>
-
-<div class="relative z-10" role="dialog" aria-modal="true" x-show="showBoreas12x16">
-  <div class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 transition transition-opacity md:block" @click="showBoreas12x16 = false" 
-  x-transition:enter="transition ease-out duration-300" 
-  x-transition:enter-start="opacity-0" 
-  x-transition:enter-end="opacity-100" 
-  x-transition:leave="transition ease-in duration-200" 
-  x-transition:leave-start="opacity-100" 
-  x-transition:leave-end="opacity-0"
-  ></div>
-
-  <div class="fixed z-10 inset-0 overflow-y-auto">
-  	<div class="flex items-stretch md:items-center justify-center min-h-full text-center md:px-2 lg:px-4"> 
-      <div class="flex text-base text-left transform transition w-full md:max-w-2xl md:px-4 md:my-8 lg:max-w-4xl" 
-      x-show="showBoreas12x16" 
-      @click.outside="showBoreas12x16 = false" 
-      x-transition:enter="transition ease-out duration-300" 
-      x-transition:enter-start="opacity-0 translate-y-4 md:translate-y-0 md:scale-95" 
-      x-transition:enter-end="opacity-100 translate-y-0 md:scale-100" 
-      x-transition:leave="transition ease-in duration-200" 
-      x-transition:leave-start="opacity-100 translate-y-0 md:scale-100" 
-      x-transition:leave-end="opacity-0 translate-y-4 md:translate-y-0 md:scale-95"
-      >
-      	<div class="w-full relative flex items-center bg-white px-4 pt-14 pb-8 overflow-hidden shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
-      		<button type="button" class="absolute top-4 right-4 text-gray-400 hover:text-gray-500 sm:top-8 sm:right-6 md:top-6 md:right-6 lg:top-8 lg:right-8" @click.prevent="showBoreas12x16 = false">
-      			<span class="sr-only">Close</span>
-      			<!-- Heroicon name: outline/x -->
-      			<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-      				<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-      			</svg>
-      		</button>
-
-      		<div class="w-full grid grid-cols-1 gap-y-8 gap-x-6 items-start sm:grid-cols-12 lg:gap-x-8">
-      			<div class="sm:col-span-4 lg:col-span-5">
-      				<div class="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
-      					<img src="/assets/images/signature-qs-boreas.jpg" class="object-center object-cover">
-      				</div>
-      			</div>
-      			<div class="sm:col-span-8 lg:col-span-7">
-      				<h2 class="text-2xl font-extrabold text-gray-900 sm:pr-12">Boreas 12'&times;16'</h2>
-
-      				<section aria-labelledby="information-heading" class="mt-4 flex justify-between">
-      					<p class="text-lg text-gray-900 sm:text-xl">$22,584</p>
-
-      					<div class="flex items-center">
-      						<svg class="flex-shrink-0 w-5 h-5 text-green-500" x-description="Heroicon name: solid/check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-      							<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-      						</svg>
-      						<p class="ml-2 font-medium text-gray-500">In stock and ready to ship</p>
-      					</div>
-
-
-      				</section>
-
-      				<section aria-labelledby="options-heading" class="mt-6">
-      					<h3 id="options-heading" class="sr-only">Product options</h3>
-
-      					<form>
-
-      						<dl class="mt-4 grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 sm:gap-y-6  lg:gap-x-8">
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Size</dt>
-      								<dd class="mt-2 text-sm text-gray-500">12' &times 16'<br>192 square feet</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Construction</dt>
-      								<dd class="mt-2 text-sm text-gray-500">2 &times; 4 wall framing<br>
-      									2 &times; 6 roof rafters<br>
-      									ZIP System wall panels<br>
-      									26-gauge Galvalume roofing<br>
-                        Excludes drywall &amp; foundation
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Doors &amp; Windows</dt>
-      								<dd class="mt-2 text-sm text-gray-500">72&quot; Therma-Tru full-lite glass door<br>
-      									Full-lite front elevation featuring double-pane, high-efficiency glass
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Siding &amp; Hardware</dt>
-      								<dd class="mt-2 text-sm text-gray-500">Pre-painted James Hardie fiber cement siding<br>
-      									Brushed Aluminum hardware trim and door hardware
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Warranty</dt>
-      								<dd class="mt-2 text-sm text-gray-500">1 year manufacturer warranty on parts and workmanship, plus extended warranties on doors and windows. <a href="https://www.studio-shed.com/terms-and-conditions/">See terms &amp; conditions for full details</a>.</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Sustainability</dt>
-      								<dd class="mt-2 text-sm text-gray-500">FSC certified lumber, mixed-source recycled metal and materials throughout, optimized prefabricated production.</dd>
-      							</div>
-      						</dl>
-
-
-
-      						<div class="mt-6">
-      							<a href="https://harp.studio-shed.com/#!boreas-12x16" class="inline-block mt-6 px-4 py-3 border border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-black font-bold hover:opacity-80 sm:px-8">Customize &amp; Order Boreas 12'&times;16' &rarr;</a>
-      						</div>
-
-      					</form>
-      				</section>
-      			</div>
-      		</div>
-      	</div>
-      </div>
-  </div>
-</div>
-</div>
-
-<div class="relative z-10" role="dialog" aria-modal="true" x-show="showPagodaLeft12x16">
-  <div class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 transition transition-opacity md:block" @click="showPagodaLeft12x16 = false" 
-  x-transition:enter="transition ease-out duration-300" 
-  x-transition:enter-start="opacity-0" 
-  x-transition:enter-end="opacity-100" 
-  x-transition:leave="transition ease-in duration-200" 
-  x-transition:leave-start="opacity-100" 
-  x-transition:leave-end="opacity-0"
-  ></div>
-
-  <div class="fixed z-10 inset-0 overflow-y-auto">
-  	<div class="flex items-stretch md:items-center justify-center min-h-full text-center md:px-2 lg:px-4"> 
-      <div class="flex text-base text-left transform transition w-full md:max-w-2xl md:px-4 md:my-8 lg:max-w-4xl" 
-      x-show="showPagodaLeft12x16" 
-      @click.outside="showPagodaLeft12x16 = false" 
-      x-transition:enter="transition ease-out duration-300" 
-      x-transition:enter-start="opacity-0 translate-y-4 md:translate-y-0 md:scale-95" 
-      x-transition:enter-end="opacity-100 translate-y-0 md:scale-100" 
-      x-transition:leave="transition ease-in duration-200" 
-      x-transition:leave-start="opacity-100 translate-y-0 md:scale-100" 
-      x-transition:leave-end="opacity-0 translate-y-4 md:translate-y-0 md:scale-95"
-      >
-      	<div class="w-full relative flex items-center bg-white px-4 pt-14 pb-8 overflow-hidden shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
-      		<button type="button" class="absolute top-4 right-4 text-gray-400 hover:text-gray-500 sm:top-8 sm:right-6 md:top-6 md:right-6 lg:top-8 lg:right-8" @click.prevent="showPagodaLeft12x16 = false">
-      			<span class="sr-only">Close</span>
-      			<!-- Heroicon name: outline/x -->
-      			<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-      				<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-      			</svg>
-      		</button>
-
-      		<div class="w-full grid grid-cols-1 gap-y-8 gap-x-6 items-start sm:grid-cols-12 lg:gap-x-8">
-      			<div class="sm:col-span-4 lg:col-span-5">
-      				<div class="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
-      					<img src="/assets/images/signature-qs-pagoda.jpg" class="object-center object-cover">
-      				</div>
-      			</div>
-      			<div class="sm:col-span-8 lg:col-span-7">
-      				<h2 class="text-2xl font-extrabold text-gray-900 sm:pr-12">Pagoda Left 12'&times;16'</h2>
-
-      				<section aria-labelledby="information-heading" class="mt-4 flex justify-between">
-      					<p class="text-lg text-gray-900 sm:text-xl">$22,584</p>
-
-      					<div class="flex items-center">
-      						<svg class="flex-shrink-0 w-5 h-5 text-green-500" x-description="Heroicon name: solid/check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-      							<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-      						</svg>
-      						<p class="ml-2 font-medium text-gray-500">In stock and ready to ship</p>
-      					</div>
-
-
-      				</section>
-
-      				<section aria-labelledby="options-heading" class="mt-6">
-      					<h3 id="options-heading" class="sr-only">Product options</h3>
-
-      					<form>
-
-      						<dl class="mt-4 grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 sm:gap-y-6  lg:gap-x-8">
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Size</dt>
-      								<dd class="mt-2 text-sm text-gray-500">12' &times 16'<br>192 square feet</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Construction</dt>
-      								<dd class="mt-2 text-sm text-gray-500">2 &times; 4 wall framing<br>
-      									2 &times; 6 roof rafters<br>
-      									ZIP System wall panels<br>
-      									26-gauge Galvalume roofing<br>
-                        Excludes drywall &amp; foundation
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Doors &amp; Windows</dt>
-      								<dd class="mt-2 text-sm text-gray-500">72&quot; Therma-Tru full-lite glass door<br>
-      									Full-lite front elevation featuring double-pane, high-efficiency glass
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Siding &amp; Hardware</dt>
-      								<dd class="mt-2 text-sm text-gray-500">Pre-painted James Hardie fiber cement siding<br>
-      									Brushed Aluminum hardware trim and door hardware
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Warranty</dt>
-      								<dd class="mt-2 text-sm text-gray-500">1 year manufacturer warranty on parts and workmanship, plus extended warranties on doors and windows. <a href="https://www.studio-shed.com/terms-and-conditions/">See terms &amp; conditions for full details</a>.</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Sustainability</dt>
-      								<dd class="mt-2 text-sm text-gray-500">FSC certified lumber, mixed-source recycled metal and materials throughout, optimized prefabricated production.</dd>
-      							</div>
-      						</dl>
-
-
-
-      						<div class="mt-6">
-      							<a href="https://harp.studio-shed.com/#!pagoda-left-12x16" class="inline-block mt-6 px-4 py-3 border border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-black font-bold hover:opacity-80 sm:px-8">Customize &amp; Order Pagoda Left 12'&times;16' &rarr;</a>
-      						</div>
-
-      					</form>
-      				</section>
-      			</div>
-      		</div>
-      	</div>
-      </div>
-  </div>
-</div>
-</div>
-
-<div class="relative z-10" role="dialog" aria-modal="true" x-show="showPagodaRight12x16">
-  <div class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 transition transition-opacity md:block" @click="showPagodaRight12x16 = false" 
-  x-transition:enter="transition ease-out duration-300" 
-  x-transition:enter-start="opacity-0" 
-  x-transition:enter-end="opacity-100" 
-  x-transition:leave="transition ease-in duration-200" 
-  x-transition:leave-start="opacity-100" 
-  x-transition:leave-end="opacity-0"
-  ></div>
-
-  <div class="fixed z-10 inset-0 overflow-y-auto">
-  	<div class="flex items-stretch md:items-center justify-center min-h-full text-center md:px-2 lg:px-4"> 
-      <div class="flex text-base text-left transform transition w-full md:max-w-2xl md:px-4 md:my-8 lg:max-w-4xl" 
-      x-show="showPagodaRight12x16" 
-      @click.outside="showPagodaRight12x16 = false" 
-      x-transition:enter="transition ease-out duration-300" 
-      x-transition:enter-start="opacity-0 translate-y-4 md:translate-y-0 md:scale-95" 
-      x-transition:enter-end="opacity-100 translate-y-0 md:scale-100" 
-      x-transition:leave="transition ease-in duration-200" 
-      x-transition:leave-start="opacity-100 translate-y-0 md:scale-100" 
-      x-transition:leave-end="opacity-0 translate-y-4 md:translate-y-0 md:scale-95"
-      >
-      	<div class="w-full relative flex items-center bg-white px-4 pt-14 pb-8 overflow-hidden shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
-      		<button type="button" class="absolute top-4 right-4 text-gray-400 hover:text-gray-500 sm:top-8 sm:right-6 md:top-6 md:right-6 lg:top-8 lg:right-8" @click.prevent="showPagodaRight12x16 = false">
-      			<span class="sr-only">Close</span>
-      			<!-- Heroicon name: outline/x -->
-      			<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-      				<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-      			</svg>
-      		</button>
-
-      		<div class="w-full grid grid-cols-1 gap-y-8 gap-x-6 items-start sm:grid-cols-12 lg:gap-x-8">
-      			<div class="sm:col-span-4 lg:col-span-5">
-      				<div class="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
-      					<img src="/assets/images/signature-qs-pagoda.jpg" class="object-center object-cover">
-      				</div>
-      			</div>
-      			<div class="sm:col-span-8 lg:col-span-7">
-      				<h2 class="text-2xl font-extrabold text-gray-900 sm:pr-12">Pagoda Right 12'x16'</h2>
-
-      				<section aria-labelledby="information-heading" class="mt-4 flex justify-between">
-      					<p class="text-lg text-gray-900 sm:text-xl">$22,584</p>
-
-      					<div class="flex items-center">
-      						<svg class="flex-shrink-0 w-5 h-5 text-green-500" x-description="Heroicon name: solid/check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-      							<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-      						</svg>
-      						<p class="ml-2 font-medium text-gray-500">In stock and ready to ship</p>
-      					</div>
-
-
-      				</section>
-
-      				<section aria-labelledby="options-heading" class="mt-6">
-      					<h3 id="options-heading" class="sr-only">Product options</h3>
-
-      					<form>
-
-      						<dl class="mt-4 grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 sm:gap-y-6  lg:gap-x-8">
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Size</dt>
-      								<dd class="mt-2 text-sm text-gray-500">12' &times 16'<br>192 square feet</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Construction</dt>
-      								<dd class="mt-2 text-sm text-gray-500">2 &times; 4 wall framing<br>
-      									2 &times; 6 roof rafters<br>
-      									ZIP System wall panels<br>
-      									26-gauge Galvalume roofing<br>
-                        Excludes drywall &amp; foundation
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Doors &amp; Windows</dt>
-      								<dd class="mt-2 text-sm text-gray-500">72&quot; Therma-Tru full-lite glass door<br>
-      									Full-lite front elevation featuring double-pane, high-efficiency glass
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Siding &amp; Hardware</dt>
-      								<dd class="mt-2 text-sm text-gray-500">Pre-painted James Hardie fiber cement siding<br>
-      									Brushed Aluminum hardware trim and door hardware
-      								</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Warranty</dt>
-      								<dd class="mt-2 text-sm text-gray-500">1 year manufacturer warranty on parts and workmanship, plus extended warranties on doors and windows. <a href="https://www.studio-shed.com/terms-and-conditions/">See terms &amp; conditions for full details</a>.</dd>
-      							</div>
-
-      							<div class="border-t border-gray-200 pt-4">
-      								<dt class="font-medium text-gray-900">Sustainability</dt>
-      								<dd class="mt-2 text-sm text-gray-500">FSC certified lumber, mixed-source recycled metal and materials throughout, optimized prefabricated production.</dd>
-      							</div>
-      						</dl>
-
-
-
-      						<div class="mt-6">
-      							<a href="https://harp.studio-shed.com/#!pagoda-right-12x16" class="inline-block mt-6 px-4 py-3 border border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-black font-bold hover:opacity-80 sm:px-8">Customize &amp; Order Pagoda Right 12'&times;16' &rarr;</a>
-      						</div>
-
-      					</form>
-      				</section>
-      			</div>
-      		</div>
-      	</div>
-      </div>
-  </div>
-</div>
 </div>
 
 </main>
