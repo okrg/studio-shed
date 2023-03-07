@@ -35,8 +35,8 @@
   </head>
   <body>
   <a href="https://shop.studio-shed.com/" target="_blank">
-    <img src="/assets/images/spring-sale-now-banner.jpg" alt="Spring Sale Banner" class="w-full hidden sm:block">
-    <img src="/assets/images/spring-sale-now-mobile.jpg" alt="Spring Sale Banner" class="w-full sm:hidden">
+    <img loading="lazy" src="/assets/images/spring-sale-now-banner.jpg" alt="Spring Sale Banner" class="w-full hidden sm:block">
+    <img loading="lazy" src="/assets/images/spring-sale-now-mobile.jpg" alt="Spring Sale Banner" class="w-full sm:hidden">
   </a>
     <header x-cloak x-data="window.Components.navManager">
   <div class="relative bg-white">
@@ -44,7 +44,7 @@
       <div class="flex justify-start lg:w-0 lg:flex-1">
         <a href="/">
           <span class="sr-only">Studio Shed</span>
-          <img class="h-auto w-36" src="/assets/images/studioshed-logo.png" alt="Studio Shed logo">
+          <img loading="lazy" class="h-auto w-36" src="/assets/images/studioshed-logo.png" alt="Studio Shed logo">
         </a>
       </div>
       <div class="-mr-2 -my-2 md:hidden">
@@ -81,7 +81,7 @@
             <li class="flow-root">
               <a href="/products/summit-series" class="-m-3 p-3 flex hover:opacity-80">
                 <div class="hidden sm:block flex-shrink-0">
-                  <img class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-summit.png" alt="">
+                  <img loading="lazy" class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-summit.png" alt="">
                 </div>
                 <div class="min-w-0 flex-1 ml-2">
                   <h4 class="text-base font-medium text-gray-900 uppercase">
@@ -147,7 +147,7 @@
           <li class="flow-root">
             <a href="https://www.studio-shed.com/adu/interior-packages/" class="-m-3 p-3 flex hover:opacity-80">
               <div class="hidden sm:block flex-shrink-0">
-                <img class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-adus-interior-guide.jpg" alt="">
+                <img loading="lazy" class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-adus-interior-guide.jpg" alt="">
               </div>
               <div class="min-w-0 flex-1 ml-2">
                 <p class="text-sm text-gray-500">
@@ -160,7 +160,7 @@
           <li class="flow-root">
             <a href="https://www.studio-shed.com/blog/the-advantages-of-building-an-adu/" class="-m-3 p-3 flex hover:opacity-80">
               <div class="hidden sm:block flex-shrink-0">
-                <img class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-adus-building-advantage.jpg" alt="">
+                <img loading="lazy" class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-adus-building-advantage.jpg" alt="">
               </div>
               <div class="min-w-0 flex-1 ml-2">
                 <p class="text-sm text-gray-500">
@@ -206,7 +206,7 @@
             <li class="flow-root">
               <a href="/products/signature-series/" class="-m-3 p-3 flex hover:opacity-80">
                 <div class="hidden sm:block flex-shrink-0">
-                  <img class="w-24 h-auto object-cover rounded-md" src="/assets/images/nav-signature.png" alt="">
+                  <img loading="lazy" class="w-24 h-auto object-cover rounded-md" src="/assets/images/nav-signature.png" alt="">
                 </div>
                 <div class="min-w-0 flex-1 ml-2">
                   <h4 class="text-base font-medium text-gray-900 uppercase">
@@ -220,7 +220,7 @@
             <li class="flow-root">
               <a href="/products/portland-series" class="-m-3 p-3 flex hover:opacity-80">
                 <div class="hidden sm:block flex-shrink-0">
-                  <img class="w-24 h-auto object-cover rounded-md" src="/assets/images/nav-portland.png" alt="">
+                  <img loading="lazy" class="w-24 h-auto object-cover rounded-md" src="/assets/images/nav-portland.png" alt="">
                 </div>
                 <div class="min-w-0 flex-1 ml-2">
                   <h4 class="text-base font-medium text-gray-900 uppercase">
@@ -283,7 +283,7 @@
           <li class="flow-root">
             <a href="https://www.studio-shed.com/wp-content/uploads/2022/02/Lifestyle-Interiors-Guide-Full-Updated-2.pdf" target="_blank" class="-m-3 p-3 flex hover:opacity-80">
               <div class="hidden sm:block flex-shrink-0">
-                <img class="w-24 h-16 object-cover rounded" src="/assets/images/nav-studios-signature-ls-guide.jpg" alt="">
+                <img loading="lazy" class="w-24 h-16 object-cover rounded" src="/assets/images/nav-studios-signature-ls-guide.jpg" alt="">
               </div>
               <div class="min-w-0 flex-1 ml-2">
                 <p class="text-sm text-gray-500">
@@ -296,7 +296,7 @@
           <li class="flow-root">
             <a href="https://www.studio-shed.com/blog/the-calirado-kids-caliradio-shack/" class="-m-3 p-3 flex hover:opacity-80">
               <div class="hidden sm:block flex-shrink-0">
-                <img class="w-24 h-16 object-cover rounded" src="/assets/images/nav-studios-calirado.jpg" alt="">
+                <img loading="lazy" class="w-24 h-16 object-cover rounded" src="/assets/images/nav-studios-calirado.jpg" alt="">
               </div>
               <div class="min-w-0 flex-1 ml-2">
                 <p class="mt-1 text-sm text-gray-500">
@@ -339,7 +339,7 @@
         <li class="relative">
           <a href="/home-office-spaces/">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img src="/assets/images/nav-inspiration-office.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <img loading="lazy" src="/assets/images/nav-inspiration-office.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Backyard Office Sheds</p>
           </a>
@@ -347,7 +347,7 @@
         <li class="relative">
           <a href="/music-studios/">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img src="/assets/images/nav-inspiration-recording.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <img loading="lazy" src="/assets/images/nav-inspiration-recording.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Home Music &amp; Recording Studios</p>
           </a>
@@ -355,7 +355,7 @@
         <li class="relative">
           <a href="/art-studios/">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img src="/assets/images/nav-inspiration-art.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <img loading="lazy" src="/assets/images/nav-inspiration-art.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Home Art Studios &amp; Creative Sheds</p>
           </a>
@@ -363,7 +363,7 @@
         <li class="relative">
           <a href="/man-cave/">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img src="/assets/images/nav-inspiration-man-cave.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <img loading="lazy" src="/assets/images/nav-inspiration-man-cave.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Backyard Man Cave Kits</p>
           </a>
@@ -371,7 +371,7 @@
         <li class="relative">
           <a href="/she-sheds/">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img src="/assets/images/nav-inspiration-she-shed.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <img loading="lazy" src="/assets/images/nav-inspiration-she-shed.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">She Shed Kits, Ideas, And Designs</p>
           </a>
@@ -379,7 +379,7 @@
         <li class="relative">
           <a href="/storage/">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img src="/assets/images/nav-inspiration-storage.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <img loading="lazy" src="/assets/images/nav-inspiration-storage.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Modern Storage Sheds</p>
           </a>
@@ -387,7 +387,7 @@
         <li class="relative">
           <a href="/diy/">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img src="/assets/images/nav-inspiration-diy.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <img loading="lazy" src="/assets/images/nav-inspiration-diy.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">DIY Shed Kits</p>
           </a>
@@ -395,7 +395,7 @@
         <li class="relative">
           <a href="/wellness/">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img src="/assets/images/nav-inspiration-wellness.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <img loading="lazy" src="/assets/images/nav-inspiration-wellness.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Home Gyms &amp; Yoga Studios</p>
           </a>
@@ -403,7 +403,7 @@
         <li class="relative">
           <a href="/garages/">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img src="/assets/images/nav-inspiration-garage.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <img loading="lazy" src="/assets/images/nav-inspiration-garage.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Garages</p>
           </a>
@@ -411,7 +411,7 @@
         <li class="relative">
           <a href="/modular-addition/">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img src="/assets/images/nav-inspiration-modular.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <img loading="lazy" src="/assets/images/nav-inspiration-modular.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Modular Addition</p>
           </a>
@@ -419,7 +419,7 @@
         <li class="relative">
           <a href="/commercial/">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img src="/assets/images/nav-inspiration-commercial.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <img loading="lazy" src="/assets/images/nav-inspiration-commercial.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Commercial</p>
           </a>
@@ -475,7 +475,7 @@
           <li class="flow-root">
             <a href="https://www.studio-shed.com/blog/making-your-studio-shed-work-for-you/" class="-m-3 p-3 flex hover:opacity-80">
               <div class="hidden sm:block flex-shrink-0">
-                <img class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-more-work.jpg" alt="">
+                <img loading="lazy" class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-more-work.jpg" alt="">
               </div>
               <div class="min-w-0 flex-1 ml-2">
                 <p class="text-sm text-gray-500">
@@ -488,7 +488,7 @@
           <li class="flow-root">
             <a href="https://www.studio-shed.com/blog/a-realtors-guide-to-accessory-dwelling-units/" class="-m-3 p-3 flex hover:opacity-80">
               <div class="hidden sm:block flex-shrink-0">
-                <img class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-more-realtor.jpg" alt="">
+                <img loading="lazy" class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-more-realtor.jpg" alt="">
               </div>
               <div class="min-w-0 flex-1 ml-2">
                 <p class="mt-1 text-sm text-gray-500">
@@ -527,7 +527,7 @@
     <div class="pt-5 pb-6 px-5">
       <div class="flex items-center justify-between">
         <div>
-          <img class="h-auto w-36" src="/assets/images/studioshed-logo.png" alt="Studio Shed logo">
+          <img loading="lazy" class="h-auto w-36" src="/assets/images/studioshed-logo.png" alt="Studio Shed logo">
         </div>
         <div class="-mr-2">
           <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" @click.prevent="mobileMenu = false">
@@ -558,7 +558,7 @@
             </a>
             <div x-show="adusMobile" x-transition>
               <a href="/products/summit-series" class="px-2 py-4 border-b border-gray-200 flex hover:opacity-80">
-                <img class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-summit.png" alt="">
+                <img loading="lazy" class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-summit.png" alt="">
                 <div class="ml-4">
                   <h4 class="text-base font-medium text-gray-900 uppercase">
                     Summit Series
@@ -609,7 +609,7 @@
 
             <div x-show="studiosMobile" x-transition>
               <a href="/products/signature-series" class="px-2 py-4 border-b border-gray-200 flex hover:opacity-80">
-                <img class="w-24 h-24 object-cover rounded-md" src="/assets/images/nav-signature.png" alt="">
+                <img loading="lazy" class="w-24 h-24 object-cover rounded-md" src="/assets/images/nav-signature.png" alt="">
                 <div class="ml-4">
                   <h4 class="text-base font-medium text-gray-900 uppercase">
                     Signature Series
@@ -620,7 +620,7 @@
               </a>
 
               <a href="/products/portland-series" class="px-2 py-4 border-b border-gray-200 flex hover:opacity-80">
-                <img class="w-24 h-24 object-cover rounded-md" src="/assets/images/nav-portland.png" alt="">
+                <img loading="lazy" class="w-24 h-24 object-cover rounded-md" src="/assets/images/nav-portland.png" alt="">
                 <div class="ml-4">
                   <h4 class="text-base font-medium text-gray-900 uppercase">
                     Portland Series
@@ -670,7 +670,7 @@
                 <li class="relative">
                   <a href="/home-office-spaces/">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-office.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <img loading="lazy" src="/assets/images/nav-inspiration-office.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Prefab Backyard Office Sheds</p>
                   </a>
@@ -678,7 +678,7 @@
                 <li class="relative">
                   <a href="/music-studios/">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-recording.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <img loading="lazy" src="/assets/images/nav-inspiration-recording.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Home Music &amp; Recording Studios</p>
                   </a>
@@ -686,7 +686,7 @@
                 <li class="relative">
                   <a href="/art-studios/">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-art.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <img loading="lazy" src="/assets/images/nav-inspiration-art.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Home Art Studios &amp; Creative Sheds</p>
                   </a>
@@ -694,7 +694,7 @@
                 <li class="relative">
                   <a href="/man-cave/">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-man-cave.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <img loading="lazy" src="/assets/images/nav-inspiration-man-cave.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Backyard Man Cave Kits</p>
                   </a>
@@ -702,7 +702,7 @@
                 <li class="relative">
                   <a href="/she-sheds/">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-she-shed.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <img loading="lazy" src="/assets/images/nav-inspiration-she-shed.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">She Shed Kits, Ideas, And Designs</p>
                   </a>
@@ -710,7 +710,7 @@
                 <li class="relative">
                   <a href="/storage/">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-storage.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <img loading="lazy" src="/assets/images/nav-inspiration-storage.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Prefab Modern Storage Sheds</p>
                   </a>
@@ -718,7 +718,7 @@
                 <li class="relative">
                   <a href="/diy/">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-diy.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <img loading="lazy" src="/assets/images/nav-inspiration-diy.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">DIY Shed Kits for your Backyard</p>
                   </a>
@@ -726,7 +726,7 @@
                 <li class="relative">
                   <a href="/wellness/">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-wellness.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <img loading="lazy" src="/assets/images/nav-inspiration-wellness.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Backyard Home Yoga Studios &amp; Gyms</p>
                   </a>
@@ -734,7 +734,7 @@
                 <li class="relative">
                   <a href="/garages/">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-garage.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <img loading="lazy" src="/assets/images/nav-inspiration-garage.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Garages</p>
                   </a>
@@ -742,7 +742,7 @@
                 <li class="relative">
                   <a href="/modular-addition/">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-modular.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <img loading="lazy" src="/assets/images/nav-inspiration-modular.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Modular Addition</p>
                   </a>
@@ -750,7 +750,7 @@
                 <li class="relative">
                   <a href="/commercial/">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-commercial.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <img loading="lazy" src="/assets/images/nav-inspiration-commercial.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Commercial</p>
                   </a>
@@ -824,8 +824,8 @@
     <div class="swiper-wrapper">
       <div class="swiper-slide bg-white">
         <a href="https://shop.studio-shed.com">
-          <img data-src="/assets/images/spring-sale-hero.png" class="hidden lg:block swiper-lazy" style="object-fit: contain !important" alt="Spring sale">
-          <img data-src="/assets/images/spring-sale-hero-mobile.png" class="lg:hidden swiper-lazy" style="object-fit: contain !important" alt="Spring sale">
+          <img loading="lazy" data-src="/assets/images/spring-sale-hero.png" class="hidden lg:block swiper-lazy" style="object-fit: contain !important" alt="Spring sale">
+          <img loading="lazy" data-src="/assets/images/spring-sale-hero-mobile.png" class="lg:hidden swiper-lazy" style="object-fit: contain !important" alt="Spring sale">
         </a>
         <div class="swiper-lazy-preloader"></div>
       </div>
@@ -881,7 +881,7 @@
 </div>
 <!--
 <div class="justify-center flex bg-black pb-4">
-  <a href="https://www.studio-shed.com/products/signature-series/#toc-curated" target="_blank"><img src="/assets/images/BFCM-banner.jpg"></a>
+  <a href="https://www.studio-shed.com/products/signature-series/#toc-curated" target="_blank"><img loading="lazy" src="/assets/images/BFCM-banner.jpg"></a>
 </div>-->
 
   <div class="bg-white" id="toc-curated" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'curated'">
@@ -897,21 +897,21 @@
       <div class="grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8">
         <a href="/products/summit-series/" class="group text-lg text-center" title="Studio Shed Summit series product images and features">
           <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
-            <img src="/assets/images/home-models-summit.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed summit series unit with iron gray siding and white doors">
+            <img loading="lazy" src="/assets/images/home-models-summit.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed summit series unit with iron gray siding and white doors">
           </div>
           <h3 class="font-bold text-gray-700">Summit Series</h3>
         </a>
 
         <a href="/products/signature-series/" class="group text-lg text-center" title="Studio Shed Signature series product images and features">
           <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
-            <img src="/assets/images/home-models-signature.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed signature series with dark trim and navy doors">
+            <img loading="lazy" src="/assets/images/home-models-signature.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed signature series with dark trim and navy doors">
           </div>
           <h3 class="font-bold text-gray-700">Signature Series</h3>
         </a>
 
         <a href="/products/portland-series/" class="group text-lg text-center" title="Studio Shed Portland series product images and features">
           <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
-            <img src="/assets/images/home-models-portland.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed Portland series with cedar plank siding and black doors">
+            <img loading="lazy" src="/assets/images/home-models-portland.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed Portland series with cedar plank siding and black doors">
           </div>
           <h3 class="font-bold text-gray-700">Portland Series</h3>
         </a>     
@@ -968,7 +968,7 @@
 
       <div class="mt-10 mx-0 relative lg:mt-0" aria-hidden="true">
         <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
-          <img src="/assets/images/home-better-way.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed virtual tour bedroom view">
+          <img loading="lazy" src="/assets/images/home-better-way.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed virtual tour bedroom view">
         </div>        
       </div>
     </div>
@@ -976,7 +976,7 @@
   </div>
 
     <div class="relative">
-      <img class="h-[36rem] w-full object-cover" src="/assets/images/home-process-hero.jpg" alt="A finished Studio Shed unit in a home backyard">
+      <img loading="lazy" class="h-[36rem] w-full object-cover" src="/assets/images/home-process-hero.jpg" alt="A finished Studio Shed unit in a home backyard">
     </div>
     <div class="max-w-4xl mx-auto text-center py-8 px-4 sm:py-20 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
@@ -992,7 +992,7 @@
 
 
     <div class="relative">
-      <img class="h-[32rem] w-full object-cover" src="/assets/images/home-virtual-tour-banner.jpg" alt="A screenshot from the Studio Shed virtual tour app">
+      <img loading="lazy" class="h-[32rem] w-full object-cover" src="/assets/images/home-virtual-tour-banner.jpg" alt="A screenshot from the Studio Shed virtual tour app">
     </div>
     <div class="max-w-2xl mx-auto text-center py-8 px-4 sm:pt-20 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
@@ -1003,15 +1003,15 @@
     <div class="max-w-6xl mx-auto pb-24 px-4 overflow-hidden sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8">
         <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
-          <img src="/assets/images/home-tour-kitchen.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed virtual tour kitchen view">
+          <img loading="lazy" src="/assets/images/home-tour-kitchen.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed virtual tour kitchen view">
         </div>
 
         <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
-          <img src="/assets/images/home-tour-bath.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed virtual tour bathroom view">
+          <img loading="lazy" src="/assets/images/home-tour-bath.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed virtual tour bathroom view">
         </div>
 
         <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
-          <img src="/assets/images/home-tour-bed.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed virtual tour bedroom view">
+          <img loading="lazy" src="/assets/images/home-tour-bed.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed virtual tour bedroom view">
         </div>
       </div>
       <div class="text-center">
@@ -1021,7 +1021,7 @@
 
 
   <div class="relative">
-    <img class="h-[32rem] w-full object-cover" src="/assets/images/home-pre-design-center.jpg" alt="Studio Shed Signature series 10x12 with backyard landscape">
+    <img loading="lazy" class="h-[32rem] w-full object-cover" src="/assets/images/home-pre-design-center.jpg" alt="Studio Shed Signature series 10x12 with backyard landscape">
   </div>
 
 <div class="py-16 bg-white overflow-hidden lg:py-24">
@@ -1074,7 +1074,7 @@
 
       <div class="mt-10 -mx-4 relative lg:mt-0" aria-hidden="true">
         <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
-          <img src="/assets/images/home-design-center-hero.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed 3D Design Center">
+          <img loading="lazy" src="/assets/images/home-design-center-hero.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed 3D Design Center">
         </div>        
       </div>
     </div>
@@ -1097,7 +1097,7 @@
 
 
   <div class="relative">
-    <img class="h-[50vh] w-full object-cover" src="/assets/images/home-made-in-co.jpg" alt="A Studio Shed installed in a Colorado location with the Rocky mountains in the background.">
+    <img loading="lazy" class="h-[50vh] w-full object-cover" src="/assets/images/home-made-in-co.jpg" alt="A Studio Shed installed in a Colorado location with the Rocky mountains in the background.">
     <div class="absolute bottom-0 top-auto h-16 inset-0 bg-gradient-to-t from-black to-transparent mix-blend-multiply"></div>
   </div>
   <div class="bg-black">
@@ -1116,7 +1116,7 @@
 </main>
     <div class="relative bg-gray-800">
   <div class="h-56 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
-    <img class="w-full h-full object-cover" src="/assets/images/ss-footer-build.jpg" alt="Studio Shed 3D design center app">
+    <img loading="lazy" class="w-full h-full object-cover" src="/assets/images/ss-footer-build.jpg" alt="Studio Shed 3D design center app">
   </div>
   <div class="relative max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
     <div class="md:ml-auto md:w-1/2 md:pl-10">
@@ -1340,8 +1340,8 @@
           });
         </script>
         <div class="flex space-x-12 mt-24">
-          <img class="self-center w-32 h-auto" src="/assets/images/footer-shipping.png" alt="Studio Ships to all 50 states">
-          <img class="self-center w-20 h-auto" src="/assets/images/footer-houzz-badge.png" alt="Studio Shed design award by Houzz">
+          <img loading="lazy" class="self-center w-32 h-auto" src="/assets/images/footer-shipping.png" alt="Studio Ships to all 50 states">
+          <img loading="lazy" class="self-center w-20 h-auto" src="/assets/images/footer-houzz-badge.png" alt="Studio Shed design award by Houzz">
         </div>
       </div>
     </div>
