@@ -824,6 +824,7 @@
 <div class="bg-black relative" style="height:75vh;">
   <div class="swiper mx-auto">  
     <div class="swiper-wrapper">
+      <?php /*
       <div class="swiper-slide bg-white">
         <a href="https://shop.studio-shed.com">
           <img loading="lazy" data-src="/assets/images/spring-sale-hero.png" class="hidden lg:block swiper-lazy" style="object-fit: contain !important" alt="Spring sale">
@@ -831,6 +832,8 @@
         </a>
         <div class="swiper-lazy-preloader"></div>
       </div>
+      */ ?>
+      
       <div class="swiper-slide">
         <img data-src="/assets/images/home-slider/01.jpg" class="swiper-lazy" alt="Studio Shed unit installed at a customer location">
         <div class="swiper-lazy-preloader"></div>
