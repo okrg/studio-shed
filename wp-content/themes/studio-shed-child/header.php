@@ -92,784 +92,787 @@
       </a>
        */ ?>
       <header x-cloak x-data="window.Components.navManager">
-  <div class="relative bg-white">
-    <div class="flex justify-between items-center max-w-7xl mx-auto px-4 py-2 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
-      <div class="flex justify-start lg:w-0 lg:flex-1">
-        <a href="/">
-          <span class="sr-only">Studio Shed</span>
-          <img class="h-auto w-36" src="/assets/images/studioshed-logo.png" alt="Studio Shed logo">
-        </a>
-      </div>
-      <div class="-mr-2 -my-2 md:hidden">
-        <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false" @click.prevent="mobileMenu = true">
-          <span class="sr-only">Open menu</span>          
-          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </div>
-      <nav class="hidden md:flex space-x-10">
-        <a href="/process/" class="text-base font-normal text-gray-700 hover:text-gray-900">Process</a>        
-        <div @click.outside="adusFlyout = false">  
-  <button type="button" class="text-gray-700 group bg-white rounded-md inline-flex items-center text-base font-normal hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500" aria-expanded="false" @click="adusFlyout = ! adusFlyout">
-    <span>ADUs</span>
-
-    <svg class="text-gray-600 ml-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-    </svg>
-  </button>
-  <div x-show="adusFlyout" class="absolute z-50 mt-3 left-0 w-full" 
-  x-transition:enter="transition ease-out duration-200" 
-  x-transition:enter-start="opacity-0 translate-y-4" 
-  x-transition:enter-end="opacity-100 translate-y-0" 
-  x-transition:leave="transition ease-in duration-150" 
-  x-transition:leave-start="opacity-100 translate-y-0" 
-  x-transition:leave-end="opacity-0 translate-y-4"
-  >
-    <div class="shadow-lg border border-gray-300 overflow-hidden">
-      <div class="relative grid gap-4 bg-gray-100  px-4 py-6 sm:gap-8 sm:p-8 md:grid-cols-2 lg:grid-cols-4">
-
-        <div class="bg-white -m-8 mr-0 p-8 pr-0">
-          <ul role="list" class="mt-2 space-y-6">
-            <li class="flow-root">
-              <a href="/products/summit-series" class="-m-3 p-3 flex hover:opacity-80">
-                <div class="hidden sm:block flex-shrink-0">
-                  <img class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-summit.png" alt="">
-                </div>
-                <div class="min-w-0 flex-1 ml-2">
-                  <h4 class="text-base font-medium text-gray-900 uppercase">
-                  Summit Series
-                  </h4>
-                  <p class="text-sm text-gray-500">252-1000 SQFT</p>
-                  <p class="text-sm text-gray-500">from $38,727</p>
-                </div>
+        <div class="relative bg-white">
+          <div class="flex justify-between items-center max-w-7xl mx-auto px-4 py-2 md:justify-start md:space-x-6">
+            <div class="flex justify-start flex-1">
+              <a href="/">
+                <span class="sr-only">Studio Shed</span>
+                <img class="h-auto w-36" src="/assets/images/studioshed-logo.png" alt="Studio Shed logo">
               </a>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-        
-        <a href="https://www.studio-shed.com/adu/" class="-m-3 p-3 flex items-start hover:opacity-80">
-          <div>
-            <p class="text-base font-medium text-gray-900">Accessory Dwelling Units</p>
-            <p class="text-sm text-gray-500">What is a Studio Shed ADU?</p>
-          </div>
-        </a>
-
-        <a href="https://www.studio-shed.com/adu/cost-financing/" class="-m-3 p-3 flex items-start hover:opacity-80">
-          <div>
-            <p class="text-base font-medium text-gray-900">ADU Cost &amp; Financing</p>
-            <p class="text-sm text-gray-500">Learn about Studio Shed ADU financing costs.</p>
-          </div>
-        </a>
-
-        <a href="https://www.studio-shed.com/adu/granny-flat/" class="-m-3 p-3 flex items-start hover:opacity-80">
-          <div>
-            <p class="text-base font-medium text-gray-900">Granny Flat</p>
-            <p class="text-sm text-gray-500">Studio Shed granny flat and ADU backyard spaces.</p>
-          </div>
-        </a>
-        </div>
-
-        <div>
-          <a href="https://www.studio-shed.com/adu/ideas/" class="-m-3 p-3 flex items-start hover:opacity-80">
-            <div>
-              <p class="text-base font-medium text-gray-900">ADU Design Ideas</p>
-              <p class="text-sm text-gray-500">Studio Shed ADU layout and material ideas.</p>
             </div>
-          </a>
-          <a href="https://www.studio-shed.com/adu/interior-packages/" class="-m-3 p-3 flex items-start hover:opacity-80">
-            <div>
-              <p class="text-base font-medium text-gray-900">Interior Packages</p>
-              <p class="text-sm text-gray-500">ADU interior kits for kitchen, bath and bedrooms.</p>
+            <div class="-mr-2 -my-2 lg:hidden">
+              <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false" @click.prevent="mobileMenu = true">
+                <span class="sr-only">Open menu</span>
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
             </div>
-          </a>
-          <a href="https://tour.studio-shed.com/" class="-m-3 p-3 flex items-start hover:opacity-80">
-            <div>
-              <p class="text-base font-medium text-gray-900">3D Virtual Tour</p>
-              <p class="text-sm text-gray-500">Visualize sizes, interior furnishings, and finishes.</p>
-            </div>
-          </a>
-        </div>
+            <nav class="hidden lg:flex items-center space-x-6">
+              <a href="/process/" class="text-sm xl:text-base font-normal text-gray-700 hover:text-gray-900">Process</a>
+              <div @click.outside="adusFlyout = false">
+                <button type="button" class="text-gray-700 group bg-white rounded-md inline-flex items-center text-sm xl:text-base font-normal hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500" aria-expanded="false" @click="adusFlyout = ! adusFlyout">
+                  <span>ADUs</span>
+
+                  <svg class="text-gray-600 ml-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </button>
+                <div x-show="adusFlyout" class="absolute z-50 mt-3 left-0 w-full"
+                     x-transition:enter="transition ease-out duration-200"
+                     x-transition:enter-start="opacity-0 translate-y-4"
+                     x-transition:enter-end="opacity-100 translate-y-0"
+                     x-transition:leave="transition ease-in duration-150"
+                     x-transition:leave-start="opacity-100 translate-y-0"
+                     x-transition:leave-end="opacity-0 translate-y-4"
+                >
+                  <div class="shadow-lg border border-gray-300 overflow-hidden">
+                    <div class="relative grid gap-4 bg-gray-100  px-4 py-6 sm:gap-8 sm:p-8 md:grid-cols-2 lg:grid-cols-4">
+
+                      <div class="bg-white -m-8 mr-0 p-8 pr-0">
+                        <ul role="list" class="mt-2 space-y-6">
+                          <li class="flow-root">
+                            <a href="/products/summit-series" class="-m-3 p-3 flex hover:opacity-80">
+                              <div class="hidden sm:block flex-shrink-0">
+                                <img loading="lazy" class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-summit.png" alt="">
+                              </div>
+                              <div class="min-w-0 flex-1 ml-2">
+                                <h4 class="text-base font-medium text-gray-900 uppercase">
+                                  Summit Series
+                                </h4>
+                                <p class="text-sm text-gray-500">252-1000 SQFT</p>
+                                <p class="text-sm text-gray-500">from $38,727</p>
+                              </div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div>
+
+                        <a href="https://www.studio-shed.com/adu/" class="-m-3 p-3 flex items-start hover:opacity-80">
+                          <div>
+                            <p class="text-base font-medium text-gray-900">Accessory Dwelling Units</p>
+                            <p class="text-sm text-gray-500">What is a Studio Shed ADU?</p>
+                          </div>
+                        </a>
+
+                        <a href="https://www.studio-shed.com/adu/cost-financing/" class="-m-3 p-3 flex items-start hover:opacity-80">
+                          <div>
+                            <p class="text-base font-medium text-gray-900">ADU Cost &amp; Financing</p>
+                            <p class="text-sm text-gray-500">Learn about Studio Shed ADU financing costs.</p>
+                          </div>
+                        </a>
+
+                        <a href="https://www.studio-shed.com/adu/granny-flat/" class="-m-3 p-3 flex items-start hover:opacity-80">
+                          <div>
+                            <p class="text-base font-medium text-gray-900">Granny Flat</p>
+                            <p class="text-sm text-gray-500">Studio Shed granny flat and ADU backyard spaces.</p>
+                          </div>
+                        </a>
+                      </div>
+
+                      <div>
+                        <a href="https://www.studio-shed.com/adu/ideas/" class="-m-3 p-3 flex items-start hover:opacity-80">
+                          <div>
+                            <p class="text-base font-medium text-gray-900">ADU Design Ideas</p>
+                            <p class="text-sm text-gray-500">Studio Shed ADU layout and material ideas.</p>
+                          </div>
+                        </a>
+                        <a href="https://www.studio-shed.com/adu/interior-packages/" class="-m-3 p-3 flex items-start hover:opacity-80">
+                          <div>
+                            <p class="text-base font-medium text-gray-900">Interior Packages</p>
+                            <p class="text-sm text-gray-500">ADU interior kits for kitchen, bath and bedrooms.</p>
+                          </div>
+                        </a>
+                        <a href="https://tour.studio-shed.com/" class="-m-3 p-3 flex items-start hover:opacity-80">
+                          <div>
+                            <p class="text-base font-medium text-gray-900">3D Virtual Tour</p>
+                            <p class="text-sm text-gray-500">Visualize sizes, interior furnishings, and finishes.</p>
+                          </div>
+                        </a>
+                      </div>
 
 
-  <div>
-    
-      <ul role="list" class="mt-2 space-y-6">
-          <li class="flow-root">
-            <a href="https://www.studio-shed.com/adu/interior-packages/" class="-m-3 p-3 flex hover:opacity-80">
-              <div class="sm:block flex-shrink-0">
-                <img class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-adus-interior-guide.jpg" alt="">
-              </div>
-              <div class="min-w-0 flex-1 ml-2">
-                <p class="text-sm text-gray-500">
-                  Summit Series Interior Package Guide
-                </p>
-              </div>
-            </a>
-          </li>
-        
-          <li class="flow-root">
-            <a href="https://www.studio-shed.com/blog/the-advantages-of-building-an-adu/" class="-m-3 p-3 flex hover:opacity-80">
-              <div class="sm:block flex-shrink-0">
-                <img class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-adus-building-advantage.jpg" alt="">
-              </div>
-              <div class="min-w-0 flex-1 ml-2">
-                <p class="text-sm text-gray-500">
-                  The Advanages of Building an ADU
-                </p>
-              </div>
-            </a>
-          </li>
-        
-      </ul>
-    
-    <div class="mt-6 text-sm font-semibold">
-      <a href="https://www.studio-shed.com/blog/" class="text-yellow-600 hover:text-yellow-500 transition ease-in-out duration-150">View all articles &amp; resources <span aria-hidden="true">→</span></a>
-    </div>
-  </div>
+                      <div>
+
+                        <ul role="list" class="mt-2 space-y-6">
+                          <li class="flow-root">
+                            <a href="https://www.studio-shed.com/adu/interior-packages/" class="-m-3 p-3 flex hover:opacity-80">
+                              <div class="hidden sm:block flex-shrink-0">
+                                <img loading="lazy" class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-adus-interior-guide.jpg" alt="">
+                              </div>
+                              <div class="min-w-0 flex-1 ml-2">
+                                <p class="text-sm text-gray-500">
+                                  Summit Series Interior Package Guide
+                                </p>
+                              </div>
+                            </a>
+                          </li>
+
+                          <li class="flow-root">
+                            <a href="https://www.studio-shed.com/blog/the-advantages-of-building-an-adu/" class="-m-3 p-3 flex hover:opacity-80">
+                              <div class="hidden sm:block flex-shrink-0">
+                                <img loading="lazy" class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-adus-building-advantage.jpg" alt="">
+                              </div>
+                              <div class="min-w-0 flex-1 ml-2">
+                                <p class="text-sm text-gray-500">
+                                  The Advanages of Building an ADU
+                                </p>
+                              </div>
+                            </a>
+                          </li>
+
+                        </ul>
+
+                        <div class="mt-6 text-sm font-semibold">
+                          <a href="https://www.studio-shed.com/blog/" class="text-yellow-600 hover:text-yellow-500 transition ease-in-out duration-150">View all articles &amp; resources <span aria-hidden="true">→</span></a>
+                        </div>
+                      </div>
 
 
-      </div>
-    </div>
-  </div>
-</div>
-        <div class="" @click.outside="studiosFlyout = false">  
-  <button type="button" class="text-gray-700 group bg-white rounded-md inline-flex items-center text-base font-normal hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500" aria-expanded="false" @click="studiosFlyout = ! studiosFlyout">
-    <span>Studios</span>
-
-    <svg class="text-gray-600 ml-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-    </svg>
-  </button>
-  <div x-show="studiosFlyout" class="absolute z-50 mt-3 left-0 w-full" 
-  x-transition:enter="transition ease-out duration-200" 
-  x-transition:enter-start="opacity-0 translate-y-4" 
-  x-transition:enter-end="opacity-100 translate-y-0" 
-  x-transition:leave="transition ease-in duration-150" 
-  x-transition:leave-start="opacity-100 translate-y-0" 
-  x-transition:leave-end="opacity-0 translate-y-4"
-  >
-    <div class="shadow-lg border border-gray-300 overflow-hidden">
-      <div class="relative grid gap-4 bg-gray-100  px-4 py-6 sm:gap-8 sm:p-8 md:grid-cols-2 lg:grid-cols-4">
-
-        <div class="bg-white -m-8 mr-0 p-8 pr-0">
-          <ul role="list" class="mt-2 space-y-12">
-            <li class="flow-root">
-              <a href="/products/signature-series/" class="-m-3 p-3 flex hover:opacity-80">
-                <div class="hidden sm:block flex-shrink-0">
-                  <img class="w-24 h-auto object-cover rounded-md" src="/assets/images/nav-signature.png" alt="">
+                    </div>
+                  </div>
                 </div>
-                <div class="min-w-0 flex-1 ml-2">
-                  <h4 class="text-base font-medium text-gray-900 uppercase">
-                  Signature Series
-                  </h4>
-                  <p class="text-sm text-gray-500">96-240 SQFT</p>
-                  <p class="text-sm text-gray-500">from $13,861</p>
-                </div>
-              </a>
-            </li>
-            <li class="flow-root">
-              <a href="/products/portland-series" class="-m-3 p-3 flex hover:opacity-80">
-                <div class="sm:block flex-shrink-0">
-                  <img class="w-24 h-auto object-cover rounded-md" src="/assets/images/nav-portland.png" alt="">
-                </div>
-                <div class="min-w-0 flex-1 ml-2">
-                  <h4 class="text-base font-medium text-gray-900 uppercase">
-                  Portland Series
-                  </h4>
-                  <p class="text-sm text-gray-500">120-192 SQFT</p>
-                  <p class="text-sm text-gray-500">from $19,520</p>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </div>
+              </div>
+              <div class="" @click.outside="studiosFlyout = false">
+                <button type="button" class="text-gray-700 group bg-white rounded-md inline-flex items-center text-sm xl:text-base font-normal hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500" aria-expanded="false" @click="studiosFlyout = ! studiosFlyout">
+                  <span>Studios</span>
 
-        <div>
-        
-        <a href="https://www.studio-shed.com/backyard-studios/" class="-m-3 p-3 flex items-start hover:opacity-80">
-          <div>
-            <p class="text-base font-medium text-gray-900">Backyard Studios</p>
-            <p class="text-sm text-gray-500">Elevating the backyard shed experience</p>
-          </div>
-        </a>
+                  <svg class="text-gray-600 ml-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </button>
+                <div x-show="studiosFlyout" class="absolute z-50 mt-3 left-0 w-full"
+                     x-transition:enter="transition ease-out duration-200"
+                     x-transition:enter-start="opacity-0 translate-y-4"
+                     x-transition:enter-end="opacity-100 translate-y-0"
+                     x-transition:leave="transition ease-in duration-150"
+                     x-transition:leave-start="opacity-100 translate-y-0"
+                     x-transition:leave-end="opacity-0 translate-y-4"
+                >
+                  <div class="shadow-lg border border-gray-300 overflow-hidden">
+                    <div class="relative grid gap-4 bg-gray-100  px-4 py-6 sm:gap-8 sm:p-8 md:grid-cols-2 lg:grid-cols-4">
 
-        <a href="https://www.studio-shed.com/backyard-studios/cost-financing/" class="-m-3 p-3 flex items-start hover:opacity-80">
-          <div>
-            <p class="text-base font-medium text-gray-900">Studio Cost &amp; Financing</p>
-            <p class="text-sm text-gray-500">How much will my backyard studio cost?</p>
-          </div>
-        </a>
+                      <div class="bg-white -m-8 mr-0 p-8 pr-0">
+                        <ul role="list" class="mt-2 space-y-12">
+                          <li class="flow-root">
+                            <a href="/products/signature-series/" class="-m-3 p-3 flex hover:opacity-80">
+                              <div class="hidden sm:block flex-shrink-0">
+                                <img loading="lazy" class="w-24 h-auto object-cover rounded-md" src="/assets/images/nav-signature.png" alt="">
+                              </div>
+                              <div class="min-w-0 flex-1 ml-2">
+                                <h4 class="text-base font-medium text-gray-900 uppercase">
+                                  Signature Series
+                                </h4>
+                                <p class="text-sm text-gray-500">96-240 SQFT</p>
+                                <p class="text-sm text-gray-500">from $13,861</p>
+                              </div>
+                            </a>
+                          </li>
+                          <li class="flow-root">
+                            <a href="/products/portland-series" class="-m-3 p-3 flex hover:opacity-80">
+                              <div class="hidden sm:block flex-shrink-0">
+                                <img loading="lazy" class="w-24 h-auto object-cover rounded-md" src="/assets/images/nav-portland.png" alt="">
+                              </div>
+                              <div class="min-w-0 flex-1 ml-2">
+                                <h4 class="text-base font-medium text-gray-900 uppercase">
+                                  Portland Series
+                                </h4>
+                                <p class="text-sm text-gray-500">120-192 SQFT</p>
+                                <p class="text-sm text-gray-500">from $19,520</p>
+                              </div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div>
+
+                        <a href="https://www.studio-shed.com/backyard-studios/" class="-m-3 p-3 flex items-start hover:opacity-80">
+                          <div>
+                            <p class="text-base font-medium text-gray-900">Backyard Studios</p>
+                            <p class="text-sm text-gray-500">Elevating the backyard shed experience</p>
+                          </div>
+                        </a>
+
+                        <a href="https://www.studio-shed.com/backyard-studios/cost-financing/" class="-m-3 p-3 flex items-start hover:opacity-80">
+                          <div>
+                            <p class="text-base font-medium text-gray-900">Studio Cost &amp; Financing</p>
+                            <p class="text-sm text-gray-500">How much will my backyard studio cost?</p>
+                          </div>
+                        </a>
 
 
 
-        </div>
+                      </div>
 
-        <div>
-          <a href="https://www.studio-shed.com/backyard-studios/ideas/" class="-m-3 p-3 flex items-start hover:opacity-80">
-            <div>
-              <p class="text-base font-medium text-gray-900">Studio Ideas</p>
-              <p class="text-sm text-gray-500">How to use your backyard studio</p>
-            </div>
-          </a>
+                      <div>
+                        <a href="https://www.studio-shed.com/backyard-studios/ideas/" class="-m-3 p-3 flex items-start hover:opacity-80">
+                          <div>
+                            <p class="text-base font-medium text-gray-900">Studio Ideas</p>
+                            <p class="text-sm text-gray-500">How to use your backyard studio</p>
+                          </div>
+                        </a>
 
-          <a href="https://www.studio-shed.com/diy-quick-ship-models/" class="-m-3 p-3 flex items-start hover:opacity-80">
-            <div>
-              <p class="text-base font-medium text-gray-900">Curated Models</p>
-              <p class="text-sm text-gray-500">These models are our most popular designs
-          <span class="text-xs block text-yellow-600 font-semibold tracking-wide uppercase">
+                        <a href="https://www.studio-shed.com/diy-quick-ship-models/" class="-m-3 p-3 flex items-start hover:opacity-80">
+                          <div>
+                            <p class="text-base font-medium text-gray-900">Curated Models</p>
+                            <p class="text-sm text-gray-500">These models are our most popular designs
+                              <span class="text-xs block text-yellow-600 font-semibold tracking-wide uppercase">
             Delivered in 2-4 weeks. Shipping included
           </span>
-              </p>
-            </div>
-          </a>
-
-          
-
-        </div>
+                            </p>
+                          </div>
+                        </a>
 
 
-  <div>
-      <ul role="list" class="mt-2 space-y-6">
-          <li class="flow-root">
-            <a href="https://www.studio-shed.com/wp-content/uploads/2022/02/Lifestyle-Interiors-Guide-Full-Updated-2.pdf" target="_blank" class="-m-3 p-3 flex hover:opacity-80">
-              <div class="sm:block flex-shrink-0">
-                <img class="w-24 h-16 object-cover rounded" src="/assets/images/nav-studios-signature-ls-guide.jpg" alt="">
+
+                      </div>
+
+
+                      <div>
+                        <ul role="list" class="mt-2 space-y-6">
+                          <li class="flow-root">
+                            <a href="https://www.studio-shed.com/wp-content/uploads/2022/02/Lifestyle-Interiors-Guide-Full-Updated-2.pdf" target="_blank" class="-m-3 p-3 flex hover:opacity-80">
+                              <div class="hidden sm:block flex-shrink-0">
+                                <img loading="lazy" class="w-24 h-16 object-cover rounded" src="/assets/images/nav-studios-signature-ls-guide.jpg" alt="">
+                              </div>
+                              <div class="min-w-0 flex-1 ml-2">
+                                <p class="text-sm text-gray-500">
+                                  Lifestyle Interior Guide and Specs
+                                </p>
+                              </div>
+                            </a>
+                          </li>
+
+                          <li class="flow-root">
+                            <a href="https://www.studio-shed.com/blog/the-calirado-kids-caliradio-shack/" class="-m-3 p-3 flex hover:opacity-80">
+                              <div class="hidden sm:block flex-shrink-0">
+                                <img loading="lazy" class="w-24 h-16 object-cover rounded" src="/assets/images/nav-studios-calirado.jpg" alt="">
+                              </div>
+                              <div class="min-w-0 flex-1 ml-2">
+                                <p class="mt-1 text-sm text-gray-500">
+                                  The Calirado Kid's 'Caliradio Shack'
+                                </p>
+                              </div>
+                            </a>
+                          </li>
+
+                        </ul>
+
+                        <div class="mt-6 text-sm font-semibold">
+                          <a href="https://www.studio-shed.com/blog/" class="text-yellow-600 hover:text-yellow-500 transition ease-in-out duration-150">View all articles &amp; resources <span aria-hidden="true">→</span></a>
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="min-w-0 flex-1 ml-2">
-                <p class="text-sm text-gray-500">
-                  Lifestyle Interior Guide and Specs
-                </p>
+              <div class="" @click.outside="inspirationFlyout = false">
+                <button type="button" class="text-gray-700 group bg-white rounded-md inline-flex items-center text-sm xl:text-base font-normal hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500" aria-expanded="false" @click="inspirationFlyout = ! inspirationFlyout">
+                  <span>Inspiration</span>
+
+                  <svg class="text-gray-600 ml-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </button>
+                <div x-show="inspirationFlyout" class="absolute z-50 mt-3 left-0 w-full"
+                     x-transition:enter="transition ease-out duration-200"
+                     x-transition:enter-start="opacity-0 translate-y-4"
+                     x-transition:enter-end="opacity-100 translate-y-0"
+                     x-transition:leave="transition ease-in duration-150"
+                     x-transition:leave-start="opacity-100 translate-y-0"
+                     x-transition:leave-end="opacity-0 translate-y-4"
+                >
+                  <div class="shadow-lg border border-gray-300 bg-gray-100 p-6 overflow-hidden">
+                    <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-6 xl:gap-x-8">
+                      <li class="relative">
+                        <a href="/home-office-spaces/">
+                          <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+                            <img loading="lazy" src="/assets/images/nav-inspiration-office.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                          </div>
+                          <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Backyard Office Sheds</p>
+                        </a>
+                      </li>
+                      <li class="relative">
+                        <a href="/music-studios/">
+                          <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+                            <img loading="lazy" src="/assets/images/nav-inspiration-recording.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                          </div>
+                          <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Home Music &amp; Recording Studios</p>
+                        </a>
+                      </li>
+                      <li class="relative">
+                        <a href="/art-studios/">
+                          <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+                            <img loading="lazy" src="/assets/images/nav-inspiration-art.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                          </div>
+                          <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Home Art Studios &amp; Creative Sheds</p>
+                        </a>
+                      </li>
+                      <li class="relative">
+                        <a href="/man-cave/">
+                          <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+                            <img loading="lazy" src="/assets/images/nav-inspiration-man-cave.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                          </div>
+                          <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Backyard Man Cave Kits</p>
+                        </a>
+                      </li>
+                      <li class="relative">
+                        <a href="/she-sheds/">
+                          <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+                            <img loading="lazy" src="/assets/images/nav-inspiration-she-shed.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                          </div>
+                          <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">She Shed Kits, Ideas, And Designs</p>
+                        </a>
+                      </li>
+                      <li class="relative">
+                        <a href="/storage/">
+                          <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+                            <img loading="lazy" src="/assets/images/nav-inspiration-storage.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                          </div>
+                          <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Modern Storage Sheds</p>
+                        </a>
+                      </li>
+                      <li class="relative">
+                        <a href="/diy/">
+                          <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+                            <img loading="lazy" src="/assets/images/nav-inspiration-diy.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                          </div>
+                          <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">DIY Shed Kits</p>
+                        </a>
+                      </li>
+                      <li class="relative">
+                        <a href="/wellness/">
+                          <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+                            <img loading="lazy" src="/assets/images/nav-inspiration-wellness.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                          </div>
+                          <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Home Gyms &amp; Yoga Studios</p>
+                        </a>
+                      </li>
+                      <li class="relative">
+                        <a href="/garages/">
+                          <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+                            <img loading="lazy" src="/assets/images/nav-inspiration-garage.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                          </div>
+                          <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Garages</p>
+                        </a>
+                      </li>
+                      <li class="relative">
+                        <a href="/modular-addition/">
+                          <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+                            <img loading="lazy" src="/assets/images/nav-inspiration-modular.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                          </div>
+                          <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Modular Addition</p>
+                        </a>
+                      </li>
+                      <li class="relative">
+                        <a href="/commercial/">
+                          <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+                            <img loading="lazy" src="/assets/images/nav-inspiration-commercial.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                          </div>
+                          <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Commercial</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-            </a>
-          </li>
-        
-          <li class="flow-root">
-            <a href="https://www.studio-shed.com/blog/the-calirado-kids-caliradio-shack/" class="-m-3 p-3 flex hover:opacity-80">
-              <div class="sm:block flex-shrink-0">
-                <img class="w-24 h-16 object-cover rounded" src="/assets/images/nav-studios-calirado.jpg" alt="">
+
+              <a href="https://shop.studio-shed.com/" class="text-sm xl:text-base font-normal text-gray-700 hover:text-gray-900"> Design Center </a>
+              <div class="" @click.outside="moreFlyout = false">
+                <button type="button" class="text-gray-700 group bg-white rounded-md inline-flex items-center text-sm xl:text-base font-normal hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500" aria-expanded="false" @click="moreFlyout = ! moreFlyout">
+                  <span>More</span>
+
+                  <svg class="text-gray-600 ml-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </button>
+                <div x-show="moreFlyout" class="absolute z-50 mt-3 left-0 w-full"
+                     x-transition:enter="transition ease-out duration-200"
+                     x-transition:enter-start="opacity-0 translate-y-4"
+                     x-transition:enter-end="opacity-100 translate-y-0"
+                     x-transition:leave="transition ease-in duration-150"
+                     x-transition:leave-start="opacity-100 translate-y-0"
+                     x-transition:leave-end="opacity-0 translate-y-4"
+                >
+                  <div class="shadow-lg border border-gray-300 overflow-hidden">
+                    <div class="relative grid gap-4 bg-gray-100  px-4 py-6 sm:gap-8 sm:p-8 md:grid-cols-2 lg:grid-cols-4">
+                      <div>
+                        <a href="https://www.studio-shed.com/blog/" class="-m-3 p-3 flex items-start text-base font-medium text-gray-900 hover:text-gray-700">Articles &amp; Resources</a>
+                        <a href="https://www.studio-shed.com/faqs/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Frequently Asked Questions</a>
+                        <a href="https://www.studio-shed.com/about-us/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">About Studio Shed</a>
+                        <a href="https://www.studio-shed.com/join-our-team/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Join Our Team</a>
+                      </div>
+
+                      <div>
+                        <a href="https://www.studio-shed.com/financing/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Financing</a>
+                        <a href="https://www.studio-shed.com/why-freestanding-modular/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Why Freestanding Modular?</a>
+                        <a href="https://www.studio-shed.com/installation-resources/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Installation Guides</a>
+                        <a href="https://www.studio-shed.com/customer-reviews/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Customer Reviews</a>
+                      </div>
+
+                      <div>
+                        <a href="https://www.studio-shed.com/in-the-news/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">In the News</a>
+                        <a href="https://www.studio-shed.com/partner-with-us/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Partner With Us</a>
+                        <a href="https://www.studio-shed.com/installation-network/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Installation Network</a>
+                        <a href="https://www.studio-shed.com/contact-us/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Contact Us</a>
+                        <a href="https://www.studio-shed.com/terms-and-conditions/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Terms &amp; Conditions</a>
+                      </div>
+
+                      <div>
+                        <ul role="list" class="mt-2 space-y-6">
+                          <li class="flow-root">
+                            <a href="https://www.studio-shed.com/blog/making-your-studio-shed-work-for-you/" class="-m-3 p-3 flex hover:opacity-80">
+                              <div class="hidden sm:block flex-shrink-0">
+                                <img loading="lazy" class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-more-work.jpg" alt="">
+                              </div>
+                              <div class="min-w-0 flex-1 ml-2">
+                                <p class="text-sm text-gray-500">
+                                  Making Your Studio Shed Work for You
+                                </p>
+                              </div>
+                            </a>
+                          </li>
+
+                          <li class="flow-root">
+                            <a href="https://www.studio-shed.com/blog/a-realtors-guide-to-accessory-dwelling-units/" class="-m-3 p-3 flex hover:opacity-80">
+                              <div class="hidden sm:block flex-shrink-0">
+                                <img loading="lazy" class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-more-realtor.jpg" alt="">
+                              </div>
+                              <div class="min-w-0 flex-1 ml-2">
+                                <p class="mt-1 text-sm text-gray-500">
+                                  A Realtor's Guide to Accessory Dwelling Units
+                                </p>
+                              </div>
+                            </a>
+                          </li>
+
+                        </ul>
+
+                        <div class="mt-6 text-sm font-semibold">
+                          <a href="/blog/" class="text-yellow-600 hover:text-yellow-500 transition ease-in-out duration-150">View all articles &amp; resources <span aria-hidden="true">→</span></a>
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="min-w-0 flex-1 ml-2">
-                <p class="mt-1 text-sm text-gray-500">
-                  The Calirado Kid's 'Caliradio Shack'
-                </p>
-              </div>
-            </a>
-          </li>
-        
-      </ul>
-    
-    <div class="mt-6 text-sm font-semibold">
-      <a href="https://www.studio-shed.com/blog/" class="text-yellow-600 hover:text-yellow-500 transition ease-in-out duration-150">View all articles &amp; resources <span aria-hidden="true">→</span></a>
-    </div>
-  </div>
-
-
-      </div>
-    </div>
-  </div>
-</div>
-        <div class="" @click.outside="inspirationFlyout = false">
-  <button type="button" class="text-gray-700 group bg-white rounded-md inline-flex items-center text-base font-normal hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500" aria-expanded="false" @click="inspirationFlyout = ! inspirationFlyout">
-    <span>Inspiration</span>
-
-    <svg class="text-gray-600 ml-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-    </svg>
-  </button>
-  <div x-show="inspirationFlyout" class="absolute z-50 mt-3 left-0 w-full" 
-  x-transition:enter="transition ease-out duration-200" 
-  x-transition:enter-start="opacity-0 translate-y-4" 
-  x-transition:enter-end="opacity-100 translate-y-0" 
-  x-transition:leave="transition ease-in duration-150" 
-  x-transition:leave-start="opacity-100 translate-y-0" 
-  x-transition:leave-end="opacity-0 translate-y-4"
-  >
-    <div class="shadow-lg border border-gray-300 bg-gray-100 p-6 overflow-hidden">
-      <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-6 xl:gap-x-8">
-        <li class="relative">
-          <a href="/home-office-spaces/">
-            <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img src="/assets/images/nav-inspiration-office.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+            </nav>
+            <div class="hidden lg:flex items-center justify-end md:flex-1 lg:w-0">
+              <a href="/request-free-consultation/" class="rounded-sm ml-8 whitespace-nowrap inline-flex items-center justify-center bg-amber px-6 py-2 rounded-sm text-sm xl:text-base font-normal uppercase text-white hover:opacity-80">Free Consultation</a>
             </div>
-            <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Backyard Office Sheds</p>
-          </a>
-        </li>
-        <li class="relative">
-          <a href="/music-studios/">
-            <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img src="/assets/images/nav-inspiration-recording.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-            </div>
-            <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Home Music &amp; Recording Studios</p>
-          </a>
-        </li>
-        <li class="relative">
-          <a href="/art-studios/">
-            <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img src="/assets/images/nav-inspiration-art.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-            </div>
-            <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Home Art Studios &amp; Creative Sheds</p>
-          </a>
-        </li>
-        <li class="relative">
-          <a href="/man-cave/">
-            <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img src="/assets/images/nav-inspiration-man-cave.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-            </div>
-            <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Backyard Man Cave Kits</p>
-          </a>
-        </li>
-        <li class="relative">
-          <a href="/she-sheds/">
-            <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img src="/assets/images/nav-inspiration-she-shed.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-            </div>
-            <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">She Shed Kits, Ideas, And Designs</p>
-          </a>
-        </li>
-        <li class="relative">
-          <a href="/storage/">
-            <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img src="/assets/images/nav-inspiration-storage.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-            </div>
-            <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Modern Storage Sheds</p>
-          </a>
-        </li>
-        <li class="relative">
-          <a href="/diy/">
-            <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img src="/assets/images/nav-inspiration-diy.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-            </div>
-            <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">DIY Shed Kits</p>
-          </a>
-        </li>
-        <li class="relative">
-          <a href="/wellness/">
-            <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img src="/assets/images/nav-inspiration-wellness.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-            </div>
-            <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Home Gyms &amp; Yoga Studios</p>
-          </a>
-        </li>
-        <li class="relative">
-          <a href="/garages/">
-            <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img src="/assets/images/nav-inspiration-garage.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-            </div>
-            <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Garages</p>
-          </a>
-        </li>
-        <li class="relative">
-          <a href="/modular-addition/">
-            <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img src="/assets/images/nav-inspiration-modular.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-            </div>
-            <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Modular Addition</p>
-          </a>
-        </li>
-        <li class="relative">
-          <a href="/commercial/">
-            <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img src="/assets/images/nav-inspiration-commercial.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-            </div>
-            <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Commercial</p>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-        <a href="https://shop.studio-shed.com/" class="text-base font-normal text-gray-700 hover:text-gray-900"> Design Center </a>
-        <div class="" @click.outside="moreFlyout = false">  
-  <button type="button" class="text-gray-700 group bg-white rounded-md inline-flex items-center text-base font-normal hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500" aria-expanded="false" @click="moreFlyout = ! moreFlyout">
-    <span>More</span>
-
-    <svg class="text-gray-600 ml-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-    </svg>
-  </button>
-  <div x-show="moreFlyout" class="absolute z-50 mt-3 left-0 w-full" 
-  x-transition:enter="transition ease-out duration-200" 
-  x-transition:enter-start="opacity-0 translate-y-4" 
-  x-transition:enter-end="opacity-100 translate-y-0" 
-  x-transition:leave="transition ease-in duration-150" 
-  x-transition:leave-start="opacity-100 translate-y-0" 
-  x-transition:leave-end="opacity-0 translate-y-4"
-  >
-    <div class="shadow-lg border border-gray-300 overflow-hidden">
-      <div class="relative grid gap-4 bg-gray-100  px-4 py-6 sm:gap-8 sm:p-8 md:grid-cols-2 lg:grid-cols-4">
-        <div>
-        <a href="https://www.studio-shed.com/blog/" class="-m-3 p-3 flex items-start text-base font-medium text-gray-900 hover:text-gray-700">Articles &amp; Resources</a>
-        <a href="https://www.studio-shed.com/faqs/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Frequently Asked Questions</a>
-        <a href="https://www.studio-shed.com/about-us/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">About Studio Shed</a>
-        <a href="https://www.studio-shed.com/join-our-team/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Join Our Team</a>
-        </div>
-
-        <div>
-        <a href="https://www.studio-shed.com/financing/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Financing</a>
-        <a href="https://www.studio-shed.com/why-freestanding-modular/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Why Freestanding Modular?</a>
-        <a href="https://www.studio-shed.com/installation-resources/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Installation Guides</a>
-        <a href="https://www.studio-shed.com/installation-network/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Installation Network</a>
-        <a href="https://www.studio-shed.com/customer-reviews/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Customer Reviews</a>
-        </div>
-
-        <div>
-        <a href="https://www.studio-shed.com/in-the-news/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">In the News</a>
-        <a href="https://www.studio-shed.com/partner-with-us/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Partner With Us</a>
-        <a href="https://www.studio-shed.com/contact-us/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Contact Us</a>
-        <a href="https://www.studio-shed.com/terms-and-conditions/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Terms &amp; Conditions</a>
-        </div>
-        
-        <div>
-      <ul role="list" class="mt-2 space-y-6">
-          <li class="flow-root">
-            <a href="https://www.studio-shed.com/blog/making-your-studio-shed-work-for-you/" class="-m-3 p-3 flex hover:opacity-80">
-              <div class="hidden sm:block flex-shrink-0">
-                <img class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-more-work.jpg" alt="">
-              </div>
-              <div class="min-w-0 flex-1 ml-2">
-                <p class="text-sm text-gray-500">
-                  Making Your Studio Shed Work for You
-                </p>
-              </div>
-            </a>
-          </li>
-        
-          <li class="flow-root">
-            <a href="https://www.studio-shed.com/blog/a-realtors-guide-to-accessory-dwelling-units/" class="-m-3 p-3 flex hover:opacity-80">
-              <div class="hidden sm:block flex-shrink-0">
-                <img class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-more-realtor.jpg" alt="">
-              </div>
-              <div class="min-w-0 flex-1 ml-2">
-                <p class="mt-1 text-sm text-gray-500">
-                  A Realtor's Guide to Accessory Dwelling Units
-                </p>
-              </div>
-            </a>
-          </li>
-        
-      </ul>
-    
-    <div class="mt-6 text-sm font-semibold">
-      <a href="/blog/" class="text-yellow-600 hover:text-yellow-500 transition ease-in-out duration-150">View all articles &amp; resources <span aria-hidden="true">→</span></a>
-    </div>
-  </div>
-
-
-      </div>
-    </div>
-  </div>
-</div>
-      </nav>
-      <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">        
-        <a href="/request-free-consultation/" class="rounded-sm ml-8 whitespace-nowrap inline-flex items-center justify-center bg-gray-900 px-6 py-2 rounded-sm text-base font-normal uppercase text-white hover:opacity-80">Free Consultation</a>
-      </div>
-    </div>
-  
-    <div x-show="mobileMenu" class="absolute z-30 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
-  x-transition:enter="transition ease-out duration-200" 
-  x-transition:enter-start="opacity-0 scale-95" 
-  x-transition:enter-end="opacity-100 scale-100" 
-  x-transition:leave="transition ease-in duration-100" 
-  x-transition:leave-start="opacity-100 scale-100" 
-  x-transition:leave-end="opacity-0 scale-95">
-  <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
-    <div class="pt-5 pb-6 px-5">
-      <div class="flex items-center justify-between">
-        <div>
-          <img class="h-auto w-36" src="/assets/images/studioshed-logo.png" alt="Studio Shed logo">
-        </div>
-        <div class="-mr-2">
-          <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" @click.prevent="mobileMenu = false">
-            <span class="sr-only">Close menu</span>
-            <!-- Heroicon name: outline/x -->
-            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-      </div>
-      <div class="mt-6">
-        <nav class="grid grid-cols-1 gap-8 divide-y divide-gray-200">
-          <div class="-my-4 py-4">
-            <a href="https://www.studio-shed.com/process/" class="block w-full flex justify-between items-center">
-              <div class="text-base font-semibold text-gray-900">Process</div>
-            </a>
           </div>
 
-          <div class="-my-4 py-4">
-            <a href="#" class="block w-full flex justify-between items-center" @click.prevent="adusMobile = ! adusMobile">
-              <div class="text-base font-semibold text-gray-900">ADUs</div>
-              <span class="flex items-center">
+          <div x-show="mobileMenu" class="absolute z-30 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
+               x-transition:enter="transition ease-out duration-200"
+               x-transition:enter-start="opacity-0 scale-95"
+               x-transition:enter-end="opacity-100 scale-100"
+               x-transition:leave="transition ease-in duration-100"
+               x-transition:leave-start="opacity-100 scale-100"
+               x-transition:leave-end="opacity-0 scale-95">
+            <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+              <div class="pt-5 pb-6 px-5">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <img class="h-auto w-36" src="/assets/images/studioshed-logo.png" alt="Studio Shed logo">
+                  </div>
+                  <div class="-mr-2">
+                    <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" @click.prevent="mobileMenu = false">
+                      <span class="sr-only">Close menu</span>
+                      <!-- Heroicon name: outline/x -->
+                      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="mt-6">
+                  <nav class="grid grid-cols-1 gap-8 divide-y divide-gray-200">
+                    <div class="-my-4 py-4">
+                      <a href="/process/" class="block w-full flex justify-between items-center">
+                        <div class="text-base font-semibold text-gray-900">Process</div>
+                      </a>
+                    </div>
+
+                    <div class="-my-4 py-4">
+                      <a href="#" class="block w-full flex justify-between items-center" @click.prevent="adusMobile = ! adusMobile">
+                        <div class="text-base font-semibold text-gray-900">ADUs</div>
+                        <span class="flex items-center">
                 <svg :class="adusMobile ? '-rotate-180' : 'rotate-0'" class="h-6 w-6 transform text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
               </span>
-            </a>
-            <div x-show="adusMobile" x-transition>
-              <a href="/products/summit-series" class="px-2 py-4 border-b border-gray-200 flex hover:opacity-80">
-                <img class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-summit.png" alt="">
-                <div class="ml-4">
-                  <h4 class="text-base font-medium text-gray-900 uppercase">
-                    Summit Series
-                  </h4>
-                  <p class="text-sm text-gray-500">252-1000 SQFT</p>
-                  <p class="text-sm text-gray-500">from $37,793</p>
-                </div>
-              </a>
+                      </a>
+                      <div x-show="adusMobile" x-transition>
+                        <a href="/products/summit-series" class="px-2 py-4 border-b border-gray-200 flex hover:opacity-80">
+                          <img class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-summit.png" alt="">
+                          <div class="ml-4">
+                            <h4 class="text-base font-medium text-gray-900 uppercase">
+                              Summit Series
+                            </h4>
+                            <p class="text-sm text-gray-500">252-1000 SQFT</p>
+                            <p class="text-sm text-gray-500">from $37,793</p>
+                          </div>
+                        </a>
 
-              <nav class="space-y-8 mt-4 px-2 text-sm" aria-label="Sidebar">                  
-                <a href="https://www.studio-shed.com/adu/" class="text-gray-700 block">
-                  Accessory Dwelling Units
-                </a>
+                        <nav class="space-y-8 mt-4 px-2 text-sm" aria-label="Sidebar">
+                          <a href="/adu/" class="text-gray-700 block">
+                            Accessory Dwelling Units
+                          </a>
 
-                <a href="https://www.studio-shed.com/adu/cost-financing/" class="text-gray-700 block">
-                  ADU Cost &amp; Financing
-                </a>
+                          <a href="/adu/cost-financing/" class="text-gray-700 block">
+                            ADU Cost &amp; Financing
+                          </a>
 
-                <a href="https://www.studio-shed.com/adu/granny-flat/" class="text-gray-700 block">
-                  Granny Flat
-                </a>
+                          <a href="/adu/granny-flat/" class="text-gray-700 block">
+                            Granny Flat
+                          </a>
 
-                <a href="https://www.studio-shed.com/adu/ideas/" class="text-gray-700 block">
-                  ADU Design Ideas
-                </a>
+                          <a href="/adu/ideas/" class="text-gray-700 block">
+                            ADU Design Ideas
+                          </a>
 
-                <a href="https://www.studio-shed.com/adu/interior-packages/" class="text-gray-700 block">
-                  Interior Packages
-                </a>
+                          <a href="/adu/interior-packages/" class="text-gray-700 block">
+                            Interior Packages
+                          </a>
 
-                <a href="https://tour.studio-shed.com/" target="_blank" class="text-gray-700 block">
-                  3D Virtual Tour
-                </a>
-              </nav>
+                          <a href="https://tour.studio-shed.com/" target="_blank" class="text-gray-700 block">
+                            3D Virtual Tour
+                          </a>
+                        </nav>
 
-            </div>
-          </div>
+                      </div>
+                    </div>
 
-          <div class="-my-4 py-4">
-            <a href="#" class="block w-full flex justify-between items-center" @click.prevent="studiosMobile = ! studiosMobile">
-              <div class="text-base font-semibold text-gray-900">Studios</div>
-              <span class="flex items-center">
+                    <div class="-my-4 py-4">
+                      <a href="#" class="block w-full flex justify-between items-center" @click.prevent="studiosMobile = ! studiosMobile">
+                        <div class="text-base font-semibold text-gray-900">Studios</div>
+                        <span class="flex items-center">
                 <svg :class="studiosMobile ? '-rotate-180' : 'rotate-0'" class="h-6 w-6 transform text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
               </span>
-            </a>
+                      </a>
 
-            <div x-show="studiosMobile" x-transition>
-              <a href="/products/signature-series" class="px-2 py-4 border-b border-gray-200 flex hover:opacity-80">
-                <img class="w-24 h-24 object-cover rounded-md" src="/assets/images/nav-signature.png" alt="">
-                <div class="ml-4">
-                  <h4 class="text-base font-medium text-gray-900 uppercase">
-                    Signature Series
-                  </h4>
-                  <p class="text-sm text-gray-500">96-200 SQFT</p>
-                  <p class="text-sm text-gray-500">from $13,861</p>
-                </div>
-              </a>
+                      <div x-show="studiosMobile" x-transition>
+                        <a href="/products/signature-series" class="px-2 py-4 border-b border-gray-200 flex hover:opacity-80">
+                          <img class="w-24 h-24 object-cover rounded-md" src="/assets/images/nav-signature.png" alt="">
+                          <div class="ml-4">
+                            <h4 class="text-base font-medium text-gray-900 uppercase">
+                              Signature Series
+                            </h4>
+                            <p class="text-sm text-gray-500">96-200 SQFT</p>
+                            <p class="text-sm text-gray-500">from $13,861</p>
+                          </div>
+                        </a>
 
-              <a href="/products/portland-series" class="px-2 py-4 border-b border-gray-200 flex hover:opacity-80">
-                <img class="w-24 h-24 object-cover rounded-md" src="/assets/images/nav-portland.png" alt="">
-                <div class="ml-4">
-                  <h4 class="text-base font-medium text-gray-900 uppercase">
-                    Portland Series
-                  </h4>
-                  <p class="text-sm text-gray-500">120-192 SQFT</p>
-                  <p class="text-sm text-gray-500">from $19,250</p>
-                </div>
-              </a>
+                        <a href="/products/portland-series" class="px-2 py-4 border-b border-gray-200 flex hover:opacity-80">
+                          <img class="w-24 h-24 object-cover rounded-md" src="/assets/images/nav-portland.png" alt="">
+                          <div class="ml-4">
+                            <h4 class="text-base font-medium text-gray-900 uppercase">
+                              Portland Series
+                            </h4>
+                            <p class="text-sm text-gray-500">120-192 SQFT</p>
+                            <p class="text-sm text-gray-500">from $19,250</p>
+                          </div>
+                        </a>
 
-              <nav class="space-y-8 mt-4 px-2 text-sm" aria-label="Sidebar">                  
-                <a href="https://www.studio-shed.com/backyard-studios/" class="text-gray-700 block">
-                  Backyard Studios
-                </a>
+                        <nav class="space-y-8 mt-4 px-2 text-sm" aria-label="Sidebar">
+                          <a href="/backyard-studios/" class="text-gray-700 block">
+                            Backyard Studios
+                          </a>
 
-                <a href="https://www.studio-shed.com/backyard-studios/cost-financing/" class="text-gray-700 block">
-                  Studio Cost &amp; Financing
-                </a>
+                          <a href="/backyard-studios/cost-financing/" class="text-gray-700 block">
+                            Studio Cost &amp; Financing
+                          </a>
 
-                <a href="https://www.studio-shed.com/backyard-studios/ideas/" class="text-gray-700 block">
-                  Studio Ideas
-                </a>
+                          <a href="/backyard-studios/ideas/" class="text-gray-700 block">
+                            Studio Ideas
+                          </a>
 
-                <a href="https://www.studio-shed.com/diy-quick-ship-models/" class="text-gray-700 block">
-                  Curated Models
-                  <span class="text-xs block text-yellow-600 font-semibold tracking-wide uppercase">
+                          <a href="/diy-quick-ship-models/" class="text-gray-700 block">
+                            Curated Models
+                            <span class="text-xs block text-yellow-600 font-semibold tracking-wide uppercase">
                     Delivered in 2-4 weeks. Shipping included
                   </span>
-                </a>
+                          </a>
 
-              </nav>
+                        </nav>
 
-            </div>
+                      </div>
 
-          </div>
+                    </div>
 
-          <div class="-my-4 py-4">
-            <a href="#" class="block w-full flex justify-between items-center" @click.prevent="inspirationMobile = ! inspirationMobile">
-              <div class="text-base font-semibold text-gray-900">Inspiration</div>
-              <span class="flex items-center">
+                    <div class="-my-4 py-4">
+                      <a href="#" class="block w-full flex justify-between items-center" @click.prevent="inspirationMobile = ! inspirationMobile">
+                        <div class="text-base font-semibold text-gray-900">Inspiration</div>
+                        <span class="flex items-center">
                 <svg :class="inspirationMobile ? '-rotate-180' : 'rotate-0'" class="h-6 w-6 transform text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
               </span>
-            </a>
-            <div x-show="inspirationMobile" x-transition>
-              <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 mt-4">
-                <li class="relative">
-                  <a href="/home-office-spaces/">
-                    <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-office.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                    </div>
-                    <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Prefab Backyard Office Sheds</p>
-                  </a>
-                </li>
-                <li class="relative">
-                  <a href="https://www.studio-shed.com/music-studios/">
-                    <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-recording.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                    </div>
-                    <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Home Music &amp; Recording Studios</p>
-                  </a>
-                </li>
-                <li class="relative">
-                  <a href="https://www.studio-shed.com/art-studios/">
-                    <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-art.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                    </div>
-                    <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Home Art Studios &amp; Creative Sheds</p>
-                  </a>
-                </li>
-                <li class="relative">
-                  <a href="https://www.studio-shed.com/man-cave/">
-                    <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-man-cave.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                    </div>
-                    <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Backyard Man Cave Kits</p>
-                  </a>
-                </li>
-                <li class="relative">
-                  <a href="https://www.studio-shed.com/she-sheds/">
-                    <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-she-shed.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                    </div>
-                    <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">She Shed Kits, Ideas, And Designs</p>
-                  </a>
-                </li>
-                <li class="relative">
-                  <a href="https://www.studio-shed.com/storage/">
-                    <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-storage.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                    </div>
-                    <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Prefab Modern Storage Sheds</p>
-                  </a>
-                </li>
-                <li class="relative">
-                  <a href="https://www.studio-shed.com/diy/">
-                    <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-diy.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                    </div>
-                    <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">DIY Shed Kits for your Backyard</p>
-                  </a>
-                </li>
-                <li class="relative">
-                  <a href="https://www.studio-shed.com/wellness/">
-                    <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-wellness.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                    </div>
-                    <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Backyard Home Yoga Studios &amp; Gyms</p>
-                  </a>
-                </li>
-                <li class="relative">
-                  <a href="https://www.studio-shed.com/garages/">
-                    <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-garage.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                    </div>
-                    <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Garages</p>
-                  </a>
-                </li>
-                <li class="relative">
-                  <a href="https://www.studio-shed.com/modular-addition/">
-                    <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-modular.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                    </div>
-                    <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Modular Addition</p>
-                  </a>
-                </li>
-                <li class="relative">
-                  <a href="https://www.studio-shed.com/commercial/">
-                    <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-commercial.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                    </div>
-                    <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Commercial</p>
-                  </a>
-                </li>
-              </ul>
+                      </a>
+                      <div x-show="inspirationMobile" x-transition>
+                        <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 mt-4">
+                          <li class="relative">
+                            <a href="/home-office-spaces/">
+                              <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+                                <img src="/assets/images/nav-inspiration-office.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                              </div>
+                              <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Prefab Backyard Office Sheds</p>
+                            </a>
+                          </li>
+                          <li class="relative">
+                            <a href="/music-studios/">
+                              <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+                                <img src="/assets/images/nav-inspiration-recording.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                              </div>
+                              <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Home Music &amp; Recording Studios</p>
+                            </a>
+                          </li>
+                          <li class="relative">
+                            <a href="/art-studios/">
+                              <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+                                <img src="/assets/images/nav-inspiration-art.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                              </div>
+                              <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Home Art Studios &amp; Creative Sheds</p>
+                            </a>
+                          </li>
+                          <li class="relative">
+                            <a href="/man-cave/">
+                              <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+                                <img src="/assets/images/nav-inspiration-man-cave.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                              </div>
+                              <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Backyard Man Cave Kits</p>
+                            </a>
+                          </li>
+                          <li class="relative">
+                            <a href="/she-sheds/">
+                              <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+                                <img src="/assets/images/nav-inspiration-she-shed.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                              </div>
+                              <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">She Shed Kits, Ideas, And Designs</p>
+                            </a>
+                          </li>
+                          <li class="relative">
+                            <a href="/storage/">
+                              <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+                                <img src="/assets/images/nav-inspiration-storage.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                              </div>
+                              <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Prefab Modern Storage Sheds</p>
+                            </a>
+                          </li>
+                          <li class="relative">
+                            <a href="/diy/">
+                              <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+                                <img src="/assets/images/nav-inspiration-diy.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                              </div>
+                              <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">DIY Shed Kits for your Backyard</p>
+                            </a>
+                          </li>
+                          <li class="relative">
+                            <a href="/wellness/">
+                              <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+                                <img src="/assets/images/nav-inspiration-wellness.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                              </div>
+                              <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Backyard Home Yoga Studios &amp; Gyms</p>
+                            </a>
+                          </li>
+                          <li class="relative">
+                            <a href="/garages/">
+                              <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+                                <img src="/assets/images/nav-inspiration-garage.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                              </div>
+                              <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Garages</p>
+                            </a>
+                          </li>
+                          <li class="relative">
+                            <a href="/modular-addition/">
+                              <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+                                <img src="/assets/images/nav-inspiration-modular.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                              </div>
+                              <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Modular Addition</p>
+                            </a>
+                          </li>
+                          <li class="relative">
+                            <a href="/commercial/">
+                              <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+                                <img src="/assets/images/nav-inspiration-commercial.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                              </div>
+                              <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Commercial</p>
+                            </a>
+                          </li>
+                        </ul>
 
-            </div>
-          </div>
+                      </div>
+                    </div>
 
-          <div class="-my-4 py-4">
-            <a href="https://shop.studio-shed.com/" class="block w-full flex justify-between items-center">
-              <div class="text-base font-semibold text-gray-900">Design Center</div>
-            </a>
-          </div>
+                    <div class="-my-4 py-4">
+                      <a href="https://shop.studio-shed.com/" class="block w-full flex justify-between items-center">
+                        <div class="text-base font-semibold text-gray-900">Design Center</div>
+                      </a>
+                    </div>
 
-          <div class="-my-4 py-4">
-            <a href="#" class="block w-full flex justify-between items-center" @click.prevent="moreMobile = ! moreMobile">
-              <div class="text-base font-semibold text-gray-900">More</div>
-              <span class="flex items-center">
+                    <div class="-my-4 py-4">
+                      <a href="#" class="block w-full flex justify-between items-center" @click.prevent="moreMobile = ! moreMobile">
+                        <div class="text-base font-semibold text-gray-900">More</div>
+                        <span class="flex items-center">
                 <svg :class="moreMobile ? '-rotate-180' : 'rotate-0'" class="h-6 w-6 transform text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
               </span>
-            </a>
-            <div x-show="moreMobile" x-transition>
-              <nav class="space-y-8 mt-4 px-2 text-sm">                  
-                <a href="https://www.studio-shed.com/blog/" class="text-gray-700 block">
-                  Articles & Resources
-                </a>
-                <a href="https://www.studio-shed.com/faqs/" class="text-gray-700 block">
-                  Frequently Asked Questions
-                </a>
-                <a href="https://www.studio-shed.com/about-us/" class="text-gray-700 block">
-                  About Studio Shed
-                </a>
-                <a href="https://www.studio-shed.com/financing/" class="text-gray-700 block">
-                  Financing
-                </a>
-                <a href="https://www.studio-shed.com/installation-resources/" class="text-gray-700 block">
-                  Installation Guides
-                </a>
-                <a href="https://www.studio-shed.com/installation-network/" class="text-gray-700 block">
-                  Installation Network
-                </a>
-                <a href="https://www.studio-shed.com/join-our-team/" class="text-gray-700 block">
-                  Join Our Team
-                </a>
-                <a href="https://www.studio-shed.com/partner-with-us/" class="text-gray-700 block">
-                  Partner With Us
-                </a>
-                <a href="https://www.studio-shed.com/contact-us/" class="text-gray-700 block">
-                  Contact Us
-                </a>
-                <a href="https://www.studio-shed.com/terms-and-conditions/" class="text-gray-700 block">
-                  Terms & Conditions
-                </a>
-              </nav>
+                      </a>
+                      <div x-show="moreMobile" x-transition>
+                        <nav class="space-y-8 mt-4 px-2 text-sm">
+                          <a href="/blog/" class="text-gray-700 block">
+                            Articles & Resources
+                          </a>
+                          <a href="/faqs/" class="text-gray-700 block">
+                            Frequently Asked Questions
+                          </a>
+                          <a href="/about-us/" class="text-gray-700 block">
+                            About Studio Shed
+                          </a>
+                          <a href="/financing/" class="text-gray-700 block">
+                            Financing
+                          </a>
+                          <a href="/installation-resources/" class="text-gray-700 block">
+                            Installation Guides
+                          </a>
+                          <a href="/installation-network/" class="text-gray-700 block">
+                            Installation Network
+                          </a>
+                          <a href="/join-our-team/" class="text-gray-700 block">
+                            Join Our Team
+                          </a>
+                          <a href="/partner-with-us/" class="text-gray-700 block">
+                            Partner With Us
+                          </a>
+                          <a href="/contact-us/" class="text-gray-700 block">
+                            Contact Us
+                          </a>
+                          <a href="/terms-and-conditions/" class="text-gray-700 block">
+                            Terms & Conditions
+                          </a>
+                        </nav>
+                      </div>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+              <div class="py-6 px-5">
+                <a href="request-free-consultation/" class="w-full flex items-center justify-center bg-gradient-to-r from-gray-700 to-black bg-origin-border px-4 py-2 border border-transparent shadow-sm text-base font-medium text-white hover:bg-gray-900"> Free Consultation </a>
+              </div>
             </div>
           </div>
-        </nav>
-      </div>
-    </div>
-    <div class="py-6 px-5">
-      <a href="https://www.studio-shed.com/request-free-consultation/" class="w-full flex items-center justify-center bg-gradient-to-r from-gray-700 to-black bg-origin-border px-4 py-2 border border-transparent shadow-sm text-base font-medium text-white hover:bg-gray-900"> Free Consultation </a>
-    </div>
-  </div>
-</div>
-  </div>
-</header>
+        </div>
+        <div class="lg:hidden">
+          <a href="/request-free-consultation/" class="flex w-full items-center justify-center bg-amber py-2 leading-none text-xs uppercase text-white hover:opacity-90">Request Free Consultation →</a>
+        </div>
+      </header>
