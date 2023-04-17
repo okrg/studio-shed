@@ -1,6 +1,7 @@
 <?php
     /*
      * Template Name: Static HTML Homepage
+     * Updated: 2023-04-17
      */
 ?>
 <!doctype html>
@@ -23,7 +24,7 @@
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="https://www.studio-shed.com/">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1671070352436">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1681513397455">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
     <script src="/assets/main.bundle.js?v=1663733193277"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>

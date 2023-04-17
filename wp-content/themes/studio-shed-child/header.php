@@ -41,28 +41,20 @@
     <?php if ( 'tpl-financing-page.php' == get_page_template_slug() ): ?>
     <!--  <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/js/jquery-ui/jquery-ui.css">-->
     <?php endif; ?>
-
     <link rel="stylesheet" href="<?php echo bloginfo('template_directory');?>/style.css" type="text/css" />
     <link rel="stylesheet" href="<?php echo bloginfo('template_directory');?>/css/app.css?v=0.5" type="text/css" />
     <link rel="stylesheet" href="<?php echo bloginfo('template_directory');?>/assets/css/custom.css" type="text/css" />
 	  <link rel="stylesheet" href="/wp-content/themes/studio-shed-child/css/header.css?v=2.0" type="text/css" />
     <link rel="stylesheet" href="/wp-content/themes/studio-shed-child/css/footer.css?v=2.1" type="text/css" />
-
-
     <link rel="preload" href="/wp-content/themes/studio-shed/fonts/Futura-PT-Book.woff" as="font" type="font/woff" crossorigin>
     <link rel="preload" href="/wp-content/themes/studio-shed/fonts/Futura-PT-Heavy.woff" as="font" type="font/woff" crossorigin>
     <link rel="preload" href="/wp-content/themes/studio-shed/fonts/Tisa-Sans-Pro.woff" as="font" type="font/woff" crossorigin>
     <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
     <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
-
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1659147133051">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1681513397455">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
     <script src="/assets/main.bundle.js?v=1659147133051"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
-
-    <?php if(get_the_ID()==73) {?>
-        <img style="display: none;" height="1" width="1" alt="" src="https://ct.pinterest.com/?tid=MVGpGQNkfi8"/>
-    <?php }?>
     <?php wp_head(); ?>
     <!-- Google Optimize Anti-flicker snippet (recommended)  -->
     <style>.async-hide { opacity: 0 !important} </style>
