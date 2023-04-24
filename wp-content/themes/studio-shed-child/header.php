@@ -77,12 +77,9 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFQVBLT"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-      <?php /*
-      <a href="https://shop.studio-shed.com/" target="_blank">
-        <img src="/assets/images/spring-sale-now-banner.jpg" alt="Spring Sale Banner" class="w-full hidden sm:block">
-        <img src="/assets/images/spring-sale-now-mobile.jpg" alt="Spring Sale Banner" class="w-full sm:hidden">
+      <a class="w-full text-center py-1 bg-gray-900 text-white text-sm hidden md:block" href="https://shop.studio-shed.com/" target="_blank">
+        Shipping to all 50 U.S. states and beyond.
       </a>
-       */ ?>
       <header x-cloak x-data="window.Components.navManager">
         <div class="relative bg-white">
           <div class="flex justify-between items-center max-w-7xl mx-auto px-4 py-2 md:justify-start md:space-x-6">
