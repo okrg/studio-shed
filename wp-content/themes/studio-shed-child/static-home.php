@@ -636,6 +636,10 @@
                   </a>
 
                   <nav class="space-y-8 mt-4 px-2 text-sm" aria-label="Sidebar">
+                    <a href="/favorites/" class="text-gray-700 block">
+                      Founders Favorites
+                    </a>
+                    
                     <a href="/backyard-studios/" class="text-gray-700 block">
                       Backyard Studios
                     </a>
@@ -1108,30 +1112,6 @@
       <div class="elfsight-app-7c4fb461-f71b-4d0d-af24-f0fa4178dbad"></div>
     </div>
   </div>
-
-
-  <div class="relative bg-gray-800">
-    <div class="h-56 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
-      <img loading="lazy" class="w-full h-full object-cover" src="/assets/images/ss-footer-build.jpg" alt="Studio Shed 3D design center app">
-    </div>
-    <div class="relative max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-      <div class="md:ml-auto md:w-1/2 md:pl-10">
-        <h2 class="text-base font-semibold uppercase tracking-wider text-gray-300">Make Your Escape</h2>
-        <p class="mt-2 text-white text-3xl font-extrabold tracking-tight sm:text-4xl">Design Your Studio Shed</p>
-        <p class="mt-3 text-lg text-gray-300">One shed does not fit all. Our innovative prefab solution is a flat-packed, panelized kits of parts with hundreds of customizations in the Design Center. There are millions of combinations of sizes, door and window placements, and colors. All thoughtfully designed to work together.</p>
-        <div class="mt-8">
-          <div class="inline-flex rounded-md shadow">
-            <a href="https://shop.studio-shed.com/" class="inline-block mt-6 px-4 py-3 border border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-white font-medium hover:opacity-80 sm:px-8" title="Studio Shed 3D Design Center">Design &amp; Price Your Studio Shed</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
 </main>
 <div class="relative bg-gray-800">
   <div class="h-56 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
@@ -1287,22 +1267,25 @@
         <h3 class="text-sm font-bold text-gray-200 tracking-wider uppercase">Studios</h3>
         <ul role="list" class="mt-4 space-y-4">
           <li>
-            <a href="https://www.studio-shed.com/products/signature-series" class="text-base text-gray-300 hover:text-white">Signature Series</a>
+            <a href="/products/signature-series/" class="text-base text-gray-300 hover:text-white">Signature Series</a>
           </li>
           <li>
-            <a href="https://www.studio-shed.com/products/portland-series" class="text-base text-gray-300 hover:text-white">Portland Series</a>
+            <a href="/products/portland-series/" class="text-base text-gray-300 hover:text-white">Portland Series</a>
           </li>
           <li>
-            <a href="https://www.studio-shed.com/backyard-studios/" class="text-base text-gray-300 hover:text-white">Backyard Studios</a>
+            <a href="/favorites/" class="text-base text-gray-300 hover:text-white">Founders Favorites</a>
           </li>
           <li>
-            <a href="https://www.studio-shed.com/backyard-studios/cost-financing/" class="text-base text-gray-300 hover:text-white">Studio Cost &amp; Financing</a>
+            <a href="/backyard-studios/" class="text-base text-gray-300 hover:text-white">Backyard Studios</a>
           </li>
           <li>
-            <a href="https://www.studio-shed.com/backyard-studios/ideas/" class="text-base text-gray-300 hover:text-white">Studio Ideas</a>
+            <a href="/backyard-studios/cost-financing/" class="text-base text-gray-300 hover:text-white">Studio Cost &amp; Financing</a>
           </li>
           <li>
-            <a href="https://www.studio-shed.com/diy-quick-ship-models/" class="text-base text-gray-300 hover:text-white">DIY Quick Ship Models</a>
+            <a href="/backyard-studios/ideas/" class="text-base text-gray-300 hover:text-white">Studio Ideas</a>
+          </li>
+          <li>
+            <a href="/diy-quick-ship-models/" class="text-base text-gray-300 hover:text-white">DIY Quick Ship Models</a>
           </li>
         </ul>
       </div>
@@ -1317,51 +1300,51 @@
             </a>
           </li>
           <li>
-            <a href="https://www.studio-shed.com/music-studios/" class="text-base text-gray-300 hover:text-white">Music Studios
+            <a href="/music-studios/" class="text-base text-gray-300 hover:text-white">Music Studios
             </a>
           </li>
           <li>
-            <a href="https://www.studio-shed.com/art-studios/" class="text-base text-gray-300 hover:text-white">
+            <a href="/art-studios/" class="text-base text-gray-300 hover:text-white">
               Art &amp; Creative Studios
             </a>
           </li>
           <li>
-            <a href="https://www.studio-shed.com/man-cave/" class="text-base text-gray-300 hover:text-white">
+            <a href="/man-cave/" class="text-base text-gray-300 hover:text-white">
               Man Cave
             </a>
           </li>
           <li>
-            <a href="https://www.studio-shed.com/she-sheds/" class="text-base text-gray-300 hover:text-white">
+            <a href="/she-sheds/" class="text-base text-gray-300 hover:text-white">
               She Shed
             </a>
           </li>
           <li>
-            <a href="https://www.studio-shed.com/storage/" class="text-base text-gray-300 hover:text-white">
+            <a href="/storage/" class="text-base text-gray-300 hover:text-white">
               Storage
             </a>
           </li>
           <li>
-            <a href="https://www.studio-shed.com/diy/" class="text-base text-gray-300 hover:text-white">
+            <a href="/diy/" class="text-base text-gray-300 hover:text-white">
               DIY
             </a>
           </li>
           <li>
-            <a href="https://www.studio-shed.com/wellness/" class="text-base text-gray-300 hover:text-white">
+            <a href="/wellness/" class="text-base text-gray-300 hover:text-white">
               Wellness
             </a>
           </li>
           <li>
-            <a href="https://www.studio-shed.com/garages/" class="text-base text-gray-300 hover:text-white">
+            <a href="/garages/" class="text-base text-gray-300 hover:text-white">
               Garages
             </a>
           </li>
           <li>
-            <a href="https://www.studio-shed.com/modular-addition/" class="text-base text-gray-300 hover:text-white">
+            <a href="/modular-addition/" class="text-base text-gray-300 hover:text-white">
               Modular Additions
             </a>
           </li>
           <li>
-            <a href="https://www.studio-shed.com/commercial/" class="text-base text-gray-300 hover:text-white">
+            <a href="/commercial/" class="text-base text-gray-300 hover:text-white">
               Commercial
             </a>
           </li>
