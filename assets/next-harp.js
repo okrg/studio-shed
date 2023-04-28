@@ -2031,6 +2031,7 @@ window.addEventListener('DOMContentLoaded', () => {
       document.querySelector('#loader').remove()
       engine.resize()
       document.dispatchEvent(loadEvent);
+      window.dispatchEvent(new CustomEvent('update-exterior'))
     }, 1500);
   })
 

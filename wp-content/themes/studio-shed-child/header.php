@@ -200,13 +200,13 @@
                           </li>
 
                           <li class="flow-root">
-                            <a href="https://www.studio-shed.com/blog/the-advantages-of-building-an-adu/" class="-m-3 p-3 flex hover:opacity-80">
+                            <a href="/favorites/" class="-m-3 p-3 flex hover:opacity-80">
                               <div class="hidden sm:block flex-shrink-0">
-                                <img loading="lazy" class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-adus-building-advantage.jpg" alt="">
+                                <img loading="lazy" class="w-24 h-16 object-cover rounded-md" src="/assets/images/founders.jpg" alt="">
                               </div>
                               <div class="min-w-0 flex-1 ml-2">
                                 <p class="text-sm text-gray-500">
-                                  The Advanages of Building an ADU
+                                  Founders Favorites: Celebrating 15 Years of Studio Shed
                                 </p>
                               </div>
                             </a>
@@ -215,7 +215,8 @@
                         </ul>
 
                         <div class="mt-6 text-sm font-semibold">
-                          <a href="https://www.studio-shed.com/blog/" class="text-yellow-600 hover:text-yellow-500 transition ease-in-out duration-150">View all articles &amp; resources <span aria-hidden="true">→</span></a>
+                          <a href="https://www.studio-shed.com/blog/" class="text-yellow-600 hover:text-yellow-500 transition ease-in-out duration-150">
+                            Articles &amp; resources <span aria-hidden="true">→</span></a>
                         </div>
                       </div>
 
@@ -336,13 +337,13 @@
                           </li>
 
                           <li class="flow-root">
-                            <a href="https://www.studio-shed.com/blog/the-calirado-kids-caliradio-shack/" class="-m-3 p-3 flex hover:opacity-80">
+                            <a href="/favorites/" class="-m-3 p-3 flex hover:opacity-80">
                               <div class="hidden sm:block flex-shrink-0">
-                                <img loading="lazy" class="w-24 h-16 object-cover rounded" src="/assets/images/nav-studios-calirado.jpg" alt="">
+                                <img loading="lazy" class="w-24 h-16 object-cover rounded-md" src="/assets/images/founders.jpg" alt="">
                               </div>
                               <div class="min-w-0 flex-1 ml-2">
-                                <p class="mt-1 text-sm text-gray-500">
-                                  The Calirado Kid's 'Caliradio Shack'
+                                <p class="text-sm text-gray-500">
+                                  Founders Favorites: Celebrating 15 Years of Studio Shed
                                 </p>
                               </div>
                             </a>
@@ -351,7 +352,7 @@
                         </ul>
 
                         <div class="mt-6 text-sm font-semibold">
-                          <a href="https://www.studio-shed.com/blog/" class="text-yellow-600 hover:text-yellow-500 transition ease-in-out duration-150">View all articles &amp; resources <span aria-hidden="true">→</span></a>
+                          <a href="https://www.studio-shed.com/blog/" class="text-yellow-600 hover:text-yellow-500 transition ease-in-out duration-150">Articles &amp; resources <span aria-hidden="true">→</span></a>
                         </div>
                       </div>
 
