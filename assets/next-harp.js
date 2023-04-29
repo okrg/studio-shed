@@ -1565,33 +1565,43 @@ window.addEventListener('DOMContentLoaded', () => {
       }
       if(model == 'boreas-10x12') {
         recipeResponse = {"model":"signature","size":"10x12","depth":10,"length":12,"name":"10x12 signature","shell_base_price":14606,"roof":{"model":"SG-10x12-STE-06F","x":0,"y":-9,"z":8},"floor":{"width":144,"height":12,"depth":120,"x":72,"y":-9,"z":60},"front":[{"slot":"f1","model":"F12-D72C","width":144,"x":-68,"y":-9,"z":60}],"back":[{"slot":"b1","model":"B10x12","width":144,"x":-68,"y":-9,"z":-60}],"left":[{"slot":"l1","model":"L10-36C","width":120,"x":-71,"y":-9,"z":-60}],"right":[{"slot":"r1","model":"R10-36C","width":120,"x":71,"y":-9,"z":60}]}
+        recipeColorway = {}
       }
       if(model == 'boreas-12x16') {
         recipeResponse = {"model":"signature","size":"12x16","depth":12,"length":16,"name":"12x16 signature","shell_base_price":20308,"roof":{"model":"SG-12x16-STE-06F","x":0,"y":-9,"z":8},"floor":{"width":192,"height":12,"depth":144,"x":96,"y":-9,"z":72},"front":[{"slot":"f1","model":"F16-D72C","width":144,"x":-92,"y":-9,"z":72}],"back":[{"slot":"b1","model":"B12x16","width":192,"x":-92,"y":-9,"z":-72}],"left":[{"slot":"l1","model":"L12-36C","width":144,"x":-95,"y":-9,"z":-72}],"right":[{"slot":"r1","model":"R12-36C","width":144,"x":95,"y":-9,"z":72}]}
+        recipeColorway = {}
       }
       if(model == 'solitude-10x12') {
         recipeResponse = {"model":"signature","size":"10x12","depth":10,"length":12,"name":"10x12 signature","shell_base_price":14606,"roof":{"model":"SG-10x12-STE-06F","x":0,"y":-9,"z":8},"floor":{"width":144,"height":12,"depth":120,"x":72,"y":-9,"z":60},"front":[{"slot":"f1","model":"F12-W2L-D72C-W2R","width":144,"x":-68,"y":-9,"z":60}],"back":[{"slot":"b1","model":"B10x12","width":144,"x":-68,"y":-9,"z":-60}],"left":[{"slot":"l1","model":"L10-36C","width":120,"x":-71,"y":-9,"z":-60}],"right":[{"slot":"r1","model":"R10-36C","width":120,"x":71,"y":-9,"z":60}]}
+        recipeColorway = {}
       }
       if(model == 'solitude-12x16') {
         recipeResponse = {"model":"signature","size":"12x16","depth":12,"length":16,"name":"12x16 signature","shell_base_price":20308,"roof":{"model":"SG-12x16-STE-06F","x":0,"y":-9,"z":8},"floor":{"width":192,"height":12,"depth":144,"x":96,"y":-9,"z":72},"front":[{"slot":"f1","model":"F16-W2L-D72C-W2R","width":144,"x":-92,"y":-9,"z":72}],"back":[{"slot":"b1","model":"B12x16","width":192,"x":-92,"y":-9,"z":-72}],"left":[{"slot":"l1","model":"L12-36C","width":144,"x":-95,"y":-9,"z":-72}],"right":[{"slot":"r1","model":"R12-36C","width":144,"x":95,"y":-9,"z":72}]}
+        recipeColorway = {}
       }
       if(model == 'pagoda-left-10x12') {
         recipeResponse = {"model":"signature","size":"10x12","depth":10,"length":12,"name":"10x12 signature","shell_base_price":14606,"roof":{"model":"SG-10x12-STE-06F","x":0,"y":-9,"z":8},"floor":{"width":144,"height":12,"depth":120,"x":72,"y":-9,"z":60},"front":[{"slot":"f1","model":"F12-D36L","width":144,"x":-68,"y":-9,"z":60}],"back":[{"slot":"b1","model":"B10x12","width":144,"x":-68,"y":-9,"z":-60}],"left":[{"slot":"l1","model":"L10-36C-W2R","width":120,"x":-71,"y":-9,"z":-60}],"right":[{"slot":"r1","model":"R10-36C","width":120,"x":71,"y":-9,"z":60}]}
+        recipeColorway = {}
       }
       if(model == 'pagoda-left-12x16') {
         recipeResponse = {"model":"signature","size":"12x16","depth":12,"length":16,"name":"12x16 signature","shell_base_price":20308,"roof":{"model":"SG-12x16-STE-06F","x":0,"y":-9,"z":8},"floor":{"width":192,"height":12,"depth":144,"x":96,"y":-9,"z":72},"front":[{"slot":"f1","model":"F16-D36L-36R","width":144,"x":-92,"y":-9,"z":72}],"back":[{"slot":"b1","model":"B12x16","width":192,"x":-92,"y":-9,"z":-72}],"left":[{"slot":"l1","model":"L12-36C-W2R","width":144,"x":-95,"y":-9,"z":-72}],"right":[{"slot":"r1","model":"R12-36C","width":144,"x":95,"y":-9,"z":72}]}
+        recipeColorway = {}
       }
       if(model == 'pagoda-right-10x12') {
         recipeResponse = {"model":"signature","size":"10x12","depth":10,"length":12,"name":"10x12 signature","shell_base_price":14606,"roof":{"model":"SG-10x12-STE-06F","x":0,"y":-9,"z":8},"floor":{"width":144,"height":12,"depth":120,"x":72,"y":-9,"z":60},"front":[{"slot":"f1","model":"F12-D36R","width":144,"x":-68,"y":-9,"z":60}],"back":[{"slot":"b1","model":"B10x12","width":144,"x":-68,"y":-9,"z":-60}],"left":[{"slot":"l1","model":"L10-36C","width":120,"x":-71,"y":-9,"z":-60}],"right":[{"slot":"r1","model":"R10-W2L-36C","width":120,"x":71,"y":-9,"z":60}]}
+        recipeColorway = {}
       }
       if(model == 'pagoda-right-12x16') {
         recipeResponse = {"model":"signature","size":"12x16","depth":12,"length":16,"name":"12x16 signature","shell_base_price":20308,"roof":{"model":"SG-12x16-STE-06F","x":0,"y":-9,"z":8},"floor":{"width":192,"height":12,"depth":144,"x":96,"y":-9,"z":72},"front":[{"slot":"f1","model":"F16-36L-D36R","width":144,"x":-92,"y":-9,"z":72}],"back":[{"slot":"b1","model":"B12x16","width":192,"x":-92,"y":-9,"z":-72}],"left":[{"slot":"l1","model":"L12-36C","width":144,"x":-95,"y":-9,"z":-72}],"right":[{"slot":"r1","model":"R12-W2L-36C","width":144,"x":95,"y":-9,"z":72}]}
+        recipeColorway = {}
       }
       if(model == 'portland-studio-12x16') {
         recipeResponse = {"model":"portland","size":"12x16","depth":12,"length":16,"name":"12x16 portland","shell_base_price":66477,"roof":{"model":"PT-12x16-STV","x":0,"y":-9,"z":0},"floor":{"width":192,"height":12,"depth":144,"x":96,"y":-9,"z":72},"front":[{"slot":"f1","model":"PF16-4-W3-D72C","width":192,"x":-96,"y":-9,"z":71}],"back":[{"slot":"b1","model":"PB16","width":192,"x":96,"y":-9,"z":-71}],"left":[{"slot":"l1","model":"PL12-36C","width":144,"x":-95.5,"y":-9,"z":-66.5}],"right":[{"slot":"r1","model":"PR12-36C","width":144,"x":95,"y":-9,"z":66.5}]}
+        recipeColorway = {}
       }
       if(model == 'portland-studio-16x16') {
         recipeResponse = {"curated":true,"model":"portland","size":"16x16","depth":16,"length":16,"name":"16x16 portland","roof":{"model":"PT-16x16-STV","x":0,"y":-9,"z":0},"floor":{"width":192,"height":12,"depth":192,"x":96,"y":-9,"z":96},"front":[{"slot":"f1","model":"PF16-4-W3-D72C","width":192,"x":-96,"y":-9,"z":95}],"back":[{"slot":"b1","model":"PB16","width":192,"x":96,"y":-9,"z":-95}],"left":[{"slot":"l1","model":"PL16-36C","width":144,"x":-95.5,"y":-9,"z":-90.5}],"right":[{"slot":"r1","model":"PR16-36C","width":192,"x":95,"y":-9,"z":90.5}],"panels":[]}
+        recipeColorway = {}
       }
 
       if(model == 'model-a') {
@@ -2002,7 +2012,7 @@ window.addEventListener('DOMContentLoaded', () => {
       Harp.roof_metal_material.specularColor = new BABYLON.Color3(0.33, 0.33, 0.33)
 
 
-      if(window.colorway !== null) {
+      if (Object.keys(window.colorway).length > 0) {
         Harp.setSiding(window.colorway.siding, null)
         Harp.setSidingColor(window.colorway.sidingColor)
         Harp.setTrimColor(window.colorway.trimColor, null)
