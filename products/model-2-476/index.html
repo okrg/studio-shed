@@ -12,15 +12,15 @@
     <meta property="og:description" content="">
     <meta property="og:url" content="">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2023-04-29T07:23:53.603Z">
+    <meta property="article:modified_time" content="2023-05-05T19:17:43.171Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1682753033316">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1683314262868">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <script src="/assets/main.bundle.js?v=1682753033316"></script>
+    <script src="/assets/main.bundle.js?v=1683314262868"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babylonjs/4.2.2/babylon.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/babylonjs-loaders@5.9.1/babylonjs.loaders.min.js"></script>
@@ -58,7 +58,125 @@
         </button>
       </div>
       <nav class="hidden lg:flex items-center space-x-6">
-        <a href="/process/" class="text-sm xl:text-base font-normal text-gray-700 hover:text-gray-900">Process</a>
+        <div @click.outside="modelsFlyout = false">
+  <button type="button" class="text-gray-700 group bg-white rounded-md inline-flex items-center text-sm xl:text-base font-normal hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500" aria-expanded="false" @click="modelsFlyout = ! modelsFlyout">
+    <span>Models</span>
+
+    <svg class="text-gray-600 ml-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+    </svg>
+  </button>
+  <div x-show="modelsFlyout" class="absolute z-50 mt-3 left-0 w-full"
+  x-transition:enter="transition ease-out duration-200" 
+  x-transition:enter-start="opacity-0 translate-y-4" 
+  x-transition:enter-end="opacity-100 translate-y-0" 
+  x-transition:leave="transition ease-in duration-150" 
+  x-transition:leave-start="opacity-100 translate-y-0" 
+  x-transition:leave-end="opacity-0 translate-y-4"
+  >
+    <div class="shadow-lg border-b border-t bg-white px-8 py-4 border-gray-300 overflow-hidden">
+      <p class="text-xs font-bold text-yellow-600 md:max-w-7xl"><a href="/products/signature-series">Signature Series →</a></p>
+<div class="relative grid grid-cols-2 md:grid-cols-5 gap-x-8 md:max-w-7xl mx-auto gap-y-6 mb-8">
+
+  
+  
+  <a href="/products/pagoda-right-10x12/" class="group text-xs relative group cursor-pointer">
+    <h3 class="font-bold">Pagoda Right</h3>
+    <p class="text-gray-600">120 SF Studio</p>
+    <div class="text-gray-600 mb-2">$21,202</div>
+    <img class="w-auto h-auto max-h-16 transition-all group-hover:scale-110 group-hover:opacity-80" src="/assets/images/menu/pagoda-right-render.jpg">
+  </a>
+  
+  
+  <a href="/products/boreas-10x12/" class="group text-xs relative group cursor-pointer">
+    <h3 class="font-bold">Boreas</h3>
+    <p class="text-gray-600">120 SF Studio</p>
+    <div class="text-gray-600 mb-2">$20,790</div>
+    <img class="w-auto h-auto max-h-16 transition-all group-hover:scale-110 group-hover:opacity-80" src="/assets/images/menu/boreas-render.jpg">
+  </a>
+  
+  
+  <a href="/products/solitude-10x12/" class="group text-xs relative group cursor-pointer">
+    <h3 class="font-bold">Solitude</h3>
+    <p class="text-gray-600">120 SF Studio</p>
+    <div class="text-gray-600 mb-2">$23,357</div>
+    <img class="w-auto h-auto max-h-16 transition-all group-hover:scale-110 group-hover:opacity-80" src="/assets/images/menu/solitude-render.jpg">
+  </a>
+  
+  
+  <a href="/products/pagoda-left-10x12/" class="group text-xs relative group cursor-pointer">
+    <h3 class="font-bold">Pagoda Left</h3>
+    <p class="text-gray-600">120 SF Studio</p>
+    <div class="text-gray-600 mb-2">$21,202</div>
+    <img class="w-auto h-auto max-h-16 transition-all group-hover:scale-110 group-hover:opacity-80" src="/assets/images/menu/pagoda-left-render.jpg">
+  </a>
+  
+</div>
+      <p class="text-xs font-bold text-yellow-600 md:max-w-7xl mx-auto"><a href="/products/summit-series">Summit Series →</a></p>
+<div class="relative grid grid-cols-2 md:grid-cols-5 gap-x-8 md:max-w-7xl mx-auto gap-y-6 mb-8">
+
+  
+  
+  <a href="/products/model-1-364/" class="group text-xs relative group cursor-pointer">
+    <h3 class="font-bold">Summit 364</h3>
+    <p class="text-gray-600">364 SF Studio ADU</p>
+    <div class="text-gray-600 mb-2">$87,197</div>
+    <img class="w-auto h-auto max-h-16 transition-all group-hover:scale-110 group-hover:opacity-80" src="/assets/images/menu/model-1-364-render.jpg">
+  </a>
+  
+  
+  <a href="/products/model-2-476/" class="group text-xs relative group cursor-pointer">
+    <h3 class="font-bold">Summit 476</h3>
+    <p class="text-gray-600">476 SF 1 Bed ADU</p>
+    <div class="text-gray-600 mb-2">$111,195</div>
+    <img class="w-auto h-auto max-h-16 transition-all group-hover:scale-110 group-hover:opacity-80" src="/assets/images/menu/model-2-476-render.jpg">
+  </a>
+  
+  
+  <a href="/products/model-3-684/" class="group text-xs relative group cursor-pointer">
+    <h3 class="font-bold">Summit 684</h3>
+    <p class="text-gray-600">684 SF 1 Bed ADU</p>
+    <div class="text-gray-600 mb-2">$123,205</div>
+    <img class="w-auto h-auto max-h-16 transition-all group-hover:scale-110 group-hover:opacity-80" src="/assets/images/menu/model-3-684-render.jpg">
+  </a>
+  
+  
+  <a href="/products/model-4-1000/" class="group text-xs relative group cursor-pointer">
+    <h3 class="font-bold">Summit 1000</h3>
+    <p class="text-gray-600">1000 SF 2 Bed ADU</p>
+    <div class="text-gray-600 mb-2">$165,596</div>
+    <img class="w-auto h-auto max-h-16 transition-all group-hover:scale-110 group-hover:opacity-80" src="/assets/images/menu/model-4-1000-render.jpg">
+  </a>
+  
+
+</div>
+      <p class="text-xs font-bold text-yellow-600 md:max-w-7xl mx-auto"><a href="/products/portland-series">Portland Series →</a></p>
+<div class="relative grid grid-cols-2 md:grid-cols-5 gap-x-8 md:max-w-7xl mx-auto gap-y-6 mb-8">
+
+  
+  
+
+  <a href="/products/model-d/" class="group text-xs relative group cursor-pointer">
+    <h3 class="font-bold">Portland 120D</h3>
+    <p class="text-gray-600">120 SF Studio</p>
+    <div class="text-gray-600 mb-2">$29,833</div>
+    <img class="w-auto h-auto max-h-16 transition-all group-hover:scale-110 group-hover:opacity-80" src="/assets/images/menu/portland-120d-render.jpg">
+  </a>
+  
+  
+
+  <a href="/products/model-e/" class="group text-xs relative group cursor-pointer">
+    <h3 class="font-bold">Portland 120E</h3>
+    <p class="text-gray-600">120 SF Studio</p>
+    <div class="text-gray-600 mb-2">$23,916</div>
+    <img class="w-auto h-auto max-h-16 transition-all group-hover:scale-110 group-hover:opacity-80" src="/assets/images/menu/portland-120e-render.jpg">
+  </a>
+  
+
+</div>
+    </div>
+  </div>
+</div>
         <div @click.outside="adusFlyout = false">  
   <button type="button" class="text-gray-700 group bg-white rounded-md inline-flex items-center text-sm xl:text-base font-normal hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500" aria-expanded="false" @click="adusFlyout = ! adusFlyout">
     <span>ADUs</span>
@@ -90,7 +208,7 @@
                   Summit Series
                   </h4>
                   <p class="text-sm text-gray-500">252-1000 SQFT</p>
-                  <p class="text-sm text-gray-500">from $38,727</p>
+                  <p class="text-sm text-gray-500">from $42,600</p>
                 </div>
               </a>
             </li>
@@ -215,8 +333,8 @@
                   <h4 class="text-base font-medium text-gray-900 uppercase">
                   Signature Series
                   </h4>
-                  <p class="text-sm text-gray-500">96-240 SQFT</p>
-                  <p class="text-sm text-gray-500">from $13,861</p>
+                  <p class="text-sm text-gray-500">80-240 SQFT</p>
+                  <p class="text-sm text-gray-500">from $13,592</p>
                 </div>
               </a>
             </li>
@@ -229,8 +347,8 @@
                   <h4 class="text-base font-medium text-gray-900 uppercase">
                   Portland Series
                   </h4>
-                  <p class="text-sm text-gray-500">120-192 SQFT</p>
-                  <p class="text-sm text-gray-500">from $19,520</p>
+                  <p class="text-sm text-gray-500">96-320 SQFT</p>
+                  <p class="text-sm text-gray-500">from $19,053</p>
                 </div>
               </a>
             </li>
@@ -830,24 +948,45 @@
   
     <!-- <div class="bg-white"> -->
     <div class="max-w-2xl mx-auto py-8 px-4 sm:py-12 sm:px-6 lg:max-w-7xl lg:px-8">
-      <div class="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start">
+      <div class="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start" x-data="window.Components.qsForm()">
         <!-- Image gallery -->
-        <div class="flex flex-col-reverse">
+        <div class="flex flex-col">
           <div class="w-full aspect-w-1 aspect-h-1">
-            <canvas id="renderCanvas" touch-action="none" style="display:none" data-studio-shed-model="model-a"></canvas>
+            <canvas id="renderCanvas" touch-action="none" style="display:none" data-studio-shed-model="model-2-476"></canvas>
+          </div>
+          <div class="flex items-center mt-2 justify-center">
+
+            <button type="button" class="bg-gray-200 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-2" role="switch" aria-checked="false" aria-labelledby="show-interior-label"
+            x-ref="switch"
+                    x-state:on="Enabled"
+                    x-state:off="Not Enabled"
+                    :class="{ 'bg-yellow-600': showInterior, 'bg-gray-200': !showInterior }"
+                    :aria-checked = "showInterior"
+                    @click="showInterior = !showInterior"
+            >
+
+              <span aria-hidden="true" class="translate-x-0 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
+                    :class="{ 'translate-x-5': showInterior, 'translate-x-0': !showInterior }"
+                    x-state:on="Enabled"
+                    x-state:off="Not Enabled"
+              ></span>
+            </button>
+            <span class="ml-3 text-sm select-none cursor-pointer" id="show-interior-label" @click="showInterior = !showInterior; $refs.switch.focus()">
+              <span class="font-medium text-gray-900">Show Interior</span>
+            </span>
           </div>
         </div>
 
         <!-- Product info -->
         <div class="mt-4 px-4 sm:px-0 sm:mt-16 lg:mt-0">
-          <h1 class="text-3xl font-extrabold tracking-tight text-gray-900">Model2 476 sf | 1 Bed ADU</h1>
-          <section class="mt-4" x-data="window.Components.qsForm()" @update-exterior.window="updateExterior()">
+          <h1 class="text-3xl font-extrabold tracking-tight text-gray-900">Summit 476 <span class="text-xl">14x34 (476 SF)</span></h1>
+          <section class="mt-4" @update-exterior.window="updateExterior()">
 
           <div class="mt-2">
             <h2 class="sr-only">Product information</h2>
             <div class="flex items-center">
-              <p class="text-3xl text-gray-900">$109,600</p>
-              <p class="text-sm font-bold text-gray-500 ml-6">List price: <span class="line-through">$115,600</span> <span class="text-green-500 ml-3">Save $6,000!</span></p>
+              <p class="text-3xl text-gray-900">$111,195</p>
+              <p class="text-sm font-bold text-gray-500 ml-6">List price: <span class="line-through">$132,992</span> <span class="text-green-500 ml-3">Save $21,797!</span></p>
             </div>
           </div>
 
@@ -866,7 +1005,7 @@
               dealerId: 'SSD-CURATED',
               companyName: 'Studio Shed',
               subPurpose: 'Sheds,%20Garages,%20%26%20Studios',
-              loanAmount: 109600,
+              loanAmount: 111195,
               returnURL: window.location.href,
               env: 'Prod', // Set to UAT for testing or Prod for Production
               paymentPrefix: 'From',
@@ -903,7 +1042,7 @@
                 acornParameters.uuid = uuid
                 acornParameters.utm_content = 'model-2-476--' + uuid
                 acornParameters.utm_medium = 'model-2-476'
-                acornFinance.calcPayment(109600, 'acorn-payment-amount-line', 'popup', '1line', 'Learn more', 'continue') // for popup;
+                acornFinance.calcPayment(111195, 'acorn-payment-amount-line', 'popup', '1line', 'Learn more', 'continue') // for popup;
               } catch (error) {
                 console.log(error)
                 let acorndefaultLinks = document.querySelectorAll('.acorn-default-link')
@@ -925,11 +1064,14 @@
             <div class="text-gray-700 text-sm space-y-2">
               <p>Lap style siding &bull; 1 Bedroom ADU</p>
               <p>Lifestyle+ interior included &bull; Shipping included</p>
-              <p>Foundation and electrical trench excluded</p>
-              <p>Professional installation available in CA (+$60,000)</p>
-              <p>Express permit plan set available for CA installation on a slab (+$995)</p>
+              <p>Express permit plan set available for CA installation on a slab included</p>
+              <p>Foundation, utilities and permit excluded</p>
+              <p>Professional installation available in CA (+$80,648)</p>
               <p class="text-xs">* Install service and permit plans available for other states by quote.</p>
-            </div><h2 class="mt-4 text-sm font-medium text-gray-900">Color: <span x-show="sidingColorValue" x-text="sidingColorValue" class="text-xs font-medium text-gray-800"></span></h2>
+            </div>
+
+
+            <h2 class="mt-4 text-sm font-medium text-gray-900">Color: <span x-show="sidingColorValue" x-text="sidingColorValue" class="text-xs font-medium text-gray-800"></span></h2>
             <div id="siding-menu" class="mb-4">
               <div class="flex flex-wrap items-center"><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-iron-gray ring-2" :class="sidingColorValue === 'Iron Gray' ? 'ring ring-offset-1' : 'ring-0'"
                        @click.prevent="setSidingColor('iron-gray', 'Iron Gray')">
@@ -972,7 +1114,73 @@
                   <p id="color-choice-bg-heathered-moss-label" class="sr-only">Heathered Moss</p>
                   <span aria-hidden="true" class="h-8 w-8 bg-heathered-moss border border-black border-opacity-10 rounded-full"></span>
                 </label></div>
-            </div><h2 class="mt-4 text-sm font-medium text-gray-900">Flooring: <span x-show="main_flooringTextValue" x-text="main_flooringTextValue" class="text-xs font-medium text-gray-800"></span></h2>
+            </div>
+
+
+
+            <h2 class="text-sm font-medium text-gray-900">Door: <span x-show="doorsColorValue" x-text="doorsColorValue" class="text-xs font-medium text-gray-800"></span></h2>
+            <div id="trim-menu" class="mb-4">
+              <div class="flex flex-wrap items-center"><label x-radio-group-option="" class="m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-arctic-white ring-2" :class="doorsColorValue === 'Arctic White' ? 'ring ring-offset-1' : 'ring-0'"
+                       @click.prevent="setDoorColor('arctic-white', 'Arctic White')">
+                  <input type="radio" x-model="doorsColorValue" name="color-choice" value="Arctic White" class="sr-only" aria-labelledby="color-choice-0-label">
+                  <p id="color-choice-bg-arctic-white-label" class="sr-only">Arctic White</p>
+                  <span aria-hidden="true" class="h-8 w-8 bg-arctic-white border border-black border-opacity-10 rounded-full"></span>
+                </label><label x-radio-group-option="" class="m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-tricorn-black ring-2" :class="doorsColorValue === 'Tricorn Black' ? 'ring ring-offset-1' : 'ring-0'"
+                       @click.prevent="setDoorColor('tricorn-black', 'Tricorn Black')">
+                  <input type="radio" x-model="doorsColorValue" name="color-choice" value="Tricorn Black" class="sr-only" aria-labelledby="color-choice-0-label">
+                  <p id="color-choice-bg-tricorn-black-label" class="sr-only">Tricorn Black</p>
+                  <span aria-hidden="true" class="h-8 w-8 bg-tricorn-black border border-black border-opacity-10 rounded-full"></span>
+                </label></div>
+            </div>
+
+            <h2 class="mt-4 text-sm font-medium text-gray-900">Soffit: <span x-show="soffitColorValue" x-text="soffitColorValue" class="text-xs font-medium text-gray-800"></span></h2>
+            <div id="siding-menu" class="mb-4">
+              <div class="flex flex-wrap items-center"><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-iron-gray ring-2" :class="soffitColorValue === 'Iron Gray' ? 'ring ring-offset-1' : 'ring-0'"
+                       @click.prevent="setSoffitColor('iron-gray', 'Iron Gray')">
+                  <input type="radio" x-model="soffitColorValue" name="color-choice" value="Iron Gray" class="sr-only" aria-labelledby="color-choice-0-label">
+                  <p id="color-choice-bg-iron-gray-label" class="sr-only">Iron Gray</p>
+                  <span aria-hidden="true" class="h-8 w-8 bg-iron-gray border border-black border-opacity-10 rounded-full"></span>
+                </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-pearl-gray ring-2" :class="soffitColorValue === 'Pearl Gray' ? 'ring ring-offset-1' : 'ring-0'"
+                       @click.prevent="setSoffitColor('pearl-gray', 'Pearl Gray')">
+                  <input type="radio" x-model="soffitColorValue" name="color-choice" value="Pearl Gray" class="sr-only" aria-labelledby="color-choice-0-label">
+                  <p id="color-choice-bg-pearl-gray-label" class="sr-only">Pearl Gray</p>
+                  <span aria-hidden="true" class="h-8 w-8 bg-pearl-gray border border-black border-opacity-10 rounded-full"></span>
+                </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-arctic-white ring-2" :class="soffitColorValue === 'Arctic White' ? 'ring ring-offset-1' : 'ring-0'"
+                       @click.prevent="setSoffitColor('arctic-white', 'Arctic White')">
+                  <input type="radio" x-model="soffitColorValue" name="color-choice" value="Arctic White" class="sr-only" aria-labelledby="color-choice-0-label">
+                  <p id="color-choice-bg-arctic-white-label" class="sr-only">Arctic White</p>
+                  <span aria-hidden="true" class="h-8 w-8 bg-arctic-white border border-black border-opacity-10 rounded-full"></span>
+                </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-countrylane-red ring-2" :class="soffitColorValue === 'Countrylane Red' ? 'ring ring-offset-1' : 'ring-0'"
+                       @click.prevent="setSoffitColor('countrylane-red', 'Countrylane Red')">
+                  <input type="radio" x-model="soffitColorValue" name="color-choice" value="Countrylane Red" class="sr-only" aria-labelledby="color-choice-0-label">
+                  <p id="color-choice-bg-countrylane-red-label" class="sr-only">Countrylane Red</p>
+                  <span aria-hidden="true" class="h-8 w-8 bg-countrylane-red border border-black border-opacity-10 rounded-full"></span>
+                </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-rich-espresso ring-2" :class="soffitColorValue === 'Rich Espresso' ? 'ring ring-offset-1' : 'ring-0'"
+                       @click.prevent="setSoffitColor('rich-espresso', 'Rich Espresso')">
+                  <input type="radio" x-model="soffitColorValue" name="color-choice" value="Rich Espresso" class="sr-only" aria-labelledby="color-choice-0-label">
+                  <p id="color-choice-bg-rich-espresso-label" class="sr-only">Rich Espresso</p>
+                  <span aria-hidden="true" class="h-8 w-8 bg-rich-espresso border border-black border-opacity-10 rounded-full"></span>
+                </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-timber-bark ring-2" :class="soffitColorValue === 'Timber Bark' ? 'ring ring-offset-1' : 'ring-0'"
+                       @click.prevent="setSoffitColor('timber-bark', 'Timber Bark')">
+                  <input type="radio" x-model="soffitColorValue" name="color-choice" value="Timber Bark" class="sr-only" aria-labelledby="color-choice-0-label">
+                  <p id="color-choice-bg-timber-bark-label" class="sr-only">Timber Bark</p>
+                  <span aria-hidden="true" class="h-8 w-8 bg-timber-bark border border-black border-opacity-10 rounded-full"></span>
+                </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-cobble-stone ring-2" :class="soffitColorValue === 'Cobble Stone' ? 'ring ring-offset-1' : 'ring-0'"
+                       @click.prevent="setSoffitColor('cobble-stone', 'Cobble Stone')">
+                  <input type="radio" x-model="soffitColorValue" name="color-choice" value="Cobble Stone" class="sr-only" aria-labelledby="color-choice-0-label">
+                  <p id="color-choice-bg-cobble-stone-label" class="sr-only">Cobble Stone</p>
+                  <span aria-hidden="true" class="h-8 w-8 bg-cobble-stone border border-black border-opacity-10 rounded-full"></span>
+                </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-heathered-moss ring-2" :class="soffitColorValue === 'Heathered Moss' ? 'ring ring-offset-1' : 'ring-0'"
+                       @click.prevent="setSoffitColor('heathered-moss', 'Heathered Moss')">
+                  <input type="radio" x-model="soffitColorValue" name="color-choice" value="Heathered Moss" class="sr-only" aria-labelledby="color-choice-0-label">
+                  <p id="color-choice-bg-heathered-moss-label" class="sr-only">Heathered Moss</p>
+                  <span aria-hidden="true" class="h-8 w-8 bg-heathered-moss border border-black border-opacity-10 rounded-full"></span>
+                </label></div>
+            </div>
+
+
+
+            <h2 class="mt-4 text-sm font-medium text-gray-900">Flooring: <span x-show="main_flooringTextValue" x-text="main_flooringTextValue" class="text-xs font-medium text-gray-800"></span></h2>
             <div id="flooring-menu" class="mb-4">
               <ul role="list" class="grid grid-cols-4 gap-x-4 gap-y-4 mt-2 mb-8"><li class="relative">
                   <div :class="main_flooringValue === 'sandcastle-oak' ? 'ring-offset-2 ring-2' : 'ring-0'" class="group block w-full aspect-w-2 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden ring-yellow-500"
@@ -1011,7 +1219,7 @@
 
             <div class="mt-10 flex sm:flex-col1">
               <div>
-              <button type="submit" class="max-w-xs flex-1 bg-yellow-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-yellow-500 sm:w-full" @click.prevent="requestConsult('Model2 14x34', 'model-2-476', 109600)">Request a Consultation</button>
+              <button type="submit" class="max-w-xs flex-1 bg-amber rounded-md py-3 px-8 text-white hover:opacity-80 transition-opacity duration-500 ease-in-out transition-delay-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber sm:w-full" @click.prevent="requestConsult('Model2 14x34')">Request a Consultation</button>
               </div>
             </div>
           </section>
@@ -1082,15 +1290,86 @@
           </dl>
 
           
+            <div class="mt-12">
+  <h2 class="text-xl font-extrabold text-gray-900 tracking-tight">Lifestyle+ Bath, Medium Kitchen and 1 Bedroom</h2>
+</div>
+<div class="mt-4 text-sm grid grid-cols-1 gap-x-4 gap-y-4 sm:grid-cols-3 sm:gap-y-4  lg:gap-x-4">
+  <div>
+    <dt class="text-gray-900">Lifestyle+ Bathroom</dt>
+    <dd class="mt-2 text-xs text-gray-500">
+      <ul class="list-disc list-inside">
+        <li>Bathroom door</li>
+        <li>Wall-mounted vanity</li>
+        <li>Recessed medicine cabinet</li>
+        <li>32”x60” shower pan</li>
+        <li>Shower walls and door</li>
+        <li>Hand shower and head</li>
+        <li>Toilet and sink fixtures</li>
+        <li>Waterproof LVT flooring</li>
+        <li>Towel bar and accessories</li>
+        <li>Ductless mini-split (HVAC)</li>
+        <li>Water Heater</li>
+        <li>Bathroom exhaust fan</li>
+      </ul>
+    </dd>
+  </div>
+  <div>
+    <dt class="text-gray-900">Lifestyle+ Medium Kitchen</dt>
+    <dd class="mt-2 text-xs text-gray-500">
+      <ul class="list-disc list-inside">
+        <li>Full Height fridge</li>
+        <li>Dishwasher</li>
+        <li>Electric range</li>
+        <li>Range backsplash</li>
+        <li>Exhaust hood</li>
+        <li>Stainless steel sink</li>
+        <li>Kitchen disposal</li>
+        <li>Wall Cabinets</li>
+        <li>Base Cabinets</li>
+        <li>Countertop</li>
+        <li>Backsplash</li>
+      </ul>
+    </dd>
+  </div>
+  <div>
+    <dt class="font-medium text-gray-900">Lifestyle+ 1 Bedroom</dt>
+    <dd class="mt-2 text-xs text-gray-500">
+      <ul class="list-disc list-inside">
+        <li>Washer/Dryer combo</li>
+        <li>Utility closet</li>
+        <li>Bedroom door</li>
+        <li>Bi-fold closet doors</li>
+        <li>+1 Mini-split zone</li>
+        <li>+1 ERV unit</li>
+      </ul>
+      <img src="/assets/images/curated-adus/interior-kit-med.png" class="h-auto w-full lg:w-full">
+    </dd>
+  </div>
+</div>
+<div class="mt-4">
+  <p class="text-xs text-gray-500">
+    *Spray foam insulation, drywall & interior partition wall materials included with ProAssembly only. Sourced locally SEE STUDIO SHED TERMS & CONDITIONS FOR MORE INFO</p>
+</div>
+          
 
-          <div class="mt-4">
-            <p class="text-xs text-gray-500">
-              *Spray foam insulation, drywall & interior partition wall materials included with ProAssembly only. Sourced locally SEE STUDIO SHED TERMS & CONDITIONS FOR MORE INFO</p>
-          </div>
         </div>
       </div>
     </section>
   </div>
+  <div class="bg-white relative">
+  <div class="max-w-2xl mx-auto px-4 py-16 lg:max-w-4xl lg:px-8">
+    <section>
+      <div class="flex flex-col items-center text-center">
+        <p class="text-3xl font-extrabold text-gray-900">Model2 Floor Plan</p>
+        <p class="text-xl font-extrabold text-gray-600">14x34 Summit | 1 Bed ADU</p>
+
+      </div>
+      <div class="container mx-auto mt-4 px-4 sm:px-6 lg:px-8">
+        <img src="/assets/images/curated-adus/model-2-476-floor-plan.png"  class="w-full h-auto">
+      </div>
+    </section>
+  </div>
+</div>
   <div class="bg-white relative">
   <div class="max-w-2xl mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
     <section>
@@ -1099,9 +1378,7 @@
       </div>
       <div class="mt-8 grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:gap-x-8" id="tech-specs">
         <div>
-          <div class="bg-white w-full aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
-            <img src="/assets/images/curated-adus/lifestyle-interior-diagram.png"  class="w-full h-full object-center object-contain">
-          </div>
+          <img src="/assets/images/curated-adus/lifestyle-interior-diagram.png"  class="w-full h-auto">
         </div>
 
         <div>
@@ -1148,22 +1425,10 @@
   </div>
 </div>
   <div class="bg-white relative">
-  <div class="max-w-2xl mx-auto px-4 py-16 lg:max-w-4xl lg:px-8">
-    <section>
-      <div class="flex flex-col items-center text-center">
-        <p class="mb-4 text-3xl font-extrabold text-gray-900">Model2 Floor Plan</p>
-      </div>
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <img src="/assets/images/curated-adus/model-2-476-floor-plan.png"  class="w-full h-auto">
-      </div>
-    </section>
-  </div>
-</div>
-  <div class="bg-white relative">
   <div class="max-w-2xl mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
     <div class="flex flex-col items-center text-center">
       <p class="text-3xl font-extrabold text-gray-900">Curated Designs</p>
-      <p class="text-xl font-extrabold text-gray-900">In-stock ADU designs / Express permit plan sets</p>
+      <p class="text-xl font-extrabold text-gray-600">In-stock ADU designs / Express permit plan sets</p>
       <p class="text-base text-gray-600">These models are our most popular ADU designs, with Express permit plan sets delivered to you in 2-4 weeks for Permit submittal</p>
     </div>
     <div class="mt-16 grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8">
@@ -1174,17 +1439,17 @@
     <div class="text-center">
       <a href="/products/model-1-364/" class="group text-lg text-center"
          title="Studio Shed Summit series">
-        <div class="w-full aspect-w-2 aspect-h-1 rounded overflow-hidden bg-gray-100 group-hover:opacity-75">
-          <img loading="lazy" src="/assets/images/curated-adus/model-1-364-render.png"
-               class="w-full h-full object-center object-cover shadow-2xl"
+        <div class="h-48 flex items-center group-hover:opacity-75">
+          <img loading="lazy" src="/assets/images/menu/model-1-364-render.jpg"
+               class="w-full h-auto"
                alt="Studio Shed signature series">
         </div>
         <h3 class="mt-4 font-bold text-gray-700 text-sm">Model1 364 sf | Studio ADU</h3>
-        <div class="text-gray-500 text-sm line-through">$101,800</div>
-        <div class="text-yellow-600 font-bold">$95,800</div>
+        <div class="text-gray-500 text-sm line-through">$104,759</div>
+        <div class="text-yellow-600 font-bold">$87,197</div>
       </a>
       <a href="/products/model-1-364/"
-         class="inline-flex items-center my-2 px-4 py-2 border border-gray-800 uppercase text-sm font-medium rounded shadow-sm text-black bg-white hover:bg-amber hover:text-white hover:border-amber focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+         class="inline-flex items-center my-2 px-4 py-2 border border-gray-800 uppercase text-sm font-medium rounded shadow-sm text-black bg-white hover:bg-amber hover:text-white hover:border-amber focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber">
         View Details
       </a>
     </div>
@@ -1196,17 +1461,17 @@
     <div class="text-center">
       <a href="/products/model-2-476/" class="group text-lg text-center"
          title="Studio Shed Summit series">
-        <div class="w-full aspect-w-2 aspect-h-1 rounded overflow-hidden bg-gray-100 group-hover:opacity-75">
-          <img loading="lazy" src="/assets/images/curated-adus/model-2-476-render.png"
-               class="w-full h-full object-center object-cover shadow-2xl"
+        <div class="h-48 flex items-center group-hover:opacity-75">
+          <img loading="lazy" src="/assets/images/menu/model-2-476-render.jpg"
+               class="w-full h-auto"
                alt="Studio Shed signature series">
         </div>
         <h3 class="mt-4 font-bold text-gray-700 text-sm">Model2 476 sf | 1 Bed ADU</h3>
-        <div class="text-gray-500 text-sm line-through">$115,600</div>
-        <div class="text-yellow-600 font-bold">$109,600</div>
+        <div class="text-gray-500 text-sm line-through">$132,992</div>
+        <div class="text-yellow-600 font-bold">$111,195</div>
       </a>
       <a href="/products/model-2-476/"
-         class="inline-flex items-center my-2 px-4 py-2 border border-gray-800 uppercase text-sm font-medium rounded shadow-sm text-black bg-white hover:bg-amber hover:text-white hover:border-amber focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+         class="inline-flex items-center my-2 px-4 py-2 border border-gray-800 uppercase text-sm font-medium rounded shadow-sm text-black bg-white hover:bg-amber hover:text-white hover:border-amber focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber">
         View Details
       </a>
     </div>
@@ -1218,17 +1483,17 @@
     <div class="text-center">
       <a href="/products/model-3-684/" class="group text-lg text-center"
          title="Studio Shed Summit series">
-        <div class="w-full aspect-w-2 aspect-h-1 rounded overflow-hidden bg-gray-100 group-hover:opacity-75">
-          <img loading="lazy" src="/assets/images/curated-adus/model-3-684-render.png"
-               class="w-full h-full object-center object-cover shadow-2xl"
+        <div class="h-48 flex items-center group-hover:opacity-75">
+          <img loading="lazy" src="/assets/images/menu/model-3-684-render.jpg"
+               class="w-full h-auto"
                alt="Studio Shed signature series">
         </div>
         <h3 class="mt-4 font-bold text-gray-700 text-sm">Model3 684 sf | 1 Bed ADU</h3>
-        <div class="text-gray-500 text-sm line-through">$132,700</div>
-        <div class="text-yellow-600 font-bold">$126,700</div>
+        <div class="text-gray-500 text-sm line-through">$147,121</div>
+        <div class="text-yellow-600 font-bold">$123,205</div>
       </a>
       <a href="/products/model-3-684/"
-         class="inline-flex items-center my-2 px-4 py-2 border border-gray-800 uppercase text-sm font-medium rounded shadow-sm text-black bg-white hover:bg-amber hover:text-white hover:border-amber focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+         class="inline-flex items-center my-2 px-4 py-2 border border-gray-800 uppercase text-sm font-medium rounded shadow-sm text-black bg-white hover:bg-amber hover:text-white hover:border-amber focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber">
         View Details
       </a>
     </div>
@@ -1240,17 +1505,17 @@
     <div class="text-center">
       <a href="/products/model-4-1000/" class="group text-lg text-center"
          title="Studio Shed Summit series">
-        <div class="w-full aspect-w-2 aspect-h-1 rounded overflow-hidden bg-gray-100 group-hover:opacity-75">
-          <img loading="lazy" src="/assets/images/curated-adus/model-4-1000-render.png"
-               class="w-full h-full object-center object-cover shadow-2xl"
+        <div class="h-48 flex items-center group-hover:opacity-75">
+          <img loading="lazy" src="/assets/images/menu/model-4-1000-render.jpg"
+               class="w-full h-auto"
                alt="Studio Shed signature series">
         </div>
         <h3 class="mt-4 font-bold text-gray-700 text-sm">Model4 1000 sf | 2 Bed ADU</h3>
-        <div class="text-gray-500 text-sm line-through">$167,600</div>
-        <div class="text-yellow-600 font-bold">$161,600</div>
+        <div class="text-gray-500 text-sm line-through">$196,994</div>
+        <div class="text-yellow-600 font-bold">$165,596</div>
       </a>
       <a href="/products/model-4-1000/"
-         class="inline-flex items-center my-2 px-4 py-2 border border-gray-800 uppercase text-sm font-medium rounded shadow-sm text-black bg-white hover:bg-amber hover:text-white hover:border-amber focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+         class="inline-flex items-center my-2 px-4 py-2 border border-gray-800 uppercase text-sm font-medium rounded shadow-sm text-black bg-white hover:bg-amber hover:text-white hover:border-amber focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber">
         View Details
       </a>
     </div>

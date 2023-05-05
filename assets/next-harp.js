@@ -1,6 +1,11 @@
 window.Harp = {}
 BABYLON.OBJFileLoader.OPTIMIZE_WITH_UV = true
 BABYLON.OBJFileLoader.SKIP_MATERIALS = true
+BABYLON.ArcRotateCamera.prototype.spinTo = function (whichprop, targetval, speed) {
+  var ease = new BABYLON.CubicEase()
+  ease.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT)
+  BABYLON.Animation.CreateAndStartAnimation('at4', this, whichprop, speed, 120, this[whichprop], targetval, 0, ease)
+}
 
 window.addEventListener('DOMContentLoaded', () => {
 
@@ -12,7 +17,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const loader = document.createElement('div')
   loader.setAttribute('id', 'loader')
-  loader.setAttribute('style', 'font-size:36px;color: #fff;display: flex;align-items: center;justify-content: center;flex-direction: column;background: #222;position: absolute;z-index: 999;height: 100%;width: 100%;overflow: show;margin: auto;top: 0;left: 0;bottom: 0;right: 0;')
+  loader.setAttribute('style', 'font-size:36px;color: #fff;display: flex;align-items: center;justify-content: center;flex-direction: column;background: #222;position: absolute;z-index: 9;height: 100%;width: 100%;overflow: show;margin: auto;top: 0;left: 0;bottom: 0;right: 0;')
   let dots = window.setInterval( function() {
     if ( loader.innerHTML.length > 2 )
       loader.innerHTML = "";
@@ -245,6 +250,50 @@ window.addEventListener('DOMContentLoaded', () => {
       })
     }
 
+
+    Harp.importAduKit= function(sku,depth,length) {
+
+
+      BABYLON.SceneLoader.ImportMeshAsync('', 'https://shop.studio-shed.com/assets/models/summit/interior/',  sku + '-interior-kit.obj', scene).then((result) => {
+        result.meshes.forEach(function (m){
+
+          Harp.interiorContainer.meshes.push(m)
+
+          Harp.finishGroups.forEach(function (group){
+
+            if (m.name.includes(group)) {
+              m.parent = Harp[group]
+              m.material = Harp[group + '_material']
+            }
+          })
+          m.position.x = 0
+          m.position.y = -8
+          m.position.z = 0
+        })
+
+        Harp.setColor('white', Harp.colors['white'])
+        Harp.setColor('black', Harp.colors['black'])
+        Harp.setColor('glass', Harp.colors['glass'])
+        Harp.setColor('fixture', Harp.colors[Harp.config.fixture_finish])
+        Harp.setColor('fixture1', Harp.colors[Harp.config.fixture_finish])
+        Harp.setColor('appliance', Harp.colors['appliance'])
+        Harp.setColor('cabinet', Harp.colors[Harp.config.cabinet_finish])
+        Harp.cabinet_material.specularColor = new BABYLON.Color3(0.125, 0.125, 0.125)
+        Harp.cabinet_material.specularPower = 16
+
+        Harp.counter_material.diffuseTexture = new BABYLON.Texture(Harp.textures[Harp.config.countertop_finish])
+        Harp.counter_material.diffuseTexture.uScale = 0.03
+        Harp.counter_material.diffuseTexture.vScale = 0.03
+
+        Harp.bathroom_floor_material.diffuseTexture = new BABYLON.Texture(Harp.textures[Harp.config.bath_flooring])
+        Harp.bathroom_floor_material.diffuseTexture.uScale = 0.05
+        Harp.bathroom_floor_material.diffuseTexture.vScale = 0.025
+        Harp.bathroom_floor_material.specularColor = new BABYLON.Color3(0.125, 0.125, 0.125)
+        Harp.bathroom_floor_material.specularPower = 32
+
+      })
+    }
+
     Harp.importBathroom = function(sku, side) {
       //BABYLON.OBJFileLoader.SKIP_MATERIALS = true
       let x,z
@@ -384,6 +433,11 @@ window.addEventListener('DOMContentLoaded', () => {
       Harp.floor_material.diffuseTexture.uScale = 10
       Harp.floor_material.diffuseTexture.vScale = 5
       Harp.interiorContainer = new BABYLON.AssetContainer(scene)
+
+      if (sku == 'model-1' || sku == 'model-2' || sku == 'model-3' || sku == 'model-4') {
+        Harp.importAduKit(sku, Harp.config.depth, Harp.config.length)
+        Harp.resetAndLockSide('front')
+      }
 
       if(sku === 'KIT-MM-R') {
         Harp.config.interior_kit_price = Harp.retail.kitchen
@@ -1566,76 +1620,118 @@ window.addEventListener('DOMContentLoaded', () => {
       if(model == 'boreas-10x12') {
         recipeResponse = {"model":"signature","size":"10x12","depth":10,"length":12,"name":"10x12 signature","shell_base_price":14606,"roof":{"model":"SG-10x12-STE-06F","x":0,"y":-9,"z":8},"floor":{"width":144,"height":12,"depth":120,"x":72,"y":-9,"z":60},"front":[{"slot":"f1","model":"F12-D72C","width":144,"x":-68,"y":-9,"z":60}],"back":[{"slot":"b1","model":"B10x12","width":144,"x":-68,"y":-9,"z":-60}],"left":[{"slot":"l1","model":"L10-36C","width":120,"x":-71,"y":-9,"z":-60}],"right":[{"slot":"r1","model":"R10-36C","width":120,"x":71,"y":-9,"z":60}]}
         recipeColorway = {}
+        recipeInterior = 'lifestyle'
       }
       if(model == 'boreas-12x16') {
         recipeResponse = {"model":"signature","size":"12x16","depth":12,"length":16,"name":"12x16 signature","shell_base_price":20308,"roof":{"model":"SG-12x16-STE-06F","x":0,"y":-9,"z":8},"floor":{"width":192,"height":12,"depth":144,"x":96,"y":-9,"z":72},"front":[{"slot":"f1","model":"F16-D72C","width":144,"x":-92,"y":-9,"z":72}],"back":[{"slot":"b1","model":"B12x16","width":192,"x":-92,"y":-9,"z":-72}],"left":[{"slot":"l1","model":"L12-36C","width":144,"x":-95,"y":-9,"z":-72}],"right":[{"slot":"r1","model":"R12-36C","width":144,"x":95,"y":-9,"z":72}]}
         recipeColorway = {}
+        recipeInterior = 'lifestyle'
       }
       if(model == 'solitude-10x12') {
         recipeResponse = {"model":"signature","size":"10x12","depth":10,"length":12,"name":"10x12 signature","shell_base_price":14606,"roof":{"model":"SG-10x12-STE-06F","x":0,"y":-9,"z":8},"floor":{"width":144,"height":12,"depth":120,"x":72,"y":-9,"z":60},"front":[{"slot":"f1","model":"F12-W2L-D72C-W2R","width":144,"x":-68,"y":-9,"z":60}],"back":[{"slot":"b1","model":"B10x12","width":144,"x":-68,"y":-9,"z":-60}],"left":[{"slot":"l1","model":"L10-36C","width":120,"x":-71,"y":-9,"z":-60}],"right":[{"slot":"r1","model":"R10-36C","width":120,"x":71,"y":-9,"z":60}]}
         recipeColorway = {}
+        recipeInterior = 'lifestyle'
       }
       if(model == 'solitude-12x16') {
         recipeResponse = {"model":"signature","size":"12x16","depth":12,"length":16,"name":"12x16 signature","shell_base_price":20308,"roof":{"model":"SG-12x16-STE-06F","x":0,"y":-9,"z":8},"floor":{"width":192,"height":12,"depth":144,"x":96,"y":-9,"z":72},"front":[{"slot":"f1","model":"F16-W2L-D72C-W2R","width":144,"x":-92,"y":-9,"z":72}],"back":[{"slot":"b1","model":"B12x16","width":192,"x":-92,"y":-9,"z":-72}],"left":[{"slot":"l1","model":"L12-36C","width":144,"x":-95,"y":-9,"z":-72}],"right":[{"slot":"r1","model":"R12-36C","width":144,"x":95,"y":-9,"z":72}]}
         recipeColorway = {}
+        recipeInterior = 'lifestyle'
       }
       if(model == 'pagoda-left-10x12') {
         recipeResponse = {"model":"signature","size":"10x12","depth":10,"length":12,"name":"10x12 signature","shell_base_price":14606,"roof":{"model":"SG-10x12-STE-06F","x":0,"y":-9,"z":8},"floor":{"width":144,"height":12,"depth":120,"x":72,"y":-9,"z":60},"front":[{"slot":"f1","model":"F12-D36L","width":144,"x":-68,"y":-9,"z":60}],"back":[{"slot":"b1","model":"B10x12","width":144,"x":-68,"y":-9,"z":-60}],"left":[{"slot":"l1","model":"L10-36C-W2R","width":120,"x":-71,"y":-9,"z":-60}],"right":[{"slot":"r1","model":"R10-36C","width":120,"x":71,"y":-9,"z":60}]}
         recipeColorway = {}
+        recipeInterior = 'lifestyle'
       }
       if(model == 'pagoda-left-12x16') {
         recipeResponse = {"model":"signature","size":"12x16","depth":12,"length":16,"name":"12x16 signature","shell_base_price":20308,"roof":{"model":"SG-12x16-STE-06F","x":0,"y":-9,"z":8},"floor":{"width":192,"height":12,"depth":144,"x":96,"y":-9,"z":72},"front":[{"slot":"f1","model":"F16-D36L-36R","width":144,"x":-92,"y":-9,"z":72}],"back":[{"slot":"b1","model":"B12x16","width":192,"x":-92,"y":-9,"z":-72}],"left":[{"slot":"l1","model":"L12-36C-W2R","width":144,"x":-95,"y":-9,"z":-72}],"right":[{"slot":"r1","model":"R12-36C","width":144,"x":95,"y":-9,"z":72}]}
         recipeColorway = {}
+        recipeInterior = 'lifestyle'
       }
       if(model == 'pagoda-right-10x12') {
         recipeResponse = {"model":"signature","size":"10x12","depth":10,"length":12,"name":"10x12 signature","shell_base_price":14606,"roof":{"model":"SG-10x12-STE-06F","x":0,"y":-9,"z":8},"floor":{"width":144,"height":12,"depth":120,"x":72,"y":-9,"z":60},"front":[{"slot":"f1","model":"F12-D36R","width":144,"x":-68,"y":-9,"z":60}],"back":[{"slot":"b1","model":"B10x12","width":144,"x":-68,"y":-9,"z":-60}],"left":[{"slot":"l1","model":"L10-36C","width":120,"x":-71,"y":-9,"z":-60}],"right":[{"slot":"r1","model":"R10-W2L-36C","width":120,"x":71,"y":-9,"z":60}]}
         recipeColorway = {}
+        recipeInterior = 'lifestyle'
       }
       if(model == 'pagoda-right-12x16') {
         recipeResponse = {"model":"signature","size":"12x16","depth":12,"length":16,"name":"12x16 signature","shell_base_price":20308,"roof":{"model":"SG-12x16-STE-06F","x":0,"y":-9,"z":8},"floor":{"width":192,"height":12,"depth":144,"x":96,"y":-9,"z":72},"front":[{"slot":"f1","model":"F16-36L-D36R","width":144,"x":-92,"y":-9,"z":72}],"back":[{"slot":"b1","model":"B12x16","width":192,"x":-92,"y":-9,"z":-72}],"left":[{"slot":"l1","model":"L12-36C","width":144,"x":-95,"y":-9,"z":-72}],"right":[{"slot":"r1","model":"R12-W2L-36C","width":144,"x":95,"y":-9,"z":72}]}
         recipeColorway = {}
+        recipeInterior = 'lifestyle'
       }
       if(model == 'portland-studio-12x16') {
         recipeResponse = {"model":"portland","size":"12x16","depth":12,"length":16,"name":"12x16 portland","shell_base_price":66477,"roof":{"model":"PT-12x16-STV","x":0,"y":-9,"z":0},"floor":{"width":192,"height":12,"depth":144,"x":96,"y":-9,"z":72},"front":[{"slot":"f1","model":"PF16-4-W3-D72C","width":192,"x":-96,"y":-9,"z":71}],"back":[{"slot":"b1","model":"PB16","width":192,"x":96,"y":-9,"z":-71}],"left":[{"slot":"l1","model":"PL12-36C","width":144,"x":-95.5,"y":-9,"z":-66.5}],"right":[{"slot":"r1","model":"PR12-36C","width":144,"x":95,"y":-9,"z":66.5}]}
         recipeColorway = {}
+        recipeInterior = 'lifestyle'
       }
       if(model == 'portland-studio-16x16') {
         recipeResponse = {"curated":true,"model":"portland","size":"16x16","depth":16,"length":16,"name":"16x16 portland","roof":{"model":"PT-16x16-STV","x":0,"y":-9,"z":0},"floor":{"width":192,"height":12,"depth":192,"x":96,"y":-9,"z":96},"front":[{"slot":"f1","model":"PF16-4-W3-D72C","width":192,"x":-96,"y":-9,"z":95}],"back":[{"slot":"b1","model":"PB16","width":192,"x":96,"y":-9,"z":-95}],"left":[{"slot":"l1","model":"PL16-36C","width":144,"x":-95.5,"y":-9,"z":-90.5}],"right":[{"slot":"r1","model":"PR16-36C","width":192,"x":95,"y":-9,"z":90.5}],"panels":[]}
         recipeColorway = {}
+        recipeInterior = 'lifestyle'
       }
 
       if(model == 'model-a') {
         recipeResponse = {"model":"signature","size":"10x12","depth":10,"length":12,"name":"10x12 signature","roof":{"model":"SG-10x12-STE-06F","x":0,"y":-9,"z":8},"floor":{"width":144,"height":12,"depth":120,"x":72,"y":-9,"z":60},"front":[{"slot":"f1","model":"F12-D72C","width":144,"x":-68,"y":-9,"z":60}],"back":[{"slot":"b1","model":"B10x12","width":144,"x":-68,"y":-9,"z":-60}],"left":[{"slot":"l1","model":"L10-36C-W2R","width":120,"x":-71,"y":-9,"z":-60}],"right":[{"slot":"r1","model":"R10-W2L-36C","width":120,"x":71,"y":-9,"z":60}]}
         recipeColorway = {"siding": "lap","sidingColor": "pearl-gray","trimColor": "aluminum","doorColor": "arctic-white"}
+        recipeInterior = 'lifestyle'
       }
 
       if(model == 'model-b') {
         recipeResponse = {"model":"signature","size":"10x12","depth":10,"length":12,"name":"10x12 signature","roof":{"model":"SG-10x12-STE-06F","x":0,"y":-9,"z":8},"floor":{"width":144,"height":12,"depth":120,"x":72,"y":-9,"z":60},"front":[{"slot":"f1","model":"F12-W2L-D72C-W2R","width":144,"x":-68,"y":-9,"z":60}],"back":[{"slot":"b1","model":"B10x12","width":144,"x":-68,"y":-9,"z":-60}],"left":[{"slot":"l1","model":"L10","width":120,"x":-71,"y":-9,"z":-60}],"right":[{"slot":"r1","model":"R10-W2L-18C","width":120,"x":71,"y":-9,"z":60}]}
         recipeColorway = {"siding": "horiz_plank","sidingColor": "natural-stain","trimColor": "aluminum","doorColor": "arctic-white","eavesColor": "arctic-white"}
+        recipeInterior = 'lifestyle'
       }
 
       if(model == 'model-d') {
         recipeResponse = {"model":"portland","size":"10x12","depth":10,"length":12,"name":"10x12 portland","roof":{"model":"PT-10x12-STV","x":0,"y":-9,"z":0},"floor":{"width":144,"height":12,"depth":120,"x":72,"y":-9,"z":60},"front":[{"slot":"f1","model":"PE12-4-W3C-W2L-W2C-W2R","width":144,"x":-72,"y":-9,"z":59}],"back":[{"slot":"b1","model":"PE12-W3C","width":144,"x":72,"y":-9,"z":-59}],"left":[{"slot":"l1","model":"PS10-36R","width":120,"x":-71.5,"y":-9,"z":-54.5}],"right":[{"slot":"r1","model":"PS10-D36L","width":120,"x":71.5,"y":-9,"z":54.5}]}
         recipeColorway = {"siding": "horiz_plank","sidingColor": "timber-bark","trimColor": "studio-shed-bronze","doorColor": "tricorn-black"}
+        recipeInterior = 'lifestyle'
       }
 
       if(model == 'model-e') {
         recipeResponse = {"model":"portland","size":"10x12","depth":10,"length":12,"name":"10x12 portland","roof":{"model":"PT-10x12-STV","x":0,"y":-9,"z":0},"floor":{"width":144,"height":12,"depth":120,"x":72,"y":-9,"z":60},"front":[{"slot":"f1","model":"PE12-4-W3C-D72C","width":144,"x":-72,"y":-9,"z":59}],"back":[{"slot":"b1","model":"PE12","width":144,"x":72,"y":-9,"z":-59}],"left":[{"slot":"l1","model":"PS10-42L","width":120,"x":-71.5,"y":-9,"z":-54.5}],"right":[{"slot":"r1","model":"PS10","width":120,"x":71.5,"y":-9,"z":54.5}]}
         recipeColorway = {"siding": "lap","sidingColor": "arctic-white","trimColor": "studio-shed-bronze","doorColor": "arctic-white", "fasciaColor": "arctic-white", "soffitColor": "arctic-white"}
+        recipeInterior = 'lifestyle'
       }
 
       if(model == 'model-g') {
         recipeResponse = {"model":"signature","size":"12x16","depth":12,"length":16,"name":"12x16 signature","roof":{"model":"SG-12x16-STE-06F","x":0,"y":-9,"z":8},"floor":{"width":192,"height":12,"depth":144,"x":96,"y":-9,"z":72},"front":[{"slot":"f1","model":"F16-W2L-D72C-W2R","width":192,"x":-92,"y":-9,"z":72}],"back":[{"slot":"b1","model":"B12x16","width":192,"x":-92,"y":-9,"z":-72}],"left":[{"slot":"l1","model":"L12-36C-W2R","width":144,"x":-95,"y":-9,"z":-72}],"right":[{"slot":"r1","model":"R12-W2L-36C","width":144,"x":95,"y":-9,"z":72}]}
         recipeColorway = {"siding": "lap","sidingColor": "arctic-white","trimColor": "aluminum","doorColor": "tricorn-black"}
+        recipeInterior = 'lifestyle'
       }
 
       if(model == 'model-h') {
         recipeResponse = {"model":"signature","size":"12x16","depth":12,"length":16,"name":"12x16 signature","roof":{"model":"SG-12x16-STE-06F","x":0,"y":-9,"z":8},"floor":{"width":192,"height":12,"depth":144,"x":96,"y":-9,"z":72},"front":[{"slot":"f1","model":"F16-W2L-D72C-W2R","width":192,"x":-92,"y":-9,"z":72}],"back":[{"slot":"b1","model":"B12x16","width":192,"x":-92,"y":-9,"z":-72}],"left":[{"slot":"l1","model":"L12-36C-W2R","width":144,"x":-95,"y":-9,"z":-72}],"right":[{"slot":"r1","model":"R12-W2L-36C","width":144,"x":95,"y":-9,"z":72}]}
         recipeColorway = {"siding": "block","sidingColor": "cobble-stone","trimColor": "studio-shed-bronze","doorColor": "yam", "eavesColor": "charwood-stain"}
+        recipeInterior = 'lifestyle'
       }
+
+      if(model == 'model-1-364') {
+        recipeResponse = {"model":"summit","size":"14x26","depth":14,"length":26,"name":"14x26 summit","shell_base_price":48756,"roof":{"model":"14x26-STV","x":0,"y":-12,"z":0},"floor":{"width":312,"height":12,"depth":168,"x":156,"y":-9,"z":84},"front":[{"slot":"f1","model":"FM26-42L-D72C-42R","width":312,"x":-150,"y":-9,"z":84}],"back":[{"slot":"b1","model":"BT14x26-18CL-18CR","width":312,"x":150,"y":-9,"z":-84}],"left":[{"slot":"l1","model":"L14","width":168,"x":-155,"y":-9,"z":-83.5}],"right":[{"slot":"r1","model":"R14-W2L","width":168,"x":155,"y":-9,"z":83.5}]}
+        recipeColorway = {"siding": "lap","sidingColor": "pearl-gray","trimColor": "aluminum","doorColor": "arctic-white"}
+        recipeInterior = 'model-1'
+      }
+
+      if(model == 'model-2-476') {
+        recipeResponse = {"model":"summit","size":"14x34","depth":14,"length":34,"name":"14x34 summit","shell_base_price":58636,"roof":{"model":"14x34-STV","x":0,"y":-12,"z":0},"floor":{"width":408,"height":12,"depth":168,"x":204,"y":-9,"z":84},"front":[{"slot":"f1","model":"FM34-W2CL-D72C-W2CR-72R","width":408,"x":-198,"y":-9,"z":84}],"back":[{"slot":"b1","model":"BT14x34-36CLL","width":408,"x":198,"y":-9,"z":-84}],"left":[{"slot":"l1","model":"L14-42C","width":168,"x":-203,"y":-9,"z":-83.5}],"right":[{"slot":"r1","model":"R14-W2L","width":168,"x":203,"y":-9,"z":83.5}]}
+        recipeColorway = {"siding": "lap","sidingColor": "pearl-gray","trimColor": "aluminum","doorColor": "arctic-white"}
+        recipeInterior = 'model-2'
+      }
+
+      if(model == 'model-3-684') {
+        recipeResponse = {"model":"summit","size":"18x38","depth":18,"length":38,"name":"18x38 summit","shell_base_price":70276,"roof":{"model":"18x38-STV","x":0,"y":-9,"z":0},"floor":{"width":456,"height":12,"depth":216,"x":228,"y":-9,"z":108},"front":[{"slot":"f1","model":"FL38-72L-W2CL-D72C-W2CR","width":456,"x":-222,"y":-9,"z":108}],"back":[{"slot":"b1","model":"BT18x38-36CLL","width":456,"x":222,"y":-9,"z":-108}],"left":[{"slot":"l1","model":"L18-18C-18R","width":216,"x":-227,"y":-9,"z":-107.5}],"right":[{"slot":"r1","model":"R18-W2L-36C","width":216,"x":227,"y":-9,"z":107.5}]}
+        recipeColorway = {"siding": "lap","sidingColor": "pearl-gray","trimColor": "aluminum","doorColor": "arctic-white"}
+        recipeInterior = 'model-3'
+      }
+
+      if(model == 'model-4-1000') {
+        recipeResponse = {"model":"summit","size":"20x50","depth":20,"length":50,"name":"20x50 summit","shell_base_price":87551,"roof":{"model":"20x50-STV","x":0,"y":-9,"z":0},"floor":{"width":600,"height":12,"depth":240,"x":300,"y":-9,"z":120},"front":[{"slot":"f1","model":"FL50-72L-W2CL-D72C-W2CR-72R","width":600,"x":-294,"y":-9,"z":120}],"back":[{"slot":"b1","model":"BT20x50-36CLL-42C","width":600,"x":294,"y":-9,"z":-120}],"left":[{"slot":"l1","model":"L20-18C-18R","width":240,"x":-299,"y":-9,"z":-119.5}],"right":[{"slot":"r1","model":"R20-W2L-36CRR","width":240,"x":299,"y":-9,"z":119.5}]}
+        recipeColorway = {"siding": "lap","sidingColor": "pearl-gray","trimColor": "aluminum","doorColor": "arctic-white"}
+        recipeInterior = 'model-4'
+      }
+
 
       window.recipe = recipeResponse
       window.colorway = recipeColorway
+      window.recipeInterior = recipeInterior
       Harp.useRecipe()
 
 
@@ -1764,12 +1860,12 @@ window.addEventListener('DOMContentLoaded', () => {
       }
       if (side === 'exterior') {
         if (Harp.camera.beta < BABYLON.Tools.ToRadians(60)) {
-          Harp.camera.spinTo('beta', BABYLON.Tools.ToRadians(70), 50)
+          Harp.camera.spinTo('beta', BABYLON.Tools.ToRadians(90), 66)
         }
       }
       if (side === 'interior') {
-        Harp.camera.spinTo('alpha', BABYLON.Tools.ToRadians(45), 50)
-        Harp.camera.spinTo('beta', BABYLON.Tools.ToRadians(30), 50)
+        Harp.camera.spinTo('alpha', BABYLON.Tools.ToRadians(45), 66)
+        Harp.camera.spinTo('beta', BABYLON.Tools.ToRadians(30), 66)
       }
       if (side === 'front') {
         Harp.camera.spinTo('alpha', Math.PI/2, 50)
@@ -2012,6 +2108,8 @@ window.addEventListener('DOMContentLoaded', () => {
       Harp.roof_metal_material.specularColor = new BABYLON.Color3(0.33, 0.33, 0.33)
 
 
+      //if window.
+
       if (Object.keys(window.colorway).length > 0) {
         Harp.setSiding(window.colorway.siding, null)
         Harp.setSidingColor(window.colorway.sidingColor)
@@ -2020,7 +2118,9 @@ window.addEventListener('DOMContentLoaded', () => {
         Harp.setEavesColor(window.colorway.eavesColor||'natural-stain')
         Harp.setSoffitColor(window.colorway.soffitColor||window.colorway.sidingColor)
         Harp.setFasciaColor(window.colorway.fasciaColor||window.colorway.sidingColor)
-        Harp.importInteriorLayout('lifestyle')
+
+        Harp.importInteriorLayout(window.recipeInterior || 'lifestyle')
+
       } else {
         Harp.setSiding('lap', null)
         Harp.setSidingColor('iron-gray')
