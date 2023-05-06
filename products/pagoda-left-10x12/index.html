@@ -12,15 +12,15 @@
     <meta property="og:description" content="">
     <meta property="og:url" content="">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2023-05-05T23:22:41.138Z">
+    <meta property="article:modified_time" content="2023-05-06T06:25:52.384Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1683328960783">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1683354352047">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <script src="/assets/main.bundle.js?v=1683328960783"></script>
+    <script src="/assets/main.bundle.js?v=1683354352047"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babylonjs/4.2.2/babylon.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/babylonjs-loaders@5.9.1/babylonjs.loaders.min.js"></script>
@@ -1291,9 +1291,6 @@
             }, 1000);
           </script>
 
-
-
-
           
             <h3 class="sr-only">Description</h3>
 
@@ -1301,145 +1298,137 @@
               <p>Lap style siding &bull; DIY installation only &bull; Foundation excluded &bull; Shipping included </p>
               <p>Lifestyle interior included &bull; Express permit plan set available (+$995*)</p>
               <p class="text-xs">*For CA installations on a concrete slab. Permit plans available for other states by quote.</p>
-
             </div>
-
-
 
             <h2 class="mt-4 text-sm font-medium text-gray-900">Color: <span x-show="sidingColorValue" x-text="sidingColorValue" class="text-xs font-medium text-gray-800"></span></h2>
-            <div id="siding-menu" class="mb-4">
-              <div class="flex flex-wrap items-center"><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-iron-gray ring-2" :class="sidingColorValue === 'Iron Gray' ? 'ring ring-offset-1' : 'ring-0'"
-                  @click.prevent="setSidingColor('iron-gray', 'Iron Gray')">
-                  <input type="radio" x-model="sidingColorValue" name="color-choice" value="Iron Gray" class="sr-only" aria-labelledby="color-choice-0-label">
-                    <p id="color-choice-bg-iron-gray-label" class="sr-only">Iron Gray</p>
-                    <span aria-hidden="true" class="h-8 w-8 bg-iron-gray border border-black border-opacity-10 rounded-full"></span>
-                  </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-pearl-gray ring-2" :class="sidingColorValue === 'Pearl Gray' ? 'ring ring-offset-1' : 'ring-0'"
-                  @click.prevent="setSidingColor('pearl-gray', 'Pearl Gray')">
-                  <input type="radio" x-model="sidingColorValue" name="color-choice" value="Pearl Gray" class="sr-only" aria-labelledby="color-choice-0-label">
-                    <p id="color-choice-bg-pearl-gray-label" class="sr-only">Pearl Gray</p>
-                    <span aria-hidden="true" class="h-8 w-8 bg-pearl-gray border border-black border-opacity-10 rounded-full"></span>
-                  </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-arctic-white ring-2" :class="sidingColorValue === 'Arctic White' ? 'ring ring-offset-1' : 'ring-0'"
-                  @click.prevent="setSidingColor('arctic-white', 'Arctic White')">
-                  <input type="radio" x-model="sidingColorValue" name="color-choice" value="Arctic White" class="sr-only" aria-labelledby="color-choice-0-label">
-                    <p id="color-choice-bg-arctic-white-label" class="sr-only">Arctic White</p>
-                    <span aria-hidden="true" class="h-8 w-8 bg-arctic-white border border-black border-opacity-10 rounded-full"></span>
-                  </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-countrylane-red ring-2" :class="sidingColorValue === 'Countrylane Red' ? 'ring ring-offset-1' : 'ring-0'"
-                  @click.prevent="setSidingColor('countrylane-red', 'Countrylane Red')">
-                  <input type="radio" x-model="sidingColorValue" name="color-choice" value="Countrylane Red" class="sr-only" aria-labelledby="color-choice-0-label">
-                    <p id="color-choice-bg-countrylane-red-label" class="sr-only">Countrylane Red</p>
-                    <span aria-hidden="true" class="h-8 w-8 bg-countrylane-red border border-black border-opacity-10 rounded-full"></span>
-                  </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-rich-espresso ring-2" :class="sidingColorValue === 'Rich Espresso' ? 'ring ring-offset-1' : 'ring-0'"
-                  @click.prevent="setSidingColor('rich-espresso', 'Rich Espresso')">
-                  <input type="radio" x-model="sidingColorValue" name="color-choice" value="Rich Espresso" class="sr-only" aria-labelledby="color-choice-0-label">
-                    <p id="color-choice-bg-rich-espresso-label" class="sr-only">Rich Espresso</p>
-                    <span aria-hidden="true" class="h-8 w-8 bg-rich-espresso border border-black border-opacity-10 rounded-full"></span>
-                  </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-timber-bark ring-2" :class="sidingColorValue === 'Timber Bark' ? 'ring ring-offset-1' : 'ring-0'"
-                  @click.prevent="setSidingColor('timber-bark', 'Timber Bark')">
-                  <input type="radio" x-model="sidingColorValue" name="color-choice" value="Timber Bark" class="sr-only" aria-labelledby="color-choice-0-label">
-                    <p id="color-choice-bg-timber-bark-label" class="sr-only">Timber Bark</p>
-                    <span aria-hidden="true" class="h-8 w-8 bg-timber-bark border border-black border-opacity-10 rounded-full"></span>
-                  </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-cobble-stone ring-2" :class="sidingColorValue === 'Cobble Stone' ? 'ring ring-offset-1' : 'ring-0'"
-                  @click.prevent="setSidingColor('cobble-stone', 'Cobble Stone')">
-                  <input type="radio" x-model="sidingColorValue" name="color-choice" value="Cobble Stone" class="sr-only" aria-labelledby="color-choice-0-label">
-                    <p id="color-choice-bg-cobble-stone-label" class="sr-only">Cobble Stone</p>
-                    <span aria-hidden="true" class="h-8 w-8 bg-cobble-stone border border-black border-opacity-10 rounded-full"></span>
-                  </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-heathered-moss ring-2" :class="sidingColorValue === 'Heathered Moss' ? 'ring ring-offset-1' : 'ring-0'"
-                  @click.prevent="setSidingColor('heathered-moss', 'Heathered Moss')">
-                  <input type="radio" x-model="sidingColorValue" name="color-choice" value="Heathered Moss" class="sr-only" aria-labelledby="color-choice-0-label">
-                    <p id="color-choice-bg-heathered-moss-label" class="sr-only">Heathered Moss</p>
-                    <span aria-hidden="true" class="h-8 w-8 bg-heathered-moss border border-black border-opacity-10 rounded-full"></span>
-                  </label></div>
-            </div>
-
+<div id="siding-menu" class="mb-4">
+  <div class="flex flex-wrap items-center"><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-iron-gray" :class="sidingColorValue === 'Iron Gray' ? 'ring ring-offset-1' : 'ring-0'"
+           @click.prevent="setSidingColor('iron-gray', 'Iron Gray')">
+      <input type="radio" x-model="sidingColorValue" name="color-choice" value="Iron Gray" class="sr-only" aria-labelledby="color-choice-0-label">
+      <p id="color-choice-bg-iron-gray-label" class="sr-only">Iron Gray</p>
+      <span aria-hidden="true" class="h-8 w-8 bg-iron-gray border border-black border-opacity-10 rounded-full"></span>
+    </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-pearl-gray" :class="sidingColorValue === 'Pearl Gray' ? 'ring ring-offset-1' : 'ring-0'"
+           @click.prevent="setSidingColor('pearl-gray', 'Pearl Gray')">
+      <input type="radio" x-model="sidingColorValue" name="color-choice" value="Pearl Gray" class="sr-only" aria-labelledby="color-choice-0-label">
+      <p id="color-choice-bg-pearl-gray-label" class="sr-only">Pearl Gray</p>
+      <span aria-hidden="true" class="h-8 w-8 bg-pearl-gray border border-black border-opacity-10 rounded-full"></span>
+    </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-arctic-white" :class="sidingColorValue === 'Arctic White' ? 'ring ring-offset-1' : 'ring-0'"
+           @click.prevent="setSidingColor('arctic-white', 'Arctic White')">
+      <input type="radio" x-model="sidingColorValue" name="color-choice" value="Arctic White" class="sr-only" aria-labelledby="color-choice-0-label">
+      <p id="color-choice-bg-arctic-white-label" class="sr-only">Arctic White</p>
+      <span aria-hidden="true" class="h-8 w-8 bg-arctic-white border border-black border-opacity-10 rounded-full"></span>
+    </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-countrylane-red" :class="sidingColorValue === 'Countrylane Red' ? 'ring ring-offset-1' : 'ring-0'"
+           @click.prevent="setSidingColor('countrylane-red', 'Countrylane Red')">
+      <input type="radio" x-model="sidingColorValue" name="color-choice" value="Countrylane Red" class="sr-only" aria-labelledby="color-choice-0-label">
+      <p id="color-choice-bg-countrylane-red-label" class="sr-only">Countrylane Red</p>
+      <span aria-hidden="true" class="h-8 w-8 bg-countrylane-red border border-black border-opacity-10 rounded-full"></span>
+    </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-rich-espresso" :class="sidingColorValue === 'Rich Espresso' ? 'ring ring-offset-1' : 'ring-0'"
+           @click.prevent="setSidingColor('rich-espresso', 'Rich Espresso')">
+      <input type="radio" x-model="sidingColorValue" name="color-choice" value="Rich Espresso" class="sr-only" aria-labelledby="color-choice-0-label">
+      <p id="color-choice-bg-rich-espresso-label" class="sr-only">Rich Espresso</p>
+      <span aria-hidden="true" class="h-8 w-8 bg-rich-espresso border border-black border-opacity-10 rounded-full"></span>
+    </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-timber-bark" :class="sidingColorValue === 'Timber Bark' ? 'ring ring-offset-1' : 'ring-0'"
+           @click.prevent="setSidingColor('timber-bark', 'Timber Bark')">
+      <input type="radio" x-model="sidingColorValue" name="color-choice" value="Timber Bark" class="sr-only" aria-labelledby="color-choice-0-label">
+      <p id="color-choice-bg-timber-bark-label" class="sr-only">Timber Bark</p>
+      <span aria-hidden="true" class="h-8 w-8 bg-timber-bark border border-black border-opacity-10 rounded-full"></span>
+    </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-cobble-stone" :class="sidingColorValue === 'Cobble Stone' ? 'ring ring-offset-1' : 'ring-0'"
+           @click.prevent="setSidingColor('cobble-stone', 'Cobble Stone')">
+      <input type="radio" x-model="sidingColorValue" name="color-choice" value="Cobble Stone" class="sr-only" aria-labelledby="color-choice-0-label">
+      <p id="color-choice-bg-cobble-stone-label" class="sr-only">Cobble Stone</p>
+      <span aria-hidden="true" class="h-8 w-8 bg-cobble-stone border border-black border-opacity-10 rounded-full"></span>
+    </label><label x-radio-group-option="" class="standard m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-heathered-moss" :class="sidingColorValue === 'Heathered Moss' ? 'ring ring-offset-1' : 'ring-0'"
+           @click.prevent="setSidingColor('heathered-moss', 'Heathered Moss')">
+      <input type="radio" x-model="sidingColorValue" name="color-choice" value="Heathered Moss" class="sr-only" aria-labelledby="color-choice-0-label">
+      <p id="color-choice-bg-heathered-moss-label" class="sr-only">Heathered Moss</p>
+      <span aria-hidden="true" class="h-8 w-8 bg-heathered-moss border border-black border-opacity-10 rounded-full"></span>
+    </label></div>
+</div>
             <h2 class="text-sm font-medium text-gray-900">Trim: <span x-show="trimColorValue" x-text="trimColorValue" class="text-xs font-medium text-gray-800"></span></h2>
-            <div id="trim-menu" class="mb-4">
-              <div class="flex flex-wrap items-center"><label x-radio-group-option="" class="m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-aluminum ring-2" :class="trimColorValue === 'Clear Anodized Aluminum' ? 'ring ring-offset-1' : 'ring-0'" 
-                  @click.prevent="setTrimColor('aluminum', 'Clear Anodized Aluminum')">
-                  <input type="radio" x-model="trimColorValue" name="color-choice" value="Clear Anodized Aluminum" class="sr-only" aria-labelledby="color-choice-0-label">
-                    <p id="color-choice-bg-aluminum-label" class="sr-only">Clear Anodized Aluminum</p>
-                    <span aria-hidden="true" class="h-8 w-8 bg-aluminum border border-black border-opacity-10 rounded-full"></span>
-                  </label><label x-radio-group-option="" class="m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-studio-shed-bronze ring-2" :class="trimColorValue === 'Studio Shed Bronze (+$1,320)' ? 'ring ring-offset-1' : 'ring-0'" 
-                  @click.prevent="setTrimColor('studio-shed-bronze', 'Studio Shed Bronze (+$1,320)')">
-                  <input type="radio" x-model="trimColorValue" name="color-choice" value="Studio Shed Bronze (+$1,320)" class="sr-only" aria-labelledby="color-choice-0-label">
-                    <p id="color-choice-bg-studio-shed-bronze-label" class="sr-only">Studio Shed Bronze (+$1,320)</p>
-                    <span aria-hidden="true" class="h-8 w-8 bg-studio-shed-bronze border border-black border-opacity-10 rounded-full"></span>
-                  </label></div>
-            </div>
-
+<div id="trim-menu" class="mb-4">
+  <div class="flex flex-wrap items-center"><label x-radio-group-option="" class="m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-aluminum" :class="trimColorValue === 'Clear Anodized Aluminum' ? 'ring ring-offset-1' : 'ring-0'"
+           @click.prevent="setTrimColor('aluminum', 'Clear Anodized Aluminum')">
+      <input type="radio" x-model="trimColorValue" name="color-choice" value="Clear Anodized Aluminum" class="sr-only" aria-labelledby="color-choice-0-label">
+      <p id="color-choice-bg-aluminum-label" class="sr-only">Clear Anodized Aluminum</p>
+      <span aria-hidden="true" class="h-8 w-8 bg-aluminum border border-black border-opacity-10 rounded-full"></span>
+    </label><label x-radio-group-option="" class="m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-studio-shed-bronze" :class="trimColorValue === 'Studio Shed Bronze (+$1,320)' ? 'ring ring-offset-1' : 'ring-0'"
+           @click.prevent="setTrimColor('studio-shed-bronze', 'Studio Shed Bronze (+$1,320)')">
+      <input type="radio" x-model="trimColorValue" name="color-choice" value="Studio Shed Bronze (+$1,320)" class="sr-only" aria-labelledby="color-choice-0-label">
+      <p id="color-choice-bg-studio-shed-bronze-label" class="sr-only">Studio Shed Bronze (+$1,320)</p>
+      <span aria-hidden="true" class="h-8 w-8 bg-studio-shed-bronze border border-black border-opacity-10 rounded-full"></span>
+    </label></div>
+</div>
             <h2 class="text-sm font-medium text-gray-900">Door: <span x-show="doorsColorValue" x-text="doorsColorValue" class="text-xs font-medium text-gray-800"></span></h2>
-            <div id="trim-menu" class="mb-4">
-              <div class="flex flex-wrap items-center"><label x-radio-group-option="" class="m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-arctic-white ring-2" :class="doorsColorValue === 'Arctic White' ? 'ring ring-offset-1' : 'ring-0'"
-                @click.prevent="setDoorColor('arctic-white', 'Arctic White')">
-                <input type="radio" x-model="doorsColorValue" name="color-choice" value="Arctic White" class="sr-only" aria-labelledby="color-choice-0-label">
-                  <p id="color-choice-bg-arctic-white-label" class="sr-only">Arctic White</p>
-                  <span aria-hidden="true" class="h-8 w-8 bg-arctic-white border border-black border-opacity-10 rounded-full"></span>
-                </label><label x-radio-group-option="" class="m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-tricorn-black ring-2" :class="doorsColorValue === 'Tricorn Black' ? 'ring ring-offset-1' : 'ring-0'"
-                @click.prevent="setDoorColor('tricorn-black', 'Tricorn Black')">
-                <input type="radio" x-model="doorsColorValue" name="color-choice" value="Tricorn Black" class="sr-only" aria-labelledby="color-choice-0-label">
-                  <p id="color-choice-bg-tricorn-black-label" class="sr-only">Tricorn Black</p>
-                  <span aria-hidden="true" class="h-8 w-8 bg-tricorn-black border border-black border-opacity-10 rounded-full"></span>
-                </label></div>
-            </div>
-
+<div id="trim-menu" class="mb-4">
+  <div class="flex flex-wrap items-center"><label x-radio-group-option="" class="m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-arctic-white" :class="doorsColorValue === 'Arctic White' ? 'ring ring-offset-1' : 'ring-0'"
+           @click.prevent="setDoorColor('arctic-white', 'Arctic White')">
+      <input type="radio" x-model="doorsColorValue" name="color-choice" value="Arctic White" class="sr-only" aria-labelledby="color-choice-0-label">
+      <p id="color-choice-bg-arctic-white-label" class="sr-only">Arctic White</p>
+      <span aria-hidden="true" class="h-8 w-8 bg-arctic-white border border-black border-opacity-10 rounded-full"></span>
+    </label><label x-radio-group-option="" class="m-0.5 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-tricorn-black" :class="doorsColorValue === 'Tricorn Black' ? 'ring ring-offset-1' : 'ring-0'"
+           @click.prevent="setDoorColor('tricorn-black', 'Tricorn Black')">
+      <input type="radio" x-model="doorsColorValue" name="color-choice" value="Tricorn Black" class="sr-only" aria-labelledby="color-choice-0-label">
+      <p id="color-choice-bg-tricorn-black-label" class="sr-only">Tricorn Black</p>
+      <span aria-hidden="true" class="h-8 w-8 bg-tricorn-black border border-black border-opacity-10 rounded-full"></span>
+    </label></div>
+</div>
             <h2 class="text-sm font-medium text-gray-900">Eaves: <span x-show="eavesColorValue" x-text="eavesColorValue" class="text-xs font-medium text-gray-800"></span></h2>
-            <div id="trim-menu" class="mb-4">
-              <div class="flex flex-wrap items-center"><label x-radio-group-option="" class="m-1 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-natural-stain ring-2" :class="eavesColorValue === 'Natural Stain' ? 'ring ring-offset-1' : 'ring-0'"
-                @click.prevent="setEavesColor('natural-stain', 'Natural Stain')">
-                <input type="radio" x-model="eavesColorValue" name="color-choice" value="Natural Stain" class="sr-only" aria-labelledby="color-choice-0-label">
-                  <p id="color-choice-bg-natural-stain-label" class="sr-only">Natural Stain</p>
-                  <span aria-hidden="true" class="h-8 w-8 bg-natural-stain border border-black border-opacity-10 rounded-full"></span>
-                </label><label x-radio-group-option="" class="m-1 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-arctic-white ring-2" :class="eavesColorValue === 'Arctic White' ? 'ring ring-offset-1' : 'ring-0'"
-                @click.prevent="setEavesColor('arctic-white', 'Arctic White')">
-                <input type="radio" x-model="eavesColorValue" name="color-choice" value="Arctic White" class="sr-only" aria-labelledby="color-choice-0-label">
-                  <p id="color-choice-bg-arctic-white-label" class="sr-only">Arctic White</p>
-                  <span aria-hidden="true" class="h-8 w-8 bg-arctic-white border border-black border-opacity-10 rounded-full"></span>
-                </label><label x-radio-group-option="" class="m-1 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-tricorn-black ring-2" :class="eavesColorValue === 'Tricorn Black' ? 'ring ring-offset-1' : 'ring-0'"
-                @click.prevent="setEavesColor('tricorn-black', 'Tricorn Black')">
-                <input type="radio" x-model="eavesColorValue" name="color-choice" value="Tricorn Black" class="sr-only" aria-labelledby="color-choice-0-label">
-                  <p id="color-choice-bg-tricorn-black-label" class="sr-only">Tricorn Black</p>
-                  <span aria-hidden="true" class="h-8 w-8 bg-tricorn-black border border-black border-opacity-10 rounded-full"></span>
-                </label></div>
-            </div>
-
-            <h2 class="text-sm font-medium text-gray-900">Flooring: <span x-show="main_flooringTextValue" x-text="main_flooringTextValue" class="text-xs font-medium text-gray-800"></span></h2>
-            <div id="flooring-menu" class="mb-4">
-              <ul role="list" class="grid grid-cols-4 gap-x-4 gap-y-4 mt-2 mb-8"><li class="relative">
-                  <div :class="main_flooringValue === 'sandcastle-oak' ? 'ring-offset-2 ring-2' : 'ring-0'" class="group block w-full aspect-w-2 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden ring-yellow-500" 
-                  @click="setMainFlooring('sandcastle-oak', 'Sandcastle Oak')">
-                    <img src="/assets/textures/sandcastle-oak.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                    <button type="button" class="absolute inset-0 focus:outline-none">
-                     <span class="sr-only">Load Sandcastle Oak</span>
-                    </button>
-                  </div>                  
-                </li><li class="relative">
-                  <div :class="main_flooringValue === 'ashlar-oak' ? 'ring-offset-2 ring-2' : 'ring-0'" class="group block w-full aspect-w-2 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden ring-yellow-500" 
-                  @click="setMainFlooring('ashlar-oak', 'Ashlar Oak')">
-                    <img src="/assets/textures/ashlar-oak.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                    <button type="button" class="absolute inset-0 focus:outline-none">
-                     <span class="sr-only">Load Ashlar Oak</span>
-                    </button>
-                  </div>                  
-                </li><li class="relative">
-                  <div :class="main_flooringValue === 'fawn-chestnut' ? 'ring-offset-2 ring-2' : 'ring-0'" class="group block w-full aspect-w-2 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden ring-yellow-500" 
-                  @click="setMainFlooring('fawn-chestnut', 'Fawn Chestnut')">
-                    <img src="/assets/textures/fawn-chestnut.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                    <button type="button" class="absolute inset-0 focus:outline-none">
-                     <span class="sr-only">Load Fawn Chestnut</span>
-                    </button>
-                  </div>                  
-                </li><li class="relative">
-                  <div :class="main_flooringValue === 'knotted-chestnut' ? 'ring-offset-2 ring-2' : 'ring-0'" class="group block w-full aspect-w-2 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden ring-yellow-500" 
-                  @click="setMainFlooring('knotted-chestnut', 'Knotted Chestnut')">
-                    <img src="/assets/textures/knotted-chestnut.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
-                    <button type="button" class="absolute inset-0 focus:outline-none">
-                     <span class="sr-only">Load Knotted Chestnut</span>
-                    </button>
-                  </div>                  
-                </li></ul>
-            </div>
+<div id="trim-menu" class="mb-4">
+  <div class="flex flex-wrap items-center"><label x-radio-group-option="" class="m-1 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-natural-stain" :class="eavesColorValue === 'Natural Stain' ? 'ring ring-offset-1' : 'ring-0'"
+           @click.prevent="setEavesColor('natural-stain', 'Natural Stain')">
+      <input type="radio" x-model="eavesColorValue" name="color-choice" value="Natural Stain" class="sr-only" aria-labelledby="color-choice-0-label">
+      <p id="color-choice-bg-natural-stain-label" class="sr-only">Natural Stain</p>
+      <span aria-hidden="true" class="h-8 w-8 bg-natural-stain border border-black border-opacity-10 rounded-full"></span>
+    </label><label x-radio-group-option="" class="m-1 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-arctic-white" :class="eavesColorValue === 'Arctic White' ? 'ring ring-offset-1' : 'ring-0'"
+           @click.prevent="setEavesColor('arctic-white', 'Arctic White')">
+      <input type="radio" x-model="eavesColorValue" name="color-choice" value="Arctic White" class="sr-only" aria-labelledby="color-choice-0-label">
+      <p id="color-choice-bg-arctic-white-label" class="sr-only">Arctic White</p>
+      <span aria-hidden="true" class="h-8 w-8 bg-arctic-white border border-black border-opacity-10 rounded-full"></span>
+    </label><label x-radio-group-option="" class="m-1 relative p-0.5 rounded-full flex items-center justify-center cursor-pointer focus:outline-none ring-tricorn-black" :class="eavesColorValue === 'Tricorn Black' ? 'ring ring-offset-1' : 'ring-0'"
+           @click.prevent="setEavesColor('tricorn-black', 'Tricorn Black')">
+      <input type="radio" x-model="eavesColorValue" name="color-choice" value="Tricorn Black" class="sr-only" aria-labelledby="color-choice-0-label">
+      <p id="color-choice-bg-tricorn-black-label" class="sr-only">Tricorn Black</p>
+      <span aria-hidden="true" class="h-8 w-8 bg-tricorn-black border border-black border-opacity-10 rounded-full"></span>
+    </label></div>
+</div>
+            <h2 class="mt-4 text-sm font-medium text-gray-900">Flooring: <span x-show="main_flooringTextValue" x-text="main_flooringTextValue" class="text-xs font-medium text-gray-800"></span></h2>
+<div id="flooring-menu" class="mb-4">
+  <ul role="list" class="grid grid-cols-4 gap-x-4 gap-y-4 mt-2 mb-8"><li class="relative">
+      <div :class="main_flooringValue === 'sandcastle-oak' ? 'ring-offset-2 ring-2' : 'ring-0'" class="group block w-full aspect-w-2 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden ring-yellow-500"
+           @click="setMainFlooring('sandcastle-oak', 'Sandcastle Oak')">
+        <img src="/assets/textures/sandcastle-oak.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+        <button type="button" class="absolute inset-0 focus:outline-none">
+          <span class="sr-only">Load Sandcastle Oak</span>
+        </button>
+      </div>
+    </li><li class="relative">
+      <div :class="main_flooringValue === 'ashlar-oak' ? 'ring-offset-2 ring-2' : 'ring-0'" class="group block w-full aspect-w-2 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden ring-yellow-500"
+           @click="setMainFlooring('ashlar-oak', 'Ashlar Oak')">
+        <img src="/assets/textures/ashlar-oak.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+        <button type="button" class="absolute inset-0 focus:outline-none">
+          <span class="sr-only">Load Ashlar Oak</span>
+        </button>
+      </div>
+    </li><li class="relative">
+      <div :class="main_flooringValue === 'fawn-chestnut' ? 'ring-offset-2 ring-2' : 'ring-0'" class="group block w-full aspect-w-2 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden ring-yellow-500"
+           @click="setMainFlooring('fawn-chestnut', 'Fawn Chestnut')">
+        <img src="/assets/textures/fawn-chestnut.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+        <button type="button" class="absolute inset-0 focus:outline-none">
+          <span class="sr-only">Load Fawn Chestnut</span>
+        </button>
+      </div>
+    </li><li class="relative">
+      <div :class="main_flooringValue === 'knotted-chestnut' ? 'ring-offset-2 ring-2' : 'ring-0'" class="group block w-full aspect-w-2 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden ring-yellow-500"
+           @click="setMainFlooring('knotted-chestnut', 'Knotted Chestnut')">
+        <img src="/assets/textures/knotted-chestnut.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+        <button type="button" class="absolute inset-0 focus:outline-none">
+          <span class="sr-only">Load Knotted Chestnut</span>
+        </button>
+      </div>
+    </li></ul>
+</div>
 
             <div class="mt-10 flex sm:flex-col1">
-
               <div x-show="trimColorValue == 'Clear Anodized Aluminum'">
               <button type="submit" class="max-w-xs flex-1 bg-yellow-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-yellow-500 sm:w-full" @click.prevent="buyNow('Pagoda Left 10&amp;apos; &amp;times; 12&amp;apos;', 'pagoda-left-10x12', 21202)">Buy Now</button>
               </div>
@@ -1593,53 +1582,108 @@
     </ul>
   </div>
 </div>
-<div class="bg-white">
-  <div class="max-w-4xl mx-auto py-16 px-4 sm:py-12 sm:px-6 lg:px-8">
-    <div class="text-center">
-      <p class="mt-1 text-3xl font-extrabold text-gray-900">Curated Designs</p>
-      <p class="mt-1 text-xl font-extrabold text-gray-900">In-stock Models / Ready to ship</p>
-      <p class="mx-auto text-gray-500">These models are our most popular designs delivered to your door in 2-4 weeks for DIY installation.</p>
+<div class="bg-white relative">
+  <div class="max-w-2xl mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+    <div class="flex flex-col items-center text-center">
+      <p class="text-3xl font-extrabold text-gray-900">Curated Designs</p>
+      <p class="text-xl font-extrabold text-gray-600">In-stock Models / Ready to ship</p>
+      <p class="text-base text-gray-600">These models are our most popular designs delivered to your door in 2-4 weeks for DIY installation.</p>
     </div>
-  </div>
+    <div class="mt-16 grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8">
+      
 
+      
 
-  <div class="max-w-6xl mx-auto pb-24 px-4 overflow-hidden sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8">
-      <a href="/products/pagoda-right-10x12/" class="group text-sm text-center">
-        <div class="w-full rounded-lg overflow-hidden group-hover:opacity-75">
-          <img src="/assets/images/signature-curated-pagoda-right-10x12.jpg" class="w-full h-full object-center object-contain">
-        </div>
-        <h3 class="font-bold text-lg text-gray-700">Pagoda Right 10'&times;12'</h3>
-        <p class="font-normal text-base text-gray-900">$22,206</p>
-      </a>
+      <div class="text-center">
+        <a href="/products/pagoda-right-10x12/"  class="group text-lg text-center"
+           title="Studio Shed Summit series">
+          <div class="h-48 flex items-center group-hover:opacity-75">
+            <img loading="lazy" src="/assets/images/menu/pagoda-right-render.jpg"
+                 class="w-full h-auto"
+                 alt="Studio Shed signature series">
+          </div>
+          <h3 class="mt-4 font-bold text-gray-700 text-sm">Pagoda Right 120 sf | Studio</h3>
+          <div class="text-gray-500 text-sm line-through">$25,607</div>
+          <div class="text-yellow-600 font-bold">$21,202</div>
+        </a>
+        <a href="/products/pagoda-right/"
+           class="inline-flex items-center my-2 px-4 py-2 border border-gray-800 uppercase text-sm font-medium rounded shadow-sm text-black bg-white hover:bg-amber hover:text-white hover:border-amber focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber">
+          View Details
+        </a>
+      </div>
 
-      <a href="/products/boreas-10x12/" class="group text-sm text-center">
-        <div class="w-full rounded-lg overflow-hidden group-hover:opacity-75">
-          <img src="/assets/images/signature-curated-boreas-10x12.jpg" class="w-full h-full object-center object-contain">
-        </div>
-        <h3 class="font-bold text-lg text-gray-700">Boreas 10'&times;12'</h3>
-        <p class="font-normal text-base text-gray-900">$21,758</p>
-      </a>
+      
 
-      <a href="/products/solitude-10x12/" class="group text-sm text-center">
-        <div class="w-full rounded-lg overflow-hidden group-hover:opacity-75">
-          <img src="/assets/images/signature-curated-solitude-10x12.jpg" class="w-full h-full object-center object-contain">
-        </div>
-        <h3 class="font-bold text-lg text-gray-700">Solitude 10'&times;12'</h3>
-        <p class="font-normal text-base text-gray-900">$24,548</p>
-      </a>
+      
 
-      <a href="/products/pagoda-left-10x12/" class="group text-sm text-center">
-        <div class="w-full rounded-lg overflow-hidden group-hover:opacity-75">
-          <img src="/assets/images/signature-curated-pagoda-left-10x12.jpg" class="w-full h-full object-center object-contain">
-        </div>
-        <h3 class="font-bold text-lg text-gray-700">Pagoda Left 10'&times;12'</h3>
-        <p class="font-normal text-base text-gray-900">$25,868</p>
-      </a>
-     
+      <div class="text-center">
+        <a href="/products/boreas-10x12/"  class="group text-lg text-center"
+           title="Studio Shed Summit series">
+          <div class="h-48 flex items-center group-hover:opacity-75">
+            <img loading="lazy" src="/assets/images/menu/boreas-render.jpg"
+                 class="w-full h-auto"
+                 alt="Studio Shed signature series">
+          </div>
+          <h3 class="mt-4 font-bold text-gray-700 text-sm">Boreas 120 sf | Studio</h3>
+          <div class="text-gray-500 text-sm line-through">$25,159</div>
+          <div class="text-yellow-600 font-bold">$20,790</div>
+        </a>
+        <a href="/products/boreas/"
+           class="inline-flex items-center my-2 px-4 py-2 border border-gray-800 uppercase text-sm font-medium rounded shadow-sm text-black bg-white hover:bg-amber hover:text-white hover:border-amber focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber">
+          View Details
+        </a>
+      </div>
+
+      
+
+      
+
+      <div class="text-center">
+        <a href="/products/solitude-10x12/"  class="group text-lg text-center"
+           title="Studio Shed Summit series">
+          <div class="h-48 flex items-center group-hover:opacity-75">
+            <img loading="lazy" src="/assets/images/menu/solitude-render.jpg"
+                 class="w-full h-auto"
+                 alt="Studio Shed signature series">
+          </div>
+          <h3 class="mt-4 font-bold text-gray-700 text-sm">Solitude 120 sf | Studio</h3>
+          <div class="text-gray-500 text-sm line-through">$27,949</div>
+          <div class="text-yellow-600 font-bold">$23,357</div>
+        </a>
+        <a href="/products/solitude/"
+           class="inline-flex items-center my-2 px-4 py-2 border border-gray-800 uppercase text-sm font-medium rounded shadow-sm text-black bg-white hover:bg-amber hover:text-white hover:border-amber focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber">
+          View Details
+        </a>
+      </div>
+
+      
+
+      
+
+      <div class="text-center">
+        <a href="/products/pagoda-left-10x12/"  class="group text-lg text-center"
+           title="Studio Shed Summit series">
+          <div class="h-48 flex items-center group-hover:opacity-75">
+            <img loading="lazy" src="/assets/images/menu/pagoda-left-render.jpg"
+                 class="w-full h-auto"
+                 alt="Studio Shed signature series">
+          </div>
+          <h3 class="mt-4 font-bold text-gray-700 text-sm">Pagoda Left 120 sf | Studio</h3>
+          <div class="text-gray-500 text-sm line-through">$25,607</div>
+          <div class="text-yellow-600 font-bold">$21,202</div>
+        </a>
+        <a href="/products/pagoda-left/"
+           class="inline-flex items-center my-2 px-4 py-2 border border-gray-800 uppercase text-sm font-medium rounded shadow-sm text-black bg-white hover:bg-amber hover:text-white hover:border-amber focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber">
+          View Details
+        </a>
+      </div>
+
+      
     </div>
+
   </div>
 </div>
+
 </main>
     
   <div class="relative bg-gray-800">

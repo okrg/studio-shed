@@ -16,8 +16,15 @@ window.addEventListener('DOMContentLoaded', () => {
   })
 
   const loader = document.createElement('div')
+  function removeLoader() {
+    // Remove the #loader element from the DOM
+    loader.remove();
+  }
+
+// Add an event listener for the 'transitionend' event
+  loader.addEventListener('transitionend', removeLoader, { once: true });
+
   loader.setAttribute('id', 'loader')
-  loader.setAttribute('style', 'font-size:36px;color: #fff;display: flex;align-items: center;justify-content: center;flex-direction: column;background: #222;position: absolute;z-index: 9;height: 100%;width: 100%;overflow: show;margin: auto;top: 0;left: 0;bottom: 0;right: 0;')
   let dots = window.setInterval( function() {
     if ( loader.innerHTML.length > 2 )
       loader.innerHTML = "";
@@ -68,6 +75,23 @@ window.addEventListener('DOMContentLoaded', () => {
       Harp.camera.inputs.remove(Harp.camera.inputs.attached.mousewheel)
     }
 
+    var pipeline = new BABYLON.DefaultRenderingPipeline(
+      "defaultPipeline",
+      true,
+      scene,
+      [Harp.camera]
+    );
+    pipeline.samples = 8;
+    pipeline.imageProcessingEnabled = true;
+    pipeline.fxaaEnabled = true;
+    pipeline.grainEnabled = true;
+    pipeline.grain.intensity = 5;
+    pipeline.bloomEnabled = true;
+    pipeline.bloomThreshold = 0.8;
+    pipeline.bloomWeight = 0.25;
+    pipeline.bloomKernel = 16;
+    pipeline.bloomScale = 0.5;
+
     //Lighting **********
     const ambient = new BABYLON.HemisphericLight('ambient', new BABYLON.Vector3(0, 1, 0), scene)
     ambient.diffuse = new BABYLON.Color3(0.66 , 0.66, 0.66)
@@ -77,10 +101,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const sun = new BABYLON.DirectionalLight('sun', new BABYLON.Vector3(-1, -2, -1), scene)
     sun.position = new BABYLON.Vector3(20, 40, 20);
+    sun.intensity = 0.6
 
-    const shadowGenerator = new BABYLON.ShadowGenerator(1024, sun);
-    sun.intensity = 0.5
-    shadowGenerator.useExponentialShadowMap = true;
+    Harp.shadowGenerator = new BABYLON.ShadowGenerator(1024, sun)
+    Harp.shadowGenerator.darkness = 0
+    Harp.shadowGenerator.useBlurCloseExponentialShadowMap = true
+    Harp.shadowGenerator.useBlurExponentialShadowMap = true
+    Harp.shadowGenerator.useKernelBlur = true
+    Harp.shadowGenerator.blurKernel = 42
 
 
     //Sky **********
@@ -185,7 +213,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         Harp.shadowGroups.forEach(function (group) {
           if(m.name.includes(group)) {
-            shadowGenerator.getShadowMap().renderList.push(m)
+            Harp.shadowGenerator.getShadowMap().renderList.push(m)
           }
         })
 
@@ -227,7 +255,7 @@ window.addEventListener('DOMContentLoaded', () => {
       }
       BABYLON.SceneLoader.ImportMesh('', 'https://shop.studio-shed.com/assets/models/' + window.recipe.model + '/roof/', window.recipe.roof.model + '.obj', scene, function (newMeshes) {
         newMeshes.forEach(function (m){
-          shadowGenerator.getShadowMap().renderList.push(m);
+          Harp.shadowGenerator.getShadowMap().renderList.push(m);
           Harp.roofContainer.meshes.push(m)
           Harp.materialGroups.forEach(function (group){
             if (m.name.includes(group)) {
@@ -505,6 +533,7 @@ window.addEventListener('DOMContentLoaded', () => {
       })
       Harp.foundationMesh.position.y = -9.25
       Harp.foundationContainer.meshes.push(Harp.foundationMesh)
+      Harp.shadowGenerator.getShadowMap().renderList.push(Harp.foundationContainer.meshes[0]);
       Harp.foundationMesh.material = Harp.foundation_material
       Harp.foundation_material.specularColor = new BABYLON.Color3(0.125, 0.125, 0.125)
       Harp.foundation_material.specularPower = 32
@@ -549,7 +578,10 @@ window.addEventListener('DOMContentLoaded', () => {
           //if(side === 'front') {
           //  console.log(m.name)
           //}
-          shadowGenerator.getShadowMap().renderList.push(m);
+          if (m.name.includes('glass') || m.name.includes('door') ||  m.name.includes('wood') || m.name.includes('plank') || m.name.includes('siding')) {
+            m.receiveShadows = true
+          }
+          Harp.shadowGenerator.getShadowMap().renderList.push(m);
           window[slotName].meshes.push(m)
           Harp.materialGroups.forEach(function (group){
             if (m.name.includes(group)) {
@@ -2138,7 +2170,7 @@ window.addEventListener('DOMContentLoaded', () => {
     Harp.init()
     setTimeout(function(){
       document.querySelector('#renderCanvas').removeAttribute('style')
-      document.querySelector('#loader').remove()
+      document.querySelector('#loader').classList.add('fade-out');
       engine.resize()
       document.dispatchEvent(loadEvent);
       window.dispatchEvent(new CustomEvent('update-exterior'))
