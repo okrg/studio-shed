@@ -1,6 +1,8 @@
-<div class="relative bg-gray-800">
+
+
+  <div class="relative bg-gray-800">
   <div class="h-56 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
-    <img class="w-full h-full object-cover" src="/assets/images/ss-footer-build.jpg" alt="Studio Shed 3D design center app">
+    <img loading="lazy" class="w-full h-full object-cover" src="/assets/images/ss-footer-build.jpg" alt="Studio Shed 3D design center app">
   </div>
   <div class="relative max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
     <div class="md:ml-auto md:w-1/2 md:pl-10">
@@ -15,6 +17,11 @@
     </div>
   </div>
 </div>
+
+
+
+
+
 <footer class="bg-black" aria-labelledby="footer-heading">
   <h2 id="footer-heading" class="sr-only">Footer</h2>
   <div class="max-w-7xl mx-auto pt-16 pb-8 px-4 sm:px-6 lg:pt-24 lg:px-8">
@@ -136,6 +143,9 @@
                 <a href="https://www.studio-shed.com/products/portland-series" class="text-base text-gray-300 hover:text-white">Portland Series</a>
               </li>
               <li>
+                <a href="https://www.studio-shed.com/favorites/" class="text-base text-gray-300 hover:text-white">Founders Favorites</a>
+              </li>
+              <li>
                 <a href="https://www.studio-shed.com/backyard-studios/" class="text-base text-gray-300 hover:text-white">Backyard Studios</a>
               </li>
               <li>
@@ -224,8 +234,8 @@
           });
         </script>
         <div class="flex space-x-12 mt-24">
-          <img src="/assets/images/footer-shipping.png" class="self-center w-32 h-auto" alt="Studio Ships to all 50 states">
-          <img src="/assets/images/footer-houzz-badge.png" class="self-center w-20 h-auto" alt="Studio Shed design award by Houzz">
+          <img loading="lazy" class="self-center w-32 h-auto" src="/assets/images/footer-shipping.png" alt="Studio Ships to all 50 states">
+          <img loading="lazy" class="self-center w-20 h-auto" src="/assets/images/footer-houzz-badge.png" alt="Studio Shed design award by Houzz">
         </div>
       </div>
     </div>
@@ -259,6 +269,5 @@
 <script type="text/javascript" src="<?php echo bloginfo('template_directory'); ?>/js/common.js"></script>
 <script type="text/javascript" src="<?php echo bloginfo('template_directory'); ?>/js/app.js?v=0.2"></script>
 <?php wp_footer(); ?>
-</div>
 </body>
 </html>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="46919efa-aa74-4e27-8737-1c845633b818" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/adu-consultation/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/adu-consultation/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adu/interior-packages/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/adu/interior-packages/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/art-studios/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/art-studios/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/art-studio-slider/08.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/art-studio-slider/08.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/geo/portland.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/geo/portland.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/geo/signature.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/geo/signature.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/geo/summit.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/geo/summit.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/main.bundle.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/main.bundle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checkout/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/checkout/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/checkout/order-confirmation/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/checkout/order-confirmation/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commercial/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/commercial/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact-us/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/contact-us/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cost-calculator/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/cost-calculator/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diy/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/diy/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/do-not-sell/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/do-not-sell/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/favorites/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/favorites/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/financing/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/financing/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/garages/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/garages/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home-office-spaces/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/home-office-spaces/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/make-more-room/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/make-more-room/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/man-cave/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/man-cave/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/models/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modular-addition/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/modular-addition/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/music-studios/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/music-studios/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next/boreas-10x12/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/next/boreas-10x12/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/next/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next/pagoda-left-10x12/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/next/pagoda-left-10x12/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next/pagoda-right-10x12/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/next/pagoda-right-10x12/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next/portland-studio-12x16/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/next/portland-studio-12x16/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next/portland-studio-16x16/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/next/portland-studio-16x16/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next/solitude-10x12/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/next/solitude-10x12/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/process-original/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/process-original/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/process/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/process/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/boreas-10x12/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/products/boreas-10x12/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/model-1-364/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/products/model-1-364/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/model-2-476/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/products/model-2-476/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/model-3-684/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/products/model-3-684/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/model-4-1000/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/products/model-4-1000/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/model-a/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/products/model-a/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/model-b/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/products/model-b/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/model-d/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/products/model-d/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/model-e/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/products/model-e/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/model-g/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/products/model-g/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/model-h/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/products/model-h/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/pagoda-left-10x12/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/products/pagoda-left-10x12/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/pagoda-right-10x12/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/products/pagoda-right-10x12/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/portland-series/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/products/portland-series/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/signature-series/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/products/signature-series/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/solitude-10x12/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/products/solitude-10x12/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/products/summit-series/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/products/summit-series/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request-free-consultation/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/request-free-consultation/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/she-sheds/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/she-sheds/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/storage/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/terms-and-conditions/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/terms-and-conditions/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/texas/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/texas/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wellness/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/wellness/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-content/themes/studio-shed-child/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/studio-shed-child/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-content/themes/studio-shed-child/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/studio-shed-child/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wp-content/themes/studio-shed-child/static-home.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/studio-shed-child/static-home.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/search-replace-db/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="ProjectId" id="2PTdeQ7bhAUUeUaWwrBELq8JUhX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="46919efa-aa74-4e27-8737-1c845633b818" name="Changes" comment="" />
+      <created>1683485099676</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683485099676</updated>
+      <workItem from="1683485104338" duration="710000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
