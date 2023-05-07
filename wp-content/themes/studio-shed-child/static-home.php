@@ -25,8 +25,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1683487373538">
-  <script src="/assets/main.bundle.js?v=1683487373538"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1683487920414">
+  <script src="/assets/main.bundle.js?v=1683487920414"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -1487,6 +1487,24 @@
   </div>
 </div>
 
+
+
+
+<div class="relative">
+  <img loading="lazy" class="h-[50vh] w-full object-cover" src="/assets/images/home-made-in-co.jpg" alt="A Studio Shed installed in a Colorado location with the Rocky mountains in the background.">
+  <div class="absolute bottom-0 top-auto h-16 inset-0 bg-gradient-to-t from-black to-transparent mix-blend-multiply"></div>
+</div>
+<div class="bg-black">
+  <div class="max-w-4xl mx-auto py-16 px-4 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 lg:flex lg:items-center lg:justify-between">
+    <h2 class="text-4xl font-bold text-white sm:text-4xl">
+      <span class="block">Built in Colorado</span>
+      <span class="-mb-1 pb-1 block text-lg font-medium">Shipping available to all 50 U.S. states and select locations in Canada.</span>
+    </h2>
+    <div class="mt-6 space-y-4 sm:space-y-0 sm:flex sm:space-x-5">
+
+    </div>
+  </div>
+</div>
 
 
 
