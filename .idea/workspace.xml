@@ -64,7 +64,6 @@
       <change beforePath="$PROJECT_DIR$/wellness/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/wellness/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/studio-shed-child/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/studio-shed-child/footer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wp-content/themes/studio-shed-child/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/studio-shed-child/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wp-content/themes/studio-shed-child/static-home.php" beforeDir="false" afterPath="$PROJECT_DIR$/wp-content/themes/studio-shed-child/static-home.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +101,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1683485099676</updated>
-      <workItem from="1683485104338" duration="710000" />
+      <workItem from="1683485104338" duration="756000" />
     </task>
     <servers />
   </component>
