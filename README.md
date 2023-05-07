@@ -1,5 +1,6 @@
 # Eleventy + Tailwind + Alpine
-Hybrid environment
+Hybrid environment with Laravel Lumen API
+
 
 # WordPress
 
