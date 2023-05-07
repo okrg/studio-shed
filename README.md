@@ -1,3 +1,6 @@
+# Eleventy + Tailwind + Alpine
+Hybrid environment
+
 # WordPress
 
 This is a WordPress repository configured to run on the [Pantheon platform](https://pantheon.io).
