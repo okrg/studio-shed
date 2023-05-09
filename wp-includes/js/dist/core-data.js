@@ -316,6 +316,86 @@ module.exports = EquivalentKeyMap;
 
 /***/ }),
 
+/***/ 5619:
+/***/ (function(module) {
+
+"use strict";
+
+
+// do not edit .js files directly - edit src/index.jst
+
+
+  var envHasBigInt64Array = typeof BigInt64Array !== 'undefined';
+
+
+module.exports = function equal(a, b) {
+  if (a === b) return true;
+
+  if (a && b && typeof a == 'object' && typeof b == 'object') {
+    if (a.constructor !== b.constructor) return false;
+
+    var length, i, keys;
+    if (Array.isArray(a)) {
+      length = a.length;
+      if (length != b.length) return false;
+      for (i = length; i-- !== 0;)
+        if (!equal(a[i], b[i])) return false;
+      return true;
+    }
+
+
+    if ((a instanceof Map) && (b instanceof Map)) {
+      if (a.size !== b.size) return false;
+      for (i of a.entries())
+        if (!b.has(i[0])) return false;
+      for (i of a.entries())
+        if (!equal(i[1], b.get(i[0]))) return false;
+      return true;
+    }
+
+    if ((a instanceof Set) && (b instanceof Set)) {
+      if (a.size !== b.size) return false;
+      for (i of a.entries())
+        if (!b.has(i[0])) return false;
+      return true;
+    }
+
+    if (ArrayBuffer.isView(a) && ArrayBuffer.isView(b)) {
+      length = a.length;
+      if (length != b.length) return false;
+      for (i = length; i-- !== 0;)
+        if (a[i] !== b[i]) return false;
+      return true;
+    }
+
+
+    if (a.constructor === RegExp) return a.source === b.source && a.flags === b.flags;
+    if (a.valueOf !== Object.prototype.valueOf) return a.valueOf() === b.valueOf();
+    if (a.toString !== Object.prototype.toString) return a.toString() === b.toString();
+
+    keys = Object.keys(a);
+    length = keys.length;
+    if (length !== Object.keys(b).length) return false;
+
+    for (i = length; i-- !== 0;)
+      if (!Object.prototype.hasOwnProperty.call(b, keys[i])) return false;
+
+    for (i = length; i-- !== 0;) {
+      var key = keys[i];
+
+      if (!equal(a[key], b[key])) return false;
+    }
+
+    return true;
+  }
+
+  // true if both NaN, false otherwise
+  return a!==a && b!==b;
+};
+
+
+/***/ }),
+
 /***/ 9756:
 /***/ (function(module) {
 
@@ -681,8 +761,13 @@ __webpack_require__.d(resolvers_namespaceObject, {
 
 ;// CONCATENATED MODULE: external ["wp","data"]
 var external_wp_data_namespaceObject = window["wp"]["data"];
+// EXTERNAL MODULE: ./node_modules/fast-deep-equal/es6/index.js
+var es6 = __webpack_require__(5619);
+var es6_default = /*#__PURE__*/__webpack_require__.n(es6);
 ;// CONCATENATED MODULE: external "lodash"
 var external_lodash_namespaceObject = window["lodash"];
+;// CONCATENATED MODULE: external ["wp","compose"]
+var external_wp_compose_namespaceObject = window["wp"]["compose"];
 ;// CONCATENATED MODULE: external ["wp","isShallowEqual"]
 var external_wp_isShallowEqual_namespaceObject = window["wp"]["isShallowEqual"];
 var external_wp_isShallowEqual_default = /*#__PURE__*/__webpack_require__.n(external_wp_isShallowEqual_namespaceObject);
@@ -751,7 +836,7 @@ function conservativeMapItem(item, nextItem) {
   const result = {};
 
   for (const key in nextItem) {
-    if ((0,external_lodash_namespaceObject.isEqual)(item[key], nextItem[key])) {
+    if (es6_default()(item[key], nextItem[key])) {
       result[key] = item[key];
     } else {
       hasChanges = true;
@@ -1209,6 +1294,62 @@ function validate(uuid) {
 /* harmony default export */ var esm_browser_validate = (validate);
 ;// CONCATENATED MODULE: ./node_modules/@wordpress/core-data/node_modules/uuid/dist/esm-browser/stringify.js
 
+;// CONCATENATED MODULE: ./node_modules/pascal-case/dist.es2015/index.js
+
+
+function pascalCaseTransform(input, index) {
+    var firstChar = input.charAt(0);
+    var lowerChars = input.substr(1).toLowerCase();
+    if (index > 0 && firstChar >= "0" && firstChar <= "9") {
+        return "_" + firstChar + lowerChars;
+    }
+    return "" + firstChar.toUpperCase() + lowerChars;
+}
+function dist_es2015_pascalCaseTransformMerge(input) {
+    return input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
+}
+function pascalCase(input, options) {
+    if (options === void 0) { options = {}; }
+    return noCase(input, __assign({ delimiter: "", transform: pascalCaseTransform }, options));
+}
+
+;// CONCATENATED MODULE: external ["wp","apiFetch"]
+var external_wp_apiFetch_namespaceObject = window["wp"]["apiFetch"];
+var external_wp_apiFetch_default = /*#__PURE__*/__webpack_require__.n(external_wp_apiFetch_namespaceObject);
+;// CONCATENATED MODULE: external ["wp","i18n"]
+var external_wp_i18n_namespaceObject = window["wp"]["i18n"];
+;// CONCATENATED MODULE: ./node_modules/@wordpress/core-data/node_modules/uuid/dist/esm-browser/rng.js
+// Unique ID creation requires a high quality random # generator. In the browser we therefore
+// require the crypto API and do not support built-in fallback to lower quality random number
+// generators (like Math.random()).
+var getRandomValues;
+var rnds8 = new Uint8Array(16);
+function rng() {
+  // lazy load so that environments that need to polyfill have a chance to do so
+  if (!getRandomValues) {
+    // getRandomValues needs to be invoked in a context where "this" is a Crypto implementation. Also,
+    // find the complete implementation of crypto (msCrypto) on IE11.
+    getRandomValues = typeof crypto !== 'undefined' && crypto.getRandomValues && crypto.getRandomValues.bind(crypto) || typeof msCrypto !== 'undefined' && typeof msCrypto.getRandomValues === 'function' && msCrypto.getRandomValues.bind(msCrypto);
+
+    if (!getRandomValues) {
+      throw new Error('crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported');
+    }
+  }
+
+  return getRandomValues(rnds8);
+}
+;// CONCATENATED MODULE: ./node_modules/@wordpress/core-data/node_modules/uuid/dist/esm-browser/regex.js
+/* harmony default export */ var regex = (/^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i);
+;// CONCATENATED MODULE: ./node_modules/@wordpress/core-data/node_modules/uuid/dist/esm-browser/validate.js
+
+
+function validate(uuid) {
+  return typeof uuid === 'string' && regex.test(uuid);
+}
+
+/* harmony default export */ var esm_browser_validate = (validate);
+;// CONCATENATED MODULE: ./node_modules/@wordpress/core-data/node_modules/uuid/dist/esm-browser/stringify.js
+
 /**
  * Convert array of 16 byte values to UUID string format of the form:
  * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
@@ -1270,9 +1411,65 @@ var external_wp_deprecated_namespaceObject = window["wp"]["deprecated"];
 var external_wp_deprecated_default = /*#__PURE__*/__webpack_require__.n(external_wp_deprecated_namespaceObject);
 ;// CONCATENATED MODULE: ./node_modules/@wordpress/core-data/build-module/queried-data/actions.js
 /**
- * External dependencies
+ * Convert array of 16 byte values to UUID string format of the form:
+ * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
  */
 
+var byteToHex = [];
+
+for (var i = 0; i < 256; ++i) {
+  byteToHex.push((i + 0x100).toString(16).substr(1));
+}
+
+function stringify(arr) {
+  var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  // Note: Be careful editing this code!  It's been tuned for performance
+  // and works in ways you may not expect. See https://github.com/uuidjs/uuid/pull/434
+  var uuid = (byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + '-' + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + '-' + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + '-' + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + '-' + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]]).toLowerCase(); // Consistency check for valid UUID.  If this throws, it's likely due to one
+  // of the following:
+  // - One or more input array values don't map to a hex octet (leading to
+  // "undefined" in the uuid)
+  // - Invalid input values for the RFC `version` or `variant` fields
+
+  if (!esm_browser_validate(uuid)) {
+    throw TypeError('Stringified UUID is invalid');
+  }
+
+  return uuid;
+}
+
+/* harmony default export */ var esm_browser_stringify = (stringify);
+;// CONCATENATED MODULE: ./node_modules/@wordpress/core-data/node_modules/uuid/dist/esm-browser/v4.js
+
+
+
+function v4(options, buf, offset) {
+  options = options || {};
+  var rnds = options.random || (options.rng || rng)(); // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+
+  rnds[6] = rnds[6] & 0x0f | 0x40;
+  rnds[8] = rnds[8] & 0x3f | 0x80; // Copy bytes to buffer, if provided
+
+  if (buf) {
+    offset = offset || 0;
+
+    for (var i = 0; i < 16; ++i) {
+      buf[offset + i] = rnds[i];
+    }
+
+    return buf;
+  }
+
+  return esm_browser_stringify(rnds);
+}
+
+/* harmony default export */ var esm_browser_v4 = (v4);
+;// CONCATENATED MODULE: external ["wp","url"]
+var external_wp_url_namespaceObject = window["wp"]["url"];
+;// CONCATENATED MODULE: external ["wp","deprecated"]
+var external_wp_deprecated_namespaceObject = window["wp"]["deprecated"];
+var external_wp_deprecated_default = /*#__PURE__*/__webpack_require__.n(external_wp_deprecated_namespaceObject);
+;// CONCATENATED MODULE: ./node_modules/@wordpress/core-data/build-module/queried-data/actions.js
 /**
  * Returns an action object used in signalling that items have been received.
  *
@@ -1281,11 +1478,10 @@ var external_wp_deprecated_default = /*#__PURE__*/__webpack_require__.n(external
  *
  * @return {Object} Action object.
  */
-
 function receiveItems(items, edits) {
   return {
     type: 'RECEIVE_ITEMS',
-    items: (0,external_lodash_namespaceObject.castArray)(items),
+    items: Array.isArray(items) ? items : [items],
     persistedEdits: edits
   };
 }
@@ -1304,7 +1500,7 @@ function removeItems(kind, name, records) {
   let invalidateCache = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
   return {
     type: 'REMOVE_ITEMS',
-    itemIds: (0,external_lodash_namespaceObject.castArray)(records),
+    itemIds: Array.isArray(records) ? records : [records],
     kind,
     name,
     invalidateCache
@@ -1359,7 +1555,7 @@ function chunk(arr, chunkSize) {
  * @param {Array} requests List of API requests to perform at once.
  *
  * @return {Promise} Promise that resolves to a list of objects containing
- *                   either `output` (if that request was succesful) or `error`
+ *                   either `output` (if that request was successful) or `error`
  *                   (if not ).
  */
 
@@ -1653,7 +1849,7 @@ const STORE_NAME = 'core';
 function receiveUserQuery(queryID, users) {
   return {
     type: 'RECEIVE_USER_QUERY',
-    users: (0,external_lodash_namespaceObject.castArray)(users),
+    users: Array.isArray(users) ? users : [users],
     queryID
   };
 }
@@ -1707,7 +1903,7 @@ function receiveEntityRecords(kind, name, records, query) {
   // Auto drafts should not have titles, but some plugins rely on them so we can't filter this
   // on the server.
   if (kind === 'postType') {
-    records = (0,external_lodash_namespaceObject.castArray)(records).map(record => record.status === 'auto-draft' ? { ...record,
+    records = (Array.isArray(records) ? records : [records]).map(record => record.status === 'auto-draft' ? { ...record,
       title: ''
     } : record);
   }
@@ -1860,10 +2056,7 @@ const deleteEntityRecord = function (kind, name, recordId, query) {
       dispatch
     } = _ref;
     const configs = await dispatch(getOrLoadEntitiesConfig(kind));
-    const entityConfig = (0,external_lodash_namespaceObject.find)(configs, {
-      kind,
-      name
-    });
+    const entityConfig = configs.find(config => config.kind === kind && config.name === name);
     let error;
     let deletedRecord = false;
 
@@ -1964,7 +2157,7 @@ const editEntityRecord = function (kind, name, recordId, edits) {
         const value = mergedEdits[key] ? { ...editedRecordValue,
           ...edits[key]
         } : edits[key];
-        acc[key] = (0,external_lodash_namespaceObject.isEqual)(recordValue, value) ? undefined : value;
+        acc[key] = es6_default()(recordValue, value) ? undefined : value;
         return acc;
       }, {}),
       transientEdits
@@ -2071,10 +2264,7 @@ const saveEntityRecord = function (kind, name, record) {
       dispatch
     } = _ref5;
     const configs = await dispatch(getOrLoadEntitiesConfig(kind));
-    const entityConfig = (0,external_lodash_namespaceObject.find)(configs, {
-      kind,
-      name
-    });
+    const entityConfig = configs.find(config => config.kind === kind && config.name === name);
 
     if (!entityConfig || entityConfig !== null && entityConfig !== void 0 && entityConfig.__experimentalNoFetch) {
       return;
@@ -2285,10 +2475,7 @@ const saveEditedEntityRecord = (kind, name, recordId, options) => async _ref7 =>
   }
 
   const configs = await dispatch(getOrLoadEntitiesConfig(kind));
-  const entityConfig = (0,external_lodash_namespaceObject.find)(configs, {
-    kind,
-    name
-  });
+  const entityConfig = configs.find(config => config.kind === kind && config.name === name);
 
   if (!entityConfig) {
     return;
@@ -2387,7 +2574,7 @@ function receiveAutosaves(postId, autosaves) {
   return {
     type: 'RECEIVE_AUTOSAVES',
     postId,
-    autosaves: (0,external_lodash_namespaceObject.castArray)(autosaves)
+    autosaves: Array.isArray(autosaves) ? autosaves : [autosaves]
   };
 }
 
@@ -2611,9 +2798,10 @@ async function loadPostTypeEntities() {
   const postTypes = await external_wp_apiFetch_default()({
     path: '/wp/v2/types?context=view'
   });
-  return (0,external_lodash_namespaceObject.map)(postTypes, (postType, name) => {
+  return Object.entries(postTypes !== null && postTypes !== void 0 ? postTypes : {}).map(_ref => {
     var _postType$rest_namesp;
 
+    let [name, postType] = _ref;
     const isTemplate = ['wp_template', 'wp_template_part'].includes(name);
     const namespace = (_postType$rest_namesp = postType === null || postType === void 0 ? void 0 : postType.rest_namespace) !== null && _postType$rest_namesp !== void 0 ? _postType$rest_namesp : 'wp/v2';
     return {
@@ -2653,9 +2841,10 @@ async function loadTaxonomyEntities() {
   const taxonomies = await external_wp_apiFetch_default()({
     path: '/wp/v2/taxonomies?context=view'
   });
-  return (0,external_lodash_namespaceObject.map)(taxonomies, (taxonomy, name) => {
+  return Object.entries(taxonomies !== null && taxonomies !== void 0 ? taxonomies : {}).map(_ref2 => {
     var _taxonomy$rest_namesp;
 
+    let [name, taxonomy] = _ref2;
     const namespace = (_taxonomy$rest_namesp = taxonomy === null || taxonomy === void 0 ? void 0 : taxonomy.rest_namespace) !== null && _taxonomy$rest_namesp !== void 0 ? _taxonomy$rest_namesp : 'wp/v2';
     return {
       kind: 'taxonomy',
@@ -2692,10 +2881,7 @@ async function loadTaxonomyEntities() {
 const getMethodName = function (kind, name) {
   let prefix = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'get';
   let usePlural = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
-  const entityConfig = (0,external_lodash_namespaceObject.find)(rootEntitiesConfig, {
-    kind,
-    name
-  });
+  const entityConfig = rootEntitiesConfig.find(config => config.kind === kind && config.name === name);
   const kindPrefix = kind === 'root' ? '' : pascalCase(kind);
   const nameSuffix = pascalCase(name) + (usePlural ? 's' : '');
   const suffix = usePlural && 'plural' in entityConfig && entityConfig !== null && entityConfig !== void 0 && entityConfig.plural ? pascalCase(entityConfig.plural) : nameSuffix;
@@ -2709,20 +2895,18 @@ const getMethodName = function (kind, name) {
  * @return {(thunkArgs: object) => Promise<Array>} Entities
  */
 
-const getOrLoadEntitiesConfig = kind => async _ref => {
+const getOrLoadEntitiesConfig = kind => async _ref3 => {
   let {
     select,
     dispatch
-  } = _ref;
+  } = _ref3;
   let configs = select.getEntitiesConfig(kind);
 
   if (configs && configs.length !== 0) {
     return configs;
   }
 
-  const loader = (0,external_lodash_namespaceObject.find)(additionalEntityConfigLoaders, {
-    kind
-  });
+  const loader = additionalEntityConfigLoaders.find(l => l.kind === kind);
 
   if (!loader) {
     return [];
@@ -2910,6 +3094,7 @@ function getQueryParts(query) {
  */
 
 
+
 /**
  * Internal dependencies
  */
@@ -2968,6 +3153,28 @@ function getMergedItemIds(itemIds, nextItemIds, page, perPage) {
   return mergedItemIds;
 }
 /**
+ * Helper function to filter out entities with certain IDs.
+ * Entities are keyed by their ID.
+ *
+ * @param {Object} entities Entity objects, keyed by entity ID.
+ * @param {Array}  ids      Entity IDs to filter out.
+ *
+ * @return {Object} Filtered entities.
+ */
+
+function removeEntitiesById(entities, ids) {
+  return Object.fromEntries(Object.entries(entities).filter(_ref => {
+    let [id] = _ref;
+    return !ids.some(itemId => {
+      if (Number.isInteger(itemId)) {
+        return itemId === +id;
+      }
+
+      return itemId === id;
+    });
+  }));
+}
+/**
  * Reducer tracking items state, keyed by ID. Items are assumed to be normal,
  * where identifiers are common across all queries.
  *
@@ -2976,6 +3183,7 @@ function getMergedItemIds(itemIds, nextItemIds, page, perPage) {
  *
  * @return {Object} Next state.
  */
+
 
 function items() {
   let state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -3000,7 +3208,7 @@ function items() {
       }
 
     case 'REMOVE_ITEMS':
-      return (0,external_lodash_namespaceObject.mapValues)(state, contextState => (0,external_lodash_namespaceObject.omit)(contextState, action.itemIds));
+      return (0,external_lodash_namespaceObject.mapValues)(state, contextState => removeEntitiesById(contextState, action.itemIds));
   }
 
   return state;
@@ -3054,7 +3262,7 @@ function itemIsComplete() {
       }
 
     case 'REMOVE_ITEMS':
-      return (0,external_lodash_namespaceObject.mapValues)(state, contextState => (0,external_lodash_namespaceObject.omit)(contextState, action.itemIds));
+      return (0,external_lodash_namespaceObject.mapValues)(state, contextState => removeEntitiesById(contextState, action.itemIds));
   }
 
   return state;
@@ -3069,7 +3277,7 @@ function itemIsComplete() {
  * @return {Object} Next state.
  */
 
-const receiveQueries = (0,external_lodash_namespaceObject.flowRight)([// Limit to matching action type so we don't attempt to replace action on
+const receiveQueries = (0,external_wp_compose_namespaceObject.compose)([// Limit to matching action type so we don't attempt to replace action on
 // an unhandled action.
 if_matching_action(action => 'query' in action), // Inject query parts into action for use both in `onSubKey` and reducer.
 replace_action(action => {
@@ -3099,7 +3307,7 @@ on_sub_key('stableKey')])(function () {
     return state;
   }
 
-  return getMergedItemIds(state || [], (0,external_lodash_namespaceObject.map)(action.items, key), page, perPage);
+  return getMergedItemIds(state || [], action.items.map(item => item[key]), page, perPage);
 });
 /**
  * Reducer tracking queries state.
@@ -3125,7 +3333,7 @@ const queries = function () {
       }, {});
       return (0,external_lodash_namespaceObject.mapValues)(state, contextQueries => {
         return (0,external_lodash_namespaceObject.mapValues)(contextQueries, queryItems => {
-          return (0,external_lodash_namespaceObject.filter)(queryItems, queryId => {
+          return queryItems.filter(queryId => {
             return !removedItems[queryId];
           });
         });
@@ -3147,9 +3355,11 @@ const queries = function () {
  * External dependencies
  */
 
+
 /**
  * WordPress dependencies
  */
+
 
 
 
@@ -3213,7 +3423,7 @@ function users() {
           }), {})
         },
         queries: { ...state.queries,
-          [action.queryID]: (0,external_lodash_namespaceObject.map)(action.users, user => user.id)
+          [action.queryID]: action.users.map(user => user.id)
         }
       };
   }
@@ -3357,7 +3567,7 @@ function themeGlobalStyleVariations() {
  */
 
 function entity(entityConfig) {
-  return (0,external_lodash_namespaceObject.flowRight)([// Limit to matching action type so we don't attempt to replace action on
+  return (0,external_wp_compose_namespaceObject.compose)([// Limit to matching action type so we don't attempt to replace action on
   // an unhandled action.
   if_matching_action(action => action.name && action.kind && action.name === entityConfig.name && action.kind === entityConfig.kind), // Inject the entity config into the action.
   replace_action(action => {
@@ -3397,9 +3607,9 @@ function entity(entityConfig) {
               if ( // Edits are the "raw" attribute values, but records may have
               // objects with more properties, so we use `get` here for the
               // comparison.
-              !(0,external_lodash_namespaceObject.isEqual)(edits[key], (0,external_lodash_namespaceObject.get)(record[key], 'raw', record[key])) && ( // Sometimes the server alters the sent value which means
+              !es6_default()(edits[key], (0,external_lodash_namespaceObject.get)(record[key], 'raw', record[key])) && ( // Sometimes the server alters the sent value which means
               // we need to also remove the edits before the api request.
-              !action.persistedEdits || !(0,external_lodash_namespaceObject.isEqual)(edits[key], action.persistedEdits[key]))) {
+              !action.persistedEdits || !es6_default()(edits[key], action.persistedEdits[key]))) {
                 acc[key] = edits[key];
               }
 
@@ -4320,8 +4530,10 @@ function getCurrentUser(state) {
  */
 
 const getUserQueryResults = rememo((state, queryID) => {
-  const queryResults = state.users.queries[queryID];
-  return (0,external_lodash_namespaceObject.map)(queryResults, id => state.users.byId[id]);
+  var _state$users$queries$;
+
+  const queryResults = (_state$users$queries$ = state.users.queries[queryID]) !== null && _state$users$queries$ !== void 0 ? _state$users$queries$ : [];
+  return queryResults.map(id => state.users.byId[id]);
 }, (state, queryID) => [state.users.queries[queryID], state.users.byId]);
 /**
  * Returns the loaded entities for the given kind.
@@ -4350,9 +4562,7 @@ function getEntitiesByKind(state, kind) {
  */
 
 function getEntitiesConfig(state, kind) {
-  return (0,external_lodash_namespaceObject.filter)(state.entities.config, {
-    kind
-  });
+  return state.entities.config.filter(entity => entity.kind === kind);
 }
 /**
  * Returns the entity config given its kind and name.
@@ -4383,10 +4593,9 @@ function getEntity(state, kind, name) {
  */
 
 function getEntityConfig(state, kind, name) {
-  return (0,external_lodash_namespaceObject.find)(state.entities.config, {
-    kind,
-    name
-  });
+  var _state$entities$confi;
+
+  return (_state$entities$confi = state.entities.config) === null || _state$entities$confi === void 0 ? void 0 : _state$entities$confi.find(config => config.kind === kind && config.name === name);
 }
 /**
  * GetEntityRecord is declared as a *callable interface* with
@@ -5015,9 +5224,7 @@ function getAutosave(state, postType, postId, authorId) {
   }
 
   const autosaves = state.autosaves[postId];
-  return (0,external_lodash_namespaceObject.find)(autosaves, {
-    author: authorId
-  });
+  return autosaves === null || autosaves === void 0 ? void 0 : autosaves.find(autosave => autosave.author === authorId);
 }
 /**
  * Returns true if the REST request for autosaves has completed.
