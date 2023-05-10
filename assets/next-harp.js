@@ -738,9 +738,9 @@ window.addEventListener('DOMContentLoaded', () => {
           Harp.config.bath_flooring_label = 'Ice Fog'
           Harp.config.bath_flooring_code = 'ICFO'
 
-          Harp.config.countertop_finish = 'silverstone'
-          Harp.config.countertop_finish_label = 'Silverstone'
-          Harp.config.countertop_finish_code = 'SS'
+          Harp.config.countertop_finish = 'merino-grey'
+          Harp.config.countertop_finish_label = 'Merino Grey'
+          Harp.config.countertop_finish_code = 'MEGR'
 
           Harp.config.cabinet_finish = 'white-shaker'
           Harp.config.cabinet_finish_label = 'White Shaker'
@@ -1746,25 +1746,25 @@ window.addEventListener('DOMContentLoaded', () => {
 
       if(model == 'model-1-364') {
         recipeResponse = {"model":"summit","size":"14x26","depth":14,"length":26,"name":"14x26 summit","shell_base_price":48756,"roof":{"model":"14x26-STV","x":0,"y":-12,"z":0},"floor":{"width":312,"height":12,"depth":168,"x":156,"y":-9,"z":84},"front":[{"slot":"f1","model":"FM26-42L-D72C-42R","width":312,"x":-150,"y":-9,"z":84}],"back":[{"slot":"b1","model":"BT14x26-18CL-18CR","width":312,"x":150,"y":-9,"z":-84}],"left":[{"slot":"l1","model":"L14","width":168,"x":-155,"y":-9,"z":-83.5}],"right":[{"slot":"r1","model":"R14-W2L","width":168,"x":155,"y":-9,"z":83.5}]}
-        recipeColorway = {"siding": "lap","sidingColor": "pearl-gray","trimColor": "aluminum","doorColor": "arctic-white","windowTrim": "ebony"}
+        recipeColorway = {"siding": "lap","sidingColor": "iron-gray","trimColor": "aluminum","doorColor": "arctic-white", "soffitColor": "pearl-gray", "windowTrim": "ebony"}
         recipeInterior = 'model-1'
       }
 
       if(model == 'model-2-476') {
         recipeResponse = {"model":"summit","size":"14x34","depth":14,"length":34,"name":"14x34 summit","shell_base_price":58636,"roof":{"model":"14x34-STV","x":0,"y":-12,"z":0},"floor":{"width":408,"height":12,"depth":168,"x":204,"y":-9,"z":84},"front":[{"slot":"f1","model":"FM34-W2CL-D72C-W2CR-72R","width":408,"x":-198,"y":-9,"z":84}],"back":[{"slot":"b1","model":"BT14x34-36CLL","width":408,"x":198,"y":-9,"z":-84}],"left":[{"slot":"l1","model":"L14-42C","width":168,"x":-203,"y":-9,"z":-83.5}],"right":[{"slot":"r1","model":"R14-W2L","width":168,"x":203,"y":-9,"z":83.5}]}
-        recipeColorway = {"siding": "lap","sidingColor": "pearl-gray","trimColor": "aluminum","doorColor": "arctic-white","windowTrim": "ebony"}
+        recipeColorway = {"siding": "lap","sidingColor": "iron-gray","trimColor": "aluminum","doorColor": "arctic-white", "soffitColor": "pearl-gray", "windowTrim": "ebony"}
         recipeInterior = 'model-2'
       }
 
       if(model == 'model-3-684') {
         recipeResponse = {"model":"summit","size":"18x38","depth":18,"length":38,"name":"18x38 summit","shell_base_price":70276,"roof":{"model":"18x38-STV","x":0,"y":-9,"z":0},"floor":{"width":456,"height":12,"depth":216,"x":228,"y":-9,"z":108},"front":[{"slot":"f1","model":"FL38-72L-W2CL-D72C-W2CR","width":456,"x":-222,"y":-9,"z":108}],"back":[{"slot":"b1","model":"BT18x38-36CLL","width":456,"x":222,"y":-9,"z":-108}],"left":[{"slot":"l1","model":"L18-18C-18R","width":216,"x":-227,"y":-9,"z":-107.5}],"right":[{"slot":"r1","model":"R18-W2L-36C","width":216,"x":227,"y":-9,"z":107.5}]}
-        recipeColorway = {"siding": "lap","sidingColor": "pearl-gray","trimColor": "aluminum","doorColor": "arctic-white","windowTrim": "ebony"}
+        recipeColorway = {"siding": "lap","sidingColor": "iron-gray","trimColor": "aluminum","doorColor": "arctic-white", "soffitColor": "pearl-gray", "windowTrim": "ebony"}
         recipeInterior = 'model-3'
       }
 
       if(model == 'model-4-1000') {
         recipeResponse = {"model":"summit","size":"20x50","depth":20,"length":50,"name":"20x50 summit","shell_base_price":87551,"roof":{"model":"20x50-STV","x":0,"y":-9,"z":0},"floor":{"width":600,"height":12,"depth":240,"x":300,"y":-9,"z":120},"front":[{"slot":"f1","model":"FL50-72L-W2CL-D72C-W2CR-72R","width":600,"x":-294,"y":-9,"z":120}],"back":[{"slot":"b1","model":"BT20x50-36CLL-42C","width":600,"x":294,"y":-9,"z":-120}],"left":[{"slot":"l1","model":"L20-18C-18R","width":240,"x":-299,"y":-9,"z":-119.5}],"right":[{"slot":"r1","model":"R20-W2L-36CRR","width":240,"x":299,"y":-9,"z":119.5}]}
-        recipeColorway = {"siding": "lap","sidingColor": "pearl-gray","trimColor": "aluminum","doorColor": "arctic-white","windowTrim": "ebony"}
+        recipeColorway = {"siding": "lap","sidingColor": "iron-gray","trimColor": "aluminum","doorColor": "arctic-white", "soffitColor": "pearl-gray", "windowTrim": "ebony"}
         recipeInterior = 'model-4'
       }
 
@@ -2165,8 +2165,8 @@ window.addEventListener('DOMContentLoaded', () => {
         Harp.setSiding('lap', null)
         Harp.setSidingColor('iron-gray')
         Harp.setTrimColor('aluminum', null)
-        Harp.setSoffitColor('aluminum')
-        Harp.setFasciaColor('aluminum')
+        Harp.setSoffitColor('iron-gray')
+        Harp.setFasciaColor('iron-gray')
         Harp.importInteriorLayout('lifestyle')
       }
     }
