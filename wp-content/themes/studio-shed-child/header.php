@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1683676257700">
-  <script src="/assets/main.bundle.js?v=1683676257700"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1683488995126">
+  <script src="/assets/main.bundle.js?v=1683488995126"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -316,13 +316,6 @@
         </div>
 
         <div>
-
-          <a href="https://www.studio-shed.com/process/" class="-m-3 p-3 flex items-start hover:opacity-80">
-            <div>
-              <p class="text-base font-medium text-gray-900">Process</p>
-              <p class="text-sm text-gray-500">How it works: Planning, Design, Installation</p>
-            </div>
-          </a>
         
         <a href="https://www.studio-shed.com/adu/" class="-m-3 p-3 flex items-start hover:opacity-80">
           <div>
@@ -463,13 +456,7 @@
         </div>
 
         <div>
-          <a href="https://www.studio-shed.com/process/" class="-m-3 p-3 flex items-start hover:opacity-80">
-            <div>
-              <p class="text-base font-medium text-gray-900">Process</p>
-              <p class="text-sm text-gray-500">How it works: Planning, Design, Installation</p>
-            </div>
-          </a>
-
+        
         <a href="https://www.studio-shed.com/backyard-studios/" class="-m-3 p-3 flex items-start hover:opacity-80">
           <div>
             <p class="text-base font-medium text-gray-900">Backyard Studios</p>
