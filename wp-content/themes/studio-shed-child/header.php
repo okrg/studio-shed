@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1683750533460">
-  <script src="/assets/main.bundle.js?v=1683750533460"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1683847709344">
+  <script src="/assets/main.bundle.js?v=1683847709344"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -683,25 +683,45 @@
     <div class="shadow-lg border border-gray-300 overflow-hidden">
       <div class="relative grid gap-4 bg-gray-100  px-4 py-6 sm:gap-8 sm:p-8 md:grid-cols-2 lg:grid-cols-4">
         <div>
-        <a href="https://www.studio-shed.com/blog/" class="-m-3 p-3 flex items-start text-base font-medium text-gray-900 hover:text-gray-700">Articles &amp; Resources</a>
-        <a href="https://www.studio-shed.com/faqs/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Frequently Asked Questions</a>
-        <a href="https://www.studio-shed.com/about-us/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">About Studio Shed</a>
-        <a href="https://www.studio-shed.com/join-our-team/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Join Our Team</a>
+          <a href="https://www.studio-shed.com/about-us/"
+             class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">About
+            Studio Shed</a>
+          <a href="https://www.studio-shed.com/blog/"
+             class="-m-3 p-3 flex items-start text-base font-medium text-gray-900 hover:text-gray-700">Blog</a>
+          <a href="https://www.studio-shed.com/in-the-news/"
+             class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">In
+            the News</a>
+          <a href="https://www.studio-shed.com/join-our-team/"
+             class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Join
+            Our Team</a>
+          <a href="https://www.studio-shed.com/contact-us/"
+             class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Contact
+            Us</a>
         </div>
 
         <div>
-        <a href="https://www.studio-shed.com/financing/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Financing</a>
-        <a href="https://www.studio-shed.com/why-freestanding-modular/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Why Freestanding Modular?</a>
-        <a href="https://www.studio-shed.com/installation-resources/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Installation Guides</a>
-        <a href="https://www.studio-shed.com/customer-reviews/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Customer Reviews</a>
+          <a href="https://www.studio-shed.com/why-freestanding-modular/"
+             class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">What Is It?</a>
+          <a href="https://www.studio-shed.com/financing/"
+             class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Financing</a>
+          <a href="https://www.studio-shed.com/customer-reviews/"
+             class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Customer
+            Reviews</a>
+          <a href="https://www.studio-shed.com/faqs/"
+             class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">FAQ</a>
+          <a href="https://www.studio-shed.com/terms-and-conditions/"
+             class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Terms
+            &amp; Conditions</a>
         </div>
 
         <div>
-          <a href="https://www.studio-shed.com/in-the-news/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">In the News</a>
-          <a href="https://www.studio-shed.com/partner-with-us/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Partner With Us</a>
-          <a href="https://www.studio-shed.com/installation-network/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Installation Network</a>
-          <a href="https://www.studio-shed.com/contact-us/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Contact Us</a>
-          <a href="https://www.studio-shed.com/terms-and-conditions/" class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Terms &amp; Conditions</a>
+          <a href="https://www.studio-shed.com/installation-network/"
+             class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">ProAssembly or DIY</a>
+          <a href="https://www.studio-shed.com/installation-resources/"
+             class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Assembly Resources</a>
+          <a href="https://www.studio-shed.com/partner-with-us/"
+             class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Partner
+            With Us</a>
         </div>
         
         <div>
