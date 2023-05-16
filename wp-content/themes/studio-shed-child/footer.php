@@ -42,12 +42,12 @@
               </li>              
               <li>
                 <a href="https://www.studio-shed.com/blog/" class="text-base text-gray-300 hover:text-white">
-                Articles &amp; Resources
+                Blog
                 </a>
               </li>
               <li>
                 <a href="https://www.studio-shed.com/faqs/" class="text-base text-gray-300 hover:text-white">
-                  Frequently Asked Questions
+                  FAQ
                 </a>
               </li>
               <li>
@@ -55,6 +55,10 @@
                   About Studio Shed
                 </a>
               </li>
+              <li>
+                <a href="https://www.studio-shed.com/sustainability/" class="text-base text-gray-300 hover:text-white">
+                  Sustainability
+                </a>
               <li>
                 <a href="https://www.studio-shed.com/join-our-team/" class="text-base text-gray-300 hover:text-white">
                   Join Our Team

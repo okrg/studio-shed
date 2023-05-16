@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1683847709344">
-  <script src="/assets/main.bundle.js?v=1683847709344"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1684229724554">
+  <script src="/assets/main.bundle.js?v=1684229724554"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -691,6 +691,8 @@
           <a href="https://www.studio-shed.com/in-the-news/"
              class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">In
             the News</a>
+          <a href="https://www.studio-shed.com/sustainability/"
+             class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Sustainability</a>
           <a href="https://www.studio-shed.com/join-our-team/"
              class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Join
             Our Team</a>
@@ -712,6 +714,7 @@
           <a href="https://www.studio-shed.com/terms-and-conditions/"
              class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Terms
             &amp; Conditions</a>
+
         </div>
 
         <div>
@@ -1203,10 +1206,10 @@
             <div x-show="moreMobile" x-transition>
               <nav class="space-y-8 mt-4 px-2 text-sm">                  
                 <a href="/blog/" class="text-gray-700 block">
-                  Articles & Resources
+                  Blog
                 </a>
                 <a href="/faqs/" class="text-gray-700 block">
-                  Frequently Asked Questions
+                  FAQ
                 </a>
                 <a href="/about-us/" class="text-gray-700 block">
                   About Studio Shed
@@ -1226,6 +1229,11 @@
                 <a href="/partner-with-us/" class="text-gray-700 block">
                   Partner With Us
                 </a>
+
+                <a href="https://www.studio-shed.com/sustainability/" class="text-gray-700 block">
+                  Sustainability
+                </a>
+
                 <a href="/contact-us/" class="text-gray-700 block">
                   Contact Us
                 </a>

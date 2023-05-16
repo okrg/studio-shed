@@ -99,16 +99,18 @@ window.addEventListener('DOMContentLoaded', () => {
     ambient.intensity = 1
     ambient.groundColor = new BABYLON.Color3(0.66 , 0.66, 0.66)
 
-    const sun = new BABYLON.DirectionalLight('sun', new BABYLON.Vector3(-1, -2, -1), scene)
-    sun.position = new BABYLON.Vector3(20, 40, 20);
-    sun.intensity = 0.6
+    Harp.sun = new BABYLON.DirectionalLight('sun', new BABYLON.Vector3(-1, -4, -1), scene)
+    Harp.sun.diffuse = new BABYLON.Color3(1, 0.8, 0.6); // Set a warm, golden color for an afternoon sun
+    Harp.sun.position = new BABYLON.Vector3(120,120,120);
+    Harp.sun.specular = new BABYLON.Color3(1, 1, 1); // Set to a suitable color
+    Harp.sun.bloomEnabled = 0.66
 
-    Harp.shadowGenerator = new BABYLON.ShadowGenerator(1024, sun)
-    Harp.shadowGenerator.darkness = 0
-    Harp.shadowGenerator.useBlurCloseExponentialShadowMap = true
+    Harp.shadowGenerator = new BABYLON.ShadowGenerator(1024, Harp.sun)
+    Harp.shadowGenerator.darkness = 0.1
+
     Harp.shadowGenerator.useBlurExponentialShadowMap = true
     Harp.shadowGenerator.useKernelBlur = true
-    Harp.shadowGenerator.blurKernel = 42
+    Harp.shadowGenerator.blurKernel = 48
 
 
     //Sky **********
@@ -200,7 +202,8 @@ window.addEventListener('DOMContentLoaded', () => {
     deci2.position.z = -640
 
     Harp.deckContainer = new BABYLON.AssetContainer(scene)
-    BABYLON.SceneLoader.ImportMesh('', 'https://shop.studio-shed.com/assets/models/outdoor/', 'deck.obj', scene, function (newMeshes) {
+
+    BABYLON.SceneLoader.ImportMesh('', '/assets/obj/', 'patio-mini.obj', scene, function (newMeshes) {
       newMeshes.forEach(function (m){
         Harp.deckContainer.meshes.push(m)
         m.receiveShadows = true
@@ -217,12 +220,13 @@ window.addEventListener('DOMContentLoaded', () => {
           }
         })
 
-        m.position.x = 210
-        m.position.y = -66
-        m.position.z = 394
+        m.position.x = 175
+        m.position.y = -28
+        m.position.z = 430
       })
 
     })
+
 
     Harp.fenceContainer = new BABYLON.AssetContainer(scene)
     BABYLON.SceneLoader.ImportMesh('', 'https://shop.studio-shed.com/assets/models/outdoor/', 'fence.obj', scene, function (newMeshes) {
@@ -258,13 +262,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
       Harp.foundationMesh = BABYLON.MeshBuilder.CreateBox('foundation', {
-        width: window.recipe.floor.width,
+        width: (window.recipe.length*12)+48,
         height: 0.2,
-        depth: window.recipe.floor.depth,
+        //depth: window.recipe.depth*12,
+        depth: (window.recipe.depth*12)+48
       })
-      Harp.foundationMesh.position.y = -9.25
+      Harp.foundationMesh.position.y = -24
+
       Harp.foundationContainer.meshes.push(Harp.foundationMesh)
-      Harp.shadowGenerator.getShadowMap().renderList.push(Harp.foundationContainer.meshes[0]);
+      Harp.foundationMesh.receiveShadows = true
       Harp.foundationMesh.material = Harp.foundation_material
       Harp.foundation_material.specularColor = new BABYLON.Color3(0.125, 0.125, 0.125)
       Harp.foundation_material.specularPower = 32
@@ -289,19 +295,36 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
     //Default routine  **********
-    Harp.useRecipe = function () {
+    Harp.useRecipe = function (size ='10x10', endcut = 'ogee') {
+      let l,d
       Harp.config = {}
       Harp.config.product = window.recipe.model
       Harp.config.size = window.recipe.size
       Harp.config.area = window.recipe.length * window.recipe.depth
-      Harp.config.length = window.recipe.length
-      Harp.config.depth = window.recipe.depth
-      Harp.config.endcut = 'ogee'
+      Harp.config.length = l = window.recipe.length
+      Harp.config.depth = d = window.recipe.depth
+      Harp.config.endcut = endcut
 
-      Harp.productContainer = new BABYLON.AssetContainer(scene)
+      if (Harp.productContainer) {
+        Harp.productContainer.dispose()
+      } else {
+        Harp.productContainer = new BABYLON.AssetContainer(scene)
+      }
 
-      BABYLON.SceneLoader.ImportMesh('', '/assets/obj/', Harp.config.product + '-' + Harp.config.size + '.obj', scene, function (newMeshes) {
+      BABYLON.SceneLoader.ImportMesh('', '/assets/obj/', Harp.config.product + '-' + Harp.config.size + '-' + endcut + '.obj', scene, function (newMeshes) {
           newMeshes.forEach(function (m){
+            console.log(m.name)
+            if (m.name.includes('HardwareBolts')) {
+              m.parent = Harp['hardware']
+              m.material = Harp['hardware' + '_material']
+            } else {
+              m.parent = Harp['timber']
+              m.material = Harp['timber' + '_material']
+            }
+
+
+
+
             Harp.productContainer.meshes.push(m)
             m.receiveShadows = true
             Harp.shadowGenerator.getShadowMap().renderList.push(m);
@@ -313,9 +336,9 @@ window.addEventListener('DOMContentLoaded', () => {
               }
             })
 
-            m.position.z = 0
-            m.position.y = 0
-            m.position.x = 0
+            m.position.z = (l*12)/2
+            m.position.y = -24
+            m.position.x = -(d*12)/2
           })
         })
 
@@ -662,7 +685,6 @@ window.addEventListener('DOMContentLoaded', () => {
       'charwood-stain': 'rgb(75, 60, 48)',
       'cedar-plank': 'rgb(169, 107, 69)',
       'cedar-shake': 'rgb(169, 107, 69)',
-      'glass': 'rgb(168, 204, 215)',
       'roof-metal': 'rgb(155, 158, 158)',
       'aluminum': 'rgb(155, 158, 158)',
       'appliance': 'rgb(207, 212, 217)',
@@ -699,6 +721,8 @@ window.addEventListener('DOMContentLoaded', () => {
       'FarPlant',
       'Lantern',
       'LanternGlass',
+      'timber',
+      'hardware',
       'potsoil',
       'Planter',
       'PlanterPlant',
@@ -738,14 +762,24 @@ window.addEventListener('DOMContentLoaded', () => {
       'sandcastle-oak': 'https://shop.studio-shed.com/assets/textures/sandcastle-oak.jpg'
     },
     setColor: function (group, rgb) {
+      if(!rgb) return
       rgb = rgb.substring(4, rgb.length-1).replace(/ /g, '').split(',')
       color = new BABYLON.Color3.FromInts(rgb[0], rgb[1], rgb[2])
       for (var i = 0; i < Harp[group].getChildMeshes(false).length; i++){
         Harp[group].getChildMeshes(false)[i].material.diffuseColor = color
       }
     },
+    setUnitSize: function(size, endcut = 'ogee') {
+      //convert a string like 10x12 to an length and depth
+      window.recipe.size = size
+      window.recipe.length = size.split('x')[0]
+      window.recipe.depth = size.split('x')[1]
+      window.recipe.endcut = endcut
+      Harp.useRecipe(window.recipe.size, window.recipe.endcut)
+    },
     setEndCut: function(endcut) {
-
+      window.recipe.endcut = endcut
+      Harp.useRecipe(window.recipe.size, window.recipe.endcut)
     },
     setTrimColor: function(color) {
       Harp.setColor('trim_color', Harp.colors[color])
@@ -838,7 +872,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
       Harp.useRecipe()
 
-
     },
     setCamera: function (side) {
       if(Harp.config.depth <= 14) {
@@ -923,9 +956,10 @@ window.addEventListener('DOMContentLoaded', () => {
       Harp.materialGroups.forEach(function (group){
         Harp[group].setEnabled(false)
       })
+      Harp['timber'].setEnabled(true);
+      Harp['hardware'].setEnabled(true);
       Harp['white'].setEnabled(true);
       Harp['black'].setEnabled(true);
-      Harp['glass'].setEnabled(true)
       Harp['trim_color'].setEnabled(true)
       Harp['lumber'].setEnabled(true)
       Harp['lounge_wood'].setEnabled(true)
@@ -949,12 +983,22 @@ window.addEventListener('DOMContentLoaded', () => {
       Harp['Perimeter_wall'].setEnabled(true)
       Harp['Grass_Ground'].setEnabled(true)
 
-      Harp.setColor('glass', Harp.colors['glass'])
-      Harp.glass_material.alpha = 0.25
-
       let woodTexture = new BABYLON.Texture(Harp.textures['wood'])
       woodTexture.uScale = woodTexture.vScale = 0.015
       woodTexture.specular = 5
+
+      let fenceeTexture = new BABYLON.Texture(Harp.textures['Fence'])
+      fenceeTexture.uScale = fenceeTexture.vScale = 0.015
+      fenceeTexture.specular = 5
+
+      Harp.setColor('hardware', Harp.colors['black'])
+
+
+      Harp.setColor('timber', 'rgb(178, 120, 59)')
+      Harp.timber_material.diffuseTexture = woodTexture
+
+
+
       Harp.setColor('lumber', Harp.colors['white'])
       Harp.lumber_material.diffuseTexture = woodTexture
 
