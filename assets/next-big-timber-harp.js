@@ -117,7 +117,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const sky = BABYLON.MeshBuilder.CreateBox('sky', {size:3600}, scene)
     const sky_material = new BABYLON.StandardMaterial('sky_material', scene)
     sky_material.backFaceCulling = false
-    sky_material.reflectionTexture = new BABYLON.CubeTexture('https://shop.studio-shed.com/assets/textures/tour', scene)
+    sky_material.reflectionTexture = new BABYLON.CubeTexture('https://bigtimber-dev.bypboh.com/assets/textures/tour', scene)
     sky_material.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE
     sky_material.diffuseColor = new BABYLON.Color3(0, 0, 0)
     sky_material.specularColor = new BABYLON.Color3(0, 0, 0)
@@ -144,9 +144,9 @@ window.addEventListener('DOMContentLoaded', () => {
     ground_material.diffuseTexture.vScale = 5
     ground.receiveShadows = true
 
-    const spriteManagerTrees = new BABYLON.SpriteManager('treesManager', 'https://shop.studio-shed.com/assets/textures/live_oak.png', 100, {width: 600, height: 623});
-    const spriteManagerDeci = new BABYLON.SpriteManager('deciManager', 'https://shop.studio-shed.com/assets/textures/deci.png', 1, {width: 400, height: 432});
-    const spriteManagerDeci2 = new BABYLON.SpriteManager('deci2Manager', 'https://shop.studio-shed.com/assets/textures/deci2.png', 1, {width: 400, height: 560});
+    const spriteManagerTrees = new BABYLON.SpriteManager('treesManager', 'https://bigtimber-dev.bypboh.com/assets/textures/live_oak.png', 100, {width: 600, height: 623});
+    const spriteManagerDeci = new BABYLON.SpriteManager('deciManager', 'https://bigtimber-dev.bypboh.com/assets/textures/deci.png', 1, {width: 400, height: 432});
+    const spriteManagerDeci2 = new BABYLON.SpriteManager('deci2Manager', 'https://bigtimber-dev.bypboh.com/assets/textures/deci2.png', 1, {width: 400, height: 560});
 
 
     for (let i = 0; i < 25; i++) {
@@ -203,7 +203,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     Harp.deckContainer = new BABYLON.AssetContainer(scene)
 
-    BABYLON.SceneLoader.ImportMesh('', '/assets/obj/', 'patio-mini.obj', scene, function (newMeshes) {
+    BABYLON.SceneLoader.ImportMesh('', 'https://bigtimber-dev.bypboh.com/assets/obj/', 'patio-mini.obj', scene, function (newMeshes) {
       newMeshes.forEach(function (m){
         Harp.deckContainer.meshes.push(m)
         m.receiveShadows = true
@@ -229,7 +229,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
     Harp.fenceContainer = new BABYLON.AssetContainer(scene)
-    BABYLON.SceneLoader.ImportMesh('', 'https://shop.studio-shed.com/assets/models/outdoor/', 'fence.obj', scene, function (newMeshes) {
+    BABYLON.SceneLoader.ImportMesh('', 'https://bigtimber-dev.bypboh.com/assets/obj/', 'fence.obj', scene, function (newMeshes) {
       newMeshes.forEach(function (m){
         m.receiveShadows = true
 
@@ -311,7 +311,7 @@ window.addEventListener('DOMContentLoaded', () => {
         Harp.productContainer = new BABYLON.AssetContainer(scene)
       }
 
-      BABYLON.SceneLoader.ImportMesh('', '/assets/obj/', Harp.config.product + '-' + Harp.config.size + '-' + endcut + '.obj', scene, function (newMeshes) {
+      BABYLON.SceneLoader.ImportMesh('', 'https://bigtimber-dev.bypboh.com/assets/obj/', Harp.config.product + '-' + Harp.config.size + '-' + endcut + '.obj', scene, function (newMeshes) {
           newMeshes.forEach(function (m){
             console.log(m.name)
             if (m.name.includes('HardwareBolts')) {
@@ -746,20 +746,20 @@ window.addEventListener('DOMContentLoaded', () => {
       'fixture'
     ],
     textures: {
-      'amarili': 'https://shop.studio-shed.com/assets/textures/mata_G.jpg',
-      'wood_deck': 'https://shop.studio-shed.com/assets/textures/wood_deck.jpg',
-      'Grass_Ground': 'https://shop.studio-shed.com/assets/textures/Grass_Ground.jpg',
-      'Perimeter_wall': 'https://shop.studio-shed.com/assets/textures/concrete.jpg',
-      'Fence': 'https://shop.studio-shed.com/assets/textures/fence.jpg',
-      'groundHeightMap': 'https://shop.studio-shed.com/assets/textures/gentle.png',
-      'ground': 'https://shop.studio-shed.com/assets/textures/grass.jpg',
-      'wood': 'https://shop.studio-shed.com/assets/textures/wood.jpg',
-      'concrete': 'https://shop.studio-shed.com/assets/textures/concrete.jpg',
-      'base-lap': 'https://shop.studio-shed.com/assets/textures/base_lap.png',
-      'cedar-plank': 'https://shop.studio-shed.com/assets/textures/cedar-plank.jpg',
-      'cedar-shake': 'https://shop.studio-shed.com/assets/textures/cedar-shake.jpg',
-      'ashlar-oak': 'https://shop.studio-shed.com/assets/textures/ashlar-oak.jpg',
-      'sandcastle-oak': 'https://shop.studio-shed.com/assets/textures/sandcastle-oak.jpg'
+      'amarili': 'https://bigtimber-dev.bypboh.com/assets/textures/mata_G.jpg',
+      'wood_deck': 'https://bigtimber-dev.bypboh.com/assets/textures/wood_deck.jpg',
+      'Grass_Ground': 'https://bigtimber-dev.bypboh.com/assets/textures/Grass_Ground.jpg',
+      'Perimeter_wall': 'https://bigtimber-dev.bypboh.com/assets/textures/concrete.jpg',
+      'Fence': 'https://bigtimber-dev.bypboh.com/assets/textures/fence.jpg',
+      'groundHeightMap': 'https://bigtimber-dev.bypboh.com/assets/textures/gentle.png',
+      'ground': 'https://bigtimber-dev.bypboh.com/assets/textures/grass.jpg',
+      'wood': 'https://bigtimber-dev.bypboh.com/assets/textures/wood.jpg',
+      'concrete': 'https://bigtimber-dev.bypboh.com/assets/textures/concrete.jpg',
+      'base-lap': 'https://bigtimber-dev.bypboh.com/assets/textures/base_lap.png',
+      'cedar-plank': 'https://bigtimber-dev.bypboh.com/assets/textures/cedar-plank.jpg',
+      'cedar-shake': 'https://bigtimber-dev.bypboh.com/assets/textures/cedar-shake.jpg',
+      'ashlar-oak': 'https://bigtimber-dev.bypboh.com/assets/textures/ashlar-oak.jpg',
+      'sandcastle-oak': 'https://bigtimber-dev.bypboh.com/assets/textures/sandcastle-oak.jpg'
     },
     setColor: function (group, rgb) {
       if(!rgb) return
