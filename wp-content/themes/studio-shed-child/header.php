@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1684554848717">
-  <script src="/assets/main.bundle.js?v=1684554848717"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1684602897429">
+  <script src="/assets/main.bundle.js?v=1684602897429"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -683,46 +683,53 @@
     <div class="shadow-lg border border-gray-300 overflow-hidden">
       <div class="relative grid gap-4 bg-gray-100  px-4 py-6 sm:gap-8 sm:p-8 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <a href="https://www.studio-shed.com/about-us/"
+          <p class="text-sm uppercase font-bold mb-2">Company Info</p>
+          <a href="/about-us/"
              class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">About
             Studio Shed</a>
-          <a href="https://www.studio-shed.com/blog/"
+          <a href="/blog/"
              class="-m-3 p-3 flex items-start text-base font-medium text-gray-900 hover:text-gray-700">Blog</a>
-          <a href="https://www.studio-shed.com/in-the-news/"
+          <a href="/in-the-news/"
              class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">In
             the News</a>
-          <a href="https://www.studio-shed.com/sustainability/"
+          <a href="/sustainability/"
              class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Sustainability</a>
-          <a href="https://www.studio-shed.com/join-our-team/"
+          <a href="/join-our-team/"
              class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Join
             Our Team</a>
-          <a href="https://www.studio-shed.com/contact-us/"
+          <a href="/contact-us/"
              class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Contact
             Us</a>
         </div>
 
         <div>
-          <a href="https://www.studio-shed.com/why-freestanding-modular/"
+          <p class="text-sm uppercase font-bold mb-2">Studio/ADU Solutions</p>
+          <a href="/why-freestanding-modular/"
              class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">What Is It?</a>
-          <a href="https://www.studio-shed.com/financing/"
+          <a href="/project-cost/"
+             class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Project Cost Calculator</a>
+          <a href="/financing/"
              class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Financing</a>
-          <a href="https://www.studio-shed.com/customer-reviews/"
+          <a href="/customer-reviews/"
              class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Customer
             Reviews</a>
-          <a href="https://www.studio-shed.com/faqs/"
+          <a href="/faqs/"
              class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">FAQ</a>
-          <a href="https://www.studio-shed.com/terms-and-conditions/"
+          <a href="/terms-and-conditions/"
              class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Terms
             &amp; Conditions</a>
 
         </div>
 
         <div>
-          <a href="https://www.studio-shed.com/installation-network/"
+          <p class="text-sm uppercase font-bold mb-2">Assembly</p>
+          <a href="/process/"
+             class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Our Process</a>
+          <a href="/installation-network/"
              class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">ProAssembly or DIY</a>
-          <a href="https://www.studio-shed.com/installation-resources/"
+          <a href="/installation-resources/"
              class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Assembly Resources</a>
-          <a href="https://www.studio-shed.com/partner-with-us/"
+          <a href="/partner-with-us/"
              class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">Partner
             With Us</a>
         </div>
@@ -730,7 +737,7 @@
         <div>
       <ul role="list" class="mt-2 space-y-6">
           <li class="flow-root">
-            <a href="https://www.studio-shed.com/blog/making-your-studio-shed-work-for-you/" class="-m-3 p-3 flex hover:opacity-80">
+            <a href="/blog/making-your-studio-shed-work-for-you/" class="-m-3 p-3 flex hover:opacity-80">
               <div class="hidden sm:block flex-shrink-0">
                 <img loading="lazy" class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-more-work.jpg" alt="">
               </div>
@@ -743,7 +750,7 @@
           </li>
         
           <li class="flow-root">
-            <a href="https://www.studio-shed.com/blog/a-realtors-guide-to-accessory-dwelling-units/" class="-m-3 p-3 flex hover:opacity-80">
+            <a href="/blog/a-realtors-guide-to-accessory-dwelling-units/" class="-m-3 p-3 flex hover:opacity-80">
               <div class="hidden sm:block flex-shrink-0">
                 <img loading="lazy" class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-more-realtor.jpg" alt="">
               </div>
