@@ -1,87 +1,44 @@
-<!DOCTYPE html>
-<html <?php language_attributes(); ?>>
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1" /> -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, minimum-scale=1"/>
-  <meta name="format-detection" content="telephone=no">
-  <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
-  <meta name="google-site-verification" content="uWi-LXgJCHaP6FM_-ggd2tuTMEU08yeWuUhgfF8jA88" />
-  <?php
-      if(is_page() || get_single_template('products')) {
-        if(get_field('meta_data', get_the_ID())) {
-          echo get_field('meta_data', get_the_ID());
-        }
-      }
-    ?>
-  <meta name="msvalidate.01" content="0327CBE11137C711E79009049525B4E4" />
-  <title>
-    <?php
-    if (function_exists('is_tag') && is_tag()) {
-    single_tag_title("Tag Archive for &quot;");}
-    elseif (is_archive()) {
-    wp_title('');  }
-    elseif (is_search()) {
-    echo 'Search for &quot;'.wp_specialchars($s); }
-    elseif (!(is_404()) && (is_single()) || (is_page())) {
-    wp_title(''); }
-    elseif (is_404()) {
-    echo 'Not Found'; }
-    if (is_home()){
-    bloginfo('name');
-    }
-    else {
-    bloginfo('name'); }
-    if ($paged > 1) {
-    echo $paged; }
-    ?>
-  </title>
-  <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico"/>
-  <?php if ( 'tpl-financing-page.php' == get_page_template_slug() ): ?>
-  <!--  <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/js/jquery-ui/jquery-ui.css">-->
-  <?php endif; ?>
-  <link rel="stylesheet" href="<?php echo bloginfo('template_directory');?>/style.css" type="text/css" />
-  <link rel="stylesheet" href="<?php echo bloginfo('template_directory');?>/css/app.css?v=0.5" type="text/css" />
-  <link rel="stylesheet" href="<?php echo bloginfo('template_directory');?>/assets/css/custom.css" type="text/css" />
-  <link rel="stylesheet" href="/wp-content/themes/studio-shed-child/css/header.css?v=2.0" type="text/css" />
-  <link rel="stylesheet" href="/wp-content/themes/studio-shed-child/css/footer.css?v=2.1" type="text/css" />
-  <link rel="preload" href="/wp-content/themes/studio-shed/fonts/Futura-PT-Book.woff" as="font" type="font/woff" crossorigin>
-  <link rel="preload" href="/wp-content/themes/studio-shed/fonts/Futura-PT-Heavy.woff" as="font" type="font/woff" crossorigin>
-  <link rel="preload" href="/wp-content/themes/studio-shed/fonts/Tisa-Sans-Pro.woff" as="font" type="font/woff" crossorigin>
-  <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
-  <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
-  <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1684554848717">
-  <script src="/assets/main.bundle.js?v=1684554848717"></script>
-  <script src="//js.hsforms.net/forms/v2.js"></script>
-  <?php wp_head(); ?>
-  <!-- Google Optimize Anti-flicker snippet (recommended)  -->
-  <style>.async-hide { opacity: 0 !important} </style>
-  <script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
-    h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
-    (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
-  })(window,document.documentElement,'async-hide','dataLayer',4000,
-    {'GTM-PFQVBLT':true});</script>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Studio Shed Project Cost Calculator</title>  
+    <meta name="description" content="Use our cost calculator to get a price estimate for your project.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Studio Shed Project Cost Calculator">
+    <meta property="og:description" content="Use our cost calculator to get a price estimate for your project.">
+    <meta property="og:url" content="https://www.studio-shed.com/project-calculator/">
+    <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
+    <meta property="article:modified_time" content="2023-05-20T03:54:08.974Z">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@StudioShed">
+    <link rel="dns-prefetch" href="//www.studio-shed.com">
+    <link rel="dns-prefetch" href="//js.hsforms.net">
+    <link rel="canonical" href="https://www.studio-shed.com/project-calculator/">
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1684554848717">
+    <script src="/assets/main.bundle.js?v=1684554848717"></script>
+    <script src="//js.hsforms.net/forms/v2.js"></script>
+    <!--
+    <script src="https://apps.elfsight.com/p/platform.js" async></script> 
+    <script src="https://www.bugherd.com/sidebarv2.js?apikey=0zstjadoqp0xjbyxbxs71g" async></script>
+    -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PFQVBLT');</script>
-  <!-- End Google Tag Manager -->
-</head>
-<body <?php body_class(); ?>>
-<div id="wrapper">
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFQVBLT"
-                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-<a class="w-full text-center py-1 bg-gray-900 text-white text-sm hidden md:block" href="https://shop.studio-shed.com/" target="_blank">
+    })(window,document,'script','dataLayer','GTM-PFQVBLT');</script>
+  </head>
+  <body>
+    <a class="w-full text-center py-1 bg-gray-900 text-white text-sm hidden md:block" href="https://shop.studio-shed.com/" target="_blank">
   Shipping from Colorado to all 50 U.S. states and beyond.
 </a>
 
-<header x-cloak x-data="window.Components.navManager">
+    
+    <header x-cloak x-data="window.Components.navManager">
   <div class="relative bg-white z-20">
     <div class="flex justify-between items-center max-w-7xl mx-auto px-4 py-2 md:justify-start md:space-x-6">
       <div class="flex justify-start flex-1">
@@ -1260,3 +1217,438 @@
     <div class="fixed inset-0 z-10 bg-black opacity-50"></div>
   </div>
 </header>
+
+    
+    <main id="page-project-cost">
+  
+  <div class="bg-white" x-data="window.Components.projectCostWidgetManager()" x-init="productType = 'studio'; init();">
+  <div class="mx-auto max-w-4xl px-4 py-16">
+    <div class="text-center relative">
+      <span class="bg-yellow-500 absolute inset-x-0 top-0 h-1 w-9 mx-auto"></span>
+      <h2 class="py-4 text-3xl text-center font-extrabold tracking-tight text-gray-900 sm:text-4xl">Project Cost Calculator</h2>
+      <p class="mx-auto text-gray-500">Overview of construction costs for your backyard ADU or Studio.</p>
+      <p class="mx-auto text-gray-500">(Cost estimates quoted by 3rd party contractors)</p>
+    </div>
+
+    <fieldset class="my-8 mx-auto max-w-lg">
+      <div class="mb-4 grid grid-cols-2 gap-4">
+        <label :class="productType === 'studio' ? 'border-yellow-600' : 'border-gray-300'"
+               class="relative flex cursor-pointer rounded-lg border bg-white px-4 py-2 shadow-sm focus:outline-none">
+          <input type="radio" x-on:change="calculate()" name="productType" x-model="productType" value="studio"
+                 class="sr-only">
+          <div class="flex flex-1">
+            <div class="flex flex-col">
+              <span class="block text-sm font-medium text-gray-900">Typical single room studio</span>
+              <span :class="productType == 'studio' ? 'text-yellow-700' : 'text-gray-500'"
+                    class="mt-1 flex items-center text-sm">120 square feet</span>
+            </div>
+          </div>
+          <svg :class="productType === 'studio' || 'invisible'" class="h-5 w-5 text-yellow-600" viewBox="0 0 20 20"
+               fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                  clip-rule="evenodd"/>
+          </svg>
+          <span :class="productType === 'studio' ? 'border border-yellow-600' : 'border-2 border-transparent'"
+                class="pointer-events-none absolute -inset-px rounded-lg border-2" aria-hidden="true"></span>
+        </label>
+
+
+        <label :class="productType === 'adu' ? 'border-yellow-600' : 'border-gray-300'"
+               class="relative flex cursor-pointer rounded-lg border bg-white px-4 py-2 shadow-sm focus:outline-none">
+          <input type="radio" x-on:change="calculate()" name="productType" x-model="productType" value="adu"
+                 class="sr-only">
+          <div class="flex flex-1">
+            <div class="flex flex-col">
+              <span class="block text-sm font-medium text-gray-900">Typical ADU</span>
+              <span :class="productType == 'adu' ? 'text-yellow-700' : 'text-gray-500'"
+                    class="mt-1 flex items-center text-sm">476 square feet</span>
+            </div>
+          </div>
+          <svg :class="productType === 'adu' || 'invisible'" class="h-5 w-5 text-yellow-600" viewBox="0 0 20 20"
+               fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                  clip-rule="evenodd"/>
+          </svg>
+          <span :class="productType === 'adu' ? 'border border-yellow-600' : 'border-2 border-transparent'"
+                class="pointer-events-none absolute -inset-px rounded-lg border-2" aria-hidden="true"></span>
+        </label>
+
+
+      </div>
+
+
+      <div class="-space-y-px rounded-md bg-white mt-4">
+
+        <label :class="assemblyType == 'Turnkey' ? 'z-10 border-yellow-200 bg-yellow-50' : 'border-gray-200'"
+               class="rounded-tl-md rounded-tr-md relative flex cursor-pointer border py-2 px-4 focus:outline-none">
+          <input type="radio" x-on:change="calculate()" name="assemblyType" x-model="assemblyType" value="Turnkey"
+                 class="mt-0.5 h-4 w-4 shrink-0 cursor-pointer text-yellow-600 border-gray-300 focus:ring-yellow-600">
+          <div class="ml-3 flex flex-col">
+            <span class="block text-sm font-medium">Turnkey Assembly</span>
+            <span :class="assemblyType == 'Turnkey' ? 'text-yellow-700' : 'text-gray-500'" class="block text-sm">Existing foundation and site work already finished and unit ready to assemble</span>
+          </div>
+        </label>
+
+        <label :class="assemblyType === 'Basic Site Work' ? 'z-10 border-yellow-200 bg-yellow-50' : 'border-gray-200'"
+               class="relative flex cursor-pointer border py-2 px-4 focus:outline-none">
+          <input type="radio" x-on:change="calculate()" name="assemblyType" x-model="assemblyType" value="Basic Site Work"
+                 class="mt-0.5 h-4 w-4 shrink-0 cursor-pointer text-yellow-600 border-gray-300 focus:ring-yellow-600">
+          <div class="ml-3 flex flex-col">
+            <span class="block text-sm font-medium">Basic Site Work</span>
+            <span :class="assemblyType == 'Basic Site Work' ? 'text-yellow-700' : 'text-gray-500'" class="block text-sm">Foundation and electrical work required before unit can be assembled</span>
+          </div>
+        </label>
+
+        <label :class="assemblyType === 'Custom Site Work' ? 'z-10 border-yellow-200 bg-yellow-50' : 'border-gray-200'"
+               class="rounded-bl-md rounded-br-md relative flex cursor-pointer border py-2 px-4 focus:outline-none">
+          <input type="radio" x-on:change="calculate()" name="assemblyType" x-model="assemblyType" value="Custom Site Work"
+                 class="mt-0.5 h-4 w-4 shrink-0 cursor-pointer text-yellow-600 border-gray-300 focus:ring-yellow-600">
+          <div class="ml-3 flex flex-col">
+
+            <span class="block text-sm font-medium">Custom Site Work</span>
+            <span :class="assemblyType == 'Custom Site Work' ? 'text-yellow-700' : 'text-gray-500'" class="block text-sm">Demolition of existing structures or construction of an additional deck</span>
+          </div>
+        </label>
+      </div>
+    </fieldset>
+
+    <dl class="flex" x-transition>
+      <div class="py-5 transition-[width] duration-500" :style="{ width: costs.productPct + 'vw' }" x-transition>
+
+        <dd class="items-baseline justify-between block bg-yellow-600 text-white p-2">
+          <div class="flex items-baseline text-xl font-semibold" x-transition
+               x-text="window.Components.formatProjectCost(costs.product)"></div>
+        </dd>
+        <dt class="text-sm mt-2 px-2 font-normal text-gray-900">Product / Plans / Shipping</dt>
+        <div class="text-xs px-2 font-medium text-gray-500" x-text="costs.description"></div>
+
+      </div>
+      <div class="py-5 transition-[width] duration-500" :style="{ width: costs.assemblyPct + 'vw' }" x-transition>
+
+        <dd class="items-baseline justify-between block bg-yellow-500 text-white p-2">
+          <div class="flex items-baseline text-xl font-semibold" x-transition
+               x-text="window.Components.formatProjectCost(costs.assembly)"></div>
+        </dd>
+        <dt class="text-sm mt-2 px-2 font-normal text-gray-900">Assembly</dt>
+        <div class="text-xs px-2 font-medium text-gray-500" x-transition>Pro or DIY</div>
+
+      </div>
+      <div class="py-5 transition-[width] duration-500" :style="{ width: costs.siteworkPct + 'vw' }" x-show="costs.sitework != 0" x-transition>
+
+        <dd class="items-baseline justify-between block bg-gray-500 text-white p-2">
+          <div class="flex items-baseline text-xl font-semibold" x-transition
+               x-text="window.Components.formatProjectCost(costs.sitework)"></div>
+        </dd>
+        <dt class="text-sm mt-2 px-2 font-normal text-gray-900">Site Work</dt>
+        <div class="text-xs px-2 font-medium text-gray-500" x-transition x-text="assemblyType"></div>
+
+      </div>
+      <div class="py-5 transition-[width] duration-500 min-w-min" :style="{ width: costs.otherPct + 'vw' }" x-show="costs.other != 0" x-transition>
+
+        <dd class="items-baseline justify-between block bg-gray-300 text-gray-600 p-2">
+          <div class="flex items-baseline text-xl font-semibold" x-transition
+               x-text="window.Components.formatProjectCost(costs.other)"></div>
+        </dd>
+        <dt class="text-xs mt-2 px-2 font-normal text-gray-900">Soils reports and other site inspections</dt>
+
+      </div>
+      <div class="py-5 transition-[width] duration-500 min-w-min" :style="{ width: costs.feesPct + 'vw' }"
+           x-transition>
+
+        <dd class="items-baseline justify-between block bg-gray-200 text-gray-600 p-2">
+          <div class="flex items-baseline text-xl font-semibold" x-transition
+               x-text="window.Components.formatProjectCost(costs.fees)"></div>
+        </dd>
+        <dt class="text-xs mt-2 px-2 font-normal text-gray-900">Estimated taxes and permit fees</dt>
+      </div>
+      <div class="py-5 transition-[width] duration-500 w-[10vw]" x-transition>
+
+        <dd class="items-baseline justify-between md:block lg:flex p-2">
+          <div class="flex items-baseline text-xl font-semibold text-gray-800" x-transition
+               x-text="window.Components.formatProjectCost(costs.total)"></div>
+        </dd>
+        <dt class="text-sm mt-2 px-2 font-normal text-gray-900">Total</dt>
+        <div class="text-xs px-2 font-medium text-gray-500"><span x-text="window.Components.formatPrice.format(costs.psf)"></span>/sq. ft.</div>
+      </div>
+    </dl>
+
+
+  </div>
+</div>
+</main>
+
+
+    
+    
+  <div class="relative bg-gray-800">
+  <div class="h-56 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
+    <img loading="lazy" class="w-full h-full object-cover" src="/assets/images/ss-footer-build.jpg" alt="Studio Shed 3D design center app">
+  </div>
+  <div class="relative max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+    <div class="md:ml-auto md:w-1/2 md:pl-10">
+      <h2 class="text-base font-semibold uppercase tracking-wider text-gray-300">Make Your Escape</h2>
+      <p class="mt-2 text-white text-3xl font-extrabold tracking-tight sm:text-4xl">Design Your Studio Shed</p>
+      <p class="mt-3 text-lg text-gray-300">One shed does not fit all. Our innovative prefab solution is a flat-packed, panelized kits of parts with hundreds of customizations in the Design Center. There are millions of combinations of sizes, door and window placements, and colors. All thoughtfully designed to work together.</p>
+      <div class="mt-8">
+        <div class="inline-flex rounded-md shadow">
+          <a href="https://shop.studio-shed.com/" class="inline-block mt-6 px-4 py-3 border border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-white font-medium hover:opacity-80 sm:px-8" title="Studio Shed 3D Design Center">Design &amp; Price Your Studio Shed</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<footer class="bg-black" aria-labelledby="footer-heading">
+  <h2 id="footer-heading" class="sr-only">Footer</h2>
+  <div class="max-w-7xl mx-auto pt-16 pb-8 px-4 sm:px-6 lg:pt-24 lg:px-8">
+    <div class="grid text-center md:grid-cols-3 gap-8 md:text-left lg:grid-cols-6 lg:gap-8">
+      
+          <div class="mt-6">
+            <h3 class="text-sm font-bold text-gray-200 tracking-wider uppercase">More</h3>
+            <ul role="list" class="mt-4 space-y-4">
+              <li>
+                <a href="https://www.studio-shed.com/process/" class="text-base text-gray-300 hover:text-white">
+                Process
+                </a>
+              </li>
+              <li>
+                <a href="https://shop.studio-shed.com" class="text-base text-gray-300 hover:text-white">
+                Design Center
+                </a>
+              </li>              
+              <li>
+                <a href="https://www.studio-shed.com/blog/" class="text-base text-gray-300 hover:text-white">
+                Blog
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/faqs/" class="text-base text-gray-300 hover:text-white">
+                  FAQ
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/about-us/" class="text-base text-gray-300 hover:text-white">
+                  About Studio Shed
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/sustainability/" class="text-base text-gray-300 hover:text-white">
+                  Sustainability
+                </a>
+              <li>
+                <a href="https://www.studio-shed.com/join-our-team/" class="text-base text-gray-300 hover:text-white">
+                  Join Our Team
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/financing/" class="text-base text-gray-300 hover:text-white">
+                  Financing
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/installation-resources/" class="text-base text-gray-300 hover:text-white">
+                  Installation Guides
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/installation-network/" class="text-base text-gray-300 hover:text-white">
+                  Installation Network
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/in-the-news/" class="text-base text-gray-300 hover:text-white">
+                  In the News
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/customer-reviews/" class="text-base text-gray-300 hover:text-white">
+                  Customer Reviews
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/partner-with-us/" class="text-base text-gray-300 hover:text-white">
+                  Partner With Us
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/contact-us/" class="text-base text-gray-300 hover:text-white">
+                  Contact Us
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/terms-and-conditions/" class="text-base text-gray-300 hover:text-white">
+                    Terms &amp; Conditions
+                  </a>
+              </li>
+            </ul>
+          </div>
+
+        
+          <div class="mt-6">
+            <h3 class="text-sm font-bold text-gray-200 tracking-wider uppercase">ADUs</h3>
+            <ul role="list" class="mt-4 space-y-4">
+              <li>
+                <a href="https://www.studio-shed.com/products/summit-series" class="text-base text-gray-300 hover:text-white">Summit Series</a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/adu/#" class="text-base text-gray-300 hover:text-white">Accessory Dwelling Units</a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/adu/cost-financing/" class="text-base text-gray-300 hover:text-white">ADU Cost & Financing</a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/adu/granny-flat/" class="text-base text-gray-300 hover:text-white">Granny Flat</a>
+              </li>
+
+              <li>
+                <a href="https://www.studio-shed.com/adu/ideas/" class="text-base text-gray-300 hover:text-white">ADU Design Ideas</a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/adu/interior-packages/" class="text-base text-gray-300 hover:text-white">Interior Packages</a>
+              </li>
+              <li>
+                <a href="https://tour.studio-shed.com/" class="text-base text-gray-300 hover:text-white">3D Virtual Tour</a>
+              </li>
+            </ul>
+          </div>
+          
+
+          <div class="mt-6">
+            <h3 class="text-sm font-bold text-gray-200 tracking-wider uppercase">Studios</h3>
+            <ul role="list" class="mt-4 space-y-4">
+              <li>
+                <a href="https://www.studio-shed.com/products/signature-series" class="text-base text-gray-300 hover:text-white">Signature Series</a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/products/portland-series" class="text-base text-gray-300 hover:text-white">Portland Series</a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/favorites/" class="text-base text-gray-300 hover:text-white">Founders Favorites</a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/backyard-studios/" class="text-base text-gray-300 hover:text-white">Backyard Studios</a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/backyard-studios/cost-financing/" class="text-base text-gray-300 hover:text-white">Studio Cost &amp; Financing</a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/backyard-studios/ideas/" class="text-base text-gray-300 hover:text-white">Studio Ideas</a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/diy-quick-ship-models/" class="text-base text-gray-300 hover:text-white">DIY Quick Ship Models</a>
+              </li>
+            </ul>
+          </div>
+        
+        
+          <div class="mt-6">
+            <h3 class="text-sm font-bold text-gray-200 tracking-wider uppercase">Inspiration</h3>
+            <ul role="list" class="mt-4 space-y-4">
+              <li>
+                <a href="/home-office-spaces/" class="text-base text-gray-300 hover:text-white">
+                  Home Office Spaces
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/music-studios/" class="text-base text-gray-300 hover:text-white">Music Studios
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/art-studios/" class="text-base text-gray-300 hover:text-white">
+                  Art &amp; Creative Studios
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/man-cave/" class="text-base text-gray-300 hover:text-white">
+                  Man Cave
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/she-sheds/" class="text-base text-gray-300 hover:text-white">
+                  She Shed
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/storage/" class="text-base text-gray-300 hover:text-white">
+                  Storage
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/diy/" class="text-base text-gray-300 hover:text-white">
+                  DIY
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/wellness/" class="text-base text-gray-300 hover:text-white">
+                  Wellness
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/garages/" class="text-base text-gray-300 hover:text-white">
+                  Garages
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/modular-addition/" class="text-base text-gray-300 hover:text-white">
+                  Modular Additions
+                </a>
+              </li>
+              <li>
+                <a href="https://www.studio-shed.com/commercial/" class="text-base text-gray-300 hover:text-white">
+                  Commercial
+                </a>
+              </li>
+            </ul>
+          </div>
+          
+
+        
+      <div class="mt-6 col-span-2">
+        <h3 class="text-sm font-black text-gray-200 tracking-wider uppercase">Subscribe to our newsletter</h3>
+        <p class="mb-4 text-base text-gray-200">The latest news, articles, and resources, sent to your inbox weekly.</p>
+        <script>
+          hbspt.forms.create({
+            region: "na1",
+            portalId: "22119690",
+            formId: "081be1e1-2bec-4811-a854-f6abb9704212"
+          });
+        </script>
+        <div class="flex space-x-12 mt-24">
+          <img loading="lazy" class="self-center w-32 h-auto" src="/assets/images/footer-shipping.png" alt="Studio Ships to all 50 states">
+          <img loading="lazy" class="self-center w-20 h-auto" src="/assets/images/footer-houzz-badge.png" alt="Studio Shed design award by Houzz">
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 pt-8 border-t border-gray-500 md:flex md:items-center md:justify-between lg:mt-16">
+      <div class="flex space-x-4 md:order-2">
+        <a href="https://www.facebook.com/StudioShed/" target="_blank" class="text-gray-400 hover:text-gray-500">
+          <span class="sr-only">Facebook</span>
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/studioshed" target="_blank" class="text-gray-400 hover:text-gray-500">
+          <span class="sr-only">Instagram</span>
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
+          </svg>
+        </a>
+        <a href="https://twitter.com/studioshed" target="_blank" class="text-gray-400 hover:text-gray-500">
+          <span class="sr-only">Twitter</span>
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+          </svg>
+        </a>
+      </div>
+      <p class="mt-8 text-base text-gray-400 md:mt-0 md:order-1">&copy; Studio Shed &bull; <a class="hover:text-gray-200" href="/privacy/">Privacy Policy</a> &bull; <a class="hover:text-gray-200" href="/do-not-sell/">Do Not Sell My Information</a></p>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>
