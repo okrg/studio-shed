@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1684602897429">
-  <script src="/assets/main.bundle.js?v=1684602897429"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1685168382418">
+  <script src="/assets/main.bundle.js?v=1685168382418"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -77,8 +77,8 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFQVBLT"
                     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-<a class="w-full text-center py-1 bg-gray-900 text-white text-sm hidden md:block" href="https://shop.studio-shed.com/" target="_blank">
-  Shipping from Colorado to all 50 U.S. states and beyond.
+<a class="w-full text-center py-1 bg-yellow-600 text-white text-sm hidden md:block" href="https://shop.studio-shed.com/" target="_blank">
+  15th Anniversary Sale Coming June 1:  15% off
 </a>
 
 <header x-cloak x-data="window.Components.navManager">
