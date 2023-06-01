@@ -25,8 +25,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1685601550239">
-  <script src="/assets/main.bundle.js?v=1685601550239"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1685602208177">
+  <script src="/assets/main.bundle.js?v=1685602208177"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -41,7 +41,7 @@
 <body>
 
 <a class="w-full text-center py-1 bg-gray-900 text-white text-sm hidden md:block" href="https://shop.studio-shed.com/" target="_blank">
-  Shipping from Colorado to all 50 U.S. states and beyond.
+  15% off all models &bull; June 1 - June 18
 </a>
 
 
@@ -1370,7 +1370,7 @@
         </a>
         </div>
       </div>
-      
+
     </div>
   </div>
 
