@@ -25,8 +25,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1685168382418">
-  <script src="/assets/main.bundle.js?v=1685168382418"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1685601550239">
+  <script src="/assets/main.bundle.js?v=1685601550239"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -40,8 +40,8 @@
 </head>
 <body>
 
-<a class="w-full text-center py-1 bg-yellow-600 text-white text-sm hidden md:block" href="https://shop.studio-shed.com/" target="_blank">
-  15th Anniversary Sale Coming June 1:  15% off
+<a class="w-full text-center py-1 bg-gray-900 text-white text-sm hidden md:block" href="https://shop.studio-shed.com/" target="_blank">
+  Shipping from Colorado to all 50 U.S. states and beyond.
 </a>
 
 
@@ -1235,9 +1235,28 @@
 
 <main id="page-home">
 
-  <div class="h-[70vh] bg-black relative">
+  <div class="h-[66vh] bg-black relative">
+    <div class="absolute top-0 right-4 w-20 sm:w-24 h-auto z-10 bg-white p-4">
+    <img src="/assets/images/studio-15-badge.png" alt="Studio Shed 15 Year Anniversary">
+    </div>
     <div class="swiper mx-auto">
       <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img data-src="/assets/images/home-slider/summer-15-01.jpg" class="swiper-lazy" alt="Studio Shed unit installed at a customer location">
+          <div class="swiper-lazy-preloader"></div>
+        </div>
+        <div class="swiper-slide">
+          <img data-src="/assets/images/home-slider/summer-15-02.jpg" class="swiper-lazy" alt="Studio Shed unit installed at a customer location">
+          <div class="swiper-lazy-preloader"></div>
+        </div>
+        <div class="swiper-slide">
+          <img data-src="/assets/images/home-slider/summer-15-03.jpg" class="swiper-lazy" alt="Studio Shed unit installed at a customer location">
+          <div class="swiper-lazy-preloader"></div>
+        </div>
+        <div class="swiper-slide">
+          <img data-src="/assets/images/home-slider/summer-15-04.jpg" class="swiper-lazy" alt="Studio Shed unit installed at a customer location">
+          <div class="swiper-lazy-preloader"></div>
+        </div>
         <div class="swiper-slide">
           <img data-src="/assets/images/home-slider/01.jpg" class="swiper-lazy" alt="Studio Shed unit installed at a customer location">
           <div class="swiper-lazy-preloader"></div>
@@ -1279,26 +1298,27 @@
       <div class="swiper-button-prev"></div>
     </div>
     <div class="z-10 pt-20 pb-4 absolute bottom-0 top-auto inset-0 bg-gradient-to-t from-black to-transparent">
-      <div class="justify-center flex">
-        <div class="mx-auto sm:flex sm:justify-center">
-          <a href="/models/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-3 border-2 border-white text-sm font-bold text-white uppercase text-center rounded-full hover:bg-white hover:text-black sm:w-auto sm:px-4">Browse Models</a>
-          <a href="https://shop.studio-shed.com/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-3 border-2 border-white text-sm font-bold text-white uppercase text-center rounded-full hover:bg-white hover:text-black sm:w-auto sm:px-4">Design Your Own</a>
-        </div>
-      </div>
+
     </div>
   </div>
 
-  <div class="bg-black p-8">
-  <div class="flex justify-between items-center">
+  <div class="bg-black p-4 md:p-8">
+  <div class="md:flex justify-between items-center">
     <div>
-      <a href="/favorites/">
-        <h3 class="text-2xl font-bold text-white">STUDIO 15: Celebrating 15 Years in Business</h3>
-        <span class="text-lg font-bold text-white">Founders Favorites</span>
-        <span class="text-white">&mdash; well-appointed models specially priced and ready to ship</span>
-      </a>
+      <h3 class="text-2xl font-extrabold text-white leading-none uppercase"><span class="text-yellow-500">15 Years</span> of <br class="sm:hidden">Studio Shed</h3>
+      <div class="md:flex justify-between items-center">
+        <h3 class="md:text-[26px] font-bold text-white leading-none"><span class="text-yellow-500">15% off</span> all models</h3>
+        <div class="text-white text-xs py-2">June 1 - June 18</div>
+      </div>
     </div>
     <div>
-      <a href="/favorites/" class="w-full flex m-2 justify-center p-3 bg-green-700 text-sm text-white uppercase text-center hover:bg-green-700 sm:w-auto sm:px-4">Learn more</a>
+      <div class="justify-center flex">
+        <div class="mx-auto flex w-full gap-x-1 sm:w-auto sm:justify-center">
+          <a href="/models/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:bg-white hover:text-black sm:w-auto sm:px-4">Browse Models</a>
+          <a href="https://shop.studio-shed.com/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:bg-white hover:text-black sm:w-auto sm:px-4">Design Your Own</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -1306,37 +1326,55 @@
   <div class="bg-white" id="toc-curated" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'curated'">
     <div class="max-w-4xl mx-auto py-16 px-4 sm:py-12 sm:px-6 lg:px-8">
       <div class="text-center">
-        <p class="mt-1 text-3xl font-extrabold text-gray-900">Our Models</p>
+        <p class="mt-4 text-3xl font-extrabold text-gray-900">Our Models</p>
         <p class="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">Explore our backyard studios and accessory dwelling units.</p>
       </div>
     </div>
 
 
     <div class="max-w-6xl mx-auto pb-24 px-4 overflow-hidden sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8">
-        <a href="/products/summit-series/" class="group text-lg text-center" title="Studio Shed Summit series product images and features">
-          <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
-            <img loading="lazy" src="/assets/images/home-models-summit.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed summit series unit with iron gray siding and white doors">
+      <div class="grid grid-cols-1 gap-y-12 gap-x-12 md:grid-cols-2 xl:grid-cols-3 lg:gap-x-12">
+        <div>
+          <a href="/products/summit-series/" class="group text-lg text-center"
+              title="Studio Shed Summit series product images and features">
+          <div class="w-full aspect-w-5 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75 mb-2">
+            <img loading="lazy" src="/assets/images/home-models-summit.jpg"
+                 class="w-full h-full object-center object-cover"
+                 alt="Studio Shed summit series unit with iron gray siding and white doors">
           </div>
           <h3 class="font-bold text-gray-700">Summit Series</h3>
         </a>
+        </div>
 
-        <a href="/products/signature-series/" class="group text-lg text-center" title="Studio Shed Signature series product images and features">
-          <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
-            <img loading="lazy" src="/assets/images/home-models-signature.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed signature series with dark trim and navy doors">
+        <div>
+          <a href="/products/signature-series/" class="group text-lg text-center"
+              title="Studio Shed Signature series product images and features">
+          <div class="w-full aspect-w-5 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75 mb-2">
+            <img loading="lazy" src="/assets/images/home-models-signature.jpg"
+                 class="w-full h-full object-center object-cover"
+                 alt="Studio Shed signature series with dark trim and navy doors">
           </div>
           <h3 class="font-bold text-gray-700">Signature Series</h3>
         </a>
+        </div>
 
-        <a href="/products/portland-series/" class="group text-lg text-center" title="Studio Shed Portland series product images and features">
-          <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
-            <img loading="lazy" src="/assets/images/home-models-portland.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed Portland series with cedar plank siding and black doors">
+        <div>
+          <a href="/products/portland-series/" class="group text-lg text-center"
+              title="Studio Shed Portland series product images and features">
+          <div class="w-full aspect-w-5 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75 mb-2">
+            <img loading="lazy" src="/assets/images/home-models-portland.jpg"
+                 class="w-full h-full object-center object-cover"
+                 alt="Studio Shed Portland series with cedar plank siding and black doors">
           </div>
           <h3 class="font-bold text-gray-700">Portland Series</h3>
         </a>
+        </div>
       </div>
+      
     </div>
   </div>
+
+
 
   <div class="py-16 bg-white overflow-hidden lg:py-24">
     <div class="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
