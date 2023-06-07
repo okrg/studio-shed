@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1686152615412">
-  <script src="/assets/main.bundle.js?v=1686152615412"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1686177817626">
+  <script src="/assets/main.bundle.js?v=1686177817626"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -77,8 +77,8 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFQVBLT"
                     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-<a class="w-full text-center py-2 bg-yellow-600 text-white text-sm block" href="https://shop.studio-shed.com/" target="_blank">
-  QUICK QUOTE TODAY
+<a class="w-full text-center py-2 bg-yellow-600 text-white text-sm font-bold block" href="https://shop.studio-shed.com/" target="_blank">
+  LIMITED TIME OFFER:  15% off All Models until June 19 <span class="underline hover:opacity-80">Start Now</a>
 </a>
 
 <header x-cloak x-data="window.Components.navManager">
