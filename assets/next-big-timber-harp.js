@@ -60,7 +60,7 @@ window.addEventListener('DOMContentLoaded', () => {
     Harp.camera = new BABYLON.ArcRotateCamera('camera',
       BABYLON.Tools.ToRadians(60),
       BABYLON.Tools.ToRadians(80),
-      400,
+      260,
       new BABYLON.Vector3(0,52,0)
     )
     Harp.camera.zoomToMouseLocation = true
@@ -70,6 +70,7 @@ window.addEventListener('DOMContentLoaded', () => {
     Harp.camera.lowerRadiusLimit = 12
     Harp.camera.angularSensibilityX = 5000
     Harp.camera.angularSensibilityY = 5000
+    Harp.camera.spinTo('beta', 90, 100)
     Harp.camera.attachControl(canvas, true)
     if(Math.min(window.screen.width, window.screen.height) < 768 || navigator.userAgent.indexOf("Mobi") > -1) {
       Harp.camera.inputs.remove(Harp.camera.inputs.attached.mousewheel)
@@ -94,191 +95,40 @@ window.addEventListener('DOMContentLoaded', () => {
 
     //Lighting **********
     const ambient = new BABYLON.HemisphericLight('ambient', new BABYLON.Vector3(0, 1, 0), scene)
-    ambient.diffuse = new BABYLON.Color3(0.66 , 0.66, 0.66)
-    ambient.specular = new BABYLON.Color3(0.66 , 0.66, 0.66)
+    ambient.diffuse = new BABYLON.Color3(0.8 , 0.8, 0.8)
+    ambient.specular = new BABYLON.Color3(0.8 , 0.8, 0.8)
+    ambient.groundColor = new BABYLON.Color3(0.8 , 0.8, 0.8)
     ambient.intensity = 1
-    ambient.groundColor = new BABYLON.Color3(0.66 , 0.66, 0.66)
 
-    Harp.sun = new BABYLON.DirectionalLight('sun', new BABYLON.Vector3(-1, -4, -1), scene)
-    Harp.sun.diffuse = new BABYLON.Color3(1, 0.8, 0.6); // Set a warm, golden color for an afternoon sun
-    Harp.sun.position = new BABYLON.Vector3(120,120,120);
-    Harp.sun.specular = new BABYLON.Color3(1, 1, 1); // Set to a suitable color
-    Harp.sun.bloomEnabled = 0.66
 
-    Harp.shadowGenerator = new BABYLON.ShadowGenerator(1024, Harp.sun)
-    Harp.shadowGenerator.darkness = 0.1
+    const sun = new BABYLON.DirectionalLight('sun', new BABYLON.Vector3(-1, -2, -1), scene)
+    sun.position = new BABYLON.Vector3(40, 350, 40)
+    //sun.specular = new BABYLON.Color3(0, 0, 0)
+    sun.intensity = 0.9
+    //sun.bloomEnabled = 0.5
 
+    Harp.shadowGenerator = new BABYLON.ShadowGenerator(1024, sun)
+    Harp.shadowGenerator.darkness = 0
+    Harp.shadowGenerator.useBlurCloseExponentialShadowMap = true
     Harp.shadowGenerator.useBlurExponentialShadowMap = true
     Harp.shadowGenerator.useKernelBlur = true
-    Harp.shadowGenerator.blurKernel = 48
-
-
-    //Sky **********
-    const sky = BABYLON.MeshBuilder.CreateBox('sky', {size:3600}, scene)
-    const sky_material = new BABYLON.StandardMaterial('sky_material', scene)
-    sky_material.backFaceCulling = false
-    sky_material.reflectionTexture = new BABYLON.CubeTexture('https://bigtimber-dev.bypboh.com/assets/textures/tour', scene)
-    sky_material.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE
-    sky_material.diffuseColor = new BABYLON.Color3(0, 0, 0)
-    sky_material.specularColor = new BABYLON.Color3(0, 0, 0)
-    sky.material = sky_material
-
-
-    //Ground  **********
-    const ground_material = new BABYLON.StandardMaterial('ground_material')
-    const ground = BABYLON.MeshBuilder.CreateGroundFromHeightMap('ground',
-      Harp.textures.groundHeightMap,
-      {
-        width:3600,
-        height:3600,
-        subdivisions: 20,
-        minHeight:0,
-        maxHeight: 80
-      }
-    )
-    ground.position.y = -24
-    ground_material.diffuseTexture = new BABYLON.Texture(Harp.textures.Grass_Ground)
-    ground.material = ground_material
-    ground_material.specularColor = new BABYLON.Color3(0, 0, 0)
-    ground_material.diffuseTexture.uScale = 5
-    ground_material.diffuseTexture.vScale = 5
-    ground.receiveShadows = true
-
-    const spriteManagerTrees = new BABYLON.SpriteManager('treesManager', 'https://bigtimber-dev.bypboh.com/assets/textures/live_oak.png', 100, {width: 600, height: 623});
-    const spriteManagerDeci = new BABYLON.SpriteManager('deciManager', 'https://bigtimber-dev.bypboh.com/assets/textures/deci.png', 1, {width: 400, height: 432});
-    const spriteManagerDeci2 = new BABYLON.SpriteManager('deci2Manager', 'https://bigtimber-dev.bypboh.com/assets/textures/deci2.png', 1, {width: 400, height: 560});
-
-
-    for (let i = 0; i < 25; i++) {
-      const tree = new BABYLON.Sprite('tree', spriteManagerTrees)
-      tree.width = BABYLON.Scalar.RandomRange(400, 600)
-      tree.height = BABYLON.Scalar.RandomRange(400, 600)
-      tree.position.y = BABYLON.Scalar.RandomRange(100, 200)
-      tree.position.x = BABYLON.Scalar.RandomRange(-1020, -1800)
-      tree.position.z = BABYLON.Scalar.RandomRange(-1800, 1800)
-    }
-
-    for (let i = 0; i < 25; i++) {
-      const tree = new BABYLON.Sprite('tree', spriteManagerTrees);
-      tree.width = BABYLON.Scalar.RandomRange(400, 600)
-      tree.height = BABYLON.Scalar.RandomRange(400, 600)
-      tree.position.y = BABYLON.Scalar.RandomRange(100, 200)
-      tree.position.x = BABYLON.Scalar.RandomRange(-1800, 1800)
-      tree.position.z = BABYLON.Scalar.RandomRange(-1020, -1800)
-    }
-    for (let i = 0; i < 25; i++) {
-      const tree = new BABYLON.Sprite('tree', spriteManagerTrees);
-      tree.width = BABYLON.Scalar.RandomRange(400, 600)
-      tree.height = BABYLON.Scalar.RandomRange(400, 600)
-      tree.position.y = BABYLON.Scalar.RandomRange(100, 200)
-      tree.position.x = BABYLON.Scalar.RandomRange(-1800, 1800)
-      tree.position.z = BABYLON.Scalar.RandomRange(1020, 1800)
-    }
-
-
-    for (let i = 0; i < 25; i++) {
-      const tree = new BABYLON.Sprite('tree', spriteManagerTrees);
-      tree.width = BABYLON.Scalar.RandomRange(400, 600)
-      tree.height = BABYLON.Scalar.RandomRange(400, 600)
-      tree.position.y = BABYLON.Scalar.RandomRange(100, 200)
-      tree.position.x = BABYLON.Scalar.RandomRange(1020, 1800)
-      tree.position.z = BABYLON.Scalar.RandomRange(-1800, 1800)
-    }
-
-
-
-    const deci = new BABYLON.Sprite('deci', spriteManagerDeci);
-    deci.width = 400
-    deci.height = 423
-    deci.position.y = 200
-    deci.position.x = -700
-    deci.position.z = -600
-
-    const deci2 = new BABYLON.Sprite('deci2', spriteManagerDeci2);
-    deci2.width = 400
-    deci2.height = 560
-    deci2.position.y = 250
-    deci2.position.x = 700
-    deci2.position.z = -640
-
-    Harp.deckContainer = new BABYLON.AssetContainer(scene)
-
-    BABYLON.SceneLoader.ImportMesh('', 'https://bigtimber-dev.bypboh.com/assets/obj/', 'patio-mini.obj', scene, function (newMeshes) {
-      newMeshes.forEach(function (m){
-        Harp.deckContainer.meshes.push(m)
-        m.receiveShadows = true
-        Harp.materialGroups.forEach(function (group){
-          if (m.name.includes(group)) {
-            m.parent = Harp[group]
-            m.material = Harp[group + '_material']
-          }
-        })
-
-        Harp.shadowGroups.forEach(function (group) {
-          if(m.name.includes(group)) {
-            Harp.shadowGenerator.getShadowMap().renderList.push(m)
-          }
-        })
-
-        m.position.x = 175
-        m.position.y = -28
-        m.position.z = 430
-      })
-
-    })
-
-
-    Harp.fenceContainer = new BABYLON.AssetContainer(scene)
-    BABYLON.SceneLoader.ImportMesh('', 'https://bigtimber-dev.bypboh.com/assets/obj/', 'fence.obj', scene, function (newMeshes) {
-      newMeshes.forEach(function (m){
-        m.receiveShadows = true
-
-        Harp.fenceContainer.meshes.push(m)
-        Harp.materialGroups.forEach(function (group){
-          if (m.name.includes(group)) {
-            m.parent = Harp[group]
-            m.material = Harp[group + '_material']
-          }
-        })
-        m.position.x = 100
-        m.position.y = -30
-        m.position.z = -340
-      })
-    })
-
-
-
-
+    Harp.shadowGenerator.bias = 0.0001
+    Harp.shadowGenerator.blurKernel = 36
 
     Harp.createFoundation = function () {
-      Harp.foundation_material = new BABYLON.StandardMaterial('foundation_material', scene)
+      // Create the floor using BABYLON.MeshBuilder.CreateBox
+      var worldFloor = BABYLON.MeshBuilder.CreateBox("worldFloor", { width: 5000, depth: 5000, height: 1 }, scene);
+      worldFloor.position = new BABYLON.Vector3(0, -16, 0); // Center the floor at 0, 0, 0
 
+      // Create a light gray material for the floor
+      var worldFloorMaterial = new BABYLON.StandardMaterial("worldFloorMaterial", scene);
+      worldFloorMaterial.diffuseColor = new BABYLON.Color3(0.8, 0.8, 0.8); // Light gray
+      worldFloorMaterial.specularColor = new BABYLON.Color3(0, 0, 0); // Specular settings
+      worldFloor.material = worldFloorMaterial;
 
-      if(Harp.foundationContainer == null) {
-        Harp.foundationContainer = new BABYLON.AssetContainer(scene)
-      } else {
-        Harp.foundationContainer.dispose()
-      }
-
-
-      Harp.foundationMesh = BABYLON.MeshBuilder.CreateBox('foundation', {
-        width: (window.recipe.length*12)+48,
-        height: 0.2,
-        //depth: window.recipe.depth*12,
-        depth: (window.recipe.depth*12)+48
-      })
-      Harp.foundationMesh.position.y = -24
-
-      Harp.foundationContainer.meshes.push(Harp.foundationMesh)
-      Harp.foundationMesh.receiveShadows = true
-      Harp.foundationMesh.material = Harp.foundation_material
-      Harp.foundation_material.specularColor = new BABYLON.Color3(0.125, 0.125, 0.125)
-      Harp.foundation_material.specularPower = 32
-
-
+      // Set the worldFloor to receive shadows
+      worldFloor.receiveShadows = true;
     }
-
-
 
     //Screenshot tool *********
     Harp.pushScreenshot = async function() {
@@ -314,6 +164,11 @@ window.addEventListener('DOMContentLoaded', () => {
       BABYLON.SceneLoader.ImportMesh('', 'https://bigtimber-dev.bypboh.com/assets/obj/', Harp.config.product + '-' + Harp.config.size + '-' + endcut + '.obj', scene, function (newMeshes) {
           newMeshes.forEach(function (m){
             console.log(m.name)
+            if (m.name.includes('Post')) {
+              m.parent = Harp['posts']
+              m.material = Harp['posts' + '_material']
+              //m.receiveShadows = true
+            }
             if (m.name.includes('HardwareBolts')) {
               m.parent = Harp['hardware']
               m.material = Harp['hardware' + '_material']
@@ -322,11 +177,14 @@ window.addEventListener('DOMContentLoaded', () => {
               m.material = Harp['timber' + '_material']
             }
 
+            m.enableEdgesRendering();
+            m.edgesWidth = 16;
+            m.edgesColor =  new BABYLON.Color4(8 / 255, 8 / 255, 8 / 255, 1)
 
 
 
             Harp.productContainer.meshes.push(m)
-            m.receiveShadows = true
+            //m.receiveShadows = true
             Harp.shadowGenerator.getShadowMap().renderList.push(m);
 
             Harp.materialGroups.forEach(function (group){
@@ -335,6 +193,8 @@ window.addEventListener('DOMContentLoaded', () => {
                 m.material = Harp[group + '_material']
               }
             })
+
+
 
             m.position.z = (l*12)/2
             m.position.y = -24
@@ -349,6 +209,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
     let configdata
+    Harp.createFoundation()
     Harp.loadDefaultRecipe()
 
     return scene
@@ -359,323 +220,28 @@ window.addEventListener('DOMContentLoaded', () => {
     roofVisible: true,
     sides: ['front', 'back', 'left', 'right'],
     config: {},
-    configItems: [
-      'model',
-      'interior_kit',
-      'siding',
-      'siding_color',
-      'door_color',
-      'eaves_color',
-      'soffit_color',
-      'fascia_color',
-      'trim_color',
-      'main_flooring',
-      'bath_flooring',
-      'cabinet_finish',
-      'countertop_finish',
-      'fixture_finish',
-      'exterior_addon',
-      'window_addon',
-      'roof_addon',
-      'installation',
-      'foundation',
-      'permit_plans'
-    ],
-    configCosts: [
-      'shell_base_price',
-      'front_price',
-      'back_price',
-      'left_price',
-      'right_price',
-      'interior_kit_price',
-      'siding_price',
-      'siding_color_price',
-      'door_color_price',
-      'eaves_color_price',
-      'soffit_color_price',
-      'fascia_color_price',
-      'trim_color_price',
-      'exterior_addon_price',
-      'window_addon_price',
-      'roof_addon_price',
-      'addons_price',
-      'shipping_price',
-      'permit_plans_price',
-      'installation_price',
-      'product_cost',
-      //'discount',
-      //'promo_cost',
-      'initial_estimate',
-    ],
-    panelWidthMap: {
-      'R10': 120,
-      'R12': 144,
-      'RT1C': 72,
-      'RT2L': 48,
-      'RT3R': 48,
-      'RT3C': 48,
-      'RT4R': 72,
-      'RT5L': 72,
-      'RT6R': 48,
-      'RT7L': 24,
-      'L10': 120,
-      'L12': 144,
-      'LT1C': 72,
-      'LT2R': 48,
-      'LT3L': 48,
-      'LT3C': 48,
-      'LT4L': 72,
-      'LT5R': 72,
-      'LT6L': 48,
-      'LT7R': 24,
-      'FL06L': 6,
-      'FL06R': 6,
-      'F16': 192,
-      'F12': 144,
-      'FL12C': 12,
-      'FL12L': 12,
-      'FL12R': 12,
-      'FL18L': 18,
-      'FL18R': 18,
-      'FL72C': 72,
-      'FL72L': 72,
-      'FL72R': 72,
-      'FL84L': 84,
-      'FL84C': 84,
-      'FL84R': 84,
-      'FM12C': 12,
-      'FM12L': 12,
-      'FM12R': 12,
-      'FM18L': 18,
-      'FM18R': 18,
-      'FM72C': 72,
-      'FM72L': 72,
-      'FM72R': 72,
-      'FM84C': 84,
-      'FM84L': 84,
-      'FM84R': 84,
-      'B10x12': 144,
-      'B12x16': 192,
-      'BT20L-06': 6,
-      'BT20R-06': 6,
-      'BT20C-96': 96,
-      'BT20C-48': 48,
-      'BT16L-06': 6,
-      'BT16R-06': 6,
-      'BT16C-96': 96,
-      'BT16C-48': 48,
-      'BT12L-06': 6,
-      'BT12R-06': 6,
-      'BT12C-96': 96,
-      'BT12C-48': 48
-    },
-    sgFauxMap: {
-      'F12-W2L-D36CL': ['F23-W2A','F33-D36R-C','F33-C','F23-B'],
-      'F12-D36CR-W2R': ['F23-A','F33-C','F33-D36L-C','F23-W2B'],
-      'F12-D36L': ['F33-D36R-A','F63-C','F33-B'],
-      'F12-D36R': ['F33-A','F63-C','F33-D36L-B'],
-      'F12-D72C': ['F27L-A','F72-A','F27R-B'],
-      'F12-W2L-D72C-W2R': ['F27L-W2A','F72-B','F27R-W2B'],
-      'F16-W2L-D36CL': ['F23-W2A','F33-D36R-C','F63-C','F33-C','F23-B'],
-      'F16-D36CR-W2R': ['F23-A','F33-C','F63-C','F33-D36L-C','F23-W2B'],
-      'F16-D36L': ['F33-D36R-A','F63-C','F63-C','F33-B'],
-      'F16-D36R': ['F33-A','F63-C','F63-C','F33-D36L-B'],
-      'F16-D72C': ['F23-A','F27L-C','F72-A','F27R-C','F23-B'],
-      'F16-W2L-D72C-W2R': ['F23-A','F27L-W2C','F72-B','F27R-W2C','F23-B'],
-      'F16-36L-D36R': ['F33-36-A','F63-C','F63-C','F33-D36L-B'],
-      'F16-D36L-36R': ['F33-D36R-A','F63-C','F63-C','F33-36-B'],
-      'F20-W2L-D36CL': ['F23-W2A','F33-D36R-C','F63-C','F63-C','F33-C','F23-B'],
-      'F20-D36CR-W2R': ['F23-A','F33-C','F63-C','F63-C','F33-D36L-C','F23-W2B'],
-      'F20-D36L': ['F33-D36R-A','F63-C','F63-C','F63-C','F33-B'],
-      'F20-D36R': ['F33-A','F63-C','F63-C','F63-C','F33-D36L-B'],
-      'F20-D72C': ['F63-A','F27L-C','F72-A','F27R-C','F63-B'],
-      'F20-W2L-D72C-W2R': ['F63-A','F27L-W2C','F72-B','F27R-W2C','F63-B'],
-      'B08x12-18L-18R': ['B08-3L-18C','B08-6','B08-3R-18C'],
-      'B08x12': ['B08-3L','B08-6','B08-3R'],
-      'B08x16-18L-18R': ['B08-3L-18C','B08-6','B08-6','B08-3R-18C'],
-      'B08x16': ['B08-3L','B08-6','B08-6','B08-3R'],
-      'B10x12-18L-18R': ['B10-3L-18C','B10-6','B10-3R-18C'],
-      'B10x12': ['B10-3L','B10-6','B10-3R'],
-      'B10x16-18L-18R': ['B10-3L-18C','B10-6','B10-6','B10-3R-18C'],
-      'B10x16': ['B10-3L','B10-6','B10-6','B10-3R'],
-      'B10x20-18L-18R': ['B10-3L-18C','B10-6','B10-6','B10-6','B10-3R-18C'],
-      'B10x20': ['B10-3L','B10-6','B10-6','B10-6','B10-3R'],
-      'B12x12-18L-18R': ['B12-3L-18C','B12-6','B12-3R-18C'],
-      'B12x12': ['B12-3L','B12-6','B12-3R'],
-      'B12x16-18L-18R': ['B12-3L-18C','B12-6','B12-6','B12-3R-18C'],
-      'B12x16': ['B12-3L','B12-6','B12-6','B12-3R'],
-      'B12x20-18L-18R': ['B12-3L-18C','B12-6','B12-6','B12-6','B12-3R-18C'],
-      'B12x20': ['B12-3L','B12-6','B12-6','B12-6','B12-3R'],
-      'L08': ['L1','L2'],
-      'L08-W2R': ['L1','L2-W2'],
-      'L08-18C': ['L1-18C','L2'],
-      'L08-36C': ['L1-36C','L2'],
-      'L10': ['L3','L1','L2'],
-      'L10-W2R': ['L3','L1','L2-W2'],
-      'L10-18C': ['L3','L1-18C','L2'],
-      'L10-36C': ['L3','L1-36C','L2'],
-      'L10-18C-W2R': ['L3','L1-18C','L2-W2'],
-      'L10-36C-W2R': ['L3','L1-36C','L2-W2'],
-      'L12': ['L4','L1','L2'],
-      'L12-W2R': ['L4','L1','L2-W2'],
-      'L12-18C': ['L4','L1-18C','L2'],
-      'L12-36C': ['L4','L1-36C','L2'],
-      'L12-18C-W2R': ['L4','L1-18C','L2-W2'],
-      'L12-36C-W2R': ['L4','L1-36C','L2-W2'],
-      'R08': ['R2','R1'],
-      'R08-W2L': ['R2-W2','R1'],
-      'R08-18C': ['R2','R1-18C'],
-      'R08-36C': ['R2','R1-36C'],
-      'R10': ['R2','R1','R3'],
-      'R10-W2L': ['R2-W2','R1','R3'],
-      'R10-18C': ['R2','R1-18C','R3'],
-      'R10-36C': ['R2','R1-36C','R3'],
-      'R10-W2L-18C': ['R2-W2','R1-18C','R3'],
-      'R10-W2L-36C': ['R2-W2','R1-36C','R3'],
-      'R12': ['R2','R1','R4'],
-      'R12-W2L': ['R2-W2','R1','R4'],
-      'R12-18C': ['R2','R1-18C','R4'],
-      'R12-36C': ['R2','R1-36C','R4'],
-      'R12-W2L-18C': ['R2-W2','R1-18C','R4'],
-      'R12-W2L-36C': ['R2-W2','R1-36C','R4']
-    },
+    configItems: [],
+    configCosts: [],
+    panelWidthMap: {},
+    sgFauxMap: {},
     ptFauxMap: {
-      'PF16-4-W3-D72C': ['PF16-4-W3-D72C','p2','p3'],
-      'PF16-4-W3': ['PF16-4-W3','p2','p3'],
-      'PF12-4-W3-D72C': ['PF12-4-W3-D72C','p2','p3'],
-      'PF12-4-W3': ['PF12-4-W3','p2','p3'],
-      'PL10': ['PL10','p2','p3'],
-      'PL10-36C': ['PL10-36C','p2','p3'],
-      'PR10': ['PR10','p2','p3'],
-      'PR10-36C': ['PR10-36C','p2','p3'],
-      'PL12': ['PL12','p2','p3'],
-      'PL12-36C': ['PL12-36C','p2','p3'],
-      'PL16-36C': ['PL16-36C','p2','p3'],
-      'PR12': ['PR12','p2','p3'],
-      'PR12-36C': ['PR12-36C','p2','p3'],
-      'PR16-36C': ['PR16-36C','p2','p3'],
-      'PB10': ['PB10','p2','p3'],
-      'PB10-36C': ['PB10-36C','p2','p3'],
-      'PB12': ['PB12','p2','p3'],
-      'PB12-36C': ['PB12-36C','p2','p3'],
-      'PB12-2-W3': ['PB12-2-W3','p2','p3'],
-      'PB16': ['PB16','p2','p3'],
-      'PB16-2-W3': ['PB16-2-W3','p2','p3'],
     },
     retail: {
-      'lifestyle': 0,
-      'bath': 0,
-      'miniKitchen': 0,
-      'kitchen': 0,
-      'bedroom': 0
     },
     bomCodes: {
-      'iron-gray': '08',
-      'pearl-gray': '07',
-      'arctic-white': '01',
-      'countrylane-red': '04',
-      'rich-espresso': '03',
-      'timber-bark': '05',
-      'cobble-stone': '02',
-      'heathered-moss': '06',
-      'unfinished-eaves': 'SDUE',
-      'factory-primed-white': 'SDFP',
-      'ashlar-oak': '01',
-      'sandcastle-oak': '02',
-      'fawn-chestnut': '04',
-      'knotted-chestnut': '05',
-      'natural-hickory': '06',
-      'fumed-hickory': '07',
-      'cedar-chestnut': '03',
-      'gothic-arch': 'BA02',
-      'ice-fog': 'BA03',
-      'stone-grey': 'BA01',
-      'yuri-grey': 'YG',
-      'silverstone': 'SS',
-      'merino-grey': 'MG',
-      'matte-black': 'MB',
-      'satin-nickel': 'BN',
-      'white-shaker': 'WS',
-      'grey-shaker': 'GS',
-      'aluminum': 'CA',
-      'studio-shed-bronze': 'BZ',
-      'signature': 'SG',
-      'portland': 'PT',
-      'summit': 'SM'
     },
     frontElevationCodes: {
-      20: 'FL',
-      18: 'FL',
-      16: 'FM',
-      14: 'FS'
     },
     backElevationCodes: {
-      20: 'BT20x',
-      18: 'BT16x',
-      16: 'BT16x',
-      14: 'BT12x'
     },
     labels: {
-      'iron-gray': 'Iron Gray',
-      'pearl-gray': 'Pearl Gray',
-      'arctic-white': 'Arctic White',
-      'countrylane-red': 'Countrylane Red',
-      'rich-espresso': 'Rich Espresso',
-      'timber-bark': 'Timber Bark',
-      'cobble-stone': 'Cobble Stone',
-      'heathered-moss': 'Heathered Moss',
-      'electric-lime': 'Electric Lime',
-      'relentless-olive': 'Relentless Olive',
-      'tricorn-black': 'Tricorn Black',
-      'yam': 'Yam',
-      'naval': 'Naval',
-      'fireworks': 'Fireworks',
-      'forsythia': 'Forsythia',
       'unfinished-eaves': 'Unfinished',
       'natural-stain': 'Natural Stain',
       'charwood-stain': 'Charwood Stain',
       'factory-primed-white': 'Factory Primed White',
-      'sandcastle-oak': 'Sandcastle Oak',
-      'fawn-chestnut': 'Fawn Chestnut',
-      'knotted-chestnut': 'Knotted Chestnut',
-      'natural-hickory': 'Natural Hickory',
-      'fumed-hickory': 'Fumed Hickory',
-      'cedar-chestnut': 'Cedar Chestnut',
-      'gothic-arch': 'Gothic Arch',
-      'ice-fog': 'Ice Fog',
-      'stone-grey': 'Stone Grey',
-      'yuri-grey': 'Yuri Grey',
-      'silverstone': 'Silverstone',
-      'merino-grey': 'Merino Grey',
-      'matte-black': 'Matte Black',
-      'satin-nickel': 'Satin Nickel',
-      'white-shaker': 'White Shaker',
-      'grey-shaker': 'Grey Shaker',
-      'aluminum': 'Clear Anodized Aluminum',
-      'studio-shed-bronze': 'Bronze',
-      'pebble-gray': 'Pebble Gray',
-      'ebony': 'Ebony',
-      'LS': 'Lifestyle',
-      'ST': 'Standard'
     },
     colors: {
       'pink': 'rgb(255, 20, 255)',
-      'iron-gray': 'rgb(82, 83, 86)',
-      'pearl-gray': 'rgb(177, 178, 176)',
-      'arctic-white': 'rgb(235, 236, 238)',
-      'countrylane-red': 'rgb(110, 57, 41)',
-      'rich-espresso': 'rgb(91, 87, 82)',
-      'timber-bark': 'rgb(122, 114, 93)',
-      'cobble-stone': 'rgb(201, 196, 180)',
-      'heathered-moss': 'rgb(148, 144, 109)',
-      'factory-primed-white': 'rgb(245, 245, 245)',
-      'electric-lime': 'rgb(142, 195, 16)',
-      'relentless-olive': 'rgb(110, 116, 59)',
-      'tricorn-black': 'rgb(45, 45, 46)',
-      'yam': 'rgb(197, 114, 58)',
-      'naval': 'rgb(47, 61, 75)',
-      'fireworks': 'rgb(215, 57, 48)',
-      'forsythia': 'rgb(252, 210, 0)',
       'studio-shed-bronze': 'rgb(32, 26, 24)',
       'ebony': 'rgb(32, 32, 33)',
       'pebble-gray': 'rgb(140, 130, 110)',
@@ -746,13 +312,6 @@ window.addEventListener('DOMContentLoaded', () => {
       'fixture'
     ],
     textures: {
-      'amarili': 'https://bigtimber-dev.bypboh.com/assets/textures/mata_G.jpg',
-      'wood_deck': 'https://bigtimber-dev.bypboh.com/assets/textures/wood_deck.jpg',
-      'Grass_Ground': 'https://bigtimber-dev.bypboh.com/assets/textures/Grass_Ground.jpg',
-      'Perimeter_wall': 'https://bigtimber-dev.bypboh.com/assets/textures/concrete.jpg',
-      'Fence': 'https://bigtimber-dev.bypboh.com/assets/textures/fence.jpg',
-      'groundHeightMap': 'https://bigtimber-dev.bypboh.com/assets/textures/gentle.png',
-      'ground': 'https://bigtimber-dev.bypboh.com/assets/textures/grass.jpg',
       'wood': 'https://bigtimber-dev.bypboh.com/assets/textures/wood.jpg',
       'concrete': 'https://bigtimber-dev.bypboh.com/assets/textures/concrete.jpg',
       'base-lap': 'https://bigtimber-dev.bypboh.com/assets/textures/base_lap.png',
@@ -994,9 +553,9 @@ window.addEventListener('DOMContentLoaded', () => {
       Harp.setColor('hardware', Harp.colors['black'])
 
 
-      Harp.setColor('timber', 'rgb(178, 120, 59)')
+      Harp.setColor('timber', Harp.colors['natural-stain'])
       Harp.timber_material.diffuseTexture = woodTexture
-
+      Harp.timber_material.specularColor = new BABYLON.Color3(0, 0, 0);
 
 
       Harp.setColor('lumber', Harp.colors['white'])
@@ -1077,7 +636,7 @@ window.addEventListener('DOMContentLoaded', () => {
       window.dispatchEvent(new CustomEvent('update-exterior'))
     }, 1500);
   })
-
+  scene.clearColor = BABYLON.Color3.White();
   engine.runRenderLoop(function () {
     scene.render()
   })

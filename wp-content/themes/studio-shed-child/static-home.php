@@ -25,8 +25,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1685642586482">
-  <script src="/assets/main.bundle.js?v=1685642586482"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1686152615412">
+  <script src="/assets/main.bundle.js?v=1686152615412"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -40,8 +40,8 @@
 </head>
 <body>
 
-<a class="w-full text-center py-1 bg-yellow-600 text-white text-sm hidden md:block" href="https://shop.studio-shed.com/" target="_blank">
-  Summer Sale:  15% off Models June 1-19
+<a class="w-full text-center py-2 bg-yellow-600 text-white text-sm block" href="https://shop.studio-shed.com/" target="_blank">
+  QUICK QUOTE TODAY
 </a>
 
 
@@ -241,6 +241,7 @@
     </div>
   </div>
 </div>
+        <a href="https://shop.studio-shed.com/" class="text-sm xl:text-base font-normal text-gray-700 hover:text-gray-900"> Design Your Own </a>
         <div @click.outside="adusFlyout = false">  
   <button type="button" class="text-gray-700 group bg-white rounded-md inline-flex items-center text-sm xl:text-base font-normal hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500" aria-expanded="false" @click="adusFlyout = ! adusFlyout">
     <span>ADUs</span>
@@ -626,8 +627,6 @@
     </div>
   </div>
 </div>
-
-        <a href="https://shop.studio-shed.com/" class="text-sm xl:text-base font-normal text-gray-700 hover:text-gray-900"> Design Center </a>
         <div class="" @click.outside="moreFlyout = false">  
   <button type="button" class="text-gray-700 group bg-white rounded-md inline-flex items-center text-sm xl:text-base font-normal hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500" aria-expanded="false" @click="moreFlyout = ! moreFlyout">
     <span>More</span>
@@ -1235,9 +1234,11 @@
 
 <main id="page-home">
 
-  <div class="h-[66vh] bg-black relative">
+  <div class="h-[60vh] bg-black relative">
     <div class="absolute top-0 right-4 w-20 sm:w-24 h-auto z-10 bg-white p-4">
-    <img src="/assets/images/studio-15-badge.png" alt="Studio Shed 15 Year Anniversary">
+    <a href="https://shop.studio-shed.com">
+      <img src="/assets/images/studio-15-badge.png" alt="Studio Shed 15 Year Anniversary">
+    </a>
     </div>
     <div class="swiper mx-auto">
       <div class="swiper-wrapper">
@@ -1330,44 +1331,40 @@
         <p class="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">Explore our backyard studios and accessory dwelling units.</p>
       </div>
     </div>
-
-
     <div class="max-w-6xl mx-auto pb-24 px-4 overflow-hidden sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 gap-y-12 gap-x-12 md:grid-cols-2 xl:grid-cols-3 lg:gap-x-12">
         <div>
           <a href="/products/summit-series/" class="group text-lg text-center"
-              title="Studio Shed Summit series product images and features">
-          <div class="w-full aspect-w-5 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75 mb-2">
-            <img loading="lazy" src="/assets/images/home-models-summit.jpg"
-                 class="w-full h-full object-center object-cover"
-                 alt="Studio Shed summit series unit with iron gray siding and white doors">
-          </div>
-          <h3 class="font-bold text-gray-700">Summit Series</h3>
-        </a>
+             title="Studio Shed Summit series product images and features">
+            <div class="w-full aspect-w-5 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75 mb-2">
+              <img loading="lazy" src="/assets/images/home-models-summit.jpg"
+                   class="w-full h-full object-center object-cover"
+                   alt="Studio Shed summit series unit with iron gray siding and white doors">
+            </div>
+            <h3 class="font-bold text-gray-700">Summit Series</h3>
+          </a>
         </div>
-
         <div>
           <a href="/products/signature-series/" class="group text-lg text-center"
-              title="Studio Shed Signature series product images and features">
-          <div class="w-full aspect-w-5 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75 mb-2">
-            <img loading="lazy" src="/assets/images/home-models-signature.jpg"
-                 class="w-full h-full object-center object-cover"
-                 alt="Studio Shed signature series with dark trim and navy doors">
-          </div>
-          <h3 class="font-bold text-gray-700">Signature Series</h3>
-        </a>
+             title="Studio Shed Signature series product images and features">
+            <div class="w-full aspect-w-5 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75 mb-2">
+              <img loading="lazy" src="/assets/images/home-models-signature.jpg"
+                   class="w-full h-full object-center object-cover"
+                   alt="Studio Shed signature series with dark trim and navy doors">
+            </div>
+            <h3 class="font-bold text-gray-700">Signature Series</h3>
+          </a>
         </div>
-
         <div>
           <a href="/products/portland-series/" class="group text-lg text-center"
-              title="Studio Shed Portland series product images and features">
-          <div class="w-full aspect-w-5 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75 mb-2">
-            <img loading="lazy" src="/assets/images/home-models-portland.jpg"
-                 class="w-full h-full object-center object-cover"
-                 alt="Studio Shed Portland series with cedar plank siding and black doors">
-          </div>
-          <h3 class="font-bold text-gray-700">Portland Series</h3>
-        </a>
+             title="Studio Shed Portland series product images and features">
+            <div class="w-full aspect-w-5 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75 mb-2">
+              <img loading="lazy" src="/assets/images/home-models-portland.jpg"
+                   class="w-full h-full object-center object-cover"
+                   alt="Studio Shed Portland series with cedar plank siding and black doors">
+            </div>
+            <h3 class="font-bold text-gray-700">Portland Series</h3>
+          </a>
         </div>
       </div>
 

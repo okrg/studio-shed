@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1685642586482">
-  <script src="/assets/main.bundle.js?v=1685642586482"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1686152615412">
+  <script src="/assets/main.bundle.js?v=1686152615412"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -77,8 +77,8 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFQVBLT"
                     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-<a class="w-full text-center py-1 bg-yellow-600 text-white text-sm hidden md:block" href="https://shop.studio-shed.com/" target="_blank">
-  Summer Sale:  15% off Models June 1-19
+<a class="w-full text-center py-2 bg-yellow-600 text-white text-sm block" href="https://shop.studio-shed.com/" target="_blank">
+  QUICK QUOTE TODAY
 </a>
 
 <header x-cloak x-data="window.Components.navManager">
@@ -277,6 +277,7 @@
     </div>
   </div>
 </div>
+        <a href="https://shop.studio-shed.com/" class="text-sm xl:text-base font-normal text-gray-700 hover:text-gray-900"> Design Your Own </a>
         <div @click.outside="adusFlyout = false">  
   <button type="button" class="text-gray-700 group bg-white rounded-md inline-flex items-center text-sm xl:text-base font-normal hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500" aria-expanded="false" @click="adusFlyout = ! adusFlyout">
     <span>ADUs</span>
@@ -662,8 +663,6 @@
     </div>
   </div>
 </div>
-
-        <a href="https://shop.studio-shed.com/" class="text-sm xl:text-base font-normal text-gray-700 hover:text-gray-900"> Design Center </a>
         <div class="" @click.outside="moreFlyout = false">  
   <button type="button" class="text-gray-700 group bg-white rounded-md inline-flex items-center text-sm xl:text-base font-normal hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500" aria-expanded="false" @click="moreFlyout = ! moreFlyout">
     <span>More</span>
