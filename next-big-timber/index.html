@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Next POC</title>      
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1686248006897">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1686688859640">
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/babylonjs/4.2.2/babylon.min.js"></script>
   	<script src="https://cdn.jsdelivr.net/npm/babylonjs-loaders@5.9.1/babylonjs.loaders.min.js"></script>
   	<script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
-    <script src="/assets/next-big-timber-harp.js?v=1686248006897"></script>
+    <script src="/assets/next-big-timber-harp.js?v=1686688859640"></script>
   </head>
   <body>
     <header class="text-center uppercase py-12 text-xs bg-gray-100 mb-12">Header</header>
@@ -24,30 +24,39 @@
 
         <div class="w-full aspect-w-1 aspect-h-1">
          
-        <canvas id="renderCanvas" touch-action="none" style="display:none" data-big-timber-model="santa-monica-10x10"></canvas>
+        <canvas id="renderCanvas" touch-action="none" style="display:none" data-big-timber-model="laguna-12x12"></canvas>
 
         </div>
       </div>
 
       <!-- Product info -->
       <div class="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
-        <h1 class="text-3xl font-extrabold tracking-tight text-gray-900">Santa Monica</h1>
-
-        <div class="mt-3">
-          <p class="text-3xl text-gray-900">$XX,XXX</p>
-        </div>
-
-
-
-        <div class="mt-6">
-          <h3 class="sr-only">Description</h3>
-
-          <div class="text-base text-gray-700 space-y-6">
-            <p>Lorem ipsum...</p>
-          </div>
-        </div>
-
         <form class="mt-6">
+          <div class="grid grid-cols-3 text-sm font-medium text-gray-700 mb-4">
+          <a href="#" onClick="Harp.setModel('laguna-12x12')" class="text-green-600 hover:underline">Laguna 12x12</a>
+          <a href="#" onClick="Harp.setModel('laguna-14x14')" class="text-green-600 hover:underline">Laguna 14x14</a>
+          <a href="#" onClick="Harp.setModel('laguna-14x18')" class="text-green-600 hover:underline">Laguna 14x18</a>
+          <a href="#" onClick="Harp.setModel('laguna-14x22')" class="text-green-600 hover:underline">Laguna 14x22</a>
+          <a href="#" onClick="Harp.setModel('laguna-18x18')" class="text-green-600 hover:underline">Laguna 18x18</a>
+          <a href="#" onClick="Harp.setModel('laguna-22x22')" class="text-green-600 hover:underline">Laguna 22x22</a>
+          </div>
+          <div class="grid grid-cols-3 text-sm font-medium text-gray-700 mb-4">
+          <a href="#" onClick="Harp.setModel('santa-monica-10x10')" class="text-yellow-600 hover:underline">Santa Monica 10x10</a>
+          <a href="#" onClick="Harp.setModel('santa-monica-10x12')" class="text-yellow-600 hover:underline">Santa Monica 10x12</a>
+          <a href="#" onClick="Harp.setModel('santa-monica-10x16')" class="text-yellow-600 hover:underline">Santa Monica 10x16</a>
+          <a href="#" onClick="Harp.setModel('santa-monica-12x12')" class="text-yellow-600 hover:underline">Santa Monica 12x12</a>
+          <a href="#" onClick="Harp.setModel('santa-monica-12x16')" class="text-yellow-600 hover:underline">Santa Monica 12x16</a>
+          <a href="#" onClick="Harp.setModel('santa-monica-16x16')" class="text-yellow-600 hover:underline">Santa Monica 16x16</a>
+          </div>
+          <div class="grid grid-cols-3 text-sm font-medium text-gray-700 mb-4">
+          <a href="#" onClick="Harp.setModel('saratoga-12x12')" class="text-green-600 hover:underline">Saratoga 12x12</a>
+          <a href="#" onClick="Harp.setModel('saratoga-12x14')" class="text-green-600 hover:underline">Saratoga 12x14</a>
+          <a href="#" onClick="Harp.setModel('saratoga-12x16')" class="text-green-600 hover:underline">Saratoga 12x16</a>
+          <a href="#" onClick="Harp.setModel('saratoga-14x14')" class="text-yellow-600 hover:underline">Saratoga 14x14</a>
+          <a href="#" onClick="Harp.setModel('saratoga-14x16')" class="text-yellow-600 hover:underline">Saratoga 14x16</a>
+          <a href="#" onClick="Harp.setModel('saratoga-16x16')" class="text-yellow-600 hover:underline">Saratoga 16x16</a>
+
+          </div>
 
 
 
@@ -67,6 +76,11 @@
               <option value="ogee" selected>OGEE</option>
               <option value="chamfer">CHAMFER</option>
               <option value="classic">CLASSIC</option>
+              <option value="flush">FLUSH</option>
+              <option value="cove">COVE</option>
+              <option value="bullnose">BULLNOSE</option>
+              <option value="3step">3STEP</option>
+
             </select>
           </div>
 

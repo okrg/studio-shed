@@ -97,15 +97,15 @@ window.addEventListener('DOMContentLoaded', () => {
     const ambient = new BABYLON.HemisphericLight('ambient', new BABYLON.Vector3(0, 1, 0), scene)
     ambient.diffuse = new BABYLON.Color3(0.8 , 0.8, 0.8)
     ambient.specular = new BABYLON.Color3(0.8 , 0.8, 0.8)
-    ambient.groundColor = new BABYLON.Color3(0.8 , 0.8, 0.8)
+    ambient.groundColor = new BABYLON.Color3(1 , 1, 1)
     ambient.intensity = 1
 
 
     const sun = new BABYLON.DirectionalLight('sun', new BABYLON.Vector3(-1, -2, -1), scene)
     sun.position = new BABYLON.Vector3(40, 350, 40)
-    //sun.specular = new BABYLON.Color3(0, 0, 0)
-    sun.intensity = 0.9
-    //sun.bloomEnabled = 0.5
+    sun.specular = new BABYLON.Color3(0, 0, 0)
+    sun.intensity = 1
+    sun.bloomEnabled = 0.5
 
     Harp.shadowGenerator = new BABYLON.ShadowGenerator(1024, sun)
     Harp.shadowGenerator.darkness = 0
@@ -118,11 +118,11 @@ window.addEventListener('DOMContentLoaded', () => {
     Harp.createFoundation = function () {
       // Create the floor using BABYLON.MeshBuilder.CreateBox
       var worldFloor = BABYLON.MeshBuilder.CreateBox("worldFloor", { width: 5000, depth: 5000, height: 1 }, scene);
-      worldFloor.position = new BABYLON.Vector3(0, -16, 0); // Center the floor at 0, 0, 0
+      worldFloor.position = new BABYLON.Vector3(0, 0, 0); // Center the floor at 0, 0, 0
 
       // Create a light gray material for the floor
       var worldFloorMaterial = new BABYLON.StandardMaterial("worldFloorMaterial", scene);
-      worldFloorMaterial.diffuseColor = new BABYLON.Color3(0.8, 0.8, 0.8); // Light gray
+      worldFloorMaterial.diffuseColor = new BABYLON.Color3(0.9, 0.9, 0.9); // Light gray
       worldFloorMaterial.specularColor = new BABYLON.Color3(0, 0, 0); // Specular settings
       worldFloor.material = worldFloorMaterial;
 
@@ -145,7 +145,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
     //Default routine  **********
-    Harp.useRecipe = function (size ='10x10', endcut = 'ogee') {
+    Harp.useRecipe = function () {
       let l,d
       Harp.config = {}
       Harp.config.product = window.recipe.model
@@ -153,7 +153,7 @@ window.addEventListener('DOMContentLoaded', () => {
       Harp.config.area = window.recipe.length * window.recipe.depth
       Harp.config.length = l = window.recipe.length
       Harp.config.depth = d = window.recipe.depth
-      Harp.config.endcut = endcut
+      Harp.config.endcut = window.recipe.endcut
 
       if (Harp.productContainer) {
         Harp.productContainer.dispose()
@@ -161,45 +161,57 @@ window.addEventListener('DOMContentLoaded', () => {
         Harp.productContainer = new BABYLON.AssetContainer(scene)
       }
 
-      BABYLON.SceneLoader.ImportMesh('', 'https://bigtimber-dev.bypboh.com/assets/obj/', Harp.config.product + '-' + Harp.config.size + '-' + endcut + '.obj', scene, function (newMeshes) {
-          newMeshes.forEach(function (m){
+      BABYLON.SceneLoader.ImportMesh('', '/assets/obj/', Harp.config.product + '-' + Harp.config.size + '-' + Harp.config.endcut + '.obj', scene, function (newMeshes) {
+        let min = new BABYLON.Vector3(Number.MAX_VALUE, Number.MAX_VALUE, Number.MAX_VALUE);
+        let max = new BABYLON.Vector3(-Number.MAX_VALUE, -Number.MAX_VALUE, -Number.MAX_VALUE);
+
+        newMeshes.forEach(mesh => {
+          let boundingInfo = mesh.getBoundingInfo();
+          min = BABYLON.Vector3.Minimize(min, boundingInfo.minimum);
+          max = BABYLON.Vector3.Maximize(max, boundingInfo.maximum);
+        });
+
+        // Calculate the model's height
+        let height = max.y - min.y;
+        console.log("Mesh height is: " + height);
+
+        newMeshes.forEach(function (m){
             console.log(m.name)
-            if (m.name.includes('Post')) {
-              m.parent = Harp['posts']
-              m.material = Harp['posts' + '_material']
-              //m.receiveShadows = true
-            }
-            if (m.name.includes('HardwareBolts')) {
+            m.receiveShadows = false
+            if (m.name.includes('hardware')) {
               m.parent = Harp['hardware']
               m.material = Harp['hardware' + '_material']
+            } else if (m.name.includes('roof')) {
+              if (m.name.includes('shingles')) {
+                m.parent = Harp['shingles']
+                m.material = Harp['shingles' + '_material']
+              } else {
+                m.parent = Harp['roof']
+                m.material = Harp['roof' + '_material']
+                m.receiveShadows = true
+              }
             } else {
               m.parent = Harp['timber']
               m.material = Harp['timber' + '_material']
+              m.receiveShadows = true
             }
 
             m.enableEdgesRendering();
             m.edgesWidth = 16;
             m.edgesColor =  new BABYLON.Color4(8 / 255, 8 / 255, 8 / 255, 1)
 
-
-
             Harp.productContainer.meshes.push(m)
-            //m.receiveShadows = true
+
             Harp.shadowGenerator.getShadowMap().renderList.push(m);
 
-            Harp.materialGroups.forEach(function (group){
-              if (m.name.includes(group)) {
-                m.parent = Harp[group]
-                m.material = Harp[group + '_material']
-              }
-            })
-
-
-
-            m.position.z = (l*12)/2
-            m.position.y = -24
-            m.position.x = -(d*12)/2
+            //obj models should be centered on 0,0,0 when export from sketchup
+            m.position.z = 0
+            m.position.y += height / 2;
+            m.position.x = 0
           })
+
+
+
         })
 
 
@@ -287,6 +299,8 @@ window.addEventListener('DOMContentLoaded', () => {
       'FarPlant',
       'Lantern',
       'LanternGlass',
+      'roof',
+      'shingles',
       'timber',
       'hardware',
       'potsoil',
@@ -328,17 +342,37 @@ window.addEventListener('DOMContentLoaded', () => {
         Harp[group].getChildMeshes(false)[i].material.diffuseColor = color
       }
     },
-    setUnitSize: function(size, endcut = 'ogee') {
-      //convert a string like 10x12 to an length and depth
+    setModel: function(model) {
+      const parts = model.split('-');
+      const size = parts.pop();
+      const name = parts.join('-');
+      const length = size.split('x')[0]
+      const depth = size.split('x')[1]
+      const parsed = { name, size, length, depth };
+      let suffix = 'ogee'
+      if(parsed.name === 'laguna') {
+        //set default endcut
+        suffix = 'default'
+      }
+      window.recipe = {
+        "model": parsed.name,
+        "size": parsed.size,
+        "endcut": suffix,
+        "depth": parsed.depth,
+        "length": parsed.length
+      }
+
+      Harp.useRecipe()
+    },
+    setUnitSize: function(size) {
       window.recipe.size = size
       window.recipe.length = size.split('x')[0]
       window.recipe.depth = size.split('x')[1]
-      window.recipe.endcut = endcut
-      Harp.useRecipe(window.recipe.size, window.recipe.endcut)
+      Harp.useRecipe()
     },
-    setEndCut: function(endcut) {
-      window.recipe.endcut = endcut
-      Harp.useRecipe(window.recipe.size, window.recipe.endcut)
+    setEndCut: function(suffix = 'default') {
+      window.recipe.endcut = suffix
+      Harp.useRecipe()
     },
     setTrimColor: function(color) {
       Harp.setColor('trim_color', Harp.colors[color])
@@ -424,6 +458,19 @@ window.addEventListener('DOMContentLoaded', () => {
       let recipeResponse = {}
       if(model == null) {
         model = document.querySelector('#renderCanvas').getAttribute('data-big-timber-model')
+        const parts = model.split('-');
+        const size = parts.pop();
+        const name = parts.join('-');
+        const length = size.split('x')[0]
+        const depth = size.split('x')[1]
+        const parsed = { name, size, length, depth };
+        window.recipe = {
+          "model": parsed.name,
+          "size": parsed.size,
+          "endcut": "ogee",
+          "depth": parsed.depth,
+          "length": parsed.length
+        }
       }
       if(model == 'santa-monica-10x10') {
         window.recipe = {"model":"santa-monica","size":"10x10","depth":10,"length":10}
@@ -515,6 +562,8 @@ window.addEventListener('DOMContentLoaded', () => {
       Harp.materialGroups.forEach(function (group){
         Harp[group].setEnabled(false)
       })
+      Harp['roof'].setEnabled(true);
+      Harp['shingles'].setEnabled(true);
       Harp['timber'].setEnabled(true);
       Harp['hardware'].setEnabled(true);
       Harp['white'].setEnabled(true);
@@ -546,16 +595,32 @@ window.addEventListener('DOMContentLoaded', () => {
       woodTexture.uScale = woodTexture.vScale = 0.015
       woodTexture.specular = 5
 
-      let fenceeTexture = new BABYLON.Texture(Harp.textures['Fence'])
-      fenceeTexture.uScale = fenceeTexture.vScale = 0.015
-      fenceeTexture.specular = 5
+      let specColor = new BABYLON.Color3(0.25, 0.25, 0.25)
 
       Harp.setColor('hardware', Harp.colors['black'])
+      //Harp.hardware_material.diffuseColor = new BABYLON.Color3(0.05, 0.05, 0.05)
+      Harp.hardware_material.specularPower = 25
+      Harp.hardware_material.specularColor = new BABYLON.Color3(0.8, 0.8, 0.8);
 
 
       Harp.setColor('timber', Harp.colors['natural-stain'])
       Harp.timber_material.diffuseTexture = woodTexture
-      Harp.timber_material.specularColor = new BABYLON.Color3(0, 0, 0);
+      Harp.timber_material.specularPower = 5
+      Harp.timber_material.specularColor = specColor
+
+      Harp.setColor('shingles', Harp.colors['white'])
+      let shinglesTexture = new BABYLON.Texture(Harp.textures['cedar-plank'])
+      shinglesTexture.uScale = shinglesTexture.vScale = 1
+      Harp.shingles_material.diffuseTexture = shinglesTexture
+      Harp.shingles_material.specularPower = 7
+      Harp.shingles_material.specularColor  = specColor
+
+
+      Harp.setColor('roof', Harp.colors['cedar-plank'])
+      Harp.roof_material.diffuseTexture = woodTexture
+      Harp.roof_material.specularPower = 10
+      Harp.roof_material.specularColor = specColor
+
 
 
       Harp.setColor('lumber', Harp.colors['white'])
@@ -574,51 +639,9 @@ window.addEventListener('DOMContentLoaded', () => {
       Harp.PAthway_C_material.diffuseTexture = new BABYLON.Texture(Harp.textures['Perimeter_wall'])
       Harp.PAthway_C_material.specularPower = 4
       Harp.PAthway_C_material.specularColor = new BABYLON.Color3(0.125, 0.125, 0.125)
-      Harp.setColor('shed_Deck', Harp.colors['white'])
-      Harp.shed_Deck_material.diffuseTexture = new BABYLON.Texture(Harp.textures['wood_deck'])
-      Harp.shed_Deck_material.specularPower = 4
-      Harp.shed_Deck_material.specularColor = new BABYLON.Color3(0.125, 0.125, 0.125)
-      Harp.setColor('PlanterPlant', Harp.colors['pearl-gray'])
-      Harp.PlanterPlant_material.diffuseTexture = new BABYLON.Texture(Harp.textures['amarili'])
-      Harp.PlanterPlant_material.specularPower = 4
-      Harp.PlanterPlant_material.specularColor = new BABYLON.Color3(0.125, 0.125, 0.125)
-      Harp.setColor('Deck_Light', Harp.colors['tricorn-black'])
-      Harp.setColor('Deck_Light_Glass', Harp.colors['glass'])
-      Harp.setColor('Lantern', Harp.colors['rich-espresso'])
 
-      Harp.setColor('LanternGlass', Harp.colors['glass'])
-      Harp.LanternGlass_material.alpha = 0.25
-      Harp.setColor('lounge_cushion', Harp.colors['cobble-stone'])
 
-      Harp.setColor('TallPot', Harp.colors['tricorn-black'])
-      Harp.TallPot_material.diffuseTexture = new BABYLON.Texture(Harp.textures['Perimeter_wall'])
-      Harp.TallPot_material.specularPower = 4
-      Harp.TallPot_material.specularColor = new BABYLON.Color3(0.125, 0.125, 0.125)
-      Harp.setColor('ShortPot', Harp.colors['iron-gray'])
-      Harp.ShortPot_material.diffuseTexture = new BABYLON.Texture(Harp.textures['Perimeter_wall'])
-      Harp.ShortPot_material.specularPower = 4
-      Harp.ShortPot_material.specularColor = new BABYLON.Color3(0.125, 0.125, 0.125)
-      Harp.setColor('FarPot', Harp.colors['iron-gray'])
-      Harp.FarPot_material.diffuseTexture = new BABYLON.Texture(Harp.textures['Perimeter_wall'])
-      Harp.FarPot_material.specularPower = 4
-      Harp.FarPot_material.specularColor = new BABYLON.Color3(0.125, 0.125, 0.125)
 
-      Harp.setColor('ShortPlant', Harp.colors['white'])
-      Harp.ShortPlant_material.diffuseTexture = new BABYLON.Texture(Harp.textures['amarili'])
-      Harp.ShortPlant_material.specularPower = 4
-      Harp.ShortPlant_material.specularColor = new BABYLON.Color3(0.125, 0.125, 0.125)
-      Harp.setColor('FarPlant', Harp.colors['white'])
-      Harp.FarPlant_material.diffuseTexture = new BABYLON.Texture(Harp.textures['amarili'])
-      Harp.FarPlant_material.specularPower = 4
-      Harp.FarPlant_material.specularColor = new BABYLON.Color3(0.125, 0.125, 0.125)
-
-      Harp.setColor('Planter', Harp.colors['pearl-gray'])
-      Harp.Planter_material.diffuseTexture = new BABYLON.Texture(Harp.textures['Perimeter_wall'])
-      Harp.setColor('potsoil', Harp.colors['rich-espresso'])
-      Harp.setColor('Perimeter_wall', Harp.colors['white'])
-      Harp.Perimeter_wall_material.diffuseTexture = new BABYLON.Texture(Harp.textures['Perimeter_wall'])
-
-      Harp.trim_color_material.specularPower = 15
 
       Harp.setEndCut('ogee')
     }

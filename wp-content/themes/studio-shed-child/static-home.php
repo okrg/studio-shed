@@ -25,8 +25,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1686248006897">
-  <script src="/assets/main.bundle.js?v=1686248006897"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1686688859640">
+  <script src="/assets/main.bundle.js?v=1686688859640"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -155,7 +155,7 @@
   <a href="/products/pagoda-right-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Pagoda Right</h3>
     <p class="max-h- text-gray-600">120 SF Studio</p>
-    <div class="text-gray-600 mb-2">$21,202</div>
+    <div class="text-gray-600 mb-2">$22,212</div>
     <img class="w-auto h-auto transition-all
          
           max-h-16
@@ -168,7 +168,7 @@
   <a href="/products/boreas-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Boreas</h3>
     <p class="max-h- text-gray-600">120 SF Studio</p>
-    <div class="text-gray-600 mb-2">$20,790</div>
+    <div class="text-gray-600 mb-2">$21,829</div>
     <img class="w-auto h-auto transition-all
          
           max-h-16
@@ -181,7 +181,7 @@
   <a href="/products/solitude-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Solitude</h3>
     <p class="max-h- text-gray-600">120 SF Studio</p>
-    <div class="text-gray-600 mb-2">$23,357</div>
+    <div class="text-gray-600 mb-2">$24,525</div>
     <img class="w-auto h-auto transition-all
          
           max-h-16
@@ -194,7 +194,7 @@
   <a href="/products/pagoda-left-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Pagoda Left</h3>
     <p class="max-h- text-gray-600">120 SF Studio</p>
-    <div class="text-gray-600 mb-2">$21,202</div>
+    <div class="text-gray-600 mb-2">$22,212</div>
     <img class="w-auto h-auto transition-all
          
           max-h-16
@@ -859,7 +859,7 @@
   <a href="/products/pagoda-right-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Pagoda Right</h3>
     <p class="max-h- text-gray-600">120 SF Studio</p>
-    <div class="text-gray-600 mb-2">$21,202</div>
+    <div class="text-gray-600 mb-2">$22,212</div>
     <img class="w-auto h-auto transition-all
          
           max-h-16
@@ -872,7 +872,7 @@
   <a href="/products/boreas-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Boreas</h3>
     <p class="max-h- text-gray-600">120 SF Studio</p>
-    <div class="text-gray-600 mb-2">$20,790</div>
+    <div class="text-gray-600 mb-2">$21,829</div>
     <img class="w-auto h-auto transition-all
          
           max-h-16
@@ -885,7 +885,7 @@
   <a href="/products/solitude-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Solitude</h3>
     <p class="max-h- text-gray-600">120 SF Studio</p>
-    <div class="text-gray-600 mb-2">$23,357</div>
+    <div class="text-gray-600 mb-2">$24,525</div>
     <img class="w-auto h-auto transition-all
          
           max-h-16
@@ -898,7 +898,7 @@
   <a href="/products/pagoda-left-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Pagoda Left</h3>
     <p class="max-h- text-gray-600">120 SF Studio</p>
-    <div class="text-gray-600 mb-2">$21,202</div>
+    <div class="text-gray-600 mb-2">$22,212</div>
     <img class="w-auto h-auto transition-all
          
           max-h-16
@@ -1294,8 +1294,6 @@
               </div>
             </div>
           </div>
-
-
 
           <div class="swiper-slide">
             <img src="/assets/images/home-slider/summer-15-02.jpg" alt="" class="absolute inset-0 h-full w-full object-cover" style="z-index:-10">
