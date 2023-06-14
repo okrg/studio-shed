@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1686688859640">
-  <script src="/assets/main.bundle.js?v=1686688859640"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1686773724271">
+  <script src="/assets/main.bundle.js?v=1686773724271"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -652,7 +652,7 @@
           </a>
         </li>
         <li class="relative">
-          <a href="/commercial/">
+          <a href="/commercial-story/">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
               <img loading="lazy" src="/assets/images/nav-inspiration-commercial.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
@@ -671,7 +671,7 @@
       <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
     </svg>
   </button>
-  <div x-show="moreFlyout" class="absolute z-50 mt-3 left-0 w-full" 
+  <div x-show="moreFlyout" class="absolute z-50 mt-3 left-0 w-full"
   x-transition:enter="transition ease-out duration-200" 
   x-transition:enter-start="opacity-0 translate-y-4" 
   x-transition:enter-end="opacity-100 translate-y-0" 
@@ -1182,7 +1182,7 @@
                   </a>
                 </li>
                 <li class="relative">
-                  <a href="/commercial/">
+                  <a href="/commercial-story/">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
                       <img src="/assets/images/nav-inspiration-commercial.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
                     </div>
