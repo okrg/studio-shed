@@ -25,8 +25,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1686777211606">
-  <script src="/assets/main.bundle.js?v=1686777211606"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1686777968521">
+  <script src="/assets/main.bundle.js?v=1686777968521"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -40,9 +40,6 @@
 </head>
 <body>
 
-<a class="w-full text-center py-2 bg-yellow-600 text-white text-sm font-bold block" href="https://shop.studio-shed.com/" target="_blank">
-  LIMITED TIME OFFER:  15% off All Models until June 19 <span class="underline hover:opacity-80">Start Now</a>
-</a>
 
 
 <header x-cloak x-data="window.Components.navManager">
