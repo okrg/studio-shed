@@ -161,7 +161,8 @@ window.addEventListener('DOMContentLoaded', () => {
         Harp.productContainer = new BABYLON.AssetContainer(scene)
       }
 
-      BABYLON.SceneLoader.ImportMesh('', '/assets/obj/', Harp.config.product + '-' + Harp.config.size + '-' + Harp.config.endcut + '.obj', scene, function (newMeshes) {
+
+      BABYLON.SceneLoader.ImportMesh('', 'https://bigtimber-dev.bypboh.com/assets/obj/', Harp.config.product + '-' + Harp.config.size + '-' + Harp.config.endcut + '.obj', scene, function (newMeshes) {
         let min = new BABYLON.Vector3(Number.MAX_VALUE, Number.MAX_VALUE, Number.MAX_VALUE);
         let max = new BABYLON.Vector3(-Number.MAX_VALUE, -Number.MAX_VALUE, -Number.MAX_VALUE);
 
@@ -173,10 +174,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
         // Calculate the model's height
         let height = max.y - min.y;
-        console.log("Mesh height is: " + height);
 
         newMeshes.forEach(function (m){
-            console.log(m.name)
+            //console.log(m.name)
             m.receiveShadows = false
             if (m.name.includes('hardware')) {
               m.parent = Harp['hardware']
@@ -209,13 +209,19 @@ window.addEventListener('DOMContentLoaded', () => {
             m.position.y += height / 2;
             m.position.x = 0
           })
-
-
-
         })
 
 
-
+        //shinglesTexture.uScale = shinglesTexture.vScale = 0.02
+        //if the model is saratoga use a larger scale
+        let shinglesTexture = new BABYLON.Texture(Harp.textures['shingle-driftwood'])
+        if (Harp.config.product === 'saratoga') {
+          shinglesTexture.uScale = shinglesTexture.vScale = 0.8
+        } else {
+          shinglesTexture.wAng = Math.PI/2
+          shinglesTexture.uScale = shinglesTexture.vScale = 0.02
+        }
+        Harp.shingles_material.diffuseTexture = shinglesTexture
 
     }
 
@@ -259,6 +265,9 @@ window.addEventListener('DOMContentLoaded', () => {
       'pebble-gray': 'rgb(140, 130, 110)',
       'unfinished-eaves': 'rgb(222, 222, 222)',
       'unfinished-trim': 'rgb(245, 245, 245)',
+      'red-stain': 'rgb(205, 116, 72)',
+      'cedar-tone-stain': 'rgb(183, 120, 83)',
+      'brown-stain': 'rgb(118, 91, 83)',
       'natural-stain': 'rgb(178, 120, 59)',
       'charwood-stain': 'rgb(75, 60, 48)',
       'cedar-plank': 'rgb(169, 107, 69)',
@@ -329,6 +338,11 @@ window.addEventListener('DOMContentLoaded', () => {
       'wood': 'https://bigtimber-dev.bypboh.com/assets/textures/wood.jpg',
       'concrete': 'https://bigtimber-dev.bypboh.com/assets/textures/concrete.jpg',
       'base-lap': 'https://bigtimber-dev.bypboh.com/assets/textures/base_lap.png',
+      'shingle-driftwood': 'https://bigtimber-dev.bypboh.com/assets/textures/shingle-driftwood.jpg',
+      'shingle-black': 'https://bigtimber-dev.bypboh.com/assets/textures/shingle-black.jpg',
+      'shingle-dark-brown': 'https://bigtimber-dev.bypboh.com/assets/textures/shingle-dark-brown.jpg',
+      'shingle-light-brown': 'https://bigtimber-dev.bypboh.com/assets/textures/shingle-light-brown.jpg',
+      'shingle-white': 'https://bigtimber-dev.bypboh.com/assets/textures/shingle-white.jpg',
       'cedar-plank': 'https://bigtimber-dev.bypboh.com/assets/textures/cedar-plank.jpg',
       'cedar-shake': 'https://bigtimber-dev.bypboh.com/assets/textures/cedar-shake.jpg',
       'ashlar-oak': 'https://bigtimber-dev.bypboh.com/assets/textures/ashlar-oak.jpg',
@@ -342,14 +356,14 @@ window.addEventListener('DOMContentLoaded', () => {
         Harp[group].getChildMeshes(false)[i].material.diffuseColor = color
       }
     },
-    setModel: function(model) {
+    setModel: function(model, suffix='ogee') {
       const parts = model.split('-');
       const size = parts.pop();
       const name = parts.join('-');
       const length = size.split('x')[0]
       const depth = size.split('x')[1]
       const parsed = { name, size, length, depth };
-      let suffix = 'ogee'
+
       if(parsed.name === 'laguna') {
         //set default endcut
         suffix = 'default'
@@ -374,76 +388,20 @@ window.addEventListener('DOMContentLoaded', () => {
       window.recipe.endcut = suffix
       Harp.useRecipe()
     },
-    setTrimColor: function(color) {
-      Harp.setColor('trim_color', Harp.colors[color])
-      Harp.setColor('plank_trim', Harp.colors[color])
-      Harp.setColor('plank_trims', Harp.colors[color])
-      Harp.setColor('plank_siding_trims', Harp.colors[color])
-      Harp.setColor('plank_siding_metal_trims', Harp.colors[color])
-
-      Harp.setColor('wood_texture_trims', Harp.colors[color])
-      Harp.setColor('wood_texture_metal_trims', Harp.colors[color])
-
-      Harp.setColor('block_siding_trims', Harp.colors[color])
-      Harp.setColor('block_siding_metal_trims', Harp.colors[color])
-
-      Harp.setColor('roof_metal', Harp.colors[color])
-      Harp.setColor('metal_wainscot', Harp.colors[color])
-      Harp.setColor('metal_wainscot1', Harp.colors[color])
-      if(color === 'aluminum') {
-        Harp.setSoffitColor('aluminum')
-        Harp.setFasciaColor('aluminum')
-
-
-
-        if (Object.keys(window.colorway).length > 0 && window.colorway['windowTrim'] === 'ebony') {
-          Harp.setColor('window_exterior', Harp.colors['tricorn-black'])
-          Harp.updateConfigParam('window_casement', 'ebony', 'Ebony')
-        } else {
-          Harp.setColor('window_exterior', Harp.colors['pebble-gray'])
-          Harp.updateConfigParam('window_casement', 'pebble-gray', 'Pebble Gray')
-        }
-      }
-      if(color === 'studio-shed-bronze') {
-        Harp.setSoffitColor('studio-shed-bronze')
-        Harp.setFasciaColor('studio-shed-bronze')
-        Harp.setColor('window_exterior', Harp.colors['tricorn-black'])
-        Harp.updateConfigParam('window_casement', 'ebony', 'Ebony')
-      }
-      Harp.updateConfigParam('trim_color', color)
+    setStain: function(color) {
+      Harp.setColor('timber', Harp.colors[color + '-stain'])
+      Harp.setColor('roof', Harp.colors[color + '-stain'])
+      //Harp.setColor('timber', Harp.colors['cedar-plank'])
     },
-    setSiding: function (siding) {
-      //Harp['trim_color'].setEnabled(false)
-      Harp.config.siding = siding
-      Harp.wood_texture.setEnabled(false)
-      Harp.wood_texture_metal.setEnabled(false)
-      Harp.wood_texture_trims.setEnabled(false)
-      Harp.wood_texture_metal_trims.setEnabled(false)
-
-      if (siding == 'cedar_shake') {
-        Harp.config.siding_price = Harp.retail.cedar_shake
-
-        if(Harp.config.metal_wainscot) {
-          Harp.wood_texture_metal.setEnabled(true)
-          Harp.wood_texture_metal_trims.setEnabled(true)
-          Harp.setColor('wood_texture_metal', Harp.colors['white'])
-          Harp.setColor('wood_texture_metal_trims', Harp.colors[Harp.config.trim_color])
-          Harp.wood_texture_metal_material.diffuseTexture = new BABYLON.Texture(Harp.textures['cedar-shake'])
-          Harp.wood_texture_metal_material.diffuseTexture.uScale = 0.05
-          Harp.wood_texture_metal_material.diffuseTexture.vScale = 0.035
-          Harp.config.siding_code = 'CSM'
-        } else {
-          Harp.wood_texture.setEnabled(true)
-          Harp.wood_texture_trims.setEnabled(true)
-          Harp.setColor('wood_texture', Harp.colors['white'])
-          Harp.setColor('wood_texture_trims', Harp.colors[Harp.config.trim_color])
-          Harp.wood_texture_material.diffuseTexture = new BABYLON.Texture(Harp.textures['cedar-shake'])
-          Harp.wood_texture_material.diffuseTexture.uScale = 0.05
-          Harp.wood_texture_material.diffuseTexture.vScale = 0.035
-          Harp.config.siding_code = 'CS'
-        }
+    setShingle: function(color) {
+      let shinglesTexture = new BABYLON.Texture(Harp.textures['shingle-' + color])
+      if (Harp.config.product === 'saratoga') {
+        shinglesTexture.uScale = shinglesTexture.vScale = 0.8
+      } else {
+        shinglesTexture.wAng = Math.PI/2
+        shinglesTexture.uScale = shinglesTexture.vScale = 0.02
       }
-
+      Harp.shingles_material.diffuseTexture = shinglesTexture
     },
     ucfirst: function(string) {
       return string[0].toUpperCase() + string.slice(1);
@@ -464,20 +422,20 @@ window.addEventListener('DOMContentLoaded', () => {
         const length = size.split('x')[0]
         const depth = size.split('x')[1]
         const parsed = { name, size, length, depth };
+        let suffix = 'ogee'
+        if(parsed.name === 'laguna') {
+          //set default endcut
+          suffix = 'default'
+        }
         window.recipe = {
           "model": parsed.name,
           "size": parsed.size,
-          "endcut": "ogee",
+          "endcut": suffix,
           "depth": parsed.depth,
           "length": parsed.length
         }
       }
-      if(model == 'santa-monica-10x10') {
-        window.recipe = {"model":"santa-monica","size":"10x10","depth":10,"length":10}
-      }
-
       Harp.useRecipe()
-
     },
     setCamera: function (side) {
       if(Harp.config.depth <= 14) {
@@ -594,24 +552,30 @@ window.addEventListener('DOMContentLoaded', () => {
       let woodTexture = new BABYLON.Texture(Harp.textures['wood'])
       woodTexture.uScale = woodTexture.vScale = 0.015
       woodTexture.specular = 5
+      woodTexture.emissive = new BABYLON.Color3(0.05, 0.05, 0.05)
+      woodTexture.diffuse = new BABYLON.Color3(0.05, 0.05, 0.05)
+      woodTexture.ambient = new BABYLON.Color3(0.05, 0.05, 0.05)
+      woodTexture.useParallax = true
+      woodTexture.useParallaxOcclusion = true
+      woodTexture.anisotropicFilteringLevel = 1
+
 
       let specColor = new BABYLON.Color3(0.25, 0.25, 0.25)
 
       Harp.setColor('hardware', Harp.colors['black'])
-      //Harp.hardware_material.diffuseColor = new BABYLON.Color3(0.05, 0.05, 0.05)
+      Harp.hardware_material.diffuseColor = new BABYLON.Color3(0.05, 0.05, 0.05)
       Harp.hardware_material.specularPower = 25
       Harp.hardware_material.specularColor = new BABYLON.Color3(0.8, 0.8, 0.8);
 
 
-      Harp.setColor('timber', Harp.colors['natural-stain'])
+      Harp.setColor('timber', Harp.colors['red-stain'])
       Harp.timber_material.diffuseTexture = woodTexture
+      //Harp.timber_material.diffuseColor = new BABYLON.Color3(0.05, 0.05, 0.05)
       Harp.timber_material.specularPower = 5
       Harp.timber_material.specularColor = specColor
 
       Harp.setColor('shingles', Harp.colors['white'])
-      let shinglesTexture = new BABYLON.Texture(Harp.textures['cedar-plank'])
-      shinglesTexture.uScale = shinglesTexture.vScale = 1
-      Harp.shingles_material.diffuseTexture = shinglesTexture
+
       Harp.shingles_material.specularPower = 7
       Harp.shingles_material.specularColor  = specColor
 
@@ -643,7 +607,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
-      Harp.setEndCut('ogee')
+
     }
   }
 

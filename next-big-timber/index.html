@@ -5,26 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Next POC</title>      
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1686780866108">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1687237832928">
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/babylonjs/4.2.2/babylon.min.js"></script>
   	<script src="https://cdn.jsdelivr.net/npm/babylonjs-loaders@5.9.1/babylonjs.loaders.min.js"></script>
   	<script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
-    <script src="/assets/next-big-timber-harp.js?v=1686780866108"></script>
+    <script src="/assets/next-big-timber-harp.js?v=1687237832928"></script>
+    <script src="/assets/main.bundle.js?v=1687237832928"></script>
   </head>
   <body>
-    <header class="text-center uppercase py-12 text-xs bg-gray-100 mb-12">Header</header>
+    <header class="text-center uppercase py-12 text-xs bg-gray-100 mb-12"></header>
     
 <main>
 <div class="bg-white">
-  <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+  <div class="max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8">
     <div class="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start">
       <!-- Image gallery -->
       <div class="flex flex-col-reverse">
 
 
-        <div class="w-full aspect-w-1 aspect-h-1">
+        <div class="w-full aspect-w-1 aspect-h-1 border border-gray-200">
          
-        <canvas id="renderCanvas" touch-action="none" style="display:none" data-big-timber-model="laguna-12x12"></canvas>
+        <canvas id="renderCanvas" touch-action="none" style="display:none" data-big-timber-model="santa-monica-10x12"></canvas>
 
         </div>
       </div>
@@ -32,64 +33,58 @@
       <!-- Product info -->
       <div class="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
         <form class="mt-6">
+          <h3 class="text-lg font-medium text-gray-900">Select Model</h3>
           <div class="grid grid-cols-3 text-sm font-medium text-gray-700 mb-4">
-          <a href="#" onClick="Harp.setModel('laguna-12x12')" class="text-green-600 hover:underline">Laguna 12x12</a>
-          <a href="#" onClick="Harp.setModel('laguna-14x14')" class="text-green-600 hover:underline">Laguna 14x14</a>
-          <a href="#" onClick="Harp.setModel('laguna-14x18')" class="text-green-600 hover:underline">Laguna 14x18</a>
-          <a href="#" onClick="Harp.setModel('laguna-14x22')" class="text-green-600 hover:underline">Laguna 14x22</a>
-          <a href="#" onClick="Harp.setModel('laguna-18x18')" class="text-green-600 hover:underline">Laguna 18x18</a>
-          <a href="#" onClick="Harp.setModel('laguna-22x22')" class="text-green-600 hover:underline">Laguna 22x22</a>
-          </div>
-          <div class="grid grid-cols-3 text-sm font-medium text-gray-700 mb-4">
-          <a href="#" onClick="Harp.setModel('santa-monica-10x10')" class="text-yellow-600 hover:underline">Santa Monica 10x10</a>
-          <a href="#" onClick="Harp.setModel('santa-monica-10x12')" class="text-yellow-600 hover:underline">Santa Monica 10x12</a>
-          <a href="#" onClick="Harp.setModel('santa-monica-10x16')" class="text-yellow-600 hover:underline">Santa Monica 10x16</a>
-          <a href="#" onClick="Harp.setModel('santa-monica-12x12')" class="text-yellow-600 hover:underline">Santa Monica 12x12</a>
-          <a href="#" onClick="Harp.setModel('santa-monica-12x16')" class="text-yellow-600 hover:underline">Santa Monica 12x16</a>
-          <a href="#" onClick="Harp.setModel('santa-monica-16x16')" class="text-yellow-600 hover:underline">Santa Monica 16x16</a>
+          <a href="#" onClick="Harp.setModel('laguna-12x12'); return false;" class="text-green-600 hover:underline">Laguna 12x12</a>
+          <a href="#" onClick="Harp.setModel('laguna-14x14'); return false;" class="text-green-600 hover:underline">Laguna 14x14</a>
+          <a href="#" onClick="Harp.setModel('laguna-14x18'); return false;" class="text-green-600 hover:underline">Laguna 14x18</a>
+          <a href="#" onClick="Harp.setModel('laguna-14x22'); return false;" class="text-green-600 hover:underline">Laguna 14x22</a>
+          <a href="#" onClick="Harp.setModel('laguna-18x18'); return false;" class="text-green-600 hover:underline">Laguna 18x18</a>
+          <a href="#" onClick="Harp.setModel('laguna-22x22'); return false;" class="text-green-600 hover:underline">Laguna 22x22</a>
           </div>
           <div class="grid grid-cols-3 text-sm font-medium text-gray-700 mb-4">
-          <a href="#" onClick="Harp.setModel('saratoga-12x12')" class="text-green-600 hover:underline">Saratoga 12x12</a>
-          <a href="#" onClick="Harp.setModel('saratoga-12x14')" class="text-green-600 hover:underline">Saratoga 12x14</a>
-          <a href="#" onClick="Harp.setModel('saratoga-12x16')" class="text-green-600 hover:underline">Saratoga 12x16</a>
-          <a href="#" onClick="Harp.setModel('saratoga-14x14')" class="text-yellow-600 hover:underline">Saratoga 14x14</a>
-          <a href="#" onClick="Harp.setModel('saratoga-14x16')" class="text-yellow-600 hover:underline">Saratoga 14x16</a>
-          <a href="#" onClick="Harp.setModel('saratoga-16x16')" class="text-yellow-600 hover:underline">Saratoga 16x16</a>
-
+          <a href="#" onClick="Harp.setModel('santa-monica-10x10'); return false;" class="text-green-600 hover:underline">Santa Monica 10x10</a>
+          <a href="#" onClick="Harp.setModel('santa-monica-10x12'); return false;" class="text-green-600 hover:underline">Santa Monica 10x12</a>
+          <a href="#" onClick="Harp.setModel('santa-monica-10x16'); return false;" class="text-green-600 hover:underline">Santa Monica 10x16</a>
+          <a href="#" onClick="Harp.setModel('santa-monica-12x12'); return false;" class="text-green-600 hover:underline">Santa Monica 12x12</a>
+          <a href="#" onClick="Harp.setModel('santa-monica-12x16'); return false;" class="text-green-600 hover:underline">Santa Monica 12x16</a>
+          <a href="#" onClick="Harp.setModel('santa-monica-16x16'); return false;" class="text-green-600 hover:underline">Santa Monica 16x16</a>
+          </div>
+          <div class="grid grid-cols-3 text-sm font-medium text-gray-700 mb-4">
+          <a href="#" onClick="Harp.setModel('saratoga-12x12'); return false;" class="text-green-600 hover:underline">Saratoga 12x12</a>
+          <a href="#" onClick="Harp.setModel('saratoga-12x14'); return false;" class="text-green-600 hover:underline">Saratoga 12x14</a>
+          <a href="#" onClick="Harp.setModel('saratoga-12x16'); return false;" class="text-green-600 hover:underline">Saratoga 12x16</a>
+          <a href="#" onClick="Harp.setModel('saratoga-14x14'); return false;" class="text-green-600 hover:underline">Saratoga 14x14</a>
+          <a href="#" onClick="Harp.setModel('saratoga-14x16'); return false;" class="text-green-600 hover:underline">Saratoga 14x16</a>
+          <a href="#" onClick="Harp.setModel('saratoga-16x16'); return false;" class="text-green-600 hover:underline">Saratoga 16x16</a>
           </div>
 
-
-
-          <div class="mb-6">
-            <label for="unit-size" class="block text-sm font-medium text-gray-700">SIZE</label>
-            <select id="unit-size" name="unit-size" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-              <option value="10x10" selected>10x10</option>
-              <option value="16x16">16x16</option>
-
-            </select>
+          <h3 class="text-lg font-medium text-gray-900">Select Endcut</h3>
+          <div class="grid grid-cols-3 text-sm font-medium text-gray-700 mb-4">
+            <a href="#" onClick="Harp.setEndCut('ogee'); return false;" class="text-green-600 hover:underline">ogee</a>
+            <a href="#" onClick="Harp.setEndCut('chamfer'); return false;" class="text-green-600 hover:underline">chamfer</a>
+            <a href="#" onClick="Harp.setEndCut('classic'); return false;" class="text-green-600 hover:underline">classic</a>
+            <a href="#" onClick="Harp.setEndCut('flush'); return false;" class="text-green-600 hover:underline">flush</a>
+            <a href="#" onClick="Harp.setEndCut('cove'); return false;" class="text-green-600 hover:underline">cove</a>
+            <a href="#" onClick="Harp.setEndCut('bullnose'); return false;" class="text-green-600 hover:underline">bullnose</a>
+            <a href="#" onClick="Harp.setEndCut('3step'); return false;" class="text-green-600 hover:underline">3step</a>
           </div>
 
-
-          <div class="mb-6">
-            <label for="end-cut" class="block text-sm font-medium text-gray-700">END CUT</label>
-            <select id="end-cut" name="end-cut" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-              <option value="ogee" selected>OGEE</option>
-              <option value="chamfer">CHAMFER</option>
-              <option value="classic">CLASSIC</option>
-              <option value="flush">FLUSH</option>
-              <option value="cove">COVE</option>
-              <option value="bullnose">BULLNOSE</option>
-              <option value="3step">3STEP</option>
-
-            </select>
+          <h3 class="text-lg font-medium text-gray-900">Select Stain</h3>
+          <div class="grid grid-cols-3 text-sm font-medium text-gray-700 mb-4">
+            <a href="#" onClick="Harp.setStain('red'); return false;" class="text-green-600 hover:underline">red</a>
+            <a href="#" onClick="Harp.setStain('cedar-tone'); return false;" class="text-green-600 hover:underline">cedar tone</a>
+            <a href="#" onClick="Harp.setStain('brown'); return false;" class="text-green-600 hover:underline">brown</a>
           </div>
 
-
-
-
-          <div class="mt-10 flex sm:flex-col1">
-            <button type="submit" class="max-w-xs flex-1 bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500 sm:w-full">Buy Now</button>
+          <h3 class="text-lg font-medium text-gray-900">Select Shingle</h3>
+          <div class="grid grid-cols-3 text-sm font-medium text-gray-700 mb-4">
+            <a href="#" onClick="Harp.setShingle('driftwood'); return false;" class="text-green-600 hover:underline">driftwood</a>
+            <a href="#" onClick="Harp.setShingle('black'); return false;" class="text-green-600 hover:underline">black</a>
+            <a href="#" onClick="Harp.setShingle('dark-brown'); return false;" class="text-green-600 hover:underline">dark-brown</a>
+            <a href="#" onClick="Harp.setShingle('light-brown'); return false;" class="text-green-600 hover:underline">light-brown</a>
           </div>
+
         </form>
 
       </div>
@@ -100,16 +95,11 @@
 <script>
 
 window.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('unit-size').addEventListener('change', function() {
-    Harp.setUnitSize(this.value, document.getElementById('end-cut').value)
-  })
-  document.getElementById('end-cut').addEventListener('change', function() {
-    Harp.setEndCut(this.value)
-  })
+
 
 })
 </script>
-    <footer class="text-center uppercase py-12 text-xs bg-gray-100">Footer</footer>
+    <footer class="text-center uppercase py-12 text-xs bg-gray-100 mt-12"></footer>
 
   </body>
 </html>
