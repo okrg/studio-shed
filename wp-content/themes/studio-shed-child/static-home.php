@@ -25,8 +25,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1687371615707">
-  <script src="/assets/main.bundle.js?v=1687371615707"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1687578247771">
+  <script src="/assets/main.bundle.js?v=1687578247771"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -1236,158 +1236,152 @@
 
 
 
-  <div class="bg-white">
+<div class="bg-white">
+  <div class="relative isolate overflow-hidden">
+    <div class="absolute top-2 right-2 w-20 sm:w-24 h-auto z-10 bg-white p-4">
+      <a href="https://shop.studio-shed.com">
+        <img src="/assets/images/studio-15-badge.png" alt="Studio Shed 15 Year Anniversary">
+      </a>
+    </div>
 
+    <div class="swiper mx-auto">
+      <div class="swiper-wrapper">
 
-    <div class="relative isolate overflow-hidden">
-      <div class="absolute top-2 right-2 w-20 sm:w-24 h-auto z-10 bg-white p-4">
-        <a href="https://shop.studio-shed.com">
-          <img src="/assets/images/studio-15-badge.png" alt="Studio Shed 15 Year Anniversary">
-        </a>
-      </div>
-
-      <div class="swiper mx-auto">
-        <div class="swiper-wrapper">
-
-          <div class="swiper-slide">
-            <img src="/assets/images/home-slider/summer-15-hero.jpg" alt="" class="absolute inset-0 h-full w-full object-cover" style="z-index:-10">
-            <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
-              <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
-            </div>
-            <div class="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">
-              <div class="text-center py-8" style="background:rgba(0,0,0,0.33)">
-                <h2 class="text-2xl font-bold tracking-tight text-white sm:text-4xl drop-shadow-2xl">Faster than Design-Build</h2>
-                <h3 class="text-xl lg:text-2xl font-bold text-white leading-2 drop-shadow-xl"><span class="text-yellow-500">Efficient permitting</span> and speedy assembly saves time and money.</h3>
-                <div class="justify-center flex">
-                  <div class="mx-auto flex w-full gap-x-1 sm:w-auto sm:justify-center">
-                    <a href="/models/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:opacity-80 sm:w-auto sm:px-4" style="background:rgba(0,0,0,0.5)">Browse Models</a>
-                    <a href="https://shop.studio-shed.com/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:opacity-80 sm:w-auto sm:px-4" style="background:rgba(0,0,0,0.5)">Design Your Own</a>
-                  </div>
+        <div class="swiper-slide">
+          <img src="/assets/images/home-slider/summer-15-hero.jpg" alt="" class="absolute inset-0 h-full w-full object-cover" style="z-index:-10">
+          <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+            <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+          </div>
+          <div class="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">
+            <div class="text-center py-8" style="background:rgba(0,0,0,0.33)">
+              <h2 class="text-2xl font-bold tracking-tight text-white sm:text-4xl drop-shadow-2xl">Faster than Design-Build</h2>
+              <h3 class="text-xl lg:text-2xl font-bold text-white leading-2 drop-shadow-xl"><span class="text-yellow-500">Efficient permitting</span> and speedy assembly saves time and money.</h3>
+              <div class="justify-center flex">
+                <div class="mx-auto flex w-full gap-x-1 sm:w-auto sm:justify-center">
+                  <a href="/models/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:opacity-80 sm:w-auto sm:px-4" style="background:rgba(0,0,0,0.5)">Browse Models</a>
+                  <a href="https://shop.studio-shed.com/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:opacity-80 sm:w-auto sm:px-4" style="background:rgba(0,0,0,0.5)">Design Your Own</a>
                 </div>
               </div>
             </div>
           </div>
-
-
-
-          <div class="swiper-slide">
-            <img src="/assets/images/home-slider/summer-15-01.jpg" alt="" class="absolute inset-0 h-full w-full object-cover" style="z-index:-10">
-            <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
-              <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
-            </div>
-            <div class="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">
-              <div class="text-center py-8" style="background:rgba(0,0,0,0.33)">
-                <h2 class="text-2xl font-bold tracking-tight text-white sm:text-4xl drop-shadow-2xl">15 Years of Experience Building ADU’s from Coast to Coast</h2>
-                <h3 class="text-xl lg:text-2xl font-bold text-white leading-2 drop-shadow-xl">Our <span class="text-yellow-500">skilled team</span> supports you from order to move-in.</h3>
-                <div class="justify-center flex">
-                  <div class="mx-auto flex w-full gap-x-1 sm:w-auto sm:justify-center">
-                    <a href="/models/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:opacity-80 sm:w-auto sm:px-4" style="background:rgba(0,0,0,0.5)">Browse Models</a>
-                    <a href="https://shop.studio-shed.com/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:opacity-80 sm:w-auto sm:px-4" style="background:rgba(0,0,0,0.5)">Design Your Own</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <img src="/assets/images/home-slider/summer-15-02.jpg" alt="" class="absolute inset-0 h-full w-full object-cover" style="z-index:-10">
-            <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
-              <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
-            </div>
-            <div class="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">
-              <div class="text-center py-8" style="background:rgba(0,0,0,0.33)">
-                <h2 class="text-2xl font-bold tracking-tight text-white sm:text-4xl drop-shadow-2xl">High-Quality Nimble Building Kit</h2>
-                <h3 class="text-xl lg:text-2xl font-bold text-white leading-2 drop-shadow-xl">Factory produced to exacting standards with <span class="text-yellow-500">high-end materials</span>.</h3>
-                <div class="justify-center flex">
-                  <div class="mx-auto flex w-full gap-x-1 sm:w-auto sm:justify-center">
-                    <a href="/models/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:opacity-80 sm:w-auto sm:px-4" style="background:rgba(0,0,0,0.5)">Browse Models</a>
-                    <a href="https://shop.studio-shed.com/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:opacity-80 sm:w-auto sm:px-4" style="background:rgba(0,0,0,0.5)">Design Your Own</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="swiper-slide">
-            <img src="/assets/images/home-slider/03.jpg" alt="" class="absolute inset-0 h-full w-full object-cover" style="z-index:-10">
-            <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
-              <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
-            </div>
-            <div class="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">
-              <div class="text-center py-8" style="background:rgba(0,0,0,0.33)">
-                <h2 class="text-2xl font-bold tracking-tight text-white sm:text-4xl drop-shadow-2xl">Value</h2>
-                <h3 class="text-xl lg:text-2xl font-bold text-white leading-2 drop-shadow-xl">Predictable project cost with <span class="text-yellow-500">proven return on investment</span>.</h3>
-                <div class="justify-center flex">
-                  <div class="mx-auto flex w-full gap-x-1 sm:w-auto sm:justify-center">
-                    <a href="/models/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:opacity-80 sm:w-auto sm:px-4" style="background:rgba(0,0,0,0.5)">Browse Models</a>
-                    <a href="https://shop.studio-shed.com/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:opacity-80 sm:w-auto sm:px-4" style="background:rgba(0,0,0,0.5)">Design Your Own</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
         </div>
 
+
+
+        <div class="swiper-slide">
+          <img src="/assets/images/home-slider/summer-15-01.jpg" alt="" class="absolute inset-0 h-full w-full object-cover" style="z-index:-10">
+          <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+            <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+          </div>
+          <div class="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">
+            <div class="text-center py-8" style="background:rgba(0,0,0,0.33)">
+              <h2 class="text-2xl font-bold tracking-tight text-white sm:text-4xl drop-shadow-2xl">15 Years of Experience Building ADU’s from Coast to Coast</h2>
+              <h3 class="text-xl lg:text-2xl font-bold text-white leading-2 drop-shadow-xl">Our <span class="text-yellow-500">skilled team</span> supports you from order to move-in.</h3>
+              <div class="justify-center flex">
+                <div class="mx-auto flex w-full gap-x-1 sm:w-auto sm:justify-center">
+                  <a href="/models/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:opacity-80 sm:w-auto sm:px-4" style="background:rgba(0,0,0,0.5)">Browse Models</a>
+                  <a href="https://shop.studio-shed.com/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:opacity-80 sm:w-auto sm:px-4" style="background:rgba(0,0,0,0.5)">Design Your Own</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="/assets/images/home-slider/summer-15-02.jpg" alt="" class="absolute inset-0 h-full w-full object-cover" style="z-index:-10">
+          <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+            <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+          </div>
+          <div class="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">
+            <div class="text-center py-8" style="background:rgba(0,0,0,0.33)">
+              <h2 class="text-2xl font-bold tracking-tight text-white sm:text-4xl drop-shadow-2xl">High-Quality Nimble Building Kit</h2>
+              <h3 class="text-xl lg:text-2xl font-bold text-white leading-2 drop-shadow-xl">Factory produced to exacting standards with <span class="text-yellow-500">high-end materials</span>.</h3>
+              <div class="justify-center flex">
+                <div class="mx-auto flex w-full gap-x-1 sm:w-auto sm:justify-center">
+                  <a href="/models/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:opacity-80 sm:w-auto sm:px-4" style="background:rgba(0,0,0,0.5)">Browse Models</a>
+                  <a href="https://shop.studio-shed.com/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:opacity-80 sm:w-auto sm:px-4" style="background:rgba(0,0,0,0.5)">Design Your Own</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="/assets/images/home-slider/03.jpg" alt="" class="absolute inset-0 h-full w-full object-cover" style="z-index:-10">
+          <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+            <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+          </div>
+          <div class="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">
+            <div class="text-center py-8" style="background:rgba(0,0,0,0.33)">
+              <h2 class="text-2xl font-bold tracking-tight text-white sm:text-4xl drop-shadow-2xl">Value</h2>
+              <h3 class="text-xl lg:text-2xl font-bold text-white leading-2 drop-shadow-xl">Predictable project cost with <span class="text-yellow-500">proven return on investment</span>.</h3>
+              <div class="justify-center flex">
+                <div class="mx-auto flex w-full gap-x-1 sm:w-auto sm:justify-center">
+                  <a href="/models/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:opacity-80 sm:w-auto sm:px-4" style="background:rgba(0,0,0,0.5)">Browse Models</a>
+                  <a href="https://shop.studio-shed.com/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:opacity-80 sm:w-auto sm:px-4" style="background:rgba(0,0,0,0.5)">Design Your Own</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="hidden sm:inline-block">
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
-
       </div>
 
+    </div>
+
+  </div>
+</div>
+<div class="bg-white" id="toc-curated" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'curated'">
+  <div class="max-w-4xl mx-auto py-16 px-4 sm:py-12 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <p class="mt-4 text-3xl font-extrabold text-gray-900">Our Models</p>
+      <p class="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">Explore our backyard studios and accessory dwelling units.</p>
     </div>
   </div>
-
-
-
-  <div class="bg-white" id="toc-curated" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'curated'">
-    <div class="max-w-4xl mx-auto py-16 px-4 sm:py-12 sm:px-6 lg:px-8">
-      <div class="text-center">
-        <p class="mt-4 text-3xl font-extrabold text-gray-900">Our Models</p>
-        <p class="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">Explore our backyard studios and accessory dwelling units.</p>
+  <div class="max-w-6xl mx-auto pb-24 px-4 overflow-hidden sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-y-12 gap-x-12 md:grid-cols-2 xl:grid-cols-3 lg:gap-x-12">
+      <div>
+        <a href="/products/summit-series/" class="group text-lg text-center"
+           title="Studio Shed Summit series product images and features">
+          <div class="w-full aspect-w-5 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75 mb-2">
+            <img loading="lazy" src="/assets/images/home-models-summit.jpg"
+                 class="w-full h-full object-center object-cover"
+                 alt="Studio Shed summit series unit with iron gray siding and white doors">
+          </div>
+          <h3 class="font-bold text-gray-700">Summit Series</h3>
+        </a>
+      </div>
+      <div>
+        <a href="/products/signature-series/" class="group text-lg text-center"
+           title="Studio Shed Signature series product images and features">
+          <div class="w-full aspect-w-5 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75 mb-2">
+            <img loading="lazy" src="/assets/images/home-models-signature.jpg"
+                 class="w-full h-full object-center object-cover"
+                 alt="Studio Shed signature series with dark trim and navy doors">
+          </div>
+          <h3 class="font-bold text-gray-700">Signature Series</h3>
+        </a>
+      </div>
+      <div>
+        <a href="/products/portland-series/" class="group text-lg text-center"
+           title="Studio Shed Portland series product images and features">
+          <div class="w-full aspect-w-5 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75 mb-2">
+            <img loading="lazy" src="/assets/images/home-models-portland.jpg"
+                 class="w-full h-full object-center object-cover"
+                 alt="Studio Shed Portland series with cedar plank siding and black doors">
+          </div>
+          <h3 class="font-bold text-gray-700">Portland Series</h3>
+        </a>
       </div>
     </div>
-    <div class="max-w-6xl mx-auto pb-24 px-4 overflow-hidden sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 gap-y-12 gap-x-12 md:grid-cols-2 xl:grid-cols-3 lg:gap-x-12">
-        <div>
-          <a href="/products/summit-series/" class="group text-lg text-center"
-             title="Studio Shed Summit series product images and features">
-            <div class="w-full aspect-w-5 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75 mb-2">
-              <img loading="lazy" src="/assets/images/home-models-summit.jpg"
-                   class="w-full h-full object-center object-cover"
-                   alt="Studio Shed summit series unit with iron gray siding and white doors">
-            </div>
-            <h3 class="font-bold text-gray-700">Summit Series</h3>
-          </a>
-        </div>
-        <div>
-          <a href="/products/signature-series/" class="group text-lg text-center"
-             title="Studio Shed Signature series product images and features">
-            <div class="w-full aspect-w-5 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75 mb-2">
-              <img loading="lazy" src="/assets/images/home-models-signature.jpg"
-                   class="w-full h-full object-center object-cover"
-                   alt="Studio Shed signature series with dark trim and navy doors">
-            </div>
-            <h3 class="font-bold text-gray-700">Signature Series</h3>
-          </a>
-        </div>
-        <div>
-          <a href="/products/portland-series/" class="group text-lg text-center"
-             title="Studio Shed Portland series product images and features">
-            <div class="w-full aspect-w-5 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75 mb-2">
-              <img loading="lazy" src="/assets/images/home-models-portland.jpg"
-                   class="w-full h-full object-center object-cover"
-                   alt="Studio Shed Portland series with cedar plank siding and black doors">
-            </div>
-            <h3 class="font-bold text-gray-700">Portland Series</h3>
-          </a>
-        </div>
-      </div>
 
-    </div>
   </div>
-
-
+</div>
 
   <div class="py-16 bg-white overflow-hidden lg:py-24">
     <div class="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
