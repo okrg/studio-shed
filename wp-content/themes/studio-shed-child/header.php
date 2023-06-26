@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1687578247771">
-  <script src="/assets/main.bundle.js?v=1687578247771"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1687805118599">
+  <script src="/assets/main.bundle.js?v=1687805118599"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -79,7 +79,7 @@
   <!-- End Google Tag Manager (noscript) -->
 
 
-<a class="w-full text-center py-2 bg-yellow-600 text-white text-sm font-bold block" href="/models/" target="_blank">
+<a class="w-full text-center py-2 bg-yellow-600 text-white text-sm font-bold block" href="https://www.studio-shed.com/products/signature-series/#toc-curated" target="_blank">
   Curated models ready to ship in 2 weeks  <span class="underline hover:opacity-80">Shop Now</a>
 </a>
 <header x-cloak x-data="window.Components.navManager">
@@ -117,19 +117,19 @@
   x-transition:leave-end="opacity-0 translate-y-4"
   >
     <div class="shadow-lg border-b border-t bg-white px-8 py-4 border-gray-300 overflow-hidden">
-      <p class="text-xs font-bold text-yellow-600 md:max-w-5xl mx-auto"><a href="/products/summit-series">Summit Series →</a></p>
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 md:max-w-5xl mx-auto gap-y-6 mb-8">
-
+      <div class="mx-auto max-w-4xl">
+      <p class="flex align-bottom items-center text-xs font-bold text-yellow-600"><a href="/products/summit-series">Summit Series →</a></p>
+<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-4">
   
   
   <a href="/products/model-1-364/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 364</h3>
-    <p class="text-gray-600">364 SF Studio ADU</p>
+    
     <div class="text-gray-600 mb-2">$87,197</div>
 
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/model-1-364-render.jpg">
@@ -139,12 +139,12 @@
   
   <a href="/products/model-2-476/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 476</h3>
-    <p class="text-gray-600">476 SF 1 Bed ADU</p>
+    
     <div class="text-gray-600 mb-2">$111,195</div>
 
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/model-2-476-render.jpg">
@@ -154,12 +154,12 @@
   
   <a href="/products/model-3-684/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 684</h3>
-    <p class="text-gray-600">684 SF 1 Bed ADU</p>
+    
     <div class="text-gray-600 mb-2">$123,205</div>
 
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/model-3-684-render.jpg">
@@ -169,33 +169,30 @@
   
   <a href="/products/model-4-1000/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 1000</h3>
-    <p class="text-gray-600">1000 SF 2 Bed ADU</p>
+    
     <div class="text-gray-600 mb-2">$165,596</div>
 
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/model-4-1000-render.jpg">
 
   </a>
   
-
 </div>
-      
-<p class="text-xs font-bold text-yellow-600 md:max-w-5xl mx-auto"><a href="/products/signature-series">Signature Series →</a></p>
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 md:max-w-5xl mx-auto gap-y-6 mb-8">
-
+      <p class="flex items-center align-middle text-xs font-bold text-yellow-600"><a href="/products/signature-series">Signature Series →</a></p>
+<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-4">
   
   
   <a href="/products/pagoda-right-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Pagoda Right</h3>
-    <p class="max-h- text-gray-600">120 SF Studio</p>
+    
     <div class="text-gray-600 mb-2">$22,212</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/pagoda-right-render.jpg">
@@ -204,11 +201,11 @@
   
   <a href="/products/boreas-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Boreas</h3>
-    <p class="max-h- text-gray-600">120 SF Studio</p>
+    
     <div class="text-gray-600 mb-2">$21,829</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/boreas-render.jpg">
@@ -217,11 +214,11 @@
   
   <a href="/products/solitude-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Solitude</h3>
-    <p class="max-h- text-gray-600">120 SF Studio</p>
+    
     <div class="text-gray-600 mb-2">$24,525</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/solitude-render.jpg">
@@ -230,44 +227,46 @@
   
   <a href="/products/pagoda-left-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Pagoda Left</h3>
-    <p class="max-h- text-gray-600">120 SF Studio</p>
+    
     <div class="text-gray-600 mb-2">$22,212</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/pagoda-left-render.jpg">
   </a>
   
+
 </div>
-      <p class="text-xs font-bold text-yellow-600 md:max-w-5xl mx-auto"><a href="/products/portland-series">Portland Series →</a></p>
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 md:max-w-5xl mx-auto gap-y-6 mb-8">
-
+      <p class="flex align-middle items-center text-xs font-bold text-yellow-600"><a href="/products/portland-series">Portland Series →</a></p>
+<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-4">
   
   
-
   <a href="/products/model-d/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Portland 120D</h3>
-    <p class="text-gray-600">120 SF Studio</p>
+
+    
+
     <div class="text-gray-600 mb-2">$29,833</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/portland-120d-render.jpg">
   </a>
   
   
-
   <a href="/products/model-e/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Portland 120E</h3>
-    <p class="text-gray-600">120 SF Studio</p>
+
+    
+
     <div class="text-gray-600 mb-2">$23,916</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/portland-120e-render.jpg">
@@ -275,6 +274,8 @@
   
 
 </div>
+      
+      </div>
     </div>
   </div>
 </div>
@@ -821,19 +822,18 @@
               </span>
             </a>
             <div x-show="modelsMobile" x-transition>
-              <p class="text-xs font-bold text-yellow-600 md:max-w-5xl mx-auto"><a href="/products/summit-series">Summit Series →</a></p>
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 md:max-w-5xl mx-auto gap-y-6 mb-8">
-
+              <p class="flex align-bottom items-center text-xs font-bold text-yellow-600"><a href="/products/summit-series">Summit Series →</a></p>
+<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-4">
   
   
   <a href="/products/model-1-364/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 364</h3>
-    <p class="text-gray-600">364 SF Studio ADU</p>
+    
     <div class="text-gray-600 mb-2">$87,197</div>
 
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/model-1-364-render.jpg">
@@ -843,12 +843,12 @@
   
   <a href="/products/model-2-476/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 476</h3>
-    <p class="text-gray-600">476 SF 1 Bed ADU</p>
+    
     <div class="text-gray-600 mb-2">$111,195</div>
 
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/model-2-476-render.jpg">
@@ -858,12 +858,12 @@
   
   <a href="/products/model-3-684/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 684</h3>
-    <p class="text-gray-600">684 SF 1 Bed ADU</p>
+    
     <div class="text-gray-600 mb-2">$123,205</div>
 
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/model-3-684-render.jpg">
@@ -873,33 +873,30 @@
   
   <a href="/products/model-4-1000/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 1000</h3>
-    <p class="text-gray-600">1000 SF 2 Bed ADU</p>
+    
     <div class="text-gray-600 mb-2">$165,596</div>
 
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/model-4-1000-render.jpg">
 
   </a>
   
-
 </div>
-              
-<p class="text-xs font-bold text-yellow-600 md:max-w-5xl mx-auto"><a href="/products/signature-series">Signature Series →</a></p>
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 md:max-w-5xl mx-auto gap-y-6 mb-8">
-
+              <p class="flex items-center align-middle text-xs font-bold text-yellow-600"><a href="/products/signature-series">Signature Series →</a></p>
+<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-4">
   
   
   <a href="/products/pagoda-right-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Pagoda Right</h3>
-    <p class="max-h- text-gray-600">120 SF Studio</p>
+    
     <div class="text-gray-600 mb-2">$22,212</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/pagoda-right-render.jpg">
@@ -908,11 +905,11 @@
   
   <a href="/products/boreas-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Boreas</h3>
-    <p class="max-h- text-gray-600">120 SF Studio</p>
+    
     <div class="text-gray-600 mb-2">$21,829</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/boreas-render.jpg">
@@ -921,11 +918,11 @@
   
   <a href="/products/solitude-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Solitude</h3>
-    <p class="max-h- text-gray-600">120 SF Studio</p>
+    
     <div class="text-gray-600 mb-2">$24,525</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/solitude-render.jpg">
@@ -934,44 +931,46 @@
   
   <a href="/products/pagoda-left-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Pagoda Left</h3>
-    <p class="max-h- text-gray-600">120 SF Studio</p>
+    
     <div class="text-gray-600 mb-2">$22,212</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/pagoda-left-render.jpg">
   </a>
   
+
 </div>
-              <p class="text-xs font-bold text-yellow-600 md:max-w-5xl mx-auto"><a href="/products/portland-series">Portland Series →</a></p>
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 md:max-w-5xl mx-auto gap-y-6 mb-8">
-
+              <p class="flex align-middle items-center text-xs font-bold text-yellow-600"><a href="/products/portland-series">Portland Series →</a></p>
+<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-4">
   
   
-
   <a href="/products/model-d/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Portland 120D</h3>
-    <p class="text-gray-600">120 SF Studio</p>
+
+    
+
     <div class="text-gray-600 mb-2">$29,833</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/portland-120d-render.jpg">
   </a>
   
   
-
   <a href="/products/model-e/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Portland 120E</h3>
-    <p class="text-gray-600">120 SF Studio</p>
+
+    
+
     <div class="text-gray-600 mb-2">$23,916</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/portland-120e-render.jpg">

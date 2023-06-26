@@ -25,8 +25,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1687578247771">
-  <script src="/assets/main.bundle.js?v=1687578247771"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1687805118599">
+  <script src="/assets/main.bundle.js?v=1687805118599"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -42,7 +42,7 @@
 
 
 
-<a class="w-full text-center py-2 bg-yellow-600 text-white text-sm font-bold block" href="/models/" target="_blank">
+<a class="w-full text-center py-2 bg-yellow-600 text-white text-sm font-bold block" href="https://www.studio-shed.com/products/signature-series/#toc-curated" target="_blank">
   Curated models ready to ship in 2 weeks  <span class="underline hover:opacity-80">Shop Now</a>
 </a>
 <header x-cloak x-data="window.Components.navManager">
@@ -80,19 +80,19 @@
   x-transition:leave-end="opacity-0 translate-y-4"
   >
     <div class="shadow-lg border-b border-t bg-white px-8 py-4 border-gray-300 overflow-hidden">
-      <p class="text-xs font-bold text-yellow-600 md:max-w-5xl mx-auto"><a href="/products/summit-series">Summit Series →</a></p>
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 md:max-w-5xl mx-auto gap-y-6 mb-8">
-
+      <div class="mx-auto max-w-4xl">
+      <p class="flex align-bottom items-center text-xs font-bold text-yellow-600"><a href="/products/summit-series">Summit Series →</a></p>
+<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-4">
   
   
   <a href="/products/model-1-364/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 364</h3>
-    <p class="text-gray-600">364 SF Studio ADU</p>
+    
     <div class="text-gray-600 mb-2">$87,197</div>
 
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/model-1-364-render.jpg">
@@ -102,12 +102,12 @@
   
   <a href="/products/model-2-476/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 476</h3>
-    <p class="text-gray-600">476 SF 1 Bed ADU</p>
+    
     <div class="text-gray-600 mb-2">$111,195</div>
 
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/model-2-476-render.jpg">
@@ -117,12 +117,12 @@
   
   <a href="/products/model-3-684/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 684</h3>
-    <p class="text-gray-600">684 SF 1 Bed ADU</p>
+    
     <div class="text-gray-600 mb-2">$123,205</div>
 
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/model-3-684-render.jpg">
@@ -132,33 +132,30 @@
   
   <a href="/products/model-4-1000/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 1000</h3>
-    <p class="text-gray-600">1000 SF 2 Bed ADU</p>
+    
     <div class="text-gray-600 mb-2">$165,596</div>
 
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/model-4-1000-render.jpg">
 
   </a>
   
-
 </div>
-      
-<p class="text-xs font-bold text-yellow-600 md:max-w-5xl mx-auto"><a href="/products/signature-series">Signature Series →</a></p>
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 md:max-w-5xl mx-auto gap-y-6 mb-8">
-
+      <p class="flex items-center align-middle text-xs font-bold text-yellow-600"><a href="/products/signature-series">Signature Series →</a></p>
+<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-4">
   
   
   <a href="/products/pagoda-right-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Pagoda Right</h3>
-    <p class="max-h- text-gray-600">120 SF Studio</p>
+    
     <div class="text-gray-600 mb-2">$22,212</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/pagoda-right-render.jpg">
@@ -167,11 +164,11 @@
   
   <a href="/products/boreas-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Boreas</h3>
-    <p class="max-h- text-gray-600">120 SF Studio</p>
+    
     <div class="text-gray-600 mb-2">$21,829</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/boreas-render.jpg">
@@ -180,11 +177,11 @@
   
   <a href="/products/solitude-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Solitude</h3>
-    <p class="max-h- text-gray-600">120 SF Studio</p>
+    
     <div class="text-gray-600 mb-2">$24,525</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/solitude-render.jpg">
@@ -193,44 +190,46 @@
   
   <a href="/products/pagoda-left-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Pagoda Left</h3>
-    <p class="max-h- text-gray-600">120 SF Studio</p>
+    
     <div class="text-gray-600 mb-2">$22,212</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/pagoda-left-render.jpg">
   </a>
   
+
 </div>
-      <p class="text-xs font-bold text-yellow-600 md:max-w-5xl mx-auto"><a href="/products/portland-series">Portland Series →</a></p>
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 md:max-w-5xl mx-auto gap-y-6 mb-8">
-
+      <p class="flex align-middle items-center text-xs font-bold text-yellow-600"><a href="/products/portland-series">Portland Series →</a></p>
+<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-4">
   
   
-
   <a href="/products/model-d/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Portland 120D</h3>
-    <p class="text-gray-600">120 SF Studio</p>
+
+    
+
     <div class="text-gray-600 mb-2">$29,833</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/portland-120d-render.jpg">
   </a>
   
   
-
   <a href="/products/model-e/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Portland 120E</h3>
-    <p class="text-gray-600">120 SF Studio</p>
+
+    
+
     <div class="text-gray-600 mb-2">$23,916</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/portland-120e-render.jpg">
@@ -238,6 +237,8 @@
   
 
 </div>
+      
+      </div>
     </div>
   </div>
 </div>
@@ -784,19 +785,18 @@
               </span>
             </a>
             <div x-show="modelsMobile" x-transition>
-              <p class="text-xs font-bold text-yellow-600 md:max-w-5xl mx-auto"><a href="/products/summit-series">Summit Series →</a></p>
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 md:max-w-5xl mx-auto gap-y-6 mb-8">
-
+              <p class="flex align-bottom items-center text-xs font-bold text-yellow-600"><a href="/products/summit-series">Summit Series →</a></p>
+<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-4">
   
   
   <a href="/products/model-1-364/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 364</h3>
-    <p class="text-gray-600">364 SF Studio ADU</p>
+    
     <div class="text-gray-600 mb-2">$87,197</div>
 
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/model-1-364-render.jpg">
@@ -806,12 +806,12 @@
   
   <a href="/products/model-2-476/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 476</h3>
-    <p class="text-gray-600">476 SF 1 Bed ADU</p>
+    
     <div class="text-gray-600 mb-2">$111,195</div>
 
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/model-2-476-render.jpg">
@@ -821,12 +821,12 @@
   
   <a href="/products/model-3-684/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 684</h3>
-    <p class="text-gray-600">684 SF 1 Bed ADU</p>
+    
     <div class="text-gray-600 mb-2">$123,205</div>
 
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/model-3-684-render.jpg">
@@ -836,33 +836,30 @@
   
   <a href="/products/model-4-1000/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 1000</h3>
-    <p class="text-gray-600">1000 SF 2 Bed ADU</p>
+    
     <div class="text-gray-600 mb-2">$165,596</div>
 
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/model-4-1000-render.jpg">
 
   </a>
   
-
 </div>
-              
-<p class="text-xs font-bold text-yellow-600 md:max-w-5xl mx-auto"><a href="/products/signature-series">Signature Series →</a></p>
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 md:max-w-5xl mx-auto gap-y-6 mb-8">
-
+              <p class="flex items-center align-middle text-xs font-bold text-yellow-600"><a href="/products/signature-series">Signature Series →</a></p>
+<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-4">
   
   
   <a href="/products/pagoda-right-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Pagoda Right</h3>
-    <p class="max-h- text-gray-600">120 SF Studio</p>
+    
     <div class="text-gray-600 mb-2">$22,212</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/pagoda-right-render.jpg">
@@ -871,11 +868,11 @@
   
   <a href="/products/boreas-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Boreas</h3>
-    <p class="max-h- text-gray-600">120 SF Studio</p>
+    
     <div class="text-gray-600 mb-2">$21,829</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/boreas-render.jpg">
@@ -884,11 +881,11 @@
   
   <a href="/products/solitude-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Solitude</h3>
-    <p class="max-h- text-gray-600">120 SF Studio</p>
+    
     <div class="text-gray-600 mb-2">$24,525</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/solitude-render.jpg">
@@ -897,44 +894,46 @@
   
   <a href="/products/pagoda-left-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Pagoda Left</h3>
-    <p class="max-h- text-gray-600">120 SF Studio</p>
+    
     <div class="text-gray-600 mb-2">$22,212</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/pagoda-left-render.jpg">
   </a>
   
+
 </div>
-              <p class="text-xs font-bold text-yellow-600 md:max-w-5xl mx-auto"><a href="/products/portland-series">Portland Series →</a></p>
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 md:max-w-5xl mx-auto gap-y-6 mb-8">
-
+              <p class="flex align-middle items-center text-xs font-bold text-yellow-600"><a href="/products/portland-series">Portland Series →</a></p>
+<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-4">
   
   
-
   <a href="/products/model-d/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Portland 120D</h3>
-    <p class="text-gray-600">120 SF Studio</p>
+
+    
+
     <div class="text-gray-600 mb-2">$29,833</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/portland-120d-render.jpg">
   </a>
   
   
-
   <a href="/products/model-e/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Portland 120E</h3>
-    <p class="text-gray-600">120 SF Studio</p>
+
+    
+
     <div class="text-gray-600 mb-2">$23,916</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-16
+          max-h-12
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/portland-120e-render.jpg">
@@ -1233,10 +1232,7 @@
 
 
 <main id="page-home">
-
-
-
-<div class="bg-white">
+  <div class="bg-white">
   <div class="relative isolate overflow-hidden">
     <div class="absolute top-2 right-2 w-20 sm:w-24 h-auto z-10 bg-white p-4">
       <a href="https://shop.studio-shed.com">
@@ -1336,7 +1332,7 @@
 
   </div>
 </div>
-<div class="bg-white" id="toc-curated" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'curated'">
+  <div class="bg-white" id="toc-curated" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'curated'">
   <div class="max-w-4xl mx-auto py-16 px-4 sm:py-12 sm:px-6 lg:px-8">
     <div class="text-center">
       <p class="mt-4 text-3xl font-extrabold text-gray-900">Our Models</p>
@@ -1382,182 +1378,173 @@
 
   </div>
 </div>
-
+  
   <div class="py-16 bg-white overflow-hidden lg:py-24">
-    <div class="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
+  <div class="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
+    <div class="relative">
+      <h1 class="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">A better way to build</h1>
+      <h2 class="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">Built with high-quality, sustainable, and energy-efficient materials made to last. Each Studio Shed is prefabricated in our Colorado factory and available to ship nationwide.</h2>
+    </div>
+    <div class="relative mt-8 lg:mt-12 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
       <div class="relative">
-        <h1 class="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">A better way to build</h1>
-        <h2 class="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">Built with high-quality, sustainable, and energy-efficient materials made to last. Each Studio Shed is prefabricated in our Colorado factory and available to ship nationwide.</h2>
-      </div>
-      <div class="relative mt-8 lg:mt-12 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
-        <div class="relative">
-          <dl class="mt-10 space-y-10">
-            <div class="relative">
-              <dt>
-                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
-                  <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
-                  </svg>
-                </div>
-                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Customizable</p>
-              </dt>
-              <dd class="mt-2 ml-16 text-base text-gray-500">From layout, color, interior finishes and more.</dd>
-            </div>
-
-            <div class="relative">
-              <dt>
-                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
-                  <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                  </svg>
-                </div>
-                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Quick</p>
-              </dt>
-              <dd class="mt-2 ml-16 text-base text-gray-500">Installed in a matter of days.</dd>
-            </div>
-
-            <div class="relative">
-              <dt>
-                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
-                  <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
-                  </svg>
-                </div>
-                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">High Quality</p>
-              </dt>
-              <dd class="mt-2 ml-16 text-base text-gray-500">Sustainable materials designed to last a lifetime.</dd>
-            </div>
-          </dl>
-        </div>
-
-        <div class="mt-10 mx-0 relative lg:mt-0" aria-hidden="true">
-          <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
-            <img loading="lazy" src="/assets/images/home-better-way.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed virtual tour bedroom view">
+        <dl class="mt-10 space-y-10">
+          <div class="relative">
+            <dt>
+              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+                </svg>
+              </div>
+              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Customizable</p>
+            </dt>
+            <dd class="mt-2 ml-16 text-base text-gray-500">From layout, color, interior finishes and more.</dd>
           </div>
+
+          <div class="relative">
+            <dt>
+              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+              </div>
+              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Quick</p>
+            </dt>
+            <dd class="mt-2 ml-16 text-base text-gray-500">Installed in a matter of days.</dd>
+          </div>
+
+          <div class="relative">
+            <dt>
+              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white">
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                </svg>
+              </div>
+              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">High Quality</p>
+            </dt>
+            <dd class="mt-2 ml-16 text-base text-gray-500">Sustainable materials designed to last a lifetime.</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="mt-10 mx-0 relative lg:mt-0" aria-hidden="true">
+        <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
+          <img loading="lazy" src="/assets/images/home-better-way.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed virtual tour bedroom view">
         </div>
       </div>
     </div>
   </div>
-
+</div>
+  
+<div class="relative">
+  <img loading="lazy" class="h-[36rem] w-full object-cover" src="/assets/images/home-process-hero.jpg" alt="A finished Studio Shed unit in a home backyard">
+</div>
+<div class="max-w-4xl mx-auto text-center py-8 px-4 sm:py-20 sm:px-6 lg:px-8">
+  <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+    <span class="block">Our Process</span>
+  </h2>
+  <p class="mt-4 text-lg leading-6 text-gray-600">From design through installation, we’re here for you every step of the way. Get started with our 3D Design Center to see options and schedule a free consultation with a Studio Shed advisor. </p>
+  <a href="/process/" class="inline-block mt-6 px-4 py-3 border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-black font-medium hover:opacity-80 sm:px-8">
+    Learn more about the process
+  </a>
+</div>
   <div class="relative">
-    <img loading="lazy" class="h-[36rem] w-full object-cover" src="/assets/images/home-process-hero.jpg" alt="A finished Studio Shed unit in a home backyard">
-  </div>
-  <div class="max-w-4xl mx-auto text-center py-8 px-4 sm:py-20 sm:px-6 lg:px-8">
-    <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-      <span class="block">Our Process</span>
-    </h2>
-    <p class="mt-4 text-lg leading-6 text-gray-600">From design through installation, we’re here for you every step of the way. Get started with our 3D Design Center to see options and schedule a free consultation with a Studio Shed advisor. </p>
-    <a href="/process/" class="inline-block mt-6 px-4 py-3 border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-black font-medium hover:opacity-80 sm:px-8">
-      Learn more about the process
-    </a>
-  </div>
-
-
-
-
-  <div class="relative">
-    <img loading="lazy" class="h-[32rem] w-full object-cover" src="/assets/images/home-virtual-tour-banner.jpg" alt="A screenshot from the Studio Shed virtual tour app">
-  </div>
-  <div class="max-w-2xl mx-auto text-center py-8 px-4 sm:pt-20 sm:px-6 lg:px-8">
-    <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-      <span class="block">Tour our virtual showroom</span>
-    </h2>
-    <p class="mt-4 text-lg leading-6 text-gray-600">Explore the Summit Series in a full 360° experience and visualize ADU sizes, interior furnishings and finishes, and sample staged interiors.</p>
-  </div>
-  <div class="max-w-6xl mx-auto pb-24 px-4 overflow-hidden sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8">
-      <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
-        <img loading="lazy" src="/assets/images/home-tour-kitchen.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed virtual tour kitchen view">
-      </div>
-
-      <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
-        <img loading="lazy" src="/assets/images/home-tour-bath.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed virtual tour bathroom view">
-      </div>
-
-      <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
-        <img loading="lazy" src="/assets/images/home-tour-bed.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed virtual tour bedroom view">
-      </div>
+  <img loading="lazy" class="h-[32rem] w-full object-cover" src="/assets/images/home-virtual-tour-banner.jpg" alt="A screenshot from the Studio Shed virtual tour app">
+</div>
+<div class="max-w-2xl mx-auto text-center py-8 px-4 sm:pt-20 sm:px-6 lg:px-8">
+  <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+    <span class="block">Tour our virtual showroom</span>
+  </h2>
+  <p class="mt-4 text-lg leading-6 text-gray-600">Explore the Summit Series in a full 360° experience and visualize ADU sizes, interior furnishings and finishes, and sample staged interiors.</p>
+</div>
+<div class="max-w-6xl mx-auto pb-24 px-4 overflow-hidden sm:px-6 lg:px-8">
+  <div class="grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8">
+    <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
+      <img loading="lazy" src="/assets/images/home-tour-kitchen.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed virtual tour kitchen view">
     </div>
-    <div class="text-center">
-      <a href="https://tour.studio-shed.com/" class="inline-block mt-6 px-4 py-3 border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-black font-medium hover:opacity-80 sm:px-8" title="Studio Shed virtual tour">Take the Tour</a>
+
+    <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
+      <img loading="lazy" src="/assets/images/home-tour-bath.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed virtual tour bathroom view">
+    </div>
+
+    <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
+      <img loading="lazy" src="/assets/images/home-tour-bed.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed virtual tour bedroom view">
     </div>
   </div>
-
-
-  <div class="relative">
-    <img loading="lazy" class="h-[32rem] w-full object-cover" src="/assets/images/home-pre-design-center.jpg" alt="Studio Shed Signature series 10x12 with backyard landscape">
+  <div class="text-center">
+    <a href="https://tour.studio-shed.com/" class="inline-block mt-6 px-4 py-3 border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-black font-medium hover:opacity-80 sm:px-8" title="Studio Shed virtual tour">Take the Tour</a>
   </div>
+</div>
+  <div class="relative">
+  <img loading="lazy" class="h-[32rem] w-full object-cover" src="/assets/images/home-pre-design-center.jpg" alt="Studio Shed Signature series 10x12 with backyard landscape">
+</div>
 
-  <div class="py-16 bg-white overflow-hidden lg:py-24">
-    <div class="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
+<div class="py-16 bg-white overflow-hidden lg:py-24">
+  <div class="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
+    <div class="relative">
+      <h2 class="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">Design Your Studio Shed</h2>
+      <p class="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">Design and price a Studio Shed in 5 simple steps with our 3D Design Center. We put the design process in your hands and make it easy with our online configurator tool! </p>
+    </div>
+
+    <div class="relative mt-8 lg:mt-12 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
       <div class="relative">
-        <h2 class="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">Design Your Studio Shed</h2>
-        <p class="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">Design and price a Studio Shed in 5 simple steps with our 3D Design Center. We put the design process in your hands and make it easy with our online configurator tool! </p>
-      </div>
-
-      <div class="relative mt-8 lg:mt-12 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
-        <div class="relative">
-          <dl class="mt-10 space-y-10">
-            <div class="relative">
-              <dt>
-                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white text-2xl font-bold">1</div>
-                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Model</p>
-              </dt>
-              <dd class="ml-16 text-base text-gray-500">Choose from our Summit, Signature, or Portland models</dd>
-            </div>
-            <div class="relative">
-              <dt>
-                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white text-2xl font-bold">2</div>
-                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Interior</p>
-              </dt>
-              <dd class="ml-16 text-base text-gray-500">Customize your interior layout and flooring</dd>
-            </div>
-            <div class="relative">
-              <dt>
-                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white text-2xl font-bold">3</div>
-                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Exterior</p>
-              </dt>
-              <dd class="ml-16 text-base text-gray-500">Select your siding, colors, window & door placement, and more </dd>
-            </div>
-            <div class="relative">
-              <dt>
-                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white text-2xl font-bold">4</div>
-                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Location &amp; Permits</p>
-              </dt>
-              <dd class="ml-16 text-base text-gray-500">Enter your location and select permitting needs</dd>
-            </div>
-            <div class="relative">
-              <dt>
-                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white text-2xl font-bold">5</div>
-                <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Installation</p>
-              </dt>
-              <dd class="ml-16 text-base text-gray-500">Choose DIY or Professional installation </dd>
-            </div>
-          </dl>
-        </div>
-
-        <div class="mt-10 -mx-4 relative lg:mt-0" aria-hidden="true">
-          <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
-            <img loading="lazy" src="/assets/images/home-design-center-hero.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed 3D Design Center">
+        <dl class="mt-10 space-y-10">
+          <div class="relative">
+            <dt>
+              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white text-2xl font-bold">1</div>
+              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Model</p>
+            </dt>
+            <dd class="ml-16 text-base text-gray-500">Choose from our Summit, Signature, or Portland models</dd>
           </div>
-        </div>
+          <div class="relative">
+            <dt>
+              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white text-2xl font-bold">2</div>
+              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Interior</p>
+            </dt>
+            <dd class="ml-16 text-base text-gray-500">Customize your interior layout and flooring</dd>
+          </div>
+          <div class="relative">
+            <dt>
+              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white text-2xl font-bold">3</div>
+              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Exterior</p>
+            </dt>
+            <dd class="ml-16 text-base text-gray-500">Select your siding, colors, window & door placement, and more </dd>
+          </div>
+          <div class="relative">
+            <dt>
+              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white text-2xl font-bold">4</div>
+              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Location &amp; Permits</p>
+            </dt>
+            <dd class="ml-16 text-base text-gray-500">Enter your location and select permitting needs</dd>
+          </div>
+          <div class="relative">
+            <dt>
+              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white text-2xl font-bold">5</div>
+              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Installation</p>
+            </dt>
+            <dd class="ml-16 text-base text-gray-500">Choose DIY or Professional installation </dd>
+          </div>
+        </dl>
       </div>
 
+      <div class="mt-10 -mx-4 relative lg:mt-0" aria-hidden="true">
+        <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
+          <img loading="lazy" src="/assets/images/home-design-center-hero.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed 3D Design Center">
+        </div>
+      </div>
     </div>
+
   </div>
-
-
-
+</div>
   <div class="bg-white">
-    <div class="max-w-2xl mx-auto text-center py-8 px-4 sm:pt-16 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-extrabold text-gray-900 sm:text-4xl">
-        <span class="block">Follow Us on Instagram</span>
-      </h2>
-    </div>
-    <div class="max-w-5xl mx-auto text-center pb-16 overflow-x-hidden">
-      <div class="elfsight-app-7c4fb461-f71b-4d0d-af24-f0fa4178dbad"></div>
-    </div>
+  <div class="max-w-2xl mx-auto text-center py-8 px-4 sm:pt-16 sm:px-6 lg:px-8">
+    <h2 class="text-2xl font-extrabold text-gray-900 sm:text-4xl">
+      <span class="block">Follow Us on Instagram</span>
+    </h2>
   </div>
+  <div class="max-w-5xl mx-auto text-center pb-16 overflow-x-hidden">
+    <div class="elfsight-app-7c4fb461-f71b-4d0d-af24-f0fa4178dbad"></div>
+  </div>
+</div>
 </main>
 
 
