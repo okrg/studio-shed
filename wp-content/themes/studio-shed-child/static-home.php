@@ -25,8 +25,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1688169818211">
-  <script src="/assets/main.bundle.js?v=1688169818211"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1688177514748">
+  <script src="/assets/main.bundle.js?v=1688177514748"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -1497,8 +1497,8 @@
                       
                       
                       <a href="/products/pagoda-right/" class="group text-xs relative group cursor-pointer">
-                        <h3 class="font-bold">Summit 120</h3>
-                        <p class="text-gray-600">120 SF Studio</p>
+                        <h3 class="font-bold">Pagoda Right 120</h3>
+                        <p class="text-gray-600">10x12 Studio</p>
                         <div class="text-gray-600 mb-2">$22,212</div>
 
                         <img class="w-auto h-auto transition-all max-h-32 group-hover:opacity-80"
@@ -1507,8 +1507,8 @@
                       
                       
                       <a href="/products/boreas/" class="group text-xs relative group cursor-pointer">
-                        <h3 class="font-bold">Summit 120</h3>
-                        <p class="text-gray-600">120 SF Studio</p>
+                        <h3 class="font-bold">Boreas 120</h3>
+                        <p class="text-gray-600">10x12 Studio</p>
                         <div class="text-gray-600 mb-2">$21,829</div>
 
                         <img class="w-auto h-auto transition-all max-h-32 group-hover:opacity-80"
@@ -1517,8 +1517,8 @@
                       
                       
                       <a href="/products/solitude/" class="group text-xs relative group cursor-pointer">
-                        <h3 class="font-bold">Summit 120</h3>
-                        <p class="text-gray-600">120 SF Studio</p>
+                        <h3 class="font-bold">Solitude 120</h3>
+                        <p class="text-gray-600">10x12 Studio</p>
                         <div class="text-gray-600 mb-2">$24,525</div>
 
                         <img class="w-auto h-auto transition-all max-h-32 group-hover:opacity-80"
@@ -1527,8 +1527,8 @@
                       
                       
                       <a href="/products/pagoda-left/" class="group text-xs relative group cursor-pointer">
-                        <h3 class="font-bold">Summit 120</h3>
-                        <p class="text-gray-600">120 SF Studio</p>
+                        <h3 class="font-bold">Pagoda Left 120</h3>
+                        <p class="text-gray-600">10x12 Studio</p>
                         <div class="text-gray-600 mb-2">$22,212</div>
 
                         <img class="w-auto h-auto transition-all max-h-32 group-hover:opacity-80"
@@ -1554,8 +1554,8 @@
                       
                       
                       <a href="/products/portland-120d/" class="group text-xs relative group cursor-pointer">
-                        <h3 class="font-bold">Summit 120</h3>
-                        <p class="text-gray-600">120 SF </p>
+                        <h3 class="font-bold">Portland 120D</h3>
+                        <p class="text-gray-600">10x12 Studio</p>
                         <div class="text-gray-600 mb-2">$29,833</div>
 
                         <img class="w-auto h-auto transition-all max-h-24 group-hover:opacity-80"
@@ -1564,8 +1564,8 @@
                       
                       
                       <a href="/products/portland-120e/" class="group text-xs relative group cursor-pointer">
-                        <h3 class="font-bold">Summit 120</h3>
-                        <p class="text-gray-600">120 SF </p>
+                        <h3 class="font-bold">Portland 120E</h3>
+                        <p class="text-gray-600">10x12 Studio</p>
                         <div class="text-gray-600 mb-2">$23,916</div>
 
                         <img class="w-auto h-auto transition-all max-h-24 group-hover:opacity-80"
@@ -1597,7 +1597,7 @@
                       
                       
                       <a href="/products/flatirons-10x12/" class="group text-xs relative group cursor-pointer">
-                        <h3 class="font-bold">Flatirons</h3>
+                        <h3 class="font-bold">Flatirons 10x12</h3>
                         <p class="text-gray-600">120 SF Studio style storage</p>
                         <div class="text-gray-600 mb-2">$14,569</div>
 
@@ -1607,7 +1607,7 @@
                       
                       
                       <a href="/products/crestone-10x12/" class="group text-xs relative group cursor-pointer">
-                        <h3 class="font-bold">Crestone</h3>
+                        <h3 class="font-bold">Crestone 10x12</h3>
                         <p class="text-gray-600">120 SF Contemporary shed design</p>
                         <div class="text-gray-600 mb-2">$7,909</div>
 
@@ -1617,7 +1617,7 @@
                       
                       
                       <a href="/products/crestone-8x12/" class="group text-xs relative group cursor-pointer">
-                        <h3 class="font-bold">Crestone</h3>
+                        <h3 class="font-bold">Crestone 8x12</h3>
                         <p class="text-gray-600">96 SF Contemporary shed design</p>
                         <div class="text-gray-600 mb-2">$7,007</div>
 
@@ -1627,7 +1627,7 @@
                       
                       
                       <a href="/products/pinyon-4x10/" class="group text-xs relative group cursor-pointer">
-                        <h3 class="font-bold">Pinyon</h3>
+                        <h3 class="font-bold">Pinyon 4x10</h3>
                         <p class="text-gray-600">40 SF Smart space-saving</p>
                         <div class="text-gray-600 mb-2">$3,769</div>
 
