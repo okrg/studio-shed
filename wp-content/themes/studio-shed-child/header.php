@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1687805118599">
-  <script src="/assets/main.bundle.js?v=1687805118599"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1688169818211">
+  <script src="/assets/main.bundle.js?v=1688169818211"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -118,8 +118,9 @@
   >
     <div class="shadow-lg border-b border-t bg-white px-8 py-4 border-gray-300 overflow-hidden">
       <div class="mx-auto max-w-4xl">
-      <p class="flex align-bottom items-center text-xs font-bold text-yellow-600"><a href="/products/summit-series">Summit Series →</a></p>
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-4">
+        
+      
+<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-8">
   
   
   <a href="/products/model-1-364/" class="group text-xs relative group cursor-pointer">
@@ -182,8 +183,8 @@
   </a>
   
 </div>
-      <p class="flex items-center align-middle text-xs font-bold text-yellow-600"><a href="/products/signature-series">Signature Series →</a></p>
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-4">
+      
+<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-8">
   
   
   <a href="/products/pagoda-right-10x12/" class="group text-xs relative group cursor-pointer">
@@ -239,8 +240,9 @@
   
 
 </div>
-      <p class="flex align-middle items-center text-xs font-bold text-yellow-600"><a href="/products/portland-series">Portland Series →</a></p>
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-4">
+      
+
+<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-8">
   
   
   <a href="/products/model-d/" class="group text-xs relative group cursor-pointer">
@@ -251,7 +253,7 @@
     <div class="text-gray-600 mb-2">$29,833</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-12
+          max-h-10
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/portland-120d-render.jpg">
@@ -266,7 +268,7 @@
     <div class="text-gray-600 mb-2">$23,916</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-12
+          max-h-10
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/portland-120e-render.jpg">
@@ -275,6 +277,71 @@
 
 </div>
       
+
+<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-6">
+  
+  
+  <a href="/products/flatirons-10x12/" class="group text-xs relative group cursor-pointer">
+    <h3 class="font-bold">Flatirons 10x12</h3>
+    
+    <div class="text-gray-600 mb-0">$14,569</div>
+
+    <img class="w-auto h-auto transition-all
+         
+          max-h-16
+         
+          group-hover:scale-110 group-hover:opacity-80"
+         src="/assets/images/menu/flatirons-10x12-render.jpg">
+
+  </a>
+  
+  
+  <a href="/products/crestone-10x12/" class="group text-xs relative group cursor-pointer">
+    <h3 class="font-bold">Crestone 10x12</h3>
+    
+    <div class="text-gray-600 mb-0">$7,909</div>
+
+    <img class="w-auto h-auto transition-all
+         
+          max-h-16
+         
+          group-hover:scale-110 group-hover:opacity-80"
+         src="/assets/images/menu/crestone-10x12-render.jpg">
+
+  </a>
+  
+  
+  <a href="/products/crestone-8x12/" class="group text-xs relative group cursor-pointer">
+    <h3 class="font-bold">Crestone 8x12</h3>
+    
+    <div class="text-gray-600 mb-0">$7,007</div>
+
+    <img class="w-auto h-auto transition-all
+         
+          max-h-16
+         
+          group-hover:scale-110 group-hover:opacity-80"
+         src="/assets/images/menu/crestone-8x12-render.jpg">
+
+  </a>
+  
+  
+  <a href="/products/pinyon-4x10/" class="group text-xs relative group cursor-pointer">
+    <h3 class="font-bold">Pinyon 4x10</h3>
+    
+    <div class="text-gray-600 mb-0">$3,769</div>
+
+    <img class="w-auto h-auto transition-all
+         
+          max-h-16
+         
+          group-hover:scale-110 group-hover:opacity-80"
+         src="/assets/images/menu/pinyon-4x10-render.jpg">
+
+  </a>
+  
+
+</div>
       </div>
     </div>
   </div>
@@ -822,8 +889,8 @@
               </span>
             </a>
             <div x-show="modelsMobile" x-transition>
-              <p class="flex align-bottom items-center text-xs font-bold text-yellow-600"><a href="/products/summit-series">Summit Series →</a></p>
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-4">
+              
+<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-8">
   
   
   <a href="/products/model-1-364/" class="group text-xs relative group cursor-pointer">
@@ -886,8 +953,8 @@
   </a>
   
 </div>
-              <p class="flex items-center align-middle text-xs font-bold text-yellow-600"><a href="/products/signature-series">Signature Series →</a></p>
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-4">
+              
+<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-8">
   
   
   <a href="/products/pagoda-right-10x12/" class="group text-xs relative group cursor-pointer">
@@ -943,8 +1010,9 @@
   
 
 </div>
-              <p class="flex align-middle items-center text-xs font-bold text-yellow-600"><a href="/products/portland-series">Portland Series →</a></p>
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-4">
+              
+
+<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-8">
   
   
   <a href="/products/model-d/" class="group text-xs relative group cursor-pointer">
@@ -955,7 +1023,7 @@
     <div class="text-gray-600 mb-2">$29,833</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-12
+          max-h-10
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/portland-120d-render.jpg">
@@ -970,7 +1038,7 @@
     <div class="text-gray-600 mb-2">$23,916</div>
     <img class="w-auto h-auto transition-all
          
-          max-h-12
+          max-h-10
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/portland-120e-render.jpg">
