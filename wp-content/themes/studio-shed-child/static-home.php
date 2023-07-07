@@ -25,8 +25,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1688177514748">
-  <script src="/assets/main.bundle.js?v=1688177514748"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1688689876816">
+  <script src="/assets/main.bundle.js?v=1688689876816"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -82,7 +82,7 @@
     <div class="shadow-lg border-b border-t bg-white px-8 py-4 border-gray-300 overflow-hidden">
       <div class="mx-auto max-w-4xl">
         
-      
+      <p class="flex pb-2 items-center align-middle text-xs uppercase">ADUs</p>
 <div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-8">
   
   
@@ -146,7 +146,7 @@
   </a>
   
 </div>
-      
+      <p class="border-t flex py-2 items-center align-middle text-xs uppercase">Single Room Studios</p>
 <div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-8">
   
   
@@ -239,13 +239,12 @@
   
 
 </div>
-      
-
+      <p class="border-t flex py-2 items-center align-middle text-xs uppercase">Premium Storage</p>
 <div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-6">
   
   
   <a href="/products/flatirons-10x12/" class="group text-xs relative group cursor-pointer">
-    <h3 class="font-bold">Flatirons 10x12</h3>
+    <h3 class="font-bold">Flatiron 10x12</h3>
     
     <div class="text-gray-600 mb-0">$14,569</div>
 
@@ -852,7 +851,7 @@
               </span>
             </a>
             <div x-show="modelsMobile" x-transition>
-              
+              <p class="flex pb-2 items-center align-middle text-xs uppercase">ADUs</p>
 <div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-8">
   
   
@@ -916,7 +915,7 @@
   </a>
   
 </div>
-              
+              <p class="border-t flex py-2 items-center align-middle text-xs uppercase">Single Room Studios</p>
 <div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-8">
   
   
@@ -1005,6 +1004,71 @@
          
           group-hover:scale-110 group-hover:opacity-80"
          src="/assets/images/menu/portland-120e-render.jpg">
+  </a>
+  
+
+</div>
+              <p class="border-t flex py-2 items-center align-middle text-xs uppercase">Premium Storage</p>
+<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-6">
+  
+  
+  <a href="/products/flatirons-10x12/" class="group text-xs relative group cursor-pointer">
+    <h3 class="font-bold">Flatiron 10x12</h3>
+    
+    <div class="text-gray-600 mb-0">$14,569</div>
+
+    <img class="w-auto h-auto transition-all
+         
+          max-h-16
+         
+          group-hover:scale-110 group-hover:opacity-80"
+         src="/assets/images/menu/flatirons-10x12-render.jpg">
+
+  </a>
+  
+  
+  <a href="/products/crestone-10x12/" class="group text-xs relative group cursor-pointer">
+    <h3 class="font-bold">Crestone 10x12</h3>
+    
+    <div class="text-gray-600 mb-0">$7,909</div>
+
+    <img class="w-auto h-auto transition-all
+         
+          max-h-16
+         
+          group-hover:scale-110 group-hover:opacity-80"
+         src="/assets/images/menu/crestone-10x12-render.jpg">
+
+  </a>
+  
+  
+  <a href="/products/crestone-8x12/" class="group text-xs relative group cursor-pointer">
+    <h3 class="font-bold">Crestone 8x12</h3>
+    
+    <div class="text-gray-600 mb-0">$7,007</div>
+
+    <img class="w-auto h-auto transition-all
+         
+          max-h-16
+         
+          group-hover:scale-110 group-hover:opacity-80"
+         src="/assets/images/menu/crestone-8x12-render.jpg">
+
+  </a>
+  
+  
+  <a href="/products/pinyon-4x10/" class="group text-xs relative group cursor-pointer">
+    <h3 class="font-bold">Pinyon 4x10</h3>
+    
+    <div class="text-gray-600 mb-0">$3,769</div>
+
+    <img class="w-auto h-auto transition-all
+         
+          max-h-16
+         
+          group-hover:scale-110 group-hover:opacity-80"
+         src="/assets/images/menu/pinyon-4x10-render.jpg">
+
   </a>
   
 
@@ -1597,7 +1661,7 @@
                       
                       
                       <a href="/products/flatirons-10x12/" class="group text-xs relative group cursor-pointer">
-                        <h3 class="font-bold">Flatirons 10x12</h3>
+                        <h3 class="font-bold">Flatiron 10x12</h3>
                         <p class="text-gray-600">120 SF Studio style storage</p>
                         <div class="text-gray-600 mb-2">$14,569</div>
 
