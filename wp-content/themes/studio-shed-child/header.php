@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1688769625641">
-  <script src="/assets/main.bundle.js?v=1688769625641"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1689271706785">
+  <script src="/assets/main.bundle.js?v=1689271706785"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -80,7 +80,7 @@
 
 
 <a class="w-full text-center py-2 bg-yellow-600 text-white text-sm font-bold block" href="https://www.studio-shed.com/products/signature-series/#toc-curated" target="_blank">
-  Curated models ready to ship in 2 weeks  <span class="underline hover:opacity-80">Shop Now</a>
+  Curated models shipping nationwide in 2 weeks: <span class="underline hover:opacity-80">Shop Now</a>
 </a>
 <header x-cloak x-data="window.Components.navManager">
   <div class="relative bg-white z-20">
@@ -754,6 +754,9 @@
           <a href="/about-us/"
              class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">About
             Studio Shed</a>
+          <a href="/commercial/"
+             class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700">
+            Commercial Projects</a>
           <a href="/blog/"
              class="-m-3 p-3 flex items-start text-base font-medium text-gray-900 hover:text-gray-700">Blog</a>
           <a href="/in-the-news/"
@@ -1351,6 +1354,9 @@
                 </a>
                 <a href="/about-us/" class="text-gray-700 block">
                   About Studio Shed
+                </a>
+                <a href="/commercial/" class="text-gray-700 block">
+                  Commercial Projects
                 </a>
                 <a href="/financing/" class="text-gray-700 block">
                   Financing

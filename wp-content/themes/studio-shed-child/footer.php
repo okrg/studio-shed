@@ -56,6 +56,11 @@
                 </a>
               </li>
               <li>
+                <a href="/commercial/" class="text-base text-gray-300 hover:text-white">
+                  Commercial Projects
+                </a>
+              </li>
+              <li>
                 <a href="/sustainability/" class="text-base text-gray-300 hover:text-white">
                   Sustainability
                 </a>
