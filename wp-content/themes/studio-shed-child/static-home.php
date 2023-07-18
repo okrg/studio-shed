@@ -25,8 +25,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1689652888310">
-  <script src="/assets/main.bundle.js?v=1689652888310"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1689704966376">
+  <script src="/assets/main.bundle.js?v=1689704966376"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -42,7 +42,7 @@
 
 
 
-<a class="w-full text-center py-2 bg-yellow-600 text-white text-xs sm:text-sm font-bold block" href="https://www.studio-shed.com/products/signature-series/#toc-curated" target="_blank">
+<a class="w-full text-center py-2 bg-yellow-600 text-white text-xs sm:text-sm font-medium sm:font-bold block" href="https://www.studio-shed.com/products/signature-series/#toc-curated" target="_blank">
   Curated models shipping nationwide in 2 weeks <span class="underline hover:opacity-80">Shop Now</a>
 </a>
 <header x-cloak x-data="window.Components.navManager">
@@ -809,7 +809,7 @@
 </div>
       </nav>
       <div class="hidden lg:flex items-center justify-end md:flex-1 lg:w-0">
-        <a href="/request-free-consultation/" class="rounded-sm ml-8 whitespace-nowrap inline-flex items-center justify-center bg-amber px-6 py-2 rounded-sm text-sm xl:text-base font-normal uppercase text-white hover:opacity-80">Free Consultation</a>
+        <a href="/request-free-consultation/" class="rounded-sm ml-8 whitespace-nowrap inline-flex items-center justify-center bg-yellow-600 px-6 py-2 rounded-sm text-sm xl:text-base font-normal uppercase text-white hover:opacity-80">Free Consultation</a>
       </div>
     </div>
   
@@ -1359,8 +1359,8 @@
   </div>
 </div>
   </div>
-  <div class="lg:hidden">
-    <a href="/request-free-consultation/" class="flex w-full items-center justify-center bg-amber py-2 leading-none text-xs uppercase text-white hover:opacity-90">Request Free Consultation →</a>
+  <div class="lg:hidden py-1 px-4">
+    <a href="/request-free-consultation/" class="flex w-full items-center justify-center bg-yellow-600 py-2 leading-none text-xs uppercase text-white hover:opacity-90">Request Free Consultation →</a>
   </div>
 
   <div x-show="modelsFlyout || adusFlyout || studiosFlyout || inspirationFlyout || moreFlyout" x-cloak>
