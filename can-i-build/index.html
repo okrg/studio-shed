@@ -12,15 +12,15 @@
     <meta property="og:description" content="Tell us your city and we will let you know if you can build an accessory dwelling unit (ADU) where you live.">
     <meta property="og:url" content="https://www.studio-shed.com/can-i-build/">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2023-07-18T01:15:36.253Z">
+    <meta property="article:modified_time" content="2023-07-18T04:01:28.640Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="https://www.studio-shed.com/can-i-build/">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1689642935931">
-    <script src="/assets/main.bundle.js?v=1689642935931"></script>
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1689652888310">
+    <script src="/assets/main.bundle.js?v=1689652888310"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
     <!--
     <script src="https://apps.elfsight.com/p/platform.js" async></script> 
@@ -1362,48 +1362,49 @@
 </header>
 
     
-    <main id="page-adu-consultation">
-  <div class="relative bg-white my-12">
-    <div class="lg:absolute lg:inset-0">
-      <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-        <img class="w-full h-96 max-h-96 object-cover lg:absolute rounded shadow-2xl lg:h-full" src="/assets/images/summit-features.jpg" alt="Studio Shed summit series unit with light block siding and orange french doors set on a custom deck with landscaping">
-      </div>
-    </div>
-    <div class="relative px-4 py-12 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto lg:grid lg:grid-cols-2">
-      <div class="lg:pr-8">
-        <div class="max-w-md mx-auto sm:max-w-lg lg:mx-0">
-          <h2 class="text-2xl font-extrabold tracking-tight sm:text-3xl">Can I build an ADU where I live?</h2>
-          <p class="mt-4 mb-12 text-lg text-gray-500 sm:mt-3">Enter your city and state and we will try to help you find out.</p>
+    <main id="page-adu-inquiry" class="pb-24" x-data="window.Components.canIBuild">
 
-          <div>
-            <form x-data="window.Components.canIBuild">
-              <div  class="py-4 flex space-x-4 justify-center">
-                <input x-model="city" name="city" type="text" :placeholder="placeholder" autocomplete="on"
-                       :class="nudge ? 'border-red-600' : 'border-gray-800'"
-                       class="border rounded-md p-2 flex-1 focus:border-yellow-500">
-                <button @click.prevent="submit" class="bg-black text-white p-2 rounded-md">
-
-                  <svg x-show="loading" class="inline animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
-                  </svg>
-                  Submit
-                </button>
-              </div>
-
-              <div x-html="message" x-show="message" class="response mt-6"></div>
-            </form>
-
-
+  <div class="bg-white">
+    <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <div class="relative isolate overflow-hidden px-6 py-24 sm:px-24">
+        <h2 class="mx-auto max-w-2xl text-center text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl">Can I build an ADU where I live?</h2>
+        <p class="mx-auto mt-2 max-w-xl text-center text-lg leading-8 text-gray-600">Enter your city and state and we will try to help you find out.</p>
+        <form class="mx-auto mt-10 flex max-w-md gap-x-4">
+          <label for="city-input" class="sr-only">Email address</label>
+          <input id="city-input" name="city" type="text" autocomplete="city" x-model="city"  required
+                 :placeholder="placeholder"
+                 :class="nudge ? 'ring-red-600' : 'ring-gray-600'"
+                 class="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset focus:ring-gray-800 sm:text-sm sm:leading-6">
+          <button @click.prevent="submit" class="flex-none rounded-md bg-gray-800 px-3.5 py-2.5 text-sm font-semibold text-white uppercase shadow-sm hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+            <svg x-show="loading" class="inline animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+            </svg>
+            Submit</button>
+        </form>
+        <div x-show="message">
+          <div x-html="message" class="response mt-12 max-w-4xl mx-auto"></div>
+          <div class="my-4 text-center uppercase px-4 lg:px-24 text-sm text-gray-600">
+            <p>Disclaimer: The information provided here is for educational purposes only. Please remember to always check with your local building authority for the latest information on building regulations.</p>
           </div>
-
         </div>
       </div>
     </div>
   </div>
-  <div class="my-12 text-center px-24 text-sm text-gray-600">
-    <p>Disclaimer: The information provided here is for educational purposes only. Please remember to always check with your local building authority for the latest information on building regulations.</p>
+
+  <div class="bg-white" x-show="showCTA">
+    <div class="mx-auto border rounded max-w-5xl px-6 py-24 sm:py-32 lg:flex lg:items-center lg:justify-between lg:px-8">
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Ready to start building your vision?</h2>
+        <p>Schedule a free consultation with one of our expert ADU advisors.</p>
+      </div>
+      <div class="mt-10 flex items-center gap-x-6 lg:mt-0 lg:flex-shrink-0">
+        <a href="/request-free-consultation/" class="rounded-md bg-yellow-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-yellow-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600">Request a Consultation</a>
+        <a href="/products/summit-series/" class="text-sm font-semibold leading-6 text-gray-900">Explore our Summit Series ADUs <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
   </div>
+
 </main>
 <style>
     .response  { font-size: 92%;}
@@ -1412,6 +1413,9 @@
     .response ol li {list-style: numeric; margin-bottom: 10px;}
     .response ul li {list-style: square; margin-bottom: 10px;}
     .response a {color: #000;font-weight: bold; text-decoration: underline;}
+    #city-input:focus::placeholder {
+        color: transparent;
+    }
 </style>
 
     
