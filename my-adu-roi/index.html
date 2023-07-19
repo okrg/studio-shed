@@ -12,15 +12,15 @@
     <meta property="og:description" content="Tell us your city and we will let you know how much return on investment you can expect if you construct an ADU on your property.">
     <meta property="og:url" content="https://www.studio-shed.com/my-adu-roi/">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2023-07-19T00:20:32.479Z">
+    <meta property="article:modified_time" content="2023-07-19T02:23:04.404Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="https://www.studio-shed.com/my-adu-roi/">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1689726032157">
-    <script src="/assets/main.bundle.js?v=1689726032157"></script>
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1689733384059">
+    <script src="/assets/main.bundle.js?v=1689733384059"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
     <!--
     <script src="https://apps.elfsight.com/p/platform.js" async></script> 
@@ -1369,33 +1369,37 @@
       <div class="relative isolate overflow-hidden px-6 py-12 sm:p-24">
         <h2 class="mx-auto max-w-5xl text-center text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl">What is my estimated ROI (return on investment) if I build an ADU (accessory dwelling unit)?</h2>
         <p class="mx-auto mt-2 max-w-xl text-center text-base sm:text-lg text-gray-600">Enter your city and state and we will try to help you find out.</p>
-        <form class="mx-auto mt-10 flex max-w-xl gap-x-4">
+        <form class="mx-auto mt-10 sm:flex max-w-xl gap-x-4">
 
-          <div>
-
+          <div class="flex sm:w-96">
+            <div class="pr-1">
             <select x-model="square_feet" id="square_feet" name="square_feet"
-                    class="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-6 py-2 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-600 ring-focus:ring-2 focus:ring-inset focus:ring-gray-800 sm:text-sm sm:leading-6">
-              <option>350</option>
-              <option>450</option>
-              <option selected>650</option>
-              <option>850</option>
-              <option>1000</option>
+                    class="min-w-0 flex-auto rounded-md border-0 bg-white/5 pl-2 pr-6 py-2 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-600 ring-focus:ring-2 focus:ring-inset focus:ring-gray-800 text-sm sm:leading-6">
+                <option value="350">350 square feet</option>
+                <option value="450">450 square feet</option>
+                <option value="650" selected>650 square feet</option>
+                <option value="850">850 square feet</option>
+                <option value="1000">1000 square feet</option>
             </select>
-            <label class="text-xs uppercase" for="square_feet">Square Feet</label>
           </div>
 
-
+        <div class="w-full">
           <label for="city-input" class="sr-only">City</label>
           <input id="city-input" name="city" type="text" autocomplete="city" x-model="city"  required
                  :placeholder="placeholder"
                  :class="nudge ? 'ring-red-600' : 'ring-gray-600'"
-                 class="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-gray-800 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset focus:ring-gray-800 sm:text-sm sm:leading-6">
-          <button @click.prevent="submit" class="flex-none rounded-md bg-gray-800 px-3.5 py-2.5 text-sm font-semibold text-white uppercase shadow-sm hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+                 class="text-sm w-full flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-gray-800 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset focus:ring-gray-800 sm:text-sm sm:leading-6">
+        </div>
+          </div>
+
+
+          <button @click.prevent="submit" class="mt-2 sm:mt-0 flex-none w-full sm:w-auto rounded-md bg-gray-800 px-3.5 py-2.5 text-sm font-semibold text-white uppercase shadow-sm hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
             <svg x-show="loading" class="inline animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
               <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
               <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
             </svg>
             Submit</button>
+
         </form>
         <div x-show="message">
           <div x-html="message" class="response mt-12 max-w-4xl mx-auto"></div>
