@@ -12,15 +12,15 @@
     <meta property="og:description" content="Tell us your city and we will let you know how much return on investment you can expect if you construct an ADU on your property.">
     <meta property="og:url" content="https://www.studio-shed.com/my-adu-roi/">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2023-07-19T00:06:51.231Z">
+    <meta property="article:modified_time" content="2023-07-19T00:20:32.479Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="https://www.studio-shed.com/my-adu-roi/">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1689725210903">
-    <script src="/assets/main.bundle.js?v=1689725210903"></script>
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1689726032157">
+    <script src="/assets/main.bundle.js?v=1689726032157"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
     <!--
     <script src="https://apps.elfsight.com/p/platform.js" async></script> 
@@ -1369,7 +1369,22 @@
       <div class="relative isolate overflow-hidden px-6 py-12 sm:p-24">
         <h2 class="mx-auto max-w-5xl text-center text-3xl font-bold tracking-tight text-gray-800 sm:text-4xl">What is my estimated ROI (return on investment) if I build an ADU (accessory dwelling unit)?</h2>
         <p class="mx-auto mt-2 max-w-xl text-center text-base sm:text-lg text-gray-600">Enter your city and state and we will try to help you find out.</p>
-        <form class="mx-auto mt-10 flex max-w-md gap-x-4">
+        <form class="mx-auto mt-10 flex max-w-xl gap-x-4">
+
+          <div>
+
+            <select x-model="square_feet" id="square_feet" name="square_feet"
+                    class="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-6 py-2 text-gray-800 shadow-sm ring-1 ring-inset ring-gray-600 ring-focus:ring-2 focus:ring-inset focus:ring-gray-800 sm:text-sm sm:leading-6">
+              <option>350</option>
+              <option>450</option>
+              <option selected>650</option>
+              <option>850</option>
+              <option>1000</option>
+            </select>
+            <label class="text-xs uppercase" for="square_feet">Square Feet</label>
+          </div>
+
+
           <label for="city-input" class="sr-only">City</label>
           <input id="city-input" name="city" type="text" autocomplete="city" x-model="city"  required
                  :placeholder="placeholder"
