@@ -1727,7 +1727,7 @@ window.addEventListener('DOMContentLoaded', () => {
       }
 
       if(model == 'model-e') {
-        recipeResponse = {"model":"portland","size":"10x12","depth":10,"length":12,"name":"10x12 portland","roof":{"model":"PT-10x12-STV","x":0,"y":-9,"z":0},"floor":{"width":144,"height":12,"depth":120,"x":72,"y":-9,"z":60},"front":[{"slot":"f1","model":"PE12-4-W3C-D72C","width":144,"x":-72,"y":-9,"z":59}],"back":[{"slot":"b1","model":"PE12","width":144,"x":72,"y":-9,"z":-59}],"left":[{"slot":"l1","model":"PS10-42L","width":120,"x":-71.5,"y":-9,"z":-54.5}],"right":[{"slot":"r1","model":"PS10","width":120,"x":71.5,"y":-9,"z":54.5}]}
+        recipeResponse = {"model":"portland","size":"10x12","depth":10,"length":12,"name":"10x12 portland","roof":{"model":"PT-10x12-STV","x":0,"y":-9,"z":0},"floor":{"width":144,"height":12,"depth":120,"x":72,"y":-9,"z":60},"front":[{"slot":"f1","model":"PE12-4-W3C-D72C","width":144,"x":-72,"y":-9,"z":59}],"back":[{"slot":"b1","model":"PE12","width":144,"x":72,"y":-9,"z":-59}],"left":[{"slot":"l1","model":"PS10-36L","width":120,"x":-71.5,"y":-9,"z":-54.5}],"right":[{"slot":"r1","model":"PS10-36R","width":120,"x":71.5,"y":-9,"z":54.5}]}
         recipeColorway = {"siding": "lap","sidingColor": "arctic-white","trimColor": "studio-shed-bronze","doorColor": "arctic-white", "fasciaColor": "arctic-white", "soffitColor": "arctic-white"}
         recipeInterior = 'lifestyle'
       }
