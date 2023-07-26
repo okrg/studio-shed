@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Next POC</title>      
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1689894559131">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1690329653819">
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/babylonjs/4.2.2/babylon.min.js"></script>
   	<script src="https://cdn.jsdelivr.net/npm/babylonjs-loaders@5.9.1/babylonjs.loaders.min.js"></script>
   	<script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
-    <script src="/assets/next-big-timber-harp.js?v=1689894559131"></script>
-    <script src="/assets/main.bundle.js?v=1689894559131"></script>
+    <script src="/assets/next-big-timber-harp.js?v=1690329653819"></script>
+    <script src="/assets/main.bundle.js?v=1690329653819"></script>
   </head>
   <body>
     <header class="text-center uppercase py-12 text-xs bg-gray-100 mb-12"></header>
@@ -25,7 +25,7 @@
 
         <div class="w-full aspect-w-1 aspect-h-1 border border-gray-200">
          
-        <canvas id="renderCanvas" touch-action="none" style="display:none" data-big-timber-model="santa-monica-10x12"></canvas>
+        <canvas id="renderCanvas" touch-action="none" style="display:none" data-big-timber-model="huntington-12x12"></canvas>
 
         </div>
       </div>
@@ -35,6 +35,9 @@
         <form class="mt-6">
           <h3 class="text-lg font-medium text-gray-900">Select Model</h3>
           <div class="grid grid-cols-3 text-sm font-medium text-gray-700 mb-4">
+            <a href="#" onClick="Harp.setModel('huntington-12x12'); return false;" class="text-green-600 hover:underline">Huntington 12x12 (with Addons)</a>
+          </div>
+          <div class="hidden grid grid-cols-3 text-sm font-medium text-gray-700 mb-4">
           <a href="#" onClick="Harp.setModel('laguna-12x12'); return false;" class="text-green-600 hover:underline">Laguna 12x12</a>
           <a href="#" onClick="Harp.setModel('laguna-14x14'); return false;" class="text-green-600 hover:underline">Laguna 14x14</a>
           <a href="#" onClick="Harp.setModel('laguna-14x18'); return false;" class="text-green-600 hover:underline">Laguna 14x18</a>
@@ -42,7 +45,7 @@
           <a href="#" onClick="Harp.setModel('laguna-18x18'); return false;" class="text-green-600 hover:underline">Laguna 18x18</a>
           <a href="#" onClick="Harp.setModel('laguna-22x22'); return false;" class="text-green-600 hover:underline">Laguna 22x22</a>
           </div>
-          <div class="grid grid-cols-3 text-sm font-medium text-gray-700 mb-4">
+          <div class="hidden grid grid-cols-3 text-sm font-medium text-gray-700 mb-4">
           <a href="#" onClick="Harp.setModel('santa-monica-10x10'); return false;" class="text-green-600 hover:underline">Santa Monica 10x10</a>
           <a href="#" onClick="Harp.setModel('santa-monica-10x12'); return false;" class="text-green-600 hover:underline">Santa Monica 10x12</a>
           <a href="#" onClick="Harp.setModel('santa-monica-10x16'); return false;" class="text-green-600 hover:underline">Santa Monica 10x16</a>
@@ -50,7 +53,7 @@
           <a href="#" onClick="Harp.setModel('santa-monica-12x16'); return false;" class="text-green-600 hover:underline">Santa Monica 12x16</a>
           <a href="#" onClick="Harp.setModel('santa-monica-16x16'); return false;" class="text-green-600 hover:underline">Santa Monica 16x16</a>
           </div>
-          <div class="grid grid-cols-3 text-sm font-medium text-gray-700 mb-4">
+          <div class="hidden grid grid-cols-3 text-sm font-medium text-gray-700 mb-4">
           <a href="#" onClick="Harp.setModel('saratoga-12x12'); return false;" class="text-green-600 hover:underline">Saratoga 12x12</a>
           <a href="#" onClick="Harp.setModel('saratoga-12x14'); return false;" class="text-green-600 hover:underline">Saratoga 12x14</a>
           <a href="#" onClick="Harp.setModel('saratoga-12x16'); return false;" class="text-green-600 hover:underline">Saratoga 12x16</a>
@@ -64,10 +67,6 @@
             <a href="#" onClick="Harp.setEndCut('ogee'); return false;" class="text-green-600 hover:underline">ogee</a>
             <a href="#" onClick="Harp.setEndCut('chamfer'); return false;" class="text-green-600 hover:underline">chamfer</a>
             <a href="#" onClick="Harp.setEndCut('classic'); return false;" class="text-green-600 hover:underline">classic</a>
-            <a href="#" onClick="Harp.setEndCut('flush'); return false;" class="text-green-600 hover:underline">flush</a>
-            <a href="#" onClick="Harp.setEndCut('cove'); return false;" class="text-green-600 hover:underline">cove</a>
-            <a href="#" onClick="Harp.setEndCut('bullnose'); return false;" class="text-green-600 hover:underline">bullnose</a>
-            <a href="#" onClick="Harp.setEndCut('3step'); return false;" class="text-green-600 hover:underline">3step</a>
           </div>
 
           <h3 class="text-lg font-medium text-gray-900">Select Stain</h3>
@@ -83,6 +82,19 @@
             <a href="#" onClick="Harp.setShingle('black'); return false;" class="text-green-600 hover:underline">black</a>
             <a href="#" onClick="Harp.setShingle('dark-brown'); return false;" class="text-green-600 hover:underline">dark-brown</a>
             <a href="#" onClick="Harp.setShingle('light-brown'); return false;" class="text-green-600 hover:underline">light-brown</a>
+          </div>
+
+          <h3 class="text-lg font-medium text-gray-900">Select Addons</h3>
+          <div class="grid grid-cols-4 text-sm font-medium text-gray-700 mb-4">
+            <a href="#" onClick="Harp.setFeature('pine-swing'); return false;" class="text-green-600 hover:underline">Swing (on)</a>
+            <a href="#" onClick="Harp.setFeature('lattice-screen'); return false;" class="text-green-600 hover:underline">Slat Wall (on)</a>
+            <a href="#" onClick="Harp.setFeature('post-table'); return false;" class="text-green-600 hover:underline">Post Table (on)</a>
+            <a href="#" onClick="Harp.setFeature('wood-bar-top'); return false;" class="text-green-600 hover:underline">Bar Top (on)</a>
+
+            <a href="#" onClick="Harp.setFeature('pine-swing', false); return false;" class="text-green-600 hover:underline">Swing (off)</a>
+            <a href="#" onClick="Harp.setFeature('lattice-screen', false); return false;" class="text-green-600 hover:underline">Slat Wall (off)</a>
+            <a href="#" onClick="Harp.setFeature('post-table', false); return false;" class="text-green-600 hover:underline">Post Table (off)</a>
+            <a href="#" onClick="Harp.setFeature('wood-bar-top', false); return false;" class="text-green-600 hover:underline">Bar Top (off)</a>
           </div>
 
         </form>

@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1689894559131">
-  <script src="/assets/main.bundle.js?v=1689894559131"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1690329653819">
+  <script src="/assets/main.bundle.js?v=1690329653819"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -441,27 +441,23 @@
     
       <ul role="list" class="mt-2 space-y-6">
           <li class="flow-root">
-            <a href="https://www.studio-shed.com/adu/interior-packages/" class="-m-3 p-3 flex hover:opacity-80">
+            <a href="/can-i-build/" class="-m-3 p-3 flex hover:opacity-80">
               <div class="hidden sm:block flex-shrink-0">
-                <img loading="lazy" class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-adus-interior-guide.jpg" alt="">
+                <img loading="lazy" class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-question-adu.jpg" alt="Can I build an ADU where I live?">
               </div>
               <div class="min-w-0 flex-1 ml-2">
-                <p class="text-sm text-gray-500">
-                  Summit Series Interior Package Guide
-                </p>
+                <p class="text-sm text-gray-500">Can I build an ADU where you live?</p>
               </div>
             </a>
           </li>
         
           <li class="flow-root">
-            <a href="/favorites/" class="-m-3 p-3 flex hover:opacity-80">
+            <a href="/my-adu-roi/" class="-m-3 p-3 flex hover:opacity-80">
               <div class="hidden sm:block flex-shrink-0">
-                <img loading="lazy" class="w-24 h-16 object-cover rounded-md" src="/assets/images/founders.jpg" alt="">
+                <img loading="lazy" class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-question-roi.jpg" alt="What is my estimated ROI (return on investment) if I build an ADU (accessory dwelling unit)?">
               </div>
               <div class="min-w-0 flex-1 ml-2">
-                <p class="text-sm text-gray-500">
-                  Founders Favorites: Celebrating 15 Years of Studio Shed
-                </p>
+                <p class="text-sm text-gray-500">What is my estimated ROI (return on investment) if I build an ADU?</p>
               </div>
             </a>
           </li>
@@ -1140,6 +1136,14 @@
               <nav class="space-y-8 mt-4 px-2 text-sm" aria-label="Sidebar">
                 <a href="/adu/" class="text-gray-700 block">
                   Accessory Dwelling Units
+                </a>
+
+                <a href="/can-i-build/" class="text-gray-700 block">
+                  Can I build an ADU where I live?
+                </a>
+
+                <a href="/my-adu-roi/" class="text-gray-700 block">
+                  What is my estimated ROI if I build an ADU?
                 </a>
 
                 <a href="/adu/cost-financing/" class="text-gray-700 block">

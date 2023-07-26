@@ -163,6 +163,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
       BABYLON.SceneLoader.ImportMesh('', 'https://bigtimber-dev.bypboh.com/assets/obj/', Harp.config.product + '-' + Harp.config.size + '-' + Harp.config.endcut + '.obj', scene, function (newMeshes) {
+      //BABYLON.SceneLoader.ImportMesh('', '/assets/obj/', Harp.config.product + '-' + Harp.config.size + '-' + Harp.config.endcut + '.obj', scene, function (newMeshes) {
         let min = new BABYLON.Vector3(Number.MAX_VALUE, Number.MAX_VALUE, Number.MAX_VALUE);
         let max = new BABYLON.Vector3(-Number.MAX_VALUE, -Number.MAX_VALUE, -Number.MAX_VALUE);
 
@@ -178,9 +179,13 @@ window.addEventListener('DOMContentLoaded', () => {
         newMeshes.forEach(function (m){
             //console.log(m.name)
             m.receiveShadows = false
+
             if (m.name.includes('hardware')) {
               m.parent = Harp['hardware']
               m.material = Harp['hardware' + '_material']
+            } else if (m.name.includes('galvalume')) {
+              m.parent = Harp['galvalume']
+              m.material = Harp['galvalume' + '_material']
             } else if (m.name.includes('roof')) {
               if (m.name.includes('shingles')) {
                 m.parent = Harp['shingles']
@@ -195,6 +200,23 @@ window.addEventListener('DOMContentLoaded', () => {
               m.material = Harp['timber' + '_material']
               m.receiveShadows = true
             }
+
+          //option groups
+          if (m.name.includes('swing')) {
+            m.parent = Harp['pine-swing']
+
+          } else if (m.name.includes('posttable')) {
+            m.parent = Harp['post-table']
+
+          } else if (m.name.includes('bartop')) {
+            m.parent = Harp['wood-bar-top']
+
+          } else if (m.name.includes('slatwall')) {
+            m.parent = Harp['lattice-screen']
+
+          }
+
+
 
             m.enableEdgesRendering();
             m.edgesWidth = 16;
@@ -272,7 +294,7 @@ window.addEventListener('DOMContentLoaded', () => {
       'charwood-stain': 'rgb(75, 60, 48)',
       'cedar-plank': 'rgb(169, 107, 69)',
       'cedar-shake': 'rgb(169, 107, 69)',
-      'roof-metal': 'rgb(155, 158, 158)',
+      'roof-metal': 'rgb(105, 108, 108)',
       'aluminum': 'rgb(155, 158, 158)',
       'appliance': 'rgb(207, 212, 217)',
       'satin-nickel': 'rgb(181, 182, 181)',
@@ -296,38 +318,15 @@ window.addEventListener('DOMContentLoaded', () => {
       'lounge_wood'
     ],
     materialGroups: [
-      'lounge_cushion',
-      'lounge_wood',
-      'Deck_Light',
-      'Deck_Light_Glass',
-      'TallPot',
-      'ShortPot',
-      'FarPot',
-      'TallPlant',
-      'ShortPlant',
-      'FarPlant',
-      'Lantern',
-      'LanternGlass',
       'roof',
       'shingles',
+      'galvalume',
       'timber',
       'hardware',
-      'potsoil',
-      'Planter',
-      'PlanterPlant',
-      'shed_Deck',
-      'PAthway_C',
-      'Fence',
-      'Fence1',
-      'Perimeter_wall',
-      'Grass_Ground',
-      'wood_texture',
-      'wood_texture_metal',
-      'wood_texture_trims',
-      'trim_color',
-      'lumber',
-      'sheathing',
-      'framing'
+      'pine-swing',
+      'post-table',
+      'wood-bar-top',
+      'lattice-screen'
     ],
     finishGroups: [
       'white',
@@ -402,6 +401,13 @@ window.addEventListener('DOMContentLoaded', () => {
         shinglesTexture.uScale = shinglesTexture.vScale = 0.02
       }
       Harp.shingles_material.diffuseTexture = shinglesTexture
+    },
+    setFeature: function(feature, on=true) {
+      if (on) {
+        Harp[feature].setEnabled(true)
+      } else {
+        Harp[feature].setEnabled(false)
+      }
     },
     ucfirst: function(string) {
       return string[0].toUpperCase() + string.slice(1);
@@ -526,28 +532,8 @@ window.addEventListener('DOMContentLoaded', () => {
       Harp['hardware'].setEnabled(true);
       Harp['white'].setEnabled(true);
       Harp['black'].setEnabled(true);
-      Harp['trim_color'].setEnabled(true)
-      Harp['lumber'].setEnabled(true)
-      Harp['lounge_wood'].setEnabled(true)
-      Harp['lounge_cushion'].setEnabled(true)
-      Harp['Fence'].setEnabled(true)
-      Harp['Fence1'].setEnabled(true)
-      Harp['PAthway_C'].setEnabled(true)
-      Harp['shed_Deck'].setEnabled(true)
-      Harp['Deck_Light'].setEnabled(true)
-      Harp['Deck_Light_Glass'].setEnabled(true)
-      Harp['Planter'].setEnabled(true)
-      Harp['PlanterPlant'].setEnabled(true)
-      Harp['potsoil'].setEnabled(true)
-      Harp['TallPot'].setEnabled(true)
-      Harp['ShortPot'].setEnabled(true)
-      Harp['FarPot'].setEnabled(true)
-      Harp['ShortPlant'].setEnabled(true)
-      Harp['FarPlant'].setEnabled(true)
-      Harp['Lantern'].setEnabled(true)
-      Harp['LanternGlass'].setEnabled(true)
-      Harp['Perimeter_wall'].setEnabled(true)
-      Harp['Grass_Ground'].setEnabled(true)
+      Harp['galvalume'].setEnabled(true);
+
 
       let woodTexture = new BABYLON.Texture(Harp.textures['wood'])
       woodTexture.uScale = woodTexture.vScale = 0.015
@@ -586,26 +572,9 @@ window.addEventListener('DOMContentLoaded', () => {
       Harp.roof_material.specularColor = specColor
 
 
-
-      Harp.setColor('lumber', Harp.colors['white'])
-      Harp.lumber_material.diffuseTexture = woodTexture
-
-      Harp.setColor('lounge_wood', Harp.colors['pearl-gray'])
-      Harp.lounge_wood_material.diffuseTexture = new BABYLON.Texture(Harp.textures['Fence'])
-
-      Harp.setColor('Fence', Harp.colors['pearl-gray'])
-      Harp.Fence_material.diffuseTexture = new BABYLON.Texture(Harp.textures['Fence'])
-
-      Harp.setColor('Fence1', Harp.colors['pearl-gray'])
-      Harp.Fence1_material.diffuseTexture = new BABYLON.Texture(Harp.textures['Fence'])
-
-      Harp.setColor('PAthway_C', Harp.colors['white'])
-      Harp.PAthway_C_material.diffuseTexture = new BABYLON.Texture(Harp.textures['Perimeter_wall'])
-      Harp.PAthway_C_material.specularPower = 4
-      Harp.PAthway_C_material.specularColor = new BABYLON.Color3(0.125, 0.125, 0.125)
-
-
-
+      Harp.setColor('galvalume', Harp.colors['roof-metal'])
+      Harp.galvalume_material.specularPower = 20
+      Harp.galvalume_material.specularColor = new BABYLON.Color3(0.33, 0.33, 0.33)
 
 
     }
