@@ -25,8 +25,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1690329653819">
-  <script src="/assets/main.bundle.js?v=1690329653819"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1690482064964">
+  <script src="/assets/main.bundle.js?v=1690482064964"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -89,8 +89,13 @@
   <a href="/products/model-1-364/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 364</h3>
     
-    <div class="text-gray-600 mb-2">$87,197</div>
-
+    <div class="mb-0">
+      <span class="text-black">$87,200</span>
+      <span class="ml-2 text-gray-500 line-through">$104,800</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $17,600</span>
+    </div>
     <img class="w-auto h-auto transition-all
          
           max-h-12
@@ -104,8 +109,13 @@
   <a href="/products/model-2-476/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 476</h3>
     
-    <div class="text-gray-600 mb-2">$111,195</div>
-
+    <div class="mb-0">
+      <span class="text-black">$111,200</span>
+      <span class="ml-2 text-gray-500 line-through">$133,000</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $21,800</span>
+    </div>
     <img class="w-auto h-auto transition-all
          
           max-h-12
@@ -119,8 +129,13 @@
   <a href="/products/model-3-684/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 684</h3>
     
-    <div class="text-gray-600 mb-2">$123,205</div>
-
+    <div class="mb-0">
+      <span class="text-black">$123,200</span>
+      <span class="ml-2 text-gray-500 line-through">$147,100</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $23,900</span>
+    </div>
     <img class="w-auto h-auto transition-all
          
           max-h-12
@@ -134,8 +149,13 @@
   <a href="/products/model-4-1000/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 1000</h3>
     
-    <div class="text-gray-600 mb-2">$165,596</div>
-
+    <div class="mb-0">
+      <span class="text-black">$165,600</span>
+      <span class="ml-2 text-gray-500 line-through">$197,000</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $31,400</span>
+    </div>
     <img class="w-auto h-auto transition-all
          
           max-h-12
@@ -153,7 +173,13 @@
   <a href="/products/pagoda-right-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Pagoda Right</h3>
     
-    <div class="text-gray-600 mb-2">$22,212</div>
+    <div class="mb-0">
+      <span class="text-black">$22,212</span>
+      <span class="ml-2 text-gray-500 line-through">$26,888</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $4,676</span>
+    </div>
     <img class="w-auto h-auto transition-all
          
           max-h-12
@@ -166,7 +192,13 @@
   <a href="/products/boreas-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Boreas</h3>
     
-    <div class="text-gray-600 mb-2">$21,829</div>
+    <div class="mb-0">
+      <span class="text-black">$21,829</span>
+      <span class="ml-2 text-gray-500 line-through">$26,467</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $4,638</span>
+    </div>
     <img class="w-auto h-auto transition-all
          
           max-h-12
@@ -179,7 +211,13 @@
   <a href="/products/solitude-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Solitude</h3>
     
-    <div class="text-gray-600 mb-2">$24,525</div>
+    <div class="mb-0">
+      <span class="text-black">$24,525</span>
+      <span class="ml-2 text-gray-500 line-through">$29,347</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $4,822</span>
+    </div>
     <img class="w-auto h-auto transition-all
          
           max-h-12
@@ -192,7 +230,13 @@
   <a href="/products/pagoda-left-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Pagoda Left</h3>
     
-    <div class="text-gray-600 mb-2">$22,212</div>
+    <div class="mb-0">
+      <span class="text-black">$22,212</span>
+      <span class="ml-2 text-gray-500 line-through">$26,888</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $4,676</span>
+    </div>
     <img class="w-auto h-auto transition-all
          
           max-h-12
@@ -213,7 +257,14 @@
 
     
 
-    <div class="text-gray-600 mb-2">$29,833</div>
+    <div class="mb-0">
+      <span class="text-black">$29,833</span>
+      <span class="ml-2 text-gray-500 line-through">$37,291</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $7,458</span>
+    </div>
+
     <img class="w-auto h-auto transition-all
          
           max-h-10
@@ -228,7 +279,14 @@
 
     
 
-    <div class="text-gray-600 mb-2">$23,916</div>
+    <div class="mb-0">
+      <span class="text-black">$23,916</span>
+      <span class="ml-2 text-gray-500 line-through">$29,896</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $5,979</span>
+    </div>
+
     <img class="w-auto h-auto transition-all
          
           max-h-10
@@ -246,7 +304,14 @@
   <a href="/products/flatirons-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Flatiron 10x12</h3>
     
-    <div class="text-gray-600 mb-0">$14,569</div>
+
+    <div class="mb-0">
+      <span class="text-black">$14,569</span>
+      <span class="ml-2 text-gray-500 line-through">$17,489</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $2,920</span>
+    </div>
 
     <img class="w-auto h-auto transition-all
          
@@ -261,7 +326,14 @@
   <a href="/products/crestone-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Crestone 10x12</h3>
     
-    <div class="text-gray-600 mb-0">$7,909</div>
+
+    <div class="mb-0">
+      <span class="text-black">$7,909</span>
+      <span class="ml-2 text-gray-500 line-through">$9,879</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $1,970</span>
+    </div>
 
     <img class="w-auto h-auto transition-all
          
@@ -276,7 +348,14 @@
   <a href="/products/crestone-8x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Crestone 8x12</h3>
     
-    <div class="text-gray-600 mb-0">$7,007</div>
+
+    <div class="mb-0">
+      <span class="text-black">$7,007</span>
+      <span class="ml-2 text-gray-500 line-through">$8,749</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $1,742</span>
+    </div>
 
     <img class="w-auto h-auto transition-all
          
@@ -291,7 +370,14 @@
   <a href="/products/pinyon-4x10/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Pinyon 4x10</h3>
     
-    <div class="text-gray-600 mb-0">$3,769</div>
+
+    <div class="mb-0">
+      <span class="text-black">$3,769</span>
+      <span class="ml-2 text-gray-500 line-through">$4,709</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $940</span>
+    </div>
 
     <img class="w-auto h-auto transition-all
          
@@ -857,8 +943,13 @@
   <a href="/products/model-1-364/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 364</h3>
     
-    <div class="text-gray-600 mb-2">$87,197</div>
-
+    <div class="mb-0">
+      <span class="text-black">$87,200</span>
+      <span class="ml-2 text-gray-500 line-through">$104,800</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $17,600</span>
+    </div>
     <img class="w-auto h-auto transition-all
          
           max-h-12
@@ -872,8 +963,13 @@
   <a href="/products/model-2-476/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 476</h3>
     
-    <div class="text-gray-600 mb-2">$111,195</div>
-
+    <div class="mb-0">
+      <span class="text-black">$111,200</span>
+      <span class="ml-2 text-gray-500 line-through">$133,000</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $21,800</span>
+    </div>
     <img class="w-auto h-auto transition-all
          
           max-h-12
@@ -887,8 +983,13 @@
   <a href="/products/model-3-684/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 684</h3>
     
-    <div class="text-gray-600 mb-2">$123,205</div>
-
+    <div class="mb-0">
+      <span class="text-black">$123,200</span>
+      <span class="ml-2 text-gray-500 line-through">$147,100</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $23,900</span>
+    </div>
     <img class="w-auto h-auto transition-all
          
           max-h-12
@@ -902,8 +1003,13 @@
   <a href="/products/model-4-1000/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 1000</h3>
     
-    <div class="text-gray-600 mb-2">$165,596</div>
-
+    <div class="mb-0">
+      <span class="text-black">$165,600</span>
+      <span class="ml-2 text-gray-500 line-through">$197,000</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $31,400</span>
+    </div>
     <img class="w-auto h-auto transition-all
          
           max-h-12
@@ -921,7 +1027,13 @@
   <a href="/products/pagoda-right-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Pagoda Right</h3>
     
-    <div class="text-gray-600 mb-2">$22,212</div>
+    <div class="mb-0">
+      <span class="text-black">$22,212</span>
+      <span class="ml-2 text-gray-500 line-through">$26,888</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $4,676</span>
+    </div>
     <img class="w-auto h-auto transition-all
          
           max-h-12
@@ -934,7 +1046,13 @@
   <a href="/products/boreas-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Boreas</h3>
     
-    <div class="text-gray-600 mb-2">$21,829</div>
+    <div class="mb-0">
+      <span class="text-black">$21,829</span>
+      <span class="ml-2 text-gray-500 line-through">$26,467</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $4,638</span>
+    </div>
     <img class="w-auto h-auto transition-all
          
           max-h-12
@@ -947,7 +1065,13 @@
   <a href="/products/solitude-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Solitude</h3>
     
-    <div class="text-gray-600 mb-2">$24,525</div>
+    <div class="mb-0">
+      <span class="text-black">$24,525</span>
+      <span class="ml-2 text-gray-500 line-through">$29,347</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $4,822</span>
+    </div>
     <img class="w-auto h-auto transition-all
          
           max-h-12
@@ -960,7 +1084,13 @@
   <a href="/products/pagoda-left-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Pagoda Left</h3>
     
-    <div class="text-gray-600 mb-2">$22,212</div>
+    <div class="mb-0">
+      <span class="text-black">$22,212</span>
+      <span class="ml-2 text-gray-500 line-through">$26,888</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $4,676</span>
+    </div>
     <img class="w-auto h-auto transition-all
          
           max-h-12
@@ -981,7 +1111,14 @@
 
     
 
-    <div class="text-gray-600 mb-2">$29,833</div>
+    <div class="mb-0">
+      <span class="text-black">$29,833</span>
+      <span class="ml-2 text-gray-500 line-through">$37,291</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $7,458</span>
+    </div>
+
     <img class="w-auto h-auto transition-all
          
           max-h-10
@@ -996,7 +1133,14 @@
 
     
 
-    <div class="text-gray-600 mb-2">$23,916</div>
+    <div class="mb-0">
+      <span class="text-black">$23,916</span>
+      <span class="ml-2 text-gray-500 line-through">$29,896</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $5,979</span>
+    </div>
+
     <img class="w-auto h-auto transition-all
          
           max-h-10
@@ -1014,7 +1158,14 @@
   <a href="/products/flatirons-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Flatiron 10x12</h3>
     
-    <div class="text-gray-600 mb-0">$14,569</div>
+
+    <div class="mb-0">
+      <span class="text-black">$14,569</span>
+      <span class="ml-2 text-gray-500 line-through">$17,489</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $2,920</span>
+    </div>
 
     <img class="w-auto h-auto transition-all
          
@@ -1029,7 +1180,14 @@
   <a href="/products/crestone-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Crestone 10x12</h3>
     
-    <div class="text-gray-600 mb-0">$7,909</div>
+
+    <div class="mb-0">
+      <span class="text-black">$7,909</span>
+      <span class="ml-2 text-gray-500 line-through">$9,879</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $1,970</span>
+    </div>
 
     <img class="w-auto h-auto transition-all
          
@@ -1044,7 +1202,14 @@
   <a href="/products/crestone-8x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Crestone 8x12</h3>
     
-    <div class="text-gray-600 mb-0">$7,007</div>
+
+    <div class="mb-0">
+      <span class="text-black">$7,007</span>
+      <span class="ml-2 text-gray-500 line-through">$8,749</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $1,742</span>
+    </div>
 
     <img class="w-auto h-auto transition-all
          
@@ -1059,7 +1224,14 @@
   <a href="/products/pinyon-4x10/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Pinyon 4x10</h3>
     
-    <div class="text-gray-600 mb-0">$3,769</div>
+
+    <div class="mb-0">
+      <span class="text-black">$3,769</span>
+      <span class="ml-2 text-gray-500 line-through">$4,709</span>
+    </div>
+    <div class="mb-2">
+      <span class="text-green-600 uppercase">Save $940</span>
+    </div>
 
     <img class="w-auto h-auto transition-all
          
@@ -1527,7 +1699,7 @@
                       <a href="/products/model-1-364/" class="group text-xs relative group cursor-pointer">
                         <h3 class="font-bold">Summit 364</h3>
                         <p class="text-gray-600">364 SF Studio ADU</p>
-                        <div class="text-gray-600 mb-2">$87,197</div>
+                        <div class="text-gray-600 mb-2">$87,200</div>
 
                         <img class="w-auto h-auto transition-all max-h-32 group-hover:opacity-80"
                              src="/assets/images/menu/model-1-364-render.jpg">
@@ -1537,7 +1709,7 @@
                       <a href="/products/model-2-476/" class="group text-xs relative group cursor-pointer">
                         <h3 class="font-bold">Summit 476</h3>
                         <p class="text-gray-600">476 SF 1 Bed ADU</p>
-                        <div class="text-gray-600 mb-2">$111,195</div>
+                        <div class="text-gray-600 mb-2">$111,200</div>
 
                         <img class="w-auto h-auto transition-all max-h-32 group-hover:opacity-80"
                              src="/assets/images/menu/model-2-476-render.jpg">
@@ -1547,7 +1719,7 @@
                       <a href="/products/model-3-684/" class="group text-xs relative group cursor-pointer">
                         <h3 class="font-bold">Summit 684</h3>
                         <p class="text-gray-600">684 SF 1 Bed ADU</p>
-                        <div class="text-gray-600 mb-2">$123,205</div>
+                        <div class="text-gray-600 mb-2">$123,200</div>
 
                         <img class="w-auto h-auto transition-all max-h-32 group-hover:opacity-80"
                              src="/assets/images/menu/model-3-684-render.jpg">
@@ -1557,7 +1729,7 @@
                       <a href="/products/model-4-1000/" class="group text-xs relative group cursor-pointer">
                         <h3 class="font-bold">Summit 1000</h3>
                         <p class="text-gray-600">1000 SF 2 Bed ADU</p>
-                        <div class="text-gray-600 mb-2">$165,596</div>
+                        <div class="text-gray-600 mb-2">$165,600</div>
 
                         <img class="w-auto h-auto transition-all max-h-32 group-hover:opacity-80"
                              src="/assets/images/menu/model-4-1000-render.jpg">
