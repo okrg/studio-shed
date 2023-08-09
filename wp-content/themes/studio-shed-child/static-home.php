@@ -25,8 +25,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1691171624378">
-  <script src="/assets/main.bundle.js?v=1691171624378"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1691615696987">
+  <script src="/assets/main.bundle.js?v=1691615696987"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -42,9 +42,6 @@
 
 
 
-<a class="w-full text-center py-2 bg-yellow-600 text-white text-xs sm:text-sm font-medium sm:font-bold block" href="https://www.studio-shed.com/products/signature-series/#toc-curated" target="_blank">
-  Curated models shipping nationwide in 2 weeks <span class="underline hover:opacity-80">Shop Now</a>
-</a>
 <header x-cloak x-data="window.Components.navManager">
   <div class="relative bg-white z-20">
     <div class="flex justify-between items-center max-w-7xl mx-auto px-4 py-2 md:justify-start md:space-x-6">
@@ -1564,8 +1561,8 @@
           </div>
           <div class="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">
             <div class="text-center py-8" style="background:rgba(0,0,0,0.33)">
-              <h2 class="text-2xl font-bold tracking-tight text-white sm:text-4xl drop-shadow-2xl">The Fastest Way to Add Space to Your Property</h2>
-              <h3 class="text-xl lg:text-2xl font-bold text-white leading-2 drop-shadow-xl"><span class="text-yellow-500">Save $3000</span> on any Studio Shed Shipping in August</h3>
+              <h2 class="text-2xl font-bold tracking-tight text-white sm:text-4xl drop-shadow-2xl">Save $3000 on any Studio Shed Shipping in August</h2>
+              <h3 class="text-xl lg:text-2xl font-bold text-white leading-2 drop-shadow-xl"><span class="text-yellow-500">The Fastest Way</span> to Add Space to Your Property</h3>
               <p class="text-sm text-white">Excludes curated models and premium storage</p>
               <div class="justify-center flex">
                 <div class="mx-auto flex w-full gap-x-1 sm:w-auto sm:justify-center">

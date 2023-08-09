@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1691171624378">
-  <script src="/assets/main.bundle.js?v=1691171624378"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1691615696987">
+  <script src="/assets/main.bundle.js?v=1691615696987"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -79,9 +79,6 @@
   <!-- End Google Tag Manager (noscript) -->
 
 
-<a class="w-full text-center py-2 bg-yellow-600 text-white text-xs sm:text-sm font-medium sm:font-bold block" href="https://www.studio-shed.com/products/signature-series/#toc-curated" target="_blank">
-  Curated models shipping nationwide in 2 weeks <span class="underline hover:opacity-80">Shop Now</a>
-</a>
 <header x-cloak x-data="window.Components.navManager">
   <div class="relative bg-white z-20">
     <div class="flex justify-between items-center max-w-7xl mx-auto px-4 py-2 md:justify-start md:space-x-6">
