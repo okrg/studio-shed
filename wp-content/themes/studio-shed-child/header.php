@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1691644349613">
-  <script src="/assets/main.bundle.js?v=1691644349613"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1692230388774">
+  <script src="/assets/main.bundle.js?v=1692230388774"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -529,7 +529,7 @@
                 <img loading="lazy" class="w-24 h-16 object-cover rounded-md" src="/assets/images/nav-question-adu.jpg" alt="Can I build an ADU where I live?">
               </div>
               <div class="min-w-0 flex-1 ml-2">
-                <p class="text-sm text-gray-500">Can I build an ADU where you live?</p>
+                <p class="text-sm text-gray-500">Can I build an ADU where I live?</p>
               </div>
             </a>
           </li>
