@@ -5,22 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Studio Shed referral program</title>  
     <meta name="description" content="Grow your business by partnering with Studio Shed. We offer a referral program for architects, designers, and contractors.">
+    
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="article">
     <meta property="og:title" content="Studio Shed referral program">
     <meta property="og:description" content="Grow your business by partnering with Studio Shed. We offer a referral program for architects, designers, and contractors.">
     <meta property="og:url" content="https://www.studio-shed.com/referral-program/">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2023-08-16T23:59:49.169Z">
+    <meta property="article:modified_time" content="2023-08-21T23:19:37.157Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="https://www.studio-shed.com/referral-program/">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1692230388774">
-    <script src="/assets/main.bundle.js?v=1692230388774"></script>
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1692659976837">
+    <script src="/assets/main.bundle.js?v=1692659976837"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
     <!--
     <script src="https://apps.elfsight.com/p/platform.js" async></script> 
@@ -1539,30 +1541,27 @@
   <div class="relative">
     <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100"></div>
     <div class="mx-auto w-full">
-      <div class="relative overflow-hidden">
+      <div class="relative h-72 overflow-hidden">
         <div class="absolute inset-0">
           <img loading="lazy" class="h-full w-full object-cover" src="https://www.studio-shed.com/assets/images/commercial-vwn.jpg">
-          <div class="absolute inset-0 bg-black opacity-40 mix-blend-multiply"></div>
         </div>
-        <div class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
-          <h1 class="text-center font-bold tracking-tight">
-            <span class="block text-yellow-400 text-lg uppercase">Grow with us!</span>
-            <span class="block text-white text-4xl max-w-3xl mx-auto">23'-24' Referral Program</span>
 
-          </h1>
-
-        </div>
       </div>
     </div>
   </div>
 
 
-  <div class="relative overflow-hidden bg-white">
+  <div class="relative overflow-hidden bg-white pt-12">
+
+    <h1 class="text-center font-bold tracking-tight">
+      <span class="block text-yellow-500 text-xl uppercase">Grow with us!</span>
+      <span class="block text-gray-800 text-4xl max-w-3xl mx-auto">23'-24' Referral Program</span>
+    </h1>
 
     <!-- Callout -->
     <section aria-labelledby="sale-heading" class="relative mx-auto flex max-w-7xl flex-col items-center px-4 pt-12 text-center sm:px-6 lg:px-8">
       <div class="mx-auto max-w-2xl lg:max-w-none">
-        <h2 id="sale-heading" class="text-4xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-3xl">STUDIO SHED can elevate your business.</h2>
+        <h2 id="sale-heading" class="text-4xl font-bold tracking-tight text-gray-900 sm:text-xl lg:text-2xl">STUDIO SHED can elevate your business.</h2>
         <p class="mx-auto mt-4 max-w-xl text-xl text-gray-600">Transforming living spaces since 2008, we’ve pioneered the rapid growth of innovative solutions for offices, art and fitness studios, and ADUs.</p>
         <p class="mx-auto mt-4 max-w-xl text-xl text-gray-600">Join our referral program now – Let’s amplify your projects, supercharge your profits, and thrive together!</p>
       </div>
@@ -1657,13 +1656,21 @@
       <div class="mx-auto max-w-lg text-center"><h2 class="font-display text-3xl tracking-tight text-white sm:text-4xl">
         Next Steps, Let's Go!</h2>
         <div class="bg-white mt-8 px-8 py-16">
-          <p class="text-center py-6">Fill out the form below and we’ll get you onboarded!</p>
-          <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
           <script>
             hbspt.forms.create({
               region: "na1",
               portalId: "22119690",
-              formId: "78709391-99c1-4f04-bc2f-5151371b5d3f"
+              formId: "78709391-99c1-4f04-bc2f-5151371b5d3f",
+              onFormSubmit: function($form) {
+                var element = document.querySelector("#get-started-today");
+                var offsetTop = element.offsetTop;
+
+                window.scrollTo({
+                  top: offsetTop,
+                  behavior: "smooth",
+                });
+
+              }
             });
           </script>
         </div>
