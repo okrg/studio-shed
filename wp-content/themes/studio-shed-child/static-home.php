@@ -25,8 +25,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1692659976837">
-  <script src="/assets/main.bundle.js?v=1692659976837"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1692742886986">
+  <script src="/assets/main.bundle.js?v=1692742886986"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -60,9 +60,10 @@
         </button>
       </div>
       <nav class="hidden lg:flex items-center space-x-6">
+        <a href="https://shop.studio-shed.com/" class="text-sm xl:text-base font-normal text-gray-700 hover:text-gray-900"> Design Your Own </a>
         <div @click.outside="modelsFlyout = false">
   <button type="button" class="text-gray-700 group bg-white rounded-md inline-flex items-center text-sm xl:text-base font-normal hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500" aria-expanded="false" @click="modelsFlyout = ! modelsFlyout">
-    <span>Models</span>
+    <span>Popular Designs</span>
 
     <svg class="text-gray-600 ml-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
       <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -80,14 +81,14 @@
       <div class="mx-auto max-w-4xl">
         
       <p class="flex pb-2 items-center align-middle text-xs uppercase">ADUs</p>
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-8">
+<div class="relative grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-4 mb-8">
   
   
   <a href="/products/model-1-364/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 364</h3>
     
     <div class="mb-0">
-      <span class="text-black">$87,200</span>
+      <span class="text-black">from $87,200</span>
       <span class="ml-2 text-gray-500 line-through">$104,800</span>
     </div>
     <div class="mb-2">
@@ -107,7 +108,7 @@
     <h3 class="font-bold">Summit 476</h3>
     
     <div class="mb-0">
-      <span class="text-black">$111,200</span>
+      <span class="text-black">from $111,200</span>
       <span class="ml-2 text-gray-500 line-through">$133,000</span>
     </div>
     <div class="mb-2">
@@ -127,7 +128,7 @@
     <h3 class="font-bold">Summit 684</h3>
     
     <div class="mb-0">
-      <span class="text-black">$123,200</span>
+      <span class="text-black">from $123,200</span>
       <span class="ml-2 text-gray-500 line-through">$147,100</span>
     </div>
     <div class="mb-2">
@@ -147,7 +148,7 @@
     <h3 class="font-bold">Summit 1000</h3>
     
     <div class="mb-0">
-      <span class="text-black">$165,600</span>
+      <span class="text-black">from $165,600</span>
       <span class="ml-2 text-gray-500 line-through">$197,000</span>
     </div>
     <div class="mb-2">
@@ -162,20 +163,25 @@
 
   </a>
   
+  <div class="flex items-center">
+    <a href="https://shop.studio-shed.com/" class="rounded-sm whitespace-nowrap text-center bg-yellow-600 px-4 py-2 rounded-sm text-sm font-normal uppercase text-white hover:opacity-80">
+      Design Your Own
+    </a>
+  </div>
 </div>
       <p class="border-t flex py-2 items-center align-middle text-xs uppercase">Single Room Studios</p>
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-8">
+<div class="relative grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-4 mb-8">
   
   
   <a href="/products/pagoda-right-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Pagoda Right</h3>
     
     <div class="mb-0">
-      <span class="text-black">$22,212</span>
-      <span class="ml-2 text-gray-500 line-through">$26,888</span>
+      <span class="text-black">from $22,200</span>
+      <span class="ml-2 text-gray-500 line-through">$26,900</span>
     </div>
     <div class="mb-2">
-      <span class="text-green-600 uppercase">Save $4,676</span>
+      <span class="text-green-600 uppercase">Save $4,700</span>
     </div>
     <img class="w-auto h-auto transition-all
          
@@ -190,11 +196,11 @@
     <h3 class="font-bold">Boreas</h3>
     
     <div class="mb-0">
-      <span class="text-black">$21,829</span>
-      <span class="ml-2 text-gray-500 line-through">$26,467</span>
+      <span class="text-black">from $21,800</span>
+      <span class="ml-2 text-gray-500 line-through">$26,500</span>
     </div>
     <div class="mb-2">
-      <span class="text-green-600 uppercase">Save $4,638</span>
+      <span class="text-green-600 uppercase">Save $4,700</span>
     </div>
     <img class="w-auto h-auto transition-all
          
@@ -209,11 +215,11 @@
     <h3 class="font-bold">Solitude</h3>
     
     <div class="mb-0">
-      <span class="text-black">$24,525</span>
-      <span class="ml-2 text-gray-500 line-through">$29,347</span>
+      <span class="text-black">from $24,500</span>
+      <span class="ml-2 text-gray-500 line-through">$29,300</span>
     </div>
     <div class="mb-2">
-      <span class="text-green-600 uppercase">Save $4,822</span>
+      <span class="text-green-600 uppercase">Save $4,800</span>
     </div>
     <img class="w-auto h-auto transition-all
          
@@ -228,11 +234,11 @@
     <h3 class="font-bold">Pagoda Left</h3>
     
     <div class="mb-0">
-      <span class="text-black">$22,212</span>
-      <span class="ml-2 text-gray-500 line-through">$26,888</span>
+      <span class="text-black">from $22,200</span>
+      <span class="ml-2 text-gray-500 line-through">$26,900</span>
     </div>
     <div class="mb-2">
-      <span class="text-green-600 uppercase">Save $4,676</span>
+      <span class="text-green-600 uppercase">Save $4,700</span>
     </div>
     <img class="w-auto h-auto transition-all
          
@@ -242,11 +248,15 @@
          src="/assets/images/menu/pagoda-left-render.jpg">
   </a>
   
-
+  <div class="flex items-center">
+    <a href="https://shop.studio-shed.com/" class="rounded-sm whitespace-nowrap text-center bg-yellow-600 px-4 py-2 rounded-sm text-sm font-normal uppercase text-white hover:opacity-80">
+      Design Your Own
+    </a>
+  </div>
 </div>
       
 
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-8">
+<div class="relative grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-4 mb-8">
   
   
   <a href="/products/model-d/" class="group text-xs relative group cursor-pointer">
@@ -255,11 +265,11 @@
     
 
     <div class="mb-0">
-      <span class="text-black">$29,833</span>
-      <span class="ml-2 text-gray-500 line-through">$37,291</span>
+      <span class="text-black">from $29,800</span>
+      <span class="ml-2 text-gray-500 line-through">$37,300</span>
     </div>
     <div class="mb-2">
-      <span class="text-green-600 uppercase">Save $7,458</span>
+      <span class="text-green-600 uppercase">Save $7,500</span>
     </div>
 
     <img class="w-auto h-auto transition-all
@@ -277,11 +287,11 @@
     
 
     <div class="mb-0">
-      <span class="text-black">$23,916</span>
-      <span class="ml-2 text-gray-500 line-through">$29,896</span>
+      <span class="text-black">from $23,900</span>
+      <span class="ml-2 text-gray-500 line-through">$29,900</span>
     </div>
     <div class="mb-2">
-      <span class="text-green-600 uppercase">Save $5,979</span>
+      <span class="text-green-600 uppercase">Save $6,000</span>
     </div>
 
     <img class="w-auto h-auto transition-all
@@ -391,7 +401,6 @@
     </div>
   </div>
 </div>
-        <a href="https://shop.studio-shed.com/" class="text-sm xl:text-base font-normal text-gray-700 hover:text-gray-900"> Design Your Own </a>
         <div @click.outside="adusFlyout = false">  
   <button type="button" class="text-gray-700 group bg-white rounded-md inline-flex items-center text-sm xl:text-base font-normal hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500" aria-expanded="false" @click="adusFlyout = ! adusFlyout">
     <span>ADUs</span>
@@ -924,8 +933,14 @@
           </div>
 
           <div class="-my-4 py-4">
+            <a href="https://shop.studio-shed.com/" class="block w-full flex justify-between items-center">
+              <div class="text-base font-semibold text-gray-900">Design Your Own</div>
+            </a>
+          </div>
+
+          <div class="-my-4 py-4">
             <a href="#" class="block w-full flex justify-between items-center" @click.prevent="modelsMobile = ! modelsMobile">
-              <div class="text-base font-semibold text-gray-900">Models</div>
+              <div class="text-base font-semibold text-gray-900">Popular Designs</div>
               <span class="flex items-center">
                 <svg :class="modelsMobile ? '-rotate-180' : 'rotate-0'" class="h-6 w-6 transform text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -934,14 +949,14 @@
             </a>
             <div x-show="modelsMobile" x-transition>
               <p class="flex pb-2 items-center align-middle text-xs uppercase">ADUs</p>
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-8">
+<div class="relative grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-4 mb-8">
   
   
   <a href="/products/model-1-364/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Summit 364</h3>
     
     <div class="mb-0">
-      <span class="text-black">$87,200</span>
+      <span class="text-black">from $87,200</span>
       <span class="ml-2 text-gray-500 line-through">$104,800</span>
     </div>
     <div class="mb-2">
@@ -961,7 +976,7 @@
     <h3 class="font-bold">Summit 476</h3>
     
     <div class="mb-0">
-      <span class="text-black">$111,200</span>
+      <span class="text-black">from $111,200</span>
       <span class="ml-2 text-gray-500 line-through">$133,000</span>
     </div>
     <div class="mb-2">
@@ -981,7 +996,7 @@
     <h3 class="font-bold">Summit 684</h3>
     
     <div class="mb-0">
-      <span class="text-black">$123,200</span>
+      <span class="text-black">from $123,200</span>
       <span class="ml-2 text-gray-500 line-through">$147,100</span>
     </div>
     <div class="mb-2">
@@ -1001,7 +1016,7 @@
     <h3 class="font-bold">Summit 1000</h3>
     
     <div class="mb-0">
-      <span class="text-black">$165,600</span>
+      <span class="text-black">from $165,600</span>
       <span class="ml-2 text-gray-500 line-through">$197,000</span>
     </div>
     <div class="mb-2">
@@ -1016,20 +1031,25 @@
 
   </a>
   
+  <div class="flex items-center">
+    <a href="https://shop.studio-shed.com/" class="rounded-sm whitespace-nowrap text-center bg-yellow-600 px-4 py-2 rounded-sm text-sm font-normal uppercase text-white hover:opacity-80">
+      Design Your Own
+    </a>
+  </div>
 </div>
               <p class="border-t flex py-2 items-center align-middle text-xs uppercase">Single Room Studios</p>
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-8">
+<div class="relative grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-4 mb-8">
   
   
   <a href="/products/pagoda-right-10x12/" class="group text-xs relative group cursor-pointer">
     <h3 class="font-bold">Pagoda Right</h3>
     
     <div class="mb-0">
-      <span class="text-black">$22,212</span>
-      <span class="ml-2 text-gray-500 line-through">$26,888</span>
+      <span class="text-black">from $22,200</span>
+      <span class="ml-2 text-gray-500 line-through">$26,900</span>
     </div>
     <div class="mb-2">
-      <span class="text-green-600 uppercase">Save $4,676</span>
+      <span class="text-green-600 uppercase">Save $4,700</span>
     </div>
     <img class="w-auto h-auto transition-all
          
@@ -1044,11 +1064,11 @@
     <h3 class="font-bold">Boreas</h3>
     
     <div class="mb-0">
-      <span class="text-black">$21,829</span>
-      <span class="ml-2 text-gray-500 line-through">$26,467</span>
+      <span class="text-black">from $21,800</span>
+      <span class="ml-2 text-gray-500 line-through">$26,500</span>
     </div>
     <div class="mb-2">
-      <span class="text-green-600 uppercase">Save $4,638</span>
+      <span class="text-green-600 uppercase">Save $4,700</span>
     </div>
     <img class="w-auto h-auto transition-all
          
@@ -1063,11 +1083,11 @@
     <h3 class="font-bold">Solitude</h3>
     
     <div class="mb-0">
-      <span class="text-black">$24,525</span>
-      <span class="ml-2 text-gray-500 line-through">$29,347</span>
+      <span class="text-black">from $24,500</span>
+      <span class="ml-2 text-gray-500 line-through">$29,300</span>
     </div>
     <div class="mb-2">
-      <span class="text-green-600 uppercase">Save $4,822</span>
+      <span class="text-green-600 uppercase">Save $4,800</span>
     </div>
     <img class="w-auto h-auto transition-all
          
@@ -1082,11 +1102,11 @@
     <h3 class="font-bold">Pagoda Left</h3>
     
     <div class="mb-0">
-      <span class="text-black">$22,212</span>
-      <span class="ml-2 text-gray-500 line-through">$26,888</span>
+      <span class="text-black">from $22,200</span>
+      <span class="ml-2 text-gray-500 line-through">$26,900</span>
     </div>
     <div class="mb-2">
-      <span class="text-green-600 uppercase">Save $4,676</span>
+      <span class="text-green-600 uppercase">Save $4,700</span>
     </div>
     <img class="w-auto h-auto transition-all
          
@@ -1096,11 +1116,15 @@
          src="/assets/images/menu/pagoda-left-render.jpg">
   </a>
   
-
+  <div class="flex items-center">
+    <a href="https://shop.studio-shed.com/" class="rounded-sm whitespace-nowrap text-center bg-yellow-600 px-4 py-2 rounded-sm text-sm font-normal uppercase text-white hover:opacity-80">
+      Design Your Own
+    </a>
+  </div>
 </div>
               
 
-<div class="relative grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 mb-8">
+<div class="relative grid grid-cols-2 md:grid-cols-5 gap-x-8 gap-y-4 mb-8">
   
   
   <a href="/products/model-d/" class="group text-xs relative group cursor-pointer">
@@ -1109,11 +1133,11 @@
     
 
     <div class="mb-0">
-      <span class="text-black">$29,833</span>
-      <span class="ml-2 text-gray-500 line-through">$37,291</span>
+      <span class="text-black">from $29,800</span>
+      <span class="ml-2 text-gray-500 line-through">$37,300</span>
     </div>
     <div class="mb-2">
-      <span class="text-green-600 uppercase">Save $7,458</span>
+      <span class="text-green-600 uppercase">Save $7,500</span>
     </div>
 
     <img class="w-auto h-auto transition-all
@@ -1131,11 +1155,11 @@
     
 
     <div class="mb-0">
-      <span class="text-black">$23,916</span>
-      <span class="ml-2 text-gray-500 line-through">$29,896</span>
+      <span class="text-black">from $23,900</span>
+      <span class="ml-2 text-gray-500 line-through">$29,900</span>
     </div>
     <div class="mb-2">
-      <span class="text-green-600 uppercase">Save $5,979</span>
+      <span class="text-green-600 uppercase">Save $6,000</span>
     </div>
 
     <img class="w-auto h-auto transition-all
@@ -1465,11 +1489,7 @@
             </div>
           </div>
 
-          <div class="-my-4 py-4">
-            <a href="https://shop.studio-shed.com/" class="block w-full flex justify-between items-center">
-              <div class="text-base font-semibold text-gray-900">Design Center</div>
-            </a>
-          </div>
+
 
           <div class="-my-4 py-4">
             <a href="#" class="block w-full flex justify-between items-center" @click.prevent="moreMobile = ! moreMobile">
@@ -1712,11 +1732,11 @@
                       </a>
                       
                       <div class="col-span-2 flex flex-col items-center justify-center">
-                        <a href="https://shop.studio-shed.com" class="group w-full md:w-32 border-gray-200 border-2 p-4 my-2">
-                          <h3 class="text-xs font-bold uppercase text-center">Build your own</h3>
+                        <a href="https://shop.studio-shed.com/" class="rounded-sm whitespace-nowrap text-center bg-yellow-600 px-4 py-2 rounded-sm text-sm font-normal uppercase text-white hover:opacity-80">
+                          Design Your Own
                         </a>
-                        <a href="/products/summit-series/" class="group w-full md:w-32 border-gray-200 border-2 p-4 my-2">
-                          <h3 class="text-xs font-bold uppercase text-center">Explore Summit Series</h3>
+                        <a href="/products/summit-series/" class="text-gray-600 mt-4 text-sm">
+                          Explore Summit Series &rarr;
                         </a>
                       </div>
                     </div>
@@ -1739,7 +1759,7 @@
                       <a href="/products/pagoda-right-10x12/" class="group text-xs relative group cursor-pointer">
                         <h3 class="font-bold">Pagoda Right 120</h3>
                         <p class="text-gray-600">10x12 Studio</p>
-                        <div class="text-gray-600 mb-2">$22,212</div>
+                        <div class="text-gray-600 mb-2">$22,200</div>
 
                         <img class="w-auto h-auto transition-all max-h-32 group-hover:opacity-80"
                              src="/assets/images/menu/pagoda-right-render.jpg">
@@ -1749,7 +1769,7 @@
                       <a href="/products/boreas-10x12/" class="group text-xs relative group cursor-pointer">
                         <h3 class="font-bold">Boreas 120</h3>
                         <p class="text-gray-600">10x12 Studio</p>
-                        <div class="text-gray-600 mb-2">$21,829</div>
+                        <div class="text-gray-600 mb-2">$21,800</div>
 
                         <img class="w-auto h-auto transition-all max-h-32 group-hover:opacity-80"
                              src="/assets/images/menu/boreas-render.jpg">
@@ -1759,7 +1779,7 @@
                       <a href="/products/solitude-10x12/" class="group text-xs relative group cursor-pointer">
                         <h3 class="font-bold">Solitude 120</h3>
                         <p class="text-gray-600">10x12 Studio</p>
-                        <div class="text-gray-600 mb-2">$24,525</div>
+                        <div class="text-gray-600 mb-2">$24,500</div>
 
                         <img class="w-auto h-auto transition-all max-h-32 group-hover:opacity-80"
                              src="/assets/images/menu/solitude-render.jpg">
@@ -1769,7 +1789,7 @@
                       <a href="/products/pagoda-left-10x12/" class="group text-xs relative group cursor-pointer">
                         <h3 class="font-bold">Pagoda Left 120</h3>
                         <p class="text-gray-600">10x12 Studio</p>
-                        <div class="text-gray-600 mb-2">$22,212</div>
+                        <div class="text-gray-600 mb-2">$22,200</div>
 
                         <img class="w-auto h-auto transition-all max-h-32 group-hover:opacity-80"
                              src="/assets/images/menu/pagoda-left-render.jpg">
@@ -1777,11 +1797,11 @@
                       
 
                       <div class="col-span-2 flex flex-col items-center justify-center">
-                        <a href="https://shop.studio-shed.com" class="group w-full md:w-32 border-gray-200 border-2 p-4 my-2">
-                          <h3 class="text-xs font-bold uppercase text-center">Build your own</h3>
+                        <a href="https://shop.studio-shed.com/" class="rounded-sm whitespace-nowrap text-center bg-yellow-600 px-4 py-2 rounded-sm text-sm font-normal uppercase text-white hover:opacity-80">
+                          Design Your Own
                         </a>
-                        <a href="https://shop.studio-shed.com" class="group w-full md:w-32 border-gray-200 border-2 p-4 my-2">
-                          <h3 class="text-xs font-bold uppercase text-center">Explore Signature Series</h3>
+                        <a href="/products/signature-series/" class="text-gray-600 mt-4 text-sm">
+                          Explore Signature Series &rarr;
                         </a>
                       </div>
                     </div>
@@ -1796,7 +1816,7 @@
                       <a href="/products/portland-120d/" class="group text-xs relative group cursor-pointer">
                         <h3 class="font-bold">Portland 120D</h3>
                         <p class="text-gray-600">10x12 Studio</p>
-                        <div class="text-gray-600 mb-2">$29,833</div>
+                        <div class="text-gray-600 mb-2">$29,800</div>
 
                         <img class="w-auto h-auto transition-all max-h-24 group-hover:opacity-80"
                              src="/assets/images/menu/portland-120d-render.jpg">
@@ -1806,18 +1826,17 @@
                       <a href="/products/portland-120e/" class="group text-xs relative group cursor-pointer">
                         <h3 class="font-bold">Portland 120E</h3>
                         <p class="text-gray-600">10x12 Studio</p>
-                        <div class="text-gray-600 mb-2">$23,916</div>
+                        <div class="text-gray-600 mb-2">$23,900</div>
 
                         <img class="w-auto h-auto transition-all max-h-24 group-hover:opacity-80"
                              src="/assets/images/menu/portland-120e-render.jpg">
                       </a>
                       
                       <div class="col-span-2 flex flex-col items-center justify-center">
-                        <a href="https://shop.studio-shed.com" class="group w-full md:w-32 border-gray-200 border-2 p-4 my-2">
-                        <h3 class="text-xs font-bold uppercase text-center">Build your own</h3>
-                      </a>
-                        <a href="https://shop.studio-shed.com" class="group w-full md:w-32 border-gray-200 border-2 p-4 my-2">
-                          <h3 class="text-xs font-bold uppercase text-center">Explore Portland Series</h3>
+                        <a href="https://shop.studio-shed.com/" class="rounded-sm whitespace-nowrap text-center bg-yellow-600 px-4 py-2 rounded-sm text-sm font-normal uppercase text-white hover:opacity-80">
+                        Design Your Own</a>
+                        <a href="/products/portland-series/" class="text-gray-600 mt-4 text-sm">
+                          Explore Portland Series &rarr;
                         </a>
                       </div>
                     </div>
