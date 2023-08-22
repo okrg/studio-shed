@@ -12,20 +12,20 @@
     <meta property="og:description" content="">
     <meta property="og:url" content="">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2023-08-22T22:21:27.368Z">
+    <meta property="article:modified_time" content="2023-08-22T22:57:34.932Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1692742886986">
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1692745054493">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <script src="/assets/main.bundle.js?v=1692742886986"></script>
+    <script src="/assets/main.bundle.js?v=1692745054493"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babylonjs/4.2.2/babylon.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/babylonjs-loaders@5.9.1/babylonjs.loaders.min.js"></script>
     <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
-    <script src="/assets/next-harp.js?v=1692742886986"></script>
+    <script src="/assets/next-harp.js?v=1692745054493"></script>
     
     <link type="text/css" rel="stylesheet" href="https://payment-amount.acornfinance.com/v4/acorn-finance-promo.min.css">
     <script async src="https://payment-amount.acornfinance.com/v4/acorn-finance-promo.min.js"></script>
@@ -1631,86 +1631,20 @@
             </div>
           </div>
 
-          <div class="mt-2">
-
-            <div id="acorn-payment-amount-line" class="acorn-payment-amount-line" x-show="trimColorValue == 'Clear Anodized Aluminum'">
-              <a style="font-size: 18px; text-decoration: underline;" class="acorn-loading acorn-default-link"
-                href="https://www.acornfinance.com/apply?d=SSD-CURATED&dmsg=1&utm_medium=fallBackLink" target="_blank">pay monthly
-                on Acorn get started</a>
-            </div>
-
-          </div>
-
-          <script>
-            acornParameters = {
-              dealerId: 'SSD-CURATED',
-              companyName: 'Studio Shed',
-              subPurpose: 'Sheds,%20Garages,%20%26%20Studios',
-              loanAmount: 165600,
-              returnURL: window.location.href,
-              env: 'Prod', // Set to UAT for testing or Prod for Production
-              paymentPrefix: 'From',
-              paymentSuffix: '/month on',
-              theme: 'transparent', // light, dark, no-border, box, transparent
-              showPromoText: false, // true, false
-              logging: true,
-              docSource: 'Product Page', // Studio Shed location
-              docUser: 'Customer',  // Customer,
-              customLogo: 'images/partner-logos/studioshed-acorn.png',
-              customPopupTitle: 'Pay for your project over time',
-              customPopupGetStartedTitle: 'HOW TO GET STARTED',
-              customPopupGetStartedContent: `<ol class="acorn-popup-bullets-container">
-                              <li class="acorn-custom-steps">
-                                Click "Buy Now" on your ready-to-ship Studio Shed. On the Checkout page, click "Get Started" in the Acorn Finance banner under Payment.
-                              </li>
-                              <li class="acorn-custom-steps" style="padding: 10px 0 10px 0;">
-                                Take 2 minutes to fill out a brief application.<br>
-                              </li>
-                              <li class="acorn-custom-steps">
-                                If you're approved, use your funds to pay for your Studio Shed. Well qualified customers could have their approved funds sent directly to Studio Shed to pay for their purchase.
-                              </li>
-                            </ol>
-                          `,
-              customPopupButtonLabel: 'Check your rate',
-              customPopupCloseLink: 'Close' // default Close
-            }
-            setTimeout(() => {
-              try {
-                // add an appropriate event listener
-                window.addEventListener('acorn-payment-widget-click', (e) => console.log('acorn-payment-widget-click', e.detail.label));
-                acornFinance.setAcornParameters(acornParameters)
-                let uuid = acornFinance.getUUID()
-                acornParameters.uuid = uuid
-                acornParameters.utm_content = 'model-4-1000--' + uuid
-                acornParameters.utm_medium = 'model-4-1000'
-                acornFinance.calcPayment(165600, 'acorn-payment-amount-line', 'popup', '1line', 'Learn more', 'continue') // for popup;
-              } catch (error) {
-                console.log(error)
-                let acorndefaultLinks = document.querySelectorAll('.acorn-default-link')
-                acorndefaultLinks.forEach((defaultLink) => {
-                  let loanAppURL = new URL(defaultLink.href)
-                  loanAppURL.searchParams.set('utm_medium', 'globalErrorFallback')
-                  defaultLink.href = loanAppURL.toString()
-                })
-              }
-            }, 1000);
-          </script>
-
-
 
 
 
             <h3 class="sr-only">Description</h3>
 
-            <div class="text-gray-700 text-sm space-y-2 grid grid-cols-2">
+            <div class="mt-4 text-gray-700 text-sm space-y-2 grid grid-cols-2">
               <div>
                 <strong>Includes: </strong>
                 <ul class="list-disc list-inside">
                   <li>Exterior shell with lap siding</li>
-                  <li>Interior insulation, drywall and flooring
+                  <li>Interior insulation, drywall &amp; flooring
                   <li>Electrical, lighting, appliance package</li>
-                  <li>Complete kitchen and bathroom package</li>
-                  <li>Door and window hardware</li>
+                  <li>Complete kitchen &amp; bath package</li>
+                  <li>Door &amp; window hardware</li>
                   <li>Permit plans</li>
                 </ul>
               </div>
