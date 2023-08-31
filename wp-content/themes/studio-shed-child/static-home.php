@@ -25,8 +25,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1693505996394">
-  <script src="/assets/main.bundle.js?v=1693505996394"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1693506596664">
+  <script src="/assets/main.bundle.js?v=1693506596664"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -44,7 +44,7 @@
 
 <header x-cloak x-data="window.Components.navManager">
   <div class="relative bg-white z-20">
-    <div class="flex justify-between items-center max-w-7xl mx-auto px-4 py-2 md:justify-start md:space-x-6">
+    <div class="flex justify-between items-center max-w-7xl mx-auto px-4 pt-10 pb-2 md:justify-start md:space-x-6">
       <div class="flex justify-start flex-1">
         <a href="/">
           <span class="sr-only">Studio Shed</span>
@@ -897,7 +897,7 @@
 </div>
       </nav>
       <div class="hidden lg:flex items-center justify-end md:flex-1 lg:w-0">
-        <a href="/request-free-consultation/" class="rounded-sm ml-8 whitespace-nowrap inline-flex items-center justify-center bg-yellow-600 px-6 py-2 rounded-sm text-sm xl:text-base font-normal uppercase text-white hover:opacity-80">Free Consultation</a>
+        <a href="/request-free-consultation/" class="rounded-sm ml-8 whitespace-nowrap inline-flex items-center justify-center bg-gray-900 px-6 py-2 rounded-sm text-sm xl:text-base font-normal uppercase text-white hover:opacity-80">Free Consultation</a>
       </div>
     </div>
   
@@ -1553,7 +1553,7 @@
 </div>
   </div>
   <div class="lg:hidden py-1 px-4">
-    <a href="/request-free-consultation/" class="flex w-full items-center justify-center bg-yellow-600 py-2 leading-none text-xs uppercase text-white hover:opacity-90">Request Free Consultation →</a>
+    <a href="/request-free-consultation/" class="flex w-full items-center justify-center bg-gray-900 py-2 leading-none text-xs uppercase text-white hover:opacity-90">Request Free Consultation →</a>
   </div>
 
   <div x-show="modelsFlyout || adusFlyout || studiosFlyout || inspirationFlyout || moreFlyout" x-cloak>
