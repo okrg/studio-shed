@@ -25,8 +25,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1695146718449">
-  <script src="/assets/main.bundle.js?v=1695146718449"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1695344351453">
+  <script src="/assets/main.bundle.js?v=1695344351453"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -1579,7 +1579,7 @@
           <div class="mx-auto max-w-3xl pt-32">
             <div class="text-center py-8">
               <a href="https://shop.studio-shed.com" target="_blank">
-                <img style="width:auto;height: auto;position: relative;transform: translate(-50%,-25%);" src="/assets/images/fall-promo-extended-2023.png" />
+                <img style="width:auto;height: auto;position: relative;transform: translate(-50%,-25%);" src="/assets/images/fall-promo-extended10-2023.jpg" />
               </a>
             </div>
           </div>
