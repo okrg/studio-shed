@@ -25,8 +25,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1696890229361">
-  <script src="/assets/main.bundle.js?v=1696890229361"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1696987855952">
+  <script src="/assets/main.bundle.js?v=1696987855952"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -96,7 +96,7 @@
             </a>
           <div class="flex justify-center text-xs mt-2">
             <a href="/product/summit-series" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Explore Summit</a>
-            <a href="https://shop.studio-shed.com/" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Design &amp; Price</a>
+            <a href="https://design.studio-shed.com/summit/" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Design &amp; Price</a>
           </div>
         </div>
 
@@ -705,7 +705,7 @@
                 </a>
                 <div class="flex justify-center text-xs mt-2">
                   <a href="/product/summit-series" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Explore Summit</a>
-                  <a href="https://shop.studio-shed.com/" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Design &amp; Price</a>
+                  <a href="https://design.studio-shed.com/summit/" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Design &amp; Price</a>
                 </div>
               </div>
 
