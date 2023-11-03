@@ -14,15 +14,15 @@
     <meta property="og:description" content="Studio Shed creates high-efficiency prefab modern sheds and backyard studios. Design and build your own modern studio with our 3D Configurator tool.">
     <meta property="og:url" content="https://www.studio-shed.com/products/portland-series/">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2023-10-17T19:48:22.035Z">
+    <meta property="article:modified_time" content="2023-11-03T22:52:27.842Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="https://www.studio-shed.com/products/portland-series/">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1697572101647">
-    <script src="/assets/main.bundle.js?v=1697572101647"></script>
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1699051947427">
+    <script src="/assets/main.bundle.js?v=1699051947427"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
     <!--
     <script src="https://apps.elfsight.com/p/platform.js" async></script> 
@@ -1387,19 +1387,77 @@
     <div class="text-center relative">
       <span class="bg-yellow-500 absolute inset-x-0 top-0 h-1 w-9 mx-auto"></span>
       <h2 class="py-4 text-3xl text-center font-extrabold tracking-tight text-gray-900 sm:text-4xl">Project Cost Calculator</h2>
-      <p class="mx-auto text-gray-500">Overview of construction costs for your backyard ADU or Studio.</p>
+      <p class="mx-auto text-gray-500">Average costs for your backyard ADU or Studio.</p>
       <p class="mx-auto text-gray-500">(Site work quoted by 3rd party contractors)</p>
+
+
+      <div class="w-64 mt-4 mx-auto">
+        <select @change="updateZone(); $event.target.blur()" x-model="states" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:ring-0 focus:outline-none focus:shadow-outline">
+          <option>Select your State</option>
+          <option value="AL">Alabama</option>
+          <option value="AK">Alaska</option>
+          <option value="AZ">Arizona</option>
+          <option value="AR">Arkansas</option>
+          <option value="CA">California</option>
+          <option value="CO">Colorado</option>
+          <option value="CT">Connecticut</option>
+          <option value="DE">Delaware</option>
+          <option value="FL">Florida</option>
+          <option value="GA">Georgia</option>
+          <option value="HI">Hawaii</option>
+          <option value="ID">Idaho</option>
+          <option value="IL">Illinois</option>
+          <option value="IN">Indiana</option>
+          <option value="IA">Iowa</option>
+          <option value="KS">Kansas</option>
+          <option value="KY">Kentucky</option>
+          <option value="LA">Louisiana</option>
+          <option value="ME">Maine</option>
+          <option value="MD">Maryland</option>
+          <option value="MA">Massachusetts</option>
+          <option value="MI">Michigan</option>
+          <option value="MN">Minnesota</option>
+          <option value="MS">Mississippi</option>
+          <option value="MO">Missouri</option>
+          <option value="MT">Montana</option>
+          <option value="NE">Nebraska</option>
+          <option value="NV">Nevada</option>
+          <option value="NH">New Hampshire</option>
+          <option value="NJ">New Jersey</option>
+          <option value="NM">New Mexico</option>
+          <option value="NY">New York</option>
+          <option value="NC">North Carolina</option>
+          <option value="ND">North Dakota</option>
+          <option value="OH">Ohio</option>
+          <option value="OK">Oklahoma</option>
+          <option value="OR">Oregon</option>
+          <option value="PA">Pennsylvania</option>
+          <option value="RI">Rhode Island</option>
+          <option value="SC">South Carolina</option>
+          <option value="SD">South Dakota</option>
+          <option value="TN">Tennessee</option>
+          <option value="TX">Texas</option>
+          <option value="UT">Utah</option>
+          <option value="VT">Vermont</option>
+          <option value="VA">Virginia</option>
+          <option value="WA">Washington</option>
+          <option value="WV">West Virginia</option>
+          <option value="WI">Wisconsin</option>
+          <option value="WY">Wyoming</option>
+        </select>
+      </div>
+
     </div>
 
-    <fieldset class="my-8 mx-auto max-w-lg">
-      <div class="mb-4 grid grid-cols-2 gap-4">
+    <fieldset class="my-8 mx-auto max-w-2xl">
+      <div class="mb-4 grid grid-cols-3 gap-4">
         <label :class="productType === 'studio' ? 'border-yellow-600' : 'border-gray-300'"
                class="relative flex cursor-pointer rounded-lg border bg-white px-4 py-2 shadow-sm focus:outline-none">
           <input type="radio" x-on:change="calculate()" name="productType" x-model="productType" value="studio"
                  class="sr-only">
           <div class="flex flex-1">
             <div class="flex flex-col">
-              <span class="block text-sm font-medium text-gray-900">Typical single room studio</span>
+              <span class="block text-sm font-medium text-gray-900">Single room studio</span>
               <span :class="productType == 'studio' ? 'text-yellow-700' : 'text-gray-500'"
                     class="mt-1 flex items-center text-sm">120 square feet</span>
             </div>
@@ -1415,67 +1473,55 @@
         </label>
 
 
-        <label :class="productType === 'adu' ? 'border-yellow-600' : 'border-gray-300'"
+        <label :class="productType === 'smallAdu' ? 'border-yellow-600' : 'border-gray-300'"
                class="relative flex cursor-pointer rounded-lg border bg-white px-4 py-2 shadow-sm focus:outline-none">
-          <input type="radio" x-on:change="calculate()" name="productType" x-model="productType" value="adu"
+          <input type="radio" x-on:change="calculate()" name="productType" x-model="productType" value="smallAdu"
                  class="sr-only">
           <div class="flex flex-1">
             <div class="flex flex-col">
-              <span class="block text-sm font-medium text-gray-900">Typical ADU</span>
-              <span :class="productType == 'adu' ? 'text-yellow-700' : 'text-gray-500'"
+              <span class="block text-sm font-medium text-gray-900">Small ADU</span>
+              <span :class="productType == 'smallAdu' ? 'text-yellow-700' : 'text-gray-500'"
                     class="mt-1 flex items-center text-sm">476 square feet</span>
             </div>
           </div>
-          <svg :class="productType === 'adu' || 'invisible'" class="h-5 w-5 text-yellow-600" viewBox="0 0 20 20"
+          <svg :class="productType === 'smallAdu' || 'invisible'" class="h-5 w-5 text-yellow-600" viewBox="0 0 20 20"
                fill="currentColor" aria-hidden="true">
             <path fill-rule="evenodd"
                   d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
                   clip-rule="evenodd"/>
           </svg>
-          <span :class="productType === 'adu' ? 'border border-yellow-600' : 'border-2 border-transparent'"
+          <span :class="productType === 'smallAdu' ? 'border border-yellow-600' : 'border-2 border-transparent'"
+                class="pointer-events-none absolute -inset-px rounded-lg border-2" aria-hidden="true"></span>
+        </label>
+
+        <label :class="productType === 'largeAdu' ? 'border-yellow-600' : 'border-gray-300'"
+               class="relative flex cursor-pointer rounded-lg border bg-white px-4 py-2 shadow-sm focus:outline-none">
+          <input type="radio" x-on:change="calculate()" name="productType" x-model="productType" value="largeAdu"
+                 class="sr-only">
+          <div class="flex flex-1">
+            <div class="flex flex-col">
+              <span class="block text-sm font-medium text-gray-900">Large ADU</span>
+              <span :class="productType == 'largeAdu' ? 'text-yellow-700' : 'text-gray-500'"
+                    class="mt-1 flex items-center text-sm">1000 square feet</span>
+            </div>
+          </div>
+          <svg :class="productType === 'largeAdu' || 'invisible'" class="h-5 w-5 text-yellow-600" viewBox="0 0 20 20"
+               fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                  clip-rule="evenodd"/>
+          </svg>
+          <span :class="productType === 'largeAdu' ? 'border border-yellow-600' : 'border-2 border-transparent'"
                 class="pointer-events-none absolute -inset-px rounded-lg border-2" aria-hidden="true"></span>
         </label>
 
 
+
       </div>
 
-
-      <div class="-space-y-px rounded-md bg-white mt-4">
-
-        <label :class="assemblyType == 'Turnkey' ? 'z-10 border-yellow-200 bg-yellow-50' : 'border-gray-200'"
-               class="rounded-tl-md rounded-tr-md relative flex cursor-pointer border py-2 px-4 focus:outline-none">
-          <input type="radio" x-on:change="calculate()" name="assemblyType" x-model="assemblyType" value="Turnkey"
-                 class="mt-0.5 h-4 w-4 shrink-0 cursor-pointer text-yellow-600 border-gray-300 focus:ring-yellow-600">
-          <div class="ml-3 flex flex-col">
-            <span class="block text-sm font-medium">Turnkey Assembly</span>
-            <span :class="assemblyType == 'Turnkey' ? 'text-yellow-700' : 'text-gray-500'" class="block text-sm">Existing foundation and site work already finished and unit ready to assemble</span>
-          </div>
-        </label>
-
-        <label :class="assemblyType === 'Basic Site Work' ? 'z-10 border-yellow-200 bg-yellow-50' : 'border-gray-200'"
-               class="relative flex cursor-pointer border py-2 px-4 focus:outline-none">
-          <input type="radio" x-on:change="calculate()" name="assemblyType" x-model="assemblyType" value="Basic Site Work"
-                 class="mt-0.5 h-4 w-4 shrink-0 cursor-pointer text-yellow-600 border-gray-300 focus:ring-yellow-600">
-          <div class="ml-3 flex flex-col">
-            <span class="block text-sm font-medium">Basic Site Work</span>
-            <span :class="assemblyType == 'Basic Site Work' ? 'text-yellow-700' : 'text-gray-500'" class="block text-sm">Foundation and electrical work required before unit can be assembled</span>
-          </div>
-        </label>
-
-        <label :class="assemblyType === 'Custom Site Work' ? 'z-10 border-yellow-200 bg-yellow-50' : 'border-gray-200'"
-               class="rounded-bl-md rounded-br-md relative flex cursor-pointer border py-2 px-4 focus:outline-none">
-          <input type="radio" x-on:change="calculate()" name="assemblyType" x-model="assemblyType" value="Custom Site Work"
-                 class="mt-0.5 h-4 w-4 shrink-0 cursor-pointer text-yellow-600 border-gray-300 focus:ring-yellow-600">
-          <div class="ml-3 flex flex-col">
-
-            <span class="block text-sm font-medium">Custom Site Work + Other Add-ons</span>
-            <span :class="assemblyType == 'Custom Site Work' ? 'text-yellow-700' : 'text-gray-500'" class="block text-sm">Demolition of existing structures, construction of a deck, adding HVAC</span>
-          </div>
-        </label>
-      </div>
     </fieldset>
 
-    <dl class="flex" x-transition>
+    <dl x-show="zone != null" class="flex" x-transition>
       <div class="py-5 transition-[width] duration-500" :style="{ width: costs.productPct + 'vw' }" x-transition>
 
         <dd class="items-baseline justify-between block bg-yellow-600 text-white p-2">
@@ -1502,19 +1548,9 @@
           <div class="flex items-baseline text-xl font-semibold" x-transition
                x-text="window.Components.formatProjectCost(costs.sitework)"></div>
         </dd>
-        <dt class="text-sm mt-2 px-2 font-normal text-gray-900">Site Work</dt>
-        <div class="text-xs px-2 font-medium text-gray-500" x-transition x-text="assemblyType"></div>
-
+        <dt class="text-sm mt-2 px-2 font-normal text-gray-900">Site Work / Foundation</dt>
       </div>
-      <div class="py-5 transition-[width] duration-500 min-w-min" :style="{ width: costs.otherPct + 'vw' }" x-show="costs.other != 0" x-transition>
 
-        <dd class="items-baseline justify-between block bg-gray-300 text-gray-600 p-2">
-          <div class="flex items-baseline text-xl font-semibold" x-transition
-               x-text="window.Components.formatProjectCost(costs.other)"></div>
-        </dd>
-        <dt class="text-xs mt-2 px-2 font-normal text-gray-900">Soils reports and other site inspections</dt>
-
-      </div>
       <div class="py-5 transition-[width] duration-500 min-w-min" :style="{ width: costs.feesPct + 'vw' }"
            x-transition>
 
@@ -1524,11 +1560,15 @@
         </dd>
         <dt class="text-xs mt-2 px-2 font-normal text-gray-900">Estimated taxes and permit fees</dt>
       </div>
-      <div class="py-5 transition-[width] duration-500 w-[10vw]" x-transition>
+      <div class="py-5 transition-[width] duration-500 w-[15vw]" x-transition>
 
-        <dd class="items-baseline justify-between md:block lg:flex p-2">
-          <div class="flex items-baseline text-xl font-semibold text-gray-800" x-transition
+        <dd class="items-center justify-between md:block lg:flex p-2">
+          <div class="flex items-baseline text-lg font-semibold text-gray-800" x-transition
                x-text="window.Components.formatProjectCost(costs.total)"></div>
+          <div>or</div>
+          <div class="flex items-baseline text-lg font-semibold text-gray-800" x-transition
+                x-text="costs.monthly"></div>
+
         </dd>
         <dt class="text-sm mt-2 px-2 font-normal text-gray-900">Total</dt>
         <div class="text-xs px-2 font-medium text-gray-500"><span x-text="window.Components.formatPrice.format(costs.psf)"></span>/sq. ft.</div>
