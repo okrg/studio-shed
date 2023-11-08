@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1699479797063">
-  <script src="/assets/main.bundle.js?v=1699479797063"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1699484296378">
+  <script src="/assets/main.bundle.js?v=1699484296378"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -130,7 +130,7 @@
                 Aspect
               </h4>
               <p class="text-xs text-gray-500">576-864 FT²</p>
-              <p class="text-xs text-gray-500">Smart ADUs</p>
+              <p class="text-xs text-gray-500">1 to 2 Bed ADUs</p>
             </div>
           </a>
           <div class="flex justify-center text-xs mt-2">
@@ -149,7 +149,7 @@
                   Summit
                 </h4>
                 <p class="text-xs text-gray-500">252-1000 FT²</p>
-                <p class="text-xs text-gray-500">Custom ADUs</p>
+                <p class="text-xs text-gray-500">Studios / 1 to 2 Bed ADUs</p>
               </div>
             </a>
           <div class="flex justify-center text-xs mt-2">
@@ -222,6 +222,22 @@
 
         <div class="bg-white -m-8 mr-0 p-8 pr-0">
           <ul role="list" class="mt-2 space-y-6">
+
+            <li class="flow-root">
+              <a href="/products/aspect" class="-m-3 p-3 flex hover:opacity-80">
+                <div class="hidden sm:block flex-shrink-0">
+                  <img loading="lazy" class="w-24 h-auto object-fit rounded-md" src="/assets/images/aspect/aspect-thumb.png" alt="Studio Shed Aspect illustration">
+                </div>
+                <div class="min-w-0 flex-1 ml-2">
+                  <h4 class="text-base font-medium text-gray-900 uppercase">
+                    Asepct
+                  </h4>
+                  <p class="text-sm text-gray-500">576-864 SQFT</p>
+                  <p class="text-sm text-gray-500">from $139,950</p>
+                </div>
+              </a>
+            </li>
+
             <li class="flow-root">
               <a href="/products/summit-series" class="-m-3 p-3 flex hover:opacity-80">
                 <div class="hidden sm:block flex-shrink-0">
@@ -749,6 +765,18 @@
             </a>
             <div x-show="modelsMobile" class="text-center" x-transition>
               <div class="mb-12">
+                <a href="/products/aspect" class="hover:opacity-80">
+                  <div>
+                    <img loading="lazy" class="h-12 mx-auto" src="/assets/images/aspect/aspect-thumb.png" alt="Studio Shed ADU illustration">
+                  </div>
+                  <div class="min-w-0 flex-1 ml-2">
+                    <h4 class="text-base font-medium text-gray-900 uppercase">
+                      Aspect
+                    </h4>
+                    <p class="text-xs text-gray-500">252-1000 SQFT</p>
+                    <p class="text-xs text-gray-500">1 to 2 bed ADUs</p>
+                  </div>
+                </a>
                 <a href="/products/summit-series" class="hover:opacity-80">
                   <div>
                     <img loading="lazy" class="h-12 mx-auto" src="https://www.studio-shed.com/assets/images/menu/model-2-476-render.jpg" alt="">
@@ -758,7 +786,7 @@
                       Summit Series
                     </h4>
                     <p class="text-xs text-gray-500">252-1000 SQFT</p>
-                    <p class="text-xs text-gray-500">ADUs</p>
+                    <p class="text-xs text-gray-500">Studios and 1 to 2 bed ADUs</p>
                   </div>
                 </a>
                 <div class="flex justify-center text-xs mt-2">
