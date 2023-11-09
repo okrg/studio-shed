@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1699485140326">
-  <script src="/assets/main.bundle.js?v=1699485140326"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1699492692717">
+  <script src="/assets/main.bundle.js?v=1699492692717"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -1119,7 +1119,7 @@
   </div>
 </div>
   </div>
-  <div class="lg:hidden py-1 px-4">
+  <div class="lg:hidden md:py-1 md:px-4">
     <a href="/request-free-consultation/" class="flex w-full items-center justify-center bg-gray-900 py-2 leading-none text-xs uppercase text-white hover:opacity-90">Request Free Consultation →</a>
   </div>
 
