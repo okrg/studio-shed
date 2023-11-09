@@ -25,8 +25,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1699495297635">
-  <script src="/assets/main.bundle.js?v=1699495297635"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1699495757220">
+  <script src="/assets/main.bundle.js?v=1699495757220"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -1094,7 +1094,7 @@
 
 <main id="page-home">
   <div class="bg-white">
-  <div class="relative isolate overflow-hidden">
+  <div class="relative isolate h-[50vh] md:h-auto overflow-hidden">
 
 
     <div class="swiper mx-auto">
@@ -1107,7 +1107,7 @@
           <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
             <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
           </div>
-          <div class="mx-auto max-w-3xl py-32 sm:py-48 lg:py-48">
+          <div class="mx-auto max-w-3xl py-12 sm:py-48 lg:py-48">
             <div class="text-center py-8" style="background:rgba(0,0,0,0.33)">
               <h2 class="text-2xl font-bold tracking-tight text-white sm:text-4xl drop-shadow-2xl">Introducing the Aspect.</h2>
               <h3 class="text-xl lg:text-2xl font-bold text-white leading-2 drop-shadow-xl">Your Dream ADU or Backyard Guest House.</h3>
@@ -1126,7 +1126,7 @@
           <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
             <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
           </div>
-          <div class="mx-auto max-w-3xl py-32 sm:py-48 lg:py-48">
+          <div class="mx-auto max-w-3xl py-12 sm:py-48 lg:py-48">
             <div class="text-center py-8" style="background:rgba(0,0,0,0.33)">
               <h2 class="text-2xl font-bold tracking-tight text-white sm:text-4xl drop-shadow-2xl">The Space You Need &mdash; Now!</h2>
               <h3 class="text-xl lg:text-2xl font-bold text-white leading-2 drop-shadow-xl">From our Factory to your Backyard <span class="text-yellow-500">in 1-2 weeks</span></h3>
@@ -1144,7 +1144,7 @@
           <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
             <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
           </div>
-          <div class="mx-auto max-w-3xl py-32 sm:py-48 lg:py-48">
+          <div class="mx-auto max-w-3xl py-12 sm:py-48 lg:py-48">
             <div class="text-center py-8" style="background:rgba(0,0,0,0.33)">
               <h2 class="text-2xl font-bold tracking-tight text-white sm:text-4xl drop-shadow-2xl">Faster than Design-Build</h2>
               <h3 class="text-xl lg:text-2xl font-bold text-white leading-2 drop-shadow-xl"><span class="text-yellow-500">Efficient permitting</span> and speedy assembly saves time and money.</h3>
@@ -1163,7 +1163,7 @@
           <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
             <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
           </div>
-          <div class="mx-auto max-w-3xl py-32 sm:py-48 lg:py-48">
+          <div class="mx-auto max-w-3xl py-12 sm:py-48 lg:py-48">
             <div class="text-center py-8" style="background:rgba(0,0,0,0.33)">
               <h2 class="text-2xl font-bold tracking-tight text-white sm:text-4xl drop-shadow-2xl">High-Quality Nimble Building Kit</h2>
               <h3 class="text-xl lg:text-2xl font-bold text-white leading-2 drop-shadow-xl">Factory produced to exacting standards with <span class="text-yellow-500">high-end materials</span>.</h3>
@@ -1182,7 +1182,7 @@
           <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
             <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
           </div>
-          <div class="mx-auto max-w-3xl py-32 sm:py-48 lg:py-48">
+          <div class="mx-auto max-w-3xl py-12 sm:py-48 lg:py-48">
             <div class="text-center py-8" style="background:rgba(0,0,0,0.33)">
               <h2 class="text-2xl font-bold tracking-tight text-white sm:text-4xl drop-shadow-2xl">Value</h2>
               <h3 class="text-xl lg:text-2xl font-bold text-white leading-2 drop-shadow-xl">Predictable project cost with <span class="text-yellow-500">proven return on investment</span>.</h3>
