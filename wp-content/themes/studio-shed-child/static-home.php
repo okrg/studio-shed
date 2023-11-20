@@ -25,8 +25,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1700505659981">
-  <script src="/assets/main.bundle.js?v=1700505659981"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1700505968838">
+  <script src="/assets/main.bundle.js?v=1700505968838"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -1235,7 +1235,18 @@
     </div>
   </div>
   <div class="max-w-6xl mx-auto pb-24 px-4 overflow-hidden sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 gap-y-12 gap-x-12 md:grid-cols-2 xl:grid-cols-3 lg:gap-x-12">
+    <div class="grid grid-cols-1 gap-y-12 gap-x-12 md:grid-cols-2 xl:grid-cols-4 lg:gap-x-12">
+      <div>
+        <a href="/products/aspect/" class="group text-lg text-center"
+           title="Studio Shed Aspect product images and features">
+          <div class="w-full aspect-w-5 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75 mb-2">
+            <img loading="lazy" src="/assets/images/aspect/ENV_Gable shads24x24.jpg"
+                 class="w-full h-full object-center object-cover"
+                 alt="Studio Shed Aspect unit in 1 bedroom / 1 bath configuration">
+          </div>
+          <h3 class="font-bold text-gray-700">Aspect</h3>
+        </a>
+      </div>
       <div>
         <a href="/products/summit-series/" class="group text-lg text-center"
            title="Studio Shed Summit series product images and features">
