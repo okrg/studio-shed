@@ -11,7 +11,7 @@
       <p class="mt-3 text-lg text-gray-300">One shed does not fit all. Our innovative prefab solution is a flat-packed, panelized kits of parts with hundreds of customizations in the Design Center. There are millions of combinations of sizes, door and window placements, and colors. All thoughtfully designed to work together.</p>
       <div class="mt-8">
         <div class="inline-flex rounded-md shadow">
-          <a href="https://shop.studio-shed.com/" class="inline-block mt-6 px-4 py-3 border border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-white font-medium hover:opacity-80 sm:px-8" title="Studio Shed 3D Design Center">Design &amp; Price Your Studio Shed</a>
+          <a href="https://design.studio-shed.com/" class="inline-block mt-6 px-4 py-3 border border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-white font-medium hover:opacity-80 sm:px-8" title="Studio Shed 3D Design Center">Design &amp; Price Your Studio Shed</a>
         </div>
       </div>
     </div>
@@ -36,7 +36,7 @@
                 </a>
               </li>
               <li>
-                <a href="https://shop.studio-shed.com" class="text-base text-gray-300 hover:text-white">
+                <a href="https://design.studio-shed.com" class="text-base text-gray-300 hover:text-white">
                 Design Center
                 </a>
               </li>              

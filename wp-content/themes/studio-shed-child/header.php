@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1700646487906">
-  <script src="/assets/main.bundle.js?v=1700646487906"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1700860278377">
+  <script src="/assets/main.bundle.js?v=1700860278377"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -97,7 +97,7 @@
         </button>
       </div>
       <nav class="hidden lg:flex items-center space-x-6">
-        <a href="https://shop.studio-shed.com/" class="text-sm xl:text-base font-normal text-gray-700 hover:text-gray-900"> Design Your Own </a>
+        <a href="https://design.studio-shed.com/" class="text-sm xl:text-base font-normal text-gray-700 hover:text-gray-900"> Design Your Own </a>
         <div @click.outside="modelsFlyout = false">
   <button type="button" class="text-gray-700 group bg-white rounded-md inline-flex items-center text-sm xl:text-base font-normal hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500" aria-expanded="false" @click="modelsFlyout = ! modelsFlyout">
     <span>Models</span>
@@ -173,7 +173,7 @@
           </a>
           <div class="flex justify-center text-xs mt-2">
             <a href="/product/signature-series" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Explore</a>
-            <a href="https://shop.studio-shed.com/" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Design &amp; Price</a>
+            <a href="https://design.studio-shed.com/signature" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Design &amp; Price</a>
           </div>
         </div>
 
@@ -192,7 +192,7 @@
           </a>
           <div class="flex justify-center text-xs mt-2">
             <a href="/product/portland-series" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Explore</a>
-            <a href="https://shop.studio-shed.com/" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Design &amp; Price</a>
+            <a href="https://design.studio-shed.com/portland" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Design &amp; Price</a>
           </div>
         </div>
 
@@ -749,7 +749,7 @@
           </div>
 
           <div class="-my-4 py-4">
-            <a href="https://shop.studio-shed.com/" class="block w-full flex justify-between items-center">
+            <a href="https://design.studio-shed.com/" class="block w-full flex justify-between items-center">
               <div class="text-base font-semibold text-gray-900">Design Your Own</div>
             </a>
           </div>
@@ -817,7 +817,7 @@
                 </a>
                 <div class="flex justify-center text-xs mt-2">
                   <a href="/product/signature-series" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Explore Signature</a>
-                  <a href="https://shop.studio-shed.com/" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Design &amp; Price</a>
+                  <a href="https://design.studio-shed.com/signature" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Design &amp; Price</a>
                 </div>
               </div>
 
@@ -836,7 +836,7 @@
                 </a>
                 <div class="flex justify-center text-xs mt-2">
                   <a href="/product/portland-series" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Explore Portland</a>
-                  <a href="https://shop.studio-shed.com/" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Design &amp; Price</a>
+                  <a href="https://design.studio-shed.com/portland" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Design &amp; Price</a>
                 </div>
               </div>
             </div>
