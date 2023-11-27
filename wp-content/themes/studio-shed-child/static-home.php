@@ -25,8 +25,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1700860278377">
-  <script src="/assets/main.bundle.js?v=1700860278377"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1701077042919">
+  <script src="/assets/main.bundle.js?v=1701077042919"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -98,7 +98,7 @@
           </a>
           <div class="flex justify-center text-xs mt-2">
             <a href="/products/aspect" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Explore</a>
-            <a href="/request-free-consultation/" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Free Consultation</a>
+            <a href="https://design.studio-shed.com/aspect/" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Design &amp; Price</a>
           </div>
         </div>
 
@@ -742,7 +742,7 @@
                 </a>
                 <div class="flex justify-center text-xs mt-2">
                   <a href="/product/aspect" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Explore Aspect</a>
-                  <a href="/request-free-consultation/" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Free Consultation</a>
+                  <a href="https://design.studio-shed.com/aspect/" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Design &amp; Price</a>
                 </div>
               </div>
 
