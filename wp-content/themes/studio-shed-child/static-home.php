@@ -25,8 +25,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1701385341953">
-  <script src="/assets/main.bundle.js?v=1701385341953"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1702493013215">
+  <script src="/assets/main.bundle.js?v=1702493013215"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -1107,6 +1107,7 @@
     <div class="swiper mx-auto">
       <div class="swiper-wrapper">
 
+        <!--
         <div class="swiper-slide">
           <img src="/assets/images/holiday/Deck the Yard_Hero.png" alt="" class="inset-0 h-full w-full object-cover" style="z-index:-10;filter:blur(6px)">
           <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-2xl sm:-top-80" aria-hidden="true">
@@ -1120,7 +1121,7 @@
             </div>
           </div>
         </div>
-
+        -->
 
 
         <div class="swiper-slide">
