@@ -25,8 +25,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1702493013215">
-  <script src="/assets/main.bundle.js?v=1702493013215"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1703010742637">
+  <script src="/assets/main.bundle.js?v=1703010742637"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -192,9 +192,7 @@
                   <img loading="lazy" class="w-24 h-auto object-fit rounded-md" src="/assets/images/aspect/aspect-thumb.png" alt="Studio Shed Aspect illustration">
                 </div>
                 <div class="min-w-0 flex-1 ml-2">
-                  <h4 class="text-base font-medium text-gray-900 uppercase">
-                    Asepct
-                  </h4>
+                  <h4 class="text-base font-medium text-gray-900 uppercase">Aspect</h4>
                   <p class="text-sm text-gray-500">576-864 SQFT</p>
                   <p class="text-sm text-gray-500">from $139,950</p>
                 </div>

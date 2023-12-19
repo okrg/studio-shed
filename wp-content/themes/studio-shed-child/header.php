@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1701385341953">
-  <script src="/assets/main.bundle.js?v=1701385341953"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1703010742637">
+  <script src="/assets/main.bundle.js?v=1703010742637"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -229,9 +229,7 @@
                   <img loading="lazy" class="w-24 h-auto object-fit rounded-md" src="/assets/images/aspect/aspect-thumb.png" alt="Studio Shed Aspect illustration">
                 </div>
                 <div class="min-w-0 flex-1 ml-2">
-                  <h4 class="text-base font-medium text-gray-900 uppercase">
-                    Asepct
-                  </h4>
+                  <h4 class="text-base font-medium text-gray-900 uppercase">Aspect</h4>
                   <p class="text-sm text-gray-500">576-864 SQFT</p>
                   <p class="text-sm text-gray-500">from $139,950</p>
                 </div>
