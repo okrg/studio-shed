@@ -9,13 +9,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Prefab Modern Sheds and Backyard Studios | Studio Shed</title>
-  <meta name="description" content="Studio Shed creates high-efficiency prefab modern sheds and backyard studios. Design and build your own modern studio with our 3D Configurator tool.">
+  <title>Studio Shed ADUs, Prefab modern backyard studios | Quality + Style</title>
+  <meta name="description" content="Transform your outdoor space with Studio Shed's modern, eco-friendly prefabricated solutions for office, studio, or living. Customize your dream space today!">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Prefab Modern Sheds and Backyard Studios | Studio Shed">
+  <meta property="og:title" content="Studio Shed ADUs, Prefab modern backyard studios | Quality + Style">
   <meta property="og:description" content="Studio Shed creates high-efficiency prefab modern sheds and backyard studios. Design and build your own modern studio with our 3D Configurator tool.">
+  <meta property="og:image" content="https://www.studio-shed.com/assets/images/og-image-studio-shed.jpg">
   <meta property="og:url" content="https://www.studio-shed.com/">
   <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
   <meta property="article:modified_time" content="2023-04-28T06:40:49.431Z">
@@ -25,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1703286562260">
-  <script src="/assets/main.bundle.js?v=1703286562260"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1703288703584">
+  <script src="/assets/main.bundle.js?v=1703288703584"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
