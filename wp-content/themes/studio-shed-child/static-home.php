@@ -25,8 +25,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1703208946944">
-  <script src="/assets/main.bundle.js?v=1703208946944"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1703268683151">
+  <script src="/assets/main.bundle.js?v=1703268683151"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -135,7 +135,7 @@
             </div>
           </a>
           <div class="flex justify-center text-xs mt-2">
-            <a href="/product/signature-series" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Explore</a>
+            <a href="/products/signature-series" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Explore</a>
             <a href="https://design.studio-shed.com/signature" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Design &amp; Price</a>
           </div>
         </div>
@@ -777,7 +777,7 @@
                   </div>
                 </a>
                 <div class="flex justify-center text-xs mt-2">
-                  <a href="/product/signature-series" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Explore Signature</a>
+                  <a href="/products/signature-series" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Explore Signature</a>
                   <a href="https://design.studio-shed.com/signature" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Design &amp; Price</a>
                 </div>
               </div>
