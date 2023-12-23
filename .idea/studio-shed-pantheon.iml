@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/search-replace-db/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/wp-content/plugins/enable-media-replace/build/shortpixel/filesystem/src" isTestSource="false" packagePrefix="EnableMediaReplace\FileSystem" />
+      <sourceFolder url="file://$MODULE_DIR$/wp-content/plugins/enable-media-replace/build/shortpixel/filesystem/src" isTestSource="false" packagePrefix="ShortPixel\FileSystem\" />
+      <sourceFolder url="file://$MODULE_DIR$/wp-content/plugins/enable-media-replace/build/shortpixel/log/src" isTestSource="false" packagePrefix="EnableMediaReplace\ShortPixelLogger" />
+      <sourceFolder url="file://$MODULE_DIR$/wp-content/plugins/enable-media-replace/build/shortpixel/log/src" isTestSource="false" packagePrefix="ShortPixel\ShortPixelLogger\" />
+      <sourceFolder url="file://$MODULE_DIR$/wp-content/plugins/enable-media-replace/build/shortpixel/notices/src" isTestSource="false" packagePrefix="EnableMediaReplace\Notices" />
+      <sourceFolder url="file://$MODULE_DIR$/wp-content/plugins/enable-media-replace/build/shortpixel/notices/src" isTestSource="false" packagePrefix="ShortPixel\Notices\" />
+      <sourceFolder url="file://$MODULE_DIR$/wp-content/plugins/really-simple-ssl/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/wp-content/plugins/tiny-compress-images/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/wp-includes/sodium_compat/tests" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/plugins/really-simple-ssl/lets-encrypt/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/plugins/really-simple-ssl/lets-encrypt/vendor/fbett/le_acme2" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/plugins/really-simple-ssl/lets-encrypt/vendor/plesk/api-php-lib" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/studio-shed/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/studio-shed/vendor/paragonie/random_compat" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/studio-shed/vendor/ryanwinchester/netsuite-php" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
