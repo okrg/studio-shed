@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1707246685974">
-  <script src="/assets/main.bundle.js?v=1707246685974"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1707260475877">
+  <script src="/assets/main.bundle.js?v=1707260475877"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
