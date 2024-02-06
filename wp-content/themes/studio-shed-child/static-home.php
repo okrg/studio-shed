@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1706915676865">
-  <script src="/assets/main.bundle.js?v=1706915676865"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1707246685974">
+  <script src="/assets/main.bundle.js?v=1707246685974"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -84,10 +84,10 @@
 
 
 
-        <div>
+        <div class="w-1/4">
           <a href="/products/aspect" class="hover:opacity-80" title="Studio Shed Aspect">
             <div class="hidden sm:block flex-shrink-0">
-              <img loading="lazy" class="h-24 mx-auto" src="/assets/images/aspect/aspect-thumb.png" alt="Illustration of a small home"">
+              <img loading="lazy" class="h-24 max-w-none mx-auto" src="/assets/images/aspect/aspect-thumb.png" alt="Illustration of a small home"">
             </div>
             <div class="min-w-0 flex-1 ml-2">
               <h4 class="text-base font-medium text-gray-900 uppercase">
@@ -103,7 +103,7 @@
           </div>
         </div>
 
-        <div>
+        <div class="w-1/4">
             <a href="/products/summit-series" class="hover:opacity-80" title="Studio Shed Summit">
               <div class="hidden sm:block flex-shrink-0">
                 <img loading="lazy" class="h-24 mx-auto" src="https://www.studio-shed.com/assets/images/menu/model-2-476-render.jpg" alt="">
@@ -122,7 +122,7 @@
           </div>
         </div>
 
-        <div>
+        <div class="w-1/4">
           <a href="/products/signature-series/" class="hover:opacity-80" title="Studio Shed Signature">
             <div class="hidden sm:block flex-shrink-0">
               <img loading="lazy" class="h-24 mx-auto" src="https://www.studio-shed.com/assets/images/menu/solitude-render.jpg" alt="">
@@ -141,7 +141,7 @@
           </div>
         </div>
 
-        <div>
+        <div class="w-1/4">
           <a href="/products/portland-series" class="hover:opacity-80" title="Studio Shed Portland">
             <div class="hidden sm:block flex-shrink-0">
               <img loading="lazy" class="h-24 mx-auto" src="https://www.studio-shed.com/assets/images/menu/portland-120e-render.jpg" alt="">
@@ -155,7 +155,7 @@
             </div>
           </a>
           <div class="flex justify-center text-xs mt-2">
-            <a href="/product/portland-series" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1" title="Explore Studio Shed Portland">Explore</a>
+            <a href="/products/portland-series" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1" title="Explore Studio Shed Portland">Explore</a>
             <a href="https://design.studio-shed.com/portland" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1" title="Design and Price Portland">Design &amp; Price</a>
           </div>
         </div>
@@ -819,7 +819,7 @@
                   </div>
                 </a>
                 <div class="flex justify-center text-xs mt-2">
-                  <a href="/product/portland-series" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Explore Portland</a>
+                  <a href="/products/portland-series" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Explore Portland</a>
                   <a href="https://design.studio-shed.com/portland" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Design &amp; Price</a>
                 </div>
               </div>
