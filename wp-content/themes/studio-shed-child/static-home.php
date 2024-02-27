@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1707269771740">
-  <script src="/assets/main.bundle.js?v=1707269771740"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1709067460465">
+  <script src="/assets/main.bundle.js?v=1709067460465"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -1756,8 +1756,9 @@
           });
         </script>
         <div class="flex space-x-12 mt-24">
-          <img loading="lazy" class="self-center w-32 h-auto" src="/assets/images/footer-shipping.png" alt="Studio Ships to all 50 states">
-          <img loading="lazy" class="self-center w-20 h-auto" src="/assets/images/footer-houzz-badge.png" alt="Studio Shed design award by Houzz">
+          <img loading="lazy" class="self-center w-24 h-auto" src="/assets/images/footer-shipping.png" alt="Studio Ships to all 50 states">
+          <a href="https://www.houzz.com/pro/studioshed/" target="_blank"><img loading="lazy" class="self-center w-24 h-auto" src="/assets/images/footer-houzz-badge-24.png" alt="Studio Shed design award by Houzz"></a>
+          <a href="https://www.aduspecialist.org/" target="_blank"><img loading="lazy" class="self-center w-24 h-auto" src="/assets/images/footer-adu-badge.png" alt="We are Trained and designated ADU Specialists."></a>
         </div>
       </div>
     </div>
