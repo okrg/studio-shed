@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1709067460465">
-  <script src="/assets/main.bundle.js?v=1709067460465"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1709169081612">
+  <script src="/assets/main.bundle.js?v=1709169081612"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -798,7 +798,7 @@
                   </div>
                 </a>
                 <div class="flex justify-center text-xs mt-2">
-                  <a href="/product/aspect" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Explore Aspect</a>
+                  <a href="/products/aspect" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Explore Aspect</a>
                   <a href="https://design.studio-shed.com/aspect/" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Design &amp; Price</a>
                 </div>
               </div>
@@ -817,7 +817,7 @@
                   </div>
                 </a>
                 <div class="flex justify-center text-xs mt-2">
-                  <a href="/product/summit-series" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Explore Summit</a>
+                  <a href="/products/summit-series" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Explore Summit</a>
                   <a href="https://design.studio-shed.com/summit/" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Design &amp; Price</a>
                 </div>
               </div>
