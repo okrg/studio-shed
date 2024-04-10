@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1711641496453">
-  <script src="/assets/main.bundle.js?v=1711641496453"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1712784187007">
+  <script src="/assets/main.bundle.js?v=1712784187007"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -1336,6 +1336,84 @@
       </div>
     </div>
 
+  </div>
+</div>
+  <div class="py-16 bg-white overflow-hidden lg:py-24">
+
+  <div class="relative">
+    <!-- overlay this text on top of the image -->
+    <!-- Your Next Great Investment  as a big h3 tag with white text and shadow on the text because it is overlaying an image -->
+
+
+    <img loading="lazy" class="h-[36rem] w-full object-cover" src="/assets/images/home-invest-exterior.jpg" alt="A finished Studio Shed unit in a home backyard">
+    <h3 class="absolute top-1/4 left-2 md:left-8 font-bold drop-shadow tracking-tight text-white text-center text-3xl md:text-6xl">Your Next Great Investment</h3>
+
+  </div>
+  <div class="relative mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
+    <div class="relative">
+      <h2 class="mt-4 text-base max-w-4xl mx-auto text-center md:text-xl text-gray-700 font-semibold">Our ADUs are a great way to add value to your property and generate rental income.</h2>
+    </div>
+
+
+    <div class="relative mt-8 lg:mt-12 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+      <div class="relative ">
+        <dl class="space-y-10 px-8">
+          <div class="relative flex justify-center md:justify-start">
+            <dt>
+              <div class="absolute flex items-center justify-center h-8 w-8 rounded-full bg-yellow-500 text-white">
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+              </div>
+            </dt>
+            <dd class="mt-2 ml-12 text-base md:text-lg text-gray-800">Flexible rental income, short or long term – on your terms.</dd>
+          </div>
+
+          <div class="relative flex justify-center md:justify-start">
+            <dt>
+              <div class="absolute flex items-center justify-center h-8 w-8 rounded-full bg-yellow-500 text-white">
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+              </div>
+
+            </dt>
+            <dd class="mt-2 ml-12 text-base md:text-lg text-gray-800">Proven ROI that adds value to your property.</dd>
+          </div>
+
+          <div class="relative flex justify-center md:justify-start">
+            <dt>
+              <div class="absolute flex items-center justify-center h-8 w-8 rounded-full bg-yellow-500 text-white">
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                </svg>
+              </div>
+
+            </dt>
+            <dd class="mt-2 ml-12 text-base md:text-lg text8gray-500">An investment that can pay for itself.</dd>
+          </div>
+        </dl>
+
+
+        <div class="mt-10 flex gap-8 justify-center text-center">
+          <div>
+
+            <img loading="lazy" src="/assets/images/menu/model-2-476-render.jpg" alt="Studio Shed Summit Series" class="w-full h-24 object-contain">
+            <a href="/products/summit-series/" class="inline-block mt-6 px-4 py-3 border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-sm font-medium hover:opacity-80">Explore Summit Series</a>
+          </div>
+          <div>
+            <img loading="lazy" src="/assets/images/aspect/aspect-thumb.png" alt="Studio Shed Aspect Series" class="w-full h-24 object-contain">
+            <a href="/products/aspect/" class="inline-block mt-6 px-4 py-3 border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-sm font-medium hover:opacity-80">Explore Aspect</a>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="mt-10 mx-0 relative lg:mt-0" aria-hidden="true">
+        <div class="w-full h-72 aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
+          <img loading="lazy" src="/assets/images/home-invest-interior.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed virtual tour bedroom view">
+        </div>
+      </div>
+    </div>
   </div>
 </div>
   <div class="py-16 bg-white overflow-hidden lg:py-24">
