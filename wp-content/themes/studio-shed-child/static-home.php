@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1712796992653">
-  <script src="/assets/main.bundle.js?v=1712796992653"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1712809287516">
+  <script src="/assets/main.bundle.js?v=1712809287516"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -80,7 +80,7 @@
   >
     <div class="shadow-lg border-b border-t bg-white px-8 py-4 border-gray-300 overflow-hidden">
 
-      <div class="relative flex text-center gap-x-16 px-4 py-6 sm:p-8 justify-center">
+      <div class="max-w-7xl mx-auto relative flex text-center gap-x-16 px-4 py-6 sm:p-8 justify-center">
 
 
 
@@ -173,7 +173,7 @@
       <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
     </svg>
   </button>
-  <div x-show="adusFlyout" class="absolute z-50 mt-3 left-0 w-full" 
+  <div x-show="adusFlyout" class="absolute bg-gray-100 z-50 mt-3 left-0 w-full"
   x-transition:enter="transition ease-out duration-200" 
   x-transition:enter-start="opacity-0 translate-y-4" 
   x-transition:enter-end="opacity-100 translate-y-0" 
@@ -182,7 +182,7 @@
   x-transition:leave-end="opacity-0 translate-y-4"
   >
     <div class="shadow-lg border border-gray-300 overflow-hidden">
-      <div class="relative grid gap-4 bg-gray-100  px-4 py-6 sm:gap-8 sm:p-8 md:grid-cols-2 lg:grid-cols-3">
+      <div class="max-w-7xl mx-auto relative grid gap-4 bg-gray-100  px-4 py-6 sm:gap-8 sm:p-8 md:grid-cols-2 lg:grid-cols-3">
 
         <div class="bg-white -m-8 mr-0 p-8 pr-0">
           <ul role="list" class="mt-2 space-y-6">
@@ -316,7 +316,7 @@
       <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
     </svg>
   </button>
-  <div x-show="studiosFlyout" class="absolute z-50 mt-3 left-0 w-full" 
+  <div x-show="studiosFlyout" class="absolute bg-gray-100 z-50 mt-3 left-0 w-full"
   x-transition:enter="transition ease-out duration-200" 
   x-transition:enter-start="opacity-0 translate-y-4" 
   x-transition:enter-end="opacity-100 translate-y-0" 
@@ -325,7 +325,7 @@
   x-transition:leave-end="opacity-0 translate-y-4"
   >
     <div class="shadow-lg border border-gray-300 overflow-hidden">
-      <div class="relative grid gap-4 bg-gray-100  px-4 py-6 sm:gap-8 sm:p-8 md:grid-cols-2 lg:grid-cols-3">
+      <div class="max-w-7xl mx-auto relative grid gap-4 bg-gray-100  px-4 py-6 sm:gap-8 sm:p-8 md:grid-cols-2 lg:grid-cols-3">
 
         <div class="bg-white -m-8 mr-0 p-8 pr-0">
           <ul role="list" class="mt-2 space-y-12">
@@ -439,7 +439,7 @@
       <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
     </svg>
   </button>
-  <div x-show="inspirationFlyout" class="absolute z-50 mt-3 left-0 w-full" 
+  <div x-show="inspirationFlyout" class="absolute bg-gray-100 z-50 mt-3 left-0 w-full"
   x-transition:enter="transition ease-out duration-200" 
   x-transition:enter-start="opacity-0 translate-y-4" 
   x-transition:enter-end="opacity-100 translate-y-0" 
@@ -448,7 +448,7 @@
   x-transition:leave-end="opacity-0 translate-y-4"
   >
     <div class="shadow-lg border border-gray-300 bg-gray-100 p-6 overflow-hidden">
-      <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-6 xl:gap-x-8">
+      <ul role="list" class="max-w-7xl mx-auto grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-6 xl:gap-x-8">
         <li class="relative">
           <a href="/home-office-spaces/">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
@@ -549,7 +549,7 @@
       <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
     </svg>
   </button>
-  <div x-show="moreFlyout" class="absolute z-50 mt-3 left-0 w-full"
+  <div x-show="moreFlyout" class="absolute z-50 mt-3 left-0 w-full  bg-gray-100"
   x-transition:enter="transition ease-out duration-200" 
   x-transition:enter-start="opacity-0 translate-y-4" 
   x-transition:enter-end="opacity-100 translate-y-0" 
@@ -558,7 +558,7 @@
   x-transition:leave-end="opacity-0 translate-y-4"
   >
     <div class="shadow-lg border border-gray-300 overflow-hidden">
-      <div class="relative grid gap-4 bg-gray-100  px-4 py-6 sm:gap-8 sm:p-8 md:grid-cols-2 lg:grid-cols-4">
+      <div class="max-w-7xl mx-auto relative grid gap-4 px-4 py-6 sm:gap-8 sm:p-8 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <p class="text-sm uppercase font-bold mb-2">Company Info</p>
           <a href="/about-us/"
@@ -1357,7 +1357,7 @@
 
     <div class="relative mt-8 lg:mt-12 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
       <div class="relative ">
-        <dl class="space-y-10 px-8">
+        <dl class="space-y-8 px-8">
           <div class="relative">
             <dt>
               <div class="absolute flex items-center justify-center h-8 w-8 rounded-full bg-yellow-500 text-white">
@@ -1365,7 +1365,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
               </div>
             </dt>
-            <dd class="mt-2 ml-12 text-base md:text-lg text-gray-800">Flexible rental income, short or long term – on your terms.</dd>
+            <dd class="ml-16 text-base md:text-lg text-gray-800">Flexible rental income, short or long term – on your terms.</dd>
           </div>
 
           <div class="relative">
@@ -1377,7 +1377,7 @@
               </div>
 
             </dt>
-            <dd class="mt-2 ml-12 text-base md:text-lg text-gray-800">Proven ROI that adds value to your property.</dd>
+            <dd class="ml-16 text-base md:text-lg text-gray-800">Proven ROI that adds value to your property.</dd>
           </div>
 
           <div class="relative">
@@ -1389,20 +1389,19 @@
               </div>
 
             </dt>
-            <dd class="mt-2 ml-12 text-base md:text-lg text8gray-500">An investment that can pay for itself.</dd>
+            <dd class="ml-16 text-base md:text-lg text8gray-500">An investment that can pay for itself.</dd>
           </div>
         </dl>
 
 
-        <div class="mt-10 flex gap-8 justify-center text-center">
+        <div class="mt-16 flex gap-16 justify-center text-center">
           <div>
-
             <img loading="lazy" src="/assets/images/menu/model-2-476-render.jpg" alt="Studio Shed Summit Series" class="w-full h-24 object-contain">
-            <a href="/products/summit-series/" class="inline-block mt-6 px-4 py-3 border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-sm font-medium hover:opacity-80">Explore Summit Series</a>
+            <a href="/products/summit-series/" class="inline-block mt-6 underline decoration-dashed decoration-yellow-500 uppercase text-sm font-semibold hover:opacity-80">Explore Summit Series</a>
           </div>
           <div>
             <img loading="lazy" src="/assets/images/aspect/aspect-thumb.png" alt="Studio Shed Aspect Series" class="w-full h-24 object-contain">
-            <a href="/products/aspect/" class="inline-block mt-6 px-4 py-3 border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-sm font-medium hover:opacity-80">Explore Aspect</a>
+            <a href="/products/aspect/" class="inline-block mt-6 underline decoration-dashed decoration-yellow-500 uppercase text-sm font-semibold hover:opacity-80">Explore Aspect</a>
           </div>
 
         </div>

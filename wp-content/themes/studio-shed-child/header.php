@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1712784187007">
-  <script src="/assets/main.bundle.js?v=1712784187007"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1712809287516">
+  <script src="/assets/main.bundle.js?v=1712809287516"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -116,7 +116,7 @@
   >
     <div class="shadow-lg border-b border-t bg-white px-8 py-4 border-gray-300 overflow-hidden">
 
-      <div class="relative flex text-center gap-x-16 px-4 py-6 sm:p-8 justify-center">
+      <div class="max-w-7xl mx-auto relative flex text-center gap-x-16 px-4 py-6 sm:p-8 justify-center">
 
 
 
@@ -209,7 +209,7 @@
       <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
     </svg>
   </button>
-  <div x-show="adusFlyout" class="absolute z-50 mt-3 left-0 w-full" 
+  <div x-show="adusFlyout" class="absolute bg-gray-100 z-50 mt-3 left-0 w-full"
   x-transition:enter="transition ease-out duration-200" 
   x-transition:enter-start="opacity-0 translate-y-4" 
   x-transition:enter-end="opacity-100 translate-y-0" 
@@ -218,7 +218,7 @@
   x-transition:leave-end="opacity-0 translate-y-4"
   >
     <div class="shadow-lg border border-gray-300 overflow-hidden">
-      <div class="relative grid gap-4 bg-gray-100  px-4 py-6 sm:gap-8 sm:p-8 md:grid-cols-2 lg:grid-cols-3">
+      <div class="max-w-7xl mx-auto relative grid gap-4 bg-gray-100  px-4 py-6 sm:gap-8 sm:p-8 md:grid-cols-2 lg:grid-cols-3">
 
         <div class="bg-white -m-8 mr-0 p-8 pr-0">
           <ul role="list" class="mt-2 space-y-6">
@@ -352,7 +352,7 @@
       <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
     </svg>
   </button>
-  <div x-show="studiosFlyout" class="absolute z-50 mt-3 left-0 w-full" 
+  <div x-show="studiosFlyout" class="absolute bg-gray-100 z-50 mt-3 left-0 w-full"
   x-transition:enter="transition ease-out duration-200" 
   x-transition:enter-start="opacity-0 translate-y-4" 
   x-transition:enter-end="opacity-100 translate-y-0" 
@@ -361,7 +361,7 @@
   x-transition:leave-end="opacity-0 translate-y-4"
   >
     <div class="shadow-lg border border-gray-300 overflow-hidden">
-      <div class="relative grid gap-4 bg-gray-100  px-4 py-6 sm:gap-8 sm:p-8 md:grid-cols-2 lg:grid-cols-3">
+      <div class="max-w-7xl mx-auto relative grid gap-4 bg-gray-100  px-4 py-6 sm:gap-8 sm:p-8 md:grid-cols-2 lg:grid-cols-3">
 
         <div class="bg-white -m-8 mr-0 p-8 pr-0">
           <ul role="list" class="mt-2 space-y-12">
@@ -475,7 +475,7 @@
       <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
     </svg>
   </button>
-  <div x-show="inspirationFlyout" class="absolute z-50 mt-3 left-0 w-full" 
+  <div x-show="inspirationFlyout" class="absolute bg-gray-100 z-50 mt-3 left-0 w-full"
   x-transition:enter="transition ease-out duration-200" 
   x-transition:enter-start="opacity-0 translate-y-4" 
   x-transition:enter-end="opacity-100 translate-y-0" 
@@ -484,7 +484,7 @@
   x-transition:leave-end="opacity-0 translate-y-4"
   >
     <div class="shadow-lg border border-gray-300 bg-gray-100 p-6 overflow-hidden">
-      <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-6 xl:gap-x-8">
+      <ul role="list" class="max-w-7xl mx-auto grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-6 xl:gap-x-8">
         <li class="relative">
           <a href="/home-office-spaces/">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
@@ -585,7 +585,7 @@
       <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
     </svg>
   </button>
-  <div x-show="moreFlyout" class="absolute z-50 mt-3 left-0 w-full"
+  <div x-show="moreFlyout" class="absolute z-50 mt-3 left-0 w-full  bg-gray-100"
   x-transition:enter="transition ease-out duration-200" 
   x-transition:enter-start="opacity-0 translate-y-4" 
   x-transition:enter-end="opacity-100 translate-y-0" 
@@ -594,7 +594,7 @@
   x-transition:leave-end="opacity-0 translate-y-4"
   >
     <div class="shadow-lg border border-gray-300 overflow-hidden">
-      <div class="relative grid gap-4 bg-gray-100  px-4 py-6 sm:gap-8 sm:p-8 md:grid-cols-2 lg:grid-cols-4">
+      <div class="max-w-7xl mx-auto relative grid gap-4 px-4 py-6 sm:gap-8 sm:p-8 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <p class="text-sm uppercase font-bold mb-2">Company Info</p>
           <a href="/about-us/"
