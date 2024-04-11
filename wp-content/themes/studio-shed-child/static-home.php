@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1712784187007">
-  <script src="/assets/main.bundle.js?v=1712784187007"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1712796992653">
+  <script src="/assets/main.bundle.js?v=1712796992653"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -1358,7 +1358,7 @@
     <div class="relative mt-8 lg:mt-12 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
       <div class="relative ">
         <dl class="space-y-10 px-8">
-          <div class="relative flex justify-center md:justify-start">
+          <div class="relative">
             <dt>
               <div class="absolute flex items-center justify-center h-8 w-8 rounded-full bg-yellow-500 text-white">
                 <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -1368,7 +1368,7 @@
             <dd class="mt-2 ml-12 text-base md:text-lg text-gray-800">Flexible rental income, short or long term – on your terms.</dd>
           </div>
 
-          <div class="relative flex justify-center md:justify-start">
+          <div class="relative">
             <dt>
               <div class="absolute flex items-center justify-center h-8 w-8 rounded-full bg-yellow-500 text-white">
                 <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
@@ -1380,7 +1380,7 @@
             <dd class="mt-2 ml-12 text-base md:text-lg text-gray-800">Proven ROI that adds value to your property.</dd>
           </div>
 
-          <div class="relative flex justify-center md:justify-start">
+          <div class="relative">
             <dt>
               <div class="absolute flex items-center justify-center h-8 w-8 rounded-full bg-yellow-500 text-white">
                 <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
