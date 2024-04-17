@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1712809287516">
-  <script src="/assets/main.bundle.js?v=1712809287516"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1713379457005">
+  <script src="/assets/main.bundle.js?v=1713379457005"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -1397,13 +1397,21 @@
         <div class="mt-16 flex gap-16 justify-center text-center">
           <div>
             <img loading="lazy" src="/assets/images/menu/model-2-476-render.jpg" alt="Studio Shed Summit Series" class="w-full h-24 object-contain">
-            <a href="/products/summit-series/" class="inline-block mt-6 underline decoration-dashed decoration-yellow-500 uppercase text-sm font-semibold hover:opacity-80">Explore Summit Series</a>
+            <a href="/products/summit-series/" class="inline-block mt-6 underline decoration-yellow-500 uppercase text-sm font-semibold hover:opacity-80">Explore Summit Series</a>
           </div>
           <div>
             <img loading="lazy" src="/assets/images/aspect/aspect-thumb.png" alt="Studio Shed Aspect Series" class="w-full h-24 object-contain">
-            <a href="/products/aspect/" class="inline-block mt-6 underline decoration-dashed decoration-yellow-500 uppercase text-sm font-semibold hover:opacity-80">Explore Aspect</a>
+            <a href="/products/aspect/" class="inline-block mt-6 underline decoration-yellow-500 uppercase text-sm font-semibold hover:opacity-80">Explore Aspect</a>
           </div>
+        </div>
 
+        <div class="text-center">
+          <a href="/project-cost/" class="inline-flex items-center mt-6 px-4 py-3 border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-black font-medium hover:opacity-80 sm:px-8" title="Calculate the cost of your Studio Shed ADU">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V13.5Zm0 2.25h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V18Zm2.498-6.75h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V13.5Zm0 2.25h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V18Zm2.504-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5Zm0 2.25h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V18Zm2.498-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5ZM8.25 6h7.5v2.25h-7.5V6ZM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 0 0 2.25 2.25h10.5a2.25 2.25 0 0 0 2.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0 0 12 2.25Z" />
+            </svg>
+            Project Cost Calculator
+          </a>
         </div>
       </div>
 
