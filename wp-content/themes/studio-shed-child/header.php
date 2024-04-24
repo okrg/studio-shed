@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1712809287516">
-  <script src="/assets/main.bundle.js?v=1712809287516"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1713933646768">
+  <script src="/assets/main.bundle.js?v=1713933646768"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -476,25 +476,37 @@
     </svg>
   </button>
   <div x-show="inspirationFlyout" class="absolute bg-gray-100 z-50 mt-3 left-0 w-full"
-  x-transition:enter="transition ease-out duration-200" 
-  x-transition:enter-start="opacity-0 translate-y-4" 
-  x-transition:enter-end="opacity-100 translate-y-0" 
-  x-transition:leave="transition ease-in duration-150" 
-  x-transition:leave-start="opacity-100 translate-y-0" 
+  x-transition:enter="transition ease-out duration-200"
+  x-transition:enter-start="opacity-0 translate-y-4"
+  x-transition:enter-end="opacity-100 translate-y-0"
+  x-transition:leave="transition ease-in duration-150"
+  x-transition:leave-start="opacity-100 translate-y-0"
   x-transition:leave-end="opacity-0 translate-y-4"
   >
     <div class="shadow-lg border border-gray-300 bg-gray-100 p-6 overflow-hidden">
       <ul role="list" class="max-w-7xl mx-auto grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-6 xl:gap-x-8">
+
+
         <li class="relative">
-          <a href="/home-office-spaces/">
+          <a href="/tiny-homes/" title="Tiny Homes and ADUs by Studio Shed">
+            <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+              <img loading="lazy" src="/assets/images/aspect/ENV_Gable shads24x36.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+            </div>
+            <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">ADU Tiny Homes</p>
+          </a>
+        </li>
+
+        <li class="relative">
+          <a href="/home-office-spaces/" title="Home Office Sheds by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
               <img loading="lazy" src="/assets/images/nav-inspiration-office.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Backyard Office Sheds</p>
           </a>
         </li>
+
         <li class="relative">
-          <a href="/music-studios/">
+          <a href="/music-studios/" title="Home Music & Recording Studios by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
               <img loading="lazy" src="/assets/images/nav-inspiration-recording.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
@@ -502,7 +514,7 @@
           </a>
         </li>
         <li class="relative">
-          <a href="/art-studios/">
+          <a href="/art-studios/" title="Home Art Studios by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
               <img loading="lazy" src="/assets/images/nav-inspiration-art.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
@@ -510,7 +522,7 @@
           </a>
         </li>
         <li class="relative">
-          <a href="/man-cave/">
+          <a href="/man-cave/" title="Man Cave Kits by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
               <img loading="lazy" src="/assets/images/nav-inspiration-man-cave.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
@@ -518,7 +530,7 @@
           </a>
         </li>
         <li class="relative">
-          <a href="/she-sheds/">
+          <a href="/she-sheds/" title="She Shed Kits by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
               <img loading="lazy" src="/assets/images/nav-inspiration-she-shed.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
@@ -526,7 +538,7 @@
           </a>
         </li>
         <li class="relative">
-          <a href="/storage/">
+          <a href="/storage/" title="Modern Storage Sheds by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
               <img loading="lazy" src="/assets/images/nav-inspiration-storage.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
@@ -534,7 +546,7 @@
           </a>
         </li>
         <li class="relative">
-          <a href="/diy/">
+          <a href="/diy/" title="DIY Shed Kits by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
               <img loading="lazy" src="/assets/images/nav-inspiration-diy.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
@@ -542,7 +554,7 @@
           </a>
         </li>
         <li class="relative">
-          <a href="/wellness/">
+          <a href="/wellness/" title="Home Gyms & Yoga Studios by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
               <img loading="lazy" src="/assets/images/nav-inspiration-wellness.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
@@ -550,7 +562,7 @@
           </a>
         </li>
         <li class="relative">
-          <a href="/garages/">
+          <a href="/garages/" title="Modern Garage Kits by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
               <img loading="lazy" src="/assets/images/nav-inspiration-garage.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
@@ -558,7 +570,7 @@
           </a>
         </li>
         <li class="relative">
-          <a href="/modular-addition/">
+          <a href="/modular-addition/" title="Modular Home Additions by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
               <img loading="lazy" src="/assets/images/nav-inspiration-modular.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
@@ -566,7 +578,7 @@
           </a>
         </li>
         <li class="relative">
-          <a href="/commercial-story/">
+          <a href="/commercial-story/" title="Commercial Spaces by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
               <img loading="lazy" src="/assets/images/nav-inspiration-commercial.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
@@ -996,6 +1008,15 @@
             </a>
             <div x-show="inspirationMobile" x-transition>
               <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 mt-4">
+                <li class="relative">
+                  <a href="/tiny-homes/" title="Tiny Homes and ADUs by Studio Shed">
+                    <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
+                      <img loading="lazy" src="/assets/images/aspect/ENV_Gable shads24x36.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                    </div>
+                    <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Tiny Homes</p>
+                  </a>
+                </li>
+
                 <li class="relative">
                   <a href="/home-office-spaces/" class="hover:opacity-80" title="Home Office Spaces">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
