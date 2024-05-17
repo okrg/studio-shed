@@ -15,15 +15,15 @@
     <meta property="og:url" content="https://www.studio-shed.com/products/summit-series/">
     <meta property="og:image" content="https://www.studio-shed.com/assets/images/summit-slider/09.jpg">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2024-04-25T15:48:51.330Z">
+    <meta property="article:modified_time" content="2024-05-17T21:23:39.388Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="https://www.studio-shed.com/products/summit-series/">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1714060130846">
-    <script src="/assets/main.bundle.js?v=1714060130846"></script>
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1715981018824">
+    <script src="/assets/main.bundle.js?v=1715981018824"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
 
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -1146,95 +1146,164 @@
 
     
     <main x-data="window.Components.summitManager()">
-  <div class="h-[66vh] bg-black relative">
-  <div class="swiper mx-auto">  
-    <div class="swiper-wrapper">
-      
-      <div class="swiper-slide">
-        <img data-src="/assets/images/summit-slider/01.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader"></div>
+  <div class="h-[75vh] bg-black relative">
+  <img src="/assets/images/summit-slider/02.jpg" class="absolute inset-0 object-cover w-full h-full" alt="Summit Series">
+
+    <div class="z-10 absolute inset-0 mx-auto max-w-3xl py-12 sm:py-48 lg:py-48">
+      <div class="text-center py-8" style="background:rgba(0,0,0,0.33)">
+        <h2 class="text-2xl font-bold tracking-tight text-white sm:text-3xl drop-shadow-2xl">Your turnkey accessory dwelling unit or guest house</h2>
+        <h3 class="text-xl lg:text-2xl text-white leading-2 drop-shadow-xl">Summit Series models are designed to be the perfect guest house, accessory dwelling unit, garage or dream backyard studio. Design your own in our 3D Design Center to craft the ultimate upgrade for your backyard.</h3>
+        <div class="justify-center flex">
+          <div class="mx-auto flex w-full gap-x-1 sm:w-auto sm:justify-center">
+            <a href="https://design.studio-shed.com/?__hstc=55847924.1126458ab5a89474f2810756081c228a.1708743699467.1715039202654.1715200126576.40&amp;__hssc=55847924.2.1715200126576&amp;__hsfp=2406890234" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:opacity-80 sm:w-auto sm:px-4" style="background:rgba(0,0,0,0.5)">Design Your Own</a>
+          </div>
+        </div>
       </div>
-      <div class="swiper-slide">
-        <img data-src="/assets/images/summit-slider/02.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader"></div>
+    </div>
+
+  </div>
+
+
+
+</div>
+  <div class="bg-white relative catalog py-12" id="toc-catalog">
+  <div x-data="{ activeTab: 'small' }"
+       x-init="() => {
+          window.addEventListener('changeTab', event => {
+            activeTab = event.detail.tab;
+          })
+          } "
+       class="max-w-6xl mx-auto px-4 overflow-hidden sm:px-6 lg:px-8">
+    <div class="flex justify-center">
+      <div class="-mb-px flex justify-center space-x-16" aria-orientation="horizontal" role="tablist">
+        <button :class="activeTab === 'small' ? 'border-yellow-500 text-yellow-600' : 'border-transparent text-gray-500'"
+                class="hover:opacity-80 whitespace-nowrap py-3 border-b-2 font-bold text-sm"
+                @click.prevent="activeTab = 'small'; $dispatch('slideChange', 1);"
+                aria-controls="features-panel-small" role="tab" type="button">Small</button>
+        <button :class="activeTab === 'medium' ? 'border-yellow-500 text-yellow-600' : 'border-transparent text-gray-500'"
+                class="hover:opacity-80 whitespace-nowrap py-3 border-b-2 font-bold text-sm"
+                @click.prevent="activeTab = 'medium'; $dispatch('slideChange', 2);"
+                aria-controls="features-panel-medium" role="tab" type="button">Medium</button>
+        <button :class="activeTab === 'large' ? 'border-yellow-500 text-yellow-600' : 'border-transparent text-gray-500'"
+                class="hover:opacity-80 whitespace-nowrap py-3 border-b-2 font-bold text-sm"
+                @click.prevent="activeTab = 'large'; $dispatch('slideChange', 3);"
+                aria-controls="features-panel-large" role="tab" type="button">Large</button>
       </div>
-      <div class="swiper-slide">
-        <img data-src="/assets/images/summit-slider/03.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader"></div>
-      </div>
-      <div class="swiper-slide">
-        <img data-src="/assets/images/summit-slider/04.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader"></div>
-      </div>
-      <div class="swiper-slide">
-        <img data-src="/assets/images/summit-slider/05.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader"></div>
-      </div>
-      <div class="swiper-slide">
-        <img data-src="/assets/images/summit-slider/06.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader"></div>
-      </div>
-      <div class="swiper-slide">
-        <img data-src="/assets/images/summit-slider/07.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader"></div>
-      </div>
-      <div class="swiper-slide">
-        <img data-src="/assets/images/summit-slider/08.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader"></div>
-      </div>
-      <div class="swiper-slide">
-        <img data-src="/assets/images/summit-slider/09.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader"></div>
-      </div>
-      <div class="swiper-slide">
-        <img data-src="/assets/images/summit-slider/10.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader"></div>
-      </div>
-      <div class="swiper-slide">
-        <img data-src="/assets/images/summit-slider/11.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader"></div>
-      </div>
-      <div class="swiper-slide">
-        <img data-src="/assets/images/summit-slider/12.jpg" class="swiper-lazy">
-        <div class="swiper-lazy-preloader"></div>
+    </div>
+
+    <div class="swiper-catalog mx-auto">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide px-24">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
+            <div class="text-center">
+              <a href="/products/summit-308/" class="group">
+                <img src="/assets/images/summit-nx/308/thumb.png" alt="Summit 308 (14x22)" class="mx-auto mb-4 group-hover:scale-105 transform transition">
+
+                <h3 class="text-xl font-bold mb-2">Summit 308</h3>
+                <p class="mb-2 text-gray-600">14' x 22' &middot; Studio &middot; 1 bath</p>
+              </a>
+              <div class="flex justify-center space-x-12">
+                <a href="/products/summit-308/" class="underline">Explore</a>
+                <a href="https://shop.studio-shed.com/summit-308" class="underline">Shop</a>
+              </div>
+            </div>
+            <div class="text-center">
+              <a href="/products/summit-440/" class="group">
+                <img src="/assets/images/summit-nx/440/thumb.png" alt="Summit 440 (20x22)" class="mx-auto mb-4 group-hover:scale-105 transform transition">
+
+                <h3 class="text-xl font-bold mb-2">Summit 440</h3>
+                <p class="mb-2 text-gray-600">20' x 22' &middot; Studio or 1 bed &middot; 1 bath</p>
+              </a>
+              <div class="flex justify-center space-x-12">
+                <a href="/products/summit-440/" class="underline">Explore</a>
+                <a href="https://shop.studio-shed.com/summit-440" class="underline">Shop</a>
+              </div>
+            </div>
+            <div class="text-center">
+              <a href="/products/summit-476/" class="group">
+                <img src="/assets/images/summit-nx/476/thumb.png" alt="Summit 476 (14x34)" class="mx-auto mb-4 group-hover:scale-105 transform transition">
+
+                <h3 class="text-xl font-bold mb-2">Summit 476</h3>
+                <p class="mb-2 text-gray-600">14x34 &middot; Studio &middot; 1 bath</p>
+              </a>
+              <div class="flex justify-center space-x-12">
+                <a href="/products/summit-476/" class="underline">Explore</a>
+                <a href="https://shop.studio-shed.com/summit-476" class="underline">Shop</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide px-24">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24">
+            <div class="text-center">
+              <a href="/products/summit-608/" class="group">
+                <img src="/assets/images/summit-nx/608/thumb.png" alt="Summit 608 (16x38)" class="mx-auto mb-4 group-hover:scale-105 transform transition">
+
+                <h3 class="text-xl font-bold mb-2">Summit 608</h3>
+                <p class="mb-2 text-gray-600">16x38 &middot; Studio &middot; 1 bath</p>
+              </a>
+              <div class="flex justify-center space-x-12">
+                <a href="/products/summit-608/" class="underline">Explore</a>
+                <a href="https://shop.studio-shed.com/summit-608" class="underline">Shop</a>
+              </div>
+            </div>
+            <div class="text-center">
+              <a href="/products/summit-680/" class="group">
+                <img src="/assets/images/summit-nx/680/thumb.png" alt="Summit 680 (20x34)" class="mx-auto mb-4 group-hover:scale-105 transform transition">
+
+                <h3 class="text-xl font-bold mb-2">Summit 680</h3>
+                <p class="mb-2 text-gray-600">20x34 &middot; 1 - 2 bed &middot; 1 bath</p>
+              </a>
+              <div class="flex justify-center space-x-12">
+                <a href="/products/summit-680/" class="underline">Explore</a>
+                <a href="https://shop.studio-shed.com/summit-680" class="underline">Shop</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="swiper-slide px-24">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24">
+            <div class="text-center">
+              <a href="/products/summit-800/" class="group">
+                <img src="/assets/images/summit-nx/800/thumb.png" alt="Summit 800 (20x40)" class="mx-auto mb-4 group-hover:scale-105 transform transition">
+
+                <h3 class="text-xl font-bold mb-2">Summit 800</h3>
+                <p class="mb-2 text-gray-600">20x40 &middot; 2 bed &middot; 1 - 2 bath</p>
+              </a>
+              <div class="flex justify-center space-x-12">
+                <a href="/products/summit-800/" class="underline">Explore</a>
+                <a href="https://shop.studio-shed.com/summit-800" class="underline">Shop</a>
+              </div>
+            </div>
+            <div class="text-center">
+              <a href="/products/summit-1000/" class="group">
+                <img src="/assets/images/summit-nx/1000/thumb.png" alt="Summit 1000 (20x50)" class="mx-auto mb-4 group-hover:scale-105 transform transition">
+
+                <h3 class="text-xl font-bold mb-2">Summit 1000</h3>
+                <p class="mb-2 text-gray-600">20x50 &middot; 2 bed &middot; 2 bath</p>
+              </a>
+              <div class="flex justify-center space-x-12">
+                <a href="/products/summit-1000/" class="underline">Explore</a>
+                <a href="https://shop.studio-shed.com/summit-1000" class="underline">Shop</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>    
-  </div>
-  <div class="z-10 pt-20 pb-4 absolute bottom-0 top-auto inset-0 bg-gradient-to-t from-black to-transparent">
-
-    <div class="justify-center flex">
-      <div class="mx-auto sm:flex sm:justify-center">
-        <a href="https://design.studio-shed.com/summit/" class="transition ease-in-out delay-250 w-full flex m-2 justify-center p-3 border border-2 border-white text-sm font-bold text-white uppercase text-center rounded-full hover:bg-white hover:text-black sm:w-auto sm:px-4">Design Your Own</a>
-      </div>
-    </div>  
-  </div>
-</div>
+    <div class="swiper-button-prev"></div>
 
 
-<div class="bg-black px-8 py-24">
-  <div class="flex justify-between gap-2 items-center">
-    <div>
-      <a href="/products/summit-1000/">
-        <h3 class="text-2xl font-bold text-white">Introducing the Summit 1000</h3>
-        <span class="text-lg font-bold text-white">20x50 2 bed / 2 bath ADU</span>
-        <span class="text-white">&mdash; shipped and assembled on your site with complete finished interiors</span>
-      </a>
-    </div>
-    <div class="flex">
-      <a href="/products/summit-1000/" class="w-full flex m-2 justify-center p-3 bg-yellow-500 text-sm text-white uppercase text-center hover:bg-yellow-600 sm:w-auto sm:px-4">Explore Summit 1000</a>
-    </div>
-  </div>
-</div>
 
 
-<div class="bg-white">
-  <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-    <div class="text-center">      
-      <p class="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-5xl">Your turnkey accessory dwelling unit or guest house</p>
-      <p class="max-w-xl mt-5 mx-auto text-xl text-gray-500">Summit Series models are designed to be the perfect guest house, accessory dwelling unit, garage or dream backyard studio. Design your own in our 3D Design Center to craft the ultimate upgrade for your backyard.</p>
-    </div>
+
+
+
   </div>
 </div>
   <div x-intersect.full="visibleSection = 'none'" class="h-0.5 w-full"></div>
