@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1716500128917">
-  <script src="/assets/main.bundle.js?v=1716500128917"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1717131164304">
+  <script src="/assets/main.bundle.js?v=1717131164304"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -42,6 +42,15 @@
 <body>
 
 
+
+<!-- top bar image centered on an orange bg that goes full width -->
+<div class="bg-[#ffa73b]">
+  <div class="max-w-7xl mx-auto px-4 py-1">
+    <a href="https://design.studio-shed.com/">
+      <img src="/assets/images/summer-2024-promo-topbar.jpg" alt="Design Your Own Studio Shed" class="mx-auto h-8">
+    </a>
+  </div>
+</div>
 
 <header x-cloak x-data="window.Components.navManager">
   <div class="relative bg-white z-20">
@@ -1199,6 +1208,20 @@
                 </div>
         -->
         <div class="swiper-slide">
+          <img src="/assets/images/summer-2024-promo-bg.jpg" alt="" class="inset-0 h-96 md:h-[660px] w-full object-cover" style="z-index:-10;filter:blur(7px);opacity:0.8;">
+
+          <div class="absolute top-10 md:top-16 left-1/2 w-full md:w-5/6 z-10 mx-auto max-w-none">
+            <div class="text-center">
+              <a href="https://design.studio-shed.com" target="_blank">
+                <img class="hidden sm:block max-h-96 shadow-xl rounded-lg" style="width:auto;height: auto;position: relative;transform: translate(-50%,0%);" src="/assets/images/summer-2024-promo-hero.jpg" />
+                <img class="block sm:hidden max-h-96 shadow-xl" style="width:auto;height: auto;position: relative;transform: translate(-50%,25%);" src="/assets/images/summer-2024-promo-hero.jpg" />
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="swiper-slide">
           <img src="/assets/images/aspect/ENV_Gable shads24x36.jpg" alt="" class="absolute inset-0 h-full w-full object-cover object-bottom xl:object-center" style="z-index:-10">
           <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
             <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
@@ -1246,7 +1269,7 @@
               <h3 class="text-xl lg:text-2xl font-bold text-white leading-2 drop-shadow-xl"><span class="text-yellow-500">Efficient permitting</span> and speedy assembly saves time and money.</h3>
               <div class="justify-center flex">
                 <div class="mx-auto flex w-full gap-x-1 sm:w-auto sm:justify-center">
-                  <a href="https://shop.studio-shed.com/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:opacity-80 sm:w-auto sm:px-4" style="background:rgba(0,0,0,0.5)">Design Your Own</a>
+                  <a href="https://design.studio-shed.com/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:opacity-80 sm:w-auto sm:px-4" style="background:rgba(0,0,0,0.5)">Design Your Own</a>
                 </div>
               </div>
             </div>
