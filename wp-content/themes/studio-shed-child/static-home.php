@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1717170838781">
-  <script src="/assets/main.bundle.js?v=1717170838781"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1717262705205">
+  <script src="/assets/main.bundle.js?v=1717262705205"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -46,7 +46,7 @@
 <!-- top bar image centered on an orange bg that goes full width -->
 <div class="bg-[#ffa73b]">
   <div class="max-w-7xl mx-auto px-0.5 py-1">
-    <a href="https://design.studio-shed.com/">
+    <a target="_blank" href="https://design.studio-shed.com/">
       <img src="/assets/images/summer-2024-promo-topbar.jpg" alt="Design Your Own Studio Shed" class="mx-auto h-auto sm:h-8">
     </a>
   </div>
