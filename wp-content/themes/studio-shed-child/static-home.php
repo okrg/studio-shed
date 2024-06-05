@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1717262705205">
-  <script src="/assets/main.bundle.js?v=1717262705205"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1717612443826">
+  <script src="/assets/main.bundle.js?v=1717612443826"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -1922,7 +1922,7 @@
           </svg>
         </a>
       </div>
-      <p class="mt-8 text-base text-gray-400 md:mt-0 md:order-1">&copy; Studio Shed &bull; <a class="hover:text-gray-200" href="/privacy/">Privacy Policy</a> &bull; <a class="hover:text-gray-200" href="/do-not-sell/">Do Not Sell My Information</a></p>
+      <p class="mt-8 text-base text-gray-400 md:mt-0 md:order-1">&copy; Studio Shed &bull; <a class="hover:text-gray-200" href="/privacy/">Privacy &amp; Statement</a> &bull; <a class="hover:text-gray-200" href="/privacy-policy/">Privacy Policy</a> &bull; <a class="hover:text-gray-200" href="/do-not-sell/">Do Not Sell My Information</a></p>
     </div>
   </div>
 </footer>

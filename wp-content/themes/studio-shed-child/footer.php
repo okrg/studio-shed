@@ -268,7 +268,7 @@
           </svg>
         </a>
       </div>
-      <p class="mt-8 text-base text-gray-400 md:mt-0 md:order-1">&copy; Studio Shed &bull; <a class="hover:text-gray-200" href="/privacy/">Privacy Policy</a> &bull; <a class="hover:text-gray-200" href="/do-not-sell/">Do Not Sell My Information</a></p>
+      <p class="mt-8 text-base text-gray-400 md:mt-0 md:order-1">&copy; Studio Shed &bull; <a class="hover:text-gray-200" href="/privacy/">Privacy &amp; Statement</a> &bull; <a class="hover:text-gray-200" href="/privacy-policy/">Privacy Policy</a> &bull; <a class="hover:text-gray-200" href="/do-not-sell/">Do Not Sell My Information</a></p>
     </div>
   </div>
 </footer>
