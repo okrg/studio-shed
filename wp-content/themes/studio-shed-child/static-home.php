@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1718206996274">
-  <script src="/assets/main.bundle.js?v=1718206996274"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1718208046195">
+  <script src="/assets/main.bundle.js?v=1718208046195"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -1663,10 +1663,6 @@
 
 
 
-  <div aria-hidden="true" class="relative">
-    <img src="https://tailwindui.com/img/ecommerce-images/product-feature-02-full-width.jpg" alt="" class="h-96 w-full object-cover object-center">
-    <div class="absolute inset-0 bg-gradient-to-b from-white"></div>
-  </div>
 
 <div class="relative">
   <img loading="lazy" class="h-[50vh] w-full object-cover" src="/assets/images/home-made-in-co.jpg" alt="A Studio Shed installed in a Colorado location with the Rocky mountains in the background.">
