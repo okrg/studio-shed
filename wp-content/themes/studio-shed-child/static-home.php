@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1717612443826">
-  <script src="/assets/main.bundle.js?v=1717612443826"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1718174722907">
+  <script src="/assets/main.bundle.js?v=1718174722907"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -585,6 +585,9 @@
           <a href="/about-us/"
              class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700"
              title="Learn More About Studio Shed - Our Mission and Values">About Studio Shed</a>
+          <a href="/factory-tour/"
+             class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700"
+             title="Learn More About Studio Shed - Our Mission and Values">Factory Tours</a>
           <a href="/commercial/"
              class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700"
              title="Explore Our Commercial Projects and Solutions">Commercial Projects</a>
@@ -1107,6 +1110,9 @@
                 </a>
                 <a href="/about-us/" class="text-gray-700 block" title="About Studio Shed">
                   About Studio Shed
+                </a>
+                <a href="/factory-tour/" class="text-gray-700 block" title="About Studio Shed">
+                  Factory Tours
                 </a>
                 <a href="/commercial/" class="text-gray-700 block" title="Studio Shed Commercial Projects">
                   Commercial Projects
@@ -1657,6 +1663,11 @@
 
 
 
+  <div aria-hidden="true" class="relative">
+    <img src="https://tailwindui.com/img/ecommerce-images/product-feature-02-full-width.jpg" alt="" class="h-96 w-full object-cover object-center">
+    <div class="absolute inset-0 bg-gradient-to-b from-white"></div>
+  </div>
+
 <div class="relative">
   <img loading="lazy" class="h-[50vh] w-full object-cover" src="/assets/images/home-made-in-co.jpg" alt="A Studio Shed installed in a Colorado location with the Rocky mountains in the background.">
   <div class="absolute bottom-0 top-auto h-16 inset-0 bg-gradient-to-t from-black to-transparent mix-blend-multiply"></div>
@@ -1707,6 +1718,11 @@
               <li>
                 <a href="/about-us/" class="text-base text-gray-300 hover:text-white">
                   About Studio Shed
+                </a>
+              </li>
+              <li>
+                <a href="/factory-tour/" class="text-base text-gray-300 hover:text-white">
+                  Factory Tours
                 </a>
               </li>
               <li>

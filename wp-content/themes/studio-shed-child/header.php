@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1717612443826">
-  <script src="/assets/main.bundle.js?v=1717612443826"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1718174722907">
+  <script src="/assets/main.bundle.js?v=1718174722907"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -621,6 +621,9 @@
           <a href="/about-us/"
              class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700"
              title="Learn More About Studio Shed - Our Mission and Values">About Studio Shed</a>
+          <a href="/factory-tour/"
+             class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700"
+             title="Learn More About Studio Shed - Our Mission and Values">Factory Tours</a>
           <a href="/commercial/"
              class="-m-3 p-3 flex items-start hover:opacity-80 text-base font-medium text-gray-900 hover:text-gray-700"
              title="Explore Our Commercial Projects and Solutions">Commercial Projects</a>
@@ -1143,6 +1146,9 @@
                 </a>
                 <a href="/about-us/" class="text-gray-700 block" title="About Studio Shed">
                   About Studio Shed
+                </a>
+                <a href="/factory-tour/" class="text-gray-700 block" title="About Studio Shed">
+                  Factory Tours
                 </a>
                 <a href="/commercial/" class="text-gray-700 block" title="Studio Shed Commercial Projects">
                   Commercial Projects

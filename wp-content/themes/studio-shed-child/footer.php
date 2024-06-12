@@ -56,6 +56,11 @@
                 </a>
               </li>
               <li>
+                <a href="/factory-tour/" class="text-base text-gray-300 hover:text-white">
+                  Factory Tours
+                </a>
+              </li>
+              <li>
                 <a href="/commercial/" class="text-base text-gray-300 hover:text-white">
                   Commercial Projects
                 </a>
