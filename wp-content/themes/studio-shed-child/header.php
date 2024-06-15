@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1718215428884">
-  <script src="/assets/main.bundle.js?v=1718215428884"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1718463251626">
+  <script src="/assets/main.bundle.js?v=1718463251626"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -79,14 +79,7 @@
   <!-- End Google Tag Manager (noscript) -->
 
 
-<!-- top bar image centered on an orange bg that goes full width -->
-<div class="bg-[#ffa73b]">
-  <div class="max-w-7xl mx-auto px-0.5 py-1">
-    <a target="_blank" href="https://design.studio-shed.com/">
-      <img src="/assets/images/summer-2024-promo-topbar.jpg" alt="Design Your Own Studio Shed" class="mx-auto h-auto sm:h-8">
-    </a>
-  </div>
-</div>
+
 
 <header x-cloak x-data="window.Components.navManager">
   <div class="relative bg-white z-20">
