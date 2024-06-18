@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1718463251626">
-  <script src="/assets/main.bundle.js?v=1718463251626"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1718731327557">
+  <script src="/assets/main.bundle.js?v=1718731327557"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -1205,7 +1205,7 @@
                     </div>
                   </div>
                 </div>
-        -->
+
         <div class="swiper-slide">
           <img src="/assets/images/summer-2024-promo-bg.jpg" alt="" class="inset-0 h-96 md:h-[660px] w-full object-cover" style="z-index:-10;filter:blur(7px);opacity:0.8;">
 
@@ -1219,7 +1219,7 @@
           </div>
 
         </div>
-
+-->
         <div class="swiper-slide">
           <img src="/assets/images/aspect/ENV_Gable shads24x36.jpg" alt="" class="absolute inset-0 h-full w-full object-cover object-bottom xl:object-center" style="z-index:-10">
           <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
