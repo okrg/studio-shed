@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1718731327557">
-  <script src="/assets/main.bundle.js?v=1718731327557"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1718952226614">
+  <script src="/assets/main.bundle.js?v=1718952226614"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -1658,17 +1658,19 @@
 
 
 <div class="relative">
-  <img loading="lazy" class="h-[50vh] w-full object-cover" src="/assets/images/home-made-in-co.jpg" alt="A Studio Shed installed in a Colorado location with the Rocky mountains in the background.">
+  <img loading="lazy" class="h-[66vh] w-full object-cover object-left md:object-center objct-" src="/assets/images/home-made-in-co-2024.jpg" alt="A Studio Shed installed in a Colorado location with the Rocky mountains in the background.">
   <div class="absolute bottom-0 top-auto h-16 inset-0 bg-gradient-to-t from-black to-transparent mix-blend-multiply"></div>
 </div>
 <div class="bg-black">
-  <div class="max-w-4xl mx-auto py-16 px-4 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 lg:flex lg:items-center lg:justify-between">
-    <h2 class="text-4xl font-bold text-white sm:text-4xl">
-      <span class="block">Built in Colorado</span>
-      <span class="-mb-1 pb-1 block text-lg font-medium">Shipping available to all 50 U.S. states and select locations in Canada.</span>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8 md:flex md:items-center md:justify-between">
+    <h2 class="text-2xl font-bold text-white md:text-4xl">
+      <span class="block">Built in Colorado.<span>
+      <span class="block">Delivered and assembled nationwide.</span>
+      <span class="-mb-1 pb-1 block text-sm font-medium">Shipping available to all 50 U.S. states and select locations in Canada.</span>
     </h2>
-    <div class="mt-6 space-y-4 sm:space-y-0 sm:flex sm:space-x-5">
-
+    <div class="mt-6 w-full md:w-1/2">
+      <div style="padding:56.25% 0 0 0;position:relative;" class="border border-4 border-black rounded"><iframe src="https://player.vimeo.com/video/954126499?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Studio Shed Timelapse 2024"></iframe></div>
+      <script src="https://player.vimeo.com/api/player.js"></script>
     </div>
   </div>
 </div>
