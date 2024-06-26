@@ -226,8 +226,8 @@
                 </a>
               </li>
               <li>
-                <a href="/commercial/" class="text-base text-gray-300 hover:text-white">
-                  Commercial
+                <a href="/pool-house/" class="text-base text-gray-300 hover:text-white">
+                  Pool Houses
                 </a>
               </li>
             </ul>

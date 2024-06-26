@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1718952226614">
-  <script src="/assets/main.bundle.js?v=1718952226614"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1719437459364">
+  <script src="/assets/main.bundle.js?v=1719437459364"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -580,11 +580,11 @@
           </a>
         </li>
         <li class="relative">
-          <a href="/commercial-story/" title="Commercial Spaces by Studio Shed">
+          <a href="/pool-house/" title="Commercial Spaces by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img loading="lazy" src="/assets/images/nav-inspiration-commercial.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <img loading="lazy" src="/assets/images/nav-inspiration-pool-house.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
-            <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Commercial</p>
+            <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Pool Houses</p>
           </a>
         </li>
       </ul>
@@ -1103,11 +1103,11 @@
                   </a>
                 </li>
                 <li class="relative">
-                  <a href="/commercial-story/" title="Commercial Projects">
+                  <a href="/pool-house/" title="Commercial Projects">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-commercial.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <img src="/assets/images/nav-inspiration-pool-house.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
                     </div>
-                    <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Commercial</p>
+                    <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Pool Houses</p>
                   </a>
                 </li>
               </ul>

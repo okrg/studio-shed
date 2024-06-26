@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1718952226614">
-  <script src="/assets/main.bundle.js?v=1718952226614"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1719437459364">
+  <script src="/assets/main.bundle.js?v=1719437459364"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -544,11 +544,11 @@
           </a>
         </li>
         <li class="relative">
-          <a href="/commercial-story/" title="Commercial Spaces by Studio Shed">
+          <a href="/pool-house/" title="Commercial Spaces by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img loading="lazy" src="/assets/images/nav-inspiration-commercial.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <img loading="lazy" src="/assets/images/nav-inspiration-pool-house.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
             </div>
-            <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Commercial</p>
+            <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Pool Houses</p>
           </a>
         </li>
       </ul>
@@ -1067,11 +1067,11 @@
                   </a>
                 </li>
                 <li class="relative">
-                  <a href="/commercial-story/" title="Commercial Projects">
+                  <a href="/pool-house/" title="Commercial Projects">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-commercial.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <img src="/assets/images/nav-inspiration-pool-house.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
                     </div>
-                    <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Commercial</p>
+                    <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Pool Houses</p>
                   </a>
                 </li>
               </ul>
@@ -1322,7 +1322,6 @@
 
   </div>
 </div>
-  
   <div class="bg-white" id="toc-curated" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'curated'">
   <div class="max-w-4xl mx-auto py-16 px-4 sm:py-12 sm:px-6 lg:px-8">
     <div class="text-center">
@@ -1518,6 +1517,11 @@
         </div>
       </div>
     </div>
+    <div class="text-center">
+      <a href="https://design.studio-shed.com/" target="_blank" class="inline-block mt-6 px-4 py-3 border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-black font-medium hover:opacity-80 sm:px-8">
+        Design &amp; Price Your Studio Shed
+      </a>
+    </div>
   </div>
 </div>
   
@@ -1533,6 +1537,7 @@
     Learn more about the process
   </a>
 </div>
+
   <div class="relative">
   <img loading="lazy" class="h-[32rem] w-full object-cover" src="/assets/images/home-virtual-tour-banner.jpg" alt="A screenshot from the Studio Shed virtual tour app">
 </div>
@@ -1560,67 +1565,7 @@
     <a href="https://tour.studio-shed.com/" class="inline-block mt-6 px-4 py-3 border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-black font-medium hover:opacity-80 sm:px-8" title="Studio Shed virtual tour">Take the Tour</a>
   </div>
 </div>
-  <div class="relative">
-  <img loading="lazy" class="h-[32rem] w-full object-cover" src="/assets/images/home-pre-design-center.jpg" alt="Studio Shed Signature series 10x12 with backyard landscape">
-</div>
 
-<div class="py-16 bg-white overflow-hidden lg:py-24">
-  <div class="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
-    <div class="relative">
-      <h2 class="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">Design Your Studio Shed</h2>
-      <p class="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">Design and price a Studio Shed in 5 simple steps with our 3D Design Center. We put the design process in your hands and make it easy with our online configurator tool! </p>
-    </div>
-
-    <div class="relative mt-8 lg:mt-12 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
-      <div class="relative">
-        <dl class="mt-10 space-y-10">
-          <div class="relative">
-            <dt>
-              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white text-2xl font-bold">1</div>
-              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Model</p>
-            </dt>
-            <dd class="ml-16 text-base text-gray-500">Choose from our Summit, Signature, or Portland models</dd>
-          </div>
-          <div class="relative">
-            <dt>
-              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white text-2xl font-bold">2</div>
-              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Interior</p>
-            </dt>
-            <dd class="ml-16 text-base text-gray-500">Customize your interior layout and flooring</dd>
-          </div>
-          <div class="relative">
-            <dt>
-              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white text-2xl font-bold">3</div>
-              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Exterior</p>
-            </dt>
-            <dd class="ml-16 text-base text-gray-500">Select your siding, colors, window & door placement, and more </dd>
-          </div>
-          <div class="relative">
-            <dt>
-              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white text-2xl font-bold">4</div>
-              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Location &amp; Permits</p>
-            </dt>
-            <dd class="ml-16 text-base text-gray-500">Enter your location and select permitting needs</dd>
-          </div>
-          <div class="relative">
-            <dt>
-              <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-yellow-500 text-white text-2xl font-bold">5</div>
-              <p class="ml-16 text-lg leading-6 font-medium text-gray-900">Installation</p>
-            </dt>
-            <dd class="ml-16 text-base text-gray-500">Choose DIY or Professional installation </dd>
-          </div>
-        </dl>
-      </div>
-
-      <div class="mt-10 mx-2 relative lg:mt-0" aria-hidden="true">
-        <div class="w-full aspect-w-4 aspect-h-3 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
-          <img loading="lazy" src="/assets/images/home-design-center-hero.jpg" class="w-full h-full object-center object-cover" alt="Studio Shed 3D Design Center">
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
   <div class="bg-white">
   <div class="max-w-2xl mx-auto text-center py-8 px-4 sm:pt-16 sm:px-6 lg:px-8">
     <h2 class="text-2xl font-extrabold text-gray-900 sm:text-4xl">
@@ -1882,8 +1827,8 @@
                 </a>
               </li>
               <li>
-                <a href="/commercial/" class="text-base text-gray-300 hover:text-white">
-                  Commercial
+                <a href="/pool-house/" class="text-base text-gray-300 hover:text-white">
+                  Pool Houses
                 </a>
               </li>
             </ul>
