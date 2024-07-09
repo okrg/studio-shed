@@ -19,6 +19,24 @@
 </div>
 
 
+<div class="relative">
+  <img loading="lazy" class="h-[66vh] w-full object-cover object-left md:object-center objct-" src="/assets/images/home-made-in-co-2024.jpg" alt="A Studio Shed installed in a Colorado location with the Rocky mountains in the background.">
+  <div class="absolute bottom-0 top-auto h-16 inset-0 bg-gradient-to-t from-black to-transparent mix-blend-multiply"></div>
+</div>
+<div class="bg-black">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8 md:flex md:items-center md:justify-between">
+    <h2 class="text-2xl font-bold text-white md:text-4xl">
+      <span class="block">Built in Colorado.<span>
+      <span class="block">Delivered and assembled nationwide.</span>
+      <span class="-mb-1 pb-1 block text-sm font-medium">Shipping available to all 50 U.S. states and select locations in Canada.</span>
+    </h2>
+    <div class="mt-6 w-full md:w-1/2">
+      <div style="padding:56.25% 0 0 0;position:relative;" class="border border-4 border-black rounded"><iframe src="https://player.vimeo.com/video/954126499?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Studio Shed Timelapse 2024"></iframe></div>
+      <script src="https://player.vimeo.com/api/player.js"></script>
+    </div>
+  </div>
+</div>
+
 
 
 
