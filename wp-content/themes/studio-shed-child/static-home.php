@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1720744118896">
-  <script src="/assets/main.bundle.js?v=1720744118896"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1720745068688">
+  <script src="/assets/main.bundle.js?v=1720745068688"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -1231,7 +1231,7 @@
                       <h3 class="text-xl lg:text-2xl font-bold text-white leading-2 drop-shadow-xl">Take 25% off any DIY Quick Ship Model or choose 0% Financing.<br>10 Days Only!</h3>
                       <div class="justify-center flex">
                         <div class="mx-auto flex w-full gap-x-1 sm:w-auto sm:justify-center">
-                          <a href="https://design.studio-shed.com/signature" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:opacity-80 sm:w-auto sm:px-4" style="background:rgba(0,0,0,0.5)">Get Started</a>
+                          <a href="https://design.studio-shed.com/signature" target="_blank" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:opacity-80 sm:w-auto sm:px-4" style="background:rgba(0,0,0,0.5)">Get Started</a>
                         </div>
                       </div>
                     </div>
