@@ -15,15 +15,15 @@
     <meta property="og:url" content="https://www.studio-shed.com/finance-acorn/">
     <meta property="og:image" content="https://www.studio-shed.com/assets/images/og-image-studio-shed.jpg">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2024-07-09T20:42:19.670Z">
+    <meta property="article:modified_time" content="2024-07-24T22:48:22.786Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
     <link rel="dns-prefetch" href="//js.hsforms.net">
     <link rel="canonical" href="https://www.studio-shed.com/finance-acorn/">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1720557739132">
-    <script src="/assets/main.bundle.js?v=1720557739132"></script>
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1721861302228">
+    <script src="/assets/main.bundle.js?v=1721861302228"></script>
     <script src="//js.hsforms.net/forms/v2.js"></script>
 
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -144,7 +144,7 @@
               <h4 class="text-base font-medium text-gray-900 uppercase">
                 Portland
               </h4>
-              <p class="text-xs text-gray-500">96-320 FT²</p>
+              <p class="text-xs text-gray-500">96-256 FT²</p>
               <p class="text-xs text-gray-500">Single room Studios</p>
             </div>
           </a>
@@ -1153,23 +1153,26 @@
 </header>
 
     
-    <main x-data="window.Components.financeManager()">
+    <script async type="module" src="https://uat.widgets-cdn.acornfinance.com/momnt/dist/acorn-momnt-widget.min.js"></script>
+<script async type="module" src="https://widgets-cdn.acornfinance.com/payment-estimator/dist/af-payment-estimator.min.js"></script>
 
-  <div class="relative h-[90vh] md:h-[600px]">
+
+<main x-data="window.Components.financeManager()">
+
+  <div class="relative h-[90vh] md:h-[800px]">
     <div class="absolute inset-0">
       <img class="h-full w-full object-contain object-top md:object-cover " src="/assets/images/finance/finance-hero.jpg">
     </div>
     <div class="absolute bg-white w-full bottom-0 md:w-1/2 md:h-auto p-12">
-      <img src="/assets/images/finance/finance-logos.png">
-      <h1 class="text-2xl tracking-tight">Financing that fits you</h1>
-      <p class="my-4 text-gray-500">Studio Shed has teamed up with Acorn Finance to help you find pre-qualified loan offers from top lenders.</p>
+      <h2 class="uppercase bg-yellow-500 text-gray-900 font-bold tracking-widest py-2 px-4 mb-4 inline-block">Featured Offer</h2>
+      <h1 class="text-2xl tracking-tight">Studio Shed has teamed up with Acorn Finance and Momnt to help you find prequalified loan offers for your project.</h1>
       <ul role="list" class="my-4 space-y-4">
         <li class="flex space-x-3">
           <svg class="flex-shrink-0 h-5 w-5 text-green-500" x-description="Heroicon name: solid/check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
 </svg>
           <span class="text-sm text-gray-800">            
-            Finance your ADU or entire backyard project with monthly payments
+            Enjoy no payments, and no interest accrual for 12 months on loans up to $55K*
           </span>
         </li>
         <li class="flex space-x-3">
@@ -1177,7 +1180,7 @@
 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
 </svg>
           <span class="text-sm text-gray-800">
-            Loan amounts up to $100K and terms up to 12 years
+            After the initial 12 months, loan terms are available from 19.99% APR for 84 months*
           </span>
         </li>
         <li class="flex space-x-3">
@@ -1185,7 +1188,7 @@
 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
 </svg>
           <span class="text-sm text-gray-800">
-            Checking your rate won’t impact your credit score
+            Pre-qualification involves a soft credit pull with no impact on your credit score if you don't qualify for offers.
           </span>
         </li>
         <li class="flex space-x-3">
@@ -1193,12 +1196,12 @@
 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
 </svg>
           <span class="text-sm text-gray-800">
-            Qualified customers can get funded directly, or have funds instantly sent to Studio Shed upon approval for Curated Models
+            Qualified customers can authorize funds to be sent instantly to Studio Shed upon approval*
           </span>
         </li>
       </ul>
 
-      <a href="https://www.acornfinance.com/apply?d=SSD-WEBSITE" target="_blank" class="bg-yellow-500 inline-block my-4 uppercase p-4 text-base font-medium text-white hover:opacity-80 sm:px-8">Check your offers</a>
+      <acorn-momnt-widget dealerId="SSD-WEBSITE-MOMNT" env="UAT"></acorn-momnt-widget>
 
     </div>
   </div>
@@ -1278,7 +1281,7 @@
                   </div>
                   <div class="flex justify-center items-center">
                     <span class="text-2xl">+</span>
-                    <img class="mx-4 p-4 max-w-fit" src="/assets/images/finance/finance-small-grid.png">
+                    <img class="mx-4 p-4 max-w-1/2" src="/assets/images/finance/finance-small-grid.png">
                     <span class="text-2xl hidden lg:inline-block">=</span>
                   </div>
                   <div class="text-center">
@@ -1334,7 +1337,7 @@
                     <p class="mt-4 text-gray-600">*Estimated project cost includes Lifestyle interior, additional costs. Excludes installation.</p>
                 </div>
               </div>
-              <div class="bg-gray-100 p-8 md:ml-3">
+              <div class="m-4 bg-gray-50 p-8 md:ml-3">
                 <div class="flex justify-between text-xl mb-6 font-medium text-gray-700">
                   <dt class="">Estimated project cost*</dt>
                   <dd class="text-black">$37,000</dd>
@@ -1353,28 +1356,12 @@
                 </div>
                 <div class="pt-9 border-t border-gray-400 flex justify-between text-xl mb-6 font-medium">
                   <dt class="">Estimated payment</dt>
-                  <dd class="font-bold text-6xl text-center text-yellow-700">$419 <span class="text-base font-medium block uppercase">per month</span></dd>
+                  <dd class="font-bold text-6xl text-center text-yellow-600">$419 <span class="text-base font-medium block uppercase">per month</span></dd>
                 </div>
 
                 <p class="text-sm text-gray-600 my-4">This estimated monthly payment is based on the loan amount, loan term year, and APR above. Actual rates, terms and payments will vary based on your personal credit profile. </p>
 
-                <div class="pt-3 grid grid-cols-1 md:grid-cols-2 gap-x-4 ">
-                  <div class="order-last md:order-first">
-                    <ul role="list" class="space-y-4">
-                      <li class="flex space-x-3">
-                        <svg class="flex-shrink-0 h-5 w-5 text-green-500" x-description="Heroicon name: solid/check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-</svg>
-                        <span class="text-base text-gray-500">
-                          Checking your rate does not affect your credit score.
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="mb-4">
-                    <a href="https://www.acornfinance.com/apply?d=SSD-WEBSITE" target="_blank" class="flex items-center justify-center bg-yellow-500 p-4 text-base font-medium text-white hover:opacity-80 sm:px-8">Check your rate</a>
-                  </div>
-                </div>
+                <acorn-momnt-widget dealerId="SSD-WEBSITE-MOMNT" env="UAT"></acorn-momnt-widget>
               </div>
             </div>
           </div>
@@ -1446,7 +1433,7 @@
                     <p class="mt-4 text-gray-600">*Estimated project cost includes Lifestyle interior, additional costs. Excludes installation.</p>
                 </div>
               </div>
-              <div class="bg-gray-100 p-8 md:ml-3">
+              <div class="m-4 bg-gray-50 p-8 md:ml-3">
                 <div class="flex justify-between text-xl mb-6 font-medium text-gray-700">
                   <dt class="">Estimated project cost*</dt>
                   <dd class="text-black">$55,000</dd>
@@ -1465,26 +1452,11 @@
                 </div>
                 <div class="pt-9 border-t border-gray-400 flex justify-between text-xl mb-6 font-medium">
                   <dt class="">Estimated payment</dt>
-                  <dd class="font-bold text-6xl text-center text-yellow-700">$719 <span class="text-base font-medium block uppercase">per month</span></dd>
+                  <dd class="font-bold text-6xl text-center text-yellow-600">$719 <span class="text-base font-medium block uppercase">per month</span></dd>
                 </div>
                 <p class="text-sm text-gray-600 mt-4">This estimated monthly payment is based on the loan amount, loan term year, and APR above. Actual rates, terms and payments will vary based on your personal credit profile. </p>
-                <div class="pt-4 grid grid-cols-1 md:grid-cols-2 gap-x-4 ">
-                  <div class="order-last md:order-first">
-                    <ul role="list" class="space-y-4">
-                      <li class="flex space-x-3">
-                        <svg class="flex-shrink-0 h-5 w-5 text-green-500" x-description="Heroicon name: solid/check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-</svg>
-                        <span class="text-base text-gray-500">
-                          Checking your rate does not affect your credit score.
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="mb-4">
-                    <a href="https://www.acornfinance.com/apply?d=SSD-WEBSITE" target="_blank" class="flex items-center justify-center bg-yellow-500 p-4 text-base font-medium text-white hover:opacity-80 sm:px-8">Check your rate</a>
-                  </div>
-                </div>
+                
+                <acorn-momnt-widget dealerId="SSD-WEBSITE-MOMNT" env="UAT"></acorn-momnt-widget>
               </div>
             </div>
           </div>
@@ -1500,7 +1472,7 @@
                   </div>
                   <div class="flex justify-center items-center">
                     <span class="text-2xl">+</span>
-                    <img class="mx-4 p-4 max-w-fit" src="/assets/images/finance/finance-large-grid.png">
+                    <img class="mx-4 p-4 max-w-1/2" src="/assets/images/finance/finance-large-grid.png">
                     <span class="text-2xl hidden lg:inline-block">=</span>
                   </div>
                   <div class="text-center">
@@ -1513,7 +1485,7 @@
                   </div>
                 </div>
                 <div class="border border-gray-300 p-4 my-6 mr-3 text-sm">
-                  <p>Typical project costs that aren’t included in your Studio Shed order:</p>
+                  <p>Typical project costs that aren't included in your Studio Shed order:</p>
                   <div class="grid grid-cols-1 md:grid-cols-2 mt-4">
                     <dl>
                       <div class="grid grid-cols-2 text-sm font-medium">
@@ -1556,7 +1528,7 @@
                   <p class="mt-4 text-gray-600">*Estimated project cost includes Lifestyle Plus interior, additional costs. Excludes installation.</p>
                 </div>
               </div>
-              <div class="bg-gray-100 p-8 md:ml-3">
+              <div class="m-4 bg-gray-50 p-8 md:ml-3">
                 <div class="flex justify-between text-xl mb-6 font-medium text-gray-700">
                   <dt class="">Estimated project cost*</dt>
                   <dd class="text-black">$145,000</dd>
@@ -1575,7 +1547,7 @@
                 </div>
                 <div class="pt-9 border-t border-gray-400 flex justify-between text-xl mb-6 font-medium">
                   <dt class="">Estimated payment</dt>
-                  <dd class="font-bold text-6xl text-center text-yellow-700">$998 <span class="text-base font-medium block uppercase">per month</span></dd>
+                  <dd class="font-bold text-6xl text-center text-yellow-600">$998 <span class="text-base font-medium block uppercase">per month</span></dd>
                 </div>
                 <p class="text-sm text-gray-600 mt-4">This estimated monthly payment is based on the loan amount, loan term year, and APR above. Actual rates, terms and payments will vary based on your personal credit profile. </p>
                 <div class="pt-4 grid grid-cols-1 md:grid-cols-2 gap-x-4 ">
