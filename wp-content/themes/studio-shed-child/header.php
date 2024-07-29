@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1720557739132">
-  <script src="/assets/main.bundle.js?v=1720557739132"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1722143218587">
+  <script src="/assets/main.bundle.js?v=1722143218587"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -188,7 +188,7 @@
               <h4 class="text-base font-medium text-gray-900 uppercase">
                 Portland
               </h4>
-              <p class="text-xs text-gray-500">96-320 FT²</p>
+              <p class="text-xs text-gray-500">96-256 FT²</p>
               <p class="text-xs text-gray-500">Single room Studios</p>
             </div>
           </a>
