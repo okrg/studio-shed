@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1722385627276">
-  <script src="/assets/main.bundle.js?v=1722385627276"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1722386856299">
+  <script src="/assets/main.bundle.js?v=1722386856299"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -1426,45 +1426,46 @@
   </div>
   <div class="relative mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
     <div class="relative">
-      <h2 class="my-16 text-xl max-w-2xl mx-auto text-center md:text-2xl text-gray-700 font-bold">Our ADUs are a great way to add value to your property and generate rental income.</h2>
+      <h2 class="mt-16 max-w-2xl text-3xl mx-auto leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">Our ADUs are a great way to add value to your property and generate rental income.</h2>
     </div>
 
 
     <div class="relative mt-8 lg:mt-12 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
       <div class="relative ">
-        <dl class="space-y-8 px-8">
+        <dl class="space-y-8 px-4">
           <div class="relative">
             <dt>
-              <div class="absolute flex items-center justify-center h-8 w-8 rounded-full bg-yellow-500 text-white">
-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+              <div class="absolute flex items-center justify-center h-6 w-6 rounded-full bg-yellow-500 text-white">
+                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
               </div>
             </dt>
-            <dd class="ml-16 text-base md:text-lg text-gray-800">Flexible rental income, short or long term – on your terms.</dd>
+            <dd class="ml-12 text-base md:text-lg text-gray-800">Flexible rental income, short or long term – on your terms.</dd>
           </div>
 
           <div class="relative">
             <dt>
-              <div class="absolute flex items-center justify-center h-8 w-8 rounded-full bg-yellow-500 text-white">
-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              <div class="absolute flex items-center justify-center h-6 w-6 rounded-full bg-yellow-500 text-white">
+                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
               </div>
 
             </dt>
-            <dd class="ml-16 text-base md:text-lg text-gray-800">Proven ROI that adds value to your property.</dd>
+            <dd class="ml-12 text-base md:text-lg text-gray-800">Proven ROI that adds value to your property.</dd>
           </div>
 
           <div class="relative">
             <dt>
-              <div class="absolute flex items-center justify-center h-8 w-8 rounded-full bg-yellow-500 text-white">
-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+              <div class="absolute flex items-center justify-center h-6 w-6 rounded-full bg-yellow-500 text-white">
+                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
               </div>
 
             </dt>
-            <dd class="ml-16 text-base md:text-lg text8gray-500">An investment that can pay for itself.</dd>
+            <dd class="ml-12 text-base md:text-lg text8gray-500">An investment that can pay for itself.</dd>
           </div>
         </dl>
 
@@ -1487,7 +1488,7 @@
         </div>
 
         <div class="text-center">
-          <a href="/project-cost/" class="inline-flex items-center mt-6 px-4 py-3 border-2 border-yellow-500 text-base uppercase rounded-full shadow-sm text-black font-medium hover:opacity-80 sm:px-8" title="Calculate the cost of your Studio Shed ADU">
+          <a href="/project-cost/" class="inline-flex items-center mt-6 px-4 py-3 border-2 border-yellow-500 text-sm uppercase rounded-full shadow-sm text-black font-medium hover:opacity-80 sm:px-8" title="Calculate the cost of your Studio Shed ADU">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V13.5Zm0 2.25h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V18Zm2.498-6.75h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V13.5Zm0 2.25h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V18Zm2.504-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5Zm0 2.25h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V18Zm2.498-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5ZM8.25 6h7.5v2.25h-7.5V6ZM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 0 0 2.25 2.25h10.5a2.25 2.25 0 0 0 2.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0 0 12 2.25Z" />
             </svg>
