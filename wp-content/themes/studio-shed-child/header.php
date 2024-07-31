@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1722143218587">
-  <script src="/assets/main.bundle.js?v=1722143218587"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1722384875190">
+  <script src="/assets/main.bundle.js?v=1722384875190"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -99,7 +99,7 @@
         </button>
       </div>
       <nav class="hidden lg:flex items-center space-x-6">
-        <a href="https://design.studio-shed.com/" class="text-sm xl:text-base font-normal text-gray-700 hover:text-gray-900"> Design Your Own </a>
+        <a target="_blank" href="https://design.studio-shed.com/" class="text-sm xl:text-base font-normal text-gray-700 hover:text-gray-900">Design Your Own</a>
         <div @click.outside="modelsFlyout = false">
   <button type="button" class="text-gray-700 group bg-white rounded-md inline-flex items-center text-sm xl:text-base font-normal hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500" aria-expanded="false" @click="modelsFlyout = ! modelsFlyout">
     <span>Models</span>
@@ -760,7 +760,7 @@
           </div>
 
           <div class="-my-4 py-4">
-            <a href="https://design.studio-shed.com/" class="block w-full flex justify-between items-center">
+            <a target="_blank" href="https://design.studio-shed.com/" class="block w-full flex justify-between items-center">
               <div class="text-base font-semibold text-gray-900">Design Your Own</div>
             </a>
           </div>
