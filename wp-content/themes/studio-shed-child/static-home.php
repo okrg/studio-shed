@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1722388654228">
-  <script src="/assets/main.bundle.js?v=1722388654228"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1722631759771">
+  <script src="/assets/main.bundle.js?v=1722631759771"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -1176,7 +1176,7 @@
           <div class="mx-auto max-w-3xl py-12 sm:py-48 lg:py-48">
             <div class="text-center py-8" style="background:rgba(0,0,0,0.33)">
               <h2 class="text-2xl font-bold tracking-tight text-white sm:text-4xl drop-shadow-2xl">Faster than Design-Build</h2>
-              <h3 class="text-xl lg:text-2xl font-bold text-white leading-2 drop-shadow-xl"><span class="text-yellow-500">Efficient permitting</span> and speedy assembly saves time and money.</h3>
+              <h3 class="text-xl lg:text-2xl font-bold text-white leading-2 drop-shadow-xl">Efficient permitting and speedy assembly <span class="text-yellow-500">saves time and money</span>.</h3>
               <div class="justify-center flex">
                 <div class="mx-auto flex w-full gap-x-1 sm:w-auto sm:justify-center">
                   <a href="https://design.studio-shed.com/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:opacity-80 sm:w-auto sm:px-4" style="background:rgba(0,0,0,0.5)">Design Your Own</a>
@@ -1194,7 +1194,7 @@
           <div class="mx-auto max-w-3xl py-12 sm:py-48 lg:py-48">
             <div class="text-center py-8" style="background:rgba(0,0,0,0.33)">
               <h2 class="text-2xl font-bold tracking-tight text-white sm:text-4xl drop-shadow-2xl">High-Quality Nimble Building Kit</h2>
-              <h3 class="text-xl lg:text-2xl font-bold text-white leading-2 drop-shadow-xl">Factory produced to exacting standards with <span class="text-yellow-500">high-end materials</span>.</h3>
+              <h3 class="text-xl lg:text-2xl font-bold text-white leading-2 drop-shadow-xl">16 Years in Business, 5000+ Completed Projects, <span class="text-yellow-500">Nationwide</span>.</h3>
               <div class="justify-center flex">
                 <div class="mx-auto flex w-full gap-x-1 sm:w-auto sm:justify-center">
                   <a href="https://design.studio-shed.com/" class="transition ease-in-out delay-250 w-full flex mx-0 my-2 sm:mx-2 justify-center p-2 border-2 border-white text-xs md:text-sm text-white uppercase text-center rounded-full hover:opacity-80 sm:w-auto sm:px-4" style="background:rgba(0,0,0,0.5)">Design Your Own</a>
