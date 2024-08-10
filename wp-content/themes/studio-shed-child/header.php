@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1722384875190">
-  <script src="/assets/main.bundle.js?v=1722384875190"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1723265118677">
+  <script src="/assets/main.bundle.js?v=1723265118677"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -87,7 +87,7 @@
       <div class="flex justify-start flex-1">
         <a href="/">
           <span class="sr-only">Studio Shed</span>
-          <img class="h-auto w-36" src="/assets/images/studioshed-logo.png" alt="Studio Shed logo">
+          <img class="h-auto w-36" src="/assets/images/studioshed-logo.png" width="400" height="45" alt="Studio Shed logo">
         </a>
       </div>
       <div class="-mr-2 -my-2 lg:hidden">
@@ -492,7 +492,10 @@
         <li class="relative">
           <a href="/tiny-homes/" title="Tiny Homes and ADUs by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img loading="lazy" src="/assets/images/aspect/ENV_Gable shads24x36.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <picture>
+                <source srcset="/assets/images/aspect/ENV_Gable_shads24x24.webp" type="image/webp">
+                <img loading="lazy" src="/assets/images/aspect/ENV_Gable_shads24x24.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75 w-full h-full">
+              </picture>
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">ADU Tiny Homes</p>
           </a>
@@ -501,7 +504,10 @@
         <li class="relative">
           <a href="/home-office-spaces/" title="Home Office Sheds by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img loading="lazy" src="/assets/images/nav-inspiration-office.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <picture>              
+                <source srcset="/assets/images/nav-inspiration-office.webp" type="image/webp">
+                <img loading="lazy" src="/assets/images/nav-inspiration-office.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              </picture>
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Backyard Office Sheds</p>
           </a>
@@ -510,7 +516,10 @@
         <li class="relative">
           <a href="/music-studios/" title="Home Music & Recording Studios by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img loading="lazy" src="/assets/images/nav-inspiration-recording.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <picture>              
+                <source srcset="/assets/images/nav-inspiration-recording.webp" type="image/webp">
+                <img loading="lazy" src="/assets/images/nav-inspiration-recording.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              </picture>
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Home Music &amp; Recording Studios</p>
           </a>
@@ -518,7 +527,10 @@
         <li class="relative">
           <a href="/art-studios/" title="Home Art Studios by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img loading="lazy" src="/assets/images/nav-inspiration-art.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <picture>              
+                <source srcset="/assets/images/nav-inspiration-art.webp" type="image/webp">
+                <img loading="lazy" src="/assets/images/nav-inspiration-art.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              </picture>
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Home Art Studios &amp; Creative Sheds</p>
           </a>
@@ -526,7 +538,10 @@
         <li class="relative">
           <a href="/man-cave/" title="Man Cave Kits by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img loading="lazy" src="/assets/images/nav-inspiration-man-cave.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <picture>              
+                <source srcset="/assets/images/nav-inspiration-man-cave.webp" type="image/webp">
+                <img loading="lazy" src="/assets/images/nav-inspiration-man-cave.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              </picture>
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Backyard Man Cave Kits</p>
           </a>
@@ -534,7 +549,10 @@
         <li class="relative">
           <a href="/she-sheds/" title="She Shed Kits by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img loading="lazy" src="/assets/images/nav-inspiration-she-shed.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <picture>              
+                <source srcset="/assets/images/nav-inspiration-she-shed.webp" type="image/webp">
+                <img loading="lazy" src="/assets/images/nav-inspiration-she-shed.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              </picture>
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">She Shed Kits, Ideas, And Designs</p>
           </a>
@@ -542,7 +560,10 @@
         <li class="relative">
           <a href="/storage/" title="Modern Storage Sheds by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img loading="lazy" src="/assets/images/nav-inspiration-storage.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <picture>              
+                <source srcset="/assets/images/nav-inspiration-storage.webp" type="image/webp">
+                <img loading="lazy" src="/assets/images/nav-inspiration-storage.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              </picture>
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Modern Storage Sheds</p>
           </a>
@@ -550,7 +571,10 @@
         <li class="relative">
           <a href="/diy/" title="DIY Shed Kits by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img loading="lazy" src="/assets/images/nav-inspiration-diy.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <picture>              
+                <source srcset="/assets/images/nav-inspiration-diy.webp" type="image/webp">
+                <img loading="lazy" src="/assets/images/nav-inspiration-diy.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              </picture>
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">DIY Shed Kits</p>
           </a>
@@ -558,7 +582,10 @@
         <li class="relative">
           <a href="/wellness/" title="Home Gyms & Yoga Studios by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img loading="lazy" src="/assets/images/nav-inspiration-wellness.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <picture>              
+                <source srcset="/assets/images/nav-inspiration-wellness.webp" type="image/webp">
+                <img loading="lazy" src="/assets/images/nav-inspiration-wellness.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              </picture>
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Home Gyms &amp; Yoga Studios</p>
           </a>
@@ -566,7 +593,10 @@
         <li class="relative">
           <a href="/garages/" title="Modern Garage Kits by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img loading="lazy" src="/assets/images/nav-inspiration-garage.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <picture>              
+                <source srcset="/assets/images/nav-inspiration-garage.webp" type="image/webp">
+                <img loading="lazy" src="/assets/images/nav-inspiration-garage.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              </picture>
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Garages</p>
           </a>
@@ -574,7 +604,10 @@
         <li class="relative">
           <a href="/modular-addition/" title="Modular Home Additions by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img loading="lazy" src="/assets/images/nav-inspiration-modular.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <picture>              
+                <source srcset="/assets/images/nav-inspiration-modular.webp" type="image/webp">
+                <img loading="lazy" src="/assets/images/nav-inspiration-modular.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              </picture>
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Modular Addition</p>
           </a>
@@ -582,7 +615,10 @@
         <li class="relative">
           <a href="/pool-house/" title="Commercial Spaces by Studio Shed">
             <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-              <img loading="lazy" src="/assets/images/nav-inspiration-pool-house.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              <picture>              
+                <source srcset="/assets/images/nav-inspiration-pool-house.webp" type="image/webp">
+                <img loading="lazy" src="/assets/images/nav-inspiration-pool-house.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+              </picture>
             </div>
             <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Pool Houses</p>
           </a>
@@ -1016,7 +1052,7 @@
                 <li class="relative">
                   <a href="/tiny-homes/" title="Tiny Homes and ADUs by Studio Shed">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img loading="lazy" src="/assets/images/aspect/ENV_Gable shads24x36.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <img loading="lazy" src="/assets/images/aspect/ENV_Gable_shads24x36.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Tiny Homes</p>
                   </a>
