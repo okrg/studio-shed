@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1723265118677">
-  <script src="/assets/main.bundle.js?v=1723265118677"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1723265631463">
+  <script src="/assets/main.bundle.js?v=1723265631463"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -87,7 +87,7 @@
       <div class="flex justify-start flex-1">
         <a href="/">
           <span class="sr-only">Studio Shed</span>
-          <img class="h-auto w-36" src="/assets/images/studioshed-logo.png" width="400" height="45" alt="Studio Shed logo">
+          <img class="h-auto w-36" src="/assets/images/studioshed-logo.png" width="173" height="19" alt="Studio Shed logo">
         </a>
       </div>
       <div class="-mr-2 -my-2 lg:hidden">

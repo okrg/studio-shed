@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1723265118677">
-  <script src="/assets/main.bundle.js?v=1723265118677"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1723265631463">
+  <script src="/assets/main.bundle.js?v=1723265631463"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -51,7 +51,7 @@
       <div class="flex justify-start flex-1">
         <a href="/">
           <span class="sr-only">Studio Shed</span>
-          <img class="h-auto w-36" src="/assets/images/studioshed-logo.png" width="400" height="45" alt="Studio Shed logo">
+          <img class="h-auto w-36" src="/assets/images/studioshed-logo.png" width="173" height="19" alt="Studio Shed logo">
         </a>
       </div>
       <div class="-mr-2 -my-2 lg:hidden">
