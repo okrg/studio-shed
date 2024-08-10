@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1723265631463">
-  <script src="/assets/main.bundle.js?v=1723265631463"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1723315803539">
+  <script src="/assets/main.bundle.js?v=1723315803539"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -775,7 +775,10 @@
     <div class="pt-5 pb-6 px-5">
       <div class="flex items-center justify-between">
         <div>
-          <img class="h-auto w-36" src="/assets/images/studioshed-logo.png" alt="Studio Shed logo">
+          <picture>
+            <source srcset="/assets/images/studioshed-logo.webp" type="image/webp">
+            <img class="h-auto w-36" src="/assets/images/studioshed-logo.png" alt="Studio Shed logo">
+          </picture>
         </div>
         <div class="-mr-2">
           <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" @click.prevent="mobileMenu = false">
@@ -814,7 +817,10 @@
               <div class="mb-12">
                 <a href="/products/aspect" class="hover:opacity-80">
                   <div>
-                    <img loading="lazy" class="h-12 mx-auto" src="/assets/images/aspect/aspect-thumb.png" alt="Studio Shed ADU illustration">
+                    <picture>
+                      <source srcset="/assets/images/aspect/aspect-thumb.webp" type="image/webp">
+                      <img loading="lazy" class="h-12 mx-auto" src="/assets/images/aspect/aspect-thumb.png" alt="Studio Shed ADU illustration">
+                    </picture>
                   </div>
                   <div class="min-w-0 flex-1 ml-2">
                     <h4 class="text-base font-medium text-gray-900 uppercase">
@@ -833,7 +839,10 @@
               <div class="mb-12">
                 <a href="/products/summit-series" class="hover:opacity-80">
                   <div>
-                    <img loading="lazy" class="h-12 mx-auto" src="https://www.studio-shed.com/assets/images/menu/model-2-476-render.jpg" alt="Studio Shed navigation menu thumbnail">
+                    <picture>
+                      <source srcset="/assets/images/menu/model-2-476-render.webp" type="image/webp">
+                      <img loading="lazy" class="h-12 mx-auto" src="/assets/images/menu/model-2-476-render.jpg" alt="Studio Shed navigation menu thumbnail">
+                    </picture>
                   </div>
                   <div class="min-w-0 flex-1 ml-2">
                     <h4 class="text-sm font-medium text-gray-900 uppercase">
@@ -852,7 +861,10 @@
               <div class="mb-12">
                 <a href="/products/signature-series/" class="hover:opacity-80">
                   <div>
-                    <img loading="lazy" class="h-12 mx-auto" src="https://www.studio-shed.com/assets/images/menu/solitude-render.jpg" alt="Studio Shed navigation menu thumbnail">
+                    <picture>
+                      <source srcset="/assets/images/menu/solitude-render.webp" type="image/webp">
+                      <img loading="lazy" class="h-12 mx-auto" src="/assets/images/menu/solitude-render.jpg" alt="Studio Shed navigation menu thumbnail">
+                    </picture>
                   </div>
                   <div class="min-w-0 flex-1 ml-2">
                     <h4 class="text-sm font-medium text-gray-900 uppercase">
@@ -871,7 +883,10 @@
               <div class="mb-12">
                 <a href="/products/portland-series" class="hover:opacity-80">
                   <div>
-                    <img loading="lazy" class="h-12 mx-auto" src="https://www.studio-shed.com/assets/images/menu/portland-120e-render.jpg" alt="Studio Shed navigation menu thumbnail">
+                    <picture>
+                      <source srcset="/assets/images/menu/portland-120e-render.webp" type="image/webp">
+                      <img loading="lazy" class="h-12 mx-auto" src="/assets/images/menu/portland-120e-render.jpg" alt="Studio Shed navigation menu thumbnail">
+                    </picture>
                   </div>
                   <div class="min-w-0 flex-1 ml-2">
                     <h4 class="text-sm font-medium text-gray-900 uppercase">
@@ -900,7 +915,10 @@
             </a>
             <div x-show="adusMobile" x-transition>
               <a href="/products/aspect" class="px-2 py-4 border-b border-gray-200 flex hover:opacity-80" title="Studio Shed Aspect">
-                <img class="w-24 h-16 object-contain rounded-md" src="/assets/images/aspect/aspect-thumb.png" alt="Studio Shed Aspect building">
+                <picture>
+                  <source srcset="/assets/images/aspect/aspect-thumb.webp" type="image/webp">
+                  <img class="w-24 h-16 object-contain rounded-md" src="/assets/images/aspect/aspect-thumb.png" alt="Studio Shed Aspect building">
+                </picture>
                 <div class="ml-4">
                   <h4 class="text-sm font-medium text-gray-900 uppercase">
                     Aspect
@@ -910,7 +928,10 @@
                 </div>
               </a>
               <a href="/products/summit-series" class="px-2 py-4 border-b border-gray-200 flex hover:opacity-80" title="Studio Shed Summit Series">
-                <img class="w-24 h-16 object-cover rounded-md" src="/assets/images/menu/model-2-476-render.jpg" alt="Studio Shed Summit Series">
+                <picture>
+                  <source srcset="/assets/images/menu/model-2-476-render.webp" type="image/webp">
+                  <img class="w-24 h-16 object-cover rounded-md" src="/assets/images/menu/model-2-476-render.jpg" alt="Studio Shed Summit Series">
+                </picture>
                 <div class="ml-4">
                   <h4 class="text-sm font-medium text-gray-900 uppercase">
                     Summit Series
@@ -932,12 +953,18 @@
                 </a>
                 <a href="/can-i-build/" class="text-gray-700 block" title="Can I build an ADU where I live?">
                   Can I build an ADU where I live?
-                  <img class="w-6 h-6 inline" src="/assets/images/ai.png">
+                  <picture>
+                    <source srcset="/assets/images/ai.webp" type="image/webp">
+                    <img class="w-6 h-6 inline" src="/assets/images/ai.png">
+                  </picture>
                 </a>
 
                 <a href="/my-adu-roi/" class="text-gray-700 block" title="What is my estimated ROI if I build an ADU?">
                   What is my estimated ROI if I build an ADU?
-                  <img class="w-6 h-6 inline" src="/assets/images/ai.png">
+                  <picture>
+                    <source srcset="/assets/images/ai.webp" type="image/webp">
+                    <img class="w-6 h-6 inline" src="/assets/images/ai.png">
+                  </picture>
                 </a>
 
                 <a href="/adu/" class="text-gray-700 block" title="Accessory Dwelling Units">
@@ -982,7 +1009,10 @@
 
             <div x-show="studiosMobile" x-transition>
               <a href="/products/signature-series" class="px-2 py-4 border-b border-gray-200 flex hover:opacity-80" title="Studio Shed Signature Series">
-                <img class="w-24 h-24 object-cover rounded-md" src="/assets/images/menu/solitude-render.jpg" alt="Studio Shed render of the Signature series with Iron Gray lap siding">
+                <picture>
+                  <source srcset="/assets/images/menu/solitude-render.webp" type="image/webp">
+                  <img class="w-24 h-24 object-cover rounded-md" src="/assets/images/menu/solitude-render.jpg" alt="Studio Shed render of the Signature series with Iron Gray lap siding">
+                </picture>
                 <div class="ml-4">
                   <h4 class="text-sm font-medium text-gray-900 uppercase">
                     Signature Series
@@ -993,7 +1023,10 @@
               </a>
 
               <a href="/products/portland-series" class="px-2 py-4 border-b border-gray-200 flex hover:opacity-80" title="Studio Shed Portland Series">
-                <img class="w-24 h-24 object-cover rounded-md" src="/assets/images/menu/portland-120e-render.jpg" alt="Studio Shed Portland series rendering">
+                <picture>
+                  <source srcset="/assets/images/menu/portland-120e-render.webp" type="image/webp">
+                  <img class="w-24 h-24 object-cover rounded-md" src="/assets/images/menu/portland-120e-render.jpg" alt="Studio Shed Portland series rendering">
+                </picture>
                 <div class="ml-4">
                   <h4 class="text-sm font-medium text-gray-900 uppercase">
                     Portland Series
@@ -1021,13 +1054,7 @@
                 </a>
                 <a href="/backyard-studios/ideas/" class="text-gray-700 block" title="Studio Design Ideas">
                   Ways to use your backyard space
-                </a>
-                <a href="/diy-quick-ship-models/" class="text-gray-700 block" title="DIY Quick Ship Models">
-                  Curated Models
-                  <span class="text-xs block text-yellow-600 font-semibold tracking-wide uppercase">
-                    Delivered in 2-4 weeks. Shipping included
-                  </span>
-                </a>
+                </a>                
                 <a href="/favorites/" class="text-gray-700 block" title="Founders Favorites">
                   Founders Favorites
                 </a>
@@ -1052,7 +1079,10 @@
                 <li class="relative">
                   <a href="/tiny-homes/" title="Tiny Homes and ADUs by Studio Shed">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img loading="lazy" src="/assets/images/aspect/ENV_Gable_shads24x36.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <picture>
+                        <source srcset="/assets/images/aspect/ENV_Gable_shads24x24.webp" type="image/webp">
+                        <img loading="lazy" src="/assets/images/aspect/ENV_Gable_shads24x24.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75 w-full h-full">
+                      </picture>
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Tiny Homes</p>
                   </a>
@@ -1061,7 +1091,10 @@
                 <li class="relative">
                   <a href="/home-office-spaces/" class="hover:opacity-80" title="Home Office Spaces">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-office.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <picture>
+                        <source srcset="/assets/images/nav-inspiration-office.webp" type="image/webp">
+                        <img src="/assets/images/nav-inspiration-office.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      </picture>
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Prefab Backyard Office Sheds</p>
                   </a>
@@ -1069,7 +1102,10 @@
                 <li class="relative">
                   <a href="/music-studios/" class="hover:opacity-80" title="Music Studios">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-recording.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <picture>
+                        <source srcset="/assets/images/nav-inspiration-recording.webp" type="image/webp">
+                        <img src="/assets/images/nav-inspiration-recording.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      </picture>
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Home Music &amp; Recording Studios</p>
                   </a>
@@ -1077,7 +1113,10 @@
                 <li class="relative">
                   <a href="/art-studios/">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-art.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <picture>
+                        <source srcset="/assets/images/nav-inspiration-art.webp" type="image/webp">
+                        <img src="/assets/images/nav-inspiration-art.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      </picture>
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Home Art Studios &amp; Creative Sheds</p>
                   </a>
@@ -1085,7 +1124,10 @@
                 <li class="relative">
                   <a href="/man-cave/" title="Man Caves">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-man-cave.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <picture>
+                        <source srcset="/assets/images/nav-inspiration-man-cave.webp" type="image/webp">
+                        <img src="/assets/images/nav-inspiration-man-cave.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      </picture>
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Backyard Man Cave Kits</p>
                   </a>
@@ -1093,7 +1135,10 @@
                 <li class="relative">
                   <a href="/she-sheds/" class="hover:opacity-80" title="She Sheds">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-she-shed.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <picture>
+                        <source srcset="/assets/images/nav-inspiration-she-shed.webp" type="image/webp">
+                        <img src="/assets/images/nav-inspiration-she-shed.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      </picture>
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">She Shed Kits, Ideas, And Designs</p>
                   </a>
@@ -1101,7 +1146,10 @@
                 <li class="relative">
                   <a href="/storage/" class="hover:opacity-80" title="Storage">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-storage.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <picture>
+                        <source srcset="/assets/images/nav-inspiration-storage.webp" type="image/webp">
+                        <img src="/assets/images/nav-inspiration-storage.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      </picture>
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Prefab Modern Storage Sheds</p>
                   </a>
@@ -1109,7 +1157,10 @@
                 <li class="relative">
                   <a href="/diy/" class="hover:opacity-80" title="DIY">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-diy.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <picture>
+                        <source srcset="/assets/images/nav-inspiration-diy.webp" type="image/webp">
+                        <img src="/assets/images/nav-inspiration-diy.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      </picture>
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">DIY Shed Kits for your Backyard</p>
                   </a>
@@ -1117,7 +1168,10 @@
                 <li class="relative">
                   <a href="/wellness/" class="hover:opacity-80" title="Wellness">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-wellness.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <picture>
+                        <source srcset="/assets/images/nav-inspiration-wellness.webp" type="image/webp">
+                        <img src="/assets/images/nav-inspiration-wellness.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      </picture>
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Backyard Home Yoga Studios &amp; Gyms</p>
                   </a>
@@ -1125,7 +1179,10 @@
                 <li class="relative">
                   <a href="/garages/" class="hover:opacity-80" title="Garages">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-garage.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <picture>
+                        <source srcset="/assets/images/nav-inspiration-garage.webp" type="image/webp">
+                        <img src="/assets/images/nav-inspiration-garage.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      </picture>
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Garages</p>
                   </a>
@@ -1133,7 +1190,10 @@
                 <li class="relative">
                   <a href="/modular-addition/" class="hover:opacity-80" title="Modular Addition">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-modular.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <picture>
+                        <source srcset="/assets/images/nav-inspiration-modular.webp" type="image/webp">
+                        <img src="/assets/images/nav-inspiration-modular.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      </picture>
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Modular Addition</p>
                   </a>
@@ -1141,7 +1201,10 @@
                 <li class="relative">
                   <a href="/pool-house/" title="Commercial Projects">
                     <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
-                      <img src="/assets/images/nav-inspiration-pool-house.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      <picture>
+                        <source srcset="/assets/images/nav-inspiration-pool-house.webp" type="image/webp">
+                        <img src="/assets/images/nav-inspiration-pool-house.jpg" alt="Studio Shed navigation menu thumbnail" class="object-cover pointer-events-none group-hover:opacity-75">
+                      </picture>
                     </div>
                     <p class="mt-1 block text-sm font-normal text-gray-600 pointer-events-none">Pool Houses</p>
                   </a>
