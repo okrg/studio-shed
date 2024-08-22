@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1723315803539">
-  <script src="/assets/main.bundle.js?v=1723315803539"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1724369970157">
+  <script src="/assets/main.bundle.js?v=1724369970157"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -120,6 +120,27 @@
 
       <div class="max-w-7xl mx-auto relative flex text-center gap-x-16 px-4 py-6 sm:p-8 justify-center">
 
+        <div class="w-1/4 relative">
+          <div class="relative before:absolute before:inset-0 before:border-2 before:border-yellow-500 before:rounded-lg before:-m-4 before:pointer-events-none before:border-t-[25px] before:-mt-8 before:shadow-lg">
+            <div class="absolute text-nowrap -top-8 left-1/2 transform -translate-x-1/2 text-white text-xs py-1 px-4 z-10">MOST POPULAR</div>
+            <a href="/products/summit-series" class="hover:opacity-80" title="Studio Shed Summit">
+              <div class="hidden sm:block flex-shrink-0">
+                <img loading="lazy" class="h-24 mx-auto" src="https://www.studio-shed.com/assets/images/menu/model-2-476-render.jpg" alt="">
+              </div>
+              <div class="min-w-0 flex-1 ml-2">
+                <h4 class="text-base font-medium text-gray-900 uppercase">
+                  Summit
+                </h4>
+                <p class="text-xs text-gray-500">252-1000 FT²</p>
+                <p class="text-xs text-gray-500">Studios / 1 to 2 Bed ADUs</p>
+              </div>
+            </a>
+            <div class="flex justify-center text-xs mt-2">
+              <a href="/products/summit-series" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1" title="Explore Studio Shed Summit">Explore</a>
+              <a href="https://design.studio-shed.com/summit/" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1" title="Design &amp; Price Summit">Design &amp; Price</a>
+            </div>
+          </div>
+        </div>
 
 
         <div class="w-1/4">
@@ -141,24 +162,7 @@
           </div>
         </div>
 
-        <div class="w-1/4">
-            <a href="/products/summit-series" class="hover:opacity-80" title="Studio Shed Summit">
-              <div class="hidden sm:block flex-shrink-0">
-                <img loading="lazy" class="h-24 mx-auto" src="https://www.studio-shed.com/assets/images/menu/model-2-476-render.jpg" alt="">
-              </div>
-              <div class="min-w-0 flex-1 ml-2">
-                <h4 class="text-base font-medium text-gray-900 uppercase">
-                  Summit
-                </h4>
-                <p class="text-xs text-gray-500">252-1000 FT²</p>
-                <p class="text-xs text-gray-500">Studios / 1 to 2 Bed ADUs</p>
-              </div>
-            </a>
-          <div class="flex justify-center text-xs mt-2">
-            <a href="/products/summit-series" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1" title="Explore Studio Shed Summit">Explore</a>
-            <a href="https://design.studio-shed.com/summit/" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1" title="Design and Price Summit">Design &amp; Price</a>
-          </div>
-        </div>
+        
 
         <div class="w-1/4">
           <a href="/products/signature-series/" class="hover:opacity-80" title="Studio Shed Signature">
@@ -813,7 +817,33 @@
                 </svg>
               </span>
             </a>
-            <div x-show="modelsMobile" class="text-center" x-transition>
+            <div x-show="modelsMobile" class="text-center mt-12" x-transition>
+              
+              <div class="mb-12 relative max-w-sm mx-auto">
+                <div class="relative before:absolute before:inset-0 before:border-2 before:border-yellow-500 before:rounded-lg before:-m-4 before:pointer-events-none before:border-t-[25px] before:-mt-8 before:shadow-lg">
+                  <div class="absolute text-nowrap -top-8 left-1/2 transform -translate-x-1/2 text-white text-xs py-1 px-4 z-10">MOST POPULAR</div>
+                <a href="/products/summit-series" class="hover:opacity-80">
+                  <div>
+                    <picture>
+                      <source srcset="/assets/images/menu/model-2-476-render.webp" type="image/webp">
+                      <img loading="lazy" class="h-12 mx-auto" src="/assets/images/menu/model-2-476-render.jpg" alt="Studio Shed navigation menu thumbnail">
+                    </picture>
+                  </div>
+                  <div class="min-w-0 flex-1 ml-2">
+                    <h4 class="text-sm font-medium text-gray-900 uppercase">
+                      Summit Series
+                    </h4>
+                    <p class="text-xs text-gray-500">252-1000 SQFT</p>
+                    <p class="text-xs text-gray-500">Studios and 1 to 2 bed ADUs</p>
+                  </div>
+                </a>
+                <div class="flex justify-center text-xs mt-2">
+                  <a href="/products/summit-series" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Explore Summit</a>
+                  <a href="https://design.studio-shed.com/summit/" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Design &amp; Price</a>
+                </div>
+                </div>
+              </div>
+              
               <div class="mb-12">
                 <a href="/products/aspect" class="hover:opacity-80">
                   <div>
@@ -836,27 +866,7 @@
                 </div>
               </div>
 
-              <div class="mb-12">
-                <a href="/products/summit-series" class="hover:opacity-80">
-                  <div>
-                    <picture>
-                      <source srcset="/assets/images/menu/model-2-476-render.webp" type="image/webp">
-                      <img loading="lazy" class="h-12 mx-auto" src="/assets/images/menu/model-2-476-render.jpg" alt="Studio Shed navigation menu thumbnail">
-                    </picture>
-                  </div>
-                  <div class="min-w-0 flex-1 ml-2">
-                    <h4 class="text-sm font-medium text-gray-900 uppercase">
-                      Summit Series
-                    </h4>
-                    <p class="text-xs text-gray-500">252-1000 SQFT</p>
-                    <p class="text-xs text-gray-500">Studios and 1 to 2 bed ADUs</p>
-                  </div>
-                </a>
-                <div class="flex justify-center text-xs mt-2">
-                  <a href="/products/summit-series" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Explore Summit</a>
-                  <a href="https://design.studio-shed.com/summit/" target="_blank" class="bg-yellow-500 border border-gray-200 hover:opacity-80 text-white uppercase px-2 py-1">Design &amp; Price</a>
-                </div>
-              </div>
+
 
               <div class="mb-12">
                 <a href="/products/signature-series/" class="hover:opacity-80">
