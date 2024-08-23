@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1724369970157">
-  <script src="/assets/main.bundle.js?v=1724369970157"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1724372732157">
+  <script src="/assets/main.bundle.js?v=1724372732157"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -1514,9 +1514,9 @@
 
     <!-- Pill Navigation -->
     <div class="flex flex-col lg:flex-row justify-center max-w-lg mx-auto lg:max-w-none md:mb-8 px-2 space-y-2 lg:space-y-0 lg:space-x-2">
-        <button @click="activeCard = 1" :class="{ 'bg-yellow-500 text-white': activeCard === 1, 'bg-gray-200 text-gray-700': activeCard !== 1 }" class="px-4 py-2 rounded-full text-sm transition duration-300 ease-in-out">National Footprint with Local Presence In Your Backyard</button>
-        <button @click="activeCard = 2" :class="{ 'bg-yellow-500 text-white': activeCard === 2, 'bg-gray-200 text-gray-700': activeCard !== 2 }" class="px-4 py-2 rounded-full text-sm transition duration-300 ease-in-out">Faster and Easier than Design Build</button>
-        <button @click="activeCard = 3" :class="{ 'bg-yellow-500 text-white': activeCard === 3, 'bg-gray-200 text-gray-700': activeCard !== 3 }" class="px-4 py-2 rounded-full text-sm transition duration-300 ease-in-out">Complete Your Project On-Time and On-Budget</button>
+        <button @click="activeCard = 1" :class="{ 'bg-yellow-600 text-white': activeCard === 1, 'bg-gray-200 text-gray-700': activeCard !== 1 }" class="px-4 py-2 rounded-full text-sm transition duration-300 ease-in-out">National Footprint with Local Presence In Your Backyard</button>
+        <button @click="activeCard = 2" :class="{ 'bg-yellow-600 text-white': activeCard === 2, 'bg-gray-200 text-gray-700': activeCard !== 2 }" class="px-4 py-2 rounded-full text-sm transition duration-300 ease-in-out">Faster and Easier than Design Build</button>
+        <button @click="activeCard = 3" :class="{ 'bg-yellow-600 text-white': activeCard === 3, 'bg-gray-200 text-gray-700': activeCard !== 3 }" class="px-4 py-2 rounded-full text-sm transition duration-300 ease-in-out">Complete Your Project On-Time and On-Budget</button>
     </div>
 
     <!-- Card Container -->
