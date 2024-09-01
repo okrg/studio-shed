@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1724372732157">
-  <script src="/assets/main.bundle.js?v=1724372732157"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1725171234082">
+  <script src="/assets/main.bundle.js?v=1725171234082"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -1272,11 +1272,19 @@
 
 <main id="page-home">
   <div class="bg-white">
-  <div class="relative isolate h-[50vh] md:h-auto overflow-hidden">
+  <div class="relative isolate md:h-auto overflow-hidden">
 
 
     <div class="swiper mx-auto">
-      <div class="swiper-wrapper">    
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide pt-12">
+          <a href="https://design.studio-shed.com/" target="_blank">            
+            <img src="/assets/images/home-fall-2024.jpg" alt="" class="mx-auto" style="z-index:-10">
+          </a>
+        </div>
+
+
         <div class="swiper-slide">
           <picture>
             <source srcset="/assets/images/home-slider/summer-15-hero.webp" type="image/webp">
