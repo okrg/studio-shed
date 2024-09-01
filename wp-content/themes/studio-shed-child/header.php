@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1725171234082">
-  <script src="/assets/main.bundle.js?v=1725171234082"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1725171721909">
+  <script src="/assets/main.bundle.js?v=1725171721909"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -80,6 +80,9 @@
 
 
 
+<a class="border-b-4 border-[#FF9700] bg-white block" href="https://design.studio-shed.com/" target="_blank">
+  <img src="/assets/images/promo-top-bar-2024.png" alt="Curated models shipping nationwide in 2 weeks" class="-mb-1 mx-auto">
+</a>
 
 <header x-cloak x-data="window.Components.navManager">
   <div class="relative bg-white z-20">
