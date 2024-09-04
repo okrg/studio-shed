@@ -15,7 +15,7 @@
     <meta property="og:url" content="https://www.studio-shed.com/products/summit-series/">
     <meta property="og:image" content="https://www.studio-shed.com/assets/images/summit-slider/09.jpg">
     <meta property="article:publisher" content="https://www.facebook.com/StudioShed">
-    <meta property="article:modified_time" content="2024-09-01T06:13:54.540Z">
+    <meta property="article:modified_time" content="2024-09-04T16:44:10.500Z">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@StudioShed">
     <link rel="dns-prefetch" href="//www.studio-shed.com">
@@ -23,23 +23,24 @@
     <link rel="dns-prefetch" href="//forms.hsforms.com">
     <link rel="canonical" href="https://www.studio-shed.com/products/summit-series/">
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <link rel="stylesheet" href="/assets/main.bundle.css?v=1725171234082">    
+    <link rel="stylesheet" href="/assets/main.bundle.css?v=1725468250018">    
     <script src="//js.hsforms.net/forms/v2.js"></script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PFQVBLT');</script>
-    <script src="/assets/main.bundle.js?v=1725171234082" defer></script>
+    <script src="/assets/main.bundle.js?v=1725468250018" defer></script>
   </head>
   <body>
 
-    <a class="border-b-4 border-[#FF9700] bg-white block" href="https://design.studio-shed.com/" target="_blank">
-  <img src="/assets/images/promo-top-bar-2024.png" alt="Curated models shipping nationwide in 2 weeks" class="-mb-1 mx-auto">
-</a>
+    
 
     
     
+<a class="border-b-4 border-[#FF9700] bg-white block" href="https://design.studio-shed.com/" target="_blank">
+  <img src="/assets/images/promo-top-bar-2024.png" alt="Curated models shipping nationwide in 2 weeks" class="-mb-1 mx-auto">
+</a>
 
 <header x-cloak x-data="window.Components.navManager">
   <div class="relative bg-white z-20">
@@ -1441,10 +1442,11 @@
       <!--
       <option :selected="visibleSection == 'curated'" value="toc-curated">Quick Ship Models</option>
       -->      
-      <option :selected="visibleSection == 'features'" value="toc-features">Features &amp; Specs</option>
-      <option :selected="visibleSection == 'gallery'" value="toc-gallery">Gallery</option>
-      <option :selected="visibleSection == 'options'" value="toc-options">Additional Options</option>
+      
       <option :selected="visibleSection == 'interior'" value="toc-interior">Interior Kits</option>
+      <option :selected="visibleSection == 'gallery'" value="toc-gallery">Gallery</option>
+      <option :selected="visibleSection == 'features'" value="toc-features">Features &amp; Specs</option>
+      <option :selected="visibleSection == 'options'" value="toc-options">Additional Options</option>      
       <option :selected="visibleSection == 'ordering'" value="toc-ordering">Ordering</option>
       <option :selected="visibleSection == 'installation'" value="toc-installation">Installation</option>
     </select>
@@ -1457,15 +1459,20 @@
         <span aria-hidden="true" :class="visibleSection == 'curated' ? 'bg-yellow-600' : 'bg-gray-400'" class="absolute inset-x-0 bottom-0 h-1"></span>
       </a>
       -->
-
-      <a href="#" :class="visibleSection == 'features' ? 'text-gray-900' : 'text-gray-500'" class="group relative min-w-0 flex-1 overflow-hidden bg-white py-4 px-4 text-sm font-medium text-center hover:opacity-80 focus:z-10" @click.prevent="document.getElementById('toc-features').scrollIntoView()">
-        <span>Features &amp; Specs</span>
-        <span aria-hidden="true" :class="visibleSection == 'features' ? 'bg-yellow-600' : 'bg-gray-400'" class="absolute inset-x-0 bottom-0 h-1"></span>
+      <a href="#" :class="visibleSection == 'interior' ? 'text-gray-900' : 'text-gray-500'" class="group relative min-w-0 flex-1 overflow-hidden py-4 px-4 text-sm font-medium text-center hover:opacity-80 focus:z-5" @click.prevent="document.getElementById('toc-interior').scrollIntoView()">
+        <span>Interior Kits</span>
+        <span aria-hidden="true" :class="visibleSection == 'interior' ? 'bg-yellow-600' : 'bg-gray-400'" class="absolute inset-x-0 bottom-0 h-1"></span>
       </a>
+      
 
       <a href="#" :class="visibleSection == 'gallery' ? 'text-gray-900' : 'text-gray-500'" class="group relative min-w-0 flex-1 overflow-hidden py-4 px-4 text-sm font-medium text-center hover:opacity-80 focus:z-10" @click.prevent="document.getElementById('toc-gallery').scrollIntoView()">
         <span>Gallery</span>
         <span aria-hidden="true" :class="visibleSection == 'gallery' ? 'bg-yellow-600' : 'bg-gray-400'" class="absolute inset-x-0 bottom-0 h-1"></span>
+      </a>
+
+      <a href="#" :class="visibleSection == 'features' ? 'text-gray-900' : 'text-gray-500'" class="group relative min-w-0 flex-1 overflow-hidden bg-white py-4 px-4 text-sm font-medium text-center hover:opacity-80 focus:z-10" @click.prevent="document.getElementById('toc-features').scrollIntoView()">
+        <span>Features &amp; Specs</span>
+        <span aria-hidden="true" :class="visibleSection == 'features' ? 'bg-yellow-600' : 'bg-gray-400'" class="absolute inset-x-0 bottom-0 h-1"></span>
       </a>
 
       <a href="#" :class="visibleSection == 'options' ? 'text-gray-900' : 'text-gray-500'" class="group relative min-w-0 flex-1 overflow-hidden py-4 px-4 text-sm font-medium text-center hover:opacity-80 focus:z-10" @click.prevent="document.getElementById('toc-options').scrollIntoView()">
@@ -1473,10 +1480,7 @@
         <span aria-hidden="true" :class="visibleSection == 'options' ? 'bg-yellow-600' : 'bg-gray-400'" class="absolute inset-x-0 bottom-0 h-1"></span>
       </a>
 
-      <a href="#" :class="visibleSection == 'interior' ? 'text-gray-900' : 'text-gray-500'" class="group relative min-w-0 flex-1 overflow-hidden py-4 px-4 text-sm font-medium text-center hover:opacity-80 focus:z-5" @click.prevent="document.getElementById('toc-interior').scrollIntoView()">
-        <span>Interior Kits</span>
-        <span aria-hidden="true" :class="visibleSection == 'interior' ? 'bg-yellow-600' : 'bg-gray-400'" class="absolute inset-x-0 bottom-0 h-1"></span>
-      </a>
+
 
       <a href="#" :class="visibleSection == 'ordering' ? 'text-gray-900' : 'text-gray-500'" class="group relative min-w-0 flex-1 overflow-hidden py-4 px-4 text-sm font-medium text-center hover:opacity-80 focus:z-10" @click.prevent="document.getElementById('toc-ordering').scrollIntoView()">
         <span>Ordering</span>
@@ -1490,552 +1494,6 @@
     </nav>
   </div>
 </div>
-  <div class="bg-white" id="toc-features">
-
-  <div aria-hidden="true" class="relative" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'features'">
-    <img src="/assets/images/summit-features.jpg" class="w-full h-96 object-center object-cover">
-    <div class="absolute inset-0 bottom-0 top-auto h-48 bg-gradient-to-t from-white"></div>
-  </div>
-
-  <div class="relative -mt-12 max-w-7xl mx-auto pb-8 px-4 sm:pb-12 sm:px-6 lg:px-8">
-    <div class="max-w-2xl mx-auto text-center lg:max-w-4xl">
-      <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Summit Series Standard Features</h2>
-    </div>
-
-    <dl class="mt-16 max-w-2xl mx-auto grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:max-w-none lg:grid-cols-3 lg:gap-x-8">
-      <div class="border-t border-gray-200 pt-4">
-        <dt class="font-medium text-gray-900">Sizes</dt>
-        <dd class="mt-2 text-xs text-gray-500 flex gap-x-8 grid-cols-4">
-          <div>
-            <p>14’x18’</p>
-            <p>14’x22’</p>
-            <p>14’x26’</p>
-            <p>14’x34’<span class="font-bold text-yellow-600">*</span></p>
-          </div>
-          <div>
-            <p>16’x22’</p>
-            <p>16’x26’</p>
-            <p>16’x30’</p>
-            <p>16’x34’<span class="font-bold text-yellow-600">*</span></p>
-            <p>16’x38’<span class="font-bold text-yellow-600">*</span></p>
-          </div>
-          <div>
-            <p>18’x22’</p>
-            <p>18’x26’</p>
-            <p>18’x30’</p>
-            <p>18’x34’<span class="font-bold text-yellow-600">*</span></p>
-          </div>
-          <div>
-            <p>20’x22’</p>
-            <p>20’x26’</p>
-            <p>20’x30’</p>
-            <p>20’x34’<span class="font-bold text-yellow-600">*</span></p>
-            <p>20’x38’<span class="font-bold text-yellow-600">*</span></p>
-            <p>20’x42’<span class="font-bold text-yellow-600">*</span></p>
-            <p>20’x50’<span class="font-bold text-yellow-600">*</span></p>
-          </div>
-      </dd>
-      <p class="text-sm text-gray-600"><span class="font-bold text-yellow-600">*</span> Can include standard bedroom kit</p>
-      </div>
-
-      <div class="border-t border-gray-200 pt-4">
-        <dt class="font-medium text-gray-900">Construction</dt>
-        <dd class="mt-2 text-sm text-gray-500">2x6 Framing and Zip System weatherproof wall panels.</dd>
-      </div>
-
-      <div class="border-t border-gray-200 pt-4">
-        <dt class="font-medium text-gray-900">Roof</dt>
-        <dd class="mt-2 text-sm text-gray-500">LVL engineered wood roof beams, 1/2″ Plywood decking with #30 Roof Felt (sourced locally), 26-gauge Galvalume roofing, James Hardie vented soffit.</dd>
-      </div>
-
-      <div class="border-t border-gray-200 pt-4">
-        <dt class="font-medium text-gray-900">Windows</dt>
-        <dd class="mt-2 text-sm text-gray-500">Double-pane, high efficiency. Fixed transom and vertical options. Operable, awning windows with screens.</dd>
-      </div>
-
-      <div class="border-t border-gray-200 pt-4">
-        <dt class="font-medium text-gray-900">Green Materials</dt>
-        <dd class="mt-2 text-sm text-gray-500">FSC certified lumber, mixed-source recycled metal and materials throughout, optimized prefabricated production. Meets building codes throughout the US.</dd>
-      </div>
-
-      <div class="border-t border-gray-200 pt-4">
-        <dt class="font-medium text-gray-900">Siding</dt>
-        <dd class="mt-2 text-sm text-gray-500">HardiePanel fiber cement siding in multiple colors. Galvalume metal wainscot and cedar wood options available.</dd>
-      </div>
-
-      <div class="border-t border-gray-200 pt-4">
-        <dt class="font-medium text-gray-900">Door</dt>
-        <dd class="mt-2 text-sm text-gray-500">36” Therma-Tru full-lite fiberglass door, or 72” Therma-Tru full-lite fiberglass French door.</dd>
-      </div>
-
-      <div class="border-t border-gray-200 pt-4">
-        <dt class="font-medium text-gray-900">Hardware</dt>
-        <dd class="mt-2 text-sm text-gray-500">Brushed aluminum trim and door/window hardware. Standard foundation attachment hardware included.</dd>
-      </div>
-
-      <div class="border-t border-gray-200 pt-4">
-        <dt class="font-medium text-gray-900">Warranty</dt>
-        <dd class="mt-2 text-sm text-gray-500">1 year manufacturer and workmanship warranty on all models. After 1 year, vendor specific warranties apply.</dd>
-      </div>
-    </dl>
-  </div>
-</div>
-  <div class="bg-white">
-  <div class="mx-auto py-6 px-4 sm:py-12 sm:px-6 max-w-7xl">
-    <div class="grid items-center grid-cols-1 gap-x-8 lg:grid-cols-2">
-      <div>        
-        <p class="text-xl font-bold tracking-tight text-gray-900">Technical Specifications</p>      
-
-        <div class="space-4 grid grid-cols-2">
-          <div><a href="https://design.studio-shed.com/assets/pdf/summit-series-technical-specs-2024.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit Series technical specs and roof guide</a></div>
-          <div><a href="https://design.studio-shed.com/assets/pdf/summit-308-a-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 308 Model A product guide</a></div>
-          <div><a href="https://design.studio-shed.com/assets/pdf/summit-308-b-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 308 Model B product guide</a></div>
-          <div><a href="https://design.studio-shed.com/assets/pdf/summit-440-a-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 440 Model A product guide</a></div>
-          <div><a href="https://design.studio-shed.com/assets/pdf/summit-440-b-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 440 Model B product guide</a></div>
-          <div><a href="https://design.studio-shed.com/assets/pdf/summit-476-a-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 476 Model A product guide</a></div>
-          <div><a href="https://design.studio-shed.com/assets/pdf/summit-476-b-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 476 Model B product guide</a></div>
-          <div><a href="https://design.studio-shed.com/assets/pdf/summit-608-a-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 608 Model A product guide</a></div>
-          <div><a href="https://design.studio-shed.com/assets/pdf/summit-608-b-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 608 Model B product guide</a></div>
-          <div><a href="https://design.studio-shed.com/assets/pdf/summit-680-a-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 680 Model A product guide</a></div>
-          <div><a href="https://design.studio-shed.com/assets/pdf/summit-680-b-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 680 Model B product guide</a></div>
-          <div><a href="https://design.studio-shed.com/assets/pdf/summit-680-c-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 680 Model C product guide</a></div>
-          <div><a href="https://design.studio-shed.com/assets/pdf/summit-800-a-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 800 Model A product guide</a></div>
-          <div><a href="https://design.studio-shed.com/assets/pdf/summit-800-b-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 800 Model B product guide</a></div>
-          <div><a href="https://design.studio-shed.com/assets/pdf/summit-1000-a-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 1000 Model A product guide</a></div>
-          <div><a href="https://design.studio-shed.com/assets/pdf/summit-1000-b-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 1000 Model B product guide</a></div>
-
-        </div>
-      </div>
-
-      <div>
-        <div class="aspect-w-2 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
-          <img src="/assets/images/summit-tech-specs.jpg" class="w-full h-full object-center object-cover">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-  <div class="bg-white" id="toc-gallery" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'gallery'">
-  <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-
-    <h2 class="mb-8 text-xl text-center font-extrabold tracking-tight text-gray-900 sm:text-2xl">Summit Series Gallery</h2>
-
-
-    <ul role="list" id="lightgallery" class="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-bnb-00.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/summit-bnb-00_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-bnb-01.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/summit-bnb-01_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-bnb-02.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/summit-bnb-02_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-bnb-04.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/summit-bnb-04_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-nx-24-01.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/summit-nx-24-01_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-nx-24-02.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/summit-nx-24-02_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-nx-24-03.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/summit-nx-24-03_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-nx-24-04.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/summit-nx-24-04_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-nx-24-05.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/summit-nx-24-05_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-nx-24-06.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/summit-nx-24-06_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-nx-24-07.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/summit-nx-24-07_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-nx-24-08.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/summit-nx-24-08_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-nx-24-09.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/summit-nx-24-09_tn.jpg" class="object-cover">
-        </div>
-      </li>
-
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/01.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/01_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/02.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/02_tn.jpg" class="object-cover">
-          </a>
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/03.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/03_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/04.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/04_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/05.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/05_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/06.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/06_tn.jpg" class="object-cover">
-          </a>
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/07.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/07_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/08.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/08_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/09.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/09_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/10.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/10_tn.jpg" class="object-cover">
-          </a>
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/12.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/12_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/13.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/13_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/14.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/14_tn.jpg" class="object-cover">
-          </a>
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/15.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/15_tn.jpg" class="object-cover">
-        </div>
-      </li>
-      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/16.jpg">
-        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
-          <img src="/assets/images/summit-gallery/16_tn.jpg" class="object-cover">
-        </div>
-      </li>
-    </ul>
-  </div>
-</div>
-
-  
-  <div class="bg-white" x-data="window.Components.projectCostWidgetManager()" x-init="productType = 'smallAdu'; init();">
-  <div class="mx-auto max-w-4xl px-4 py-16">
-    <div class="text-center relative">
-      <span class="bg-yellow-500 absolute inset-x-0 top-0 h-1 w-9 mx-auto"></span>
-      <h2 class="py-4 text-3xl text-center font-extrabold tracking-tight text-gray-900 sm:text-4xl">Project Cost Calculator</h2>
-      <p class="mx-auto text-gray-500">Average costs for your backyard ADU or Studio.</p>
-      <p class="mx-auto text-gray-500">(Site work quoted by 3rd party contractors)</p>
-
-
-      <div class="w-64 mt-4 mx-auto">
-        <select @change="updateZone(); $event.target.blur()" x-model="states" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:ring-0 focus:outline-none focus:shadow-outline">
-          <option>Select your State</option>
-          <option value="AL">Alabama</option>
-          <option value="AK">Alaska</option>
-          <option value="AZ">Arizona</option>
-          <option value="AR">Arkansas</option>
-          <option value="CA">California</option>
-          <option value="CO">Colorado</option>
-          <option value="CT">Connecticut</option>
-          <option value="DE">Delaware</option>
-          <option value="FL">Florida</option>
-          <option value="GA">Georgia</option>
-          <option value="HI">Hawaii</option>
-          <option value="ID">Idaho</option>
-          <option value="IL">Illinois</option>
-          <option value="IN">Indiana</option>
-          <option value="IA">Iowa</option>
-          <option value="KS">Kansas</option>
-          <option value="KY">Kentucky</option>
-          <option value="LA">Louisiana</option>
-          <option value="ME">Maine</option>
-          <option value="MD">Maryland</option>
-          <option value="MA">Massachusetts</option>
-          <option value="MI">Michigan</option>
-          <option value="MN">Minnesota</option>
-          <option value="MS">Mississippi</option>
-          <option value="MO">Missouri</option>
-          <option value="MT">Montana</option>
-          <option value="NE">Nebraska</option>
-          <option value="NV">Nevada</option>
-          <option value="NH">New Hampshire</option>
-          <option value="NJ">New Jersey</option>
-          <option value="NM">New Mexico</option>
-          <option value="NY">New York</option>
-          <option value="NC">North Carolina</option>
-          <option value="ND">North Dakota</option>
-          <option value="OH">Ohio</option>
-          <option value="OK">Oklahoma</option>
-          <option value="OR">Oregon</option>
-          <option value="PA">Pennsylvania</option>
-          <option value="RI">Rhode Island</option>
-          <option value="SC">South Carolina</option>
-          <option value="SD">South Dakota</option>
-          <option value="TN">Tennessee</option>
-          <option value="TX">Texas</option>
-          <option value="UT">Utah</option>
-          <option value="VT">Vermont</option>
-          <option value="VA">Virginia</option>
-          <option value="WA">Washington</option>
-          <option value="WV">West Virginia</option>
-          <option value="WI">Wisconsin</option>
-          <option value="WY">Wyoming</option>
-        </select>
-      </div>
-
-    </div>
-
-    <fieldset class="my-8 mx-auto max-w-2xl">
-      <div class="mb-4 grid grid-cols-3 gap-4">
-        <label :class="productType === 'studio' ? 'border-yellow-600' : 'border-gray-300'"
-               class="relative flex cursor-pointer rounded-lg border bg-white px-4 py-2 shadow-sm focus:outline-none">
-          <input type="radio" x-on:change="calculate()" name="productType" x-model="productType" value="studio"
-                 class="sr-only">
-          <div class="flex flex-1">
-            <div class="flex flex-col">
-              <span class="block text-sm font-medium text-gray-900">Single room studio</span>
-              <span :class="productType == 'studio' ? 'text-yellow-700' : 'text-gray-500'"
-                    class="mt-1 flex items-center text-sm">120 square feet</span>
-            </div>
-          </div>
-          <svg :class="productType === 'studio' || 'invisible'" class="h-5 w-5 text-yellow-600" viewBox="0 0 20 20"
-               fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                  clip-rule="evenodd"/>
-          </svg>
-          <span :class="productType === 'studio' ? 'border border-yellow-600' : 'border-2 border-transparent'"
-                class="pointer-events-none absolute -inset-px rounded-lg border-2" aria-hidden="true"></span>
-        </label>
-
-
-        <label :class="productType === 'smallAdu' ? 'border-yellow-600' : 'border-gray-300'"
-               class="relative flex cursor-pointer rounded-lg border bg-white px-4 py-2 shadow-sm focus:outline-none">
-          <input type="radio" x-on:change="calculate()" name="productType" x-model="productType" value="smallAdu"
-                 class="sr-only">
-          <div class="flex flex-1">
-            <div class="flex flex-col">
-              <span class="block text-sm font-medium text-gray-900">Small ADU</span>
-              <span :class="productType == 'smallAdu' ? 'text-yellow-700' : 'text-gray-500'"
-                    class="mt-1 flex items-center text-sm">476 square feet</span>
-            </div>
-          </div>
-          <svg :class="productType === 'smallAdu' || 'invisible'" class="h-5 w-5 text-yellow-600" viewBox="0 0 20 20"
-               fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                  clip-rule="evenodd"/>
-          </svg>
-          <span :class="productType === 'smallAdu' ? 'border border-yellow-600' : 'border-2 border-transparent'"
-                class="pointer-events-none absolute -inset-px rounded-lg border-2" aria-hidden="true"></span>
-        </label>
-
-        <label :class="productType === 'largeAdu' ? 'border-yellow-600' : 'border-gray-300'"
-               class="relative flex cursor-pointer rounded-lg border bg-white px-4 py-2 shadow-sm focus:outline-none">
-          <input type="radio" x-on:change="calculate()" name="productType" x-model="productType" value="largeAdu"
-                 class="sr-only">
-          <div class="flex flex-1">
-            <div class="flex flex-col">
-              <span class="block text-sm font-medium text-gray-900">Large ADU</span>
-              <span :class="productType == 'largeAdu' ? 'text-yellow-700' : 'text-gray-500'"
-                    class="mt-1 flex items-center text-sm">1000 square feet</span>
-            </div>
-          </div>
-          <svg :class="productType === 'largeAdu' || 'invisible'" class="h-5 w-5 text-yellow-600" viewBox="0 0 20 20"
-               fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                  clip-rule="evenodd"/>
-          </svg>
-          <span :class="productType === 'largeAdu' ? 'border border-yellow-600' : 'border-2 border-transparent'"
-                class="pointer-events-none absolute -inset-px rounded-lg border-2" aria-hidden="true"></span>
-        </label>
-
-
-
-      </div>
-
-    </fieldset>
-
-    <dl x-show="zone != null" class="flex" x-transition>
-      <div class="py-5 transition-[width] duration-500" :style="{ width: costs.productPct + 'vw' }" x-transition>
-
-        <dd class="items-baseline justify-between block bg-yellow-600 text-white p-2">
-          <div class="flex items-baseline text-xl font-semibold" x-transition
-               x-text="window.Components.formatProjectCost(costs.product)"></div>
-        </dd>
-        <dt class="text-sm mt-2 px-2 font-normal text-gray-900">Product / Plans / Shipping</dt>
-        <div class="text-xs px-2 font-medium text-gray-500" x-text="costs.description"></div>
-
-      </div>
-      <div class="py-5 transition-[width] duration-500" :style="{ width: costs.assemblyPct + 'vw' }" x-transition>
-
-        <dd class="items-baseline justify-between block bg-yellow-500 text-white p-2">
-          <div class="flex items-baseline text-xl font-semibold" x-transition
-               x-text="window.Components.formatProjectCost(costs.assembly)"></div>
-        </dd>
-        <dt class="text-sm mt-2 px-2 font-normal text-gray-900">Assembly</dt>
-        <div class="text-xs px-2 font-medium text-gray-500" x-transition>Pro or DIY</div>
-
-      </div>
-      <div class="py-5 transition-[width] duration-500" :style="{ width: costs.siteworkPct + 'vw' }" x-show="costs.sitework != 0" x-transition>
-
-        <dd class="items-baseline justify-between block bg-gray-500 text-white p-2">
-          <div class="flex items-baseline text-xl font-semibold" x-transition
-               x-text="window.Components.formatProjectCost(costs.sitework)"></div>
-        </dd>
-        <dt class="text-sm mt-2 px-2 font-normal text-gray-900">Site Work / Foundation</dt>
-      </div>
-
-      <div class="py-5 transition-[width] duration-500 min-w-min" :style="{ width: costs.feesPct + 'vw' }"
-           x-transition>
-
-        <dd class="items-baseline justify-between block bg-gray-200 text-gray-600 p-2">
-          <div class="flex items-baseline text-xl font-semibold" x-transition
-               x-text="window.Components.formatProjectCost(costs.fees)"></div>
-        </dd>
-        <dt class="text-xs mt-2 px-2 font-normal text-gray-900">Estimated taxes and permit fees</dt>
-      </div>
-      <div class="py-5 transition-[width] duration-500 w-[15vw]" x-transition>
-
-        <dd class="items-center justify-between md:block lg:flex p-2">
-          <div class="flex items-baseline text-lg font-semibold text-gray-800" x-transition
-               x-text="window.Components.formatProjectCost(costs.total)"></div>
-          <div>or</div>
-          <div class="flex items-baseline text-lg font-semibold text-gray-800" x-transition
-                x-text="costs.monthly"></div>
-
-        </dd>
-        <dt class="text-sm mt-2 px-2 font-normal text-gray-900">Total</dt>
-        <div class="text-xs px-2 font-medium text-gray-500"><span x-text="window.Components.formatPrice.format(costs.psf)"></span>/sq. ft.</div>
-      </div>
-    </dl>
-
-    <div x-show="zone != null" class="my-4 text-center">
-      <a href="https://design.studio-shed.com/" target="_blank" class="bg-yellow-500 text-white px-8 py-2 uppercase inline-block">Design &amp; Price Your Studio Shed</a>
-    </div>
-
-
-  </div>
-</div>
-  <div class="bg-white" id="toc-options" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'options'">
-  <section aria-labelledby="features-heading" class="relative">
-    <div class="aspect-w-3 aspect-h-2 overflow-hidden sm:aspect-w-5 lg:aspect-none lg:absolute lg:w-1/2 lg:h-full lg:pr-4 xl:pr-16">
-      <img src="/assets/images/summit-additional-options.jpg" class="h-full w-full object-center object-cover lg:h-full lg:w-full">
-    </div>
-
-    <div class="max-w-2xl mx-auto pt-16 pb-24 px-4 sm:pb-32 sm:px-6 lg:max-w-7xl lg:pt-32 lg:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
-      <div class="lg:col-start-2">
-        <p class="mt-4 text-4xl font-extrabold text-gray-900 tracking-tight">Additional Options</p>
-
-        <dl class="mt-10 grid grid-cols-1 gap-y-10 gap-x-8 text-sm sm:grid-cols-2">
-          <div>
-            <dt class="font-bold text-gray-900">Window and Door Options</dt>
-            <dd class="mt-2 text-gray-500">
-              <div>&ndash; VistaLite vertical windows</div>
-              <div>&ndash; Marvin 72” x 42″ sliding fiberglass window</div>
-              <div>&ndash; Marvin 36” x 42″ operable fiberglass window</div>
-              <div>&ndash; Marvin 36” x 36″ operable fiberglass window</div>
-              <div>&ndash; Marvin 36” x 18” operable fiberglass window</div>
-              <div>&ndash; 36" Therma-Tru fiberglass, full-lite door</div>
-              <div>&ndash; 72" Therma-Tru fiberglass, full-lite French door</div>
-              <div>&ndash; 8’x7′ and 16’x7′ openings for garage and slider doors</div>
-            </dd>
-          </div>
-
-          <div>
-            <dt class="font-bold text-gray-900">Interior Packages</dt>
-            <dd class="mt-2 text-gray-500">
-              <div>&ndash; Standard insulation – R-21 (wall) and R-30 (roof)</div>
-              <div>&ndash; Finished flooring</div>
-              <div>&ndash; Electrical package with interior/exterior fixtures</div>
-              <div>&ndash; Upgraded 225A 30 slot electrical sub-panel</div>
-              <div>&ndash; Seamless painted interior drywall included with purchase of certified installation</div>
-              <div>&ndash; Kitchen Layouts and fixtures</div>
-              <div>&ndash; Bathroom Layouts and fixtures</div>
-              <div>&ndash; HVAC – Mini split AC/heat</div>
-              <div>&ndash; Tankless gas water heater or 50-gal electric heat pump</div>
-              <div>&ndash; Premium wood cabinetry</div>              
-              <div>&ndash; Premium laminate countertops</div>
-              <div>&ndash; Summit appliance packages</div>              
-            </dd>
-          </div>
-
-
-          <div>
-            <dt class="font-bold text-gray-900">Upgrades</dt>
-            <dd class="mt-2 text-gray-500">              
-              <div>&ndash; Bronze aluminum trim/roofing package</div>
-              <div>&ndash; Shortened eaves</div>
-              <div>&ndash; Painted soffit upgrade</div>
-            </dd>
-          </div>
-        </dl>
-
-        <div class="py-6">
-        <a href="/assets/downloads/lifestyle-interior-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Download Lifestyle Interior Guide</a>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-
-
   <div class="bg-white" id="toc-interior" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'interior'">
   <section aria-labelledby="features-heading" class="max-w-7xl mx-auto py-32 sm:px-2 lg:px-8" x-data="window.Components.interiorKitManager()">
     <div class="max-w-2xl mx-auto px-4 lg:px-0 lg:max-w-none">
@@ -2312,6 +1770,535 @@
   </section>
 </div>
 
+  <div class="bg-white" id="toc-gallery" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'gallery'">
+  <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+
+    <h2 class="mb-8 text-xl text-center font-extrabold tracking-tight text-gray-900 sm:text-2xl">Summit Series Gallery</h2>
+
+
+    <ul role="list" id="lightgallery" class="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-bnb-00.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/summit-bnb-00_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-bnb-01.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/summit-bnb-01_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-bnb-02.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/summit-bnb-02_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-bnb-04.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/summit-bnb-04_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-nx-24-01.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/summit-nx-24-01_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-nx-24-02.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/summit-nx-24-02_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-nx-24-03.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/summit-nx-24-03_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-nx-24-04.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/summit-nx-24-04_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-nx-24-05.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/summit-nx-24-05_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-nx-24-06.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/summit-nx-24-06_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-nx-24-07.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/summit-nx-24-07_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-nx-24-08.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/summit-nx-24-08_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/summit-nx-24-09.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/summit-nx-24-09_tn.jpg" class="object-cover">
+        </div>
+      </li>
+
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/01.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/01_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/02.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/02_tn.jpg" class="object-cover">
+          </a>
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/03.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/03_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/04.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/04_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/05.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/05_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/06.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/06_tn.jpg" class="object-cover">
+          </a>
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/07.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/07_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/08.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/08_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/09.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/09_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/10.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/10_tn.jpg" class="object-cover">
+          </a>
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/12.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/12_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/13.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/13_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/14.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/14_tn.jpg" class="object-cover">
+          </a>
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/15.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/15_tn.jpg" class="object-cover">
+        </div>
+      </li>
+      <li class="relative cursor-pointer hover:opacity-80" data-src="/assets/images/summit-gallery/16.jpg">
+        <div class="block w-full aspect-w-3 aspect-h-2 overflow-hidden">
+          <img src="/assets/images/summit-gallery/16_tn.jpg" class="object-cover">
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+    
+  <div class="bg-white" x-data="window.Components.projectCostWidgetManager()" x-init="productType = 'smallAdu'; init();">
+  <div class="mx-auto max-w-4xl px-4 py-16">
+    <div class="text-center relative">
+      <span class="bg-yellow-500 absolute inset-x-0 top-0 h-1 w-9 mx-auto"></span>
+      <h2 class="py-4 text-3xl text-center font-extrabold tracking-tight text-gray-900 sm:text-4xl">Project Cost Calculator</h2>
+      <p class="mx-auto text-gray-500">Average costs for your backyard ADU or Studio.</p>
+      <p class="mx-auto text-gray-500">(Site work quoted by 3rd party contractors)</p>
+
+
+      <div class="w-64 mt-4 mx-auto">
+        <select @change="updateZone(); $event.target.blur()" x-model="states" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:ring-0 focus:outline-none focus:shadow-outline">
+          <option>Select your State</option>
+          <option value="AL">Alabama</option>
+          <option value="AK">Alaska</option>
+          <option value="AZ">Arizona</option>
+          <option value="AR">Arkansas</option>
+          <option value="CA">California</option>
+          <option value="CO">Colorado</option>
+          <option value="CT">Connecticut</option>
+          <option value="DE">Delaware</option>
+          <option value="FL">Florida</option>
+          <option value="GA">Georgia</option>
+          <option value="HI">Hawaii</option>
+          <option value="ID">Idaho</option>
+          <option value="IL">Illinois</option>
+          <option value="IN">Indiana</option>
+          <option value="IA">Iowa</option>
+          <option value="KS">Kansas</option>
+          <option value="KY">Kentucky</option>
+          <option value="LA">Louisiana</option>
+          <option value="ME">Maine</option>
+          <option value="MD">Maryland</option>
+          <option value="MA">Massachusetts</option>
+          <option value="MI">Michigan</option>
+          <option value="MN">Minnesota</option>
+          <option value="MS">Mississippi</option>
+          <option value="MO">Missouri</option>
+          <option value="MT">Montana</option>
+          <option value="NE">Nebraska</option>
+          <option value="NV">Nevada</option>
+          <option value="NH">New Hampshire</option>
+          <option value="NJ">New Jersey</option>
+          <option value="NM">New Mexico</option>
+          <option value="NY">New York</option>
+          <option value="NC">North Carolina</option>
+          <option value="ND">North Dakota</option>
+          <option value="OH">Ohio</option>
+          <option value="OK">Oklahoma</option>
+          <option value="OR">Oregon</option>
+          <option value="PA">Pennsylvania</option>
+          <option value="RI">Rhode Island</option>
+          <option value="SC">South Carolina</option>
+          <option value="SD">South Dakota</option>
+          <option value="TN">Tennessee</option>
+          <option value="TX">Texas</option>
+          <option value="UT">Utah</option>
+          <option value="VT">Vermont</option>
+          <option value="VA">Virginia</option>
+          <option value="WA">Washington</option>
+          <option value="WV">West Virginia</option>
+          <option value="WI">Wisconsin</option>
+          <option value="WY">Wyoming</option>
+        </select>
+      </div>
+
+    </div>
+
+    <fieldset class="my-8 mx-auto max-w-2xl">
+      <div class="mb-4 grid grid-cols-3 gap-4">
+        <label :class="productType === 'studio' ? 'border-yellow-600' : 'border-gray-300'"
+               class="relative flex cursor-pointer rounded-lg border bg-white px-4 py-2 shadow-sm focus:outline-none">
+          <input type="radio" x-on:change="calculate()" name="productType" x-model="productType" value="studio"
+                 class="sr-only">
+          <div class="flex flex-1">
+            <div class="flex flex-col">
+              <span class="block text-sm font-medium text-gray-900">Single room studio</span>
+              <span :class="productType == 'studio' ? 'text-yellow-700' : 'text-gray-500'"
+                    class="mt-1 flex items-center text-sm">120 square feet</span>
+            </div>
+          </div>
+          <svg :class="productType === 'studio' || 'invisible'" class="h-5 w-5 text-yellow-600" viewBox="0 0 20 20"
+               fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                  clip-rule="evenodd"/>
+          </svg>
+          <span :class="productType === 'studio' ? 'border border-yellow-600' : 'border-2 border-transparent'"
+                class="pointer-events-none absolute -inset-px rounded-lg border-2" aria-hidden="true"></span>
+        </label>
+
+
+        <label :class="productType === 'smallAdu' ? 'border-yellow-600' : 'border-gray-300'"
+               class="relative flex cursor-pointer rounded-lg border bg-white px-4 py-2 shadow-sm focus:outline-none">
+          <input type="radio" x-on:change="calculate()" name="productType" x-model="productType" value="smallAdu"
+                 class="sr-only">
+          <div class="flex flex-1">
+            <div class="flex flex-col">
+              <span class="block text-sm font-medium text-gray-900">Small ADU</span>
+              <span :class="productType == 'smallAdu' ? 'text-yellow-700' : 'text-gray-500'"
+                    class="mt-1 flex items-center text-sm">476 square feet</span>
+            </div>
+          </div>
+          <svg :class="productType === 'smallAdu' || 'invisible'" class="h-5 w-5 text-yellow-600" viewBox="0 0 20 20"
+               fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                  clip-rule="evenodd"/>
+          </svg>
+          <span :class="productType === 'smallAdu' ? 'border border-yellow-600' : 'border-2 border-transparent'"
+                class="pointer-events-none absolute -inset-px rounded-lg border-2" aria-hidden="true"></span>
+        </label>
+
+        <label :class="productType === 'largeAdu' ? 'border-yellow-600' : 'border-gray-300'"
+               class="relative flex cursor-pointer rounded-lg border bg-white px-4 py-2 shadow-sm focus:outline-none">
+          <input type="radio" x-on:change="calculate()" name="productType" x-model="productType" value="largeAdu"
+                 class="sr-only">
+          <div class="flex flex-1">
+            <div class="flex flex-col">
+              <span class="block text-sm font-medium text-gray-900">Large ADU</span>
+              <span :class="productType == 'largeAdu' ? 'text-yellow-700' : 'text-gray-500'"
+                    class="mt-1 flex items-center text-sm">1000 square feet</span>
+            </div>
+          </div>
+          <svg :class="productType === 'largeAdu' || 'invisible'" class="h-5 w-5 text-yellow-600" viewBox="0 0 20 20"
+               fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                  clip-rule="evenodd"/>
+          </svg>
+          <span :class="productType === 'largeAdu' ? 'border border-yellow-600' : 'border-2 border-transparent'"
+                class="pointer-events-none absolute -inset-px rounded-lg border-2" aria-hidden="true"></span>
+        </label>
+
+
+
+      </div>
+
+    </fieldset>
+
+    <dl x-show="zone != null" class="flex" x-transition>
+      <div class="py-5 transition-[width] duration-500" :style="{ width: costs.productPct + 'vw' }" x-transition>
+
+        <dd class="items-baseline justify-between block bg-yellow-600 text-white p-2">
+          <div class="flex items-baseline text-xl font-semibold" x-transition
+               x-text="window.Components.formatProjectCost(costs.product)"></div>
+        </dd>
+        <dt class="text-sm mt-2 px-2 font-normal text-gray-900">Product / Plans / Shipping</dt>
+        <div class="text-xs px-2 font-medium text-gray-500" x-text="costs.description"></div>
+
+      </div>
+      <div class="py-5 transition-[width] duration-500" :style="{ width: costs.assemblyPct + 'vw' }" x-transition>
+
+        <dd class="items-baseline justify-between block bg-yellow-500 text-white p-2">
+          <div class="flex items-baseline text-xl font-semibold" x-transition
+               x-text="window.Components.formatProjectCost(costs.assembly)"></div>
+        </dd>
+        <dt class="text-sm mt-2 px-2 font-normal text-gray-900">Assembly</dt>
+        <div class="text-xs px-2 font-medium text-gray-500" x-transition>Pro or DIY</div>
+
+      </div>
+      <div class="py-5 transition-[width] duration-500" :style="{ width: costs.siteworkPct + 'vw' }" x-show="costs.sitework != 0" x-transition>
+
+        <dd class="items-baseline justify-between block bg-gray-500 text-white p-2">
+          <div class="flex items-baseline text-xl font-semibold" x-transition
+               x-text="window.Components.formatProjectCost(costs.sitework)"></div>
+        </dd>
+        <dt class="text-sm mt-2 px-2 font-normal text-gray-900">Site Work / Foundation</dt>
+      </div>
+
+      <div class="py-5 transition-[width] duration-500 min-w-min" :style="{ width: costs.feesPct + 'vw' }"
+           x-transition>
+
+        <dd class="items-baseline justify-between block bg-gray-200 text-gray-600 p-2">
+          <div class="flex items-baseline text-xl font-semibold" x-transition
+               x-text="window.Components.formatProjectCost(costs.fees)"></div>
+        </dd>
+        <dt class="text-xs mt-2 px-2 font-normal text-gray-900">Estimated taxes and permit fees</dt>
+      </div>
+      <div class="py-5 transition-[width] duration-500 w-[15vw]" x-transition>
+
+        <dd class="items-center justify-between md:block lg:flex p-2">
+          <div class="flex items-baseline text-lg font-semibold text-gray-800" x-transition
+               x-text="window.Components.formatProjectCost(costs.total)"></div>
+          <div>or</div>
+          <div class="flex items-baseline text-lg font-semibold text-gray-800" x-transition
+                x-text="costs.monthly"></div>
+
+        </dd>
+        <dt class="text-sm mt-2 px-2 font-normal text-gray-900">Total</dt>
+        <div class="text-xs px-2 font-medium text-gray-500"><span x-text="window.Components.formatPrice.format(costs.psf)"></span>/sq. ft.</div>
+      </div>
+    </dl>
+
+    <div x-show="zone != null" class="my-4 text-center">
+      <a href="https://design.studio-shed.com/" target="_blank" class="bg-yellow-500 text-white px-8 py-2 uppercase inline-block">Design &amp; Price Your Studio Shed</a>
+    </div>
+
+
+  </div>
+</div>  
+  <div class="bg-white" id="toc-features">
+
+  <div aria-hidden="true" class="relative" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'features'">
+    <img src="/assets/images/summit-features.jpg" class="w-full h-96 object-center object-cover">
+    <div class="absolute inset-0 bottom-0 top-auto h-48 bg-gradient-to-t from-white"></div>
+  </div>
+
+  <div class="relative -mt-12 max-w-7xl mx-auto pb-8 px-4 sm:pb-12 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mx-auto text-center lg:max-w-4xl">
+      <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Summit Series Standard Features</h2>
+    </div>
+
+    <dl class="mt-16 max-w-2xl mx-auto grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:max-w-none lg:grid-cols-3 lg:gap-x-8">
+      <div class="border-t border-gray-200 pt-4">
+        <dt class="font-medium text-gray-900">Sizes</dt>
+        <dd class="mt-2 text-xs text-gray-500 flex gap-x-8 grid-cols-2">
+          <div>            
+            <p>14’x22’ - 308 sq. ft.</p>            
+            <p>14’x34’ - 476 sq. ft.<span class="font-bold text-yellow-600">*</span></p>
+            <p>16’x38’ - 608 sq. ft.<span class="font-bold text-yellow-600">*</span></p>
+            <p>20’x22’ - 440 sq. ft.</p>
+          </div>
+          <div>
+            
+            <p>20’x34’ - 680 sq. ft.<span class="font-bold text-yellow-600">*</span></p>
+            <p>20’x40’ - 800 sq. ft.<span class="font-bold text-yellow-600">*</span></p>
+            <p>20’x50’ - 1000 sq. ft.<span class="font-bold text-yellow-600">*</span></p>
+          </div>
+      </dd>
+      <p class="text-sm text-gray-600"><span class="font-bold text-yellow-600">*</span> Can include standard bedroom kit</p>
+      </div>
+
+      <div class="border-t border-gray-200 pt-4">
+        <dt class="font-medium text-gray-900">Construction</dt>
+        <dd class="mt-2 text-sm text-gray-500">2x6 Framing and Zip System weatherproof wall panels.</dd>
+      </div>
+
+      <div class="border-t border-gray-200 pt-4">
+        <dt class="font-medium text-gray-900">Roof</dt>
+        <dd class="mt-2 text-sm text-gray-500">LVL engineered wood roof beams, 1/2″ Plywood decking with #30 Roof Felt (sourced locally), 26-gauge Galvalume roofing, James Hardie vented soffit.</dd>
+      </div>
+
+      <div class="border-t border-gray-200 pt-4">
+        <dt class="font-medium text-gray-900">Windows</dt>
+        <dd class="mt-2 text-sm text-gray-500">Double-pane, high efficiency. Fixed transom and vertical options. Operable, awning windows with screens.</dd>
+      </div>
+
+      <div class="border-t border-gray-200 pt-4">
+        <dt class="font-medium text-gray-900">Green Materials</dt>
+        <dd class="mt-2 text-sm text-gray-500">FSC certified lumber, mixed-source recycled metal and materials throughout, optimized prefabricated production. Meets building codes throughout the US.</dd>
+      </div>
+
+      <div class="border-t border-gray-200 pt-4">
+        <dt class="font-medium text-gray-900">Siding</dt>
+        <dd class="mt-2 text-sm text-gray-500">HardiePanel fiber cement siding in multiple colors. Galvalume metal wainscot and cedar wood options available.</dd>
+      </div>
+
+      <div class="border-t border-gray-200 pt-4">
+        <dt class="font-medium text-gray-900">Door</dt>
+        <dd class="mt-2 text-sm text-gray-500">36” Therma-Tru full-lite fiberglass door, or 72” Therma-Tru full-lite fiberglass French door.</dd>
+      </div>
+
+      <div class="border-t border-gray-200 pt-4">
+        <dt class="font-medium text-gray-900">Hardware</dt>
+        <dd class="mt-2 text-sm text-gray-500">Brushed aluminum trim and door/window hardware. Standard foundation attachment hardware included.</dd>
+      </div>
+
+      <div class="border-t border-gray-200 pt-4">
+        <dt class="font-medium text-gray-900">Warranty</dt>
+        <dd class="mt-2 text-sm text-gray-500">1 year manufacturer and workmanship warranty on all models. After 1 year, vendor specific warranties apply.</dd>
+      </div>
+    </dl>
+  </div>
+</div>
+  <div class="bg-white">
+  <div class="mx-auto py-6 px-4 sm:py-12 sm:px-6 max-w-7xl">
+    <div class="grid items-center grid-cols-1 gap-x-8 lg:grid-cols-2">
+      <div>        
+        <p class="text-xl font-bold tracking-tight text-gray-900">Technical Specifications</p>      
+
+        <div class="space-4 grid grid-cols-2">
+          <div><a href="https://design.studio-shed.com/assets/pdf/summit-series-technical-specs-2024.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit Series technical specs and roof guide</a></div>
+          <div><a href="https://design.studio-shed.com/assets/pdf/summit-308-a-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 308 Model A product guide</a></div>
+          <div><a href="https://design.studio-shed.com/assets/pdf/summit-308-b-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 308 Model B product guide</a></div>
+          <div><a href="https://design.studio-shed.com/assets/pdf/summit-440-a-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 440 Model A product guide</a></div>
+          <div><a href="https://design.studio-shed.com/assets/pdf/summit-440-b-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 440 Model B product guide</a></div>
+          <div><a href="https://design.studio-shed.com/assets/pdf/summit-476-a-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 476 Model A product guide</a></div>
+          <div><a href="https://design.studio-shed.com/assets/pdf/summit-476-b-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 476 Model B product guide</a></div>
+          <div><a href="https://design.studio-shed.com/assets/pdf/summit-608-a-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 608 Model A product guide</a></div>
+          <div><a href="https://design.studio-shed.com/assets/pdf/summit-608-b-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 608 Model B product guide</a></div>
+          <div><a href="https://design.studio-shed.com/assets/pdf/summit-680-a-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 680 Model A product guide</a></div>
+          <div><a href="https://design.studio-shed.com/assets/pdf/summit-680-b-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 680 Model B product guide</a></div>
+          <div><a href="https://design.studio-shed.com/assets/pdf/summit-680-c-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 680 Model C product guide</a></div>
+          <div><a href="https://design.studio-shed.com/assets/pdf/summit-800-a-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 800 Model A product guide</a></div>
+          <div><a href="https://design.studio-shed.com/assets/pdf/summit-800-b-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 800 Model B product guide</a></div>
+          <div><a href="https://design.studio-shed.com/assets/pdf/summit-1000-a-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 1000 Model A product guide</a></div>
+          <div><a href="https://design.studio-shed.com/assets/pdf/summit-1000-b-product-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summit 1000 Model B product guide</a></div>
+
+        </div>
+      </div>
+
+      <div>
+        <div class="aspect-w-2 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
+          <img src="/assets/images/summit-tech-specs.jpg" class="w-full h-full object-center object-cover">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <div class="bg-white" id="toc-options" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'options'">
+  <section aria-labelledby="features-heading" class="relative">
+    <div class="aspect-w-3 aspect-h-2 overflow-hidden sm:aspect-w-5 lg:aspect-none lg:absolute lg:w-1/2 lg:h-full lg:pr-4 xl:pr-16">
+      <img src="/assets/images/summit-additional-options.jpg" class="h-full w-full object-center object-cover lg:h-full lg:w-full">
+    </div>
+
+    <div class="max-w-2xl mx-auto pt-16 pb-24 px-4 sm:pb-32 sm:px-6 lg:max-w-7xl lg:pt-32 lg:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
+      <div class="lg:col-start-2">
+        <p class="mt-4 text-4xl font-extrabold text-gray-900 tracking-tight">Additional Options</p>
+
+        <dl class="mt-10 grid grid-cols-1 gap-y-10 gap-x-8 text-sm sm:grid-cols-2">
+          <div>
+            <dt class="font-bold text-gray-900">Window and Door Options</dt>
+            <dd class="mt-2 text-gray-500">
+              <div>&ndash; VistaLite vertical windows</div>
+              <div>&ndash; Marvin 72” x 42″ sliding fiberglass window</div>
+              <div>&ndash; Marvin 36” x 42″ operable fiberglass window</div>
+              <div>&ndash; Marvin 36” x 36″ operable fiberglass window</div>
+              <div>&ndash; Marvin 36” x 18” operable fiberglass window</div>
+              <div>&ndash; 36" Therma-Tru fiberglass, full-lite door</div>
+              <div>&ndash; 72" Therma-Tru fiberglass, full-lite French door</div>
+              <div>&ndash; 8’x7′ and 16’x7′ openings for garage and slider doors</div>
+            </dd>
+          </div>
+
+          <div>
+            <dt class="font-bold text-gray-900">Interior Packages</dt>
+            <dd class="mt-2 text-gray-500">
+              <div>&ndash; Standard insulation – R-21 (wall) and R-30 (roof)</div>
+              <div>&ndash; Finished flooring</div>
+              <div>&ndash; Electrical package with interior/exterior fixtures</div>
+              <div>&ndash; Upgraded 225A 30 slot electrical sub-panel</div>
+              <div>&ndash; Seamless painted interior drywall included with purchase of certified installation</div>
+              <div>&ndash; Kitchen Layouts and fixtures</div>
+              <div>&ndash; Bathroom Layouts and fixtures</div>
+              <div>&ndash; HVAC – Mini split AC/heat</div>
+              <div>&ndash; Tankless gas water heater or 50-gal electric heat pump</div>
+              <div>&ndash; Premium wood cabinetry</div>              
+              <div>&ndash; Premium laminate countertops</div>
+              <div>&ndash; Summit appliance packages</div>              
+            </dd>
+          </div>
+
+
+          <div>
+            <dt class="font-bold text-gray-900">Upgrades</dt>
+            <dd class="mt-2 text-gray-500">              
+              <div>&ndash; Bronze aluminum trim/roofing package</div>
+              <div>&ndash; Shortened eaves</div>
+              <div>&ndash; Painted soffit upgrade</div>
+            </dd>
+          </div>
+        </dl>
+
+        <div class="py-6">
+        <a href="/assets/downloads/lifestyle-interior-guide.pdf" target="_blank" class="relative mt-2 inline-flex items-center justify-center text-sm font-medium underline text-gray-800 hover:opacity-80"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="mr-2 h-6 w-6 stroke-current"><circle cx="12" cy="12" r="9" stroke-width="1.5"></circle><path d="M9 12.75L12 15.75M12 15.75L15 12.75M12 15.75L12 8.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Download Lifestyle Interior Guide</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+ 
   <div class="bg-gray-50" id="toc-ordering" style="scroll-margin: 80px;" x-intersect.half="visibleSection = 'ordering'">
   <div class="max-w-7xl mx-auto py-24 sm:px-2 sm:py-32 lg:px-4">
     <div class="max-w-2xl mx-auto px-4 lg:max-w-none">
