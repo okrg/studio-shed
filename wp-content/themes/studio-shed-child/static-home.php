@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1725171721909">
-  <script src="/assets/main.bundle.js?v=1725171721909"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1726270769175">
+  <script src="/assets/main.bundle.js?v=1726270769175"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -43,10 +43,6 @@
 
 
 
-
-<a class="border-b-4 border-[#FF9700] bg-white block" href="https://design.studio-shed.com/" target="_blank">
-  <img src="/assets/images/promo-top-bar-2024.png" alt="Curated models shipping nationwide in 2 weeks" class="-mb-1 mx-auto">
-</a>
 
 <header x-cloak x-data="window.Components.navManager">
   <div class="relative bg-white z-20">
@@ -1526,12 +1522,12 @@
     <!-- Pill Navigation -->
     <div class="flex flex-col lg:flex-row justify-center max-w-lg mx-auto lg:max-w-none md:mb-8 px-2 space-y-2 lg:space-y-0 lg:space-x-2">
         <button @click="activeCard = 1" :class="{ 'bg-yellow-600 text-white': activeCard === 1, 'bg-gray-200 text-gray-700': activeCard !== 1 }" class="px-4 py-2 rounded-full text-sm transition duration-300 ease-in-out">National Footprint with Local Presence In Your Backyard</button>
-        <button @click="activeCard = 2" :class="{ 'bg-yellow-600 text-white': activeCard === 2, 'bg-gray-200 text-gray-700': activeCard !== 2 }" class="px-4 py-2 rounded-full text-sm transition duration-300 ease-in-out">Faster and Easier than Design Build</button>
+        <button @click="activeCard = 2" :class="{ 'bg-yellow-600 text-white': activeCard === 2, 'bg-gray-200 text-gray-700': activeCard !== 2 }" class="px-4 py-2 rounded-full text-sm transition duration-300 ease-in-out">Quick Install ADUs</button>
         <button @click="activeCard = 3" :class="{ 'bg-yellow-600 text-white': activeCard === 3, 'bg-gray-200 text-gray-700': activeCard !== 3 }" class="px-4 py-2 rounded-full text-sm transition duration-300 ease-in-out">Complete Your Project On-Time and On-Budget</button>
     </div>
 
     <!-- Card Container -->
-    <div class="md:py-12 overflow-hidden">
+    <div class="overflow-hidden">
         <!-- Card 1 -->
         <div x-show="activeCard === 1" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100" class="flex flex-col md:flex-row">
             <div class="md:w-1/2">
@@ -1549,17 +1545,20 @@
         </div>
 
         <!-- Card 2 -->
-        <div x-show="activeCard === 2" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100" class="flex flex-col md:flex-row-reverse">
+        <div x-show="activeCard === 2" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100" class="flex flex-col md:flex-row-reverse items-center">
             <div class="md:w-1/2">
                 <div class="m-8">
+                    <img src="/assets/images/home-no-cranes.png" alt="Panelized Construction" class="w-1/2 mx-auto mb-12">
                     <img src="/assets/images/home-why-test1.jpg" alt="Fast-Track ADU" class="">
-                    <p class="mt-4 italic text-sm">"Studio Shed's efficiency is unmatched. They handled all the permitting, and the installation was complete in just days. It's like our backyard transformed overnight!" - The Jumps</p>
+                    <p class="mt-4 italic text-sm">"We were amazed at how straightforward the Studio Shed process was. No cranes, no fuss - just a beautiful, functional space that transformed our backyard in days. It's DIY-friendly but with professional results!" - The Johnsons, Arizona</p>
                 </div>
             </div>
             <div class="px-4 md:p-8 md:w-1/2">
                 <div class="md:m-8">
-                <h3 class="text-2xl font-bold mb-4">Fast-Track Your ADU with Studio Shed</h3>
-                <p class="mb-6">Our streamlined process and prefabricated designs allow for rapid installation, getting you from concept to completion in a fraction of the time of traditional construction. Don't let red tape slow you down - our expertise in nationwide permitting ensures a smooth, efficient build.</p>
+                    
+                <h3 class="text-2xl font-bold mb-4">Fast-Track Your ADU with Studio Shed's Innovative Panelized System</h3>
+                <p class="mb-6">Our innovative panelized construction system revolutionizes the ADU building process. Forget about cranes, heavy machinery, or complex modular units. Studio Shed offers a simple, efficient solution that brings your backyard vision to life quickly and easily.</p>
+                <p class="mb-6">Our streamlined process and pre-engineered designs allow for rapid installation, taking you from concept to completion in a fraction of the time of traditional construction. With nationwide code compliance and expert permitting assistance, we ensure a smooth, efficient build that meets local requirements in all 50 states.</p>
                 <a href="https://design.studio-shed.com/" class="inline-block bg-transparent text-sm border-2 border-yellow-500 text-black px-6 py-2 rounded-full uppercase hover:bg-yellow-500 hover:text-white transition duration-300">Design & Price Your Studio Shed</a>
                 </div>
             </div>
@@ -1569,6 +1568,7 @@
         <div x-show="activeCard === 3" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 transform scale-90" x-transition:enter-end="opacity-100 transform scale-100" class="flex flex-col md:flex-row">
             <div class="md:w-1/2">
                 <div class="m-8">
+                    
                 <img src="/assets/images/home-why-test2.jpg" alt="On-Time and On-Budget" class="">
                 <p class="mt-4 italic text-sm">"Our project was completed exactly as planned, both in terms of time and budget. It's refreshing to work with a company that delivers on its promises!" -  The Sandersons</p>
                 </div>
@@ -1577,6 +1577,7 @@
                 <div class="md:m-8">
                 <h3 class="text-2xl font-bold mb-4">Predictable Process, Exceptional Results</h3>
                 <p class="mb-6">Studio Shed has a proven track record of completing every project on-time and on-budget. Fixed pricing ensures you can start your project with confidence.</p>
+                <img src="/assets/images/home-process-timeline.png" alt="Panelized Construction" class="w-full mx-auto my-6">
                 <a href="https://design.studio-shed.com/" class="inline-block bg-transparent text-sm border-2 border-yellow-500 text-black px-6 py-2 rounded-full uppercase hover:bg-yellow-500 hover:text-white transition duration-300">Design & Price Your Studio Shed</a>
                 </div>
             </div>
