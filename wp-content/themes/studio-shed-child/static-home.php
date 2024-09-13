@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1726270769175">
-  <script src="/assets/main.bundle.js?v=1726270769175"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1726271118110">
+  <script src="/assets/main.bundle.js?v=1726271118110"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -43,6 +43,9 @@
 
 
 
+
+<script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+<div class="elfsight-app-ee59d36e-1c04-4411-91aa-2ec8c9c2fc27" data-elfsight-app-lazy></div>
 
 <header x-cloak x-data="window.Components.navManager">
   <div class="relative bg-white z-20">
