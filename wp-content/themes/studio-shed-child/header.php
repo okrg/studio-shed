@@ -52,8 +52,8 @@
   <link rel="preload" href="/wp-content/uploads/visualcomposer-assets/sharedLibraries/iconpicker/dist/fonts/dripicons.ttf?24252cd33f8c8234e26505c0ea3dd9c7" as="font" crossorigin>
   <link rel="preload" href="/wp-content/themes/studio-shed/fonts/icomoon.ttf?aemgks" as="font" crossorigin>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1726271118110">
-  <script src="/assets/main.bundle.js?v=1726271118110"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1726603809961">
+  <script src="/assets/main.bundle.js?v=1726603809961"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <?php wp_head(); ?>
   <!-- Google Optimize Anti-flicker snippet (recommended)  -->
@@ -80,8 +80,8 @@
 
 
 
-<script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
-<div class="elfsight-app-ee59d36e-1c04-4411-91aa-2ec8c9c2fc27" data-elfsight-app-lazy></div>
+<!-- Top Bar Banner -->
+ 
 
 <header x-cloak x-data="window.Components.navManager">
   <div class="relative bg-white z-20">
