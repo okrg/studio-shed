@@ -26,8 +26,8 @@
   <link rel="dns-prefetch" href="//js.hsforms.net">
   <link rel="canonical" href="https://www.studio-shed.com/">
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1726603809961">
-  <script src="/assets/main.bundle.js?v=1726603809961"></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1729733778919">
+  <script src="/assets/main.bundle.js?v=1729733778919"></script>
   <script src="//js.hsforms.net/forms/v2.js"></script>
   <!--
   <script src="https://apps.elfsight.com/p/platform.js" async></script>
@@ -1492,7 +1492,7 @@
         </div>
 
         <div class="text-center">
-          <a href="/project-cost/" class="inline-flex items-center mt-6 px-4 py-3 border-2 border-yellow-500 text-sm uppercase rounded-full shadow-sm text-black font-medium hover:opacity-80 sm:px-8" title="Calculate the cost of your Studio Shed ADU">
+          <a href="/project-cost/" class="inline-flex items-center mt-6 text-sm uppercase text-black font-medium hover:opacity-80 sm:px-8" title="Calculate the cost of your Studio Shed ADU">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V13.5Zm0 2.25h.008v.008H8.25v-.008Zm0 2.25h.008v.008H8.25V18Zm2.498-6.75h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V13.5Zm0 2.25h.007v.008h-.007v-.008Zm0 2.25h.007v.008h-.007V18Zm2.504-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5Zm0 2.25h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V18Zm2.498-6.75h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V13.5ZM8.25 6h7.5v2.25h-7.5V6ZM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 0 0 2.25 2.25h10.5a2.25 2.25 0 0 0 2.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0 0 12 2.25Z" />
             </svg>
@@ -1517,9 +1517,9 @@
 
     <!-- Pill Navigation -->
     <div class="flex flex-col lg:flex-row justify-center max-w-lg mx-auto lg:max-w-none md:mb-8 px-2 space-y-2 lg:space-y-0 lg:space-x-2">
-        <button @click="activeCard = 1" :class="{ 'bg-yellow-600 text-white': activeCard === 1, 'bg-gray-200 text-gray-700': activeCard !== 1 }" class="px-4 py-2 rounded-full text-sm transition duration-300 ease-in-out">National Footprint with Local Presence In Your Backyard</button>
-        <button @click="activeCard = 2" :class="{ 'bg-yellow-600 text-white': activeCard === 2, 'bg-gray-200 text-gray-700': activeCard !== 2 }" class="px-4 py-2 rounded-full text-sm transition duration-300 ease-in-out">Quick Install ADUs</button>
-        <button @click="activeCard = 3" :class="{ 'bg-yellow-600 text-white': activeCard === 3, 'bg-gray-200 text-gray-700': activeCard !== 3 }" class="px-4 py-2 rounded-full text-sm transition duration-300 ease-in-out">Complete Your Project On-Time and On-Budget</button>
+        <button @click="activeCard = 1" :class="{ 'bg-[#FC9900] text-white': activeCard === 1, 'bg-gray-200 text-gray-700': activeCard !== 1 }" class="px-4 py-2 rounded-full text-sm transition duration-300 ease-in-out">National Footprint with Local Presence In Your Backyard</button>
+        <button @click="activeCard = 2" :class="{ 'bg-[#FC9900] text-white': activeCard === 2, 'bg-gray-200 text-gray-700': activeCard !== 2 }" class="px-4 py-2 rounded-full text-sm transition duration-300 ease-in-out">Quick Install ADUs</button>
+        <button @click="activeCard = 3" :class="{ 'bg-[#FC9900] text-white': activeCard === 3, 'bg-gray-200 text-gray-700': activeCard !== 3 }" class="px-4 py-2 rounded-full text-sm transition duration-300 ease-in-out">Complete Your Project On-Time and On-Budget</button>
     </div>
 
     <!-- Card Container -->
@@ -1546,7 +1546,7 @@
                 <div class="m-8">
                     <img src="/assets/images/home-no-cranes.png" alt="Panelized Construction" class="w-1/2 mx-auto mb-12">
                     <img src="/assets/images/home-why-test1.jpg" alt="Fast-Track ADU" class="">
-                    <p class="mt-4 italic text-sm">"We were amazed at how straightforward the Studio Shed process was. No cranes, no fuss - just a beautiful, functional space that transformed our backyard in days. It's DIY-friendly but with professional results!" - The Johnsons, Arizona</p>
+                    <p class="mt-4 italic text-sm">"We were amazed at how straightforward the Studio Shed process was. No cranes, no fuss - just a beautiful, functional space that transformed our backyard in days. It's DIY-friendly but with professional results!" - The Jumps, Arizona</p>
                 </div>
             </div>
             <div class="px-4 md:p-8 md:w-1/2">
@@ -1573,7 +1573,7 @@
                 <div class="md:m-8">
                 <h3 class="text-2xl font-bold mb-4">Predictable Process, Exceptional Results</h3>
                 <p class="mb-6">Studio Shed has a proven track record of completing every project on-time and on-budget. Fixed pricing ensures you can start your project with confidence.</p>
-                <img src="/assets/images/home-process-timeline.png" alt="Panelized Construction" class="w-full mx-auto my-6">
+                <img src="/assets/images/home-process-simple.png" alt="Panelized Construction" class="w-full mx-auto my-6">
                 <a href="https://design.studio-shed.com/" class="inline-block bg-transparent text-sm border-2 border-yellow-500 text-black px-6 py-2 rounded-full uppercase hover:bg-yellow-500 hover:text-white transition duration-300">Design & Price Your Studio Shed</a>
                 </div>
             </div>
